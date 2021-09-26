@@ -21,7 +21,8 @@
                         <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form action="">
+                                    <form action="{{route('danhmuc.store')}}"  enctype="multipart/form-data" method="post">
+                                        @csrf
                                         <div class="modal-header">
                                             <h4 class="modal-title" id="myModalLabel">Thêm Danh Mục</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -40,7 +41,7 @@
                                                         ['id'=>3,'name'=>"Bài Viết"]
                                                     ];
                                                 @endphp
-                                                <select class="form-control select2">
+                                                <select class="form-control select2" name="loai">
                                                     @foreach ($array as $item)
                                                         <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                     @endforeach
@@ -49,7 +50,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Huỷ</button>
-                                            <button type="button" class="btn btn-primary waves-effect waves-light">Thêm</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
                                         </div>
                                     </form>
                                 </div><!-- /.modal-content -->
@@ -59,20 +60,29 @@
                         <table class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th width="10">STT</th>
-                                        <th >Tên Danh Mục</th>
-                                        <th >Loại</th>  
-                                        <th>Sửa</th>          
+                                        <th width="10%">STT</th>
+                                        <th width="60%">Tên Danh Mục</th>
+                                        <th width="15%">Loại</th>  
+                                        <th width="15%">Hành Động</th>  
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $item)
-                                       
+
                                         <tr>
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->name}}</td>
-                                            <td>{{$array[$item->loai]['name']}}</td> 
-                                            <td><a name="" id="" class="btn btn-primary" href="'.$linkEdit.'" role="button"><i class="fa fa-edit"></i></a>    </td>
+                                            <td>
+                                                @foreach ($array as $row)
+                                                    @if ($row['id'] == $item->loai)
+                                                        {{$row['name']}}
+                                                    @endif
+                                                @endforeach
+                                            </td> 
+                                            <td>
+                                                <a name="" id="" class="btn btn-primary" href="'.$linkEdit.'" role="button"><i class="fa fa-edit"></i></a>   
+                                                <a name="" id="" class="btn btn-danger" href="'.$linkEdit.'" role="button"><i class="fa fa-edit"></i></a>   
+                                            </td>
                                         </tr>
                                     @endforeach
                                    

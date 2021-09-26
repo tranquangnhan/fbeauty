@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DanhMucController extends Controller
 {
@@ -42,7 +43,16 @@ class DanhMucController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $validated = $request->validated();
+
+        $data = [
+            'name'=> $request->name,
+            'slug'=>Str::slug($request->name),
+            'loai'=>$request->loai
+        ];
+
+        $this->DanhMuc->create($data);
+        return redirect('quantri/danhmuc')->with('success','Thêm thành công');
     }
 
     /**
