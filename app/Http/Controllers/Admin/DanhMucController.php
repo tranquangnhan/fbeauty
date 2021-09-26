@@ -3,19 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\DanhMuc\DanhMucRepository;
 use Illuminate\Http\Request;
 
 class DanhMucController extends Controller
 {
+    private $DanhMuc;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(DanhMucRepository $DanhMuc)
+    {
+        $this->DanhMuc = $DanhMuc;
+    }
     public function index()
     {
-
-        return view('Admin.DanhMuc.index');
+        $data = $this->DanhMuc->getAll();
+        return view('Admin.DanhMuc.index',compact('data'));
     }
 
     /**

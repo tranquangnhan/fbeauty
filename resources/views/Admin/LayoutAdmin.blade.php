@@ -11,13 +11,29 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('Admin/assets') }}/images/favicon.ico">
 
+
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+        <link href="{{ asset('Admin/assets') }}/libs/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="{{ asset('Admin/assets') }}/libs/multiselect/multi-select.css"  rel="stylesheet" type="text/css" />
+        <link href="{{ asset('Admin/assets') }}/libs/select2/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+        <link href="{{ asset('Admin/assets') }}/libs/switchery/switchery.min.css" rel="stylesheet" />
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+
         <!-- Bootstrap Css -->
         <link href="{{ asset('Admin/assets') }}/css/bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href="{{ asset('Admin/assets') }}/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{ asset('Admin/assets') }}/css/app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
-
+        
+     
+    
     </head>
 
     <body>
@@ -575,14 +591,25 @@
         <script src="{{ asset('Admin/assets') }}/libs/jquery-knob/jquery.knob.min.js"></script>
 
         <!--Morris Chart-->
-        <script src="{{ asset('Admin/assets') }}/libs/morris-js/morris.min.js"></script>
-        <script src="{{ asset('Admin/assets') }}/libs/raphael/raphael.min.js"></script>
+        {{-- <script src="{{ asset('Admin/assets') }}/libs/morris-js/morris.min.js"></script>
+        <script src="{{ asset('Admin/assets') }}/libs/raphael/raphael.min.js"></script> --}}
 
         <!-- Dashboard init js-->
         <script src="{{ asset('Admin/assets') }}/js/pages/dashboard.init.js"></script>
+   
+        <script src="{{ asset('Admin/assets') }}/libs/custombox/custombox.min.js"></script>
 
+
+        <script src="{{ asset('Admin/assets') }}/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+        <script src="{{ asset('Admin/assets') }}/libs/multiselect/jquery.multi-select.js"></script>
+
+        <script src="{{ asset('Admin/assets') }}/libs/select2/select2.min.js"></script>
+   
+    
+       
+        <script src="{{ asset('Admin/assets') }}/js/pages/form-advanced.init.js"></script>
         <!-- App js -->
         <script src="{{ asset('Admin/assets') }}/js/app.min.js"></script>
-        
+       
     </body>
 </html>
