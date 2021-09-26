@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DangNhapAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/admin/dangnhapadmin', [\App\Http\Controllers\DangNhapAdminController::class, 'login']);
+
+Route::group(['prefix' => 'quantri'], function (){
+    
+
+
+
 });
