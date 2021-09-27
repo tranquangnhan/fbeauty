@@ -31,9 +31,9 @@
         <link href="{{ asset('Admin/assets') }}/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{ asset('Admin/assets') }}/css/app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
-        
-     
-    
+
+
+
     </head>
 
     <body>
@@ -59,7 +59,7 @@
                             </div>
                         </form>
                     </li>
-        
+
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <i class="fe-bell noti-icon"></i>
@@ -155,7 +155,7 @@
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <img src="{{ asset('Admin/assets') }}/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
-                                Nowak <i class="mdi mdi-chevron-down"></i> 
+                                Nowak <i class="mdi mdi-chevron-down"></i>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -167,27 +167,22 @@
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-user"></i>
-                                <span>My Account</span>
+                                <span>Tài khoản của bạn</span>
                             </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="fe-settings"></i>
-                                <span>Settings</span>
+                                <span>Cài đặt</span>
                             </a>
 
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="fe-lock"></i>
-                                <span>Lock Screen</span>
-                            </a>
 
                             <div class="dropdown-divider"></div>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <a href="{{URL::to("quantri/logout")}}" class="dropdown-item notify-item">
                                 <i class="fe-log-out"></i>
-                                <span>Logout</span>
+                                <span>Đăng xuất</span>
                             </a>
 
                         </div>
@@ -232,7 +227,7 @@
                     <li>
                         <h4 class="page-title-main">Vertical</h4>
                     </li>
-        
+
                 </ul>
 
             </div>
@@ -255,25 +250,25 @@
                                     <i class="fe-user mr-1"></i>
                                     <span>My Account</span>
                                 </a>
-    
+
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-settings mr-1"></i>
                                     <span>Settings</span>
                                 </a>
-    
+
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-lock mr-1"></i>
                                     <span>Lock Screen</span>
                                 </a>
-    
+
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-log-out mr-1"></i>
                                     <span>Logout</span>
                                 </a>
-    
+
                             </div>
                         </div>
                         <p class="text-muted">Admin Head</p>
@@ -285,7 +280,7 @@
                             </li>
 
                             <li class="list-inline-item">
-                                <a href="#">
+                                <a href="{{URL::to('/quantri/logout')}}">
                                     <i class="mdi mdi-power"></i>
                                 </a>
                             </li>
@@ -398,7 +393,7 @@
                                     <li><a href="form-xeditable.html">X-editable</a></li>
                                 </ul>
                             </li>
-                
+
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="mdi mdi-view-list"></i>
@@ -519,7 +514,7 @@
             @yield('content')
 
 
- 
+
         </div>
         <!-- END wrapper -->
 
@@ -544,16 +539,16 @@
                         <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked />
                         <label class="custom-control-label" for="light-mode-switch">Light Mode</label>
                     </div>
-    
+
                     <div class="mb-2">
                         <img src="{{ asset('Admin/assets') }}/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-3">
-                        <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsStyle="{{ asset('Admin/assets') }}/css/bootstrap-dark.min.css" 
+                        <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsStyle="{{ asset('Admin/assets') }}/css/bootstrap-dark.min.css"
                             data-appStyle="{{ asset('Admin/assets') }}/css/app-dark.min.css" />
                         <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
                     </div>
-    
+
                     <div class="mb-2">
                         <img src="{{ asset('Admin/assets') }}/images/layouts/rtl.png" class="img-fluid img-thumbnail" alt="">
                     </div>
@@ -566,7 +561,7 @@
                         <img src="{{ asset('Admin/assets') }}/images/layouts/dark-rtl.png" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-5">
-                        <input type="checkbox" class="custom-control-input theme-choice" id="dark-rtl-mode-switch" data-bsStyle="{{ asset('Admin/assets') }}/css/bootstrap-dark.min.css" 
+                        <input type="checkbox" class="custom-control-input theme-choice" id="dark-rtl-mode-switch" data-bsStyle="{{ asset('Admin/assets') }}/css/bootstrap-dark.min.css"
                             data-appStyle="{{ asset('Admin/assets') }}/css/app-dark-rtl.min.css" />
                         <label class="custom-control-label" for="dark-rtl-mode-switch">Dark RTL Mode</label>
                     </div>
@@ -596,7 +591,7 @@
 
         <!-- Dashboard init js-->
         <script src="{{ asset('Admin/assets') }}/js/pages/dashboard.init.js"></script>
-   
+
         <script src="{{ asset('Admin/assets') }}/libs/custombox/custombox.min.js"></script>
 
 
@@ -604,12 +599,12 @@
         <script src="{{ asset('Admin/assets') }}/libs/multiselect/jquery.multi-select.js"></script>
 
         <script src="{{ asset('Admin/assets') }}/libs/select2/select2.min.js"></script>
-   
-    
-       
+
+
+
         <script src="{{ asset('Admin/assets') }}/js/pages/form-advanced.init.js"></script>
         <!-- App js -->
         <script src="{{ asset('Admin/assets') }}/js/app.min.js"></script>
-       
+
     </body>
 </html>
