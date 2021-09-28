@@ -13,7 +13,7 @@ class InstallDatabase extends Migration
      */
     public function up()
     {
-        
+
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('danhmuc');
         Schema::dropIfExists('dichvu');
@@ -61,13 +61,13 @@ class InstallDatabase extends Migration
             $table->unsignedInteger('iddm');
             $table->string('name',255);
             $table->string('slug',255);
-            $table->longText('noidung');    
+            $table->longText('noidung');
             $table->boolean('trangthai');
             $table->foreign('iddm')->references('id')->on('danhmuc');
             $table->timestamps();
         });
 
-        
+
         Schema::create('coso', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',255);
@@ -117,7 +117,7 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
-        
+
         Schema::create('lieutrinhchitiet', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idlieutrinh');
@@ -153,7 +153,7 @@ class InstallDatabase extends Migration
             $table->foreign('idgiamgia')->references('id')->on('giamgia');
             $table->timestamps();
         });
-        
+
 
         Schema::create('hoadonchitiet', function (Blueprint $table) {
             $table->increments('id');
@@ -181,7 +181,7 @@ class InstallDatabase extends Migration
             $table->foreign('idnhanvien')->references('id')->on('nhanvien');
             $table->timestamps();
         });
-        
+
 
         Schema::create('sanpham', function (Blueprint $table) {
             $table->increments('id');
@@ -196,7 +196,7 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
-        
+
         Schema::create('sanphamchitiet', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idsanpham');
@@ -248,7 +248,7 @@ class InstallDatabase extends Migration
             $table->boolean('role');
             $table->boolean('active');
             $table->string('name',255);
-            $table->string('img',255);
+            $table->text('img')->nullable();
             $table->string('namsinh',4);
             $table->boolean('gioitinh');
             $table->string('sdt',10);
