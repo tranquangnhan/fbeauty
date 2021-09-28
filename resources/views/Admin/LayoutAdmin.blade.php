@@ -294,29 +294,43 @@
 
                             <li class="menu-title">Navigation</li>
 
-                            <li>
-                                <a href="index.html">
-                                    <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Dashboard </span>
-                                </a>
-                            </li>
+                            <?php  use Illuminate\Support\Facades\Auth; $user=Auth::user();?>
+                            @if($user->role == 2)
+                                <li>
+                                    <a href="javascript: void(0);">
+                                        <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                        <span> Ảnh khách hàng </span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li><a href="{{route("danhmuc.index")}}">Xem</a></li>
+                                        <li><a href="{{route("danhmuc.create")}}">Thêm ảnh</a></li>
 
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="mdi mdi-page-layout-sidebar-left"></i>
-                                    <span> Layouts </span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="layouts-vertical.html">Vertical</a></li>
-                                    <li><a href="layouts-menubar-dark.html">Menubar Dark</a></li>
-                                    <li><a href="layouts-center-menu.html">Center Menu</a></li>
-                                    <li><a href="layouts-menu-drop-dark.html">Menu Drop Dark</a></li>
-                                    <li><a href="layouts-preloader.html">Preloader</a></li>
-                                    <li><a href="layouts-normal-header.html">Unsticky Header</a></li>
-                                    <li><a href="layouts-boxed.html">Boxed</a></li>
-                                </ul>
-                            </li>
+                                    </ul>
+                                </li>
+                                @elseif($user->role == 1)
+                                <li>
+                                    <a href="index.html">
+                                        <i class="mdi mdi-view-dashboard"></i>
+                                        <span> Thống kê </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript: void(0);">
+                                        <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                        <span> Danh mục </span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li><a href="{{route("danhmuc.index")}}">Danh sách</a></li>
+                                        <li><a href="{{route("danhmuc.create")}}">Thêm danh mục</a></li>
+
+                                    </ul>
+                                </li>
+                                @endif
+
+
 
                             <li class="menu-title">Apps</li>
 

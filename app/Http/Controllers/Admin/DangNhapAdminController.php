@@ -16,7 +16,7 @@ class DangNhapAdminController extends Controller
     public function checkin(CheckLogin $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/quantri/danhmuc');
+            return redirect('quantri/');
         } else {
             return redirect('/quantri/login')->with('thongbao', 'Tài khoản và mật khẩu không đúng');
         }

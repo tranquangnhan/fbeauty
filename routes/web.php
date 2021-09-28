@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DangNhapAdminController;
 use App\Http\Controllers\Admin\DanhMucController;
+use App\Http\Controllers\Admin\ThongkeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,6 @@ Route::get('/quantri/login', [DangNhapAdminController::class, 'index']);
 Route::post('/quantri/login', [DangNhapAdminController::class, 'checkin']);
 Route::get('/quantri/logout', [DangNhapAdminController::class, 'logout']);
 Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
-    Route::resource('/', DanhMucController::class);
+    Route::get('/', [ThongkeController::class, "index"]);
     Route::resource('danhmuc', DanhMucController::class);
 });
