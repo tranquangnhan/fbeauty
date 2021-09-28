@@ -324,7 +324,6 @@
                                     </a>
                                     <ul class="nav-second-level" aria-expanded="false">
                                         <li><a href="{{route("danhmuc.index")}}">Danh sách</a></li>
-                                        <li><a href="{{route("danhmuc.create")}}">Thêm danh mục</a></li>
 
                                     </ul>
                                 </li>
@@ -619,6 +618,8 @@
         <script src="{{ asset('Admin/assets') }}/js/pages/form-advanced.init.js"></script>
         <!-- App js -->
         <script src="{{ asset('Admin/assets') }}/js/app.min.js"></script>
+
+       
 
     </body>
 </html>

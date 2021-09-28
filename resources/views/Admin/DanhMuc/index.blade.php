@@ -13,7 +13,7 @@
                     <div class="card-box">
                         <h4 class="mt-0 header-title">Danh Mục</h4>
                         <p class="text-muted font-14 mb-3">
-                        Đây là danh mục.
+                        Danh mục sản phẩm, dịch vụ, bài viết.
                         </p>
                         <div>
                              <button class="btn btn-primary waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Thêm Danh Mục</button>
@@ -79,9 +79,13 @@
                                                     @endif
                                                 @endforeach
                                             </td> 
-                                            <td>
-                                                <a name="" id="" class="btn btn-primary" href="'.$linkEdit.'" role="button"><i class="fa fa-edit"></i></a>   
-                                                <a name="" id="" class="btn btn-danger" href="'.$linkEdit.'" role="button"><i class="fa fa-edit"></i></a>   
+                                            <td class="d-flex">
+                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
+                                                <form action="{{route('danhmuc.destroy',$item->id)}}"  method="post">
+                                                    @csrf
+                                                    {!!method_field('delete')!!}
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
