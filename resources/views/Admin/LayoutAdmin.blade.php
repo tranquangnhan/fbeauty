@@ -32,8 +32,12 @@
         <!-- App Css-->
         <link href="{{ asset('Admin/assets') }}/css/app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
 
-
-
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+        <style>
+            .note-btn{
+                color: #333 !important;
+            }
+        </style>
     </head>
 
     <body>
@@ -292,7 +296,7 @@
 
                         <ul class="metismenu" id="side-menu">
 
-                            <li class="menu-title">Navigation</li>
+                            <li class="menu-title">Chung</li>
 
                             <?php  use Illuminate\Support\Facades\Auth; $user=Auth::user();?>
                             @if($user->role == 2)
@@ -324,21 +328,23 @@
                                     </a>
                                     <ul class="nav-second-level" aria-expanded="false">
                                         <li><a href="{{route("danhmuc.index")}}">Danh sách</a></li>
-
                                     </ul>
                                 </li>
                                 @endif
 
 
 
-                            <li class="menu-title">Apps</li>
-
+                            <li class="menu-title">Sản Phẩm</li>
                             <li>
-                                <a href="apps-chat.html">
-                                    <i class="mdi mdi-forum"></i>
-                                    <span class="badge badge-purple float-right">New</span>
-                                    <span> Chat </span>
+                                <a href="javascript: void(0);">
+                                    <i class="mdi mdi-texture"></i>
+                                    <span class="badge badge-warning float-right">7</span>
+                                    <span> Sản Phẩm </span>
                                 </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
+                                    <li><a href="form-advanced.html">Danh Sách</a></li>
+                                </ul>
                             </li>
 
                             <li>
@@ -619,7 +625,13 @@
         <!-- App js -->
         <script src="{{ asset('Admin/assets') }}/js/app.min.js"></script>
 
-       
+        
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+        <script src="{{ asset('Admin/assets') }}/js/pages/texteditor.js"></script>
+        
 
     </body>
 </html>
