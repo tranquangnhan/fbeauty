@@ -25,16 +25,16 @@ use Illuminate\Support\Facades\Route;
  * Backend
  *
  */
-// Route::get('/quantri/login', [DangNhapAdminController::class, 'index']);
-// Route::post('/quantri/login', [DangNhapAdminController::class, 'checkin']);
-// Route::get('/quantri/logout', [DangNhapAdminController::class, 'logout']);
-// Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
-//     Route::get('/', [ThongkeController::class, "index"]);
-//     Route::resource('danhmuc', DanhMucController::class);
-//     Route::resource('sanpham', SanPhamController::class);
-//     Route::get('/sanpham/detail/{id}', [SanPhamController::class,'createDetailProduct']);
-//     Route::post('/sanpham/detail/{id}', [SanPhamController::class,'postDetailProduct']);
-//     Route::resource('nhanvien', NhanVienController::class);
-//     Route::get('nhanvien/kiemtraemail/{name}',[NhanVienController::class, "CheckEmailTonTai"]);
-//     Route::get('nhanvien/kiemtrasdt/{name}',[NhanVienController::class, "CheckSdtTonTai"]);
-// });
+Route::get('/quantri/login', [DangNhapAdminController::class, 'index']);
+Route::post('/quantri/login', [DangNhapAdminController::class, 'checkin']);
+Route::get('/quantri/logout', [DangNhapAdminController::class, 'logout']);
+Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
+    Route::get('/', [ThongkeController::class, "index"]);
+    Route::resource('danhmuc', DanhMucController::class);
+    Route::resource('sanpham', SanPhamController::class);
+    Route::get('/sanpham/detail/{id}', [SanPhamController::class,'createDetailProduct']);
+    Route::post('/sanpham/detail/{id}', [SanPhamController::class,'postDetailProduct']);
+    Route::resource('nhanvien', NhanVienController::class);
+    Route::get('nhanvien/kiemtraemail/{name}',[NhanVienController::class, "CheckEmailTonTai"]);
+    Route::get('nhanvien/kiemtrasdt/{name}',[NhanVienController::class, "CheckSdtTonTai"]);
+});
