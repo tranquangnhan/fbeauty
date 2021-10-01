@@ -9,6 +9,11 @@ use App\Repositories\NhanVien\NhanVienReponsitoryinterface;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\SanPham\SanPhamRepositoryInterface;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepositoryInterface;
+use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
+use App\Repositories\CoSo\CoSoRepository;
+use App\Repositories\CoSo\CoSoRepositoryInterface;
+use App\Repositories\DichVu\DichVuReponsitory;
+use App\Repositories\DichVu\DichVuRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,7 +28,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(DanhmucRepositoryInterface::class,DanhMucRepository::class);
         $this->app->singleton(SanPhamRepositoryInterface::class,SanPhamRepository::class);
         $this->app->singleton(NhanVienReponsitoryinterface::class,NhanVienReponsitory::class);
-        $this->app->singleton(SanPhamChiTietRepositoryInterface::class,SanPhamRepository::class);
+        $this->app->singleton(SanPhamChiTietRepositoryInterface::class,SanPhamChiTietRepository::class);
+        $this->app->singleton(CoSoRepositoryInterface::class,CoSoRepository::class);
+        $this->app->singleton(DichVuRepositoryInterface::class,DichVuReponsitory::class);
     }
 
     /**

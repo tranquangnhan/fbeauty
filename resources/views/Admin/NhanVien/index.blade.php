@@ -11,77 +11,108 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
-                            <h4 class="mt-0 header-title">Danh Mục</h4>
+                            <h4 class="mt-0 header-title">Nhân viên</h4>
                             <p class="text-muted font-14 mb-3">
-                                Đây là danh mục.
+                                Đây là nhân viên.
                             </p>
                             <div>
-                                <button class="btn btn-primary waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Thêm Danh Mục</button>
+                                <a href="{{route("nhanvien.create")}}"
+                                   class="btn btn-primary waves-effect waves-light mb-3">Thêm nhân viên
+                                </a>
                             </div>
-                            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <form action="{{route('danhmuc.store')}}"  enctype="multipart/form-data" method="post">
-                                            @csrf
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">Thêm Danh Mục</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <input type="text" name="name"  parsley-trigger="change" required
-                                                           placeholder="Nhập tên nhà sản xuất" class="form-control" id="userName">
-                                                </div>
+                            <div class="container">
+                                @if(session('thanhcong'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{session('thanhcong')}}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                    </div>
+                                @endif
 
-                                                <div class="form-group">
-                                                    @php
-                                                        $array = [
-                                                            ['id'=>1,'name'=>"Sản Phẩm"],
-                                                            ['id'=>2,'name'=>"Dịch Vụ"],
-                                                            ['id'=>3,'name'=>"Bài Viết"]
-                                                        ];
-                                                    @endphp
-                                                    <select class="form-control select2" name="loai">
-                                                        @foreach ($array as $item)
-                                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Huỷ</button>
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
-                                            </div>
-                                        </form>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
+                                @if(session('thatbai'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{session('thatbai')}}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                    </div>
+                                @endif
+
                             </div>
-
                             <table class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th width="10%">STT</th>
-                                    <th width="60%">Tên Danh Mục</th>
-                                    <th width="15%">Loại</th>
-                                    <th width="15%">Hành Động</th>
+                                    <th scope="">STT</th>
+                                    <th width="37%">Thông tin nhân viên</th>
+                                    <th width="23%">Cơ sở & dịch vụ</th>
+                                    <th width="10%">Avatar</th>
+                                    <th width="22%">Phân quyền</th>
+                                    <th width="">Sửa</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 @foreach ($data as $item)
 
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td>{{$item->name}}</td>
                                         <td>
-                                            @foreach ($array as $row)
-                                                @if ($row['id'] == $item->loai)
-                                                    {{$row['name']}}
-                                                @endif
-                                            @endforeach
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">Tên:</div>
+                                                <div class="col-md-6">{{$item->name}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">Email:</div>
+                                                <div class="col-md-6">{{$item->email}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">Năm sinh:</div>
+                                                <div class="col-md-6">{{$item->namsinh}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">SĐT:</div>
+                                                <div class="col-md-6">{{$item->sdt}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">Giới tính:</div>
+                                                <div
+                                                    class="col-md-6"><?php echo ($item->gioitinh == 1) ? "Nam" : "Nữ";?></div>
+                                            </div>
                                         </td>
                                         <td>
-                                            <a name="" id="" class="btn btn-primary" href="'.$linkEdit.'" role="button"><i class="fa fa-edit"></i></a>
-                                            <a name="" id="" class="btn btn-danger" href="'.$linkEdit.'" role="button"><i class="fa fa-edit"></i></a>
+                                            <div class="row">
+                                                <div class="col-md-5 font-weight-bold">Cơ sở:</div>
+                                                <div class="col-md-7 ">{{$item->coso}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5 font-weight-bold">Dịch vụ:</div>
+                                                <div class="col-md-7 ">{{$item->dichvu}}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <img class="w-100 m-auto"
+                                                 src="{{asset("Admin/assets/images/users")}}/{{$item->avatar}}">
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-6 font-weight-bold">Role:</div>
+                                                <div
+                                                    class="col-md-6"><?php echo ($item->role == 1) ? "Admin" : "Staff";?></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 font-weight-bold">Active:</div>
+                                                <div
+                                                    class="col-md-6"><?php echo ($item->active == 1) ? "Kích hoạt" : "Chưa kích hoạt";?></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 font-weight-bold">Trạng thái:</div>
+                                                <div
+                                                    class="col-md-6"><?php echo ($item->active == 1) ? "Hoạt động" : "Không hoạt động";?></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a id="" class="btn btn-primary mb-2"
+                                               href="{{route("nhanvien.edit", $item->id)}}" role="button" title="sửa"><i
+                                                    class="fa fa-edit"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -107,12 +138,13 @@
                 </div>
 
 
-
             </div> <!-- container-fluid -->
 
         </div> <!-- content -->
 
 
     </div>
+
+
 
 @endsection

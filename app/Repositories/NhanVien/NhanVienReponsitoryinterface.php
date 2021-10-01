@@ -4,7 +4,11 @@
 namespace App\Repositories\NhanVien;
 
 
-interface NhanVienReponsitoryinterface
-{
+use App\Repositories\RepositoryInterface;
 
+interface NhanVienReponsitoryinterface extends RepositoryInterface
+{
+public function getNhanVien();
+public function CheckEmail($email);
+public function CheckSdt($sdt);
 }

@@ -21,7 +21,7 @@ class PhanQuyenAdmin
         if (Auth::check())
         {
             $user=Auth::user();
-            if (($user->role==1 or $user->role==2) and $user->active==1 )
+            if (($user->role==1 or $user->role==0) and $user->active==1 and $user->trangthai==1)
             {
                 return $next($request);
             }

@@ -92,6 +92,7 @@ class SanPhamController extends Controller
             ];
             $this->SanPhamChiTiet->create($data);
         }
+        
         return redirect('quantri/sanpham')->with('success','Thêm thành công');
     }
 

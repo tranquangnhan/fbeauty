@@ -11,6 +11,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    const BASE_URL_UPLOAD = 'Admin/assets/images/users/';
+
 
     function uploadSingle($file){
         $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
@@ -18,5 +20,21 @@ class Controller extends BaseController
         $path = $file->storeAs('photos', $filename);
 
         return $path;
+    
+    }
+
+    /**
+     *check định dạng ảnh và lưu vào mục users
+     */
+    public function checkImg($extension, $img)
+    {
+        $allowedfileExtension = ['jpg', 'png', 'gif'];
+        $check = in_array($extension, $allowedfileExtension);
+        if (!$check) {
+            return false;
+        } else {
+            $img->move(self::BASE_URL_UPLOAD, $img->getClientOriginalName());
+            return true;
+        }
     }
 }
