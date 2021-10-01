@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\SanPham\SanPhamRepository;
+use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -12,11 +13,13 @@ class SanPhamController extends Controller
 {
     private $DanhMuc;
     private $SanPham;
+    private $SanPhamChiTiet;
 
-    public function __construct(DanhMucRepository $DanhMuc,SanPhamRepository $SanPham)
+    public function __construct(DanhMucRepository $DanhMuc,SanPhamRepository $SanPham,SanPhamChiTietRepository $SanPhamChiTiet)
     {
         $this->DanhMuc = $DanhMuc;
         $this->SanPham = $SanPham;
+        $this->SanPhamChiTiet = $SanPhamChiTiet;
     }
 
     /**
@@ -62,7 +65,34 @@ class SanPhamController extends Controller
             "img"=>$img
         ];
 
-        $this->SanPham->create($data);
+        $data= $this->SanPham->create($data);
+
+        return redirect('/quantri/sanpham/detail/'.$data->id.'')->with('success','Thêm thành công');
+    }
+
+    public function createDetailProduct(){
+
+        return view('Admin.SanPham.createDetail');
+    }
+
+
+    public function postDetailProduct(Request $request){
+        $idsanpham = $request->route('id');
+        $ml = $request->ml;
+        $tonkho = $request->tonkho;
+        $dongia = $request->dongia;
+
+
+        for ($i=0; $i < count($ml); $i++) { 
+            $data = [
+                'idsanpham'=>$idsanpham,
+                'ml'=>  $ml[$i],
+                'tonkho'=>$tonkho[$i],
+                'dongia'=>$dongia[$i]
+            ];
+            $this->SanPhamChiTiet->create($data);
+        }
+        return redirect('quantri/sanpham')->with('success','Thêm thành công');
     }
 
     /**

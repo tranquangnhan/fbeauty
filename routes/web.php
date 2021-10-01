@@ -31,4 +31,6 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('/', [ThongkeController::class, "index"]);
     Route::resource('danhmuc', DanhMucController::class);
     Route::resource('sanpham', SanPhamController::class);
+    Route::get('/sanpham/detail/{id}', [SanPhamController::class,'createDetailProduct']);
+    Route::post('/sanpham/detail/{id}', [SanPhamController::class,'postDetailProduct']);
 });

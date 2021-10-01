@@ -31,6 +31,9 @@
         <link href="{{ asset('Admin/assets') }}/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{ asset('Admin/assets') }}/css/app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
+        
+        <link href="{{ asset('Admin/assets') }}/css/custom.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
+
 
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         <style>
@@ -631,7 +634,7 @@
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
         <script src="{{ asset('Admin/assets') }}/js/pages/texteditor.js"></script>
-        
+        <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
 
     </body>
 </html>
