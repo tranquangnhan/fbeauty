@@ -226,7 +226,7 @@
                                     >Huỷ
                                     </a>
                                     <button type="submit" class="btn btn-primary waves-effect waves-light " id="them">
-                                        Thêm
+                                        Cập nhật
                                     </button>
                                 </div>
                             </form>
