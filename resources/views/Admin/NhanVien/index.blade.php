@@ -1,0 +1,150 @@
+@extends('Admin.LayoutAdmin')
+
+@section('content')
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <h4 class="mt-0 header-title">Nhân viên</h4>
+                            <p class="text-muted font-14 mb-3">
+                                Đây là nhân viên.
+                            </p>
+                            <div>
+                                <a href="{{route("nhanvien.create")}}"
+                                   class="btn btn-primary waves-effect waves-light mb-3">Thêm nhân viên
+                                </a>
+                            </div>
+                            <div class="container">
+                                @if(session('thanhcong'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{session('thanhcong')}}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                    </div>
+                                @endif
+
+                                @if(session('thatbai'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{session('thatbai')}}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                aria-label="Close"></button>
+                                    </div>
+                                @endif
+
+                            </div>
+                            <table class="table table-striped table-bordered dt-responsive nowrap">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="">STT</th>
+                                    <th width="37%">Thông tin nhân viên</th>
+                                    <th width="23%">Cơ sở & dịch vụ</th>
+                                    <th width="10%">Avatar</th>
+                                    <th width="22%">Phân quyền</th>
+                                    <th width="">Sửa</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                @foreach ($data as $item)
+
+                                    <tr>
+                                        <td>{{$item->id}}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">Tên:</div>
+                                                <div class="col-md-6">{{$item->name}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">Email:</div>
+                                                <div class="col-md-6">{{$item->email}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">Năm sinh:</div>
+                                                <div class="col-md-6">{{$item->namsinh}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">SĐT:</div>
+                                                <div class="col-md-6">{{$item->sdt}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 font-weight-bold">Giới tính:</div>
+                                                <div
+                                                    class="col-md-6"><?php echo ($item->gioitinh == 1) ? "Nam" : "Nữ";?></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-5 font-weight-bold">Cơ sở:</div>
+                                                <div class="col-md-7 ">{{$item->coso}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5 font-weight-bold">Dịch vụ:</div>
+                                                <div class="col-md-7 ">{{$item->dichvu}}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <img class="w-100 m-auto"
+                                                 src="{{asset("Admin/assets/images/users")}}/{{$item->avatar}}">
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-6 font-weight-bold">Role:</div>
+                                                <div
+                                                    class="col-md-6"><?php echo ($item->role == 1) ? "Admin" : "Staff";?></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 font-weight-bold">Active:</div>
+                                                <div
+                                                    class="col-md-6"><?php echo ($item->active == 1) ? "Kích hoạt" : "Chưa kích hoạt";?></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 font-weight-bold">Trạng thái:</div>
+                                                <div
+                                                    class="col-md-6"><?php echo ($item->active == 1) ? "Hoạt động" : "Không hoạt động";?></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a id="" class="btn btn-primary mb-2"
+                                               href="{{route("nhanvien.edit", $item->id)}}" role="button" title="sửa"><i
+                                                    class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+                <div class="row d-flex justify-content-end">
+                    <div class="col-lg-5">
+                        <nav>
+                            <ul class="pagination pagination-split">
+                                <?php
+                                // echo $Pagination;
+                                ?>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+
+
+            </div> <!-- container-fluid -->
+
+        </div> <!-- content -->
+
+
+    </div>
+
+
+
+@endsection
