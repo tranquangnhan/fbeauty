@@ -34,7 +34,7 @@
     color: #FFFFFF;
     font-size: 100px;
 }
-input[type='file']{
+.file-upload input[type='file']{
 
     height:100px;
     width:100px;
