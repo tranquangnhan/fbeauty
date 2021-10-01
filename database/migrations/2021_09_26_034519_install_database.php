@@ -201,7 +201,7 @@ class InstallDatabase extends Migration
             $table->increments('id');
             $table->unsignedInteger('idsanpham');
             $table->string('ml',4);
-            $table->unsignedInteger('soluotmua');
+            $table->unsignedInteger('soluotmua')->default(0);
             $table->unsignedInteger('tonkho');
             $table->double('dongia',10,0);
             $table->foreign('idsanpham')->references('id')->on('sanpham');
@@ -260,7 +260,7 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
-        
+
 
         Schema::enableForeignKeyConstraints();
 

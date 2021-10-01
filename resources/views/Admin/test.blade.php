@@ -1,5 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+    <head>
+        <base href="{{url('/')}}">
+        <meta charset="utf-8" />
+        <title>Vertical Layouts | Adminto - Responsive Bootstrap 4 Admin Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{ asset('Admin/assets') }}/images/favicon.ico">
+
+
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+        <link href="{{ asset('Admin/assets') }}/libs/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="{{ asset('Admin/assets') }}/libs/multiselect/multi-select.css"  rel="stylesheet" type="text/css" />
+        <link href="{{ asset('Admin/assets') }}/libs/select2/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+        <link href="{{ asset('Admin/assets') }}/libs/switchery/switchery.min.css" rel="stylesheet" />
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+        <link href="{{ asset('Admin/assets') }}/libs/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+
+        <!-- Bootstrap Css -->
+        <link href="{{ asset('Admin/assets') }}/css/bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{{ asset('Admin/assets') }}/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{{ asset('Admin/assets') }}/css/app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
+        
+        <link href="{{ asset('Admin/assets') }}/css/custom.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
+
+
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+        <style>
+            .note-btn{
+                color: #333 !important;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <ul class="list-unstyled topnav-menu float-right mb-0">
+
+                    <li class="d-none d-sm-block">
+                        <form class="app-search">
+                            <div class="app-search-box">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit">
+                                            <i class="fe-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+=======
 <head>
     <base href="{{url('/')}}">
     <meta charset="utf-8"/>
@@ -34,20 +99,10 @@
     <!-- App Css-->
     <link href="{{ asset('Admin/assets') }}/css/app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('Admin/assets') }}/css/inputfile.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
-
-    {{-- code nhúng của Quốc --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
-    {{-- end code nhúng của Quốc --}}
-
-    {{-- code nhúng của Nhân --}}
-    <link href="{{ asset('Admin/assets') }}/css/custom.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
-
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-
-    {{-- end code nhúng của Nhân --}}
 <body>
 
 <!-- Begin page -->
@@ -66,6 +121,7 @@
                                 <button class="btn" type="submit">
                                     <i class="fe-search"></i>
                                 </button>
+>>>>>>> 507654c82896332f138aec3e4a47464a689e618a
                             </div>
                         </div>
                     </div>
@@ -298,6 +354,26 @@
                         </a>
                     </li>
 
+<<<<<<< HEAD
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+
+                        <ul class="metismenu" id="side-menu">
+
+                            <li class="menu-title">Chung</li>
+
+                            <?php  use Illuminate\Support\Facades\Auth; $user=Auth::user();?>
+                            @if($user->role == 2)
+                                <li>
+                                    <a href="javascript: void(0);">
+                                        <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                        <span> Ảnh khách hàng </span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li><a href="{{route("danhmuc.index")}}">Xem</a></li>
+                                        <li><a href="{{route("danhmuc.create")}}">Thêm ảnh</a></li>
+=======
                     <li class="list-inline-item">
                         <a href="{{URL::to('/quantri/logout')}}">
                             <i class="mdi mdi-power"></i>
@@ -305,13 +381,28 @@
                     </li>
                 </ul>
             </div>
+>>>>>>> 507654c82896332f138aec3e4a47464a689e618a
 
             <!--- Sidemenu -->
             <div id="sidebar-menu">
 
+<<<<<<< HEAD
+                                <li>
+                                    <a href="javascript: void(0);">
+                                        <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                        <span> Danh mục </span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li><a href="{{route("danhmuc.index")}}">Danh sách</a></li>
+                                    </ul>
+                                </li>
+                                @endif
+=======
                 <ul class="metismenu" id="side-menu">
 
                     <li class="menu-title">Navigation</li>
+>>>>>>> 507654c82896332f138aec3e4a47464a689e618a
 
                 <?php  use Illuminate\Support\Facades\Auth; $user = Auth::user();?>
                 <!--- Nhân viên -->
@@ -360,22 +451,24 @@
                                 <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Ảnh khách hàng</a></li>
                             </ul>
                         </li>
-
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="mdi mdi-texture"></i>
-                                <span class="badge badge-warning float-right">7</span>
-                                <span> Sản Phẩm </span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
-                                <li><a href="form-advanced.html">Danh Sách</a></li>
-                            </ul>
-                        </li>
                     @endif
 
                     <li class="menu-title">Apps</li>
 
+<<<<<<< HEAD
+                            <li class="menu-title">Sản Phẩm</li>
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="mdi mdi-texture"></i>
+                                    <span class="badge badge-warning float-right">7</span>
+                                    <span> Sản Phẩm </span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
+                                    <li><a href="form-advanced.html">Danh Sách</a></li>
+                                </ul>
+                            </li>
+=======
                     <li>
                         <a href="apps-chat.html">
                             <i class="mdi mdi-forum"></i>
@@ -390,6 +483,7 @@
                             <span> Calendar </span>
                         </a>
                     </li>
+>>>>>>> 507654c82896332f138aec3e4a47464a689e618a
 
                     <li>
                         <a href="inbox.html">
@@ -661,19 +755,19 @@
 <script src="{{ asset('Admin/assets') }}/libs/select2/select2.min.js"></script>
 
 
+<<<<<<< HEAD
+        
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+        <script src="{{ asset('Admin/assets') }}/js/pages/texteditor.js"></script>
+        <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
+=======
 <script src="{{ asset('Admin/assets') }}/js/pages/form-advanced.init.js"></script>
 <!-- App js -->
 <script src="{{ asset('Admin/assets') }}/js/app.min.js"></script>
+>>>>>>> 507654c82896332f138aec3e4a47464a689e618a
 
-{{-- code nhúng bởi Nhân --}}
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-<script src="{{ asset('Admin/assets') }}/js/pages/texteditor.js"></script>
-<script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
-
-{{-- end code nhúng bởi Nhân --}}
 </body>
-
 </html>

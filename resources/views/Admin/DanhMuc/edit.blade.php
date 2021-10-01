@@ -14,7 +14,7 @@
         <!-- Start Content-->
         <div class="container-fluid">
 
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-center mt-3">
                 <div class="col-xl-10 ">
                     <div class="card-box">
                         <div class="dropdown float-right">
@@ -70,8 +70,8 @@
                                     </select>
                                 </div>
                             </div>
-                            
-                            <div class="form-group text-right mb-0 ">
+
+                            <div class="form-group text-right mb-0 mt-4">
                                 <a href="/quantri/danhmuc" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
                                 <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Sửa">
                             </div>
