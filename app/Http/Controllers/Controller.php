@@ -20,7 +20,7 @@ class Controller extends BaseController
         $path = $file->storeAs('photos', $filename);
 
         return $path;
-    
+
     }
 
     /**

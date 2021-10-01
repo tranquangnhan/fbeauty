@@ -34,7 +34,7 @@
     <!-- App Css-->
     <link href="{{ asset('Admin/assets') }}/css/app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('Admin/assets') }}/css/inputfile.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
-    
+
     {{-- code nhúng của Quốc --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="

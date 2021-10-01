@@ -70,7 +70,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group text-right mb-0 mt-4">
                                 <a href="/quantri/danhmuc" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
                                 <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Sửa">
