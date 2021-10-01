@@ -37,4 +37,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('nhanvien', NhanVienController::class);
     Route::get('nhanvien/kiemtraemail/{name}',[NhanVienController::class, "CheckEmailTonTai"]);
     Route::get('nhanvien/kiemtrasdt/{name}',[NhanVienController::class, "CheckSdtTonTai"]);
+
+
+
+    Route::get('nhanvien/kiemtrasdt/{name}',[NhanVienController::class, "CheckSdtTonTai"]);
 });
