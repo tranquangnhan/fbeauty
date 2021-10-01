@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Requests\DanhMuc;
 
 class DanhMucController extends Controller
 {
@@ -41,9 +42,9 @@ class DanhMucController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DanhMuc $request)
     {
-        // $validated = $request->validated();
+        $validated = $request->validated();
 
         $data = [
             'name'=> $request->name,
@@ -74,7 +75,8 @@ class DanhMucController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data  = $this->DanhMuc->find($id);
+        return view('Admin.DanhMuc.edit',compact('data'));
     }
 
     /**
@@ -84,9 +86,20 @@ class DanhMucController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DanhMuc $request, $id)
     {
-        //
+
+        $validated = $request->validated();
+
+        $data = [
+            'name'=> $request->name,
+            'slug'=>Str::slug($request->name),
+            'loai'=>$request->loai
+        ];
+
+        $this->DanhMuc->update($id,$data);
+        
+        return redirect('quantri/danhmuc')->with('success','Sửa thành công');
     }
 
     /**
@@ -97,6 +110,9 @@ class DanhMucController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->DanhMuc->delete($id);
+        // thiếu logic check xem có sản phẩm,bài viết, dịch vụ không
+        
+        return redirect('quantri/danhmuc')->with('success','Xoá thành công');
     }
 }

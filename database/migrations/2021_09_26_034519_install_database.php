@@ -260,6 +260,8 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
+        
+
         Schema::enableForeignKeyConstraints();
 
     }
