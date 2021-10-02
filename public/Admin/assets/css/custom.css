@@ -20,3 +20,8 @@
 .note-btn{
     color: #333 !important;
 }
+.align-center{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

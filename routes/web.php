@@ -34,6 +34,9 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('sanpham', SanPhamController::class);
     Route::get('/sanpham/detail/{id}', [SanPhamController::class,'createDetailProduct']);
     Route::post('/sanpham/detail/{id}', [SanPhamController::class,'postDetailProduct']);
+    Route::get('/sanpham/detail/{id}/edit', [SanPhamController::class,'editDetailProduct']);
+    Route::post('/sanpham/detail/{id}/edit', [SanPhamController::class,'updateDetailProduct']);
+
     Route::resource('nhanvien', NhanVienController::class);
     Route::get('nhanvien/kiemtraemail/{name}',[NhanVienController::class, "CheckEmailTonTai"]);
     Route::get('nhanvien/kiemtrasdt/{name}',[NhanVienController::class, "CheckSdtTonTai"]);

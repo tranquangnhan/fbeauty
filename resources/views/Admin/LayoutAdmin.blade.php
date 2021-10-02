@@ -24,7 +24,8 @@
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
+    
+   
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('Admin/assets') }}/css/bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet"
@@ -46,7 +47,10 @@
     <link href="{{ asset('Admin/assets') }}/css/custom.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-
+    
+    <link href="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('Admin/assets') }}/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />
     {{-- end code nhúng của Nhân --}}
 <body>
 
@@ -343,8 +347,6 @@
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("danhmuc.index")}}">Danh sách</a></li>
-                                <li><a href="{{route("danhmuc.create")}}">Thêm danh mục</a></li>
-
                             </ul>
                         </li>
                         <!--- Nhân viên -->
@@ -369,7 +371,7 @@
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
-                                <li><a href="form-advanced.html">Danh Sách</a></li>
+                                <li><a href="{{route("sanpham.index")}}">Danh Sách</a></li>
                             </ul>
                         </li>
                     @endif
@@ -673,6 +675,11 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/texteditor.js"></script>
 <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
 
+<script src="{{ asset('Admin/assets') }}/libs/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.js"></script>
+
+<script src="{{ asset('Admin/assets') }}/js/pages/form-xeditable.init.js"></script>
+<script src="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.min.js"></script>
 {{-- end code nhúng bởi Nhân --}}
 </body>
 

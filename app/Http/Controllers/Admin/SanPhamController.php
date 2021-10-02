@@ -29,7 +29,8 @@ class SanPhamController extends Controller
      */
     public function index()
     {
-        
+        $data =  $this->SanPham->getAll();
+        return view('Admin.SanPham.index',compact('data'));
     }
 
     /**
@@ -96,6 +97,33 @@ class SanPhamController extends Controller
         return redirect('quantri/sanpham')->with('success','Thêm thành công');
     }
 
+
+
+    
+    function editDetailProduct($id){
+
+        $data = $this->SanPhamChiTiet->getAll();
+        return view('Admin.SanPham.editDetail',compact('data'));
+    }
+
+
+
+    function updateDetailProduct(Request $request, $id){
+        $ml = $request->ml;
+        $tonkho = $request->tonkho;
+        $dongia = $request->dongia;
+
+        for ($i=0; $i < count($ml); $i++) { 
+            $data = [
+                'ml'=>  $ml[$i],
+                'tonkho'=>$tonkho[$i],
+                'dongia'=>$dongia[$i]
+            ];
+            $this->SanPhamChiTiet->updateDetailByIdSp($id,$data);
+        }
+        return redirect('quantri/sanpham')->with('success','Sửa thành công');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -115,7 +143,9 @@ class SanPhamController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data  = $this->SanPham->find($id);
+        $cate  = $this->DanhMuc->getAll();
+        return view("Admin.SanPham.edit",compact('data','cate'));
     }
 
     /**
@@ -127,7 +157,23 @@ class SanPhamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'iddanhmuc'=>$request->iddanhmuc,
+            'name'=> $request->name,
+            'slug'=>Str::slug($request->name),
+            'loai'=>$request->loai,
+            'mota'=>$request->mota,
+            'noidung'=>$request->noidung,
+            "trangthai"=>$request->trangthai,
+        ];
+
+        if($request->img !== null){
+            $img = $this->uploadSingle($request->file('img'));
+            $data['img'] = $img;
+        }
+
+        $this->SanPham->update($id,$data);
+        return redirect('quantri/sanpham')->with('success','Sửa thành công');
     }
 
     /**
@@ -138,6 +184,8 @@ class SanPhamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // check sản phẩm chi tiết
+        $this->SanPham->delete($id);
+        return redirect('quantri/sanpham')->with('success','Xoá thành công');
     }
 }

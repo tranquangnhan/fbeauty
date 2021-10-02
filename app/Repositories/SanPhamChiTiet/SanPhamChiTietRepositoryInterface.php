@@ -2,8 +2,8 @@
 
 
 namespace App\Repositories\SanPhamChiTiet;
-
-interface SanPhamChiTietRepositoryInterface
+use App\Repositories\RepositoryInterface;
+interface SanPhamChiTietRepositoryInterface extends RepositoryInterface
 {
-  
+    public function updateDetailByIdSp($id,$data);
 }

@@ -30,3 +30,24 @@ $("#add-field").click(function() {
 $(document).on("click", ".remove-field", function() {
     $(this).closest(".input-block").remove();
 });
+
+$(document).ready(function() {
+    $('#key-table').DataTable(
+        {
+            "language": {
+                "lengthMenu": "_MENU_",
+                "zeroRecords": "Nothing found - sorry",
+                "info": "Xem trang _PAGE_ / tổng _PAGES_",
+                "infoEmpty": "No records available",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "search":"Tìm Kiếm",
+                "paginate": {
+                    "first":      "Trang Đầu",
+                    "last":       "Trang Cuối",
+                    "next":       "Trang Sau",
+                    "previous":   "Trang Trước"
+                },
+            }
+        }
+    );
+});
