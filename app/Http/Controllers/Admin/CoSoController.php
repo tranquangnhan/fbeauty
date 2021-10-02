@@ -142,14 +142,14 @@ class CoSoController extends Controller
     {
         $this->Coso->delete($id);
         return redirect('quantri/coso')->with('success','Xoá thành công');
-        // if ($id > 0){
-        //     $this->Coso->delete($id);
-        // }
-    //  return response()->json([
-    //    'title' => 'Đã xóa!',
-    //    'text' => 'Cơ sở id' . $id . 'đã xóa thành công',
-    //    'status' => 'success!',
-    //  ]);
+        if ($id > 0){
+            $this->Coso->delete($id);
+        }
+     return response()->json([
+       'title' => 'Đã xóa!',
+       'text' => 'Cơ sở id' . $id . 'đã xóa thành công',
+       'status' => 'success!',
+     ]);
 
     }
 }

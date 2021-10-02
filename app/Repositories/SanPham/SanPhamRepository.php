@@ -2,6 +2,7 @@
 
 
 namespace App\Repositories\SanPham;
+
 use App\Repositories\BaseRepository;
 class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInterface
 {

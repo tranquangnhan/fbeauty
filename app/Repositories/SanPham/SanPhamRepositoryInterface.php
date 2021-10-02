@@ -2,8 +2,8 @@
 
 
 namespace App\Repositories\SanPham;
-
-interface SanPhamRepositoryInterface
+use App\Repositories\RepositoryInterface;
+interface SanPhamRepositoryInterface extends RepositoryInterface
 {
   
 }
