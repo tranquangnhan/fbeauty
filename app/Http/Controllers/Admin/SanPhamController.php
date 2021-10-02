@@ -14,6 +14,7 @@ class SanPhamController extends Controller
     private $DanhMuc;
     private $SanPham;
     private $SanPhamChiTiet;
+    private $idloai = 1;
 
     public function __construct(DanhMucRepository $DanhMuc,SanPhamRepository $SanPham,SanPhamChiTietRepository $SanPhamChiTiet)
     {
@@ -40,7 +41,7 @@ class SanPhamController extends Controller
      */
     public function create()
     {
-        $cate = $this->DanhMuc->findDanhMucByIdLoai(1);
+        $cate = $this->DanhMuc->findDanhMucByIdLoai($this->idloai);
         return view('Admin.SanPham.create',compact('cate'));
     }
 
@@ -71,58 +72,7 @@ class SanPhamController extends Controller
         return redirect('/quantri/sanpham/detail/'.$data->id.'')->with('success','Thêm thành công');
     }
 
-    public function createDetailProduct(){
-
-        return view('Admin.SanPham.createDetail');
-    }
-
-
-    public function postDetailProduct(Request $request){
-        $idsanpham = $request->route('id');
-        $ml = $request->ml;
-        $tonkho = $request->tonkho;
-        $dongia = $request->dongia;
-
-
-        for ($i=0; $i < count($ml); $i++) { 
-            $data = [
-                'idsanpham'=>$idsanpham,
-                'ml'=>  $ml[$i],
-                'tonkho'=>$tonkho[$i],
-                'dongia'=>$dongia[$i]
-            ];
-            $this->SanPhamChiTiet->create($data);
-        }
-        
-        return redirect('quantri/sanpham')->with('success','Thêm thành công');
-    }
-
-
-
-    
-    function editDetailProduct($id){
-
-        $data = $this->SanPhamChiTiet->getAll();
-        return view('Admin.SanPham.editDetail',compact('data'));
-    }
-
-
-
-    function updateDetailProduct(Request $request, $id){
-        $ml = $request->ml;
-        $tonkho = $request->tonkho;
-        $dongia = $request->dongia;
-
-        for ($i=0; $i < count($ml); $i++) { 
-            $data = [
-                'ml'=>  $ml[$i],
-                'tonkho'=>$tonkho[$i],
-                'dongia'=>$dongia[$i]
-            ];
-            $this->SanPhamChiTiet->updateDetailByIdSp($id,$data);
-        }
-        return redirect('quantri/sanpham')->with('success','Sửa thành công');
-    }
+   
 
     /**
      * Display the specified resource.
