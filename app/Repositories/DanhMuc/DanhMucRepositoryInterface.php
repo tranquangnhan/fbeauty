@@ -2,8 +2,8 @@
 
 
 namespace App\Repositories\DanhMuc;
-
-interface DanhmucRepositoryInterface
+use App\Repositories\RepositoryInterface;
+interface DanhMucRepositoryInterface extends RepositoryInterface
 {
      /**
      * Get one
