@@ -34,7 +34,11 @@
     color: #FFFFFF;
     font-size: 100px;
 }
+<<<<<<< HEAD
 input[type='file']{
+=======
+.file-upload input[type='file']{
+>>>>>>> f5916a9fae3e958720bd64b5fe29682551f58dc9
 
     height:100px;
     width:100px;

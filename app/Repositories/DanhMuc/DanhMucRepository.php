@@ -5,7 +5,25 @@ namespace App\Repositories\DanhMuc;
 use App\Repositories\BaseRepository;
 class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInterface
 {
+    protected $model;
+
+    function __construct()
+    {
+        $this->setModel();
+    }
+
     public function getModel(){
-        return \App\Models\Admin\DanhMucModel::class;
+        return \App\Models\Admin\DanhMuc::class;
+    }
+
+    public function setModel()
+    {
+        $this->model = app()->make(
+            $this->getModel()
+        );
+    }
+
+    public function findDanhMucByIdLoai($idLoai){
+        return $this->model->where("loai","=",$idLoai)->get();
     }
 }

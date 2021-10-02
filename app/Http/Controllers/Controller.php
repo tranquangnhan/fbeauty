@@ -10,7 +10,18 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     const BASE_URL_UPLOAD = 'Admin/assets/images/users/';
+
+
+    function uploadSingle($file){
+        $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
+
+        $path = $file->storeAs('photos', $filename);
+
+        return $path;
+
+    }
 
     /**
      *check định dạng ảnh và lưu vào mục users

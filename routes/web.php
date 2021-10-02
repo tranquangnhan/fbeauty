@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DangNhapAdminController;
 use App\Http\Controllers\Admin\DanhMucController;
+use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\ThongkeController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,9 @@ Route::get('/quantri/logout', [DangNhapAdminController::class, 'logout']);
 Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('/', [ThongkeController::class, "index"]);
     Route::resource('danhmuc', DanhMucController::class);
+    Route::resource('sanpham', SanPhamController::class);
+    Route::get('/sanpham/detail/{id}', [SanPhamController::class,'createDetailProduct']);
+    Route::post('/sanpham/detail/{id}', [SanPhamController::class,'postDetailProduct']);
     Route::resource('nhanvien', NhanVienController::class);
     Route::get('nhanvien/uploadKH/{id}', [NhanVienController::class, 'upImgKhachHang']);
     Route::get('nhanvien/kiemtraemail/{name}',[NhanVienController::class, "CheckEmailTonTai"]);
