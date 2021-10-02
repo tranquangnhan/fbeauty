@@ -124,11 +124,25 @@ class NhanVienController extends Controller
      *
      * @param int $id
      * @return \Illuminate\Http\Response
+     * Tải ảnh khách hàng lên
+     * 1 show
+     * 2 up
      */
     public function show($id)
     {
         $nhanvien = $this->nhanvien->find($id);
         return view("Admin.NhanVien.ImgKhachHang", ['nhanvien' => $nhanvien]);
+    }
+
+    public function upImgKhachHang(Request $request, $id){
+        $img=$request->UrlHinh;
+        $mang=array(
+            'nameImg'=>$img
+        );
+        $AnhKH=[
+            'img'=>$mang
+        ];
+        $this->nhanvien->update($id, $AnhKH);
     }
 
     /**
