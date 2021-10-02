@@ -88,4 +88,5 @@ class SanPhamChiTietController extends Controller
 
         return redirect('quantri/sanpham')->with('success','Sửa thành công');
     }
+    // this is test
 }
