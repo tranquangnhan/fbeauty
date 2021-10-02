@@ -5,7 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DichVu extends Model
+class DichVuModel extends Model
 {
     use HasFactory;
     protected $table = 'dichvu';

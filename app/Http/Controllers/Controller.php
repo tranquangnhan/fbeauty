@@ -22,7 +22,14 @@ class Controller extends BaseController
         return $path;
 
     }
+    // function uploadSingle2($file){
+    //     $filename =  time() . '.' . $file->getClientOriginalExtension();
 
+    //     $path = $file->storeAs('',$filename);
+
+    //     return $path;
+
+    // }
     /**
      *check định dạng ảnh và lưu vào mục users
      */
