@@ -21,10 +21,10 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Tên dịch vụ</label><span style="color:red;"> (*)</span>
-                                    <input type="text" name="tendv" value="{{old('tendv')}}"
-                                        parsley-trigger="change" placeholder="Tên dịch vụ" class="form-control">
-                                    @error('tendv')
+                                    <label for="">Tên bài viết</label><span style="color:red;"> (*)</span>
+                                    <input type="text" name="name" value="{{old('name')}}"
+                                        parsley-trigger="change" placeholder="Tên bài viết" class="form-control">
+                                    @error('name')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>
