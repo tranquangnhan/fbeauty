@@ -13,7 +13,6 @@ class Controller extends BaseController
 
     const BASE_URL_UPLOAD = 'Admin/assets/images/users/';
 
-
     function uploadSingle($file){
         if($file == null) return null;
         $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
@@ -23,14 +22,7 @@ class Controller extends BaseController
         return $filename;
 
     }
-    // function uploadSingle2($file){
-    //     $filename =  time() . '.' . $file->getClientOriginalExtension();
-
-    //     $path = $file->storeAs('',$filename);
-
-    //     return $path;
-
-    // }
+   
     /**
      *check định dạng ảnh và lưu vào mục users
      */

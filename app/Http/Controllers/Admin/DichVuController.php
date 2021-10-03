@@ -113,19 +113,9 @@ class DichVuController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
-        $img = $request->file('urlHinh');
-        $imgnew = "";
-
-        if ($img == null) {
-            $imgnew = $request->imgcu;
-        }
-        else {
-            $imgnew = $img;
             $DichVu = [
                 'tendv' => $request->tendv,
                 'slug' => Str::slug($request->tendv),
-                'img' => $imgnew,
                 'giamgia' => $request->giamgia,
                 'iddm' => $request->danhmuc,
                 'motangan' => $request->motangan,
@@ -133,9 +123,15 @@ class DichVuController extends Controller
                 'noidung' => $request->noidung,
                 'trangthai' => $request->trangthai
             ];
+
+            if($request->urlHinh !== null){
+                $img = $this->uploadSingle($request->file('urlHinh'));
+                $DichVu['img'] = $img;
+            }
+
             $this->DichVu->update($id, $DichVu);
             return redirect('quantri/dichvu')->with('thanhcong', 'Sửa dịch vụ thành công');
-        }
+        
     }
 
     /**

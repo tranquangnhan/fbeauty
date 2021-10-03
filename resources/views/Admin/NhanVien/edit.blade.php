@@ -54,7 +54,6 @@
                                                     <span class="badge badge-danger">{{$message}}</span>
                                                     @enderror
                                                     <span id="kqcheckemail"></span>
-
                                                 </label>
 
                                             </div>

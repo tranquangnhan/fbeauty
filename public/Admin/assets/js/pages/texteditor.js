@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#summernote').summernote({
-        placeholder: 'Hello Trần Quang Nhân',
+        placeholder: 'Nhập nội dung vào nhé',
         tabsize: 2,
         height: 400,
         toolbar: [

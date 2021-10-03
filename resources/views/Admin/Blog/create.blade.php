@@ -14,25 +14,24 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-xl-12">
                     <div class="card-box">
-                        <h4 class="header-title  mt-0 mb-3 btn btn-primary">SỬA DỊCH VỤ</h4>
-                        <form action="{{route('dichvu.update',$DichVu->id)}}"  enctype="multipart/form-data"
+                        <h4 class="header-title  mt-0 mb-3 btn btn-primary">THÊM BÀI VIẾT</h4>
+                        <form action="{{route('blog.store')}}"  enctype="multipart/form-data"
                            method="post">
-                           @csrf
-                           {!! method_field('patch') !!}
+                           {{ csrf_field()}}
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Tên dịch vụ</label><span style="color:red;"> (*)</span>
-                                    <input type="text" name="tendv" value="{{$DichVu->tendv}}"
-                                        parsley-trigger="change" class="form-control">
+                                    <input type="text" name="tendv" value="{{old('tendv')}}"
+                                        parsley-trigger="change" placeholder="Tên dịch vụ" class="form-control">
                                     @error('tendv')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Đơn giá </label><span style="color:red;"> (*)</span>
-                                    <input type="number" name="dongia" value="{{$DichVu->dongia}}"
-                                        parsley-trigger="change" class="form-control">
+                                    <input type="number" name="dongia" value="{{old('dongia')}}"
+                                        parsley-trigger="change" placeholder="Đơn giá" class="form-control">
                                     @error('dongia')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
@@ -43,14 +42,13 @@
                                     <label for="">Danh mục</label><span style="color:red;"> (*)</span>
                                     <select class="form-control select2" name="danhmuc">
                                         @foreach ($DanhMuc as $item)
-                                            <option
-                                                value="{{$item['id']}}" <?php echo ($DichVu->iddm == $item['id']) ? 'selected' : '';?>>{{$item['name']}}</option>
+                                        <option value="{{$item['id']}}">{{$item['name']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group ">
                                     <label for="">Giảm giá</label><span style="color:red;"> (*)</span>
-                                    <input type="number" name="giamgia" value="{{$DichVu->giamgia}}"
+                                    <input type="number" name="giamgia" value="{{old('giamgia')}}"
                                         parsley-trigger="change" placeholder="Giảm giá" class="form-control">
                                     @error('giamgia')
                                     <span class="badge badge-danger">{{$message}}</span>
@@ -60,31 +58,30 @@
                             </div>
                             <div class="form-group ml-0 col-12">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="w-100" for="files">Tải ảnh dịch vụ:(<span class="text-danger">*</span>)
-                                            <div class="wrapper">
-                                                <div class="file-upload mt-2">
-                                                    <input type="file" id="files"
-                                                           name="urlHinh">
-                                                           <i class="fa fa-download " style="font-size:52px;color:blue"></i>
-                                                        </div>
+                                    <div class="col-md-4">
+                                        <label class="w-100" for="files">Tải ảnh dịch vụ:(<span
+                                                class="text-danger">*</span>)
+                                            <div class="wrapper"> <br>
+                                                <div class="file-upload mt-1">
+                                                    <input type="file" id="files" name="urlHinh"
+                                                        value="{{old('img')}}">
+                                                    <i class="fa fa-download " style="font-size:52px;color:blue"></i>
+                                                </div>
                                             </div>
+                                            @error('img')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                         </label>
-                                        <input type="hidden" name="imgcu"
-                                               value="{{$DichVu->img}}">
                                     </div>
-                                    <div class="col-md-6">
-                                        <div id="imageA" class="mt-2">
-                                            <img style=" border-radius:10px" class="img-admin"  height="130"
-                                                src="{{ asset('uploads/'.$DichVu->img) }}">
-                                        </div>
+                                    <div class="col-md-8">
+                                        <div id="imageA" class="mt-2"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label">Mô tả</label>
                                 <textarea name="motangan" value="{{old('motangan')}}" class="form-control"
-                                    id="mytextarea" cols="25" rows="3" placeholder="Mô tả">{{$DichVu->motangan}}</textarea>
+                                    id="mytextarea" cols="25" rows="3" placeholder="Mô tả"></textarea>
                                 @error('motangan')
                                 <span class="badge bg-danger text-white">{{ $message }}</span>
                                 @enderror
@@ -92,7 +89,7 @@
                             <div class="col-lg-12 mt-3">
                                 <label class="form-label">Nội dung</label>
                                 <textarea name="noidung" class="form-control" id="mytextarea" cols="25" rows="3"
-                                    placeholder="Nội dung">{{$DichVu->motangan}}</textarea>
+                                    placeholder="Nội dung"></textarea>
                                 @error('noidung')
                                 <span class="badge bg-danger text-white">{{ $message }}</span>
                                 @enderror
@@ -100,14 +97,8 @@
                             <div class="form-group ml-2 mt-3">
                                 <label class="w-100" for="active">Hoạt động:(<span class="text-danger">*</span>)
                                     <select class="form-control mt-2" name="trangthai">
-                                        <option
-                                            value="1" <?php echo ($DichVu->active == 1) ? 'selected' : '';?>>
-                                            Kích hoạt
-                                        </option>
-                                        <option
-                                            value="0" <?php echo ($DichVu->active == 0) ? 'selected' : '';?>>
-                                            Chưa kích hoạt
-                                        </option>
+                                        <option value="1">Kích hoạt</option>
+                                        <option value="0">Chưa kích hoạt</option>
                                     </select>
                                 </label>
                             </div>

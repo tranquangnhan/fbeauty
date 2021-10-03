@@ -349,6 +349,19 @@
                                 <li><a href="{{route("danhmuc.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
+
+                        <!--- Dịch vụ -->
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <span> Dịch vụ </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("dichvu.index")}}">Danh sách</a></li>
+                                <li><a href="{{route("dichvu.create")}}">Thêm Dịch vụ</a></li>
+                            </ul>
+                        </li>
                         <!--- Nhân viên -->
                         <li>
                             <a href="javascript: void(0);">
@@ -374,6 +387,20 @@
                                 <li><a href="{{route("sanpham.index")}}">Danh Sách</a></li>
                             </ul>
                         </li>
+
+                        <!--- Khách hàng -->
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <span> Khách hàng </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("khachhang.index")}}">Danh sách</a></li>
+                                <li><a href="{{route("khachhang.create")}}">Thêm Khách hàng</a></li>
+                            </ul>
+                        </li>
+
                     @endif
 
                     <li class="menu-title">Apps</li>

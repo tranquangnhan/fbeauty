@@ -14,53 +14,52 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-xl-12">
                     <div class="card-box">
-                        <h4 class="header-title  mt-0 mb-3 btn btn-primary">THÊM DỊCH VỤ</h4>
-                        <form action="{{route('dichvu.store')}}"  enctype="multipart/form-data"
+                        <h4 class="header-title  mt-0 mb-3 btn btn-primary">THÊM KHÁCH HÀNG</h4>
+                        <form action="{{route('khachhang.store')}}"  enctype="multipart/form-data"
                            method="post">
                            {{ csrf_field()}}
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Tên dịch vụ</label><span style="color:red;"> (*)</span>
-                                    <input type="text" name="tendv" value="{{old('tendv')}}"
-                                        parsley-trigger="change" placeholder="Tên dịch vụ" class="form-control">
-                                    @error('tendv')
+                                    <label for="">Tên khách hàng</label><span style="color:red;"> (*)</span>
+                                    <input type="text" name="name" value="{{old('name')}}"
+                                        parsley-trigger="change" placeholder="Tên khách hàng" class="form-control">
+                                    @error('name')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Đơn giá </label><span style="color:red;"> (*)</span>
-                                    <input type="number" name="dongia" value="{{old('dongia')}}"
-                                        parsley-trigger="change" placeholder="Đơn giá" class="form-control">
-                                    @error('dongia')
+                                    <label for="">Số điện thoại </label><span style="color:red;"> (*)</span>
+                                    <input type="number" name="sdt" value="{{old('sdt')}}"
+                                        parsley-trigger="change" placeholder="Số điện thoại" class="form-control">
+                                    @error('sdt')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Danh mục</label><span style="color:red;"> (*)</span>
-                                    <select class="form-control select2" name="danhmuc">
-                                        @foreach ($DanhMuc as $item)
-                                        <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="">Email</label><span style="color:red;"> (*)</span>
+                                    <input type="email" name="email" value="{{old('email')}}"
+                                        parsley-trigger="change" placeholder="Email" class="form-control">
+                                    @error('email')
+                                    <span class="badge badge-danger">{{$message}}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group ">
-                                    <label for="">Giảm giá</label><span style="color:red;"> (*)</span>
-                                    <input type="number" name="giamgia" value="{{old('giamgia')}}"
-                                        parsley-trigger="change" placeholder="Giảm giá" class="form-control">
-                                    @error('giamgia')
+                                    <label for="">Mật khẩu</label><span style="color:red;"> (*)</span>
+                                    <input type="password" name="password" value="{{old('password')}}"
+                                        parsley-trigger="change" placeholder="Mật khẩu" class="form-control">
+                                    @error('password')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>
 
                             </div>
-                            <div class="form-group ml-0 col-12">
+                            <div class="form-group ml-0 mt-2 col-12">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="w-100" for="files">Tải ảnh dịch vụ:(<span
-                                                class="text-danger">*</span>)
+                                        <label class="w-100" for="files">Tải ảnh khách hàng:<span style="color:red;"> (*)</span>
                                             <div class="wrapper"> <br>
                                                 <div class="file-upload mt-1">
                                                     <input type="file" id="files" name="urlHinh"
@@ -74,37 +73,20 @@
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <div id="imageA" class="mt-2"></div>
+                                        <div id="imageA" style="width:250px;" class="mt-2"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Mô tả</label>
-                                <textarea name="motangan" value="{{old('motangan')}}" class="form-control"
-                                    id="mytextarea" cols="25" rows="3" placeholder="Mô tả"></textarea>
-                                @error('motangan')
-                                <span class="badge bg-danger text-white">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-lg-12 mt-3">
-                                <label class="form-label">Nội dung</label>
-                                <textarea name="noidung" class="form-control" id="summernote"  cols="25" rows="3"
-                                    placeholder="Nội dung"></textarea>
-                                    
-                                @error('noidung')
-                                <span class="badge bg-danger text-white">{{ $message }}</span>
-                                @enderror
-                            </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100" for="active">Hoạt động:(<span class="text-danger">*</span>)
-                                    <select class="form-control mt-2" name="trangthai">
+                                <label class="w-100" for="active">Hoạt động:<span style="color:red;"> (*)</span>
+                                    <select class="form-control mt-2" name="active">
                                         <option value="1">Kích hoạt</option>
                                         <option value="0">Chưa kích hoạt</option>
                                     </select>
                                 </label>
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
-                                <a href="/quantri/dichvu" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
+                                <a href="/quantri/khachhang" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
                                 <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
                             </div>
                         </div>

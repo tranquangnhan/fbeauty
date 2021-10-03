@@ -9,43 +9,49 @@
                 <div class="col-12">
                     <div class="card-box">
                         <div>
-                             <button class="btn btn-primary waves-effect waves-light mb-3" ><a class="text-white" href="{{route('dichvu.create')}}">Thêm Dịch Vụ</a> </button>
+                             <button class="btn btn-primary waves-effect waves-light mb-3" ><a class="text-white" href="{{route('khachhang.create')}}">Thêm khách hàng</a> </button>
                         </div>
+                       
                         <table class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="3%">STT</th>
-                                        <th width="20%">Dịch vụ</th>
-                                        <th width="15%">Hình ảnh</th>
-                                        <th width="15%">Danh mục</th>  
-                                        <th width="35%">Mô tả</th>  
-                                        <th width="20%">Đơn giá</th>  
-                                        <th width="15%">Hành Động</th>  
+                                        <th width="20%">Khách hàng</th>
+                                        <th width="20%">Hình ảnh</th>
+                                        <th width="15%">Điện thoại</th>  
+                                        <th width="30%">Email</th>  
+                                        {{-- <th width="20%">Mật khẩu</th>   --}}
+                                        {{-- <th width="10%">idgoogle</th>   --}}
+                                        <th width="15%">Hành động</th>  
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $i=> $item)
+
                                         <tr>
                                             <td>{{$i+=1}}</td>
-                                            <td>{{$item->tendv}} <br>
-                                                <?php if($item->trangthai == 0) echo "<div class=\"bg-danger mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";
+                                            <td>{{$item->name}} <br>
+                                                <?php if($item->active == 0) echo "<div class=\"bg-danger mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
+                                            </td>
+                                            <td> 
+                                                <img style="object-fit:cover; border-radius:10px" class="img-admin" width="100%" height="90" src="{{ asset('uploads/'.$item->img) }}">
                                             </td> 
                                             <td>
-                                                <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
+                                                {{$item->sdt}}
                                             </td> 
                                             <td>
-                                                {{$item->name}}
+                                                {{$item->email}}
+                                            </td> 
+                                            {{-- <td>
+                                               {{$item->password}} 
                                             </td> 
                                             <td>
-                                                {{$item->motangan}}
-                                            </td> 
-                                            <td>
-                                                {{number_format($item->dongia), ''}} VND
-                                            </td> 
+                                                {{$item->idgoogle}} 
+                                            </td>  --}}
                                             <td class="d-flex">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('dichvu.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
-                                                <form action="{{route('dichvu.destroy',$item->id)}}"  method="post">
+                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('khachhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
+                                                <form action="{{route('khachhang.destroy',$item->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa không ?');"><i class="fa fa-trash"></i></button>

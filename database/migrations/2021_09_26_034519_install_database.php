@@ -83,11 +83,11 @@ class InstallDatabase extends Migration
             $table->string('sdt',10);
             $table->string('email',255)->unique();
             $table->string('password',255);
-            $table->string('idgoogle',255);
+            $table->string('idgoogle',255)->nullAble();
             $table->boolean('active',1);
             $table->string('img',255);
-            $table->string('randomkey',255);
-            $table->unsignedInteger('exp');
+            $table->string('randomkey',255)->nullAble();
+            $table->unsignedInteger('exp')->nullAble();
             $table->rememberToken();
             $table->timestamps();
         });
