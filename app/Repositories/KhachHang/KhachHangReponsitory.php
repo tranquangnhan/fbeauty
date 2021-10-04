@@ -4,10 +4,7 @@
 namespace App\Repositories\KhachHang;
 
 
-use App\Repositories\BaseRepository;
-
-
-class KhachHangReponsitory extends BaseRepository implements KhachHangRepositoryInterface
+class KhachHangReponsitory
 {
     protected $model;
 

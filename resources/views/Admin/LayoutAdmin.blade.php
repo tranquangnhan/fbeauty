@@ -24,8 +24,8 @@
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    
-   
+
+
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('Admin/assets') }}/css/bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet"
@@ -37,9 +37,16 @@
     <link href="{{ asset('Admin/assets') }}/css/inputfile.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
 
     {{-- code nhúng của Quốc --}}
+    <link rel="stylesheet" href="{{ asset('Admin/assets') }}/libs/magnific-popup/magnific-popup.css"/>
+
+    <link href="{{ asset('Admin/assets') }}/css/inputfile.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
+
+    <link href="{{asset("Admin/assets")}}/css/dropupload.css" rel="stylesheet" type="text/css" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
     {{-- end code nhúng của Quốc --}}
 
@@ -47,7 +54,7 @@
     <link href="{{ asset('Admin/assets') }}/css/custom.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    
+
     <link href="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('Admin/assets') }}/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />
@@ -708,6 +715,15 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/form-xeditable.init.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.min.js"></script>
 {{-- end code nhúng bởi Nhân --}}
+{{--code của quốc--}}
+<script src="{{ asset('Admin/assets') }}/libs/isotope/isotope.pkgd.min.js"></script>
+
+<!--venobox lightbox-->
+<script src="{{ asset('Admin/assets') }}/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+<!-- Gallery Init-->
+<script src="{{ asset('Admin/assets') }}/js/pages/gallery.init.js"></script>
+{{--end code của quốc--}}
 
 </body>
 
