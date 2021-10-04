@@ -20,7 +20,6 @@ class Controller extends BaseController
         Storage::disk('public')->put($filename, file_get_contents($file));
 
         return $filename;
-
     }
    
     /**

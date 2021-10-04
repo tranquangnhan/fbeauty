@@ -191,7 +191,7 @@ class InstallDatabase extends Migration
             $table->string('img',255);
             $table->string('mota',255);
             $table->longText('noidung');
-            $table->boolean('trangthai')->default(0);
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('iddanhmuc')->references('id')->on('danhmuc');
             $table->timestamps();
         });
