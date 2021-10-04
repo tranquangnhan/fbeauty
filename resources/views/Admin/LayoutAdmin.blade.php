@@ -681,6 +681,7 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/form-xeditable.init.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.min.js"></script>
 {{-- end code nhúng bởi Nhân --}}
+
 </body>
 
 </html>
