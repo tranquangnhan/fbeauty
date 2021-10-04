@@ -1,0 +1,27 @@
+.box-detail-wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.box-detail{
+    width: 46%;
+    padding: 3rem;
+    margin:1rem;
+    box-shadow:
+    1px 2px 8px hsl(220deg 60% 50% / 0.3)
+}
+.remove-field{
+    font-size: 20pt;
+    width: 40px;
+    height: 40px;
+    line-height: 20px;
+}
+
+.note-btn{
+    color: #333 !important;
+}
+.align-center{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

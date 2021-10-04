@@ -42,7 +42,7 @@ class InstallDatabase extends Migration
 
         Schema::create('dichvu', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',255);
+            $table->string('tendv',255);
             $table->string('slug',255);
             $table->string('img',255);
             $table->unsignedInteger('giamgia')->default(0);
@@ -83,11 +83,11 @@ class InstallDatabase extends Migration
             $table->string('sdt',10);
             $table->string('email',255)->unique();
             $table->string('password',255);
-            $table->string('idgoogle',255);
+            $table->string('idgoogle',255)->nullAble();
             $table->boolean('active',1);
             $table->string('img',255);
-            $table->string('randomkey',255);
-            $table->unsignedInteger('exp');
+            $table->string('randomkey',255)->nullAble();
+            $table->unsignedInteger('exp')->nullAble();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -191,7 +191,7 @@ class InstallDatabase extends Migration
             $table->string('img',255);
             $table->string('mota',255);
             $table->longText('noidung');
-            $table->boolean('trangthai');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('iddanhmuc')->references('id')->on('danhmuc');
             $table->timestamps();
         });
@@ -201,7 +201,7 @@ class InstallDatabase extends Migration
             $table->increments('id');
             $table->unsignedInteger('idsanpham');
             $table->string('ml',4);
-            $table->unsignedInteger('soluotmua');
+            $table->unsignedInteger('soluotmua')->default(0);
             $table->unsignedInteger('tonkho');
             $table->double('dongia',10,0);
             $table->foreign('idsanpham')->references('id')->on('sanpham');
@@ -260,7 +260,7 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
-        
+
 
         Schema::enableForeignKeyConstraints();
 
