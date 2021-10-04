@@ -6,7 +6,7 @@ namespace App\Repositories\DichVu;
 use App\Models\Admin\DichVuModel;
 use App\Repositories\BaseRepository;
 
-class DichVuRepository extends BaseRepository implements DichVuReponsitoryinterface
+class DichVuRepository extends BaseRepository implements DichVuRepositoryInterface
 {
     protected $model;
 

@@ -27,10 +27,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(DanhmucRepositoryInterface::class,DanhMucRepository::class);
         $this->app->singleton(SanPhamRepositoryInterface::class,SanPhamRepository::class);
-        $this->app->singleton(NhanVienReponsitoryinterface::class,NhanVienReponsitory::class);
+        $this->app->singleton(NhanVienRepositoryInterface::class,NhanVienRepository::class);
         $this->app->singleton(SanPhamChiTietRepositoryInterface::class,SanPhamChiTietRepository::class);
         $this->app->singleton(CoSoRepositoryInterface::class,CoSoRepository::class);
-        $this->app->singleton(DichVuRepositoryInterface::class,DichVuReponsitory::class);
+        $this->app->singleton(DichVuRepositoryInterface::class,DichVuRepository::class);
     }
 
     /**

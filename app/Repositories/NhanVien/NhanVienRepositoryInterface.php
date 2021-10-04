@@ -6,7 +6,7 @@ namespace App\Repositories\NhanVien;
 
 use App\Repositories\RepositoryInterface;
 
-interface NhanVienReponsitoryinterface extends RepositoryInterface
+interface NhanVienRepositoryInterface extends RepositoryInterface
 {
 public function getNhanVien();
 public function CheckEmail($email);

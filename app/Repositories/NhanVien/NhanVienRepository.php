@@ -8,7 +8,7 @@ use App\Models\Admin\NhanVien;
 use App\Repositories\BaseRepository;
 
 
-class NhanVienReponsitory extends BaseRepository implements NhanVienReponsitoryinterface
+class NhanVienReponsitory extends BaseRepository implements NhanVienRepositoryInterface
 {
     protected $model;
 
