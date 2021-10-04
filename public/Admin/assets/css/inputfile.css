@@ -1,10 +1,17 @@
-
 #imageA img{
-    width: 40%;
+    width: 70px;
     margin-left: 5px;
+    height: 70px;
+    margin-bottom: 5px;
+}
+
+#imageKH img{
+    width: 100px;
+    margin-left: 5px;
+    height: 100px;
+    margin-bottom: 5px;
 }
 .wrapper {
-
     width: 45%;
     height: 45%;
     display: flex;
@@ -34,12 +41,8 @@
     color: #FFFFFF;
     font-size: 100px;
 }
-<<<<<<< HEAD
-input[type='file']{
-=======
-.file-upload input[type='file']{
->>>>>>> f5916a9fae3e958720bd64b5fe29682551f58dc9
 
+.file-upload input[type='file']{
     height:100px;
     width:100px;
     position:absolute;
@@ -47,6 +50,5 @@ input[type='file']{
     left:0;
     opacity:0;
     cursor:pointer;
-
 }
 

@@ -21,7 +21,7 @@ class Controller extends BaseController
 
         return $filename;
     }
-   
+
     /**
      *check định dạng ảnh và lưu vào mục users
      */
@@ -35,5 +35,16 @@ class Controller extends BaseController
             $img->move(self::BASE_URL_UPLOAD, $img->getClientOriginalName());
             return true;
         }
+    }
+
+    public function uploadMultipleImg($photos){
+        $paths  = [];
+        foreach ($photos as $index=> $photo) {
+            $extension = $photo->getClientOriginalExtension();
+            $filename  = 'photouser' . time(). $index . '.' . $extension;
+            $paths[]   =  $filename;
+            Storage::disk('imgKH')->put($filename, file_get_contents($photo));
+        }
+        return response()->json($paths);
     }
 }
