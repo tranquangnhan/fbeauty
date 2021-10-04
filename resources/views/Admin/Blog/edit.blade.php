@@ -14,26 +14,18 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-xl-12">
                     <div class="card-box">
-                        <h4 class="header-title  mt-0 mb-3 btn btn-primary">SỬA DỊCH VỤ</h4>
-                        <form action="{{route('dichvu.update',$DichVu->id)}}"  enctype="multipart/form-data"
+                        <h4 class="header-title  mt-0 mb-3 btn btn-primary">SỬA BÀI VIẾT</h4>
+                        <form action="{{route('blog.update',$Blog->id)}}"  enctype="multipart/form-data"
                            method="post">
                            @csrf
                            {!! method_field('patch') !!}
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="">Tên dịch vụ</label><span style="color:red;"> (*)</span>
-                                    <input type="text" name="tendv" value="{{$DichVu->tendv}}"
-                                        parsley-trigger="change" class="form-control">
-                                    @error('tendv')
-                                    <span class="badge badge-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Đơn giá </label><span style="color:red;"> (*)</span>
-                                    <input type="number" name="dongia" value="{{$DichVu->dongia}}"
-                                        parsley-trigger="change" class="form-control">
-                                    @error('dongia')
+                                <div class="form-group ">
+                                    <label for="">Tên bài viết</label><span style="color:red;"> (*)</span>
+                                    <input type="text" name="tenbv" value="{{$Blog->tenbv}}"
+                                        parsley-trigger="change" placeholder="Tên bài viết" class="form-control">
+                                    @error('tenbv')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>
@@ -44,24 +36,15 @@
                                     <select class="form-control select2" name="danhmuc">
                                         @foreach ($DanhMuc as $item)
                                             <option
-                                                value="{{$item['id']}}" <?php echo ($DichVu->iddm == $item['id']) ? 'selected' : '';?>>{{$item['name']}}</option>
+                                                value="{{$item['id']}}" <?php echo ($Blog->iddm == $item['id']) ? 'selected' : '';?>>{{$item['name']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group ">
-                                    <label for="">Giảm giá</label><span style="color:red;"> (*)</span>
-                                    <input type="number" name="giamgia" value="{{$DichVu->giamgia}}"
-                                        parsley-trigger="change" placeholder="Giảm giá" class="form-control">
-                                    @error('giamgia')
-                                    <span class="badge badge-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-
                             </div>
                             <div class="form-group ml-0 col-12">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label class="w-100" for="files">Tải ảnh dịch vụ:(<span class="text-danger">*</span>)
+                                        <label class="w-100" for="files">Tải ảnh bài viết:<span style="color:red;"> (*)</span>
                                             <div class="wrapper">
                                                 <div class="file-upload mt-2">
                                                     <input type="file" id="files"
@@ -71,48 +54,41 @@
                                             </div>
                                         </label>
                                         <input type="hidden" name="imgcu"
-                                               value="{{$DichVu->img}}">
+                                               value="{{$Blog->img}}">
                                     </div>
                                     <div class="col-md-6">
                                         <div id="imageA" class="mt-2">
                                             <img style=" border-radius:10px" class="img-admin"  height="130"
-                                                src="{{ asset('uploads/'.$DichVu->img) }}">
+                                                src="{{ asset('uploads/'.$Blog->img) }}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Mô tả</label>
-                                <textarea name="motangan" value="{{old('motangan')}}" class="form-control"
-                                    id="mytextarea" cols="25" rows="3" placeholder="Mô tả">{{$DichVu->motangan}}</textarea>
-                                @error('motangan')
-                                <span class="badge bg-danger text-white">{{ $message }}</span>
-                                @enderror
-                            </div>
+
                             <div class="col-lg-12 mt-3">
-                                <label class="form-label">Nội dung</label>
-                                <textarea name="noidung" class="form-control" id="mytextarea" cols="25" rows="3"
-                                    placeholder="Nội dung">{{$DichVu->motangan}}</textarea>
+                                <label class="form-label">Nội dung</label> <span style="color:red;"> (*)</span>
+                                <textarea name="noidung" class="form-control" id="summernote" cols="25" rows="3"
+                                    placeholder="Nội dung">{{$Blog->noidung}}</textarea>
                                 @error('noidung')
                                 <span class="badge bg-danger text-white">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100" for="active">Hoạt động:(<span class="text-danger">*</span>)
+                                <label class="w-100" for="active">Trạng thái <span style="color:red;"> (*)</span>
                                     <select class="form-control mt-2" name="trangthai">
                                         <option
-                                            value="1" <?php echo ($DichVu->active == 1) ? 'selected' : '';?>>
-                                            Kích hoạt
+                                            value="1" <?php echo ($Blog->trangthai == 1) ? 'selected' : '';?>>
+                                            Hoạt động
                                         </option>
                                         <option
-                                            value="0" <?php echo ($DichVu->active == 0) ? 'selected' : '';?>>
-                                            Chưa kích hoạt
+                                            value="0" <?php echo ($Blog->trangthai == 0) ? 'selected' : '';?>>
+                                            Chưa hoạt động
                                         </option>
                                     </select>
                                 </label>
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
-                                <a href="/quantri/dichvu" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
+                                <a href="/quantri/blog" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
                                 <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
                             </div>
                         </div>

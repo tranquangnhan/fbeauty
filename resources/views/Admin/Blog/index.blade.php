@@ -9,17 +9,16 @@
                 <div class="col-12">
                     <div class="card-box">
                         <div>
-                             <button class="btn btn-primary waves-effect waves-light mb-3" ><a class="text-white" href="{{route('dichvu.create')}}">Thêm Dịch Vụ</a> </button>
+                             <button class="btn btn-primary waves-effect waves-light mb-3" ><a class="text-white" href="{{route('blog.create')}}">Thêm Bài Viết </a> </button>
                         </div>
                         <table class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="3%">STT</th>
-                                        <th width="20%">Dịch vụ</th>
+                                        <th width="20%">Tên bài viết</th>
                                         <th width="15%">Hình ảnh</th>
                                         <th width="15%">Danh mục</th>  
-                                        <th width="35%">Mô tả</th>  
-                                        <th width="20%">Đơn giá</th>  
+                                        <th width="35%">Nội dung</th>  
                                         <th width="15%">Hành Động</th>  
                                     </tr>
                                 </thead>
@@ -27,7 +26,7 @@
                                     @foreach ($data as $i=> $item)
                                         <tr>
                                             <td>{{$i+=1}}</td>
-                                            <td>{{$item->tendv}} <br>
+                                            <td>{{$item->tenbv}} <br>
                                                 <?php if($item->trangthai == 0) echo "<div class=\"bg-danger mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
                                             </td> 
@@ -38,14 +37,11 @@
                                                 {{$item->name}}
                                             </td> 
                                             <td>
-                                                {{$item->motangan}}
-                                            </td> 
-                                            <td>
-                                                {{number_format($item->dongia), ''}} VND
+                                                {{$item->noidung}}
                                             </td> 
                                             <td class="d-flex">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('dichvu.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
-                                                <form action="{{route('dichvu.destroy',$item->id)}}"  method="post">
+                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('blog.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
+                                                <form action="{{route('blog.destroy',$item->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa không ?');"><i class="fa fa-trash"></i></button>

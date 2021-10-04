@@ -59,7 +59,8 @@ class InstallDatabase extends Migration
         Schema::create('blog', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('iddm');
-            $table->string('name',255);
+            $table->string('img',255);
+            $table->string('tenbv',255);
             $table->string('slug',255);
             $table->longText('noidung');
             $table->boolean('trangthai');
@@ -83,11 +84,11 @@ class InstallDatabase extends Migration
             $table->string('sdt',10);
             $table->string('email',255)->unique();
             $table->string('password',255);
-            $table->string('idgoogle',255)->nullAble();
+            $table->string('idgoogle',255)->nullable();
             $table->boolean('active',1);
             $table->string('img',255);
-            $table->string('randomkey',255)->nullAble();
-            $table->unsignedInteger('exp')->nullAble();
+            $table->string('randomkey',255)->nullable();
+            $table->unsignedInteger('exp')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

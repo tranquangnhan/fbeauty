@@ -20,19 +20,11 @@
                            {{ csrf_field()}}
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="form-group">
+                                <div class="form-group ">
                                     <label for="">Tên bài viết</label><span style="color:red;"> (*)</span>
-                                    <input type="text" name="name" value="{{old('name')}}"
+                                    <input type="text" name="tenbv" value="{{old('tenbv')}}"
                                         parsley-trigger="change" placeholder="Tên bài viết" class="form-control">
-                                    @error('name')
-                                    <span class="badge badge-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Đơn giá </label><span style="color:red;"> (*)</span>
-                                    <input type="number" name="dongia" value="{{old('dongia')}}"
-                                        parsley-trigger="change" placeholder="Đơn giá" class="form-control">
-                                    @error('dongia')
+                                    @error('tenbv')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>
@@ -46,21 +38,11 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group ">
-                                    <label for="">Giảm giá</label><span style="color:red;"> (*)</span>
-                                    <input type="number" name="giamgia" value="{{old('giamgia')}}"
-                                        parsley-trigger="change" placeholder="Giảm giá" class="form-control">
-                                    @error('giamgia')
-                                    <span class="badge badge-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-
                             </div>
                             <div class="form-group ml-0 col-12">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="w-100" for="files">Tải ảnh dịch vụ:(<span
-                                                class="text-danger">*</span>)
+                                        <label class="w-100" for="files">Tải ảnh bài viết <span style="color:red;"> (*)</span>
                                             <div class="wrapper"> <br>
                                                 <div class="file-upload mt-1">
                                                     <input type="file" id="files" name="urlHinh"
@@ -74,36 +56,29 @@
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <div id="imageA" class="mt-2"></div>
+                                        <div id="imageA" style="width:350px;" class="mt-2"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label">Mô tả</label>
-                                <textarea name="motangan" value="{{old('motangan')}}" class="form-control"
-                                    id="mytextarea" cols="25" rows="3" placeholder="Mô tả"></textarea>
-                                @error('motangan')
-                                <span class="badge bg-danger text-white">{{ $message }}</span>
-                                @enderror
-                            </div>
+
                             <div class="col-lg-12 mt-3">
-                                <label class="form-label">Nội dung</label>
-                                <textarea name="noidung" class="form-control" id="mytextarea" cols="25" rows="3"
+                                <label class="form-label">Nội dung</label> <span style="color:red;"> (*)</span>
+                                <textarea name="noidung" class="form-control" id="summernote" cols="25" rows="3"
                                     placeholder="Nội dung"></textarea>
                                 @error('noidung')
                                 <span class="badge bg-danger text-white">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100" for="active">Hoạt động:(<span class="text-danger">*</span>)
+                                <label class="w-100" for="active">Trạng thái <span style="color:red;"> (*)</span>
                                     <select class="form-control mt-2" name="trangthai">
-                                        <option value="1">Kích hoạt</option>
-                                        <option value="0">Chưa kích hoạt</option>
+                                        <option value="1">Hoạt động</option>
+                                        <option value="0">Chưa Hoạt động</option>
                                     </select>
                                 </label>
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
-                                <a href="/quantri/dichvu" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
+                                <a href="/quantri/blog" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
                                 <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
                             </div>
                         </div>
