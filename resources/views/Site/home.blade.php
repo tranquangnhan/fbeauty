@@ -165,7 +165,7 @@
                             <img class="img-fluid position-relative z-index-1" src="{{ asset('Site/images') }}/about-1.png" alt="">
                         </div>
                         <div class="img-2">
-                            <img class="img-small-2 float-right position-relative z-index-1" src="{{ asset('Site/images') }}/coso6.jpg" alt="">
+                            <img class="img-small-2 float-right position-relative z-index-1" src="{{ asset('Site/images') }}/coso4.jpg" alt="">
                         </div>
                     </div>
                     {{-- <div class="big-title about-title-custom title-font">About us</div> --}}
@@ -632,7 +632,7 @@
         </div>
 
         <div class="box-product">
-            <div class="list-logo mt-5">
+            <div class="list-logo">
                 <div class="container">
                     <div class="owl-carousel owl-theme" id="logo-slide">
                         <div class="item logo-item">
@@ -684,7 +684,7 @@
                         <div class="text-4">
                             Sản Phẩm Thịnh Hành
                         </div>
-                        <div class="line-2"></div>
+                        {{-- <div class="line-2"></div> --}}
                     </div>
 
                     <div class="box-pro">
@@ -788,39 +788,82 @@
             </div>
         </div>
 
-        <div class="box-lieutrinh my-5">
-            <div class="container">
-                <div class="box-title">
-                    <div class="title-small line-before">
-                        LIỆU TRÌNH
-                    </div>
-                    <div class="w-100">
-                        <div class="title-1 w-100">
-                            Điều Trị Theo <br>
-                            Liệu Trình
-                        </div>
-                        <div class="text-1 mt-4">
-                            Liệu trình được bác sỹ thăm khám và đưa ra cụ thể đối với mỗi người
-                        </div>
-                    </div>
-                </div>
+        <div class="box-lieutrinh mt-5">
+            <div class="bg-lieutrinh">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3">
+                            <div class="box-title-lieutrinh">
+                                <div class="title-3">
+                                    Điều Trị <br> Theo Liệu Trình
+                                </div>
 
-                <div class="box-content">
+                                <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                    Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor incididunt.
+                                </p>
 
-                </div>
-
-                <div class="box-images-steps">
-                    <div class="steps-fa">
-                        <div class="step-item ml-0">
-                            <div class="img-1">
-                                <img src="lieutrinh1" alt="">
+                                <div class="w-100 text-left mb-4">
+                                    <a href="">
+                                        <button class="btn-5">Đặt lịch</button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="step-item" style="margin-top: 100px"></div>
+                        <div class="col-xl-9">
+                            <div class="cac-buoc-lieutrinh">
+                                <div class="lieutrinh-item">
+                                    {{-- <div class="number-1">
+                                        1
+                                    </div> --}}
 
-                        <div class="step-item"></div>
-                        <div class="step-item mr-0" style="margin-top: 100px"></div>
+                                    <div class="title-5">
+                                        Kế Hoạch
+                                    </div>
+                                    <div class="icon-1 mt-4">
+                                        <img class="" src="{{ asset('Site/images/icon') }}/task.png" alt="">
+                                    </div>
+                                    <div class="text-2 mt-4 color-white font-weight-300">
+                                        Lorem ipsum dolor sit amet, con sectetur adipisicing elit
+                                    </div>
+                                </div>
 
+                                <div class="lieutrinh-item">
+                                    {{-- <div class="number-1">
+                                        1
+                                    </div> --}}
+
+                                    <div class="title-5">
+                                        Theo Dõi
+                                    </div>
+
+                                    <div class="icon-1 mt-4">
+                                        <img class="" src="{{ asset('Site/images/icon') }}/doctor.png" alt="">
+                                    </div>
+
+                                    <div class="text-2 mt-4 color-white font-weight-300">
+                                        Lorem ipsum dolor sit amet, con sectetur adipisicing elit
+                                    </div>
+                                </div>
+
+                                <div class="lieutrinh-item">
+                                    {{-- <div class="number-1">
+                                        1
+                                    </div> --}}
+
+                                    <div class="title-5">
+                                        Hỗ Trợ
+                                    </div>
+
+                                    <div class="icon-1 mt-4">
+                                        <img class="" src="{{ asset('Site/images/icon') }}/customer-service.png" alt="">
+                                    </div>
+
+                                    <div class="text-2 mt-4 color-white font-weight-300">
+                                        Lorem ipsum dolor sit amet, con sectetur adipisicing elit
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

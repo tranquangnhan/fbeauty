@@ -4,7 +4,8 @@
     --black-1: #2a2d2c;
     --black-2: #474747;
     --black-3: #555;
-    --main-color: #e87c7b;
+    --main-color: #202020;
+    /* e87c7b */
     --main-color-2: #f28b8a;
     --main-color-3-bg: #FCC3C3;
     --main-color-4-bg: #FFF5F2;
@@ -167,7 +168,7 @@ li.nav-item.active .nav-link::before {
 .number-cart {
     position: absolute;
     top: -8px;
-    background: var(--main-color);
+    background: var(--main-color-2);
     z-index: 10;
     width: 13px;
     height: 13px;
@@ -689,7 +690,7 @@ img.im-small {
 .cal-icon-cart {
     position: absolute;
     top: -7px;
-    background: var(--main-color);
+    background: var(--main-color-2);
     z-index: 10;
     width: 15px;
     height: 15px;
@@ -969,6 +970,7 @@ img.im-small {
     font-weight: bold;
     color: var(--black-1);
     font-size: 1.8em;
+    line-height: 35px;
 }
 
 .box-guimail {
@@ -1008,10 +1010,14 @@ img.im-small {
 }
 
 .list-service {
+    background-image: url("../images/spa-10.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
     /* margin-top: 9em; */
     padding: 3em 0em;
-    background: var(--gray-1);
+    /* background: var(--gray-1); */
 }
 
 .list-service::before {
@@ -1020,7 +1026,7 @@ img.im-small {
     width: 100%;
     height: 100%;
     background: black;
-    opacity: 0;
+    opacity: 0.3;
     top: 0;
     left: 0;
 }
@@ -1194,7 +1200,7 @@ img.im-small {
     top: 0px;
     left: 0px;
     width: 0%;
-    height: 100%;
+    height: 42px;
     background: var(--main-color);
     content: '';
     z-index: -1;
@@ -1207,6 +1213,46 @@ img.im-small {
 }
 
 .btn-4:hover::before {
+    width: 100%;
+    opacity: 1;
+}
+
+.btn-5 {
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    /* padding: .9em 3em; */
+    width: 142px;
+    height: 43px;
+    background: none;
+    margin: 0 auto;
+    position: relative;
+    transition: 0.3s;
+    z-index: 10;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: .7em;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.btn-5::before {
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    width: 0%;
+    height: 37px;
+    background: var(--main-color);
+    content: '';
+    z-index: -1;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.btn-5:hover {
+    color: #ffffff;
+}
+
+.btn-5:hover::before {
     width: 100%;
     opacity: 1;
 }
@@ -1394,6 +1440,84 @@ img.im-small {
 
 .service-title {
     flex-grow: 1;
+}
+
+.bg-lieutrinh {
+    background-image: url("../images/parallax-3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    padding: 8em 0em;
+    position: relative;
+}
+
+.bg-lieutrinh::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: .2;
+    top: 0px;
+    left: 0px;
+}
+
+.list-logo {
+    background: var(--gray-1);
+}
+
+.box-lieutrinh {
+    padding: 2em 0em;
+}
+
+.box-title-lieutrinh {
+    min-height: 300px;
+    width: 100%;
+    background: white;
+    padding: 2.5em;
+}
+
+.cac-buoc-lieutrinh {
+    display: flex;
+    padding-left: 9em;
+}
+
+.lieutrinh-item {
+    margin: 30px;
+    min-height: 200px;
+    flex-grow: 2;
+    width: 25%;
+    text-align: center;
+    padding: 1em;
+}
+
+.number-1 {
+    color: var(--gray-2);
+}
+
+.title-5 {
+    color: white;
+    font-weight: bold;
+    font-size: .7em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.lieutrinh-item .text-2 {
+    color: gray;
+    font-weight: 300;
+}
+
+
+.lieutrinh-item .icon-1 {
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.lieutrinh-item .icon-1 img{
+    width: 100%;
 }
 
 /* Reponsive */
