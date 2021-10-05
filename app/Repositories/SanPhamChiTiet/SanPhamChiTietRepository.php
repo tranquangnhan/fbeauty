@@ -3,6 +3,7 @@
 
 namespace App\Repositories\SanPhamChiTiet;
 use App\Repositories\BaseRepository;
+use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepositoryInterface;
 class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietRepositoryInterface
 {
     protected $model;

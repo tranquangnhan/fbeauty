@@ -3,12 +3,11 @@
 
 namespace App\Repositories\NhanVien;
 
-
-use App\Models\Admin\NhanVien;
 use App\Repositories\BaseRepository;
 
+use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 
-class NhanVienReponsitory extends BaseRepository implements NhanVienRepositoryInterface
+class NhanVienRepository extends BaseRepository implements NhanVienRepositoryInterface
 {
     protected $model;
 

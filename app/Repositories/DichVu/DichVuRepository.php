@@ -3,8 +3,8 @@
 
 namespace App\Repositories\DichVu;
 
-use App\Models\Admin\DichVuModel;
 use App\Repositories\BaseRepository;
+use App\Repositories\DichVu\DichVuRepositoryInterface;
 
 class DichVuRepository extends BaseRepository implements DichVuRepositoryInterface
 {

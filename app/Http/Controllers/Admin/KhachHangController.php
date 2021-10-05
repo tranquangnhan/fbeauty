@@ -24,7 +24,7 @@ class KhachHangController extends Controller
     public function index()
     {
         $data = $this->KhachHang->getAll();
-        return view("Admin.KhachHang.index", ['data' => $data]);
+        return view("Admin.khachhang.index", ['data' => $data]);
     }
 
     /**
@@ -35,7 +35,7 @@ class KhachHangController extends Controller
     public function create()
     {
         $KhachHang = $this->KhachHang->getAll();
-        return view("Admin.KhachHang.create", ['KhachHang' => $KhachHang]);
+        return view("Admin.khachhang.create", ['khachhang' => $KhachHang]);
         //
     }
     /**
@@ -46,7 +46,7 @@ class KhachHangController extends Controller
      */
     public function store(KhachHang $request)
     {
-       
+
             $img = $this->uploadSingle($request->file('urlHinh'));
             $KhachHang = [
                 'name' => $request->name,
@@ -58,8 +58,8 @@ class KhachHangController extends Controller
             ];
             $this->KhachHang->create($KhachHang);
             return redirect('quantri/khachhang')->with('thanhcong', 'Thêm nhân viên thành công');
-        } 
-    
+        }
+
 
     public function CheckEmailTonTai($email)
     {
@@ -100,7 +100,7 @@ class KhachHangController extends Controller
     public function edit($id)
     {
         $KhachHang = $this->KhachHang->find($id);
-        return view("Admin.KhachHang.edit", ['KhachHang' => $KhachHang]);
+        return view("Admin.khachhang.edit", ['khachhang' => $KhachHang]);
     }
 
     /**
@@ -133,7 +133,7 @@ class KhachHangController extends Controller
 
         $this->KhachHang->update($id, $KhachHang);
         return redirect('quantri/khachhang')->with('thanhcong', 'Sửa nhân viên thành công');
-        
+
     }
 
     /**
