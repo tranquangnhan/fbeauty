@@ -408,6 +408,19 @@
                             </ul>
                         </li>
 
+                         <!--- Blog -->
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <span> Blog </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("blog.index")}}">Danh sách</a></li>
+                                <li><a href="{{route("blog.create")}}">Thêm blog</a></li>
+                            </ul>
+                        </li>
+
                     @endif
 
                     <li class="menu-title">Apps</li>
