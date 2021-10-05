@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NhanVien;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
-use App\Repositories\DichVu\DichVuReponsitoryinterface;
-use App\Repositories\NhanVien\NhanVienReponsitoryinterface;
+use App\Repositories\DichVu\DichVuRepositoryInterface;
+use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use Illuminate\Http\Request;
 
 class NhanVienController extends Controller
@@ -15,7 +15,7 @@ class NhanVienController extends Controller
     private $coso;
     private $dichvu;
 
-    public function __construct(NhanVienReponsitoryinterface $nhanvien, CoSoRepositoryInterface $coso, DichVuReponsitoryinterface $dichvu)
+    public function __construct(NhanVienRepositoryInterface $nhanvien, CoSoRepositoryInterface $coso, DichVuRepositoryInterface $dichvu)
     {
         $this->nhanvien = $nhanvien;
         $this->coso = $coso;

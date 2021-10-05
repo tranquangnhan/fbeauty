@@ -4,15 +4,15 @@ namespace App\Providers;
 
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DanhMuc\DanhmucRepositoryInterface;
-use App\Repositories\NhanVien\NhanVienReponsitory;
-use App\Repositories\NhanVien\NhanVienReponsitoryinterface;
+use App\Repositories\NhanVien\NhanVienRepository;
+use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\SanPham\SanPhamRepositoryInterface;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepositoryInterface;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
-use App\Repositories\DichVu\DichVuReponsitory;
+use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
