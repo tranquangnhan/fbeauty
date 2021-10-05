@@ -59,8 +59,7 @@
                             <div class="form-group ml-0 col-12">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="w-100" for="files">Tải ảnh dịch vụ:(<span
-                                                class="text-danger">*</span>)
+                                        <label class="w-100" for="files">Tải ảnh dịch vụ:<span style="color:red;"> (*)</span>
                                             <div class="wrapper"> <br>
                                                 <div class="file-upload mt-1">
                                                     <input type="file" id="files" name="urlHinh"
@@ -74,12 +73,12 @@
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <div id="imageA" class="mt-2"></div>
+                                        <div id="imageA" style="width:350px;" class="mt-2"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label class="form-label">Mô tả</label>
+                                <label class="form-label">Mô tả</label><span style="color:red;"> (*)</span>
                                 <textarea name="motangan" value="{{old('motangan')}}" class="form-control"
                                     id="mytextarea" cols="25" rows="3" placeholder="Mô tả"></textarea>
                                 @error('motangan')
@@ -87,7 +86,7 @@
                                 @enderror
                             </div>
                             <div class="col-lg-12 mt-3">
-                                <label class="form-label">Nội dung</label>
+                                <label class="form-label">Nội dung</label><span style="color:red;"> (*)</span>
                                 <textarea name="noidung" class="form-control" id="summernote"  cols="25" rows="3"
                                     placeholder="Nội dung"></textarea>
                                     
@@ -96,7 +95,7 @@
                                 @enderror
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100" for="active">Hoạt động:(<span class="text-danger">*</span>)
+                                <label class="w-100" for="active">Hoạt động:<span style="color:red;"> (*)</span>
                                     <select class="form-control mt-2" name="trangthai">
                                         <option value="1">Kích hoạt</option>
                                         <option value="0">Chưa kích hoạt</option>

@@ -91,21 +91,21 @@
                             </div>
                             <div class="col-lg-12 mt-3">
                                 <label class="form-label">Nội dung</label>
-                                <textarea name="noidung" class="form-control" id="mytextarea" cols="25" rows="3"
+                                <textarea name="noidung" class="form-control" id="summernote" cols="25" rows="3"
                                     placeholder="Nội dung">{{$DichVu->motangan}}</textarea>
                                 @error('noidung')
                                 <span class="badge bg-danger text-white">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100" for="active">Hoạt động:(<span class="text-danger">*</span>)
+                                <label class="w-100" for="trangthai">Hoạt động:(<span class="text-danger">*</span>)
                                     <select class="form-control mt-2" name="trangthai">
                                         <option
-                                            value="1" <?php echo ($DichVu->active == 1) ? 'selected' : '';?>>
+                                            value="1" <?php echo ($DichVu->trangthai == 1) ? 'selected' : '';?>>
                                             Kích hoạt
                                         </option>
                                         <option
-                                            value="0" <?php echo ($DichVu->active == 0) ? 'selected' : '';?>>
+                                            value="0" <?php echo ($DichVu->trangthai == 0) ? 'selected' : '';?>>
                                             Chưa kích hoạt
                                         </option>
                                     </select>
