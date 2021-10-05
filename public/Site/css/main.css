@@ -4,8 +4,7 @@
     --black-1: #2a2d2c;
     --black-2: #474747;
     --black-3: #555;
-    --main-color: #202020;
-    /* e87c7b */
+    --main-color: #e87c7b;
     --main-color-2: #f28b8a;
     --main-color-3-bg: #FCC3C3;
     --main-color-4-bg: #FFF5F2;
@@ -239,10 +238,16 @@ margin-top: 14px;
 
 .button-item:hover {
     background-color: var(--main-color);
+    color: white !important;
+}
+
+.button-item:hover a{
+    color: white !important;
 }
 
 .button-item a {
     color: var(--black-1);
+    transition: .3s;
 }
 
 .button-item a:hover {
@@ -759,6 +764,10 @@ img.im-small {
     color: white !important;
 }
 
+.color-black-main {
+    color: var(--black-1);
+}
+
 
 .btn-3::before {
     position: absolute;
@@ -778,6 +787,19 @@ img.im-small {
     opacity: 1;
 }
 
+.btn-3.black-1 {
+    color: var(--black-1);
+    background: white;
+}
+
+.btn-3.active.black-1 {
+    color: white !important;
+    background: var(--black-1) !important;
+}
+
+.btn-3.black-1::before {
+    border: 2px solid var(--black-1);
+}
 
 
 .blog-bigsize {
@@ -789,7 +811,7 @@ img.im-small {
 .blog-bigsize .box-danhmuc {
     position: absolute;
     bottom: -15px;
-    background: var(--main-color);
+    background: var(--black-1);
     padding: .7em 2em;
     font-weight: bold;
     font-size: .7em;
@@ -1177,8 +1199,8 @@ img.im-small {
 }
 
 .btn-4 {
-    color: var(--main-color);
-    border: 2px solid var(--main-color);
+    color:  var(--black-1);
+    border: 2px solid var(--black-1);
     /* padding: .9em 3em; */
     width: 190px;
     height: 46px;
@@ -1201,7 +1223,7 @@ img.im-small {
     left: 0px;
     width: 0%;
     height: 42px;
-    background: var(--main-color);
+    background: var(--black-1);
     content: '';
     z-index: -1;
     transition: 0.3s;
@@ -1218,8 +1240,8 @@ img.im-small {
 }
 
 .btn-5 {
-    color: var(--main-color);
-    border: 2px solid var(--main-color);
+    color: var(--black-1);
+    border: 2px solid var(--black-1);
     /* padding: .9em 3em; */
     width: 142px;
     height: 43px;
@@ -1241,7 +1263,7 @@ img.im-small {
     left: 0px;
     width: 0%;
     height: 37px;
-    background: var(--main-color);
+    background: var(--black-1);
     content: '';
     z-index: -1;
     transition: 0.3s;
@@ -1397,11 +1419,11 @@ img.im-small {
 
 .footer-copyright {
     background: var(--main-color);
-    min-height: 55px;
+    min-height: 50px;
     text-align: center;
     color: var(--black-1);
-    font-size: 1.1em;
-    line-height: 55px;
+    font-size: .9em;
+    line-height: 50px;
 }
 
 .title-4 {
@@ -1518,6 +1540,18 @@ img.im-small {
 
 .lieutrinh-item .icon-1 img{
     width: 100%;
+}
+
+button:focus {
+    outline: 0px dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+}
+
+#header-slide .owl-dots {
+    position: absolute;
+    bottom: 15px;
+    width: 60px;
+    left: calc(50% - 30px);
 }
 
 /* Reponsive */

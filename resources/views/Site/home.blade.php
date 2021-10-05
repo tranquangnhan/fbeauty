@@ -16,6 +16,8 @@
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     {{-- Boostrap --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -392,23 +394,23 @@
                         <div class="d-flex align-items-center">
                             <div class="head-service-item service-title">
                                 <div class="w-100 text-left">
-                                    <div class="title-small">
-                                        TIN TỨC & SỰ KIỆN
+                                    <div class="title-small color-black-main">
+                                        LỰA CHỌN DỊCH VỤ
                                     </div>
-                                    <div class="title-3">
+                                    <div class="title-3 color-white">
                                         Bí Quyết Khỏe Và Đẹp
                                     </div>
                                 </div>
                             </div>
                             <div class="head-service-item">
                                 <div class="d-flex">
-                                    <div class="d-flex align-items-center text-2 mr-4">Tìm kiếm theo</div>
+                                    <div class="d-flex align-items-center text-2 mr-4" style="color: #f2f2f2;">Tìm kiếm theo</div>
                                     <ul class="nav nav-tabs" id="myTab-1" role="tablist">
                                         <li class="nav-item" role="presentation">
-                                          <a class="nav-link btn-3 active" id="allservice-tab" data-toggle="tab" href="#allservice" role="tab" aria-controls="allservice" aria-selected="true">Tất cả</a>
+                                          <a class="nav-link btn-3 active black-1" id="allservice-tab" data-toggle="tab" href="#allservice" role="tab" aria-controls="allservice" aria-selected="true">Tất cả</a>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                          <a class="nav-link btn-3" id="nhieuquantam-tab" data-toggle="tab" href="#nhieuquantam" role="tab" aria-controls="nhieuquantam" aria-selected="false">Danh mục</a>
+                                          <a class="nav-link btn-3 black-1" id="nhieuquantam-tab" data-toggle="tab" href="#nhieuquantam" role="tab" aria-controls="nhieuquantam" aria-selected="false">Danh mục</a>
                                         </li>
                                       </ul>
                                 </div>
