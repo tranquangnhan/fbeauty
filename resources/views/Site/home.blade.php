@@ -385,121 +385,247 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
             <div class="list-service">
                 <div class="container position-relative z-index-1">
-                    <div class="w-100 text-center">
-                        <div class="title-small text-center">
-                            LỰA CHỌN DỊCH VỤ
-                        </div>
-                        <div class="text-3">
-                            Chúng tôi có thể tư vấn trực tiếp hoặc <br> online nếu bạn mu
-                        </div>
-                    </div>
-
-                    <div class="w-100">
-                        <div class="box-dichvu">
-                            <div class="box-sev">
-                                <div class="dichvu-item ml-0">
-                                    <div class="img-1">
-                                        <img class="" src="{{ asset('Site/images') }}/image 8.png" alt="">
+                    <div class="container">
+                        <div class="d-flex align-items-center">
+                            <div class="head-service-item service-title">
+                                <div class="w-100 text-left">
+                                    <div class="title-small">
+                                        TIN TỨC & SỰ KIỆN
                                     </div>
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1">
-                                            Trắng Da Toàn Thân
-                                        </div>
-                                        <div class="text-2-pink mt-1">
-                                            300.000đ
-                                        </div>
-                                        <div class="text-2 limit-text-row-3 mt-1">
-                                            Dịch vụ điều trị mụn tại FBeauty Spa, mụn lưng với các liệu trình đúng chuẩn y khoa, chuyên sâu về da liễu
-
-                                        </div>
-                                        {{-- <div class="text-3"></div> --}}
-                                    </div>
-                                    <div class="w-100 text-center mb-3">
-                                        <a href="">
-                                            <button class="btn-full">Đặt lịch</button>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item">
-                                    <div class="img-1">
-                                        <img class="" src="{{ asset('Site/images') }}/woman-6557552 - Copy.jpg" alt="">
-                                    </div>
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1">
-                                            Hồi Phục Tái Tạo Da Mặt
-                                        </div>
-                                        <div class="text-2-pink mt-1">
-                                            300.000đ
-                                        </div>
-                                        <div class="text-2 limit-text-row-3 mt-1">
-                                            Dịch vụ điều trị mụn tại FBeauty Spa, mụn lưng với các liệu trình đúng chuẩn y khoa, chuyên sâu về da liễu
-                                        </div>
-                                        {{-- <div class="text-3"></div> --}}
-                                    </div>
-                                    <div class="w-100 text-center mb-3">
-                                        <a href="">
-                                            <button class="btn-full">Đặt lịch</button>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item">
-                                    <div class="img-1">
-                                        <img class="" src="{{ asset('Site/images') }}/woman-6557552 - Copy.jpg" alt="">
-                                    </div>
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1">
-                                            Hồi Phục Tái Tạo Da Mặt
-                                        </div>
-                                        <div class="text-2-pink mt-1">
-                                            300.000đ
-                                        </div>
-                                        <div class="text-2 limit-text-row-3 mt-1">
-                                            Dịch vụ điều trị mụn tại FBeauty Spa, mụn lưng với các liệu trình đúng chuẩn y khoa, chuyên sâu về da liễu
-                                        </div>
-                                        {{-- <div class="text-3"></div> --}}
-                                    </div>
-                                    <div class="w-100 text-center mb-3">
-                                        <a href="">
-                                            <button class="btn-full">Đặt lịch</button>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item mr-0">
-
-                                    <div class="img-1">
-                                        <img class="" src="{{ asset('Site/images') }}/young-beautiful-woman-getting-hot-stone-spa-treatment.jpg" alt="">
-                                    </div>
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1">
-                                            Massage Toàn Thân
-                                        </div>
-                                        <div class="text-2-pink mt-1">
-                                            300.000đ
-                                        </div>
-                                        <div class="text-2 limit-text-row-3 mt-1">
-                                            Dịch vụ điều trị mụn tại FBeauty Spa, mụn lưng với các liệu trình đúng chuẩn y khoa, chuyên sâu về da liễu
-                                        </div>
-                                        {{-- <div class="text-3"></div> --}}
-                                    </div>
-                                    <div class="w-100 text-center mb-3">
-                                        <a href="">
-                                            <button class="btn-full">Đặt lịch</button>
-                                        </a>
+                                    <div class="title-3">
+                                        Bí Quyết Khỏe Và Đẹp
                                     </div>
                                 </div>
                             </div>
+                            <div class="head-service-item">
+                                <div class="d-flex">
+                                    <div class="d-flex align-items-center text-2 mr-4">Tìm kiếm theo</div>
+                                    <ul class="nav nav-tabs" id="myTab-1" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                          <a class="nav-link btn-3 active" id="allservice-tab" data-toggle="tab" href="#allservice" role="tab" aria-controls="allservice" aria-selected="true">Tất cả</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                          <a class="nav-link btn-3" id="nhieuquantam-tab" data-toggle="tab" href="#nhieuquantam" role="tab" aria-controls="nhieuquantam" aria-selected="false">Danh mục</a>
+                                        </li>
+                                      </ul>
+                                </div>
 
-
+                            </div>
                         </div>
                     </div>
+
+                    <div class="list-tabs mt-5">
+                        <div class="tab-content" id="myTabContent-1">
+                            <div class="tab-pane fade show active" id="allservice" role="tabpanel" aria-labelledby="allservice-tab">
+                                <div class="w-100">
+                                    <div class="box-dichvu">
+                                        <div class="box-sev">
+                                            <div class="dichvu-item">
+
+                                                <div class="content-1">
+                                                    <div class="text-7 color-main-1">
+                                                        Da Mặt
+                                                    </div>
+
+                                                    <div class="text-8 mt-1">
+                                                        300.000đ
+                                                    </div>
+
+                                                    <div class="img-1 mt-4">
+                                                        <img class="" src="{{ asset('Site/images') }}/image 8.png" alt="">
+                                                    </div>
+
+                                                    <div class="text-1 limit-text-row-1 mt-4">
+                                                        Lăn Kim Công Nghệ Cao
+                                                    </div>
+
+                                                    <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                                        Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor incididunt.
+
+                                                    </p>
+                                                </div>
+                                                <div class="w-100 text-center mb-4">
+                                                    <a href="">
+                                                        <button class="btn-4">Đặt lịch</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="dichvu-item">
+
+                                                <div class="content-1">
+                                                    <div class="text-7 color-main-1">
+                                                        Da Mặt
+                                                    </div>
+
+                                                    <div class="text-8 mt-1">
+                                                        300.000đ
+                                                    </div>
+
+                                                    <div class="img-1 mt-4">
+                                                        <img class="" src="{{ asset('Site/images') }}/image 8.png" alt="">
+                                                    </div>
+
+                                                    <div class="text-1 limit-text-row-1 mt-4">
+                                                        Lăn Kim Công Nghệ Cao
+                                                    </div>
+
+                                                    <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                                        Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor incididunt.
+
+                                                    </p>
+                                                </div>
+                                                <div class="w-100 text-center mb-4">
+                                                    <a href="">
+                                                        <button class="btn-4">Đặt lịch</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="dichvu-item ">
+
+                                                <div class="content-1">
+                                                    <div class="text-7 color-main-1">
+                                                        Da Mặt
+                                                    </div>
+
+                                                    <div class="text-8 mt-1">
+                                                        300.000đ
+                                                    </div>
+
+                                                    <div class="img-1 mt-4">
+                                                        <img class="" src="{{ asset('Site/images') }}/image 8.png" alt="">
+                                                    </div>
+
+                                                    <div class="text-1 limit-text-row-1 mt-4">
+                                                        Lăn Kim Công Nghệ Cao
+                                                    </div>
+
+                                                    <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                                        Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor incididunt.
+
+                                                    </p>
+                                                </div>
+                                                <div class="w-100 text-center mb-4">
+                                                    <a href="">
+                                                        <button class="btn-4">Đặt lịch</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nhieuquantam" role="tabpanel" aria-labelledby="nhieuquantam-tab">
+                                <div class="w-100">
+                                    <div class="box-dichvu">
+                                        <div class="box-sev">
+                                            <div class="dichvu-item">
+
+                                                <div class="content-1">
+                                                    <div class="text-7 color-main-1">
+                                                        Da Mặt Danh Mục
+                                                    </div>
+
+                                                    <div class="text-8 mt-1">
+                                                        300.000đ
+                                                    </div>
+
+                                                    <div class="img-1 mt-4">
+                                                        <img class="" src="{{ asset('Site/images') }}/image 8.png" alt="">
+                                                    </div>
+
+                                                    <div class="text-1 limit-text-row-1 mt-4">
+                                                        Lăn Kim Công Nghệ Cao
+                                                    </div>
+
+                                                    <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                                        Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor incididunt.
+
+                                                    </p>
+                                                </div>
+                                                <div class="w-100 text-center mb-4">
+                                                    <a href="">
+                                                        <button class="btn-4">Đặt lịch</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="dichvu-item">
+
+                                                <div class="content-1">
+                                                    <div class="text-7 color-main-1">
+                                                        Da Mặt
+                                                    </div>
+
+                                                    <div class="text-8 mt-1">
+                                                        300.000đ
+                                                    </div>
+
+                                                    <div class="img-1 mt-4">
+                                                        <img class="" src="{{ asset('Site/images') }}/image 8.png" alt="">
+                                                    </div>
+
+                                                    <div class="text-1 limit-text-row-1 mt-4">
+                                                        Lăn Kim Công Nghệ Cao
+                                                    </div>
+
+                                                    <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                                        Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor incididunt.
+
+                                                    </p>
+                                                </div>
+                                                <div class="w-100 text-center mb-4">
+                                                    <a href="">
+                                                        <button class="btn-4">Đặt lịch</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="dichvu-item ">
+
+                                                <div class="content-1">
+                                                    <div class="text-7 color-main-1">
+                                                        Da Mặt
+                                                    </div>
+
+                                                    <div class="text-8 mt-1">
+                                                        300.000đ
+                                                    </div>
+
+                                                    <div class="img-1 mt-4">
+                                                        <img class="" src="{{ asset('Site/images') }}/image 8.png" alt="">
+                                                    </div>
+
+                                                    <div class="text-1 limit-text-row-1 mt-4">
+                                                        Lăn Kim Công Nghệ Cao
+                                                    </div>
+
+                                                    <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                                        Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor incididunt.
+
+                                                    </p>
+                                                </div>
+                                                <div class="w-100 text-center mb-4">
+                                                    <a href="">
+                                                        <button class="btn-4">Đặt lịch</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
 
             </div>
@@ -702,152 +828,378 @@
 
         <div class="box-blog">
 
-
             <div class="list-blog">
-                <div class="blog-title-1 mb-4">
-                    <div class="w-100 text-center">
-                        <div class="title-small text-center">
-                            TIN TỨC & SỰ KIỆN
-                        </div>
-                        <div class="title-3">
-                            BÀI VIẾT MỚI
+                <div class="mb-4">
+                    <div class="container">
+                        <div class="d-flex align-items-center">
+                            <div class="head-blog-item blog-title">
+                                <div class="w-100 text-left">
+                                    <div class="title-small">
+                                        TIN TỨC & SỰ KIỆN
+                                    </div>
+                                    <div class="title-3">
+                                        Bí Quyết Khỏe Và Đẹp
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="head-blog-item">
+                                <div class="d-flex">
+                                    <div class="d-flex align-items-center text-2 mr-4">Tìm kiếm theo</div>
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                          <a class="nav-link btn-3 active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">Mới nhất</a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                          <a class="nav-link btn-3" id="lastweek-tab" data-toggle="tab" href="#lastweek" role="tab" aria-controls="lastweek" aria-selected="false">Tuần trước</a>
+                                        </li>
+                                      </ul>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 pr-0">
-                            <div class="blog-bigsize">
-                                <div class="img-1 w-100">
-                                    <img class="img-fluid" src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                    <div class="list-tabs">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
+                                <div class="row">
+                                    <div class="col-xl-7 pr-0">
+                                        <div class="blog-bigsize">
+                                            <div class="box-danhmuc">
+                                                Sức khỏe
+                                            </div>
+
+                                            <div class="img-1 w-100">
+                                                <img class="img-fluid" src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                            </div>
+
+                                            <div class="blog-content-bigsize">
+                                                <div class="blog-text-1 limit-text-row-2">
+                                                    <a href="">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở Sài Gòn</a>
+                                                </div>
+                                                <div class="blog-text-2 mt-2">
+                                                    21/9/2021
+                                                </div>
+                                                <div class="blog-text-3 text-2 mt-2 limit-text-row-3">
+                                                    Cuối tuần này, hãy lên kế hoạch chiều chuộng bản thân bằng cách tắm thảo dược quý của người Dao Đỏ cùng nhiều dịch vụ hót-hòn-họt khác tại Noir. Spa, Sài Gòn. Cuối tuần này, hãy lên kế hoạch chiều. Cuối tuần này, hãy lên kế hoạch chiều
+                                                </div>
+
+                                                <div class="mt-3">
+                                                    <a href="" class="">
+                                                        <button class="btn-line px-0 color-gray-2">
+                                                            Đọc ngay
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-5 pl-0">
+                                        <div class="list-blog-small">
+                                            <div class="small-blog-item">
+                                                <div class="row">
+                                                    <div class="col-xl-5">
+                                                        <div class="img-1">
+                                                            <img class="img-fluid" src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7 pl-0 align-self-center">
+                                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 color-gray-2 hover-color-black">
+                                                                21/9/2021
+                                                            </div>
+                                                            <div class="col-xl-6 text-right">
+                                                                <a href="" class="">
+                                                                    <button class="btn-line color-gray-2">
+                                                                        Đọc ngay
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="small-blog-item mt-4">
+                                                <div class="row">
+                                                    <div class="col-xl-5">
+                                                        <div class="img-1">
+                                                            <img class="img-fluid" src="{{ asset('Site/images') }}/image 8 (2).png" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7 pl-0 align-self-center">
+                                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 color-gray-2 hover-color-black">
+                                                                21/9/2021
+                                                            </div>
+                                                            <div class="col-xl-6 text-right">
+                                                                <a href="" class="">
+                                                                    <button class="btn-line color-gray-2">
+                                                                        Đọc ngay
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="small-blog-item mt-4">
+                                                <div class="row">
+                                                    <div class="col-xl-5">
+                                                        <div class="img-1">
+                                                            <img class="img-fluid" src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7 pl-0 align-self-center">
+                                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 color-gray-2 hover-color-black">
+                                                                21/9/2021
+                                                            </div>
+                                                            <div class="col-xl-6 text-right">
+                                                                <a href="" class="">
+                                                                    <button class="btn-line color-gray-2">
+                                                                        Đọc ngay
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="small-blog-item mt-4">
+                                                <div class="row">
+                                                    <div class="col-xl-5">
+                                                        <div class="img-1">
+                                                            <img class="img-fluid" src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7 pl-0 align-self-center">
+                                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 color-gray-2 hover-color-black">
+                                                                21/9/2021
+                                                            </div>
+                                                            <div class="col-xl-6 text-right">
+                                                                <a href="" class="">
+                                                                    <button class="btn-line color-gray-2">
+                                                                        Đọc ngay
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="w-100 my-4">
+                                                <a href="">
+                                                    <button class="btn-full">Xem thêm</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="blog-content-bigsize">
-                                    <div class="blog-text-1 limit-text-row-2">
-                                        <a href="">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở Sài Gòn</a>
-                                    </div>
-                                    <div class="blog-text-2 fz-dot9em">
-                                        21/9/2021
-                                    </div>
-                                    <div class="blog-text-3 limit-text-row-3 fz-dot9em">
-                                        Cuối tuần này, hãy lên kế hoạch chiều chuộng bản thân bằng cách tắm thảo dược quý của người Dao Đỏ cùng nhiều dịch vụ hót-hòn-họt khác tại Noir. Spa, Sài Gòn.
-                                    </div>
-                                </div>
-
-
                             </div>
-                        </div>
-                        <div class="col-xl-6 pl-0 bg-white box-shadow-1">
-                            <div class="list-blog-small">
-                                <div class="small-blog-item">
-                                    <div class="row">
-                                        <div class="col-xl-5">
-                                            <div class="img-1">
-                                                <img class="img-fluid" src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                            <div class="tab-pane fade" id="lastweek" role="tabpanel" aria-labelledby="lastweek-tab">
+                                <div class="row">
+                                    <div class="col-xl-7 pr-0">
+                                        <div class="blog-bigsize">
+                                            <div class="box-danhmuc">
+                                                Sức khỏe
                                             </div>
-                                        </div>
-                                        <div class="col-xl-7 pl-0 align-self-center">
-                                            <div class="text-bl-1 limit-text-row-2 ">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+
+                                            <div class="img-1 w-100">
+                                                <img class="img-fluid" src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
                                             </div>
-                                            <div class="row">
-                                                <div class="col-xl-6 color-gray-2">
+
+                                            <div class="blog-content-bigsize">
+                                                <div class="blog-text-1 limit-text-row-2">
+                                                    <a href="">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở Sài Gòn</a>
+                                                </div>
+                                                <div class="blog-text-2 mt-2">
                                                     21/9/2021
                                                 </div>
-                                                <div class="col-xl-6 text-right">
+                                                <div class="blog-text-3 text-2 mt-2 limit-text-row-3">
+                                                    Cuối tuần này, hãy lên kế hoạch chiều chuộng bản thân bằng cách tắm thảo dược quý của người Dao Đỏ cùng nhiều dịch vụ hót-hòn-họt khác tại Noir. Spa, Sài Gòn. Cuối tuần này, hãy lên kế hoạch chiều. Cuối tuần này, hãy lên kế hoạch chiều
+                                                </div>
+
+                                                <div class="mt-3">
                                                     <a href="" class="">
-                                                        <button class="btn-line color-gray-2">
+                                                        <button class="btn-line px-0 color-gray-2">
                                                             Đọc ngay
                                                         </button>
                                                     </a>
                                                 </div>
                                             </div>
+
+
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="small-blog-item mt-4">
-                                    <div class="row">
-                                        <div class="col-xl-5">
-                                            <div class="img-1">
-                                                <img class="img-fluid" src="{{ asset('Site/images') }}/image 8 (2).png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-7 pl-0 align-self-center">
-                                            <div class="text-bl-1 limit-text-row-2 ">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-6 color-gray-2">
-                                                    21/9/2021
+                                    <div class="col-xl-5 pl-0">
+                                        <div class="list-blog-small">
+                                            <div class="small-blog-item">
+                                                <div class="row">
+                                                    <div class="col-xl-5">
+                                                        <div class="img-1">
+                                                            <img class="img-fluid" src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7 pl-0 align-self-center">
+                                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 color-gray-2 hover-color-black">
+                                                                21/9/2021
+                                                            </div>
+                                                            <div class="col-xl-6 text-right">
+                                                                <a href="" class="">
+                                                                    <button class="btn-line color-gray-2">
+                                                                        Đọc ngay
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-xl-6 text-right">
-                                                    <a href="" class="">
-                                                        <button class="btn-line color-gray-2">
-                                                            Đọc ngay
-                                                        </button>
-                                                    </a>
+                                            </div>
+
+                                            <div class="small-blog-item mt-4">
+                                                <div class="row">
+                                                    <div class="col-xl-5">
+                                                        <div class="img-1">
+                                                            <img class="img-fluid" src="{{ asset('Site/images') }}/image 8 (2).png" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7 pl-0 align-self-center">
+                                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 color-gray-2 hover-color-black">
+                                                                21/9/2021
+                                                            </div>
+                                                            <div class="col-xl-6 text-right">
+                                                                <a href="" class="">
+                                                                    <button class="btn-line color-gray-2">
+                                                                        Đọc ngay
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                            </div>
+
+                                            <div class="small-blog-item mt-4">
+                                                <div class="row">
+                                                    <div class="col-xl-5">
+                                                        <div class="img-1">
+                                                            <img class="img-fluid" src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7 pl-0 align-self-center">
+                                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 color-gray-2 hover-color-black">
+                                                                21/9/2021
+                                                            </div>
+                                                            <div class="col-xl-6 text-right">
+                                                                <a href="" class="">
+                                                                    <button class="btn-line color-gray-2">
+                                                                        Đọc ngay
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="small-blog-item mt-4">
+                                                <div class="row">
+                                                    <div class="col-xl-5">
+                                                        <div class="img-1">
+                                                            <img class="img-fluid" src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-7 pl-0 align-self-center">
+                                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-6 color-gray-2 hover-color-black">
+                                                                21/9/2021
+                                                            </div>
+                                                            <div class="col-xl-6 text-right">
+                                                                <a href="" class="">
+                                                                    <button class="btn-line color-gray-2">
+                                                                        Đọc ngay
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="w-100 my-4">
+                                                <a href="">
+                                                    <button class="btn-full">Xem thêm</button>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="small-blog-item mt-4">
-                                    <div class="row">
-                                        <div class="col-xl-5">
-                                            <div class="img-1">
-                                                <img class="img-fluid" src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-7 pl-0 align-self-center">
-                                            <div class="text-bl-1 limit-text-row-2 ">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-6 color-gray-2">
-                                                    21/9/2021
-                                                </div>
-                                                <div class="col-xl-6 text-right">
-                                                    <a href="" class="">
-                                                        <button class="btn-line color-gray-2">
-                                                            Đọc ngay
-                                                        </button>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="w-100 my-4">
-                                    <a href="">
-                                        <button class="btn-full">Xem thêm</button>
-                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
 
         <div class="box-guimail p-2">
-            <div class="w-100 text-center position-relative" style="z-index: 30">
+            <div class="w-100 text-center position-relative" style="z-index: 30;margin: 7em 0em;">
                 <div class="guimail-content">
-                    <div class="logo-z mt-5">
-                        <a class="navbar-brand text-center logo-custom" style="background: #FBAAA9" href="#">FPT <br>BEAUTY SPA</a>
+                    <div class="container">
+                        <div class="w-100 text-center">
+                            <div class="title-small text-center">
+                                ĐỂ LẠI EMAIL
+                            </div>
+                        </div>
+
+                        <div class="title-3">
+                            Tham Gia Vào Danh Sách Email Của Chúng Tôi <br>Và Là Người Đầu Tiên Biết Về Các Sản Phẩm <br> Đặc Biệt, Sự Kiện Và Hơn Thế Nữa!
+                        </div>
+                        <form action="" class="form-subscribe">
+                            <div class="bg-white div-subscribe">
+                                <input type="text" placeholder="Nhập email của bạn">
+                            <button type="submit" class="btn-nor">Gửi email</button>
+                            </div>
+                        </form>
                     </div>
-
-                    <p>
-                        Để lại email cho FBeauty, bạn sẽ nhận được thông tin <br> khuyến mãi sớm nhất từ chúng tôi
-                    </p>
-                    <form action="">
-
-                        <input type="text" placeholder="Email của bạn">
-                        <button type="submit" class="btn-nor">Gửi</button>
-                    </form>
                 </div>
 
                 {{-- <div class="background-img img-1">
@@ -859,7 +1211,130 @@
 
     </main>
     <footer>
+        <div class="footer-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3 pr-5">
+                        <div class="w-100 text-left mx-auto">
+                            <div class="box-logo" >
+                                <a class="navbar-brand m-0 text-center logo-custom" style="background: white" href="#">LOGO <br>BEAUTY</a>
+                            </div>
 
+                            <div class="text-6 text-left" style="margin-top: 2em">
+                                FBeauty Spa luôn nỗ lực không ngừng để đem đến cho khách hàng những dịch vụ hoàn hảo nhất. Thẩm mỹ khỏe – đẹp – an toàn để mỗi phút giây ngắm mình trong gương là những phút giây tận hưởng hạnh phúc thật sự của mỗi khách hàng.
+                            </div>
+
+                            <div class="list-icon d-flex justify-content-left ">
+                                <div class="icon-item ml-0">
+                                    <a href="" class="link">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </div>
+
+                                <div class="icon-item">
+                                    <a href="" class="link">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+
+                                <div class="icon-item">
+                                    <a href="" class="link">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+
+                                <div class="icon-item">
+                                    <a href="" class="link">
+                                        <i class="fab fa-tumblr"></i>
+                                    </a>
+                                </div>
+
+                                <div class="icon-item">
+                                    <a href="" class="link">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9 pl-5">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="footer-menu">
+                                    <div class="title-4 d-inline-block">
+                                        Danh Mục
+                                    </div>
+
+                                    <div class="content-1">
+
+                                        <div class="menu-item text-6">
+                                            <a href="">Chăm sóc da mặt
+                                            </a>
+                                        </div>
+
+                                        <div class="menu-item text-6">
+                                            <a href="">Điều trị mụn, sẹo
+                                            </a>
+                                        </div>
+
+                                        <div class="menu-item text-6">
+                                            <a href="">Dịch vụ trị nám, tàn nhang
+                                            </a>
+                                        </div>
+
+                                        <div class="menu-item text-6">
+                                            <a href="">Làm trẻ hóa da
+                                            </a>
+                                        </div>
+
+                                        <div class="menu-item text-6">
+                                            <a href="">Dịch vụ massage
+                                            </a>
+                                        </div>
+
+                                        <div class="menu-item text-6">
+                                            <a href="">Dịch vụ giảm béo
+
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="footer-menu">
+                                    <div class="title-4 d-inline-block">
+                                        Cơ Sở
+                                    </div>
+
+                                    <div class="content-1">
+
+                                        <div class="menu-item text-6">
+                                            <a href="">391A Nam Kỳ Khởi Nghĩa, Phường 14, Quận 3, Thành phố Hồ Chí Minh</a>
+                                        </div>
+
+                                        <div class="menu-item text-6">
+                                            <a href="">778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí Minh</a>
+                                        </div>
+
+                                        <div class="menu-item text-6">
+                                            <a href="">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="w-100 footer-copyright">
+            Copyright ©2021 Beauty & Spa. All Rights Reserved
+        </div>
     </footer>
 </body>
 
