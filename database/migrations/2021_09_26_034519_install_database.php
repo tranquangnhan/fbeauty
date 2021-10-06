@@ -183,6 +183,16 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
+        Schema::create('lich', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('idcoso');
+            $table->unsignedInteger('thutrongtuan');
+            $table->unsignedInteger('soluongkhach');
+            $table->time('gio');
+            $table->unsignedInteger('trangthai');
+            $table->foreign('idcoso')->references('id')->on('coso');
+            $table->timestamps();
+        });
 
         Schema::create('sanpham', function (Blueprint $table) {
             $table->increments('id');
