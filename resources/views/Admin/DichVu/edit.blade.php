@@ -92,24 +92,21 @@
                             <div class="col-lg-12 mt-3">
                                 <label class="form-label">Nội dung</label>
                                 <textarea name="noidung" class="form-control" id="summernote" cols="25" rows="3"
-                                    placeholder="Nội dung">{{$DichVu->motangan}}</textarea>
+                                    placeholder="Nội dung">{{$DichVu->noidung}}</textarea>
                                 @error('noidung')
                                 <span class="badge bg-danger text-white">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100" for="trangthai">Hoạt động:(<span class="text-danger">*</span>)
-                                    <select class="form-control mt-2" name="trangthai">
-                                        <option
-                                            value="1" <?php echo ($DichVu->trangthai == 1) ? 'selected' : '';?>>
-                                            Kích hoạt
-                                        </option>
-                                        <option
-                                            value="0" <?php echo ($DichVu->trangthai == 0) ? 'selected' : '';?>>
-                                            Chưa kích hoạt
-                                        </option>
-                                    </select>
+                                <label class="w-100 " for="trangthai">Hoạt động <span style="color:red;"> (*)</span><br>
+                                <br><form >
+                                          <input type="radio" id="html" name="trangthai" value="1" <?php echo ($DichVu->trangthai == 1) ? 'checked' : '';?>>
+                                          <label for="html">Kích hoạt</label><br>
+                                          <input type="radio" id="css" name="trangthai" value="0" <?php echo ($DichVu->trangthai == 0) ? 'checked' : '';?>>
+                                          <label for="css">Chưa kích hoạt</label><br>
+                                    </form> 
                                 </label>
+                             
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
                                 <a href="/quantri/dichvu" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
