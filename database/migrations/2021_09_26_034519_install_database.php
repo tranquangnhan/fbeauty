@@ -26,6 +26,7 @@ class InstallDatabase extends Migration
         Schema::dropIfExists('hoadon');
         Schema::dropIfExists('hoadonchitiet');
         Schema::dropIfExists('datlich');
+        Schema::dropIfExists('lich');
         Schema::dropIfExists('sanpham');
         Schema::dropIfExists('sanphamchitiet');
         Schema::dropIfExists('donhang');
@@ -233,6 +234,8 @@ class InstallDatabase extends Migration
             $table->char('phuongthucthanhtoan',5);
             $table->char('phuongthucgiaohang',5);
             $table->boolean('trangthai');
+            $table->foreign('idkhachhang')->references('id')->on('khachhang');
+            $table->foreign('idgiamgia')->references('id')->on('giamgia');
             $table->timestamps();
         });
 
