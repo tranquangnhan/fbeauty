@@ -6,7 +6,7 @@ use App\Models\Admin\City;
 use App\Models\Admin\Province;
 use App\Models\Admin\Wards;
 use App\Models\Admin\CosoModel;
-use App\Repositories\Coso\CoSoRepository;
+use App\Repositories\Coso\CosoRepository;
 use Illuminate\Http\Request;
 class CoSoController extends Controller
 {
@@ -14,7 +14,7 @@ class CoSoController extends Controller
     /**
      * CosoController constructor.
      */
-    public function __construct(CoSoRepository $Coso)
+    public function __construct(CosoRepository $Coso)
     {
         $this->Coso = $Coso;
     }
@@ -142,14 +142,14 @@ class CoSoController extends Controller
     {
         $this->Coso->delete($id);
         return redirect('quantri/coso')->with('success','Xoá thành công');
-        if ($id > 0){
-            $this->Coso->delete($id);
-        }
-     return response()->json([
-       'title' => 'Đã xóa!',
-       'text' => 'Cơ sở id' . $id . 'đã xóa thành công',
-       'status' => 'success!',
-     ]);
+        // if ($id > 0){
+        //     $this->Coso->delete($id);
+        // }
+    //  return response()->json([
+    //    'title' => 'Đã xóa!',
+    //    'text' => 'Cơ sở id' . $id . 'đã xóa thành công',
+    //    'status' => 'success!',
+    //  ]);
 
     }
 }

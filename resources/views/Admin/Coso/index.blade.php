@@ -96,7 +96,7 @@
                                             <td class="" >{{$row->province->name_quanhuyen}}</td>
                                             <td class="" >{{$row->wards->name_xaphuong}}</td>
 
-                                                <td class="d-flex">
+                                            <td class="d-flex">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('coso.edit',$row->id)}}" role="button"><i class="fa fa-edit"></i></a>
                                                 <form action="{{route('coso.destroy',$row->id)}}"  method="post">
                                                     @csrf
@@ -104,7 +104,6 @@
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
-
                                         </tr>
                                     @endforeach
 

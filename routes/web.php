@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\CoSoController;
 use App\Http\Controllers\Admin\DangNhapAdminController;
 use App\Http\Controllers\Admin\DanhMucController;
+use App\Http\Controllers\Admin\DonHangController;
 use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\ThongkeController;
@@ -37,4 +39,14 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('nhanvien', NhanVienController::class);
     Route::get('nhanvien/kiemtraemail/{name}',[NhanVienController::class, "CheckEmailTonTai"]);
     Route::get('nhanvien/kiemtrasdt/{name}',[NhanVienController::class, "CheckSdtTonTai"]);
+
+    // quản lý cơ sở
+    Route::resource('coso', CoSoController::class);
+    Route::post('/select-delivery', [CoSoController::class,'select_delivery']);
+
+    Route::resource('donhang', DonHangController::class);
+    Route::get('/active/{id}', [DonHangController::class,'active']);
+    Route::get('/active-1/{id}', [DonHangController::class,'active_1']);
+    Route::get('/active-2/{id}', [DonHangController::class,'active_2']);
+    Route::get('/active-3/{id}', [DonHangController::class,'active_3']);
 });

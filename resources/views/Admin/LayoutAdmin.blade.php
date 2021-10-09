@@ -347,6 +347,28 @@
 
                             </ul>
                         </li>
+                         <!--- Cơ Sở -->
+                         <li>
+                            <a href="javascript: void(0);">
+                            <i class="fas fa-house-user"></i>
+                                <span> Cơ Sở </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("coso.index")}}">Danh sách</a></li>
+                            </ul>
+                        </li>
+                          <!--- Đơn Hàng -->
+                          <li>
+                            <a href="javascript: void(0);">
+                            <i class="fas fa-dolly"></i>
+                                <span> Đơn Hàng </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("donhang.index")}}">Danh sách</a></li>
+                            </ul>
+                        </li>
                         <!--- Nhân viên -->
                         <li>
                             <a href="javascript: void(0);">
@@ -674,6 +696,42 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
 
 {{-- end code nhúng bởi Nhân --}}
+
+{{-- code nhúng bởi Tưởng --}}
+
+<script>$(document).ready(function() {
+
+$('.choose').on('change', function() {
+    var action = $(this).attr('id');
+    var ma_id = $(this).val();
+    var _token = $('input[name="_token"]').val();
+
+    // alert(action);
+    // alert(ma_id);
+    // alert(_token);
+    var result = '';
+
+    if (action == 'city') {
+        result = 'province';
+    } else {
+        result = 'wards';
+    }
+    $.ajax({
+
+        url: '{{url("/quantri/select-delivery")}}',
+        method: 'POST',
+        data: { action: action, ma_id: ma_id, _token: _token },
+        success: function(data) {
+            $('#' + result).html(data);
+        }
+    });
+});
+});
+</script>
+<script src="{{ asset('Admin/assets') }}/js/pages/coso.js"></script>
+{{-- end code nhúng bởi Tưởng --}}
+
+
 </body>
 
 </html>

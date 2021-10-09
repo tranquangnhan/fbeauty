@@ -1,13 +1,12 @@
 <?php
 
-
-namespace App\Repositories\Coso;
+namespace App\Repositories\DonHang;
 use App\Repositories\BaseRepository;
-class CosoRepository extends BaseRepository implements CosoRepositoryInterface
+class DonHangRepository extends BaseRepository implements DonHangRepositoryInterface
 {
     protected $model;
     public function getModel(){
-        return \App\Models\Admin\CosoModel::class;
+        return \App\Models\Admin\DonHangModel::class;
     }
     // public function modelcity(){
     //     return \App\Models\Admin\City::class;

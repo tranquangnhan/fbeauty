@@ -1,12 +1,14 @@
 <?php
 
 
-namespace App\Repositories\Coso;
+namespace App\Repositories\DonHang;
 
 
-interface CosoRepositoryInterface
+interface DonHangRepositoryInterface
 {
     public function getAll();
+
+    public function where($id);
 
     public function find($id);
 
