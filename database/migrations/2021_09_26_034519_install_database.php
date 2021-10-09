@@ -219,7 +219,6 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
-
         Schema::create('donhang', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idkhachhang');
@@ -234,8 +233,9 @@ class InstallDatabase extends Migration
             $table->char('phuongthucgiaohang',5);
             $table->boolean('trangthai');
             $table->timestamps();
+            $table->foreign('idkhachhang')->references('id')->on('khachhang');
+            $table->foreign('idgiamgia')->references('id')->on('giamgia');
         });
-
 
         Schema::create('donhangchitiet', function (Blueprint $table) {
             $table->increments('id');
@@ -271,7 +271,37 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
+        Schema::create('wishlist', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('idkhachhang');
+            $table->unsignedInteger('idsanpham');
+            $table->timestamps();
+            $table->foreign('idkhachhang')->references('id')->on('khachhang');
+            $table->foreign('idsanpham')->references('id')->on('sanpham');
+        });
 
+        Schema::create('subscribed', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('email');
+            $table->timestamps();
+        });
+
+        Schema::create('giohang', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('idkhachhang');
+            $table->timestamps();
+            $table->foreign('idkhachhang')->references('id')->on('khachhang');
+        });
+
+        Schema::create('giohangchitiet', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('idgiohang');
+            $table->unsignedInteger('idsanpham');
+            $table->unsignedInteger('soluong');
+            $table->timestamps();
+            $table->foreign('idgiohang')->references('id')->on('giohang');
+            $table->foreign('idsanpham')->references('id')->on('sanpham');
+        });
 
         Schema::enableForeignKeyConstraints();
 
