@@ -3,6 +3,7 @@
 
 namespace App\Repositories\KhachHang;
 
+use App\Models\Admin\KhachHangModel;
 use App\Repositories\BaseRepository;
 
 use App\Repositories\KhachHang\KhachHangRepositoryInterface;

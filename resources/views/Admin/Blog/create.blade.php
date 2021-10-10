@@ -22,9 +22,9 @@
                             <div class="col-lg-6">
                                 <div class="form-group ">
                                     <label for="">Tên bài viết</label><span style="color:red;"> (*)</span>
-                                    <input type="text" name="tenbv" value="{{old('tenbv')}}"
+                                    <input type="text" name="name" value="{{old('name')}}"
                                         parsley-trigger="change" placeholder="Tên bài viết" class="form-control">
-                                    @error('tenbv')
+                                    @error('name')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>

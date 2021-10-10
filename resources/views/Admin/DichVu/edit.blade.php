@@ -23,9 +23,9 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Tên dịch vụ</label><span style="color:red;"> (*)</span>
-                                    <input type="text" name="tendv" value="{{$DichVu->tendv}}"
+                                    <input type="text" name="name" value="{{$DichVu->name}}"
                                         parsley-trigger="change" class="form-control">
-                                    @error('tendv')
+                                    @error('name')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>
