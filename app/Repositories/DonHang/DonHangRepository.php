@@ -12,7 +12,7 @@ class DonHangRepository extends BaseRepository implements DonHangRepositoryInter
     //     return \App\Models\Admin\City::class;
     // }
     public function active_donhang($id){
-        return $this->model->where('id',$id)->update(['trangthai'=>0]);
+        return $this->model->where('id' , ' = ' ,$id)->update(['trangthai'=>0]);
 
     }
 

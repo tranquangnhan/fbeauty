@@ -26,6 +26,7 @@
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
 
+
     <!-- Bootstrap Css -->
     <link href="{{ asset('Admin/assets') }}/css/bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet"
           type="text/css"/>
@@ -36,9 +37,16 @@
     <link href="{{ asset('Admin/assets') }}/css/inputfile.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
 
     {{-- code nhúng của Quốc --}}
+    <link rel="stylesheet" href="{{ asset('Admin/assets') }}/libs/magnific-popup/magnific-popup.css"/>
+
+    <link href="{{ asset('Admin/assets') }}/css/inputfile.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
+
+    <link href="{{asset("Admin/assets")}}/css/dropupload.css" rel="stylesheet" type="text/css" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
     {{-- end code nhúng của Quốc --}}
 
@@ -47,6 +55,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
+    <link href="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('Admin/assets') }}/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />
     {{-- end code nhúng của Nhân --}}
 <body>
 
@@ -343,8 +354,19 @@
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("danhmuc.index")}}">Danh sách</a></li>
-                                <li><a href="{{route("danhmuc.create")}}">Thêm danh mục</a></li>
+                            </ul>
+                        </li>
 
+                        <!--- Dịch vụ -->
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <span> Dịch vụ </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("dichvu.index")}}">Danh sách</a></li>
+                                <li><a href="{{route("dichvu.create")}}">Thêm Dịch vụ</a></li>
                             </ul>
                         </li>
                          <!--- Cơ Sở -->
@@ -391,9 +413,36 @@
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
-                                <li><a href="form-advanced.html">Danh Sách</a></li>
+                                <li><a href="{{route("sanpham.index")}}">Danh Sách</a></li>
                             </ul>
                         </li>
+
+                        <!--- Khách hàng -->
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <span> Khách hàng </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("khachhang.index")}}">Danh sách</a></li>
+                                <li><a href="{{route("khachhang.create")}}">Thêm Khách hàng</a></li>
+                            </ul>
+                        </li>
+
+                         <!--- Blog -->
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <span> Blog </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("blog.index")}}">Danh sách</a></li>
+                                <li><a href="{{route("blog.create")}}">Thêm blog</a></li>
+                            </ul>
+                        </li>
+
                     @endif
 
                     <li class="menu-title">Apps</li>
@@ -695,6 +744,11 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/texteditor.js"></script>
 <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
 
+<script src="{{ asset('Admin/assets') }}/libs/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.js"></script>
+
+<script src="{{ asset('Admin/assets') }}/js/pages/form-xeditable.init.js"></script>
+<script src="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.min.js"></script>
 {{-- end code nhúng bởi Nhân --}}
 
 {{-- code nhúng bởi Tưởng --}}
@@ -731,6 +785,15 @@ $('.choose').on('change', function() {
 <script src="{{ asset('Admin/assets') }}/js/pages/coso.js"></script>
 {{-- end code nhúng bởi Tưởng --}}
 
+{{--code của quốc--}}
+<script src="{{ asset('Admin/assets') }}/libs/isotope/isotope.pkgd.min.js"></script>
+
+<!--venobox lightbox-->
+<script src="{{ asset('Admin/assets') }}/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+<!-- Gallery Init-->
+<script src="{{ asset('Admin/assets') }}/js/pages/gallery.init.js"></script>
+{{--end code của quốc--}}
 
 </body>
 

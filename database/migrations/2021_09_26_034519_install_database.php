@@ -65,7 +65,7 @@ class InstallDatabase extends Migration
             $table->increments('id');
             $table->unsignedInteger('iddm');
             $table->string('img',255);
-            $table->string('tenbv',255);
+            $table->string('name',255);
             $table->string('slug',255);
             $table->longText('noidung');
             $table->boolean('trangthai');

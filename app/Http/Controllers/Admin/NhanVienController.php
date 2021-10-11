@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\NhanVien;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
-use App\Repositories\NhanVien\NhanVienReponsitoryinterface;
+use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use Illuminate\Http\Request;
 
 class NhanVienController extends Controller
@@ -15,7 +15,7 @@ class NhanVienController extends Controller
     private $coso;
     private $dichvu;
 
-    public function __construct(NhanVienReponsitoryinterface $nhanvien, CoSoRepositoryInterface $coso, DichVuRepositoryInterface $dichvu)
+    public function __construct(NhanVienRepositoryInterface $nhanvien, CoSoRepositoryInterface $coso, DichVuRepositoryInterface $dichvu)
     {
         $this->nhanvien = $nhanvien;
         $this->coso = $coso;
@@ -124,11 +124,57 @@ class NhanVienController extends Controller
      *
      * @param int $id
      * @return \Illuminate\Http\Response
+     * Tải ảnh khách hàng lên
+     * 1 show
+     * 2 up
+     * 3 xóa
      */
     public function show($id)
     {
         $nhanvien = $this->nhanvien->find($id);
         return view("Admin.NhanVien.ImgKhachHang", ['nhanvien' => $nhanvien]);
+    }
+
+    public function upImgKhachHang(Request $request, $id)
+    {
+        $nv = $this->nhanvien->find($id);
+        $jsonimg = json_decode($nv->img);
+        if (is_array($jsonimg)) {
+            $dataImg = $this->uploadMultipleImg($request->file('photos'));
+            $mergearray = array_merge($dataImg->getData('data'), $jsonimg);
+            $nhanvien = [
+                'img' => $mergearray
+            ];
+            $this->nhanvien->update($id, $nhanvien);
+        } else {
+            $dataImg = $this->uploadMultipleImg($request->file('photos'));
+            $nhanvien = [
+                'img' => $dataImg->getData('data')
+            ];
+            $this->nhanvien->update($id, $nhanvien);
+        }
+
+        $dataNV = $this->nhanvien->find($id);
+        return redirect(route("nhanvien.show", $id));
+    }
+
+    public function XoaImgKH($id, $idImg)
+    {
+        $nv = $this->nhanvien->find($id);
+        $jsonimg = json_decode($nv->img);
+        if (is_file('uploads/khachhang/' . $jsonimg[$idImg])) {
+            unlink('uploads/khachhang/' . $jsonimg[$idImg]);
+        }
+        if (count($jsonimg) == 1) {
+            $jsonimg = "";
+        } else {
+            array_splice($jsonimg, $idImg, 1);
+        }
+        $nhanvien = [
+            'img' => $jsonimg
+        ];
+        $this->nhanvien->update($id, $nhanvien);
+        return redirect(route("nhanvien.show", $id));
     }
 
     /**

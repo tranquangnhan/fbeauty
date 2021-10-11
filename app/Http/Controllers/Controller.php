@@ -6,21 +6,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-
+use Illuminate\Support\Facades\Storage;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     const BASE_URL_UPLOAD = 'Admin/assets/images/users/';
 
-
     function uploadSingle($file){
+        if($file == null) return null;
         $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
 
-        $path = $file->storeAs('photos', $filename);
+        Storage::disk('public')->put($filename, file_get_contents($file));
 
-        return $path;
-
+        return $filename;
     }
 
     /**
@@ -36,5 +35,16 @@ class Controller extends BaseController
             $img->move(self::BASE_URL_UPLOAD, $img->getClientOriginalName());
             return true;
         }
+    }
+
+    public function uploadMultipleImg($photos){
+        $paths  = [];
+        foreach ($photos as $index=> $photo) {
+            $extension = $photo->getClientOriginalExtension();
+            $filename  = 'photouser' . time(). $index . '.' . $extension;
+            $paths[]   =  $filename;
+            Storage::disk('imgKH')->put($filename, file_get_contents($photo));
+        }
+        return response()->json($paths);
     }
 }

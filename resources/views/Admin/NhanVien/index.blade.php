@@ -24,16 +24,12 @@
                                 @if(session('thanhcong'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         {{session('thanhcong')}}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
                                     </div>
                                 @endif
 
                                 @if(session('thatbai'))
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                         {{session('thatbai')}}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
                                     </div>
                                 @endif
 
@@ -43,7 +39,7 @@
                                 <tr>
                                     <th scope="">STT</th>
                                     <th width="37%">Thông tin nhân viên</th>
-                                    <th width="23%">Cơ sở & dịch vụ</th>
+                                    <th width="20%">Cơ sở & dịch vụ</th>
                                     <th width="10%">Avatar</th>
                                     <th width="22%">Phân quyền</th>
                                     <th width="">Sửa</th>
@@ -96,24 +92,29 @@
                                             <div class="row">
                                                 <div class="col-md-6 font-weight-bold">Role:</div>
                                                 <div
-                                                    class="col-md-6"><?php echo ($item->role == 1) ? "Admin" : "Staff";?></div>
+                                                    class="col-md-6"><?php echo ($item->role == 1) ? " <i class='fas fa-crown text-warning' style='font-size:10px'></i>Admin" : " <i class='fas fa-chess-pawn text-danger' style='font-size:12px'></i>Staff";?></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6 font-weight-bold">Active:</div>
                                                 <div
-                                                    class="col-md-6"><?php echo ($item->active == 1) ? "Kích hoạt" : "Chưa kích hoạt";?></div>
+                                                    class="col-md-6"><?php echo ($item->active == 1) ? "<i class='fa fa-circle text-success' style='font-size:7px'></i> Kích hoạt" : " <i class='fa fa-circle text-danger' style='font-size:7px'></i>Chưa kích hoạt";?></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6 font-weight-bold">Trạng thái:</div>
                                                 <div
-                                                    class="col-md-6"><?php echo ($item->active == 1) ? "Hoạt động" : "Không hoạt động";?></div>
+                                                    class="col-md-6"><?php echo ($item->active == 1) ? " <i class='fa fa-circle text-success' style='font-size:7px'></i> Hoạt động" : "<i class='fa fa-circle text-danger' style='font-size:7px'></i> Không hoạt động";?></div>
                                             </div>
                                         </td>
                                         <td>
                                             <a id="" class="btn btn-primary mb-2"
                                                href="{{route("nhanvien.edit", $item->id)}}" role="button" title="sửa"><i
                                                     class="fa fa-edit"></i></a>
+                                            <a id="" class="btn btn-primary mb-2"
+                                               href="{{route("nhanvien.edit", $item->id)}}" role="button"
+                                               title="Xem ảnh khách hàng"><i
+                                                    class="fa fa-edit"></i></a>
                                         </td>
+
                                     </tr>
                                 @endforeach
 

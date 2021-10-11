@@ -13,6 +13,10 @@ class DichVuReponsitory extends BaseRepository implements DichVuRepositoryInterf
     {
         return DichVu::class;
     }
+    public function getDichVu()
+    {
+
+    }
 
 
 }
