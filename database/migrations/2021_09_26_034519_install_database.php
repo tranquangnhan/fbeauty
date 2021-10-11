@@ -42,7 +42,7 @@ class InstallDatabase extends Migration
 
         Schema::create('dichvu', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tendv',255);
+            $table->string('name',255);
             $table->string('slug',255);
             $table->string('img',255);
             $table->unsignedInteger('giamgia')->default(0);
@@ -60,7 +60,7 @@ class InstallDatabase extends Migration
             $table->increments('id');
             $table->unsignedInteger('iddm');
             $table->string('img',255);
-            $table->string('tenbv',255);
+            $table->string('name',255);
             $table->string('slug',255);
             $table->longText('noidung');
             $table->boolean('trangthai');

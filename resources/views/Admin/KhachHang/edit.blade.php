@@ -84,18 +84,15 @@
                                 </div>
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100" for="active">Trạng thái:<span style="color:red;"> (*)</span>
-                                    <select class="form-control mt-2" name="active">
-                                        <option
-                                        value="1" <?php echo ($KhachHang->active == 1) ? 'selected' : '';?>>
-                                        Hoạt động
-                                    </option>
-                                    <option
-                                        value="0" <?php echo ($KhachHang->active == 0) ? 'selected' : '';?>>
-                                        Chưa hoạt dộng
-                                    </option>
-                                    </select>
+                                <label class="w-100 " for="active">Hoạt động <span style="color:red;"> (*)</span><br>
+                                <br><form >
+                                          <input type="radio" id="html" name="active" value="1" <?php echo ($KhachHang->active == 1) ? 'checked' : '';?>>
+                                          <label for="html">Kích hoạt</label><br>
+                                          <input type="radio" id="css" name="active" value="0" <?php echo ($KhachHang->active == 0) ? 'checked' : '';?>>
+                                          <label for="css">Chưa kích hoạt</label><br>
+                                    </form> 
                                 </label>
+                             
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
                                 <a href="/quantri/khachhang" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>

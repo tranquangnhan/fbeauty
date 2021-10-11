@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KhachHang;
-use App\Repositories\KhachHang\KhachHangReponsitory;
+use App\Repositories\KhachHang\KhachHangRepository;
 use Illuminate\Http\Request;
 
 class KhachHangController extends Controller
 {
 
     private $KhachHang;
-    public function __construct(KhachHangReponsitory $KhachHang)
+    public function __construct(KhachHangRepository $KhachHang)
     {
         $this->KhachHang = $KhachHang;
     }

@@ -11,7 +11,7 @@ class DichVu extends Model
     protected $table = 'dichvu';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'tendv',
+        'name',
         'slug',
         'img',
         'giamgia',
