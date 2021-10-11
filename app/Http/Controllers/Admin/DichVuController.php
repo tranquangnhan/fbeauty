@@ -61,8 +61,8 @@ class DichVuController extends Controller
             $name = rand() . '.' . $image->getClientOriginalName();
             $image->move(public_path('img'), $name);
             $DichVu = [
-                'tendv' => $request->tendv,
-                'slug' => Str::slug($request->tendv),
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
                 'img' => $name,
                 'giamgia' => $request->giamgia,
                 'iddm' => $request->danhmuc,
@@ -114,8 +114,8 @@ class DichVuController extends Controller
     public function update(Request $request, $id)
     {
             $DichVu = [
-                'tendv' => $request->tendv,
-                'slug' => Str::slug($request->tendv),
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
                 'giamgia' => $request->giamgia,
                 'iddm' => $request->danhmuc,
                 'motangan' => $request->motangan,

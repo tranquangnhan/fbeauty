@@ -22,9 +22,9 @@
                             <div class="col-lg-6">
                                 <div class="form-group ">
                                     <label for="">Tên bài viết</label><span style="color:red;"> (*)</span>
-                                    <input type="text" name="tenbv" value="{{old('tenbv')}}"
+                                    <input type="text" name="name" value="{{old('name')}}"
                                         parsley-trigger="change" placeholder="Tên bài viết" class="form-control">
-                                    @error('tenbv')
+                                    @error('name')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </div>
@@ -70,12 +70,15 @@
                                 @enderror
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100" for="active">Trạng thái <span style="color:red;"> (*)</span>
-                                    <select class="form-control mt-2" name="trangthai">
-                                        <option value="1">Hoạt động</option>
-                                        <option value="0">Chưa Hoạt động</option>
-                                    </select>
+                                <label class="w-100 " for="trangthai">Hoạt động <span style="color:red;"> (*)</span><br>
+                                <br><form >
+                                          <input type="radio" id="html" name="trangthai" value="1" checked>
+                                          <label for="html">Kích hoạt</label><br>
+                                          <input type="radio" id="css" name="trangthai" value="0" >
+                                          <label for="css">Chưa kích hoạt</label><br>
+                                    </form> 
                                 </label>
+                             
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
                                 <a href="/quantri/blog" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>

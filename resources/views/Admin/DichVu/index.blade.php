@@ -27,7 +27,7 @@
                                     @foreach ($data as $i=> $item)
                                         <tr>
                                             <td>{{$i+=1}}</td>
-                                            <td>{{$item->tendv}} <br>
+                                            <td>{{$item->name}} <br>
                                                 <?php if($item->trangthai == 0) echo "<div class=\"bg-danger mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
                                             </td> 
@@ -35,7 +35,7 @@
                                                 <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
                                             </td> 
                                             <td>
-                                                {{$item->name}}
+                                                {{$item->danhmuc}}
                                             </td> 
                                             <td>
                                                 {{$item->motangan}}

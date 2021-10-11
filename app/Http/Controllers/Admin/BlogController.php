@@ -56,8 +56,8 @@ class BlogController extends Controller
         $img = $this->uploadSingle($request->file('urlHinh'));
 
             $Blog = [
-                'tenbv' => $request->tenbv,
-                'slug' => Str::slug($request->tenbv),
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
                 'img' => $img,
                 'iddm' => $request->danhmuc,
                 'noidung' => $request->noidung,
@@ -103,8 +103,8 @@ class BlogController extends Controller
     public function update(Blog $request, $id)
     {
             $Blog = [
-                'tenbv' => $request->tenbv,
-                'slug' => Str::slug($request->tenbv),
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
                 'iddm' => $request->danhmuc,
                 'noidung' => $request->noidung,
                 'trangthai' => $request->trangthai
