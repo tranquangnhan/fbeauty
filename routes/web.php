@@ -58,4 +58,5 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 
 Route::group(['prefix' => '/'], function (){
     Route::get('trang-chu', [HomeController::class, "index"]);
+    Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
 });
