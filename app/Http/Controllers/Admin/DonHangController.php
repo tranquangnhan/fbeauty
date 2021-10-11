@@ -82,9 +82,13 @@ class DonHangController extends Controller
         $validated = $request->validated();
 
         $data = [
-            'name'=> $request->name,
-            'slug'=>Str::slug($request->name),
-            'loai'=>$request->loai
+            // 'tennguoinhan'=> $request->namenguoinhan,
+            // 'diachikhachhang'=>$request->diachi,
+            // 'sdtnguoinhan'=>$request->sodienthoai,
+            // 'tongtientruocgiamgia'=>$request->tongtientruocgiamgia,
+            // 'tongtiensaugiamgia'=>$request->tongtiensaugiamgia,
+            // 'ghichucuakhachhang'=>$request->ghichukhachhang,
+            // 'phuongthucgiaohang'=>$request->phuongthucthanhtoan
         ];
 
         $this->DonHang->update($id,$data);
@@ -106,21 +110,15 @@ class DonHangController extends Controller
         return redirect('quantri/donhang')->with('success','Xoá thành công');
     }
 
-    public function active ($id){
+    // public function active ($id){
 
-        $this->DonHang->where('id',$id)->update(['trangthai'=>0]);
-    }
-    public function active_1 ($id){
+    //     $this->DonHang->active_donhang($id);
+    // DB::table('donhang')->where('id',$id)->update(['trangthai'=>1]);
 
-        $this->DonHang->where('id',$id)->update(['trangthai'=>1]);
-    }
-    public function active_2 ($id){
+    // }
+    // public function active_3 ($id){
 
-        $this->DonHang->where('id',$id)->update(['trangthai'=>2]);
-    }
-    public function active_3 ($id){
-
-        $this->DonHang->where('id',$id)->update(['trangthai'=>3]);
-    }
+    //     $this->DonHang->active_donhang($id);
+    // }
 
 }

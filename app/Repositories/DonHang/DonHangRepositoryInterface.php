@@ -8,8 +8,6 @@ interface DonHangRepositoryInterface
 {
     public function getAll();
 
-    public function where($id);
-
     public function find($id);
 
     public function create($attributes = []);
@@ -17,4 +15,5 @@ interface DonHangRepositoryInterface
     public function update($id,$attributes = []);
 
     public function delete($id);
+    public function active_donhang($id);
 }

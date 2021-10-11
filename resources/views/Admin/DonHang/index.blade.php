@@ -71,8 +71,8 @@
                                             ?>
                                             </td>
                                             <td class="d-flex">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
-                                                <form action="{{route('danhmuc.destroy',$item->id)}}"  method="post">
+                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('donhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
+                                                <form action="{{route('donhang.destroy',$item->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
