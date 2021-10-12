@@ -77,6 +77,7 @@ class InstallDatabase extends Migration
         Schema::create('coso', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',255);
+            $table->string('diachi',255);
             $table->unsignedInteger('tinh');
             $table->unsignedInteger('quan');
             $table->unsignedInteger('huyen');

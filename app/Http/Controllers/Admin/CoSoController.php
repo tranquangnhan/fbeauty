@@ -49,6 +49,7 @@ class CoSoController extends Controller
 
         $data = [
             'name'=> $request->name,
+            'diachi'=> $request->diachi,
             'tinh'=>$request->city,
             'quan'=>$request->province,
             'huyen'=>$request->wards
@@ -120,6 +121,7 @@ class CoSoController extends Controller
 
         $data = [
             'name'=> $request->name,
+            'diachi'=> $request->diachi,
             'tinh'=>$request->city,
             'quan'=>$request->province,
             'huyen'=>$request->wards

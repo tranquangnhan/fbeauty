@@ -42,6 +42,11 @@
                                                    placeholder="Tên Danh Mục" >
                                         </div>
                                         <div class="form-group">
+                                            <label for="">Địa chỉ cụ thể</label><span style="color:red;"> (*)</span>
+                                            <input type="text" name="diachi" class="form-control @error('diachi') border-error @enderror diachi" value="{{$data->diachi}}"  parsley-trigger="change" required
+                                                   placeholder="Tên Địa Chỉ Cụ Thể" >
+                                        </div>
+                                        <div class="form-group">
                                             <label for="">  Chọn Tỉnh/Thành Phố</label><span style="color:red;"> (*)</span>
                                             <div>
                                               <select class="form-control input-sm m-bot15 choose city" name="city" id="city"  >
