@@ -31,4 +31,8 @@ class NhanVienRepository extends BaseRepository implements NhanVienRepositoryInt
     public function CheckSdt($sdt){
         return $this->model->select('*')->where('sdt', '=', $sdt)->doesntExist();
     }
+
+    public function getNhanVienByIdCoSo($id) {
+        return $this->model::where('idcoso', $id)->get();
+    }
 }
