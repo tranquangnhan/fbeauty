@@ -3,6 +3,7 @@
 
 namespace App\Repositories\DichVu;
 
+use App\Models\Admin\DichVu;
 use App\Repositories\BaseRepository;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
 
@@ -12,7 +13,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
 
     public function getModel()
     {
-        return DichVuModel::class;
+        return DichVu::class;
     }
 
     public function getDichVu()

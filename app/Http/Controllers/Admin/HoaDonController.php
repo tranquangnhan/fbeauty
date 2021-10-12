@@ -3,10 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\CoSo\CoSoRepositoryInterface;
+use App\Repositories\DichVu\DichVuRepositoryInterface;
+use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use Illuminate\Http\Request;
 
 class HoaDonController extends Controller
 {
+    private $nhanvien;
+    private $coso;
+    private $dichvu;
+
+    public function __construct(NhanVienRepositoryInterface $nhanvien, CoSoRepositoryInterface $coso, DichVuRepositoryInterface $dichvu)
+    {
+        $this->nhanvien = $nhanvien;
+        $this->coso = $coso;
+        $this->dichvu = $dichvu;
+    }
     /**
      * Display a listing of the resource.
      *

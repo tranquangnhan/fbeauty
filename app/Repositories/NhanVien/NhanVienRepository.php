@@ -3,6 +3,7 @@
 
 namespace App\Repositories\NhanVien;
 
+use App\Models\Admin\NhanVien;
 use App\Repositories\BaseRepository;
 
 use App\Repositories\NhanVien\NhanVienRepositoryInterface;

@@ -4,7 +4,9 @@
 namespace App\Repositories\HoaDon;
 
 
-interface HoaDonRepositoryInterface
+use App\Repositories\RepositoryInterface;
+
+interface HoaDonRepositoryInterface extends RepositoryInterface
 {
 
 }

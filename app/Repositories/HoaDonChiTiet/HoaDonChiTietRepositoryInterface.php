@@ -4,7 +4,9 @@
 namespace App\Repositories\HoaDonChiTiet;
 
 
-interface HoaDonChiTietRepositoryInterface
+use App\Repositories\RepositoryInterface;
+
+interface HoaDonChiTietRepositoryInterface extends RepositoryInterface
 {
 
 }

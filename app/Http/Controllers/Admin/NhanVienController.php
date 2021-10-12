@@ -33,6 +33,11 @@ class NhanVienController extends Controller
         return view("Admin.NhanVien.index", ['data' => $data]);
     }
 
+    public function AllImgKH() {
+        $data = $this->nhanvien->getNhanVien();
+        return view("Admin.NhanVien.allimg", ['data' => $data]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -244,6 +249,8 @@ class NhanVienController extends Controller
             return redirect('quantri/nhanvien')->with('thatbai', 'Avatar không hợp lệ');
         }
     }
+
+
 
     /**
      * Remove the specified resource from storage.
