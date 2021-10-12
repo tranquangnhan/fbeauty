@@ -9,4 +9,5 @@ use App\Repositories\RepositoryInterface;
 interface DichVuRepositoryInterface extends RepositoryInterface
 {
     public function getDichVu();
+
 }

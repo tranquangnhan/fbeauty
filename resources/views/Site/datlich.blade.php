@@ -1,7 +1,7 @@
 <div id="modal-container">
     <div class="modal-background">
         <div class="close-modal background-close"></div>
-        <div class="modal" style="width: 50%;height: 90%;">
+        <div class="modal" style="width: 50%;height: auto;">
             <div class="noidung-modal h-100 w-100">
                 <div class="row h-100">
                     <div class="col-xl-12 p-0">
@@ -9,8 +9,8 @@
                             <div class="modal-content-1 h-100">
 
                                 <div class="datlich-step h-100 active" data-step="0">
-                                    <div class="title-3 color-main">Nhập SĐT & Chọn cơ sở</div>
-                                    <div class="text-7">Nếu bạn chưa biết chọn dịch vụ nào hãy chọn ‘’Tôi muốn tư vấn’’ </div>
+                                    <div class="title-3 color-main uppercase">Nhập SĐT & Chọn cơ sở</div>
+                                    <div class="text-10">Nếu bạn chưa biết chọn dịch vụ nào hãy chọn ‘’Tôi muốn tư vấn’’ </div>
                                     <div class="list-select position-relative">
                                         <div class="box-spinner">
                                             <div class="spinner-border" role="status">
@@ -54,8 +54,8 @@
                                 </div>
 
                                 <div class="datlich-step h-100" data-step="1">
-                                    <div class="title-3 color-main">Chọn dịch vụ</div>
-                                    <div class="text-7">Nếu bạn chưa biết chọn dịch vụ nào hãy chọn ‘’Tôi muốn tư vấn’’ </div>
+                                    <div class="title-3 uppercase color-main">Chọn dịch vụ</div>
+                                    <div class="text-10">Nếu bạn chưa biết chọn dịch vụ nào hãy chọn ‘’Tôi muốn tư vấn’’ </div>
                                     <div class="list-select">
                                         <div class="select-custom">
                                             <div class="select-fa">
@@ -202,8 +202,8 @@
                                 </div>
 
                                 <div class="datlich-step h-100" data-step="2">
-                                    <div class="title-3 color-main">Thời gian bạn đến</div>
-                                    <div class="text-7">Để tiết kiệm thời gian cho bạn hãy đặt trước khi đến spa</div>
+                                    <div class="title-3 uppercase color-main">Thời gian bạn đến</div>
+                                    <div class="text-10">Để tiết kiệm thời gian cho bạn hãy đặt trước khi đến spa</div>
                                     <div class="list-select position-relative">
                                         <div class="box-spinner">
                                             <div class="spinner-border" role="status">

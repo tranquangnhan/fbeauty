@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Admin\CosoModel;
-use App\Models\Admin\DichVuModel;
+
 use App\Models\Admin\NhanVien;
-use App\Repositories\NhanVien\NhanVienRepository;
+// use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use App\Repositories\Coso\CoSoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DichVu\DichVuRepository;
@@ -22,24 +21,22 @@ class HomeController extends Controller
     /**
      * CosoController constructor.
      */
-    public function __construct(CoSoRepository $Coso, NhanVienRepository $Nhanvien)
+    public function __construct(CoSoRepository $Coso, DanhMucRepository $Danhmuc, DichVuRepository $Dichvu)
     {
         $this->Coso = $Coso;
-        // $this->Dichvu = $Dichvu;
-        // $this->Danhmuc = $Danhmuc;
-        $this->Nhanvien = $Nhanvien;
+        $this->Danhmuc = $Danhmuc;
+        $this->Dichvu = $Dichvu;
 
-        // $listDanhMuc = $this->Dichvu->getAll();
-        // dd($listDanhMuc);
-        // $listCoSo = $this->Coso->getAll();
-        // $this->data = array(
-        // 'listCoSo' => $listCoSo
-        // );
+        $listCoSo = $this->Coso->getAll();
+        $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
+        $this->data = array(
+            'listCoSo' => $listCoSo
+        );
     }
 
     public function index() {
 
-        // return view('Site.home', $this->data);
+        return view('Site.home', $this->data);
     }
 
     public function getNhanVienByIdCoSo(Request $request, $id) {
@@ -70,5 +67,10 @@ class HomeController extends Controller
 
     public function getNhanVienTam($id) {
         return NhanVien::where('idcoso', $id)->get();
+    }
+
+    public function getDichVuTheoDanhMuc() {
+        $listDanhMuc = $this->Danhmuc->findDanhMucByIdLoai(Controller::LOAI_DANHMUC_DICHVU);
+        // dd($listDanhMuc);
     }
 }
