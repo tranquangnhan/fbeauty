@@ -17,9 +17,9 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
 
     public function getBlog()
     {
-        return $this->model->select('blog.*', 'danhmuc.name')
-        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
-        ->get();
+        return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' )
+            ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+            ->get();
     }
 
     public function editBlog($id)
