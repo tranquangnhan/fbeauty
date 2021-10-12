@@ -16,6 +16,8 @@ const elementValueNhanVien = $('.value-nhanvien');
 
 const attrOptionTime = 'data-option-time';
 const attrValueTime = 'data-time';
+const classError = 'fa-error';
+var totalPriceDichVu = 0;
 
 $('#logo-slide').owlCarousel({
     loop: true,
@@ -147,7 +149,6 @@ $('.prev-step').click(function (e) {
 function nextStep() {
     var activeStep = getActiveStep();
     var nextStep = parseInt(activeStep) + 1;
-    console.log(nextStep);
     checkStepAndCallAction(activeStep, nextStep);
 }
 
@@ -169,14 +170,69 @@ function actionMoveSlide(activeStep, nextStep, tranlateRange) {
 }
 
 function checkStepAndCallAction(activeStep, nextStep) {
-    if (nextStep < maxStep + 1 && nextStep > - 1) {
-        var tranlatexRangeZ = nextStep * tranlatexRange;
-        actionMoveSlide(activeStep, nextStep, tranlatexRangeZ);
+    var checkMove = true;
+    if (activeStep == 0) {
+        console.log('Page 1');
+        var phoneNumber = $('#phoneNumber').val();
+        var idCoSo = $('.value-coso').attr('data-coso');
+        var error = firstPageModalValidCheck(phoneNumber, idCoSo);
+        var controlShort = $('[data-step=0]');
+        if (error) {
+            checkMove = false;
+            controlShort.removeClass('done');
+        } else {
+            controlShort.addClass('done');
+            // Load nhân viên của cơ sở được chọn
+            getNhanVienByIdCoSo(idCoSo);
+        }
+    }
+
+    if (activeStep == 1) {
+        console.log(1);
+    }
+
+    if (activeStep == 2) {
+        console.log(2);
+    }
+
+    if (activeStep == 3) {
+        console.log(3);
+    }
+
+    if (checkMove) {
+        if (nextStep < maxStep + 1 && nextStep > - 1) {
+            var tranlatexRangeZ = nextStep * tranlatexRange;
+            actionMoveSlide(activeStep, nextStep, tranlatexRangeZ);
+        }
     }
 }
 
+function firstPageModalValidCheck(phone, coSo) {
+    var error = false;
+    $('.form-phone-number').removeClass(classError);
+    $('.select-coso').removeClass(classError);
 
+    if (phone == '') {
+        error = true;
+        $('.form-phone-number').addClass(classError);
+    }
 
+    if (parseInt(coSo) == 0) {
+        error = true;
+        $('.select-coso').addClass(classError);
+    }
+
+    return error;
+}
+
+function calTotal() {
+    totalPriceDichVu = 0;
+    $('input[name="dichvu"]').each(function() {
+        totalPriceDichVu += (this.checked ? parseInt($(this).val()) : 0);
+    });
+
+    $('.tongtiendichvu').html(totalPriceDichVu);
+}
 
 $('.name-select').click(function (e) {
     e.preventDefault();
@@ -267,14 +323,30 @@ elementPickCoSo.click(function (e) {
 
 $('.check-next-step').click(function (e) {
     e.preventDefault();
-    $('.box-spinner').fadeIn(timeMoving, function() {
-        setTimeout(() => {
-            $('.box-spinner').fadeOut(timeMoving);
-        }, 500);
-    });
-    var demoS = (timeMoving * 2) + 550;
-    setTimeout(() => {
-        nextStep();
-    }, demoS);
+    // $('.box-spinner').fadeIn(timeMoving, function() {
+    //     setTimeout(() => {
+    //         $('.box-spinner').fadeOut(timeMoving);
+    //     }, 500);
+    // });
+    // var demoS = (timeMoving * 2) + 550;
+    // setTimeout(() => {
 
+    // }, demoS);
+    nextStep();
 });
+
+$('.control-item').click(function (e) {
+    e.preventDefault();
+    var nextStep = $(this).attr('data-step');
+    var activeStep = getActiveStep();
+    checkStepAndCallAction(activeStep, nextStep);
+});
+
+function spinnerTurnOn() {
+    $('.box-spinner').fadeIn(timeMoving);
+}
+
+function spinnerTurnOff() {
+    $('.box-spinner').fadeOut(timeMoving);
+}
+

@@ -26,6 +26,7 @@ class InstallDatabase extends Migration
         Schema::dropIfExists('hoadon');
         Schema::dropIfExists('hoadonchitiet');
         Schema::dropIfExists('datlich');
+        Schema::dropIfExists('lich');
         Schema::dropIfExists('sanpham');
         Schema::dropIfExists('sanphamchitiet');
         Schema::dropIfExists('donhang');
@@ -42,7 +43,7 @@ class InstallDatabase extends Migration
 
         Schema::create('dichvu', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tendv',255);
+            $table->string('name',255);
             $table->string('slug',255);
             $table->string('img',255);
             $table->unsignedInteger('giamgia')->default(0);
@@ -60,7 +61,7 @@ class InstallDatabase extends Migration
             $table->increments('id');
             $table->unsignedInteger('iddm');
             $table->string('img',255);
-            $table->string('tenbv',255);
+            $table->string('name',255);
             $table->string('slug',255);
             $table->longText('noidung');
             $table->boolean('trangthai');
@@ -232,9 +233,9 @@ class InstallDatabase extends Migration
             $table->char('phuongthucthanhtoan',5);
             $table->char('phuongthucgiaohang',5);
             $table->boolean('trangthai');
-            $table->timestamps();
             $table->foreign('idkhachhang')->references('id')->on('khachhang');
             $table->foreign('idgiamgia')->references('id')->on('giamgia');
+            $table->timestamps();
         });
 
         Schema::create('donhangchitiet', function (Blueprint $table) {
