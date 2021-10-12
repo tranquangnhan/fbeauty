@@ -11,4 +11,5 @@ interface NhanVienRepositoryInterface extends RepositoryInterface
 public function getNhanVien();
 public function CheckEmail($email);
 public function CheckSdt($sdt);
+
 }
