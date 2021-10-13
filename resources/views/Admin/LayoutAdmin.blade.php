@@ -252,10 +252,6 @@
                 </button>
             </li>
 
-            <li>
-                <h4 class="page-title-main">Vertical</h4>
-            </li>
-
         </ul>
 
     </div>
@@ -263,66 +259,65 @@
 
     <!-- ========== Left Sidebar Start ========== -->
     <div class="left-side-menu">
+        <div class="user-box text-center">
+            <img src="{{ asset('Admin/assets') }}/images/users/{{auth()->user()->avatar}}" alt="user-img"
+                 title="Mat Helme" class="rounded-circle img-thumbnail avatar-md">
+            <div class="dropdown">
+                <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown"
+                   aria-expanded="false">{{auth()->user()->name}}</a>
+                <div class="dropdown-menu user-pro-dropdown">
 
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-user mr-1"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-settings mr-1"></i>
+                        <span>Settings</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-lock mr-1"></i>
+                        <span>Lock Screen</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-log-out mr-1"></i>
+                        <span>Logout</span>
+                    </a>
+
+                </div>
+            </div>
+            <p class="text-muted"><i class="mdi mdi-circle text-success"></i> Admin</p>
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <a href="#" class="text-muted">
+                        <i class="mdi mdi-cog"></i>
+                    </a>
+                </li>
+
+                <li class="list-inline-item">
+                    <a href="{{URL::to('/quantri/logout')}}">
+                        <i class="mdi mdi-power"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <small class="menu-title ml-3 text-secondary">Quản lý: </small>
         <div class="slimscroll-menu">
 
             <!-- User box -->
-            <div class="user-box text-center">
-                <img src="{{ asset('Admin/assets') }}/images/users/{{auth()->user()->avatar}}" alt="user-img"
-                     title="Mat Helme" class="rounded-circle img-thumbnail avatar-md">
-                <div class="dropdown">
-                    <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown"
-                       aria-expanded="false">Nowak Helme</a>
-                    <div class="dropdown-menu user-pro-dropdown">
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-user mr-1"></i>
-                            <span>My Account</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-settings mr-1"></i>
-                            <span>Settings</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-lock mr-1"></i>
-                            <span>Lock Screen</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-log-out mr-1"></i>
-                            <span>Logout</span>
-                        </a>
-
-                    </div>
-                </div>
-                <p class="text-muted">Admin Head</p>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="#" class="text-muted">
-                            <i class="mdi mdi-cog"></i>
-                        </a>
-                    </li>
-
-                    <li class="list-inline-item">
-                        <a href="{{URL::to('/quantri/logout')}}">
-                            <i class="mdi mdi-power"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
             <!--- Sidemenu -->
             <div id="sidebar-menu">
 
                 <ul class="metismenu" id="side-menu">
 
-                    <li class="menu-title">Navigation</li>
+
 
                 <?php  use Illuminate\Support\Facades\Auth; $user = Auth::user();?>
                 <!--- Nhân viên -->
@@ -379,7 +374,8 @@
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("nhanvien.index")}}">Danh sách</a></li>
                                 <li><a href="{{route("nhanvien.create")}}">Thêm nhân viên</a></li>
-                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Ảnh khách hàng</a></li>
+                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Thêm ảnh khách <hàng></hàng></a></li>
+                                <li><a href="{{URL::to("quantri/nhanvien/imgcustomer/pictures")}}">Tất cả ảnh khách hàng</a></li>
                             </ul>
                         </li>
 
@@ -405,6 +401,17 @@
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("khachhang.index")}}">Danh sách</a></li>
                                 <li><a href="{{route("khachhang.create")}}">Thêm Khách hàng</a></li>
+                            </ul>
+                        </li>
+                        <!--- Hóa đơn -->
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <span> Hóa đơn </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("hoadon.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
 

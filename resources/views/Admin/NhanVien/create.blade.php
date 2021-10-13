@@ -12,20 +12,14 @@
                     <div class="col-12">
                         <div class="card-box">
                             <h4 class="mt-0 header-title">Thêm nhân viên</h4>
-
                             <div>
                                 <a href="{{route("nhanvien.index")}}"
-                                   class="btn btn-primary waves-effect waves-light mb-3">Danh sách nhân viên</a>
+                                   class="btn btn-primary waves-effect waves-light mb-3">Danh sách nhân viên --></a>
                             </div>
                             <form action="{{route('nhanvien.store')}}" id="ktform" enctype="multipart/form-data"
                                   method="post">
                                 @csrf
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="myModalLabel">Thêm nhân viên</h4>
-                                </div>
                                 <div class="modal-body">
-
-
                                     <div class="row">
                                         <div class="col-md-6">
 

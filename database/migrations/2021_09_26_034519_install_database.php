@@ -236,8 +236,6 @@ class InstallDatabase extends Migration
             $table->foreign('idkhachhang')->references('id')->on('khachhang');
             $table->foreign('idgiamgia')->references('id')->on('giamgia');
             $table->timestamps();
-            $table->foreign('idkhachhang')->references('id')->on('khachhang');
-            $table->foreign('idgiamgia')->references('id')->on('giamgia');
         });
 
         Schema::create('donhangchitiet', function (Blueprint $table) {
