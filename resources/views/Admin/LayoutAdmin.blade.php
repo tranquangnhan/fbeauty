@@ -252,10 +252,6 @@
                 </button>
             </li>
 
-            <li>
-                <h4 class="page-title-main">Vertical</h4>
-            </li>
-
         </ul>
 
     </div>
@@ -379,7 +375,7 @@
                                 <li><a href="{{route("nhanvien.index")}}">Danh sách</a></li>
                                 <li><a href="{{route("nhanvien.create")}}">Thêm nhân viên</a></li>
                                 <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Thêm ảnh khách <hàng></hàng></a></li>
-                                <li><a href="{{URL::to("quantri/nhanvien/imgcustomer")}}">Tất cả ảnh khách hàng</a></li>
+                                <li><a href="{{URL::to("quantri/nhanvien/imgcustomer/pictures")}}">Tất cả ảnh khách hàng</a></li>
                             </ul>
                         </li>
 

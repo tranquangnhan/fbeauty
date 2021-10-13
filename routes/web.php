@@ -54,7 +54,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('nhanvien/kiemtraemail/{name}',[NhanVienController::class, "CheckEmailTonTai"]);
     Route::get('nhanvien/kiemtrasdt/{name}',[NhanVienController::class, "CheckSdtTonTai"]);
     Route::get("nhanvien/xoaImgKH/{id}/phantu/{idAnh}", [NhanVienController::class, "XoaImgKH"]);
-    Route::get("nhanvien/imgcustomer", [NhanVienController::class, "AllImgKH"]);
+    Route::get("nhanvien/imgcustomer/pictures", [NhanVienController::class, "AllImgKH"]);
 
     Route::resource('hoadon', HoaDonController::class);
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
