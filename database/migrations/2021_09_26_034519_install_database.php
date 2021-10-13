@@ -81,13 +81,13 @@ class InstallDatabase extends Migration
 
         Schema::create('khachhang', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',255);
-            $table->string('sdt',10);
-            $table->string('email',255)->unique();
-            $table->string('password',255);
+            $table->string('name',255)->nullable();
+            $table->string('sdt',10)->unique();
+            $table->string('email',255)->unique()->nullable();
+            $table->string('password',255)->nullable();
             $table->string('idgoogle',255)->nullable();
             $table->boolean('active',1);
-            $table->string('img',255);
+            $table->string('img',255)->nullable();
             $table->string('randomkey',255)->nullable();
             $table->unsignedInteger('exp')->nullable();
             $table->rememberToken();

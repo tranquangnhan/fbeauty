@@ -30,14 +30,16 @@ class HomeController extends Controller
         $this->NhanVien = $NhanVien;
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
+
         $this->data = array(
-            'listCoSo' => $listCoSo
+            'listCoSo' => $listCoSo,
+            'listDanhMucDichVu' => $listDanhMucDichVu
         );
     }
 
     public function index() {
-        $data = $this->NhanVien->getAll();
-     
+        // $data = $this->NhanVien->getAll();
+
         return view('Site.home', $this->data);
     }
 
@@ -73,6 +75,12 @@ class HomeController extends Controller
 
     public function getDichVuTheoDanhMuc() {
         $listDanhMuc = $this->Danhmuc->findDanhMucByIdLoai(Controller::LOAI_DANHMUC_DICHVU);
-        // dd($listDanhMuc);
+
+        foreach ($listDanhMuc as $row) {
+            $dichVu = $this->Dichvu->getDichVuTheoDanhMuc($row->id);
+            $row->listDichVu = $dichVu;
+        }
+
+        return $listDanhMuc;
     }
 }

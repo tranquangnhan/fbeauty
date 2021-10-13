@@ -17,6 +17,11 @@ const elementValueNhanVien = $('.value-nhanvien');
 const attrOptionTime = 'data-option-time';
 const attrValueTime = 'data-time';
 const classError = 'fa-error';
+
+const controlShortOne = $('[data-step=0]');
+const controlShortTwo = $('[data-step=1]');
+const controlShortThree = $('[data-step=2]');
+const controlShortFour = $('[data-step=3]');
 var totalPriceDichVu = 0;
 
 $('#logo-slide').owlCarousel({
@@ -176,19 +181,26 @@ function checkStepAndCallAction(activeStep, nextStep) {
         var phoneNumber = $('#phoneNumber').val();
         var idCoSo = $('.value-coso').attr('data-coso');
         var error = firstPageModalValidCheck(phoneNumber, idCoSo);
-        var controlShort = $('[data-step=0]');
         if (error) {
             checkMove = false;
-            controlShort.removeClass('done');
+            controlShortOne.removeClass('done');
         } else {
-            controlShort.addClass('done');
+            controlShortOne.addClass('done');
             // Load nhân viên của cơ sở được chọn
             getNhanVienByIdCoSo(idCoSo);
         }
     }
 
     if (activeStep == 1) {
-        console.log(1);
+        //select-nhanvien dichVuChecked
+        var error = seccondPageModalCheck();
+        if (error) {
+            checkMove = false;
+            controlShortTwo.removeClass('done');
+        } else {
+            controlShortTwo.addClass('done');
+        }
+
     }
 
     if (activeStep == 2) {
@@ -205,6 +217,17 @@ function checkStepAndCallAction(activeStep, nextStep) {
             actionMoveSlide(activeStep, nextStep, tranlatexRangeZ);
         }
     }
+}
+
+function seccondPageModalCheck() {
+    var error = false;
+    $('.select-dichvu').removeClass(classError);
+    if(!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0){
+        $('.select-dichvu').addClass(classError);
+        error = true;
+    }
+
+    return error;
 }
 
 function firstPageModalValidCheck(phone, coSo) {
@@ -225,13 +248,44 @@ function firstPageModalValidCheck(phone, coSo) {
     return error;
 }
 
+var dichVuChecked = [];
+
 function calTotal() {
+    if(!checkBoxTuVan.prop('checked')){
+        tinhTongVaPushArrayIdDichVu();
+    } else {
+        checkBoxDichVu.prop('checked', false);
+    }
+}
+
+function tinhTongVaPushArrayIdDichVu() {
     totalPriceDichVu = 0;
     $('input[name="dichvu"]').each(function() {
-        totalPriceDichVu += (this.checked ? parseInt($(this).val()) : 0);
-    });
+        var idDichVu = $(this).attr('data-id');
+            idDichVu = parseInt(idDichVu);
 
-    $('.tongtiendichvu').html(totalPriceDichVu);
+        if (this.checked) {
+            totalPriceDichVu += parseInt($(this).val());
+
+            if (!dichVuChecked.includes(idDichVu)) {
+                dichVuChecked.push(idDichVu);
+            }
+        } else {
+            if (dichVuChecked.includes(idDichVu)) {
+                let index = dichVuChecked.indexOf(idDichVu);
+                if (index > -1) {
+                    dichVuChecked.splice(index, 1);
+                }
+            }
+        }
+    });
+    inTotalToBrowser(totalPriceDichVu);
+}
+
+function inTotalToBrowser(totalPriceDichVu) {
+    var totalFormat = new Intl.NumberFormat('en-US', { style: 'decimal' }).format(totalPriceDichVu) + 'đ';
+    $('.tongtiendichvu').attr('data-tongtien', totalPriceDichVu);
+    $('.tongtiendichvu').html(totalFormat);
 }
 
 $('.name-select').click(function (e) {
@@ -348,5 +402,91 @@ function spinnerTurnOn() {
 
 function spinnerTurnOff() {
     $('.box-spinner').fadeOut(timeMoving);
+}
+
+var oldDichVuChecked;
+var checkBoxTuVan = $('.checkbox-tuvan');
+var checkBoxDichVu = $('.checkbox-dichvu');
+function uncheckDichVu() {
+    if(checkBoxTuVan.prop('checked')){
+        checkBoxDichVu.prop('checked', false);
+        tinhTongVaPushArrayIdDichVu();
+    }
+}
+
+loadNgayDatLich();
+function loadNgayDatLich() {
+    var htmlDate = ``;
+    for (let i = 0; i < 7; i++) {
+        let someDay  = moment().add(i, 'days');
+        var numberThu = someDay.day();
+        let textThuTrongTuan = getThuVietHoa(numberThu);
+        let dateWasFormat = moment(someDay).format('DD/MM');
+
+        var textOnBrowser = getTextDateOnBrowser(i, dateWasFormat, textThuTrongTuan);
+        htmlDate += rowHTMLDate(dateWasFormat, textOnBrowser, numberThu);
+    }
+    $('.list-option-lich').append(htmlDate);
+}
+
+function rowHTMLDate(dateWasFormat, textOnBrowser, numberThu) {
+    let html =
+    `
+    <div class="option-item date-bg">
+        <div class="pickdate" data-option-date="${dateWasFormat}">${textOnBrowser}</div>
+    `;
+
+    if (numberThu > 0 && numberThu < 6) {
+        html += `<div class="card-custom-small normal">Ngày thường</div>`;
+    } else {
+        html += `<div class="card-custom-small special">Cuối tuần</div>`;
+    }
+
+    html += `
+    </div>
+    `;
+
+    return html;
+}
+
+function getTextDateOnBrowser(index, dateWasFormat, thuTrongTuan) {
+    var text = '';
+    if (index == 0) {
+        text = `Hôm nay, ${thuTrongTuan} (${dateWasFormat})`;
+    }
+    else if (index == 1) {
+        text = `Ngày mai, ${thuTrongTuan} (${dateWasFormat})`;
+
+    }
+    else if (index == 2) {
+        text = `Hôm mốt, ${thuTrongTuan} (${dateWasFormat})`;
+    }
+    else {
+        text = `${thuTrongTuan} (${dateWasFormat})`;
+    }
+
+    return text;
+}
+
+function getThuVietHoa(numberThu) {
+    var text = '';
+
+    if (numberThu == 0) {
+        text = 'CN';
+    } else if (numberThu == 1) {
+        text = 'T2';
+    } else if (numberThu == 2) {
+        text = 'T3';
+    } else if (numberThu == 3) {
+        text = 'T4';
+    } else if (numberThu == 4) {
+        text = 'T5';
+    } else if (numberThu == 5) {
+        text = 'T6';
+    } else if (numberThu == 6) {
+        text = 'T7';
+    }
+
+    return text;
 }
 

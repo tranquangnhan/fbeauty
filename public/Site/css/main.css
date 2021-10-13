@@ -2015,6 +2015,8 @@ button:focus {
     font-size: .9em;
     font-weight: 400;
     background: white;
+    display: flex;
+    justify-content: space-between;
 }
 
 .pickdate {
@@ -2242,6 +2244,28 @@ form.form-phone-number {
 
 .uppercase {
     text-transform: uppercase;
+}
+
+.card-custom-small {
+    background: #11b14b;
+    font-size: .9em;
+    border-radius: 3px;
+    text-align: center;
+    position: relative;
+    color: white;
+    width: 15%;
+    height: 23px;
+    line-height: 23px;
+}
+
+.card-custom-small.normal {
+    background: #11b14b;
+    color: white;
+}
+
+.card-custom-small.special {
+    background: var(--main-color);
+    color: white;
 }
 
 /* Reponsive */

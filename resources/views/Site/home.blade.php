@@ -428,7 +428,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -461,7 +461,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -494,7 +494,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -536,8 +536,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image
-                                                            8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -569,8 +568,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image
-                                                            8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -1390,6 +1388,9 @@
 
 {{-- Owl carousel --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+{{-- Moment JS --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 {{-- Custom js --}}
 <script src="{{ asset('Site/js') }}/main.js"></script>

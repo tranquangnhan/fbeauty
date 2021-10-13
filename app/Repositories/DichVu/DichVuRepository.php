@@ -32,4 +32,9 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
             ->where('dichvu.id', $id)
             ->get();
     }
+
+    public function getDichVuTheoDanhMuc($iddanhmuc)
+    {
+        return $this->model::where('iddm', $iddanhmuc)->get();
+    }
 }
