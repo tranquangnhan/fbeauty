@@ -38,11 +38,15 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="">Tên Người Đặt</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="namedat" class="form-control @error('name') border-error @enderror name" value="{{$data->idkhachhang}}"  parsley-trigger="change" required readonly>
+
+                                            <input type="text" name="namedat" class="form-control @error('name') border-error @enderror name" value="{{$khachHang->name}}"  parsley-trigger="change" required readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="magiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->idgiamgia}}"  parsley-trigger="change" required readonly>
+                                            <input type="text" name="magiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->idgiamgia}}"  parsley-trigger="change" required >
+                                            <!-- <select class="form-control input-sm m-bot15" name="magiamgia" >
+                                                <option value="">{{$data->idgiamgia}}</option>
+                                                </select> -->
                                         </div>
                                         <div class="form-group">
                                             <label for="">Tên Người Nhận</label><span style="color:red;"> (*)</span>
@@ -80,7 +84,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="">Phương Thức Giao Hàng</label><span style="color:red;"> (*)</span>
-                                            <select name="phuongthucthanhtoan"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->phuongthucgiaohang}}" parsley-trigger="change">
+                                            <select name="phuongthucgiaohang"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->phuongthucgiaohang}}" parsley-trigger="change">
                                                  <option>{{$data->phuongthucgiaohang}}</option>
                                                  <option>GHTK</option>
                                                  <option>EMS</option>

@@ -22,14 +22,14 @@
                                     <tr>
                                         <th width="4%">STT</th>
                                         <th width="10%">Tên Người Nhận</th>
-                                        <th width="10%">Địa Chỉ Nhận</th>
+                                        <th width="16%">Địa Chỉ Nhận</th>
                                         <th width="10%">SĐT Người Nhận</th>
                                         <th width="10%">Tổng Tiền Đã Giảm</th>
-                                        <th width="10%">Ghi Chú Khách Hàng</th>
-                                        <th width="13%">Phương Thức Thanh Toán</th>
-                                        <th width="13%">Phương Thức Giao Hàng</th>
+                                        <th width="12%">Ghi Chú Khách Hàng</th>
+                                        <th width="10%">Phương Thức Thanh Toán</th>
+                                        <th width="10%">Phương Thức Giao Hàng</th>
                                         <th width="10%">Trạng Thái</th>
-                                        <th width="10%">Hành Động</th>
+                                        <th width="8%">Hành Động</th>
 
                                     </tr>
                                 </thead>
@@ -41,7 +41,7 @@
                                             <td>{{$item->tennguoinhan}}</td>
                                             <td>{{$item->diachikhachhang}}</td>
                                             <td>{{$item->sdtnguoinhan}}</td>
-                                            <td>{{$item->tongtiensaugiamgia}}</td>
+                                            <td>{{number_format($item->tongtiensaugiamgia)}}</td>
                                             <td>{{$item->ghichucuakhachhang}}</td>
                                             <td>{{$item->phuongthucthanhtoan}}</td>
                                             <td>{{$item->phuongthucgiaohang}}</td>
@@ -51,21 +51,21 @@
                                             if($item->trangthai==0)
                                             {
                                                 ?>
-                                                <a href="{{URL::to('/active/'.$item->id)}}"><span>Chờ xác nhận</span></a>
+                                                <a href="{{URL::to('quantri/active/'.$item->id)}}"><span>Chờ xác nhận</span></a>
                                                 <?php
                                             }elseif($item->trangthai==1)
                                             {
                                                 ?>
-                                                <a href="{{URL::to('/active-1/'.$item->id)}}"><span>Chờ gói hàng</span></a>
+                                                <a href="{{URL::to('quantri/active-1/'.$item->id)}}"><span>Chờ gói hàng</span></a>
                                                 <?php
                                             }elseif($item->trangthai==2)
                                             {
                                                 ?>
-                                                <a href="{{URL::to('/active-2/'.$item->id)}}"><span>Đang giao</span></a>
+                                                <a href="{{URL::to('quantri/active-2/'.$item->id)}}"><span>Đang giao</span></a>
                                                 <?php
                                             }else{
                                                 ?>
-                                                <a href="{{URL::to('/active1-3/'.$item->id)}}"><span>Đã Giao</span></a>
+                                                <a><span>Đã Giao</span></a>
                                                 <?php
                                             }
                                             ?>

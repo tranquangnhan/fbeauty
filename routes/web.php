@@ -61,10 +61,9 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::post('/select-delivery', [CoSoController::class,'select_delivery']);
 
      Route::resource('donhang', DonHangController::class);
-    // Route::get('/active/{id}', [DonHangController::class,'active']);
-    // Route::get('/active-1/{id}', [DonHangController::class,'active_1']);
-    // Route::get('/active-2/{id}', [DonHangController::class,'active_2']);
-    // Route::get('/active-3/{id}', [DonHangController::class,'active_3']);
+    Route::get('/active/{id}', [DonHangController::class,'active']);
+    Route::get('/active-1/{id}', [DonHangController::class,'active_1']);
+    Route::get('/active-2/{id}', [DonHangController::class,'active_2']);
 });
 
 Route::group(['prefix' => '/'], function (){

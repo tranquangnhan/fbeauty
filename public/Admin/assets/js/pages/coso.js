@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
     $('.choose').on('change', function() {
         var action = $(this).attr('id');
@@ -6,8 +11,6 @@ $(document).ready(function() {
         var _token = $('input[name="_token"]').val();
 
         // alert(action);
-        // alert(ma_id);
-        // alert(_token);
         var result = '';
 
         if (action == 'city') {
@@ -17,10 +20,11 @@ $(document).ready(function() {
         }
         $.ajax({
 
-            url: '{{url("/quantri/select-delivery")}}',
+            url: '/quantri/select-delivery', //cái này chỉ dc dùng teamplate blade
             method: 'POST',
             data: { action: action, ma_id: ma_id, _token: _token },
             success: function(data) {
+
                 $('#' + result).html(data);
             }
         });

@@ -6,19 +6,27 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\DonHang;
+use App\Http\Requests\KhachHang;
+use App\Models\Admin\KhachHangModel;
 use App\Repositories\DonHang\DonHangRepository;
+use App\Repositories\KhachHang\KhachHangRepository;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class DonHangController extends Controller
 {
     private $DonHang;
+    private $KhachHang;
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(DonHangRepository $DonHang)
+    public function __construct(DonHangRepository $DonHang , KhachHangRepository $KhachHang)
     {
         $this->DonHang = $DonHang;
+        $this->KhachHang = $KhachHang;
     }
     public function index()
     {
@@ -65,8 +73,12 @@ class DonHangController extends Controller
      */
     public function edit($id)
     {
+        //$khachhang = KhachHangModel::orderby('id','ASC')->get();
+
         $data  = $this->DonHang->find($id);
-        return view('Admin.DonHang.edit',compact('data'));
+        $khachHang  = $this->KhachHang->find($data->idkhachhang);
+        // $khachHang  = $this->KhachHang->find($data->idkhachhang);
+        return view('Admin.DonHang.edit',compact('data','khachHang'));
     }
 
     /**
@@ -76,19 +88,21 @@ class DonHangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($request, $id)
+    public function update(Request $request, $id)
     {
 
-        $validated = $request->validated();
+        //$validated = $request->validated();
 
         $data = [
-            // 'tennguoinhan'=> $request->namenguoinhan,
-            // 'diachikhachhang'=>$request->diachi,
-            // 'sdtnguoinhan'=>$request->sodienthoai,
-            // 'tongtientruocgiamgia'=>$request->tongtientruocgiamgia,
-            // 'tongtiensaugiamgia'=>$request->tongtiensaugiamgia,
-            // 'ghichucuakhachhang'=>$request->ghichukhachhang,
-            // 'phuongthucgiaohang'=>$request->phuongthucthanhtoan
+            'idgiamgia'=> $request->magiamgia,
+            'tennguoinhan'=> $request->namenguoinhan,
+            'diachikhachhang'=>$request->diachi,
+            'sdtnguoinhan'=>$request->sodienthoai,
+            'tongtientruocgiamgia'=>$request->tongtientruocgiamgia,
+            'tongtiensaugiamgia'=>$request->tongtiensaugiamgia,
+            'ghichucuakhachhang'=>$request->ghichukhachhang,
+            'phuongthucthanhtoan'=>$request->phuongthucthanhtoan,
+            'phuongthucgiaohang'=>$request->phuongthucgiaohang
         ];
 
         $this->DonHang->update($id,$data);
@@ -112,14 +126,26 @@ class DonHangController extends Controller
 
     public function active ($id){
 
-        $this->DonHang->active_donhang($id);
 
-      // DB::table('donhang')->where('id',$id)->update(['trangthai'=>1]);
 
+        DB::table('donhang')->where('id',$id)->update(['trangthai'=>1]);
+
+        return Redirect::to('quantri/donhang');
+
+        // $this->DonHang->active_donhang($id);
     }
-    // public function active_3 ($id){
+    public function active_1 ($id){
+        DB::table('donhang')->where('id',$id)->update(['trangthai'=>2]);
+        return Redirect::to('quantri/donhang');
+    }
+    public function active_2 ($id){
+        DB::table('donhang')->where('id',$id)->update(['trangthai'=>3]);
+        return Redirect::to('quantri/donhang');
+    }
+    public function active_3 ($id){
+        DB::table('donhang')->where('id',$id)->update(['trangthai'=>3]);
+        return Redirect::to('quantri/donhang');
+    }
 
-    //     $this->DonHang->active_donhang($id);
-    // }
 
 }
