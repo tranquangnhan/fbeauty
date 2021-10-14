@@ -562,9 +562,11 @@
                     </div>
 
                     <div class="box-pro">
+                        @foreach ($data as $item)
                         <div class="pro-item ml-0">
                             <div class="img-1  bg-gray-1">
-                                <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
+                                <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
+
                                 <div class="box-icon">
                                     <div class="icon-item d-inline-block">
                                         <a href=""><i class="fas fa-search color-black-1"></i></a>
@@ -578,13 +580,14 @@
 
                             <div class="content-1">
                                 <div class="text-1 limit-text-row-1 ">
-                                    Rational Household Labor Supply – JSTOR
+                                    {{$item->name}}
                                 </div>
-                                <div class="text-2">300.000đ</div>
+                                <div class="text-2">{{$item->dongia}} vnđ</div>
                             </div>
                         </div>
 
-                        <div class="pro-item">
+                        @endforeach
+                        {{-- <div class="pro-item">
                             <div class="img-1 bg-gray-1">
                                 <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
                                 <div class="box-icon">
@@ -649,7 +652,7 @@
                                 </div>
                                 <div class="text-2">300.000đ</div>
                             </div>
-                        </div>
+                        </div> --}}
 
 
                     </div>
@@ -718,42 +721,47 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 pr-0">
+                            @foreach ($Blog as $item)
+                                
+                           
                             <div class="blog-bigsize">
                                 <div class="img-1 w-100">
-                                    <img class="img-fluid" src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                    <img class="img-fluid" src="{{ asset('uploads/'.$item->img) }}" alt="">
                                 </div>
-
                                 <div class="blog-content-bigsize">
                                     <div class="blog-text-1 limit-text-row-2">
-                                        <a href="">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở Sài Gòn</a>
+                                        <a href="">{{$item ->name}}</a>
                                     </div>
                                     <div class="blog-text-2 fz-dot9em">
-                                        21/9/2021
+                                        <?php $newDate = date("d-m-Y", strtotime($item->created_at));
+                                        echo $newDate; ?>
                                     </div>
                                     <div class="blog-text-3 limit-text-row-3 fz-dot9em">
-                                        Cuối tuần này, hãy lên kế hoạch chiều chuộng bản thân bằng cách tắm thảo dược quý của người Dao Đỏ cùng nhiều dịch vụ hót-hòn-họt khác tại Noir. Spa, Sài Gòn.
+                                        {{$item ->noidung}}
                                     </div>
                                 </div>
-
-
                             </div>
+                            @endforeach
                         </div>
                         <div class="col-xl-6 pl-0 bg-white box-shadow-1">
                             <div class="list-blog-small">
+                                @foreach ($Blog2 as $item)
+                                    
                                 <div class="small-blog-item">
-                                    <div class="row">
+                                    <div class="row mt-2">
                                         <div class="col-xl-5">
                                             <div class="img-1">
-                                                <img class="img-fluid" src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                <img class="img-fluid" src="{{asset('uploads/'.$item->img)}}" alt="">
                                             </div>
                                         </div>
                                         <div class="col-xl-7 pl-0 align-self-center">
                                             <div class="text-bl-1 limit-text-row-2 ">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                <a href="" class="hover-pink">{{$item->name}}</a>
                                             </div>
                                             <div class="row">
                                                 <div class="col-xl-6 color-gray-2">
-                                                    21/9/2021
+                                                    <?php $newDate = date("d-m-Y", strtotime($item->created_at));
+                                                    echo $newDate; ?>
                                                 </div>
                                                 <div class="col-xl-6 text-right">
                                                     <a href="" class="">
@@ -766,60 +774,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="small-blog-item mt-4">
-                                    <div class="row">
-                                        <div class="col-xl-5">
-                                            <div class="img-1">
-                                                <img class="img-fluid" src="{{ asset('Site/images') }}/image 8 (2).png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-7 pl-0 align-self-center">
-                                            <div class="text-bl-1 limit-text-row-2 ">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-6 color-gray-2">
-                                                    21/9/2021
-                                                </div>
-                                                <div class="col-xl-6 text-right">
-                                                    <a href="" class="">
-                                                        <button class="btn-line color-gray-2">
-                                                            Đọc ngay
-                                                        </button>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="small-blog-item mt-4">
-                                    <div class="row">
-                                        <div class="col-xl-5">
-                                            <div class="img-1">
-                                                <img class="img-fluid" src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-7 pl-0 align-self-center">
-                                            <div class="text-bl-1 limit-text-row-2 ">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-6 color-gray-2">
-                                                    21/9/2021
-                                                </div>
-                                                <div class="col-xl-6 text-right">
-                                                    <a href="" class="">
-                                                        <button class="btn-line color-gray-2">
-                                                            Đọc ngay
-                                                        </button>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
 
                                 <div class="w-100 my-4">
                                     <a href="">

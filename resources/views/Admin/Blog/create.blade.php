@@ -70,14 +70,12 @@
                                 @enderror
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100 " for="trangthai">Hoạt động <span style="color:red;"> (*)</span><br>
-                                <br><form >
-                                          <input type="radio" id="html" name="trangthai" value="1" checked>
-                                          <label for="html">Kích hoạt</label><br>
-                                          <input type="radio" id="css" name="trangthai" value="0" >
-                                          <label for="css">Chưa kích hoạt</label><br>
-                                    </form> 
-                                </label>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <input id="remember-1" type="checkbox" name="trangthai" value="1" data-parsley-multiple="remember-1">
+                                        <label for="remember-1">Trạng Thái ? </label>
+                                    </div>
+                                </div>    
                              
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
