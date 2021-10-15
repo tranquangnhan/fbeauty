@@ -36,67 +36,98 @@
 
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label for="">Tên Người Đặt</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="namedat" class="form-control @error('name') border-error @enderror name" value="{{$data->idkhachhang}}"  parsley-trigger="change" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="magiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->idgiamgia}}"  parsley-trigger="change" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Tên Người Nhận</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="namenguoinhan" class="form-control @error('name') border-error @enderror name" value="{{$data->tennguoinhan}}"  parsley-trigger="change" required
+                                    <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="">Tên Người Đặt</label><span style="color:red;"> (*)</span>
+                                                <input type="text" name="namedat" class="form-control @error('name') border-error @enderror name" value="{{$khachHang->name}}"  parsley-trigger="change" required readonly>
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
+                                                <input type="text" name="magiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->idgiamgia}}"  parsley-trigger="change" required readonly>
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="">Tên Người Nhận</label><span style="color:red;"> (*)</span>
+                                                <input type="text" name="namenguoinhan" class="form-control @error('name') border-error @enderror name" value="{{$data->tennguoinhan}}"  parsley-trigger="change" required
                                                    placeholder="Tên Người Nhận" >
-                                        </div>
-                                        <div class="form-group">
+                                            </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
                                             <label for="">Địa Chỉ Khách Hàng</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="diachi" class="form-control @error('name') border-error @enderror name" value="{{$data->diachikhachhang}}"  parsley-trigger="change" required
                                                    placeholder="Địa Chỉ Khách Hàng" >
-                                        </div>
-                                        <div class="form-group">
+                                    </div>
+
+
+
+                                    <div class="form-row">
+                                            <div class="form-group col-md-4">
                                             <label for="">SĐT Người Nhận</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="sodienthoai" class="form-control @error('name') border-error @enderror name" value="{{$data->sdtnguoinhan}}"  parsley-trigger="change" required
                                                    placeholder="SĐT Người Nhận" >
-                                        </div><div class="form-group">
+                                            </div>
+
+                                            <div class="form-group col-md-4">
                                             <label for="">Tổng Tiền Trước Giảm Giá</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="tongtientruocgiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->tongtientruocgiamgia}}"  parsley-trigger="change" required
                                                    placeholder="Tổng Tiền Trước Giảm Giá" >
-                                        </div>
-                                        <div class="form-group">
+                                            </div>
+
+                                            <div class="form-group col-md-4">
                                             <label for="">Tổng Tiền sau Giảm Giá</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="tongtiensaugiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->tongtiensaugiamgia}}"  parsley-trigger="change" required
                                                    placeholder="Tổng Tiền sau Giảm Giá" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Ghi Chú Khách Hàng</label><span style="color:red;"> (*)</span>
-                                            <textarea rows="9" cols="70" type="text" name="ghichukhachhang" class="form-control @error('name') border-error @enderror name"  parsley-trigger="change" required
-                                                   placeholder="Ghi Chú Khách Hàng">{{$data->ghichucuakhachhang}}</textarea>
-                                        </div>
-                                        <div class="form-group">
+                                            </div>
+                                    </div>
+
+
+
+                                    <div class="form-row">
+                                            <div class="form-group col-md-6">
                                             <label for="">Phương Thức Thanh Toán</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="phuongthucthanhtoan" class="form-control @error('name') border-error @enderror name" value="{{$data->phuongthucthanhtoan}}"  parsley-trigger="change" required readonly
                                                    placeholder="Phương Thức Thanh Toán" >
-                                        </div>
-                                        <div class="form-group">
+                                            </div>
+
+                                            <div class="form-group col-md-6">
                                             <label for="">Phương Thức Giao Hàng</label><span style="color:red;"> (*)</span>
-                                            <select name="phuongthucthanhtoan"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->phuongthucgiaohang}}" parsley-trigger="change">
+                                            <select name="phuongthucgiaohang"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->phuongthucgiaohang}}" parsley-trigger="change">
                                                  <option>{{$data->phuongthucgiaohang}}</option>
                                                  <option>GHTK</option>
                                                  <option>EMS</option>
                                                  <option>Sship</option>
                                             </select>
+                                            </div>
+                                    </div>
+
+
+
+                                        <div class="form-group">
+                                            <label for="">Ghi Chú Khách Hàng</label><span style="color:red;"> (*)</span>
+                                            <textarea rows="9" cols="70" type="text" name="ghichukhachhang" class="form-control @error('name') border-error @enderror name"  parsley-trigger="change" required
+                                                   placeholder="Ghi Chú Khách Hàng">{{$data->ghichucuakhachhang}}</textarea>
                                         </div>
-
-
                                     </div>
 
                                 </div>
 
-                                <div class="form-group text-right mb-0 mt-5">
-                                    <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product'>
-                                    <a href="/quantri/coso" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
+                                <div class="form-group  mb-0 mt-5">
+                                <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                            <a href="/quantri/coso" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
+                                            </div>
+
+                                            <div class="form-group col-md-6 text-right">
+                                            <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product'>
+                                            </div>
+                                    </div>
+
                                 </div>
+
 
                             </form>
                         </div>

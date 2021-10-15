@@ -7,23 +7,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\DonHang;
 use App\Repositories\DonHang\DonHangRepository;
+use App\Repositories\KhachHang\KhachHangRepository;
 
 class DonHangController extends Controller
 {
+
+
     private $DonHang;
+    private $khachHang;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(DonHangRepository $DonHang)
+    public function __construct(DonHangRepository $DonHang , KhachHangRepository $khachHang)
     {
         $this->DonHang = $DonHang;
+        $this->KhachHang = $khachHang;
+
     }
     public function index()
     {
+
         $data = $this->DonHang->getAll();
-        return view('Admin.DonHang.index',compact('data'));
+        $khachHang  = $this->KhachHang->getall();
+        return view('Admin.DonHang.index',compact('data','khachHang'));
     }
 
     /**
@@ -66,7 +74,9 @@ class DonHangController extends Controller
     public function edit($id)
     {
         $data  = $this->DonHang->find($id);
-        return view('Admin.DonHang.edit',compact('data'));
+        $khachHang  = $this->KhachHang->find($data->idkhachhang);
+       // dd($data->idkhachhang);
+        return view('Admin.DonHang.edit',compact('data','khachHang'));
     }
 
     /**
@@ -76,19 +86,21 @@ class DonHangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($request, $id)
+    public function update(Request $request, $id)
     {
 
-        $validated = $request->validated();
+        //$validated = $request->validated();
 
         $data = [
-            // 'tennguoinhan'=> $request->namenguoinhan,
-            // 'diachikhachhang'=>$request->diachi,
-            // 'sdtnguoinhan'=>$request->sodienthoai,
-            // 'tongtientruocgiamgia'=>$request->tongtientruocgiamgia,
-            // 'tongtiensaugiamgia'=>$request->tongtiensaugiamgia,
-            // 'ghichucuakhachhang'=>$request->ghichukhachhang,
-            // 'phuongthucgiaohang'=>$request->phuongthucthanhtoan
+
+            'idgiamgia' => $request->magiamgia,
+            'tennguoinhan'=> $request->namenguoinhan,
+            'diachikhachhang'=>$request->diachi,
+            'sdtnguoinhan'=>$request->sodienthoai,
+            'tongtientruocgiamgia'=>$request->tongtientruocgiamgia,
+            'tongtiensaugiamgia'=>$request->tongtiensaugiamgia,
+            'ghichucuakhachhang'=>$request->ghichukhachhang,
+            'phuongthucgiaohang'=>$request->phuongthucgiaohang
         ];
 
         $this->DonHang->update($id,$data);

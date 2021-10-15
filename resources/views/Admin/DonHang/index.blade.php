@@ -20,16 +20,14 @@
                         <table class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th width="4%">STT</th>
-                                        <th width="10%">Tên Người Nhận</th>
-                                        <th width="10%">Địa Chỉ Nhận</th>
-                                        <th width="10%">SĐT Người Nhận</th>
-                                        <th width="10%">Tổng Tiền Đã Giảm</th>
-                                        <th width="10%">Ghi Chú Khách Hàng</th>
-                                        <th width="13%">Phương Thức Thanh Toán</th>
-                                        <th width="13%">Phương Thức Giao Hàng</th>
-                                        <th width="10%">Trạng Thái</th>
-                                        <th width="10%">Hành Động</th>
+                                        <th width="10.5%"> Mã đơn hàng </th>
+                                        <th width="15.5%"> Khách hàng </th>
+                                        <th width="12%">SĐT người nhận</th>
+                                        <th width="11%">Tổng Tiền </th>
+                                        <th width="11%">Tổng Tiền Giảm</th>
+                                        <th width="16%">Ghi Chú Khách Hàng</th>
+                                        <th width="12%">Trạng Thái</th>
+                                        <th width="12%">Hành Động</th>
 
                                     </tr>
                                 </thead>
@@ -39,14 +37,18 @@
                                         <tr>
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->tennguoinhan}}</td>
-                                            <td>{{$item->diachikhachhang}}</td>
                                             <td>{{$item->sdtnguoinhan}}</td>
-                                            <td>{{$item->tongtiensaugiamgia}}</td>
+                                            <td>{{number_format($item->tongtientruocgiamgia)}}</td>
+                                            <td>{{number_format($item->tongtiensaugiamgia)}}</td>
                                             <td>{{$item->ghichucuakhachhang}}</td>
-                                            <td>{{$item->phuongthucthanhtoan}}</td>
-                                            <td>{{$item->phuongthucgiaohang}}</td>
+
 
                                             <td>
+                                                <section>
+                                                    <select name="" id=""><span>Chờ xác nhận</span></select>
+                                                    <select name="" id=""><span>Chờ xác nhận</span></select>
+                                                    <select name="" id=""><span>Chờ xác nhận</span></select>
+                                                </section>
                                             <?php
                                             if($item->trangthai==0)
                                             {
@@ -65,7 +67,7 @@
                                                 <?php
                                             }else{
                                                 ?>
-                                                <a href="{{URL::to('/active1-3/'.$item->id)}}"><span>Đã Giao</span></a>
+                                                <a><span>Đã Giao</span></a>
                                                 <?php
                                             }
                                             ?>
@@ -77,9 +79,10 @@
                                                     {!!method_field('delete')!!}
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </form>
-                                                <a name="" id="" class="btn btn-primary mx-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fas fa-calendar-week"></i></a>
+                                                <a name="" id="" class="btn btn-primary mx-2" href="{{url('quantri/donhangchitiet/detail/'.$item->id.'/edit')}}" role="button"><i class="fas fa-calendar-week"></i></a>
                                             </td>
                                         </tr>
+
                                     @endforeach
 
 

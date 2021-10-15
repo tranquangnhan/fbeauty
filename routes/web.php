@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DonHangController;
 
 use App\Http\Controllers\Admin\DichVuController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\DonHangchitietController;
 use App\Http\Controllers\Admin\KhachHangController;
 use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
@@ -60,11 +61,18 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('coso', CoSoController::class);
     Route::post('/select-delivery', [CoSoController::class,'select_delivery']);
 
-     Route::resource('donhang', DonHangController::class);
+    Route::resource('donhang', DonHangController::class);
+    Route::resource('donhangchitiet', DonHangController::class);
+    Route::get('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'editDetailDonHang']);
+    Route::post('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'updateDetailDonHang']);
+    //Route::get('donhang/detail/{id}',DonHangController::class, 'index');
     // Route::get('/active/{id}', [DonHangController::class,'active']);
     // Route::get('/active-1/{id}', [DonHangController::class,'active_1']);
     // Route::get('/active-2/{id}', [DonHangController::class,'active_2']);
     // Route::get('/active-3/{id}', [DonHangController::class,'active_3']);
+
+
+
 });
 
 Route::group(['prefix' => '/'], function (){

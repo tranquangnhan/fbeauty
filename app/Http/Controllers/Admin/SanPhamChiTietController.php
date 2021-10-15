@@ -27,7 +27,7 @@ class SanPhamChiTietController extends Controller
         $dongia = $request->dongia;
 
 
-        for ($i=0; $i < count($ml); $i++) { 
+        for ($i=0; $i < count($ml); $i++) {
             $data = [
                 'idsanpham'=>$idsanpham,
                 'ml'=>  $ml[$i],
@@ -36,11 +36,11 @@ class SanPhamChiTietController extends Controller
             ];
             $this->SanPhamChiTiet->create($data);
         }
-        
+
         return redirect('quantri/sanpham')->with('success','Thêm thành công');
     }
-    
-    
+
+
     function editDetailProduct($id){
 
         $data = $this->SanPhamChiTiet->getAll();
@@ -54,26 +54,26 @@ class SanPhamChiTietController extends Controller
         $ml = $request->ml;
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
-       
-          
+
+
         if(count($data) === count($request->dongia)){
 
-            for ($i=0; $i < count($ml); $i++) { 
-            
+            for ($i=0; $i < count($ml); $i++) {
+
                 $data = [
                     'ml'=>  $ml[$i],
                     'tonkho'=>$tonkho[$i],
                     'dongia'=>$dongia[$i]
                 ];
-            
+
                 $this->SanPhamChiTiet->updateDetailByIdSp($id,$data);
             }
 
         }else{
             $this->SanPhamChiTiet->delDetailByIdSp($id);
-           
-            for ($i=0; $i < count($ml); $i++) { 
-                
+
+            for ($i=0; $i < count($ml); $i++) {
+
                 $data = [
                     'idsanpham'=> $id,
                     'ml'=>  $ml[$i],
@@ -84,7 +84,7 @@ class SanPhamChiTietController extends Controller
                 $this->SanPhamChiTiet->create($data);
             }
         }
-    
+
 
         return redirect('quantri/sanpham')->with('success','Sửa thành công');
     }
