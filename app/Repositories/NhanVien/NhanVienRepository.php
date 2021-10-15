@@ -3,6 +3,7 @@
 
 namespace App\Repositories\NhanVien;
 
+use App\Models\Admin\NhanVien;
 use App\Repositories\BaseRepository;
 
 use App\Repositories\NhanVien\NhanVienRepositoryInterface;
@@ -30,5 +31,9 @@ class NhanVienRepository extends BaseRepository implements NhanVienRepositoryInt
 
     public function CheckSdt($sdt){
         return $this->model->select('*')->where('sdt', '=', $sdt)->doesntExist();
+    }
+
+    public function getNhanVienByIdCoSo($id) {
+        return $this->model::where('idcoso', $id)->get();
     }
 }

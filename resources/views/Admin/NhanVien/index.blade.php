@@ -109,10 +109,6 @@
                                             <a id="" class="btn btn-primary mb-2"
                                                href="{{route("nhanvien.edit", $item->id)}}" role="button" title="sửa"><i
                                                     class="fa fa-edit"></i></a>
-                                            <a id="" class="btn btn-primary mb-2"
-                                               href="{{route("nhanvien.edit", $item->id)}}" role="button"
-                                               title="Xem ảnh khách hàng"><i
-                                                    class="fa fa-edit"></i></a>
                                         </td>
 
                                     </tr>
