@@ -6,17 +6,27 @@ use App\Models\Admin\City;
 use App\Models\Admin\Province;
 use App\Models\Admin\Wards;
 use App\Models\Admin\CosoModel;
-use App\Repositories\Coso\CoSoRepository;
+use App\Repositories\City\CityRepository;
+use App\Repositories\Coso\CosoRepository;
+use App\Repositories\Province\ProvinceRepository;
+use App\Repositories\Wards\WardsRepository;
 use Illuminate\Http\Request;
 class CoSoController extends Controller
 {
     private $Coso;
+    private $Province;
+    private $City;
+    private $wards;
     /**
      * CosoController constructor.
      */
-    public function __construct(CoSoRepository $Coso)
+    public function __construct(CosoRepository $Coso , CityRepository $City , ProvinceRepository $Province , WardsRepository $wards)
     {
         $this->Coso = $Coso;
+        $this->Province = $Province;
+        $this->City = $City;
+        $this->wards = $wards;
+        // ProvinceRepository $Province , WardsRepository $wards
     }
 
 
@@ -28,11 +38,10 @@ class CoSoController extends Controller
     public function index()
     {
         $data = $this->Coso->getAll();
-        // $data1 = $this->Coso->getAll();
-        // $data = CosoModel::orderby('id','DESC')->get();
-        $city= City::orderBy('matp', 'ASC')->select('matp','name_city')->get();
-        $province= Province::orderBy('maqh', 'ASC')->select('maqh','name_quanhuyen')->get();
-        $wards= Wards::orderBy('xaid', 'ASC')->select('xaid','name_xaphuong')->get();
+       // $city = $this->City->find($data->idkhachhang);
+       $city  = $this->City->getAll();
+       $province  = $this->Province->getAll();
+       $wards  = $this->wards->getAll();
 
        return view('Admin.Coso.index',compact('data','city','province','wards'));
     }
@@ -49,6 +58,7 @@ class CoSoController extends Controller
 
         $data = [
             'name'=> $request->name,
+            'diachi'=> $request->diachi,
             'tinh'=>$request->city,
             'quan'=>$request->province,
             'huyen'=>$request->wards
@@ -101,9 +111,10 @@ class CoSoController extends Controller
     {
 
     $data  = $this->Coso->find($id);
-    $city = City::orderby('matp','ASC')->get();
-    $province= Province::orderBy('maqh', 'ASC')->get();
-    $wards= Wards::orderBy('xaid', 'ASC')->get();
+    //dd($data->tinh);
+    $city  = $this->City->getAll();
+    $province  = $this->Province->getAll();
+    $wards  = $this->wards->getAll();
     return view('Admin.coso.edit',compact('data','city','province','wards'));
 
     }
@@ -120,6 +131,7 @@ class CoSoController extends Controller
 
         $data = [
             'name'=> $request->name,
+            'diachi'=> $request->diachi,
             'tinh'=>$request->city,
             'quan'=>$request->province,
             'huyen'=>$request->wards
@@ -142,14 +154,14 @@ class CoSoController extends Controller
     {
         $this->Coso->delete($id);
         return redirect('quantri/coso')->with('success','Xoá thành công');
-        if ($id > 0){
-            $this->Coso->delete($id);
-        }
-     return response()->json([
-       'title' => 'Đã xóa!',
-       'text' => 'Cơ sở id' . $id . 'đã xóa thành công',
-       'status' => 'success!',
-     ]);
+        // if ($id > 0){
+        //     $this->Coso->delete($id);
+        // }
+    //  return response()->json([
+    //    'title' => 'Đã xóa!',
+    //    'text' => 'Cơ sở id' . $id . 'đã xóa thành công',
+    //    'status' => 'success!',
+    //  ]);
 
     }
 }

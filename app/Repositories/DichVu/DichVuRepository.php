@@ -6,25 +6,21 @@ namespace App\Repositories\DichVu;
 use App\Models\Admin\DichVu;
 use App\Models\Admin\DichVuModel;
 use App\Repositories\BaseRepository;
-use App\Repositories\DichVu\DichVuRepositoryInterface;
 
-class DichVuRepository extends BaseRepository implements DichVuRepositoryInterface
+class DichVuReponsitory extends BaseRepository implements DichVuRepositoryInterface
 {
-    protected $model;
-
     public function getModel()
     {
         return DichVu::class;
     }
-
     public function getDichVu()
     {
 
-        return $this->model->select('dichvu.*', 'danhmuc.name AS danhmuc' )
-            ->join('danhmuc', 'dichvu.iddm', '=', 'danhmuc.id')
-            ->get();
     }
 
+<<<<<<< HEAD
+
+=======
     public function editDichVu($id)
     {
         return $this->model->select('dichvu.*', 'dichvu.id','danhmuc.name AS danhmuc')
@@ -37,4 +33,5 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     {
         return $this->model::where('iddm', $iddanhmuc)->get();
     }
+>>>>>>> 7576423996449ea1faab3e05d4c14cec22be5de4
 }

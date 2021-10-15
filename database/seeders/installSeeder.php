@@ -16,8 +16,7 @@ class installSeeder extends Seeder
     public function run()
     {
         DB::table('coso')->insert([
-            ['name'=>'Cơ sở 1', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
-            ['name'=>'Cơ sở 2', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
+            ['name'=>'Cơ sở 1','diachi'=> 'Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
         ]);
 
         DB::table('danhmuc')->insert([
