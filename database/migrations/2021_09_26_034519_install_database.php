@@ -43,7 +43,7 @@ class InstallDatabase extends Migration
 
         Schema::create('dichvu', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tendv',255);
+            $table->string('name',255);
             $table->string('slug',255);
             $table->string('img',255);
             $table->unsignedInteger('giamgia')->default(0);
@@ -61,7 +61,7 @@ class InstallDatabase extends Migration
             $table->increments('id');
             $table->unsignedInteger('iddm');
             $table->string('img',255);
-            $table->string('tenbv',255);
+            $table->string('name',255);
             $table->string('slug',255);
             $table->longText('noidung');
             $table->boolean('trangthai');
@@ -81,13 +81,13 @@ class InstallDatabase extends Migration
 
         Schema::create('khachhang', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',255);
-            $table->string('sdt',10);
-            $table->string('email',255)->unique();
-            $table->string('password',255);
+            $table->string('name',255)->nullable();
+            $table->string('sdt',10)->unique();
+            $table->string('email',255)->unique()->nullable();
+            $table->string('password',255)->nullable();
             $table->string('idgoogle',255)->nullable();
             $table->boolean('active',1);
-            $table->string('img',255);
+            $table->string('img',255)->nullable();
             $table->string('randomkey',255)->nullable();
             $table->unsignedInteger('exp')->nullable();
             $table->rememberToken();
@@ -220,7 +220,6 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
-
         Schema::create('donhang', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idkhachhang');
@@ -238,7 +237,6 @@ class InstallDatabase extends Migration
             $table->foreign('idgiamgia')->references('id')->on('giamgia');
             $table->timestamps();
         });
-
 
         Schema::create('donhangchitiet', function (Blueprint $table) {
             $table->increments('id');
@@ -274,7 +272,37 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
+        Schema::create('wishlist', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('idkhachhang');
+            $table->unsignedInteger('idsanpham');
+            $table->timestamps();
+            $table->foreign('idkhachhang')->references('id')->on('khachhang');
+            $table->foreign('idsanpham')->references('id')->on('sanpham');
+        });
 
+        Schema::create('subscribed', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('email');
+            $table->timestamps();
+        });
+
+        Schema::create('giohang', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('idkhachhang');
+            $table->timestamps();
+            $table->foreign('idkhachhang')->references('id')->on('khachhang');
+        });
+
+        Schema::create('giohangchitiet', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('idgiohang');
+            $table->unsignedInteger('idsanpham');
+            $table->unsignedInteger('soluong');
+            $table->timestamps();
+            $table->foreign('idgiohang')->references('id')->on('giohang');
+            $table->foreign('idsanpham')->references('id')->on('sanpham');
+        });
 
         Schema::enableForeignKeyConstraints();
 

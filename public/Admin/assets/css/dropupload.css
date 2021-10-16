@@ -2,10 +2,10 @@
 
 .frameupload {
     position: relative;
-    top: 5%;
+    top: 3%;
     left: 40%;
-    width: 200px;
-    height: 150px;
+    width: 220px;
+    height: 160px;
     border-radius: 2px;
     box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -44,7 +44,7 @@ h1 {
 
 .dropzone {
     width: 100px;
-    height: 110px;
+    height: 90px;
     border: 1px dashed #999;
     border-radius: 3px;
     text-align: center;

@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DangNhapAdminController;
 use App\Http\Controllers\Admin\DanhMucController;
 use App\Http\Controllers\Admin\DichVuController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\HoaDonChiTietController;
+use App\Http\Controllers\Admin\HoaDonController;
 use App\Http\Controllers\Admin\KhachHangController;
 use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
@@ -52,10 +54,15 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('nhanvien/kiemtraemail/{name}',[NhanVienController::class, "CheckEmailTonTai"]);
     Route::get('nhanvien/kiemtrasdt/{name}',[NhanVienController::class, "CheckSdtTonTai"]);
     Route::get("nhanvien/xoaImgKH/{id}/phantu/{idAnh}", [NhanVienController::class, "XoaImgKH"]);
+    Route::get("nhanvien/imgcustomer/pictures", [NhanVienController::class, "AllImgKH"]);
+
+    Route::resource('hoadon', HoaDonController::class);
+    Route::resource('hoadonchitiet', HoaDonChiTietController::class);
 
 
 });
 
 Route::group(['prefix' => '/'], function (){
     Route::get('trang-chu', [HomeController::class, "index"]);
+    Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
 });

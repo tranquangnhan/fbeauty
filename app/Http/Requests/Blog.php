@@ -24,7 +24,7 @@ class Blog extends FormRequest
     public function rules()
     {
         return [
-            'tenbv' => ['required', 'min:6', 'max:120'],
+            'name' => ['required', 'min:6', 'max:120'],
             'noidung' => ['required', 'min:3'],
         ];
     }
@@ -32,9 +32,9 @@ class Blog extends FormRequest
     public function messages()
     {
         return [
-            'tenbv.required' => 'Bạn chưa nhập tên bài viết',
-            'tenbv.min' => 'Tên bài viết phải lớn hơn 6 kí tự',
-            'tenbv.max' => 'Tên bài viết phải nhỏ hơn 120 kí tự',
+            'name.required' => 'Bạn chưa nhập tên bài viết',
+            'name.min' => 'Tên bài viết phải lớn hơn 6 kí tự',
+            'name.max' => 'Tên bài viết phải nhỏ hơn 120 kí tự',
             'noidung.required' => 'Bạn chưa nhập nội dung',
             'noidung.min' => 'Nội dung phải lớn hơn 3 kí tự',
             // 'img.required' => 'Bạn chưa chọn hình ảnh ',
@@ -44,7 +44,7 @@ class Blog extends FormRequest
     public function attributes()
     {
         return [
-            'tenbv' => 'Tên bài viết',
+            'name' => 'Tên bài viết',
             'noidung' => 'Nội dung',
             // 'img'=>'hình ảnh'
         ];

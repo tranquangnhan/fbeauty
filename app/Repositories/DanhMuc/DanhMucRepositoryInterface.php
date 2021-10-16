@@ -11,4 +11,5 @@ interface DanhMucRepositoryInterface extends RepositoryInterface
      * @return mixed
      */
     public function findDanhMucByIdLoai($idLoai);
+
 }
