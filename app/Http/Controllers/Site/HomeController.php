@@ -70,7 +70,7 @@ class HomeController extends Controller
     }
 
     public function getNhanVienTam($id) {
-        return NhanVien::where('idcoso', $id)->get();
+        return  $this->NhanVien->getNhanVienByIdCoSo( $id);
     }
 
     public function getDichVuTheoDanhMuc() {
