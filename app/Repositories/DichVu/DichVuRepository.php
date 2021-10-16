@@ -18,9 +18,6 @@ class DichVuReponsitory extends BaseRepository implements DichVuRepositoryInterf
 
     }
 
-<<<<<<< HEAD
-
-=======
     public function editDichVu($id)
     {
         return $this->model->select('dichvu.*', 'dichvu.id','danhmuc.name AS danhmuc')
@@ -33,5 +30,4 @@ class DichVuReponsitory extends BaseRepository implements DichVuRepositoryInterf
     {
         return $this->model::where('iddm', $iddanhmuc)->get();
     }
->>>>>>> 7576423996449ea1faab3e05d4c14cec22be5de4
 }
