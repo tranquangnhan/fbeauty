@@ -105,7 +105,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nhập số lượng khách</label>
-                            <input type="number" name="soluongkh" class="form-control" required>
+                            <input type="number" min="1" name="soluongkh" class="form-control" required>
                         </div>
 
                         <div class="row">
