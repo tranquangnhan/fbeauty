@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\HoaDonChiTietController;
 use App\Http\Controllers\Admin\HoaDonController;
 use App\Http\Controllers\Admin\KhachHangController;
+use App\Http\Controllers\Admin\LichController;
 use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\SanPhamChiTietController;
@@ -59,7 +60,11 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('hoadon', HoaDonController::class);
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
 
-
+    Route::resource('lich', LichController::class);
+    Route::get('lich/{id}/thungay/{idthu}', [LichController::class, 'showlich']);
+    Route::get('lich/uplich/{id}', [LichController::class, 'UpLich']);
+    Route::get('lich/uplichAll/{id}', [LichController::class, 'uplichAll']);
+    Route::post('lich/updateTime/{id}', [LichController::class, 'updateTime']);
 });
 
 Route::group(['prefix' => '/'], function (){

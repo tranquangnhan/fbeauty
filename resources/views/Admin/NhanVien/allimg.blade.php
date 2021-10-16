@@ -51,9 +51,10 @@
                                             <div class="row mt-1">
                                                 <div class="col-md-12 bg-white">
                                                     <div class="port mb-1">
+                                                        <?php $nv = json_decode($item->img); ?>
+                                                        @if(is_array($nv))
                                                         <div class="portfolioContainer" style="overflow: scroll">
-                                                            <?php $nv = json_decode($item->img); ?>
-                                                            @if(is_array($nv))
+
 
                                                                 @foreach($nv as $id => $ns)
                                                                     <div
@@ -71,9 +72,12 @@
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
-                                                            @endif
+
 
                                                         </div><!-- end portfoliocontainer-->
+                                                            @else
+                                                                <p>Không có ảnh</p>
+                                                            @endif
                                                     </div> <!-- End row -->
                                                 </div>
                                             </div>
