@@ -72,7 +72,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::post('lich/updateTime/{id}', [LichController::class, 'updateTime']);
     // quản lý cơ sở
     Route::resource('coso', CoSoController::class);
-    Route::post('/select-delivery', [CoSoController::class,'select_delivery']);
+    Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
 
     Route::resource('donhang', DonHangController::class);
     Route::get('/active/{id}', [DonHangController::class,'active']);
