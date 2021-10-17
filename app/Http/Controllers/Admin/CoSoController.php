@@ -64,8 +64,9 @@ class CoSoController extends Controller
             'huyen'=>$request->wards
         ];
 
-        $this->Coso->create($data);
-        return redirect('quantri/coso')->with('success','Thêm thành công');
+       $them= $this->Coso->create($data);
+       dd($them->id);
+//        return redirect('quantri/coso')->with('success','Thêm thành công');
     }
     public function select_delivery(Request $request){
         $data = $request->all();
