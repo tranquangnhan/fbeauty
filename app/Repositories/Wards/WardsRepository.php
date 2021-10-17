@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Repositories\Coso;
+namespace App\Repositories\Wards;
 use App\Repositories\BaseRepository;
-class CosoRepository extends BaseRepository implements CosoRepositoryInterface
+class WardsRepository extends BaseRepository implements WardsRepositoryInterface
 {
     protected $model;
     public function getModel(){
-        return \App\Models\Admin\CosoModel::class;
+        return \App\Models\Admin\Wards::class;
     }
     // public function modelcity(){
     //     return \App\Models\Admin\City::class;

@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Repositories\Coso;
+namespace App\Repositories\Province;
 use App\Repositories\BaseRepository;
-class CosoRepository extends BaseRepository implements CosoRepositoryInterface
+class ProvinceRepository extends BaseRepository implements ProvinceRepositoryInterface
 {
     protected $model;
     public function getModel(){
-        return \App\Models\Admin\CosoModel::class;
+        return \App\Models\Admin\Province::class;
     }
     // public function modelcity(){
     //     return \App\Models\Admin\City::class;

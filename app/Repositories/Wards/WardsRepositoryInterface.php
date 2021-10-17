@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Repositories\Coso;
+namespace App\Repositories\Wards;
 
 
-interface CosoRepositoryInterface
+interface WardsRepositoryInterface
 {
     public function getAll();
 

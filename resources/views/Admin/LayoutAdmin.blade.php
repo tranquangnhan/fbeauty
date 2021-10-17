@@ -377,6 +377,28 @@
                                 <li><a href="{{route("dichvu.create")}}">Thêm Dịch vụ</a></li>
                             </ul>
                         </li>
+                         <!--- Cơ Sở -->
+                         <li>
+                            <a href="javascript: void(0);">
+                            <i class="fas fa-house-user"></i>
+                                <span> Cơ Sở </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("coso.index")}}">Danh sách</a></li>
+                            </ul>
+                        </li>
+                          <!--- Đơn Hàng -->
+                          <li>
+                            <a href="javascript: void(0);">
+                            <i class="fas fa-dolly"></i>
+                                <span> Đơn Hàng </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("donhang.index")}}">Danh sách</a></li>
+                            </ul>
+                        </li>
                         <!--- Nhân viên -->
                         <li>
                             <a href="javascript: void(0);">
@@ -748,6 +770,11 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/form-xeditable.init.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.min.js"></script>
 {{-- end code nhúng bởi Nhân --}}
+
+{{-- code nhúng bởi Tưởng --}}
+<script src="{{ asset('Admin/assets') }}/js/pages/coso.js"></script>
+{{-- end code nhúng bởi Tưởng --}}
+
 {{--code của quốc--}}
 <script src="{{ asset('Admin/assets') }}/libs/isotope/isotope.pkgd.min.js"></script>
 

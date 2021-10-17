@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\CoSoController;
 use App\Http\Controllers\Admin\DangNhapAdminController;
 use App\Http\Controllers\Admin\DanhMucController;
+use App\Http\Controllers\Admin\DonHangController;
+
 use App\Http\Controllers\Admin\DichVuController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\HoaDonChiTietController;
@@ -65,6 +68,14 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('lich/uplich/{id}', [LichController::class, 'UpLich']);
     Route::get('lich/uplichAll/{id}', [LichController::class, 'uplichAll']);
     Route::post('lich/updateTime/{id}', [LichController::class, 'updateTime']);
+    // quản lý cơ sở
+    Route::resource('coso', CoSoController::class);
+    Route::post('/select-delivery', [CoSoController::class,'select_delivery']);
+
+     Route::resource('donhang', DonHangController::class);
+    Route::get('/active/{id}', [DonHangController::class,'active']);
+    Route::get('/active-1/{id}', [DonHangController::class,'active_1']);
+    Route::get('/active-2/{id}', [DonHangController::class,'active_2']);
 });
 
 Route::group(['prefix' => '/'], function (){

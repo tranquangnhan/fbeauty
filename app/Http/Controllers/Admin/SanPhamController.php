@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SanPham;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\SanPham\SanPhamRepository;
-use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -13,14 +13,12 @@ class SanPhamController extends Controller
 {
     private $DanhMuc;
     private $SanPham;
-    private $SanPhamChiTiet;
     private $idloai = 1;
 
-    public function __construct(DanhMucRepository $DanhMuc,SanPhamRepository $SanPham,SanPhamChiTietRepository $SanPhamChiTiet)
+    public function __construct(DanhMucRepository $DanhMuc,SanPhamRepository $SanPham)
     {
         $this->DanhMuc = $DanhMuc;
         $this->SanPham = $SanPham;
-        $this->SanPhamChiTiet = $SanPhamChiTiet;
     }
 
     /**
@@ -51,7 +49,7 @@ class SanPhamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SanPham $request)
     {
         
         $img = $this->uploadSingle($request->file('img'));
@@ -60,11 +58,10 @@ class SanPhamController extends Controller
             'iddanhmuc'=>$request->iddanhmuc,
             'name'=> $request->name,
             'slug'=>Str::slug($request->name),
-            'loai'=>$request->loai,
+            "img"=>$img,
             'mota'=>$request->mota,
             'noidung'=>$request->noidung,
-            "trangthai"=>$request->trangthai,
-            "img"=>$img
+            "trangthai"=>$request->trangthai
         ];
 
         $data= $this->SanPham->create($data);
@@ -105,13 +102,12 @@ class SanPhamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SanPham $request, $id)
     {
         $data = [
             'iddanhmuc'=>$request->iddanhmuc,
             'name'=> $request->name,
             'slug'=>Str::slug($request->name),
-            'loai'=>$request->loai,
             'mota'=>$request->mota,
             'noidung'=>$request->noidung,
             "trangthai"=>$request->trangthai,

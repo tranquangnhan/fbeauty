@@ -34,6 +34,11 @@
                                                         placeholder="Tên Cơ Sở" >
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="">Địa chỉ cụ thể</label><span style="color:red;"> (*)</span>
+                                                    <input type="text" name="diachi" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('diachi')}}"  parsley-trigger="change" required
+                                                        placeholder="Địa Chỉ Cụ Thể" >
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="">  Chọn Tỉnh/Thành Phố</label><span style="color:red;"> (*)</span>
                                                     <div>
                                                     <select class="form-control input-sm m-bot15 choose city" name="city" id="city"  >
@@ -78,10 +83,11 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="7%">STT</th>
-                                        <th width="21%">Tên Cơ Sở</th>
-                                        <th width="19%">Tỉnh/Thành phố</th>
-                                        <th width="19%">Quận/Huyện</th>
-                                        <th width="19%">Xã Phường/thị trấn</th>
+                                        <th width="10%">Tên Cơ Sở</th>
+                                        <th width="18%">Địa Chỉ Cơ Sở</th>
+                                        <th width="15%">Tỉnh/Thành phố</th>
+                                        <th width="15%">Quận/Huyện</th>
+                                        <th width="15%">Xã Phường/thị trấn</th>
                                         <th width="15%">Hành Động</th>
                                     </tr>
                                 </thead>
@@ -92,11 +98,12 @@
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td class="" >{{$row->name}}</td>
+                                            <td class="" >{{$row->diachi}}</td>
                                             <td class="" >{{$row->city->name_city}}</td>
                                             <td class="" >{{$row->province->name_quanhuyen}}</td>
                                             <td class="" >{{$row->wards->name_xaphuong}}</td>
 
-                                                <td class="d-flex">
+                                            <td class="d-flex">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('coso.edit',$row->id)}}" role="button"><i class="fa fa-edit"></i></a>
                                                 <form action="{{route('coso.destroy',$row->id)}}"  method="post">
                                                     @csrf
@@ -104,7 +111,6 @@
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
-
                                         </tr>
                                     @endforeach
 

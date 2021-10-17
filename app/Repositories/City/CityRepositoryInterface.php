@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Repositories\Coso;
+namespace App\Repositories\City;
 
 
-interface CosoRepositoryInterface
+interface CityRepositoryInterface
 {
     public function getAll();
 
