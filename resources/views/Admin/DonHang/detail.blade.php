@@ -21,7 +21,7 @@
                                 </div>
                             </div>
 
-                            <form data-parsley-validate action="{{url('quantri/donhang/detail/'.$data[0]->iddonhang.'/edit')}}" id="formadd" novalidate onsubmit="return submitForm()" method="post" enctype="multipart/form-data">
+                            <form data-parsley-validate action="{{url('quantri/donhang/detail/'.$data[0]->id.'/update')}}" id="formadd" novalidate onsubmit="return submitForm()" method="post" enctype="multipart/form-data">
                                 @csrf
                                 {!! method_field('patch') !!}
 
@@ -49,7 +49,7 @@
 
                                                 <div class="form-group">
                                                     <label >Hình ảnh Sản Phẩm</label>
-                                                    <img width="130" height="90" style="object-fit: cover" src="{{ asset('uploads/'.$item->img) }}" alt=""><br><br>
+                                                    <img width="130" height="100" style="object-fit: cover" src="{{ asset('uploads/'.$item->img) }}" alt=""><br><br>
                                                 </div>
 
                                                 <div class="row task-dates mb-0 mt-2">

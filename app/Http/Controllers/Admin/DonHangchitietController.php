@@ -50,11 +50,9 @@ class DonHangchitietController extends Controller
 
     function updateDetailDonHang(Request $request, $id){
         $data = [
-            'name'=> $request->name,
-            'diachi'=> $request->diachi,
-            'tinh'=>$request->city,
-            'quan'=>$request->province,
-            'huyen'=>$request->wards
+            'soluong'=> $request->soluong,
+            'dongiatruocgiamgia'=> $request->dongiatruocgiamgia,
+            'dongiasaugiamgia'=>$request->dongiasaugiamgia
         ];
         $this->DonHangChiTiet->update($id,$data);
         return view('Admin.DonHang.detail',compact('data'));

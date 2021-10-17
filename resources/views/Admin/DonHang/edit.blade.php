@@ -87,13 +87,13 @@
 
 
                                     <div class="form-row">
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
                                             <label for="">Phương Thức Thanh Toán</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="phuongthucthanhtoan" class="form-control @error('name') border-error @enderror name" value="{{$data->phuongthucthanhtoan}}"  parsley-trigger="change" required readonly
                                                    placeholder="Phương Thức Thanh Toán" >
                                             </div>
 
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
                                             <label for="">Phương Thức Giao Hàng</label><span style="color:red;"> (*)</span>
                                             <select name="phuongthucgiaohang"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->phuongthucgiaohang}}" parsley-trigger="change">
                                                  <option>{{$data->phuongthucgiaohang}}</option>
@@ -102,6 +102,16 @@
                                                  <option>Sship</option>
                                             </select>
                                             </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="">Trạng Thái</label><span style="color:red;"> (*)</span>
+                                                <select name="trangthai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->trangthai}}" parsley-trigger="change">
+                                                    <option><span>Chờ xác nhận</span></option>
+                                                    <option><span>Chờ gói hàng</span></option>
+                                                    <option><span>Đang giao</span></option>
+                                                    <option><span>Đã giao</span></option>
+                                                    <option><span>Hủy</span></option>
+                                                </select>
+                                                </div>
                                     </div>
 
 
