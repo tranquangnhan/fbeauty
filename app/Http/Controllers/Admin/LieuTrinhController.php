@@ -33,6 +33,7 @@ class LieuTrinhController extends Controller
     public function create()
     {
         $KhachHang = $this->KhachHang->find(1);
+        
         return view("Admin.LieuTrinh.create",compact('KhachHang'));
     }
 

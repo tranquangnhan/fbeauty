@@ -52,10 +52,10 @@
                             </div>
                         </div>
 
-                        <h4>Code HTML email template for welcome email</h4>
+                        <h4>Ghi chú liệu trình</h4>
 
                         <p class="text-muted">
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint cupiditate non sunt in culpa qui officia deserunt animi est laborum et
+                            {{$KhachHang->ghichu}}
                         </p>
 
                         <p class="text-muted">

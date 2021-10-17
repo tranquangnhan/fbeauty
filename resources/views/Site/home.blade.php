@@ -690,20 +690,6 @@
                     </div>
 
                     <div class="box-pro">
-<<<<<<< HEAD
-                        @foreach ($data as $item)
-                        <div class="pro-item ml-0">
-                            <div class="img-1  bg-gray-1">
-                                <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
-
-                                <div class="box-icon">
-                                    <div class="icon-item d-inline-block">
-                                        <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                    </div>
-                                    <div class="icon-item d-inline-block position-relative icon-cart">
-                                        <div class="cal-icon-cart">+</div>
-                                        <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-=======
                         <div class="owl-carousel owl-theme" id="product-slide">
                             <div class="pro-fa-item">
                                 <div class="pro-item">
@@ -718,49 +704,6 @@
                                                 <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
                                             </div>
                                         </div>
->>>>>>> 4833ba5b9e35eb2c038266ad0420605228bb1e11
-                                    </div>
-
-<<<<<<< HEAD
-                            <div class="content-1">
-                                <div class="text-1 limit-text-row-1 ">
-                                    {{$item->name}}
-                                </div>
-                                <div class="text-2">{{$item->dongia}} vnđ</div>
-=======
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
->>>>>>> 4833ba5b9e35eb2c038266ad0420605228bb1e11
-                            </div>
-
-<<<<<<< HEAD
-                        @endforeach
-                        {{-- <div class="pro-item">
-                            <div class="img-1 bg-gray-1">
-                                <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                <div class="box-icon">
-                                    <div class="icon-item d-inline-block">
-                                        <a href=""><i class="fas fa-search color-black-1"></i></a>
-=======
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block hover-scale-1">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
->>>>>>> 4833ba5b9e35eb2c038266ad0420605228bb1e11
                                     </div>
 
                                     <div class="content-1">
@@ -868,17 +811,31 @@
                                 </div>
                             </div>
 
-<<<<<<< HEAD
-                            <div class="content-1">
-                                <div class="text-1 limit-text-row-1 ">
-                                    Rational Household Labor Supply – JSTOR
+                            <div class="pro-fa-item">
+                                <div class="pro-item">
+                                    <div class="img-1 bg-gray-1">
+                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
+                                        <div class="box-icon">
+                                            <div class="icon-item d-inline-block hover-scale-1">
+                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
+                                            </div>
+                                            <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
+                                                <div class="cal-icon-cart">+</div>
+                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="content-1">
+                                        <div class="text-1 limit-text-row-1 ">
+                                            Rational Household Labor Supply – JSTOR
+                                        </div>
+                                        <div class="text-2">300.000đ</div>
+                                    </div>
                                 </div>
-                                <div class="text-2">300.000đ</div>
                             </div>
-                        </div> --}}
-=======
+
                         </div>
->>>>>>> 4833ba5b9e35eb2c038266ad0420605228bb1e11
 
 
                     </div>
@@ -940,62 +897,6 @@
                                         Theo Dõi
                                     </div>
 
-<<<<<<< HEAD
-        <div class="box-blog">
-            <div class="list-blog">
-                <div class="blog-title-1 mb-4">
-                    <div class="w-100 text-center">
-                        <div class="title-small text-center">
-                            TIN TỨC & SỰ KIỆN
-                        </div>
-                        <div class="title-3">
-                            BÀI VIẾT MỚI
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 pr-0">
-                            @foreach ($Blog as $item)
-                            <div class="blog-bigsize">
-                                <div class="img-1 w-100">
-                                    <img class="img-fluid" src="{{ asset('uploads/'.$item->img) }}" alt="">
-                                </div>
-                                <div class="blog-content-bigsize">
-                                    <div class="blog-text-1 limit-text-row-2">
-                                        <a href="">{{$item ->name}}</a>
-                                    </div>
-                                    <div class="blog-text-2 fz-dot9em">
-                                        <?php $newDate = date("d-m-Y", strtotime($item->created_at));
-                                        echo $newDate; ?>
-                                    </div>
-                                    <div class="blog-text-3 limit-text-row-3 fz-dot9em">
-                                        {{$item ->noidung}}
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="col-xl-6 pl-0 bg-white box-shadow-1">
-                            <div class="list-blog-small">
-                                @foreach ($Blog2 as $item)
-                                    
-                                <div class="small-blog-item">
-                                    <div class="row mt-2">
-                                        <div class="col-xl-5">
-                                            <div class="img-1">
-                                                <img class="img-fluid" src="{{asset('uploads/'.$item->img)}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-7 pl-0 align-self-center">
-                                            <div class="text-bl-1 limit-text-row-2 ">
-                                                <a href="" class="hover-pink">{{$item->name}}</a>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-6 color-gray-2">
-                                                    <?php $newDate = date("d-m-Y", strtotime($item->created_at));
-                                                    echo $newDate; ?>
-=======
                                     <div class="icon-1 mt-4">
                                         <img class="" src=" {{ asset('Site/images/icon') }}/doctor.png"
                                             alt="">
@@ -1392,7 +1293,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
->>>>>>> 4833ba5b9e35eb2c038266ad0420605228bb1e11
                                                 </div>
                                             </div>
 
@@ -1436,16 +1336,6 @@
                                         </div>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-                                @endforeach
-
-                                <div class="w-100 my-4">
-                                    <a href="">
-                                        <button class="btn-full">Xem thêm</button>
-                                    </a>
-                                </div>
-=======
->>>>>>> 4833ba5b9e35eb2c038266ad0420605228bb1e11
                             </div>
                         </div>
                     </div>
