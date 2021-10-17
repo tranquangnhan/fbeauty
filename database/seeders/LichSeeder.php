@@ -16,11 +16,11 @@ class LichSeeder extends Seeder
     {
 
         $soluongkhach = 4;
-        $thu = 2;
+        $thu = 0;
         $idcoso = 1;
-        $gio = 9;
+        $gio = 8;
         $trangthai = 1;
-        for ($i = 0; $i < 21; $i++) {
+        for ($i = 0; $i <= 20; $i++) {
             $khoanGiuaKhungGio = 0.5;
             $gio += $khoanGiuaKhungGio;
             $toTime = sprintf('%02d:%02d', (int) $gio, fmod($gio, 1) * 60);
@@ -32,18 +32,18 @@ class LichSeeder extends Seeder
 
             if ($i == 20)
             {
-                $gio = 9;
-                if ($idcoso == 2 && $thu == 8)
+                $gio = 8;
+                if ($idcoso == 2 && $thu == 6)
                 {
                     break;
                 }
-                else if ($idcoso == 1 && $thu == 8)
+                else if ($idcoso == 1 && $thu == 6)
                 {
                     $idcoso = 2;
-                    $thu = 1;
+                    $thu = 0;
                 }
 
-                if ($thu <= 8)
+                if ($thu <= 6)
                 {
                     $thu++;
                     $i = 0;

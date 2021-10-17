@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>FBEAUTY SPA</title>
     {{-- Font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1393,5 +1394,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 {{-- Custom js --}}
+<script src="{{ asset('Site/js') }}/bientoancuc.js"></script>
 <script src="{{ asset('Site/js') }}/main.js"></script>
 <script src="{{ asset('Site/js') }}/datlich.js"></script>
+
+{{-- Sweetalert 2 --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
