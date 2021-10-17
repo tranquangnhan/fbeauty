@@ -782,7 +782,6 @@ $('.choose').on('change', function() {
 });
 });
 </script>
-<script src="{{ asset('Admin/assets') }}/js/pages/coso.js"></script>
 {{-- end code nhúng bởi Tưởng --}}
 
 {{--code của quốc--}}

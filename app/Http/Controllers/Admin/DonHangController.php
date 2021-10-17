@@ -130,12 +130,7 @@ class DonHangController extends Controller
 
         $this->DonHang->active_donhang($id);
 
-      // DB::table('donhang')->where('id',$id)->update(['trangthai'=>1]);
 
     }
-    // public function active_3 ($id){
-
-    //     $this->DonHang->active_donhang($id);
-    // }
 
 }

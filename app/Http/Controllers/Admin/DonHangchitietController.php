@@ -21,11 +21,6 @@ class DonHangchitietController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-    //     $data  = $this->DonHangChiTiet->getAll();
-    //     return view('Admin.DonHang.detail',compact('data'));
-    // }
     /**
      * Store a newly created resource in storage.
      *
@@ -44,12 +39,6 @@ class DonHangchitietController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function detail($id)
-    // {
-    // $data  = $this->DonHangChiTiet->find($id);
-    // return view('Admin.donhang.detail',compact('data'));
-
-    // }
 
     function editDetailDonHang($id){
 
@@ -59,9 +48,15 @@ class DonHangchitietController extends Controller
     }
 
 
-    function updateDetailDonHang($id){
-
-        $data = $this->DonHangChiTiet->getAll();
+    function updateDetailDonHang(Request $request, $id){
+        $data = [
+            'name'=> $request->name,
+            'diachi'=> $request->diachi,
+            'tinh'=>$request->city,
+            'quan'=>$request->province,
+            'huyen'=>$request->wards
+        ];
+        $this->DonHangChiTiet->update($id,$data);
         return view('Admin.DonHang.detail',compact('data'));
     }
 }
