@@ -12,4 +12,5 @@ public function getNhanVien();
 public function CheckEmail($email);
 public function CheckSdt($sdt);
 public function getNhanVienByIdCoSo($id);
+public function findNhanVienByIdAndCoSo($id, $idCoSo);
 }

@@ -7,16 +7,16 @@
                     <div class="col-xl-12 p-0">
                         <div class="box-content-datlich h-100">
                             <div class="modal-content-1 h-100">
-
+                                <div class="box-spinner">
+                                    <div class="spinner-border" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                      </div>
+                                </div>
                                 <div class="datlich-step h-100 active" data-step="0">
                                     <div class="title-3 color-main uppercase">Nhập SĐT & Chọn cơ sở</div>
                                     <div class="text-10">Nếu bạn chưa biết chọn dịch vụ nào hãy chọn ‘’Tôi muốn tư vấn’’ </div>
                                     <div class="list-select position-relative">
-                                        <div class="box-spinner">
-                                            <div class="spinner-border" role="status">
-                                                <span class="sr-only">Loading...</span>
-                                              </div>
-                                        </div>
+
                                         <form action="" class="fa-custom form-phone-number">
                                             <div class="div-phone-number">
                                                 <input type="number" id="phoneNumber" placeholder="Nhập số điện thoại của bạn">
@@ -36,8 +36,8 @@
 
                                                 <div class="list-option coso-fa" slide-mov="13">
                                                     @foreach ($listCoSo as $coSo)
-                                                        <div class="option-item coso-fa date-bg">
-                                                            <div class="pickcoso position-relative z-index-999" data-option-coso="{{ $coSo->id }}">{{ $coSo->name }}</div>
+                                                        <div class="option-item coso-fa date-bg pickcoso">
+                                                            <div class="position-relative z-index-999 pickcoso-children" data-option-coso="{{ $coSo->id }}">{{ $coSo->name }}</div>
                                                         </div>
                                                     @endforeach
 
@@ -84,7 +84,7 @@
                                                             <div class="row align-items-center">
                                                                 <div class="col-xl-8">
                                                                     <div class="form-check d-flex align-items-center">
-                                                                        <input type="checkbox" class="form-check-input checkbox-dichvu" data-id="{{ $dichVu->id }}" name="dichvu" value="{{ $gia }}" id="{{ $id }}">
+                                                                        <input type="checkbox" class="form-check-input checkbox-dichvu" data-name="{{ $dichVu->name }}" data-id="{{ $dichVu->id }}" name="dichvu" value="{{ $gia }}" id="{{ $id }}">
                                                                         <div class="mid-content">
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="ml-2">
@@ -139,11 +139,6 @@
                                     <div class="title-3 uppercase color-main">Thời gian bạn đến</div>
                                     <div class="text-10">Để tiết kiệm thời gian cho bạn hãy đặt trước khi đến spa</div>
                                     <div class="list-select position-relative">
-                                        <div class="box-spinner">
-                                            <div class="spinner-border" role="status">
-                                                <span class="sr-only">Loading...</span>
-                                              </div>
-                                        </div>
                                         <div class="select-custom">
                                             <div class="select-fa">
                                                 <div class="name-select d-flex align-items-center" data-mov="9">
@@ -182,7 +177,7 @@
 
                                                 <div class="list-option list-nhanvien" slide-mov="11">
                                                     <div class="option-item option-nhanvien date-bg clicked">
-                                                        <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="0">
+                                                        <div class="picknhanvien position-relative z-index-999" data-name-nhanvien="Spa chọn chuyên viên giúp bạn" data-option-nhanvien="0" data-option-nhanvien="0">
                                                             <div class="img-1 border-image">
                                                                 <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
                                                             </div>
@@ -191,7 +186,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="option-item option-nhanvien date-bg">
+                                                    <div class="option-item option-nhanvien date-bg option-dong">
                                                         <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="2">
                                                             <div class="img-1 border-image">
                                                                 <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
@@ -206,7 +201,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="select-custom">
+                                        <div class="select-custom fa-custom select-time">
                                             <div class="select-fa">
                                                 <div class="name-select d-flex align-items-center" data-mov="10">
                                                     <div class="tendanhmuc value-time">
@@ -217,7 +212,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="list-option mb-3" slide-mov="10">
+                                                <div class="list-option mb-3 list-option-khunggio" slide-mov="10">
                                                     <div class="option-item time-bg">
                                                         <div class="picktime" data-option-time="8:00">8h00</div>
                                                     </div>
@@ -256,11 +251,132 @@
                                 </div>
 
                                 <div class="datlich-step h-100" data-step="3">
-                                    Long 3
+                                    <div class="title-3 uppercase color-main text-center">KIỂM TRA THÔNG TIN</div>
+                                    <div class="w-100 list-select box-checkthongtin mt-3">
+                                        <div class="row">
+                                            <div class="col-xl-4 check-info-user">
+                                                <div class="upper">
+                                                    <i class="fas fa-phone-alt"></i>
+                                                    <span class="">Số điện thoại</span>
+                                                </div>
+                                                <div class="under check-phone">
+                                                    0965286066
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 check-info-user">
+                                                <div class="upper">
+                                                    <i class="far fa-calendar-alt"></i>
+                                                    <span>Ngày</span>
+                                                </div>
+                                                <div class="under check-ngay">
+                                                    27-09-2021
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 check-info-user">
+                                                <div class="upper">
+                                                    <i class="fas fa-clock"></i>
+                                                    <span>Giờ</span>
+                                                </div>
+                                                <div class="under check-gio">
+                                                    8h30
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row mt-4">
+
+                                            <div class="col-xl-6 check-info-user">
+                                                <div class="upper">
+                                                    <i class="fas fa-hand-holding-usd"></i>
+                                                    <span>Phương thức thanh toán</span>
+                                                </div>
+                                                <div class="under">
+                                                    Thanh toán tại quầy
+                                                    <div class="img-1">
+                                                        <img src="{{ asset('Site/images') }}/visa.png" alt="">
+                                                        <img src="{{ asset('Site/images') }}/momo.png" alt="">
+                                                        <img src="{{ asset('Site/images') }}/cash.png" alt="">
+                                                        <img src="{{ asset('Site/images') }}/vnpay.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 check-info-user">
+                                                <div class="upper">
+                                                    <i class="fas fa-user-tie"></i>
+                                                    <span>Chuyên viên Spa</span>
+                                                </div>
+                                                <div class="under check-nhanvien align-items-center">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-xl-12 check-info-user">
+                                                <div class="upper">
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                    <span>Địa chỉ Spa</span>
+                                                </div>
+                                                <div class="under check-coso">
+                                                    Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-4">
+                                            <div class="col-xl-12 check-info-user">
+                                                <div class="upper">
+                                                    <i class="fas fa-spa"></i>
+                                                    <span>Dịch vụ đã chọn</span>
+                                                </div>
+                                                <div class="under">
+                                                    <div class="table-custom mt-2">
+                                                        <div class="head-title">
+                                                            <div class="bg-table-custom">
+                                                                <div class="row">
+                                                                    <div class="col-xl-9 title-table">
+                                                                        Tên dịch vụ
+                                                                    </div>
+                                                                    <div class="col-xl-3 title-table">
+                                                                        Giá dịch vụ
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="body-table-custom">
+                                                            <div class="bg-table-custom">
+                                                                <div class="list-dichvu-selected">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-xl-9 body-table-item">
+                                                                            <div class="name-dichvu">
+                                                                                Làm đẹp công nghệ cao
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-3 body-table-item">
+                                                                            <div class="gia-dichvu">
+                                                                                300.000đ
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
 
                                     <div class="control-slide-datlich d-flex">
-                                        <button type="button" class="prev-step mr-auto">Quay lại</button>
-                                        <button type="button" class="next-step">Tiếp theo</button>
+                                        <button type="button" class="button-href-basic prev-step mr-auto">Quay lại</button>
+                                        <button type="button" class="button-href-basic next-step dat-lich">Đặt lịch</button>
                                     </div>
                                 </div>
 

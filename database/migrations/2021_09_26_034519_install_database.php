@@ -183,12 +183,11 @@ class InstallDatabase extends Migration
         Schema::create('datlich', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idcoso');
-            $table->unsignedInteger('iddichvu');
+            $table->string('iddichvu', 55);
             $table->unsignedInteger('idkhachhang');
             $table->unsignedInteger('idnhanvien');
             $table->unsignedInteger('thoigiandat');
             $table->foreign('idcoso')->references('id')->on('coso');
-            $table->foreign('iddichvu')->references('id')->on('dichvu');
             $table->foreign('idkhachhang')->references('id')->on('khachhang');
             $table->foreign('idnhanvien')->references('id')->on('nhanvien');
             $table->timestamps();
