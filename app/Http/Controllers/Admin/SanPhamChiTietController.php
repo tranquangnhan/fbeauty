@@ -49,14 +49,15 @@ class SanPhamChiTietController extends Controller
     
     function editDetailProduct($id){
 
-        $data = $this->SanPhamChiTiet->getAll();
+        $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
+
         return view('Admin.SanPham.editDetail',compact('data'));
     }
 
 
 
     function updateDetailProduct(SanPhamChiTiet $request, $id){
-        $data = $this->SanPhamChiTiet->getAll();
+        $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
         $ml = $request->ml;
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
