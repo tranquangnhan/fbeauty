@@ -12,6 +12,8 @@ use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\HoaDon\HoaDonRepositoryInterface;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepositoryInterface;
+use App\Repositories\Lich\LichRepository;
+use App\Repositories\Lich\LichRepositoryInterface;
 use App\Repositories\NhanVien\NhanVienRepository;
 use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use App\Repositories\SanPham\SanPhamRepository;
@@ -41,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(GiamGiaRepositoryInterface::class, GiamGiaRepository::class);
         $this->app->singleton(HoaDonRepositoryInterface::class, HoaDonRepository::class);
         $this->app->singleton(HoaDonChiTietRepositoryInterface::class, HoaDonChiTietRepository::class);
+        $this->app->singleton(LichRepositoryInterface::class, LichRepository::class);
     }
 
     /**
