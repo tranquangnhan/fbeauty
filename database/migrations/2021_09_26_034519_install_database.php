@@ -50,7 +50,7 @@ class InstallDatabase extends Migration
             $table->string('motangan',255);
             $table->double('dongia',10,0);
             $table->longText('noidung');
-            $table->boolean('trangthai');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('iddm')->references('id')->on('danhmuc');
             $table->timestamps();
         });
@@ -62,8 +62,9 @@ class InstallDatabase extends Migration
             $table->string('img',255);
             $table->string('name',255);
             $table->string('slug',255);
+            $table->string('motangan',255);
             $table->longText('noidung');
-            $table->boolean('trangthai');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('iddm')->references('id')->on('danhmuc');
             $table->timestamps();
         });
@@ -85,8 +86,8 @@ class InstallDatabase extends Migration
             $table->string('email',255)->unique();
             $table->string('password',255);
             $table->string('idgoogle',255)->nullable();
-            $table->boolean('active',1);
-            $table->string('img',255);
+            $table->boolean('active')->default(0)->nullable();
+            $table->string('img',255)->nullable();
             $table->string('randomkey',255)->nullable();
             $table->unsignedInteger('exp')->nullable();
             $table->rememberToken();

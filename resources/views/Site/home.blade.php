@@ -704,8 +704,6 @@
         </div>
 
         <div class="box-blog">
-
-
             <div class="list-blog">
                 <div class="blog-title-1 mb-4">
                     <div class="w-100 text-center">
@@ -717,13 +715,10 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 pr-0">
                             @foreach ($Blog as $item)
-                                
-                           
                             <div class="blog-bigsize">
                                 <div class="img-1 w-100">
                                     <img class="img-fluid" src="{{ asset('uploads/'.$item->img) }}" alt="">

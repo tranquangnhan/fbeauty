@@ -67,7 +67,7 @@
                                                     <i class="fa fa-download " style="font-size:52px;color:blue"></i>
                                                 </div>
                                             </div>
-                                            @error('img')
+                                            @error('urlHinh')
                                             <span class="badge badge-danger">{{$message}}</span>
                                             @enderror
                                         </label>

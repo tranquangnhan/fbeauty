@@ -18,7 +18,7 @@
                                         <th width="20%">Tên bài viết</th>
                                         <th width="15%">Hình ảnh</th>
                                         <th width="15%">Danh mục</th>  
-                                        <th width="35%">Nội dung</th>  
+                                        <th width="35%">Mô tả</th>  
                                         <th width="15%">Hành Động</th>  
                                     </tr>
                                 </thead>
@@ -37,7 +37,7 @@
                                                 {{$item->danhmuc}}
                                             </td> 
                                             <td>
-                                                {{$item->noidung}}
+                                                {{$item->motangan}}
                                             </td> 
                                             <td class="d-flex">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('blog.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
