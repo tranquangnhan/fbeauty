@@ -59,7 +59,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 
     // quản lý cơ sở
     Route::resource('coso', CoSoController::class);
-   Route::post('/select-delivery', [CoSoController::class,'select_delivery']);
+   Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
 
     Route::resource('donhang', DonHangController::class);
     Route::resource('donhangchitiet', DonHangController::class);
