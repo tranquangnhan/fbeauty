@@ -21,5 +21,6 @@ class DonHangModel extends Model
         'phuongthucthanhtoan',
         'phuongthucgiaohang',
         'trangthai'
+
     ];
 }

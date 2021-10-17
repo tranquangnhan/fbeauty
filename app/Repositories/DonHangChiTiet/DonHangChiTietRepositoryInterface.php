@@ -6,16 +6,18 @@ namespace App\Repositories\DonHangChiTiet;
 
 interface DonHangChiTietRepositoryInterface
 {
-    // public function getAll();
+    public function getAll();
 
-    // public function find($id);
+    public function find($id);
 
+    public function create($attributes = []);
 
-    // public function create($attributes = []);
+    public function update($id,$attributes = []);
 
-    // public function update($id,$attributes = []);
+    public function delete($id);
 
-    // public function delete($id);
+    public function getDonHangChiTietByIdDonHang($id);
 
+    // public function getDonHangChiTietByIdDonHangInnerJoin($id);
 
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\DonHang;
 use App\Repositories\DonHang\DonHangRepository;
+use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 
 class DonHangController extends Controller
@@ -15,15 +16,17 @@ class DonHangController extends Controller
 
     private $DonHang;
     private $khachHang;
+    private $DonHangChiTiet;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(DonHangRepository $DonHang , KhachHangRepository $khachHang)
+    public function __construct(DonHangRepository $DonHang , KhachHangRepository $khachHang, DonHangChiTietRepository $DonHangChiTiet)
     {
         $this->DonHang = $DonHang;
         $this->KhachHang = $khachHang;
+        $this->DonHangChiTiet = $DonHangChiTiet;
 
     }
     public function index()
@@ -73,10 +76,11 @@ class DonHangController extends Controller
      */
     public function edit($id)
     {
+        $dataDHCT = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
         $data  = $this->DonHang->find($id);
         $khachHang  = $this->KhachHang->find($data->idkhachhang);
        // dd($data->idkhachhang);
-        return view('Admin.DonHang.edit',compact('data','khachHang'));
+        return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT'));
     }
 
     /**

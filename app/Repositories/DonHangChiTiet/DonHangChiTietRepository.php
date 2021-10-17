@@ -1,15 +1,23 @@
 <?php
 
 namespace App\Repositories\DonHangChiTiet;
+
+use App\Models\Admin\DonHangChitiet;
 use App\Repositories\BaseRepository;
 class DonHangChiTietRepository extends BaseRepository implements DonHangChiTietRepositoryInterface
 {
     protected $model;
     public function getModel(){
-        return \App\Models\Admin\DonHangModel::class;
+        return DonHangChitiet::class;
     }
-    // public function modelcity(){
-    //     return \App\Models\Admin\City::class;
+
+    public function getDonHangChiTietByIdDonHang($id){
+        return $this->model->where('iddonhang','=',$id)->get();
+    }
+
+    // public function getDonHangChiTietByIdDonHangInnerJoin($id){
+    //     return $this->model->join('donhang', 'donhang.id', '=', 'donhangchitiet.iddonhang')->where('donhang.id','=',$id)->get();
+
     // }
 
 

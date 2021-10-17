@@ -27,7 +27,7 @@
                                 </div>
                             </div>
 
-                            <h4 class="header-title mt-0 mb-3">Sửa Cơ Sở</h4>
+                            <h4 class="header-title mt-0 mb-3">Sửa Đơn Hàng</h4>
 
                             <form data-parsley-validate action="{{route('donhang.update',$data->id)}}" id="formadd" novalidate onsubmit="return submitForm()" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -44,7 +44,7 @@
 
                                             <div class="form-group col-md-4">
                                                 <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
-                                                <input type="text" name="magiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->idgiamgia}}"  parsley-trigger="change" required readonly>
+                                                <input type="text" name="magiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->idgiamgia}}"  parsley-trigger="change" required>
                                             </div>
 
                                             <div class="form-group col-md-4">
@@ -115,16 +115,11 @@
 
                                 </div>
 
-                                <div class="form-group  mb-0 mt-5">
-                                <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                            <a href="/quantri/coso" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
-                                            </div>
+                                <div class="form-group text-right mb-0 mt-5">
 
-                                            <div class="form-group col-md-6 text-right">
+                                            <a href="/quantri/coso" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
+
                                             <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product'>
-                                            </div>
-                                    </div>
 
                                 </div>
 

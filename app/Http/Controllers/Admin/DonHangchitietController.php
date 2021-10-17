@@ -53,9 +53,15 @@ class DonHangchitietController extends Controller
 
     function editDetailDonHang($id){
 
-        $data = $this->DonHangChiTiet->getAll();
+        $data = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
+        //dd($data);
         return view('Admin.DonHang.detail',compact('data'));
-
     }
 
+
+    function updateDetailDonHang($id){
+
+        $data = $this->DonHangChiTiet->getAll();
+        return view('Admin.DonHang.detail',compact('data'));
+    }
 }

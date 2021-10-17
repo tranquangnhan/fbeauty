@@ -11,9 +11,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
-                        <h4 class="mt-0 header-title">Danh Mục</h4>
+                        <h4 class="mt-0 header-title"> Đơn Hàng </h4>
                         <p class="text-muted font-14 mb-3">
-                        Danh mục sản phẩm, dịch vụ, bài viết.
+                        Đơn Hàng sản phẩm.
                         </p>
 
 
@@ -21,12 +21,11 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="10.5%"> Mã đơn hàng </th>
-                                        <th width="15.5%"> Khách hàng </th>
+                                        <th width="14%"> Khách hàng </th>
                                         <th width="12%">SĐT người nhận</th>
                                         <th width="11%">Tổng Tiền </th>
                                         <th width="11%">Tổng Tiền Giảm</th>
-                                        <th width="16%">Ghi Chú Khách Hàng</th>
-                                        <th width="12%">Trạng Thái</th>
+                                        <th width="13.5%">Trạng Thái</th>
                                         <th width="12%">Hành Động</th>
 
                                     </tr>
@@ -40,16 +39,18 @@
                                             <td>{{$item->sdtnguoinhan}}</td>
                                             <td>{{number_format($item->tongtientruocgiamgia)}}</td>
                                             <td>{{number_format($item->tongtiensaugiamgia)}}</td>
-                                            <td>{{$item->ghichucuakhachhang}}</td>
 
 
                                             <td>
-                                                <section>
-                                                    <select name="" id=""><span>Chờ xác nhận</span></select>
-                                                    <select name="" id=""><span>Chờ xác nhận</span></select>
-                                                    <select name="" id=""><span>Chờ xác nhận</span></select>
-                                                </section>
-                                            <?php
+                                            <select id="inputState" class="form-control">
+                                                        <option> <a href="{{URL::to('/active/'.$item->id)}}"><span>Chờ xác nhận</span></a></option>
+                                                        <option><a href="{{URL::to('/active-1/'.$item->id)}}"><span>Chờ gói hàng</span></a></option>
+                                                        <option><a href="{{URL::to('/active-2/'.$item->id)}}"><span>Đang giao</span></a></option>
+                                                        <option> <a href="{{URL::to('/active-2/'.$item->id)}}"><span>Đã giao</span></a></option>
+                                                        <option> <a href="{{URL::to('/active-2/'.$item->id)}}"><span>Hủy</span></a></option>
+
+                                                </select>
+                                            <!-- <?php
                                             if($item->trangthai==0)
                                             {
                                                 ?>
@@ -70,7 +71,7 @@
                                                 <a><span>Đã Giao</span></a>
                                                 <?php
                                             }
-                                            ?>
+                                            ?> -->
                                             </td>
                                             <td class="d-flex">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('donhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
