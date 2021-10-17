@@ -1,12 +1,18 @@
 <?php
 
 
-namespace App\Repositories\CoSo;
+namespace App\Repositories\Coso;
 
 
-use App\Repositories\RepositoryInterface;
-
-interface CoSoRepositoryInterface extends RepositoryInterface
+interface CosoRepositoryInterface
 {
+    public function getAll();
 
+    public function find($id);
+
+    public function create($attributes = []);
+
+    public function update($id,$attributes = []);
+
+    public function delete($id);
 }

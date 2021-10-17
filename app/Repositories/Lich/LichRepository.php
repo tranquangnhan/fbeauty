@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\BaseRepository;
 use App\Models\Admin\LichModel;
 use App\Repositories\Lich\LichRepositoryInterface;
+// use App\Models\Admin\Lich;
+use Illuminate\Support\Facades\DB;
 class LichRepository extends BaseRepository implements LichRepositoryInterface
 {
     protected $model;
@@ -32,6 +34,25 @@ class LichRepository extends BaseRepository implements LichRepositoryInterface
             ['gio', '=', $gio],
             ['trangthai', '=', Controller::TRANGTHAI_LICH_OPEN],
         ])->first();
+    }
+
+    public function getLich($id, $idthu)
+    {
+        return $this->model->select('*')
+            ->where('idcoso', '=', $id)
+            ->where('thutrongtuan', '=', $idthu)
+            ->get();
+    }
+
+    public function updateALL($id, $thu, $trangthai){
+        return DB::table('lich')->where('idcoso', $id)
+            ->where('thutrongtuan', $thu)
+            ->update(array('trangthai' => $trangthai));
+
+    }
+
+    public function deleteLichByIdCoSo($id){
+        return DB::table('lich')->where('idcoso', $id)->delete();
     }
 
 }

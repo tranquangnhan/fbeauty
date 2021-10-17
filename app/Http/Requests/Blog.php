@@ -26,6 +26,10 @@ class Blog extends FormRequest
         return [
             'name' => ['required', 'min:6', 'max:120'],
             'noidung' => ['required', 'min:3'],
+            // 'img' => ['required'],
+            'motangan' => ['required', 'min:3','max:255'],
+            'urlHinh'=>['required']
+
         ];
     }
 
@@ -37,7 +41,10 @@ class Blog extends FormRequest
             'name.max' => 'Tên bài viết phải nhỏ hơn 120 kí tự',
             'noidung.required' => 'Bạn chưa nhập nội dung',
             'noidung.min' => 'Nội dung phải lớn hơn 3 kí tự',
-            // 'img.required' => 'Bạn chưa chọn hình ảnh ',
+            'motangan.required' => 'Bạn chưa nhập mô tả',
+            'motangan.min' => 'Mô tả phải lớn hơn 3 kí tự',
+            'motangan.max' => 'Mô tả phải bé hơn 255 kí tự',
+            'urlHinh.required' => 'Bạn chưa cập nhật hình ảnh ',
         ];
     }
 
@@ -46,7 +53,8 @@ class Blog extends FormRequest
         return [
             'name' => 'Tên bài viết',
             'noidung' => 'Nội dung',
-            // 'img'=>'hình ảnh'
+            'motangan' => 'Mô tả ngắn',
+            'urlHinh'=>'hình ảnh'
         ];
     }
 }

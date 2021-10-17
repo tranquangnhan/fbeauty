@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\SanPham\SanPhamRepository;
+use App\Repositories\Blog\BlogRepository;
 use Illuminate\Http\Request;
-
-use App\Models\Admin\NhanVien;
-// use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use App\Repositories\Coso\CoSoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DichVu\DichVuRepository;
@@ -28,6 +27,7 @@ class HomeController extends Controller
     private $DatLich;
     private $Lich;
     private $KhachHang;
+    private $SanPham;
     private $limitTimeNum = 10;
     /**
      * CosoController constructor.
@@ -39,7 +39,9 @@ class HomeController extends Controller
         DichVuRepository $Dichvu,
         LichRepository $Lich,
         DatLichRepository $DatLich,
-        KhachHangRepository $KhachHang
+        KhachHangRepository $KhachHang,
+        BlogRepository $Blog,
+        SanPhamRepository $SanPham
         )
     {
         $this->Coso = $Coso;
@@ -49,6 +51,8 @@ class HomeController extends Controller
         $this->Lich = $Lich;
         $this->DatLich = $DatLich;
         $this->KhachHang = $KhachHang;
+        $this->Blog = $Blog;
+        $this->SanPham = $SanPham;
 
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
@@ -60,9 +64,15 @@ class HomeController extends Controller
     }
 
     public function index() {
-        // $data = $this->NhanVien->getAll();
+        $sanPham = $this->SanPham->getAll();
+        $blog = $this->Blog->getBlog1();
+        $blog2 = $this->Blog->getBlog2();
 
-        return view('Site.home', $this->data);
+        $this->data['sanPham'] = $sanPham;
+        $this->data['blog'] = $blog;
+        $this->data['blog2'] = $blog2;
+
+        return view("Site.home", $this->data);
     }
 
     public function getNhanVienByIdCoSo(Request $request, $id) {
@@ -189,7 +199,7 @@ class HomeController extends Controller
     }
 
     public function getNhanVienTam($id) {
-        return NhanVien::where('idcoso', $id)->get();
+        return  $this->NhanVien->getNhanVienByIdCoSo( $id);
     }
 
     public function checkNhanVienRanh($thoiGianDat, $idNhanVien) {

@@ -32,6 +32,10 @@ class InstallDatabase extends Migration
         Schema::dropIfExists('donhang');
         Schema::dropIfExists('donhangchitiet');
         Schema::dropIfExists('nhanvien');
+        Schema::dropIfExists('wishlist');
+        Schema::dropIfExists('subscribed');
+        Schema::dropIfExists('giohang');
+        Schema::dropIfExists('giohangchitiet');
 
         Schema::create('danhmuc', function (Blueprint $table) {
             $table->increments('id');
@@ -43,7 +47,7 @@ class InstallDatabase extends Migration
 
         Schema::create('dichvu', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',255);
+            $table->string('tendv',255);
             $table->string('slug',255);
             $table->string('img',255);
             $table->unsignedInteger('giamgia')->default(0);
@@ -51,7 +55,7 @@ class InstallDatabase extends Migration
             $table->string('motangan',255);
             $table->double('dongia',10,0);
             $table->longText('noidung');
-            $table->boolean('trangthai');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('iddm')->references('id')->on('danhmuc');
             $table->timestamps();
         });
@@ -63,8 +67,9 @@ class InstallDatabase extends Migration
             $table->string('img',255);
             $table->string('name',255);
             $table->string('slug',255);
+            $table->string('motangan',255);
             $table->longText('noidung');
-            $table->boolean('trangthai');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('iddm')->references('id')->on('danhmuc');
             $table->timestamps();
         });
@@ -73,6 +78,7 @@ class InstallDatabase extends Migration
         Schema::create('coso', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',255);
+            $table->string('diachi',255);
             $table->unsignedInteger('tinh');
             $table->unsignedInteger('quan');
             $table->unsignedInteger('huyen');
@@ -86,7 +92,11 @@ class InstallDatabase extends Migration
             $table->string('email',255)->unique()->nullable();
             $table->string('password',255)->nullable();
             $table->string('idgoogle',255)->nullable();
+<<<<<<< HEAD
+            $table->boolean('active')->default(0)->nullable();
+=======
             $table->boolean('active',1);
+>>>>>>> 4833ba5b9e35eb2c038266ad0420605228bb1e11
             $table->string('img',255)->nullable();
             $table->string('randomkey',255)->nullable();
             $table->unsignedInteger('exp')->nullable();

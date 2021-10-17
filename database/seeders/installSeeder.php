@@ -16,21 +16,23 @@ class installSeeder extends Seeder
     public function run()
     {
         DB::table('coso')->insert([
-            ['name'=>'Cơ sở 1', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
-            ['name'=>'Cơ sở 2', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
+            ['name'=>'Cơ sở 1','diachi'=> 'Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
         ]);
 
         DB::table('danhmuc')->insert([
-            ['name'=>'Chăm sóc da mặt', 'slug'=> Str::slug('Chăm sóc da mặt', '-'), 'loai'=>'1'],
-            ['name'=>'Điều trị mụn, sẹo', 'slug'=> Str::slug('Điều trị mụn, sẹo', '-'), 'loai'=>'1'],
-            ['name'=>'Dịch vụ trị nám, tàn nhang', 'slug'=> Str::slug('Dịch vụ trị nám', '-'), 'loai'=>'1'],
-            ['name'=>'Làm trẻ hóa da', 'slug'=> Str::slug('Làm trẻ hóa da', '-'), 'loai'=>'1'],
-            ['name'=>'Dịch vụ massage', 'slug'=> Str::slug('Dịch vụ massage', '-'), 'loai'=>'1'],
-            ['name'=>'Dịch vụ giảm béo', 'slug'=> Str::slug('Dịch vụ giảm béo', '-'), 'loai'=>'1'],
+            ['id' => 1, 'name'=>'Chăm sóc da mặt', 'slug'=> Str::slug('Chăm sóc da mặt', '-'), 'loai'=>'1'],
+            ['id' => 2, 'name'=>'Điều trị mụn, sẹo', 'slug'=> Str::slug('Điều trị mụn, sẹo', '-'), 'loai'=>'1'],
+            ['id' => 3, 'name'=>'Dịch vụ trị nám, tàn nhang', 'slug'=> Str::slug('Dịch vụ trị nám', '-'), 'loai'=>'1'],
+            ['id' => 4, 'name'=>'Làm trẻ hóa da', 'slug'=> Str::slug('Làm trẻ hóa da', '-'), 'loai'=>'1'],
+            ['id' => 5, 'name'=>'Dịch vụ massage', 'slug'=> Str::slug('Dịch vụ massage', '-'), 'loai'=>'1'],
+            ['id' => 6, 'name'=>'Dịch vụ giảm béo', 'slug'=> Str::slug('Dịch vụ giảm béo', '-'), 'loai'=>'1'],
+            ['id' => 7, 'name'=>'Làm đẹp', 'slug'=> Str::slug('Làm đẹp', '-'), 'loai'=>'2'],
+            ['id' => 8, 'name'=>'Trắng da', 'slug'=> Str::slug('Trắng da', '-'), 'loai'=>'3'],
         ]);
 
         DB::table('dichvu')->insert([
-            ['name'=>'Làm đẹp', 'slug'=>'lam-dep', 'img'=>'lamdep.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Lam dep - Những phương pháp làm đẹp da, tóc đẹp, cải thiện vóc dáng hiệu quả và đơn giản. Chia sẻ về cách chọn mỹ phẩm, trang điểm, trị mụn', 'dongia'=>200000, 'noidung'=>'Có phải bạn sẽ cười tươi hơn, tự tin ngẩn cao đầu khi có ai đó khen bạn: "Trông bạn thật xinh đẹp!". Hãy chân thật với chính mình, bạn thật sự muốn mình xinh đẹp để tự tin gặp gỡ bất kỳ ai và cuốn hút họ ngay cái nhìn đầu tiên, hay bạn muốn mình cứ xuề xòa, luộm thuộm để mong chờ người khác thấy vẻ đẹp tâm hồn bên trong con người bạn? ', 'trangthai'=> 1]
+            ['name'=>'Làm đẹp', 'slug'=>'lam-dep', 'img'=>'lamdep.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Lam dep - Những phương pháp làm đẹp da, tóc đẹp, cải thiện vóc dáng hiệu quả và đơn giản. Chia sẻ về cách chọn mỹ phẩm, trang điểm, trị mụn', 'dongia'=>200000, 'noidung'=>'Có phải bạn sẽ cười tươi hơn, tự tin ngẩn cao đầu khi có ai đó khen bạn: "Trông bạn thật xinh đẹp!". Hãy chân thật với chính mình, bạn thật sự muốn mình xinh đẹp để tự tin gặp gỡ bất kỳ ai và cuốn hút họ ngay cái nhìn đầu tiên, hay bạn muốn mình cứ xuề xòa, luộm thuộm để mong chờ người khác thấy vẻ đẹp tâm hồn bên trong con người bạn? ', 'trangthai'=> 1],
+            ['name'=>'Trị mụn y khoa', 'slug'=> Str::slug('Trị mụn y khoa', '-'), 'img'=>'lamdep.jpg', 'giamgia'=> 0, 'iddm'=> 2, 'motangan' => '', 'dongia' => 200000, 'noidung' => '', 'trangthai' => 1]
         ]);
 
         DB::table('nhanvien')->insert([

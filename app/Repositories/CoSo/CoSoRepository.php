@@ -1,18 +1,16 @@
 <?php
 
 
-namespace App\Repositories\CoSo;
-
-
-use App\Models\Admin\CoSo;
+namespace App\Repositories\Coso;
 use App\Repositories\BaseRepository;
-
-class CoSoRepository extends BaseRepository implements CoSoRepositoryInterface
+class CosoRepository extends BaseRepository implements CosoRepositoryInterface
 {
-
-    public function getModel()
-    {
-        return CoSo::class;
+    protected $model;
+    public function getModel(){
+        return \App\Models\Admin\CosoModel::class;
     }
+    // public function modelcity(){
+    //     return \App\Models\Admin\City::class;
+    // }
 
 }

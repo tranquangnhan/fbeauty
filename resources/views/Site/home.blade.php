@@ -692,153 +692,33 @@
 
                     <div class="box-pro">
                         <div class="owl-carousel owl-theme" id="product-slide">
+                            @foreach ($sanPham as $item)
                             <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
+                                <div class="pro-item ml-0">
+                                    <div class="img-1  bg-gray-1">
+                                        <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
+
                                         <div class="box-icon">
-                                            <div class="icon-item d-inline-block hover-scale-1">
+                                            <div class="icon-item d-inline-block">
                                                 <a href=""><i class="fas fa-search color-black-1"></i></a>
                                             </div>
-                                            <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
+                                            <div class="icon-item d-inline-block position-relative icon-cart">
                                                 <div class="cal-icon-cart">+</div>
                                                 <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="content-1">
                                         <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
+                                            {{$item->name}}
                                         </div>
-                                        <div class="text-2">300.000đ</div>
+                                        <div class="text-2">100.000 vnđ</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block hover-scale-1">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block hover-scale-1">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block hover-scale-1">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block hover-scale-1">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block hover-scale-1">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            @endforeach
                         </div>
-
-
                     </div>
                     <div class="w-100 text-center mt-3">
                         <a href="">
@@ -866,7 +746,6 @@
 
                                 <div class="w-100 text-left mb-4">
                                     <button data-show="one" class="button btn-5 btn-datlich">Đặt lịch</button>
-
                                 </div>
                             </div>
                         </div>
@@ -932,7 +811,6 @@
                 </div>
             </div>
         </div>
-
         <div class="box-blog">
             <div class="list-blog">
                 <div class="mb-4">
