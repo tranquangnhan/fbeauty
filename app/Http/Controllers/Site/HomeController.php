@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\SanPham\SanPhamRepository;
+use App\Repositories\Blog\BlogRepository;
 use Illuminate\Http\Request;
 
 use App\Models\Admin\NhanVien;
@@ -14,34 +16,46 @@ use App\Repositories\NhanVien\NhanVienRepository;
 
 class HomeController extends Controller
 {
-    private $data = array();
-    private $Coso;
-    private $Dichvu;
-    private $Danhmuc;
-    private $NhanVien;
+        private $SanPham;
+        private $Blog;
+        private $data = array();
+        private $Coso;
+        private $Dichvu;
+        private $Danhmuc;
+        private $NhanVien;
+
+        public function __construct(NhanVienRepository $NhanVien,CoSoRepository $Coso,BlogRepository $Blog,SanPhamRepository $SanPham, DanhMucRepository $Danhmuc, DichVuRepository $Dichvu)
+        {
+            $this->Coso = $Coso;
+            $this->Danhmuc = $Danhmuc;
+            $this->Dichvu = $Dichvu;
+            $this->NhanVien = $NhanVien;
+            $listCoSo = $this->Coso->getAll();
+            $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
+            $this->SanPham = $SanPham;
+            $this->Blog = $Blog;
+            $this->data = array(
+                'listCoSo' => $listCoSo,
+                'listDanhMucDichVu' => $listDanhMucDichVu
+            );
+        }
+        /**
+         * Display a listing of the resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function index()
+        {
+            $data = $this->SanPham->getAll();
+            $Blog = $this->Blog->getBlog1();
+            $Blog2 = $this->Blog->getBlog2();
+            return view("Site.home", ['data' => $data,'Blog' => $Blog,'Blog2' => $Blog2]);
+        }
+  
     /**
      * CosoController constructor.
      */
-    public function __construct(NhanVienRepository $NhanVien,CoSoRepository $Coso, DanhMucRepository $Danhmuc, DichVuRepository $Dichvu)
-    {
-        $this->Coso = $Coso;
-        $this->Danhmuc = $Danhmuc;
-        $this->Dichvu = $Dichvu;
-        $this->NhanVien = $NhanVien;
-        $listCoSo = $this->Coso->getAll();
-        $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
-
-        $this->data = array(
-            'listCoSo' => $listCoSo,
-            'listDanhMucDichVu' => $listDanhMucDichVu
-        );
-    }
-
-    public function index() {
-        // $data = $this->NhanVien->getAll();
-
-        return view('Site.home', $this->data);
-    }
+   
 
     public function getNhanVienByIdCoSo(Request $request, $id) {
         try {
