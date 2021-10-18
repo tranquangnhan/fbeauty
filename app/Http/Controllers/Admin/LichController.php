@@ -50,6 +50,7 @@ class LichController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * Thêm lịch từ tạo cơ sở
      */
     public function store(Request $request)
     {
@@ -113,18 +114,21 @@ class LichController extends Controller
         return true;
     }
 
+    /**
+     *sửa lịch 0-6
+     */
+
     public function updateTime(Request $request, $id)
     {
         $this->Lich->deleteLichByIdCoSo($id);
         $khachhang = $request->soluongkh;
-        $thu = 2;
         $gio = $request->giobatdau;
         $phut = 0;
         $gioketthuc = $request->gioketthuc;
-        for ($j = 2; $j <= 8; $j++) {
+        for ($j = 0; $j <= 6; $j++) {
             for ($i = 1; $i < 300; $i++) {
                 $khoanGiuaKhungGio = $request->khoangiua;
-                $toTime = sprintf('%02d:%02d', (int)$gio, $phut);
+                $toTime = sprintf('%02d:%02d', $gio, $phut);
                 //isert chổ này
                 $lich = [
                     'idcoso' => $id,
@@ -147,7 +151,7 @@ class LichController extends Controller
                 }
             }
         }
-        return redirect(route('lich.index'))->with('thanhcong', 'Cấp nhật lịch thành công');
+        return redirect(route('lich.index'))->with('thanhcong', 'Cập nhật lịch thành công');
     }
 
 
