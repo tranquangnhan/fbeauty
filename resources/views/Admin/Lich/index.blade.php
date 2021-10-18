@@ -45,12 +45,12 @@
                                             <div class="collapse" id="collapseExample{{$index}}">
                                                 <div class="">
                                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                        <?php $arrayThu = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật']; ?>
+                                                        <?php $arrayThu = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']; ?>
                                                         @foreach ($arrayThu as $in => $lh)
                                                             <li class="nav-item "
-                                                                onclick="showngay({{$cs->id}}, {{$in+=2}})"
+                                                                onclick="showngay({{$cs->id}}, {{$in+=0}})"
                                                                 role="presentation">
-                                                                <a class="nav-link <?php echo ($in == 2) ? 'active' : '';?>"
+                                                                <a class="nav-link <?php echo ($in == 0) ? 'active' : '';?>"
                                                                    id="home-tab" data-toggle="tab" href="#home"
                                                                    role="tab" aria-controls="home"
                                                                    aria-selected="true">{{$lh}}</a>

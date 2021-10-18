@@ -3,7 +3,7 @@ function getdata() {
     var i;
     for (i = 0; i < x.length; i++) {
         var uid = x[i].getAttribute('data-id');
-        showngay(uid, 2);
+        showngay(uid, 0);
     }
 }
 
