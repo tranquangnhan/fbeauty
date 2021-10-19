@@ -47,7 +47,7 @@ class InstallDatabase extends Migration
 
         Schema::create('dichvu', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tendv',255);
+            $table->string('name',255);
             $table->string('slug',255);
             $table->string('img',255);
             $table->unsignedInteger('giamgia')->default(0);

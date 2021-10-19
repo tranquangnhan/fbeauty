@@ -15,39 +15,33 @@ class LichSeeder extends Seeder
     public function run()
     {
         $soluongkhach = 4;
-        $thu = 0;
         $idcoso = 1;
         $gio = 8;
+        $gioketthuc=20;
         $trangthai = 1;
-        for ($i = 0; $i <= 20; $i++) {
-            $khoanGiuaKhungGio = 0.5;
-            $gio += $khoanGiuaKhungGio;
-            $toTime = sprintf('%02d:%02d', (int) $gio, fmod($gio, 1) * 60);
+        $phut = 0;
+        for ($thu=0; $thu<=6; $thu++){
+            for ($i = 0; $i <= 300; $i++) {
+                $khoanGiuaKhungGio = 30;
+                $toTime = sprintf('%02d:%02d', $gio, $phut);
 
-            DB::table('lich')->insert([
-                ['idcoso' => $idcoso, 'thutrongtuan' => $thu , 'soluongkhach' => $soluongkhach, 'gio' => $toTime, 'trangthai' => $trangthai]
-            ]);
-
-            if ($i == 20)
-            {
-                $gio = 8;
-                if ($idcoso == 2 && $thu == 6)
-                {
+                DB::table('lich')->insert([
+                    ['idcoso' => $idcoso, 'thutrongtuan' => $thu , 'soluongkhach' => $soluongkhach, 'gio' => $toTime, 'trangthai' => $trangthai]
+                ]);
+                $phut += $khoanGiuaKhungGio;
+                if ($phut >= 60) {
+                    $gio += 1;
+                    $phut = 0;
+                }
+                if ($gio == $gioketthuc and $phut > 0) {
+                    $gio = 8;
+                    $gioketthuc = 20;
+                    $phut = 0;
                     break;
                 }
-                else if ($idcoso == 1 && $thu == 6)
-                {
-                    $idcoso = 2;
-                    $thu = 0;
-                }
 
-                if ($thu <= 6)
-                {
-                    $thu++;
-                    $i = 0;
-                }
             }
-
         }
+
     }
 }
