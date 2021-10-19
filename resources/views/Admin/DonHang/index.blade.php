@@ -19,13 +19,13 @@
 
                         <table class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
-                                    <tr>
+                                    <tr class="text-center">
                                         <th width="10.5%"> Mã đơn hàng </th>
-                                        <th width="14%"> Khách hàng </th>
+                                        <th width="15.5%"> Khách hàng </th>
                                         <th width="12%">SĐT người nhận</th>
                                         <th width="11%">Tổng Tiền </th>
                                         <th width="11%">Tổng Tiền Giảm</th>
-                                        <th width="13.5%">Trạng Thái</th>
+                                        <th width="12%">Trạng Thái</th>
                                         <th width="12%">Hành Động</th>
 
                                     </tr>
@@ -33,7 +33,7 @@
                                 <tbody>
                                     @foreach ($data as $item)
 
-                                        <tr>
+                                        <tr class="text-center">
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->tennguoinhan}}</td>
                                             <td>{{$item->sdtnguoinhan}}</td>
@@ -41,39 +41,41 @@
                                             <td>{{number_format($item->tongtiensaugiamgia)}}</td>
 
 
-                                            <td>
-                                            <select id="inputState" class="form-control">
-                                                        <option> <a href="{{URL::to('/active/'.$item->id)}}"><span>Chờ xác nhận</span></a></option>
-                                                        <option><a href="{{URL::to('/active-1/'.$item->id)}}"><span>Chờ gói hàng</span></a></option>
-                                                        <option><a href="{{URL::to('/active-2/'.$item->id)}}"><span>Đang giao</span></a></option>
-                                                        <option> <a href="{{URL::to('/active-2/'.$item->id)}}"><span>Đã giao</span></a></option>
-                                                        <option> <a href="{{URL::to('/active-2/'.$item->id)}}"><span>Hủy</span></a></option>
-
-                                                </select>
-                                            <!-- <?php
+                                            <td class="text-white">
+                                             <?php
                                             if($item->trangthai==0)
                                             {
                                                 ?>
-                                                <a href="{{URL::to('/active/'.$item->id)}}"><span>Chờ xác nhận</span></a>
+                                               <span class="badge bg-primary">Đang xác nhận</span>
                                                 <?php
                                             }elseif($item->trangthai==1)
                                             {
                                                 ?>
-                                                <a href="{{URL::to('/active-1/'.$item->id)}}"><span>Chờ gói hàng</span></a>
+                                               <span class="badge bg-secondary">Đã gửi đi</span>
                                                 <?php
                                             }elseif($item->trangthai==2)
                                             {
                                                 ?>
-                                                <a href="{{URL::to('/active-2/'.$item->id)}}"><span>Đang giao</span></a>
+                                                <span class="badge bg-success">Đã nhận</span>
+                                                <?php
+                                            }elseif($item->trangthai==3)
+                                            {
+                                                ?>
+                                                <span class="badge bg-danger">Đơn hàng lỗi</span>
+                                                <?php
+                                            }elseif($item->trangthai==4)
+                                            {
+                                                ?>
+                                                <span class="badge bg-dark">Khách trả hàng</span>
                                                 <?php
                                             }else{
                                                 ?>
-                                                <a><span>Đã Giao</span></a>
+                                                <span class="badge bg-warning">Hủy đơn hàng</span>
                                                 <?php
                                             }
-                                            ?> -->
+                                            ?>
                                             </td>
-                                            <td class="d-flex">
+                                            <td class="d-flex align-center">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('donhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
                                                 <form action="{{route('donhang.destroy',$item->id)}}"  method="post">
                                                     @csrf

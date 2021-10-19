@@ -105,11 +105,12 @@
                                             <div class="form-group col-md-4">
                                                 <label for="">Trạng Thái</label><span style="color:red;"> (*)</span>
                                                 <select name="trangthai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->trangthai}}" parsley-trigger="change">
-                                                    <option><span>Chờ xác nhận</span></option>
-                                                    <option><span>Chờ gói hàng</span></option>
-                                                    <option><span>Đang giao</span></option>
-                                                    <option><span>Đã giao</span></option>
-                                                    <option><span>Hủy</span></option>
+                                                    <option {{$data->trangthai == '0'? 'selected':''}} value="0">Đang xác nhận</option>
+                                                    <option {{$data->trangthai == '1'? 'selected':''}} value="1">Đã gửi đi</option>
+                                                    <option {{$data->trangthai == '2'? 'selected':''}} value="2">Đã nhận</option>
+                                                    <option {{$data->trangthai == '3'? 'selected':''}} value="3">Đơn hàng lỗi</option>
+                                                    <option {{$data->trangthai == '4'? 'selected':''}} value="4">Khách trả hàng</option>
+                                                    <option {{$data->trangthai == '5'? 'selected':''}} value="5">Hủy đơn hàng</option>
                                                 </select>
                                                 </div>
                                     </div>

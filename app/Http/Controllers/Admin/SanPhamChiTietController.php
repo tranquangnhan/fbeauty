@@ -55,7 +55,6 @@ class SanPhamChiTietController extends Controller
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
 
-
         if(count($data) === count($request->dongia)){
 
             for ($i=0; $i < count($ml); $i++) {

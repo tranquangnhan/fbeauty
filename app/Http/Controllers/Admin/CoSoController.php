@@ -129,8 +129,6 @@ class CoSoController extends Controller
 
        $this->Coso->update($id,$data);
 
-
-
         return redirect('quantri/coso')->with('success','Sửa thành công');
     }
 

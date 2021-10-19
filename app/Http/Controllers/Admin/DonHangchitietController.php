@@ -51,10 +51,12 @@ class DonHangchitietController extends Controller
     function updateDetailDonHang(Request $request, $id){
         $data = [
             'soluong'=> $request->soluong,
-            'dongiatruocgiamgia'=> $request->dongiatruocgiamgia,
-            'dongiasaugiamgia'=>$request->dongiasaugiamgia
+            'dongiatruocgiamgia'=> $request->truocgiamgia,
+            'dongiasaugiamgia'=>$request->saugiamgia
         ];
-        $this->DonHangChiTiet->update($id,$data);
-        return view('Admin.DonHang.detail',compact('data'));
+
+        $this->DonHangChiTiet->updateDetailByIdDH($id,$data);
+dd($data);
+        //return redirect('quantri/donhang')->with('success','Sửa thành công');
     }
 }

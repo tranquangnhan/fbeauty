@@ -15,6 +15,10 @@ class DonHangChiTietRepository extends BaseRepository implements DonHangChiTietR
         return $this->model->where('iddonhang','=',$id)->get();
     }
 
+    public function updateDetailByIdDH($id,$data){
+        return $this->model->where("id","=",$id)->update($data);
+    }
+
     // public function getDonHangChiTietByIdDonHangInnerJoin($id){
     //     return $this->model->join('donhang', 'donhang.id', '=', 'donhangchitiet.iddonhang')->where('donhang.id','=',$id)->get();
 

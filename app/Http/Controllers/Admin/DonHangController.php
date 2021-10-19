@@ -104,7 +104,8 @@ class DonHangController extends Controller
             'tongtientruocgiamgia'=>$request->tongtientruocgiamgia,
             'tongtiensaugiamgia'=>$request->tongtiensaugiamgia,
             'ghichucuakhachhang'=>$request->ghichukhachhang,
-            'phuongthucgiaohang'=>$request->phuongthucgiaohang
+            'phuongthucgiaohang'=>$request->phuongthucgiaohang,
+            'trangthai'=>$request->trangthai
         ];
 
         $this->DonHang->update($id,$data);

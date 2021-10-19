@@ -21,10 +21,8 @@
                                 </div>
                             </div>
 
-                            <form data-parsley-validate action="{{url('quantri/donhang/detail/'.$data[0]->id.'/update')}}" id="formadd" novalidate onsubmit="return submitForm()" method="post" enctype="multipart/form-data">
+                            <form data-parsley-validate action="{{url('quantri/donhangchitiet/detail/'.$data[0]->id.'/edit')}}" id="formadd" novalidate onsubmit="return submitForm()" method="post" enctype="multipart/form-data">
                                 @csrf
-                                {!! method_field('patch') !!}
-
 
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -34,14 +32,14 @@
                                                 <div class="row task-dates mb-0 mt-2">
                                                     <div class="form-group col-lg-6">
                                                         <label> Mã Đơn Hàng </label>
-                                                        <input type="text" name="donhang" value="{{$item->iddonhang}}" parsley-trigger="change" required
+                                                        <input type="text" name="donhang" value="{{$item->iddonhang}}" parsley-trigger="change" required readonly
                                                         placeholder="Nhập tên nhà sản xuất" id="ml" class="form-control" id="userName">
 
                                                     </div>
 
                                                     <div class="form-group col-lg-6">
                                                         <label> Sản Phẩm </label>
-                                                        <input type="text" name="sanpham" value="{{$item->idsanpham}}"  parsley-trigger="change" required
+                                                        <input type="text" name="sanpham" value="{{$item->idsanpham}}"  parsley-trigger="change" required readonly
                                                         placeholder="Nhập Số lượt tồn kho" class="form-control" id="userName">
                                                     </div>
 
@@ -62,13 +60,13 @@
 
                                                     <div class="form-group col-lg-4">
                                                         <label> Tổng Tiền Đơn Hàng  </label>
-                                                        <input type="text" name="dongiatruocgiamgia" value="{{number_format($item->dongiatruocgiamgia)}}"  parsley-trigger="change" required
+                                                        <input type="text" name="truocgiamgia" value="{{$item->dongiatruocgiamgia}}"  parsley-trigger="change" required
                                                         placeholder="Nhập Số lượt tồn kho" class="form-control" id="userName">
                                                     </div>
 
                                                     <div class="form-group col-lg-4">
                                                         <label> Tổng Tiền Đã Giảm </label>
-                                                        <input type="text" name="dongiasaugiamgia" value="{{number_format($item->dongiasaugiamgia)}}"  parsley-trigger="change" required
+                                                        <input type="text" name="saugiamgia" value="{{$item->dongiasaugiamgia}}"  parsley-trigger="change" required
                                                         placeholder="Nhập Số lượt tồn kho" class="form-control" id="userName">
                                                     </div>
 
