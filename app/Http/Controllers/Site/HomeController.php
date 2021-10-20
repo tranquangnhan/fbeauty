@@ -16,7 +16,7 @@ use App\Repositories\KhachHang\KhachHangRepository;
 use App\Models\Admin\KhachHangModel;
 use App\Models\Admin\DatLichModel;
 use Carbon\Carbon;
-
+use App\Events\SendDatLich;
 class HomeController extends Controller
 {
     private $data = array();
@@ -165,6 +165,10 @@ class HomeController extends Controller
                     if (!$datLich) {
                         $error = true;
                         $textMess = 'Đặt lịch không thành công vui lòng thử lại';
+                    } else {
+                        event(
+                            $e = new SendDatLich($datLich)
+                        );
                     }
                 }
 
