@@ -1,21 +1,4 @@
-const timeMoving = 100;
-const lengthSlideBooking = $('.datlich-step').length;
-const tranlatexRange = 100 / parseInt(lengthSlideBooking);
-const maxStep = lengthSlideBooking - 1; // bắt đầu từ 0 => - 1
 
-const elementDatePick = $('.pickdate');
-const attrOptionDate = 'data-option-date';
-const attrValueDate = 'data-date';
-
-const elementNhanVienPick = $('.picknhanvien');
-const attrOptionNhanVien = 'data-option-nhanvien';
-const attrValueNhanVien = 'data-nhanvien';
-const classGetTextNhanVien = 'name-nhanvien';
-const classClickedNhanVien = 'option-nhanvien';
-const elementValueNhanVien = $('.value-nhanvien');
-
-const attrOptionTime = 'data-option-time';
-const attrValueTime = 'data-time';
 
 $('#logo-slide').owlCarousel({
     loop: true,
@@ -133,22 +116,21 @@ $(modalDatLichSlide).owlCarousel({
 // slide dat lich
 $('.next-step').click(function (e) {
     e.preventDefault();
-    nextStep();
+    nextStepFc();
 });
 
 $('.prev-step').click(function (e) {
     e.preventDefault();
-    var activeStep = getActiveStep();
-    var nextStep = parseInt(activeStep) - 1;
+    activeStep = getActiveStep();
+    nextStep = parseInt(activeStep) - 1;
 
-    checkStepAndCallAction(activeStep, nextStep);
+    checkStepAndCallAction();
 });
 
-function nextStep() {
-    var activeStep = getActiveStep();
-    var nextStep = parseInt(activeStep) + 1;
-    console.log(nextStep);
-    checkStepAndCallAction(activeStep, nextStep);
+function nextStepFc() {
+    activeStep = getActiveStep();
+    nextStep = parseInt(activeStep) + 1;
+    checkStepAndCallAction();
 }
 
 function getActiveStep() {
@@ -168,15 +150,205 @@ function actionMoveSlide(activeStep, nextStep, tranlateRange) {
     nextElement.addClass('active');
 }
 
-function checkStepAndCallAction(activeStep, nextStep) {
+
+function checkStepAndCallAction() {
+    var checkMove = true;
+    if (activeStep == step_1) {
+        phoneNumber = $('#phoneNumber').val();
+        idCoSo = $('.value-coso').attr('data-coso');
+        var error = firstPageModalValidCheck(phoneNumber, idCoSo);
+        if (error) {
+            checkMove = false;
+            controlShortOne.removeClass('done');
+        } else {
+            // Load nhân viên và khung giờ của cơ sở được chọn
+            soXuLiBatDongBo = 2;
+            spinnerBatDongBo();
+            controlShortOne.addClass('done');
+            getNhanVienByIdCoSo(idCoSo);
+            loadGio(ngaySelected, nhanVienSelected);
+        }
+    }
+
+    if (activeStep == step_2) {
+        var error = seccondPageModalCheck();
+        if (error) {
+            checkMove = false;
+            controlShortTwo.removeClass('done');
+        } else {
+            controlShortTwo.addClass('done');
+        }
+        if (checkMove) {
+            moveStep();
+        }
+    }
+
+    if (activeStep == step_3) {
+        // timeSelected
+        var error = pageModalCheckThree();
+        if (error) {
+            checkMove = false;
+            controlShortThree.removeClass('done');
+        } else {
+            controlShortThree.addClass('done');
+        }
+        if (checkMove) {
+            moveStep();
+        }
+    }
+
+    if (nextStep == step_4) {
+        timeSelected = $('.option-time.clicked').children().attr('data-option-time');
+        var error = lastPageModalCheck(idCoSo, phoneNumber, timeSelected, dichVuChecked);
+        showDuLieuDatLich();
+        if (error) {
+            checkMove = false;
+            controlShortFour.removeClass('done');
+        } else {
+            // Load nhân viên và khung giờ của cơ sở được chọn
+            controlShortFour.addClass('done');
+        }
+
+        if (checkMove) {
+            moveStep();
+        }
+    }
+
+    if (activeStep > nextStep) {
+        moveStep();
+    }
+}
+
+function lastPageModalCheck(idCoSo, phoneNumber, timeSelected, dichVuChecked) {
+    var error = false;
+    $('.form-phone-number').removeClass(classError);
+    $('.select-coso').removeClass(classError);
+    $('.select-dichvu').removeClass(classError);
+    $('.select-time').removeClass(classError);
+
+    if (phoneNumber == '') {
+        error = true;
+        $('.form-phone-number').addClass(classError);
+    }
+
+    if (parseInt(idCoSo) == 0) {
+        error = true;
+        $('.select-coso').addClass(classError);
+    }
+
+    if(!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0){
+        $('.select-dichvu').addClass(classError);
+        error = true;
+    }
+
+    if (timeSelected == null) {
+        $('.select-time').addClass(classError);
+        error = true;
+    }
+
+    return error;
+}
+
+function pageModalCheckThree() {
+    var error = false;
+    $('.select-time').removeClass(classError);
+    if(!timeSelected > 0){
+        $('.select-time').addClass(classError);
+        error = true;
+    }
+
+    return error;
+}
+
+function moveStep() {
     if (nextStep < maxStep + 1 && nextStep > - 1) {
         var tranlatexRangeZ = nextStep * tranlatexRange;
         actionMoveSlide(activeStep, nextStep, tranlatexRangeZ);
     }
 }
 
+function spinnerBatDongBo() {
+    if (soXuLiBatDongBo > 0) {
+        if (!boxSpinner.hasClass('show')) {
+            spinnerTurnOn();
+        }
+    } else {
+        spinnerTurnOff();
+        if (activeStep == 0) {
+            moveStep();
+        }
+    }
+}
 
+function seccondPageModalCheck() {
+    var error = false;
+    $('.select-dichvu').removeClass(classError);
+    if(!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0){
+        $('.select-dichvu').addClass(classError);
+        error = true;
+    }
 
+    return error;
+}
+
+function firstPageModalValidCheck(phone, coSo) {
+    var error = false;
+    $('.form-phone-number').removeClass(classError);
+    $('.select-coso').removeClass(classError);
+
+    if (phone == '') {
+        error = true;
+        $('.form-phone-number').addClass(classError);
+    }
+
+    if (parseInt(coSo) == 0) {
+        error = true;
+        $('.select-coso').addClass(classError);
+    }
+
+    return error;
+}
+
+var dichVuChecked = [];
+var arrIdDichVu = [];
+function calTotal() {
+    if(!checkBoxTuVan.prop('checked')){
+        tinhTongVaPushArrayIdDichVu();
+    } else {
+        checkBoxDichVu.prop('checked', false);
+    }
+}
+
+function tinhTongVaPushArrayIdDichVu() {
+    dichVuChecked = [];
+    arrIdDichVu = [];
+    totalPriceDichVu = 0;
+    $('input[name="dichvu"]').each(function() {
+        var idDichVu = $(this).attr('data-id');
+            idDichVu = parseInt(idDichVu);
+        var gia = $(this).val();
+        var name = $(this).attr('data-name');
+        if (this.checked) {
+            totalPriceDichVu += parseInt($(this).val());
+
+            var dt = {
+                'id': idDichVu,
+                'ten': name,
+                'gia': gia,
+            }
+            dichVuChecked.push(dt);
+            arrIdDichVu.push(idDichVu);
+        }
+    });
+
+    inTotalToBrowser(totalPriceDichVu);
+}
+
+function inTotalToBrowser(totalPriceDichVu) {
+    var totalFormat = new Intl.NumberFormat('en-US', { style: 'decimal' }).format(totalPriceDichVu) + 'đ';
+    $('.tongtiendichvu').attr('data-tongtien', totalPriceDichVu);
+    $('.tongtiendichvu').html(totalFormat);
+}
 
 $('.name-select').click(function (e) {
     e.preventDefault();
@@ -193,88 +365,57 @@ $('.name-select').click(function (e) {
     }
 });
 
-elementDatePick.click(function (e) {
-    e.preventDefault();
-    var text = $(this).text();
-    var valDate = $(this).attr(attrOptionDate);
-    var elementValueDate = $('.value-date');
-    elementValueDate.html(text);
-    elementValueDate.attr(attrValueDate, valDate);
-
-    $('.date-bg').removeClass('clicked');
-    $(this).parent().addClass('clicked');
-
-    $('.box-spinner').fadeIn(timeMoving, function() {
-        setTimeout(() => {
-            $('.box-spinner').fadeOut(timeMoving);
-        }, 500);
-    });
-});
-
-elementNhanVienPick.click(function (e) {
-    e.preventDefault();
-    var text = $(this).children('.' + classGetTextNhanVien).text();
-    var valDate = $(this).attr(attrOptionNhanVien);
-
-    elementValueNhanVien.html(text);
-    elementValueNhanVien.attr(attrValueNhanVien, valDate);
-
-    $('.' + classClickedNhanVien).removeClass('clicked');
-    $(this).parent().addClass('clicked');
-
-    $('.box-spinner').fadeIn(timeMoving, function() {
-        setTimeout(() => {
-            $('.box-spinner').fadeOut(timeMoving);
-        }, 500);
-    });
-});
-
-$('.picktime').click(function (e) {
-    e.preventDefault();
-    var checkClose = $(this).parent().hasClass('time-close');
-
-    if (checkClose == false) {
-        var text = $(this).text();
-        var valDate = $(this).attr(attrOptionTime);
-        var elementValueDate = $('.value-time');
-        elementValueDate.html(text);
-        elementValueDate.attr(attrValueTime, valDate);
-
-        $('.time-bg').removeClass('clicked');
-        $(this).parent().addClass('clicked');
-    }
-});
-
-
-const elementPickCoSo = $('.pickcoso');
-const attrOptionCoSo = 'data-option-coso';
-const elementValueCoSo = $('.value-coso');
-const attrValueCoSo = 'data-coso';
-
-
 elementPickCoSo.click(function (e) {
     e.preventDefault();
-    var text = $(this).text();
-    var idCoSo = $(this).attr(attrOptionCoSo);
+    var text = $(this).children().text();
+    var idCoSo = $(this).children().attr(attrOptionCoSo);
     elementValueCoSo.html(text);
     elementValueCoSo.attr(attrValueCoSo, idCoSo);
 
     $('.coso-fa').removeClass('clicked');
-    $(this).parent().addClass('clicked');
+    $(this).addClass('clicked');
 
 
 });
 
 $('.check-next-step').click(function (e) {
     e.preventDefault();
-    $('.box-spinner').fadeIn(timeMoving, function() {
-        setTimeout(() => {
-            $('.box-spinner').fadeOut(timeMoving);
-        }, 500);
-    });
-    var demoS = (timeMoving * 2) + 550;
-    setTimeout(() => {
-        nextStep();
-    }, demoS);
+    // $('.box-spinner').fadeIn(timeMoving, function() {
+    //     setTimeout(() => {
+    //         $('.box-spinner').fadeOut(timeMoving);
+    //     }, 500);
+    // });
+    // var demoS = (timeMoving * 2) + 550;
+    // setTimeout(() => {
 
+    // }, demoS);
+    nextStepFc();
 });
+
+$('.control-item').click(function (e) {
+    e.preventDefault();
+    nextStep = $(this).attr('data-step');
+    activeStep = getActiveStep();
+    checkStepAndCallAction();
+});
+
+function spinnerTurnOn() {
+    boxSpinner.fadeIn(50);
+    boxSpinner.addClass('show');
+
+}
+
+function spinnerTurnOff() {
+    boxSpinner.fadeOut(timeMoving);
+    boxSpinner.removeClass('show');
+}
+
+var oldDichVuChecked;
+var checkBoxTuVan = $('.checkbox-tuvan');
+var checkBoxDichVu = $('.checkbox-dichvu');
+function uncheckDichVu() {
+    if(checkBoxTuVan.prop('checked')){
+        checkBoxDichVu.prop('checked', false);
+        tinhTongVaPushArrayIdDichVu();
+    }
+}

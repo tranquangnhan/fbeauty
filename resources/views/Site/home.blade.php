@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>FBEAUTY SPA</title>
     {{-- Font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,13 +88,13 @@
                                     </li>
                                 </ul>
                                 <div class="box-icon">
-                                    <div class="icon-item d-inline-block">
+                                    <div class="icon-item d-inline-block hover-scale-1">
                                         <a href=""><i class="fas fa-search color-black-2"></i></a>
                                     </div>
-                                    <div class="icon-item d-inline-block">
+                                    <div class="icon-item d-inline-block hover-scale-1">
                                         <a href=""><i class="fas fa-user-alt color-black-2"></i></a>
                                     </div>
-                                    <div class="icon-item d-inline-block position-relative icon-cart">
+                                    <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
                                         <div class="number-cart">0</div>
                                         <a href=""><i class="fas fa-shopping-cart color-black-2"></i></a>
                                     </div>
@@ -378,14 +379,14 @@
                                     <div class="title-small color-black-main">
                                         LỰA CHỌN DỊCH VỤ
                                     </div>
-                                    <div class="title-3 color-white">
+                                    <div class="title-3">
                                         Bí Quyết Khỏe Và Đẹp
                                     </div>
                                 </div>
                             </div>
                             <div class="head-service-item">
                                 <div class="d-flex">
-                                    <div class="d-flex align-items-center text-2 mr-4" style="color: #f2f2f2;">Tìm kiếm
+                                    <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">Tìm kiếm
                                         theo</div>
                                     <ul class="nav nav-tabs" id="myTab-1" role="tablist">
                                         <li class="nav-item" role="presentation">
@@ -428,7 +429,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -447,6 +448,7 @@
 
                                                 </div>
                                             </div>
+
 
                                             <div class="dichvu-item">
 
@@ -460,7 +462,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -480,7 +482,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="dichvu-item ">
+
+                                            <div class="dichvu-item">
 
                                                 <div class="content-1">
                                                     <div class="text-7 color-main-1">
@@ -492,7 +495,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -534,8 +537,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image
-                                                            8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -567,8 +569,7 @@
                                                     </div>
 
                                                     <div class="img-1 mt-4">
-                                                        <img class="" src=" {{ asset('Site/images') }}/image
-                                                            8.png" alt="">
+                                                        <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
                                                     </div>
 
                                                     <div class="text-1 limit-text-row-1 mt-4">
@@ -691,10 +692,12 @@
 
                     <div class="box-pro">
                         <div class="owl-carousel owl-theme" id="product-slide">
+                            @foreach ($sanPham as $item)
                             <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
+                                <div class="pro-item ml-0">
+                                    <div class="img-1  bg-gray-1">
+                                        <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
+
                                         <div class="box-icon">
                                             <div class="icon-item d-inline-block">
                                                 <a href=""><i class="fas fa-search color-black-1"></i></a>
@@ -705,183 +708,17 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="content-1">
                                         <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
+                                            {{$item->name}}
                                         </div>
-                                        <div class="text-2">300.000đ</div>
+                                        <div class="text-2">100.000 vnđ</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pro-fa-item">
-                                <div class="pro-item">
-                                    <div class="img-1 bg-gray-1">
-                                        <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                        <div class="box-icon">
-                                            <div class="icon-item d-inline-block">
-                                                <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                            </div>
-                                            <div class="icon-item d-inline-block position-relative icon-cart">
-                                                <div class="cal-icon-cart">+</div>
-                                                <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-1">
-                                        <div class="text-1 limit-text-row-1 ">
-                                            Rational Household Labor Supply – JSTOR
-                                        </div>
-                                        <div class="text-2">300.000đ</div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            @endforeach
                         </div>
-                        {{-- <div class="pro-item ml-0">
-                            <div class="img-1  bg-gray-1">
-                                <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                <div class="box-icon">
-                                    <div class="icon-item d-inline-block">
-                                        <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                    </div>
-                                    <div class="icon-item d-inline-block position-relative icon-cart">
-                                        <div class="cal-icon-cart">+</div>
-                                        <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-1">
-                                <div class="text-1 limit-text-row-1 ">
-                                    Rational Household Labor Supply – JSTOR
-                                </div>
-                                <div class="text-2">300.000đ</div>
-                            </div>
-                        </div>
-
-
-                        <div class="pro-item mr-0">
-                            <div class="img-1 bg-gray-1">
-                                <img src="{{ asset('Site/images') }}/hyarunic-removebg-preview.png" alt="">
-                                <div class="box-icon">
-                                    <div class="icon-item d-inline-block">
-                                        <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                    </div>
-                                    <div class="icon-item d-inline-block position-relative icon-cart">
-                                        <div class="cal-icon-cart">+</div>
-                                        <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-1">
-                                <div class="text-1 limit-text-row-1 ">
-                                    Rational Household Labor Supply – JSTOR
-                                </div>
-                                <div class="text-2">300.000đ</div>
-                            </div>
-                        </div> --}}
-
-
                     </div>
                     <div class="w-100 text-center mt-3">
                         <a href="">
@@ -909,7 +746,6 @@
 
                                 <div class="w-100 text-left mb-4">
                                     <button data-show="one" class="button btn-5 btn-datlich">Đặt lịch</button>
-
                                 </div>
                             </div>
                         </div>
@@ -975,7 +811,6 @@
                 </div>
             </div>
         </div>
-
         <div class="box-blog">
             <div class="list-blog">
                 <div class="mb-4">
@@ -1416,655 +1251,9 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="footer-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-3 pr-5">
-                        <div class="w-100 text-left mx-auto">
-                            <div class="box-logo">
-                                <a class="navbar-brand m-0 text-center logo-custom" style="background: white"
-                                    href="#">LOGO <br>BEAUTY</a>
-                            </div>
+    @include('Site.footer')
+    @include('Site.datlich')
 
-                            <div class="text-6 text-left" style="margin-top: 2em">
-                                FBeauty Spa luôn nỗ lực không ngừng để đem đến cho khách hàng những dịch vụ hoàn hảo
-                                nhất. Thẩm mỹ khỏe – đẹp – an toàn để mỗi phút giây ngắm mình trong gương là những phút
-                                giây tận hưởng hạnh phúc thật sự của mỗi khách hàng.
-                            </div>
-
-                            <div class="list-icon d-flex justify-content-left ">
-                                <div class="icon-item ml-0">
-                                    <a href="" class="link">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </div>
-
-                                <div class="icon-item">
-                                    <a href="" class="link">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </div>
-
-                                <div class="icon-item">
-                                    <a href="" class="link">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </div>
-
-                                <div class="icon-item">
-                                    <a href="" class="link">
-                                        <i class="fab fa-tumblr"></i>
-                                    </a>
-                                </div>
-
-                                <div class="icon-item">
-                                    <a href="" class="link">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-9 pl-5">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="footer-menu">
-                                    <div class="title-4 d-inline-block">
-                                        Danh Mục
-                                    </div>
-
-                                    <div class="content-1">
-
-                                        <div class="menu-item text-6">
-                                            <a href="">Chăm sóc da mặt
-                                            </a>
-                                        </div>
-
-                                        <div class="menu-item text-6">
-                                            <a href="">Điều trị mụn, sẹo
-                                            </a>
-                                        </div>
-
-                                        <div class="menu-item text-6">
-                                            <a href="">Dịch vụ trị nám, tàn nhang
-                                            </a>
-                                        </div>
-
-                                        <div class="menu-item text-6">
-                                            <a href="">Làm trẻ hóa da
-                                            </a>
-                                        </div>
-
-                                        <div class="menu-item text-6">
-                                            <a href="">Dịch vụ massage
-                                            </a>
-                                        </div>
-
-                                        <div class="menu-item text-6">
-                                            <a href="">Dịch vụ giảm béo
-
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-4">
-                                <div class="footer-menu">
-                                    <div class="title-4 d-inline-block">
-                                        Cơ Sở
-                                    </div>
-
-                                    <div class="content-1">
-
-                                        <div class="menu-item text-6">
-                                            <a href="">391A Nam Kỳ Khởi Nghĩa, Phường 14, Quận 3, Thành phố Hồ Chí
-                                                Minh</a>
-                                        </div>
-
-                                        <div class="menu-item text-6">
-                                            <a href="">778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí
-                                                Minh</a>
-                                        </div>
-
-                                        <div class="menu-item text-6">
-                                            <a href="">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận
-                                                12, Thành phố Hồ Chí Minh</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="w-100 footer-copyright">
-            Copyright ©2021 Beauty & Spa. All Rights Reserved
-        </div>
-    </footer>
-
-    <div id="modal-container">
-        <div class="modal-background">
-            <div class="close-modal background-close"></div>
-            <div class="modal" style="width: 50%;height: 90%;">
-                <div class="noidung-modal h-100 w-100">
-                    <div class="row h-100">
-                        <div class="col-xl-12 p-0">
-                            <div class="box-content-datlich h-100">
-                                <div class="modal-content-1 h-100">
-
-                                    <div class="datlich-step h-100 active" data-step="0">
-                                        <div class="title-3 color-main">Nhập SĐT & Chọn cơ sở</div>
-                                        <div class="text-7">Nếu bạn chưa biết chọn dịch vụ nào hãy chọn ‘’Tôi muốn tư vấn’’ </div>
-                                        <div class="list-select position-relative">
-                                            <div class="box-spinner">
-                                                <div class="spinner-border" role="status">
-                                                    <span class="sr-only">Loading...</span>
-                                                  </div>
-                                            </div>
-                                            <form action="" class="form-phone-number">
-                                                <div class="div-phone-number">
-                                                    <input type="number" placeholder="Nhập số điện thoại của bạn">
-                                                </div>
-                                            </form>
-
-                                            <div class="select-custom">
-                                                <div class="select-fa">
-                                                    <div class="name-select d-flex align-items-center" data-mov="13">
-                                                        <div class="tendanhmuc value-coso" data-coso="0">
-                                                            Chọn cơ sở
-                                                        </div>
-                                                        <div class="icon-1">
-                                                            <i class="fas fa-caret-down"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="list-option coso-fa" slide-mov="13">
-                                                        <div class="option-item coso-fa date-bg">
-                                                            <div class="pickcoso position-relative z-index-999" data-option-coso="1">1 391A Nam Kỳ Khởi Nghĩa, Phường 14, Quận 3, Thành phố Hồ Chí Minh</div>
-                                                        </div>
-
-                                                        <div class="option-item coso-fa date-bg">
-                                                            <div class="pickcoso position-relative z-index-999" data-option-coso="2">2 391A Nam Kỳ Khởi Nghĩa, Phường 14, Quận 3, Thành phố Hồ Chí Minh</div>
-                                                        </div>
-
-                                                        <div class="option-item coso-fa date-bg">
-                                                            <div class="pickcoso position-relative z-index-999" data-option-coso="2">3 391A Nam Kỳ Khởi Nghĩa, Phường 14, Quận 3, Thành phố Hồ Chí Minh</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="control-slide-datlich d-flex justify-content-end">
-                                            <button type="button" class="button-href-basic check-next-step">Xác nhận</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="datlich-step h-100" data-step="1">
-                                        <div class="title-3 color-main">Chọn dịch vụ</div>
-                                        <div class="text-7">Nếu bạn chưa biết chọn dịch vụ nào hãy chọn ‘’Tôi muốn tư vấn’’ </div>
-                                        <div class="list-select">
-                                            <div class="select-custom">
-                                                <div class="select-fa">
-                                                    <div class="name-select d-flex align-items-center" data-mov="1">
-                                                        <div class="tendanhmuc">
-                                                            Da mặt
-                                                        </div>
-                                                        <div class="icon-1">
-                                                            <i class="fas fa-caret-down"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="list-option" slide-mov="1">
-                                                        <label class="option-item" for="exampleCheck1">
-                                                            <div class="row  align-items-center">
-                                                                <div class="col-xl-9">
-                                                                    <div class="form-check d-flex  align-items-center">
-                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                                        <div class="mid-content">
-                                                                            <div class="d-flex  align-items-center">
-                                                                                {{-- <div class="image-dichvu img-1 d-inline-block">
-                                                                                    <img src="{{ asset('Site/images') }}/image8.png" alt="">
-                                                                                </div> --}}
-                                                                                <div class="ml-2">
-                                                                                    <a class="name-dichvu" href="">Dưỡng trắng da công nghệ plus unltra</a>
-                                                                                </div>
-
-                                                                            </div>
-                                                                                {{-- <div class="mota mb-1">
-                                                                                    <p>
-                                                                                        Điều này khiến chi nhiều bạn thắc mắc là nên nặn mụn thế nào là hợp lí?
-                                                                                        Có nên đi spa nặn mụn để đem lại hiệu quả triệt để. Nặn mụn là hành động không sai khi bạn có mụn,
-                                                                                        những phải cần làm đúng theo những cách chuẩn y khoa để không gây ra những hậu quả khác.
-                                                                                    </p>
-                                                                                </div>
-
-                                                                                <div class="w-100 text-left mt-0">
-                                                                                    <a href="">
-                                                                                        <button class="button-href-basic">Xem chi tiết</button>
-                                                                                    </a>
-                                                                                </div> --}}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-xl-3 text-right">
-                                                                    <div class="gia-dichvu giagoc d-inline-block">300,000đ</div>
-                                                                    <div class="gia-dichvu d-inline-block">300,000đ</div>
-                                                                </div>
-                                                            </div>
-                                                        </label>
-
-                                                        <label class="option-item" for="exampleCheck2">
-                                                            <div class="row  align-items-center">
-                                                                <div class="col-xl-9">
-                                                                    <div class="form-check d-flex  align-items-center">
-                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                                                        <div class="mid-content">
-                                                                            <div class="d-flex  align-items-center">
-                                                                                <div class="ml-2">
-                                                                                    <a class="name-dichvu" href="">Dưỡng trắng da công nghệ plus unltra</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-xl-3 text-right">
-                                                                    {{-- <div class="gia-dichvu giagoc d-inline-block">300,000đ</div> --}}
-                                                                    <div class="gia-dichvu d-inline-block">300,000đ</div>
-                                                                </div>
-                                                            </div>
-                                                        </label>
-
-                                                        <label class="option-item" for="exampleCheck4">
-                                                            <div class="row  align-items-center">
-                                                                <div class="col-xl-9">
-                                                                    <div class="form-check d-flex  align-items-center">
-                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck4">
-                                                                        <div class="mid-content">
-                                                                            <div class="d-flex  align-items-center">
-                                                                                <div class="ml-2">
-                                                                                    <a class="name-dichvu" href="">Dưỡng trắng da công nghệ plus unltra</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-xl-3 text-right">
-                                                                    {{-- <div class="gia-dichvu giagoc d-inline-block">300,000đ</div> --}}
-                                                                    <div class="gia-dichvu d-inline-block">300,000đ</div>
-                                                                </div>
-                                                            </div>
-                                                        </label>
-
-                                                        <label class="option-item" for="exampleCheck3">
-                                                            <div class="row  align-items-center">
-                                                                <div class="col-xl-9">
-                                                                    <div class="form-check d-flex  align-items-center">
-                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck3">
-                                                                        <div class="mid-content">
-                                                                            <div class="d-flex  align-items-center">
-                                                                                <div class="ml-2">
-                                                                                    <a class="name-dichvu" href="">Dưỡng trắng da công nghệ plus unltra</a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-xl-3 text-right">
-                                                                    {{-- <div class="gia-dichvu giagoc d-inline-block">300,000đ</div> --}}
-                                                                    <div class="gia-dichvu d-inline-block">300,000đ</div>
-                                                                </div>
-                                                            </div>
-                                                        </label>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="select-custom">
-                                                <div class="select-fa">
-                                                    <div class="name-select d-flex align-items-center" data-mov="2">
-                                                        <div class="tendanhmuc">
-                                                            Da mặt
-                                                        </div>
-                                                        <div class="icon-1">
-                                                            <i class="fas fa-caret-down"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="list-option" slide-mov="2">
-                                                        <label class="option-item" for="exampleCheck5">
-                                                            <div class="row  align-items-center">
-                                                                <div class="col-xl-9">
-                                                                    <div class="form-check d-flex  align-items-center">
-                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck5">
-                                                                        <div class="mid-content">
-                                                                            <div class="d-flex  align-items-center">
-                                                                                {{-- <div class="image-dichvu img-1 d-inline-block">
-                                                                                    <img src="{{ asset('Site/images') }}/image8.png" alt="">
-                                                                                </div> --}}
-                                                                                <div class="ml-2">
-                                                                                    <a class="name-dichvu" href="">Dưỡng trắng da công nghệ plus unltra</a>
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-xl-3 text-right">
-                                                                    <div class="gia-dichvu d-inline-block">300,000đ</div>
-                                                                </div>
-                                                            </div>
-                                                        </label>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="select-custom">
-                                                <div class="select-fa">
-                                                    <div class="name-select d-flex align-items-center" data-mov="3">
-                                                        <div class="tendanhmuc">
-                                                            Da mặt
-                                                        </div>
-                                                        <div class="icon-1">
-                                                            <i class="fas fa-caret-down"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="list-option" slide-mov="3">
-                                                        <label class="option-item" for="exampleCheck6">
-                                                            <div class="row  align-items-center">
-                                                                <div class="col-xl-9">
-                                                                    <div class="form-check d-flex  align-items-center">
-                                                                        <input type="checkbox" class="form-check-input" id="exampleCheck6">
-                                                                        <div class="mid-content">
-                                                                            <div class="d-flex  align-items-center">
-                                                                                {{-- <div class="image-dichvu img-1 d-inline-block">
-                                                                                    <img src="{{ asset('Site/images') }}/image8.png" alt="">
-                                                                                </div> --}}
-                                                                                <div class="ml-2">
-                                                                                    <a class="name-dichvu" href="">Dưỡng trắng da công nghệ plus unltra</a>
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-xl-3 text-right">
-                                                                    <div class="gia-dichvu d-inline-block">300,000đ</div>
-                                                                </div>
-                                                            </div>
-                                                        </label>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row mt-2">
-                                            <div class="col-xl-6">
-                                                <div class="form-group form-check mr-auto mb-0">
-                                                    <input type="checkbox" class="form-check-input" id="em">
-                                                    <label class="form-check-label button-href-basic" for="em">Tôi muốn tư vấn</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-6 text-right">
-                                                <div class="">
-                                                    Tổng : <span class="tongtiendichvu"><b>0</b></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="control-slide-datlich d-flex align-items-center">
-                                            <button type="button" class="button-href-basic prev-step mr-auto">Quay lại</button>
-                                            <button type="button" class="button-href-basic next-step">Tiếp theo</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="datlich-step h-100" data-step="2">
-                                        <div class="title-3 color-main">Thời gian bạn đến</div>
-                                        <div class="text-7">Để tiết kiệm thời gian cho bạn hãy đặt trước khi đến spa</div>
-                                        <div class="list-select position-relative">
-                                            <div class="box-spinner">
-                                                <div class="spinner-border" role="status">
-                                                    <span class="sr-only">Loading...</span>
-                                                  </div>
-                                            </div>
-                                            <div class="select-custom">
-                                                <div class="select-fa">
-                                                    <div class="name-select d-flex align-items-center" data-mov="9">
-                                                        <div class="tendanhmuc value-date">
-                                                            Hôm nay, T2 (27/9)
-                                                        </div data-date="27/9/2001">
-                                                        <div class="icon-1">
-                                                            <i class="fas fa-caret-down"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="list-option" slide-mov="9">
-                                                        <div class="option-item date-bg">
-                                                            <div class="pickdate" data-option-date="27/9/2001">Hôm nay, T2 (27/9)</div>
-                                                        </div>
-
-                                                        <div class="option-item date-bg">
-                                                            <div class="pickdate" data-option-date="28/9/2001">Ngày mai, T3 (28/9)</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="select-custom">
-                                                <div class="select-fa">
-                                                    <div class="name-select d-flex align-items-center" data-mov="11">
-                                                        <div class="tendanhmuc value-nhanvien">
-                                                            Spa chọn chuyên viên giúp bạn
-                                                        </div data-nhanvien="0">
-                                                        <div class="icon-1">
-                                                            <i class="fas fa-caret-down"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="list-option" slide-mov="11">
-                                                        <div class="option-item option-nhanvien date-bg clicked">
-                                                            <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="0">
-                                                                <div class="img-1 border-image">
-                                                                    <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
-                                                                </div>
-
-                                                                <div class="name-nhanvien">Spa chọn chuyên viên giúp bạn</div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="option-item option-nhanvien date-bg">
-                                                            <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="2">
-                                                                <div class="img-1 border-image">
-                                                                    <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
-                                                                </div>
-
-                                                                <div class="name-nhanvien">
-                                                                    Hằng Nguyễn Thị
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="option-item option-nhanvien date-bg">
-                                                            <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="3">
-                                                                <div class="img-1 border-image">
-                                                                    <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
-                                                                </div>
-
-                                                                <div class="name-nhanvien">
-                                                                    Hằng Nguyễn Thị
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="option-item option-nhanvien date-bg">
-                                                            <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="4">
-                                                                <div class="img-1 border-image">
-                                                                    <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
-                                                                </div>
-
-                                                                <div class="name-nhanvien">
-                                                                    Hằng Nguyễn Thị
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="option-item option-nhanvien date-bg">
-                                                            <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="5">
-                                                                <div class="img-1 border-image">
-                                                                    <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
-                                                                </div>
-
-                                                                <div class="name-nhanvien">
-                                                                    Hằng Nguyễn Thị
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="option-item option-nhanvien date-bg">
-                                                            <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="6">
-                                                                <div class="img-1 border-image">
-                                                                    <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
-                                                                </div>
-
-                                                                <div class="name-nhanvien">
-                                                                    Hằng Nguyễn Thị
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="option-item option-nhanvien date-bg">
-                                                            <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="7">
-                                                                <div class="img-1 border-image">
-                                                                    <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
-                                                                </div>
-
-                                                                <div class="name-nhanvien">
-                                                                    Hằng Nguyễn Thị
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="option-item option-nhanvien date-bg">
-                                                            <div class="picknhanvien position-relative z-index-999" data-option-nhanvien="8">
-                                                                <div class="img-1 border-image">
-                                                                    <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
-                                                                </div>
-
-                                                                <div class="name-nhanvien">
-                                                                    Hằng Nguyễn Thị
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="select-custom">
-                                                <div class="select-fa">
-                                                    <div class="name-select d-flex align-items-center" data-mov="10">
-                                                        <div class="tendanhmuc value-time">
-                                                            Chọn thời gian
-                                                        </div data-time="0">
-                                                        <div class="icon-1">
-                                                            <i class="fas fa-caret-down"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="list-option mb-3" slide-mov="10">
-                                                        <div class="option-item time-bg">
-                                                            <div class="picktime" data-option-time="8:00">8h00</div>
-                                                        </div>
-
-                                                        <div class="option-item time-bg">
-                                                            <div class="picktime" data-option-time="8:30">8h30</div>
-                                                        </div>
-
-                                                        <div class="option-item time-bg time-close">
-                                                            <div class="picktime" data-option-time="10:00">10h00</div>
-                                                        </div>
-
-                                                        <div class="option-item time-bg time-close">
-                                                            <div class="picktime" data-option-time="10:30">10h30</div>
-                                                        </div>
-
-                                                        <div class="option-item time-bg">
-                                                            <div class="picktime" data-option-time="11:00">11h00</div>
-                                                        </div>
-
-                                                        <div class="option-item time-bg">
-                                                            <div class="picktime" data-option-time="11:30">11h30</div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="control-slide-datlich d-flex">
-                                            <button type="button" class="button-href-basic prev-step mr-auto">Quay lại</button>
-                                            <button type="button" class="button-href-basic next-step">Tiếp theo</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="datlich-step h-100" data-step="3">
-                                        Long 3
-
-                                        <div class="control-slide-datlich d-flex">
-                                            <button type="button" class="prev-step mr-auto">Quay lại</button>
-                                            <button type="button" class="next-step">Tiếp theo</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        {{-- <div class="col-xl-6 pl-0 position-relative z-index-999">
-                            <div class="bg-modal-1">
-
-                            </div>
-                        </div> --}}
-                    </div>
-
-                    <div class="close close-modal button-close-modal">
-                        x
-                    </div>
-                </div>
-                {{-- <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-                            <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-                        </svg> --}}
-            </div>
-        </div>
-    </div>
 </body>
 
 </html>
@@ -2079,5 +1268,13 @@
 {{-- Owl carousel --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
+{{-- Moment JS --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
 {{-- Custom js --}}
+<script src="{{ asset('Site/js') }}/bientoancuc.js"></script>
 <script src="{{ asset('Site/js') }}/main.js"></script>
+<script src="{{ asset('Site/js') }}/datlich.js"></script>
+
+{{-- Sweetalert 2 --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

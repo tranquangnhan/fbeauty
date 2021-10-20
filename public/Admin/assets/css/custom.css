@@ -25,3 +25,6 @@
     align-items: center;
     display: flex;
 }
+.border-error{
+    border: 1px solid red !important;
+}

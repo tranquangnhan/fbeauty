@@ -84,14 +84,12 @@
                                 </div>
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100 " for="active">Hoạt động <span style="color:red;"> (*)</span><br>
-                                <br><form >
-                                          <input type="radio" id="html" name="active" value="1" <?php echo ($KhachHang->active == 1) ? 'checked' : '';?>>
-                                          <label for="html">Kích hoạt</label><br>
-                                          <input type="radio" id="css" name="active" value="0" <?php echo ($KhachHang->active == 0) ? 'checked' : '';?>>
-                                          <label for="css">Chưa kích hoạt</label><br>
-                                    </form> 
-                                </label>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <input id="remember-1" {{($KhachHang->trangthai == 1 ) ? 'checked' : '' }} type="checkbox" name="trangthai" value="0"  data-parsley-multiple="remember-1">
+                                        <label for="remember-1">Trạng Thái ? </label>
+                                    </div>
+                                </div>      
                              
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">

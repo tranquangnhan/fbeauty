@@ -130,7 +130,7 @@
                 },
                 messages: {
                     files: {
-                        required: "<span class='badge badge-danger'>Bạn chưa chọn ảnh</span>"
+                        required: "<small class='badge badge-danger'>Bạn chưa chọn ảnh</small>"
                     },
                 }
             });

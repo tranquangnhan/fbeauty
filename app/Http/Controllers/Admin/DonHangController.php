@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\DonHang;
+use App\Http\Requests\KhachHang;
+use App\Models\Admin\KhachHangModel;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
@@ -22,12 +24,10 @@ class DonHangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(DonHangRepository $DonHang , KhachHangRepository $khachHang, DonHangChiTietRepository $DonHangChiTiet)
+    public function __construct(DonHangRepository $DonHang , KhachHangRepository $KhachHang)
     {
         $this->DonHang = $DonHang;
-        $this->KhachHang = $khachHang;
-        $this->DonHangChiTiet = $DonHangChiTiet;
-
+        $this->KhachHang = $KhachHang;
     }
     public function index()
     {
@@ -126,11 +126,5 @@ class DonHangController extends Controller
         return redirect('quantri/donhang')->with('success','Xoá thành công');
     }
 
-    public function active ($id){
-
-        $this->DonHang->active_donhang($id);
-
-
-    }
 
 }

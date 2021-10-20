@@ -32,6 +32,9 @@
 
                         <form data-parsley-validate  novalidate method="post" enctype="multipart/form-data">
                             @csrf
+                            @if($errors->any())
+                                <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{!! implode('', $errors->all('<div>:message</div>')) !!}</li></ul>
+                            @endif
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
@@ -42,9 +45,14 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
 
 
 
+=======
+                          
+                          
+>>>>>>> 40e4e9810106aab5a8e8018ee49ac079ca6af792
                             <div class="form-group text-right mb-0 mt-5">
                                 <a href="/quantri/sanpham" clas="btn btn-secondary waves-effect waves-light">Huỷ</a>
                                 <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">

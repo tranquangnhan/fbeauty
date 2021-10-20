@@ -10,4 +10,6 @@ interface SanPhamChiTietRepositoryInterface extends RepositoryInterface
     public function getSanPhamChiTietByID($id);
 
     public function delDetailByIdSp($id);
+
+    public function getSanPhamChiTietByIdSanPham($id);
 }

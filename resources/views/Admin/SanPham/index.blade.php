@@ -22,7 +22,7 @@
                                         <th width="10%">Tên Sản Phẩm</th>
                                         <th width="10%">Ảnh</th>
                                         <th width="10%">Mô Tả</th>
-                                        <th width="30%">Nội Dung</th>
+                                        <th width="300px">Nội Dung</th>
                                         <th width="5" >Chi Tiết</th>
                                         <th width="10%">Hành Động </th>
                                     </tr>
@@ -35,7 +35,7 @@
                                         <td class="" >{{$item->name}}</td>
                                         <td><img style="object-fit:cover; border-radius:10px" class="img-admin" width="150" height="100" src="{{ asset('uploads/'.$item->img) }}"></td>
                                         <td> {{substr($item->mota,0,20)}}</td>
-                                        <td> {{strip_tags(substr($item->noidung,0,100))}}</td>
+                                        <td> {{strip_tags(substr($item->noidung,0,30))}} ..</td>
                                         <td ><a href="{{url('quantri/sanpham/detail/'.$item->id.'/edit')}}" class="d-flex justify-content-center"><div class="btn btn-success"><i class="dripicons-search"></i></div></a></td>
                                         <td class="d-flex justify-content-around">
                                             <a href="{{route('sanpham.edit',$item->id)}}"><div class="btn btn-primary mr-2"> <i class="dripicons-pencil"></i></div></a>
