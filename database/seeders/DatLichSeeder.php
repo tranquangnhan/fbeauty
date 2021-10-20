@@ -21,8 +21,6 @@ class DatLichSeeder extends Seeder
         $dateTime3 = $date . '11:00:00';
         $dateTime4 = $date . '17:00:00';
 
-
-
         DB::table('datlich')->insert([
             ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 7, 'idnhanvien' => 1, 'thoigiandat' => strtotime($dateTime1)],
             ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 9, 'idnhanvien' => 3, 'thoigiandat' => strtotime($dateTime1)],
