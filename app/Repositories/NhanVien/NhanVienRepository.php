@@ -36,4 +36,11 @@ class NhanVienRepository extends BaseRepository implements NhanVienRepositoryInt
     public function getNhanVienByIdCoSo($id) {
         return $this->model::where('idcoso', $id)->get();
     }
+
+    public function findNhanVienByIdAndCoSo($id, $coSo) {
+        return $this->model::where([
+            ['id', $id],
+            ['idcoso', $coSo],
+        ])->first();
+    }
 }

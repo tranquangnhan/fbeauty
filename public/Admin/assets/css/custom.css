@@ -28,3 +28,6 @@
 .border-error{
     border: 1px solid red !important;
 }
+.imgdichvu{
+    object-fit: cover;
+}

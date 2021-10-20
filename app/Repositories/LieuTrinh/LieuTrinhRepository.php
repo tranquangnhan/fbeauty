@@ -3,7 +3,7 @@
 
 namespace App\Repositories\LieuTrinh;
 
-use App\Models\Admin\LieuTrinh;
+use App\Models\Admin\LieuTrinhModel;
 use App\Repositories\BaseRepository;
 
 use App\Repositories\LieuTrinh\LieuTrinhRepositoryInterface;
@@ -14,7 +14,7 @@ class LieuTrinhRepository extends BaseRepository implements LieuTrinhRepositoryI
 
     public function getModel()
     {
-        return NhanVien::class;
+        return LieuTrinhModel::class;
     }
 
 }

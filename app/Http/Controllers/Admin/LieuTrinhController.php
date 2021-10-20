@@ -4,15 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\KhachHang\KhachHangRepository;
+use App\Repositories\LieuTrinh\LieuTrinhRepository;
+use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
+use App\Repositories\NhanVien\NhanVienRepository;
 use Illuminate\Http\Request;
 
 class LieuTrinhController extends Controller
 {
     private $KhachHang;
-    public function __construct(KhachHangRepository $KhachHang)
+    private $LieuTrinh;
+    private $LieuTrinhChiTiet;
+    public function __construct(
+        KhachHangRepository $KhachHang,
+        LieuTrinhRepository $LieuTrinh,
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet,
+        NhanVienRepository $NhanVien
+    )
     {
         $this->KhachHang = $KhachHang;
-
+        $this->LieuTrinh = $LieuTrinh;
+        $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
+        $this->NhanVien = $NhanVien;
     }
 
     /**
@@ -33,8 +45,12 @@ class LieuTrinhController extends Controller
     public function create()
     {
         $KhachHang = $this->KhachHang->find(1);
-        
-        return view("Admin.LieuTrinh.create",compact('KhachHang'));
+        $LieuTrinh = $this->LieuTrinh->find(1);
+        $LieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin(1);
+        $NhanVien = $this->NhanVien->find($LieuTrinh->idnhanvien);
+        // dd($LieuTrinhChiTiet);
+
+        return view("Admin.LieuTrinh.create",compact('KhachHang','LieuTrinh','LieuTrinhChiTiet','NhanVien'));
     }
 
     /**
