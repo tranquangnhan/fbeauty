@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
+use App\Repositories\SanPham\SanPhamRepository;
 use Illuminate\Http\Request;
 class DonHangchitietController extends Controller
 {
     private $DonHangChiTiet;
+    private $DonHang;
+    private $SanPham;
     /**
      * CosoController constructor.
      */
-    public function __construct(DonHangChiTietRepository $DonHangChiTiet)
+    public function __construct(DonHangChiTietRepository $DonHangChiTiet , DonHangRepository $DonHang , SanPhamRepository $SanPham)
     {
         $this->DonHangChiTiet = $DonHangChiTiet;
+        $this->DonHang = $DonHang;
+        $this->SanPham = $SanPham;
     }
 
 
@@ -43,7 +49,10 @@ class DonHangchitietController extends Controller
     function editDetailDonHang($id){
 
         $data = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
-        //dd($data);
+        // $datadonhangchitiet = $this->DonHangChiTiet->find($id);
+        // $donhang = $this->DonHang->find($datadonhangchitiet->iddonhang);
+        // $sanpham = $this->SanPham->find($datadonhangchitiet->idsanpham);
+
         return view('Admin.DonHang.detail',compact('data'));
     }
 
@@ -55,7 +64,7 @@ class DonHangchitietController extends Controller
             'dongiasaugiamgia'=>$request->saugiamgia
         ];
 
-        $this->DonHangChiTiet->updateDetailByIdDH($id,$data);
+        //$this->DonHangChiTiet->updateDetailByIdDH($id,$data);
 dd($data);
         //return redirect('quantri/donhang')->with('success','Sửa thành công');
     }

@@ -28,7 +28,7 @@
 
                         <h4 class="header-title mt-0 mb-4">Sửa chi tiết sản phẩm</h4>
 
-                        <form data-parsley-validate action="{{url('quantri/sanpham/detail/'.$data[0]->idsanpham.'/edit')}}" novalidate method="post" enctype="multipart/form-data">
+                        <form data-parsley-validate action="{{url('quantri/sanpham/detail/'.$data?:[0]->idsanpham.'/edit')}}" novalidate method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12">

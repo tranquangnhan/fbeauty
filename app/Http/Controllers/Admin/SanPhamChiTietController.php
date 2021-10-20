@@ -50,7 +50,7 @@ class SanPhamChiTietController extends Controller
 
 
     function updateDetailProduct(Request $request, $id){
-        $data = $this->SanPhamChiTiet->getAll();
+        $data = $this->SanPhamChiTiet->getSanPhamChiTietByID($id);
         $ml = $request->ml;
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
@@ -66,6 +66,7 @@ class SanPhamChiTietController extends Controller
                 ];
 
                 $this->SanPhamChiTiet->updateDetailByIdSp($id,$data);
+
             }
 
         }else{

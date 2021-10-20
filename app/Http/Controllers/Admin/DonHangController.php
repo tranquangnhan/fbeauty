@@ -79,7 +79,6 @@ class DonHangController extends Controller
         $dataDHCT = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
         $data  = $this->DonHang->find($id);
         $khachHang  = $this->KhachHang->find($data->idkhachhang);
-       // dd($data->idkhachhang);
         return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT'));
     }
 
@@ -122,7 +121,7 @@ class DonHangController extends Controller
     public function destroy($id)
     {
         $this->DonHang->delete($id);
-        // thiếu logic check xem có sản phẩm,bài viết, dịch vụ không
+
 
         return redirect('quantri/donhang')->with('success','Xoá thành công');
     }
