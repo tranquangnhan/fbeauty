@@ -80,6 +80,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('/active-2/{id}', [DonHangController::class,'active_2']);
 
     Route::resource('lieutrinh', LieuTrinhController::class);
+
+    Route::post('searchdichvu', [LieuTrinhController::class,'searchDichVu']);
 });
 
 Route::group(['prefix' => '/'], function (){

@@ -61,7 +61,6 @@
                             {{$LieuTrinh->ghichu}}
                         </p>
 
-                      
                         <div class="row task-dates mb-0 mt-2">
                             <div class="col-lg-6">
                                 <h5 class="font-600 m-b-5">Ngày bắt đầu</h5>
@@ -74,7 +73,16 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-
+                        <div class="row d-flex justify-content-end">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <form action="" method="post">
+                                        @csrf
+                                        <input type="text" name="" id="addlieutrinh" class="form-control" placeholder="Thêm Liệu Trình" aria-describedby="helpId">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <div class="task-tags mt-2">
                             <h5>Dịch Vụ</h5>
                             <div class="row">

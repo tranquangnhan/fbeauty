@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
@@ -18,13 +19,15 @@ class LieuTrinhController extends Controller
         KhachHangRepository $KhachHang,
         LieuTrinhRepository $LieuTrinh,
         LieuTrinhChiTietRepository $LieuTrinhChiTiet,
-        NhanVienRepository $NhanVien
+        NhanVienRepository $NhanVien,
+        DichVuRepository $DichVu
     )
     {
         $this->KhachHang = $KhachHang;
         $this->LieuTrinh = $LieuTrinh;
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
         $this->NhanVien = $NhanVien;
+        $this->DichVu = $DichVu;
     }
 
     /**
@@ -51,6 +54,13 @@ class LieuTrinhController extends Controller
         // dd($LieuTrinhChiTiet);
 
         return view("Admin.LieuTrinh.create",compact('KhachHang','LieuTrinh','LieuTrinhChiTiet','NhanVien'));
+    }
+
+
+    function searchDichVu(Request $request){
+        $valueSearch = $this->DichVu->search($request->searchValue);
+
+        return response()->json($valueSearch);
     }
 
     /**

@@ -769,6 +769,7 @@
 
 <script src="{{ asset('Admin/assets') }}/js/pages/form-xeditable.init.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.min.js"></script>
+<script src="{{ asset('Admin/assets') }}/js/pages/lieutrinh.nhan.js"></script>
 {{-- end code nhúng bởi Nhân --}}
 
 {{-- code nhúng bởi Tưởng --}}
