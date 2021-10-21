@@ -91,3 +91,7 @@ Route::group(['prefix' => '/'], function (){
     Route::post('datLich', [HomeController::class, "datLich"]);
 
 });
+
+Route::get('/testz', function () {
+    event(new \App\Events\SendDatLich('Long'));
+});
