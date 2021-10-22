@@ -59,20 +59,27 @@ class HomeController extends Controller
 
         $this->data = array(
             'listCoSo' => $listCoSo,
-            'listDanhMucDichVu' => $listDanhMucDichVu
+            'listDanhMucDichVu' => $listDanhMucDichVu,
+            'pathActive' => '',
         );
     }
 
     public function index() {
-        $sanPham = $this->SanPham->getAll();
-        $blog = $this->Blog->getBlog1();
-        $blog2 = $this->Blog->getBlog2();
+        $sanPham   = $this->SanPham->getAll();
+        $blog      = $this->Blog->getBlog1();
+        $blog2     = $this->Blog->getBlog2();
 
-        $this->data['sanPham'] = $sanPham;
-        $this->data['blog'] = $blog;
-        $this->data['blog2'] = $blog2;
+        $this->data['sanPham']  = $sanPham;
+        $this->data['blog']     = $blog;
+        $this->data['blog2']    = $blog2;
+        $this->data['pathActive']     = 'trang-chu';
 
         return view("Site.home", $this->data);
+    }
+
+    public function sanpham() {
+        $this->data['pathActive']         = 'san-pham';
+        return view("Site.sanpham", $this->data);
     }
 
     public function getNhanVienByIdCoSo(Request $request, $id) {
