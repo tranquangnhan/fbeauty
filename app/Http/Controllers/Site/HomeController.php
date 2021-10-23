@@ -359,7 +359,6 @@ class HomeController extends Controller
         $datLich->idnhanvien = $request->idNhanVien;
         $datLich->thoiGianDat = $request->thoiGianDat;
         $datLich->save();
-
         return $datLich;
     }
 }
