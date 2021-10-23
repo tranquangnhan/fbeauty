@@ -47,9 +47,11 @@ class HomeController extends Controller
         public function index()
         {
             $data = $this->SanPham->getAll();
+            $listCoSo = $this->Coso->getAll();
             $Blog = $this->Blog->getBlog1();
             $Blog2 = $this->Blog->getBlog2();
-            return view("Site.home", ['data' => $data,'Blog' => $Blog,'Blog2' => $Blog2]);
+            $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
+            return view("Site.home", ['data' => $data,'Blog' => $Blog,'Blog2' => $Blog2,'listCoSo' => $listCoSo,'listDanhMucDichVu' => $listDanhMucDichVu]);
         }
   
     /**
