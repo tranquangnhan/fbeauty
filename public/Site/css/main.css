@@ -51,12 +51,9 @@ body {
     overflow-x: hidden;
 }
 
-main {
-    /* margin-top: 20em; */
-}
-
 .about {
     min-height: 720px;
+    margin-top: 5em;
 }
 
 .title-font {
@@ -259,7 +256,7 @@ margin-top: 14px;
 .box-header {
     position: relative;
     background-color: #ffffff;
-    min-height: 750px;
+    min-height: 500px;
     /* background-image: url("../images/bg header-1.png"); */
 
     background-attachment: fixed;
@@ -795,19 +792,15 @@ img.im-small {
     position: relative;
     z-index: 8;
     cursor: pointer;
-    width: 112px;
-    height: 34px;
     font-weight: bold;
     font-size: .7em;
     letter-spacing: 0.07em;
     text-transform: uppercase;
     text-align: center;
     line-height: 34px;
-    background: white;
-    padding: 0px;
+    /* background: white; */
+    padding: 0em 2em;
 }
-
-.nav-link .btn-3 .active {}
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
@@ -823,19 +816,44 @@ img.im-small {
 .btn-3::before {
     position: absolute;
     content: '';
-    top: -5px;
-    left: -5px;
+    top: -13%;
+    left: -4%;
     border: 2px solid var(--main-color);
     z-index: 0;
     transition: .3s;
     width: 0px;
-    height: 44px;
+    height: 125%;
     opacity: 0;
 }
 
 .btn-3:hover::before {
-    width: 122px;
+    width: 108%;
     opacity: 1;
+}
+
+
+
+.btn-3.custom-2::before {
+    position: absolute;
+    content: '';
+    top: -13%;
+    left: -8%;
+    border: 2px solid var(--main-color);
+    z-index: 0;
+    transition: .3s;
+    width: 0px;
+    height: 125%;
+    opacity: 0;
+}
+
+.btn-3.custom-2:hover::before {
+    width: 116%;
+    opacity: 1;
+}
+
+.btn-3.custom-2 {
+    font-size: 1em;
+    padding: 0em 1em;
 }
 
 .btn-3.black-1 {
@@ -1308,8 +1326,8 @@ div#header-slide {
     color: var(--black-1);
     border: 2px solid var(--black-1);
     /* padding: .9em 3em; */
-    width: 142px;
-    height: 43px;
+    width: 145px;
+    height: 45px;
     background: none;
     margin: 0 auto;
     position: relative;
@@ -1324,8 +1342,8 @@ div#header-slide {
 
 .btn-5::before {
     position: absolute;
-    top: 1px;
-    left: 0px;
+    top: 2px;
+    left: 1%;
     width: 0%;
     height: 37px;
     background: var(--black-1);
@@ -1340,7 +1358,7 @@ div#header-slide {
 }
 
 .btn-5:hover::before {
-    width: 100%;
+    width: 98%;
     opacity: 1;
 }
 
@@ -2477,6 +2495,198 @@ form.form-phone-number {
     text-align: center;
     display: none;
 }
+
+.fa-sanpham {
+    min-height: 500px;
+    margin-bottom: 5em;
+}
+
+.fa-box-search {
+    background: var(--gray-1);
+    border-radius: 2px;
+}
+
+.fa-box-search .input-search-2 {
+    flex-grow: 1;
+    border: none;
+    background: none;
+}
+
+input:focus-visible {
+    outline: -webkit-focus-ring-color auto 0px !important;
+}
+
+.fa-box-search form {
+    display: flex;
+    padding: .4rem .4rem .4em .8em;
+}
+
+.button-submit-search-2 {
+    background: var(--main-color);
+    color: white;
+    border: none;
+    padding: .2em .8em;
+    border-radius: 0px;
+}
+
+.fa-left {
+    background: white;
+    border: 0px solid rgb(0 0 0 / 0%);
+    box-shadow: 0 0.3rem 0.8rem rgb(0 0 0 / 12%);
+    padding: .8em;
+}
+
+/* Price rand slider */
+
+.text-small {
+    font-size: .8em;
+    font-weight: 400;
+}
+
+.list-sanpham-2 {
+    background: #ffffff;
+    min-height: 500px;
+    margin-top: 1em;
+}
+
+.checkbox-loc-item {
+    background: var(--gray-1);
+    margin: 0em .2em;
+    text-align: center;
+    color: black;
+    padding: .5em 1em;
+    font-size: .9em;
+    font-weight: 400;
+}
+
+.checkbox-loc-item.active {
+    background: var(--main-color);
+    color: white;
+}
+
+.fa-checkbox-loc {
+    margin-left: .6em;
+    cursor: pointer;
+}
+
+.fa-bo-loc-doc .loc-item .title-loc {
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: .8em;
+}
+
+.fa-bo-loc-doc .loc-item .body-loc {
+    padding-inline-start: 0px;
+}
+
+.fa-bo-loc-doc .loc-item .body-loc li {
+    list-style: none;
+    display: flex;
+    margin-bottom: .4em;
+
+}
+
+.fa-bo-loc-doc .loc-item .body-loc a {
+    color: black;
+    flex-grow: 1;
+    font-size: 1em;
+}
+
+span.box-soluong {
+    background: var(--main-color);
+    display: inline-block;
+    padding: .35em .65em;
+    font-size: .7em;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 50rem!important;
+}
+
+.product-info .product-catergory{
+    color: black;
+    font-size: .8em;
+}
+
+.product-info .product-name {
+    color: black;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.product-info .product-motangan {
+    color: black;
+    font-size: .9em;
+}
+
+.item-sanpham {
+    border-bottom: 1px solid gainsboro;
+}
+
+.child-item-sanpham {
+    margin: 1em 0em;
+    transition: 0.4s;
+}
+
+.child-item-sanpham:hover {
+    box-shadow: 0px 2px 20px rgb(0 0 0 / 15%);
+}
+
+.product-action {
+    min-height: 45px;
+}
+
+.btn-sanpham {
+    opacity: 0;
+}
+
+.btn-add-wishlist.btn-sticky {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.box-cicrle {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1em;
+    background-color: var(--gray-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #212529;
+}
+
+.btn-add-wishlist .box-cicrle .heart-full {
+    display: none;
+}
+
+.btn-add-wishlist .box-cicrle .heart-line {
+    display: block;
+}
+
+
+.btn-add-wishlist.active .box-cicrle .heart-full {
+    display: block;
+    color: var(--main-color);
+}
+
+.btn-add-wishlist.active .box-cicrle .heart-line {
+    display: none;
+}
+
+.child-item-sanpham.zbar {
+    border: none;
+}
+
+.img-sanpham-zbar {
+    height: 200px;
+    object-fit: contain;
+}
+
 
 /* Reponsive */
 @media (min-width: 1200px) {
