@@ -13,6 +13,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     const BASE_URL_UPLOAD = 'Admin/assets/images/users/';
+    const BASE_URL_UPLOAD_STAFF = 'uploads/imgusers/';
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
     const LOAI_DANHMUC_BLOG = 3;
@@ -39,7 +40,7 @@ class Controller extends BaseController
         if (!$check) {
             return false;
         } else {
-            $img->move(self::BASE_URL_UPLOAD, $img->getClientOriginalName());
+            $img->move(self::BASE_URL_UPLOAD_STAFF, $img->getClientOriginalName());
             return true;
         }
     }

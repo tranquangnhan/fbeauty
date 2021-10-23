@@ -122,7 +122,7 @@
                                                     <div class="col-md-6">
                                                         <div id="imageA" class="mt-2">
                                                             <img
-                                                                src="{{asset("Admin/assets/images/users")}}/{{$nhanvien->avatar}}">
+                                                                src="{{asset(\App\Http\Controllers\Controller::BASE_URL_UPLOAD_STAFF)}}/{{$nhanvien->avatar}}">
                                                         </div>
                                                     </div>
                                                 </div>
