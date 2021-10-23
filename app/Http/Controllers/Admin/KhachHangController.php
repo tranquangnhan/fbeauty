@@ -5,15 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KhachHang;
 use App\Repositories\KhachHang\KhachHangRepository;
+use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use Illuminate\Http\Request;
 
 class KhachHangController extends Controller
 {
 
     private $KhachHang;
-    public function __construct(KhachHangRepository $KhachHang)
+    private $LieuTrinh;
+    public function __construct(
+        KhachHangRepository $KhachHang,
+        LieuTrinhRepository $LieuTrinh         
+        )
     {
         $this->KhachHang = $KhachHang;
+        $this->LieuTrinh = $LieuTrinh;
     }
 
     /**
@@ -34,9 +40,7 @@ class KhachHangController extends Controller
      */
     public function create()
     {
-        $KhachHang = $this->KhachHang->getAll();
-        return view("Admin.khachhang.create", ['khachhang' => $KhachHang]);
-        //
+        return view("Admin.khachhang.create");
     }
     /**
      * Store a newly created resource in storage.
@@ -100,7 +104,7 @@ class KhachHangController extends Controller
     public function edit($id)
     {
         $KhachHang = $this->KhachHang->find($id);
-        return view("Admin.khachhang.edit", ['khachhang' => $KhachHang]);
+        return view("Admin.khachhang.edit", ['KhachHang' => $KhachHang]);
     }
 
     /**
@@ -148,4 +152,15 @@ class KhachHangController extends Controller
 
         return redirect('quantri/khachhang')->with('success', 'Xoá thành công');
     }
+
+
+    public function detailKhachHang($id){
+        $KhachHang = $this->KhachHang->find($id);
+        $LieuTrinh =  $this->LieuTrinh->findLieuTrinhByIdKh($KhachHang->id);
+        view()->share('URL_IMG', Controller::URL_IMG);
+        
+        return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh'));
+
+    } 
+
 }

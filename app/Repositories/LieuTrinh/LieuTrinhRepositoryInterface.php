@@ -8,5 +8,5 @@ use App\Repositories\RepositoryInterface;
 
 interface LieuTrinhRepositoryInterface extends RepositoryInterface
 {
-
+    public function findLieuTrinhByIdKh($id);
 }

@@ -82,6 +82,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('lieutrinh', LieuTrinhController::class);
 
     Route::post('searchdichvu', [LieuTrinhController::class,'searchDichVu']);
+
+    Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
 });
 
 Route::group(['prefix' => '/'], function (){

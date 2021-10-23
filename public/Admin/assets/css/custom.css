@@ -31,3 +31,28 @@
 .imgdichvu{
     object-fit: cover;
 }
+
+/* start khách hàng */
+.boxinfouser{
+    width: 100%;
+    display: flex;
+}
+.boxinfouser i{
+    font-size: 20pt;
+}
+.right{
+   width: 90%; 
+}
+/* end khách hàng */
+
+.boxnguoidung{
+    display: flex;
+    align-items: center;
+}
+.boxnguoidung h3{
+    padding: 0;
+}
+.boxnguoidung p{
+    margin: 0;
+    margin-right: 5px;
+}

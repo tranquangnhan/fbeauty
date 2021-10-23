@@ -13,6 +13,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     const BASE_URL_UPLOAD = 'Admin/assets/images/users/';
+    const URL_IMG = 'uploads/';
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
     const LOAI_DANHMUC_BLOG = 3;

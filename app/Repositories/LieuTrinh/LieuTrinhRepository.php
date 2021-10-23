@@ -12,9 +12,24 @@ class LieuTrinhRepository extends BaseRepository implements LieuTrinhRepositoryI
 {
     protected $model;
 
+    function __construct()
+    {
+        $this->setModel();
+    }
+
     public function getModel()
     {
         return LieuTrinhModel::class;
     }
 
+    public function setModel()
+    {
+        $this->model = app()->make(
+            $this->getModel()
+        );
+    }
+
+    public function findLieuTrinhByIdKh($id){
+        return $this->model->select("nhanvien.avatar as imgnv","nhanvien.*")->join("nhanvien","nhanvien.id","=","lieutrinh.idnhanvien")->where("idkhachhang","=",$id)->get();
+    }
 }
