@@ -50,7 +50,7 @@
                                                     <i class="fa fa-download " style="font-size:52px;color:blue"></i>
                                                 </div>
                                             </div>
-                                            @error('img')
+                                            @error('urlHinh')
                                             <span class="badge badge-danger">{{$message}}</span>
                                             @enderror
                                         </label>
@@ -60,7 +60,14 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="col-lg-12 mt-3">
+                                <label class="form-label">Mô tả ngắn</label> <span style="color:red;"> (*)</span>
+                                <textarea name="motangan" class="form-control" id="" cols="25" rows="3"
+                                    placeholder="Mô tả"></textarea>
+                                @error('motangan')
+                                <span class="badge bg-danger text-white">{{ $message }}</span>
+                                @enderror
+                            </div>
                             <div class="col-lg-12 mt-3">
                                 <label class="form-label">Nội dung</label> <span style="color:red;"> (*)</span>
                                 <textarea name="noidung" class="form-control" id="summernote" cols="25" rows="3"
@@ -70,14 +77,12 @@
                                 @enderror
                             </div>
                             <div class="form-group ml-2 mt-3">
-                                <label class="w-100 " for="trangthai">Hoạt động <span style="color:red;"> (*)</span><br>
-                                <br><form >
-                                          <input type="radio" id="html" name="trangthai" value="1" checked>
-                                          <label for="html">Kích hoạt</label><br>
-                                          <input type="radio" id="css" name="trangthai" value="0" >
-                                          <label for="css">Chưa kích hoạt</label><br>
-                                    </form> 
-                                </label>
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <input id="remember-1" type="checkbox" name="trangthai" value="1" data-parsley-multiple="remember-1">
+                                        <label for="remember-1">Trạng Thái ? </label>
+                                    </div>
+                                </div>    
                              
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">

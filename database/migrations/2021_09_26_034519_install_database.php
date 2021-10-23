@@ -47,7 +47,7 @@ class InstallDatabase extends Migration
 
         Schema::create('dichvu', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tendv',255);
+            $table->string('name',255);
             $table->string('slug',255);
             $table->string('img',255);
             $table->unsignedInteger('giamgia')->default(0);
@@ -55,7 +55,7 @@ class InstallDatabase extends Migration
             $table->string('motangan',255);
             $table->double('dongia',10,0);
             $table->longText('noidung');
-            $table->boolean('trangthai');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('iddm')->references('id')->on('danhmuc');
             $table->timestamps();
         });
@@ -67,8 +67,9 @@ class InstallDatabase extends Migration
             $table->string('img',255);
             $table->string('name',255);
             $table->string('slug',255);
+            $table->string('motangan',255);
             $table->longText('noidung');
-            $table->boolean('trangthai');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('iddm')->references('id')->on('danhmuc');
             $table->timestamps();
         });
@@ -178,12 +179,11 @@ class InstallDatabase extends Migration
         Schema::create('datlich', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idcoso');
-            $table->unsignedInteger('iddichvu');
+            $table->string('iddichvu', 55);
             $table->unsignedInteger('idkhachhang');
             $table->unsignedInteger('idnhanvien');
             $table->unsignedInteger('thoigiandat');
             $table->foreign('idcoso')->references('id')->on('coso');
-            $table->foreign('iddichvu')->references('id')->on('dichvu');
             $table->foreign('idkhachhang')->references('id')->on('khachhang');
             $table->foreign('idnhanvien')->references('id')->on('nhanvien');
             $table->timestamps();

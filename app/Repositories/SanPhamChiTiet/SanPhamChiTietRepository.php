@@ -31,4 +31,9 @@ class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietR
     public function delDetailByIdSp($id){
        return $this->model->where("idsanpham","=",$id)->delete();
     }
+
+    public function getSanPhamChiTietByIdSanPham($id){
+        return $this->model->where('idsanpham',"=",$id)->get();
+    }
+
 }

@@ -27,7 +27,7 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-        //
+        return view("Admin.HoaDon.index");
     }
 
     /**

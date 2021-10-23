@@ -60,6 +60,7 @@ class BlogController extends Controller
                 'slug' => Str::slug($request->name),
                 'img' => $img,
                 'iddm' => $request->danhmuc,
+                'motangan' => $request->motangan,
                 'noidung' => $request->noidung,
                 'trangthai' => $request->trangthai
             ];
@@ -106,6 +107,7 @@ class BlogController extends Controller
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
                 'iddm' => $request->danhmuc,
+                'motangan' => $request->motangan,
                 'noidung' => $request->noidung,
                 'trangthai' => $request->trangthai
             ];
@@ -114,6 +116,7 @@ class BlogController extends Controller
                 $img = $this->uploadSingle($request->file('urlHinh'));
                 $Blog['img'] = $img;
             }
+            dd($Blog);
             $this->Blog->update($id, $Blog);
             return redirect('quantri/blog')->with('thanhcong', 'Sửa bài viết thành công');
         

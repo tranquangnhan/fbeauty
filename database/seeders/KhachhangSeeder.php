@@ -14,7 +14,7 @@ class KhachhangSeeder extends Seeder
     public function run()
     {
         DB::table('khachhang')->insert([
-            // ['name' => 'Long', 'sdt'=> '0965286055', 'password' => bcrypt('123123'), 'active' => 1, 'img' => ''],
+            ['name' => 'Long', 'sdt'=> '0965286055', 'password' => bcrypt('123123'), 'active' => 1, 'img' => ''],
             ['name' => 'Nhân', 'sdt'=> '0965286056', 'password' => bcrypt('123123'), 'active' => 1, 'img' => ''],
             ['name' => 'Ly Ly', 'sdt'=> '0965286057', 'password' => bcrypt('123123'), 'active' => 1, 'img' => ''],
             ['name' => 'Hương Hương', 'sdt'=> '0965286058', 'password' => bcrypt('123123'), 'active' => 1, 'img' => ''],

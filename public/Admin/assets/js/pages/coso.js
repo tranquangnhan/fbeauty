@@ -20,7 +20,7 @@ $(document).ready(function() {
         }
         $.ajax({
 
-            url: '/quantri/select-delivery', //cái này chỉ dc dùng teamplate blade
+            url: document.URL + '/select-delivery', //cái này chỉ dc dùng teamplate blade
             method: 'POST',
             data: { action: action, ma_id: ma_id, _token: _token },
             success: function(data) {

@@ -3,11 +3,7 @@
 
 @extends('Admin.LayoutAdmin')
 @section('content')
-<style>
-    .border-error{
-        border: 1px solid red;
-    }
-</style>
+
 <div class="content-page">
     <div class="content">
 
