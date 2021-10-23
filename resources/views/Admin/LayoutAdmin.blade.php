@@ -772,40 +772,7 @@
 {{-- end code nhúng bởi Nhân --}}
 
 {{-- code nhúng bởi Tưởng --}}
-<<<<<<< HEAD
-
-<script>$(document).ready(function() {
-
-$('.choose').on('change', function() {
-    var action = $(this).attr('id');
-    var ma_id = $(this).val();
-    var _token = $('input[name="_token"]').val();
-
-    // alert(action);
-    // alert(ma_id);
-    // alert(_token);
-    var result = '';
-
-    if (action == 'city') {
-        result = 'province';
-    } else {
-        result = 'wards';
-    }
-    $.ajax({
-
-        url: '{{url("/quantri/select-delivery")}}',
-        method: 'POST',
-        data: { action: action, ma_id: ma_id, _token: _token },
-        success: function(data) {
-            $('#' + result).html(data);
-        }
-    });
-});
-});
-</script>
-=======
 <script src="{{ asset('Admin/assets') }}/js/pages/coso.js"></script>
->>>>>>> 40e4e9810106aab5a8e8018ee49ac079ca6af792
 {{-- end code nhúng bởi Tưởng --}}
 
 {{--code của quốc--}}

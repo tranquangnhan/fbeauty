@@ -19,7 +19,6 @@
 
                         <table class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
-<<<<<<< HEAD
                                     <tr class="text-center">
                                         <th width="10.5%"> Mã đơn hàng </th>
                                         <th width="15.5%"> Khách hàng </th>
@@ -28,19 +27,6 @@
                                         <th width="11%">Tổng Tiền Giảm</th>
                                         <th width="12%">Trạng Thái</th>
                                         <th width="12%">Hành Động</th>
-=======
-                                    <tr>
-                                        <th width="4%">STT</th>
-                                        <th width="10%">Tên Người Nhận</th>
-                                        <th width="16%">Địa Chỉ Nhận</th>
-                                        <th width="10%">SĐT Người Nhận</th>
-                                        <th width="10%">Tổng Tiền Đã Giảm</th>
-                                        <th width="12%">Ghi Chú Khách Hàng</th>
-                                        <th width="10%">Phương Thức Thanh Toán</th>
-                                        <th width="10%">Phương Thức Giao Hàng</th>
-                                        <th width="10%">Trạng Thái</th>
-                                        <th width="8%">Hành Động</th>
->>>>>>> 40e4e9810106aab5a8e8018ee49ac079ca6af792
 
                                     </tr>
                                 </thead>
@@ -51,15 +37,8 @@
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->tennguoinhan}}</td>
                                             <td>{{$item->sdtnguoinhan}}</td>
-<<<<<<< HEAD
                                             <td>{{number_format($item->tongtientruocgiamgia)}}</td>
                                             <td>{{number_format($item->tongtiensaugiamgia)}}</td>
-=======
-                                            <td>{{number_format($item->tongtiensaugiamgia)}}</td>
-                                            <td>{{$item->ghichucuakhachhang}}</td>
-                                            <td>{{$item->phuongthucthanhtoan}}</td>
-                                            <td>{{$item->phuongthucgiaohang}}</td>
->>>>>>> 40e4e9810106aab5a8e8018ee49ac079ca6af792
 
 
                                             <td class="text-white">
@@ -67,25 +46,16 @@
                                             if($item->trangthai==0)
                                             {
                                                 ?>
-<<<<<<< HEAD
                                                <span class="badge bg-primary">Đang xác nhận</span>
-=======
-                                                <a href="{{URL::to('quantri/active/'.$item->id)}}"><span>Chờ xác nhận</span></a>
->>>>>>> 40e4e9810106aab5a8e8018ee49ac079ca6af792
                                                 <?php
                                             }elseif($item->trangthai==1)
                                             {
                                                 ?>
-<<<<<<< HEAD
                                                <span class="badge bg-secondary">Đã gửi đi</span>
-=======
-                                                <a href="{{URL::to('quantri/active-1/'.$item->id)}}"><span>Chờ gói hàng</span></a>
->>>>>>> 40e4e9810106aab5a8e8018ee49ac079ca6af792
                                                 <?php
                                             }elseif($item->trangthai==2)
                                             {
                                                 ?>
-<<<<<<< HEAD
                                                 <span class="badge bg-success">Đã nhận</span>
                                                 <?php
                                             }elseif($item->trangthai==3)
@@ -101,13 +71,6 @@
                                             }else{
                                                 ?>
                                                 <span class="badge bg-warning">Hủy đơn hàng</span>
-=======
-                                                <a href="{{URL::to('quantri/active-2/'.$item->id)}}"><span>Đang giao</span></a>
-                                                <?php
-                                            }else{
-                                                ?>
-                                                <a><span>Đã Giao</span></a>
->>>>>>> 40e4e9810106aab5a8e8018ee49ac079ca6af792
                                                 <?php
                                             }
                                             ?>

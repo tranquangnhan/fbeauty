@@ -17,86 +17,145 @@
                         <div class="card-box task-detail">
                             <div class="media mb-3">
                                 <div class="media-body">
-                                    <h4 class="media-heading mt-0">Michael Zenaty</h4>
+                                    <h4 class="media-heading mt-0"> ĐON HÀNG CHI TIẾT </h4>
                                 </div>
                             </div>
                            @php
-                               if($data){
-                                    $idDetail = $data[0]->id;
+                               if($donHang){
+                                    $idDetail = $donHang?:[0]->id;
                                }else{
                                     $idDetail = '';
                                }
                            @endphp
 
-                            <form action="{{url('quantri/donhangchitiet/detail/'.$idDetail.'/edit')}}" novalidate method="post" enctype="multipart/form-data">
-                                @csrf
+
 
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        @foreach ($data as $item)
                                         <div class=" box-detail" style="width: 95%;">
-                                            <div class="input-block">
-                                                <div class="row task-dates mb-0 mt-2">
-                                                    <div class="form-group col-lg-6">
-                                                        <label> Mã Đơn Hàng </label>
-                                                        <input type="text" name="donhang[]" value="{{$item->iddonhang}}" parsley-trigger="change" required readonly
-                                                        placeholder="Nhập tên nhà sản xuất" id="ml" class="form-control" id="userName">
-
+                                            <div class="table-responsive">
+                                                <div class="media mb-3">
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading mt-0">Thông Tin Người Đặt</h4>
                                                     </div>
-
-                                                    <div class="form-group col-lg-6">
-                                                        <label> Sản Phẩm </label>
-                                                        <input type="text" name="sanpham" value="{{$item->idsanpham}}"  parsley-trigger="change" required readonly
-                                                        placeholder="Nhập Số lượt tồn kho" class="form-control" id="userName">
-                                                    </div>
-
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label >Hình ảnh Sản Phẩm</label>
-                                                    <img width="130" height="100" style="object-fit: cover" src="{{ asset('uploads/'.$item->img) }}" alt=""><br><br>
-                                                </div>
-
-                                                <div class="row task-dates mb-0 mt-2">
-                                                    <div class="form-group col-lg-4">
-                                                        <label> Số Lượng </label>
-                                                        <input type="number" name="soluong[]" value="{{$item->soluong}}" parsley-trigger="change" required
-                                                        placeholder="Nhập tên nhà sản xuất" id="ml" class="form-control" id="userName">
-
-                                                    </div>
-
-                                                    <div class="form-group col-lg-4">
-                                                        <label> Tổng Tiền Đơn Hàng  </label>
-                                                        <input type="text" name="truocgiamgia[]" value="{{$item->dongiatruocgiamgia}}"  parsley-trigger="change" required
-                                                        placeholder="Nhập Số lượt tồn kho" class="form-control" id="userName">
-                                                    </div>
-
-                                                    <div class="form-group col-lg-4">
-                                                        <label> Tổng Tiền Đã Giảm </label>
-                                                        <input type="text" name="saugiamgia[]" value="{{$item->dongiasaugiamgia}}"  parsley-trigger="change" required
-                                                        placeholder="Nhập Số lượt tồn kho" class="form-control" id="userName">
-                                                    </div>
-
-                                                </div>
+                                                <table class="table mb-0">
+                                                    <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Tên khách hàng</th>
+                                                        <th>Số điện thoại</th>
+                                                        <th>email</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        @foreach  ($khachHang as $items)
 
 
-                                                <input type="button" class="remove-field btn btn-danger" value="-">
+                                                        <td>{{$items->name}}</td>
+                                                        <td>{{$items->sdt}}</td>
+                                                        <td>{{$items->email}}</td>
+                                                    </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
 
-                                        @endforeach
-                                    </div>
 
-                                </div>
+                                        <div class=" box-detail" style="width: 95%;">
+                                            <div class="table-responsive">
+                                                <div class="media mb-3">
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading mt-0">Thông Tin Vận Chuyển</h4>
+                                                    </div>
+                                                </div>
+                                                <table class="table mb-0">
+                                                    <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Tên người nhận</th>
+                                                        <th>Địa chỉ </th>
+                                                        <th>Số điện thoại</th>
+                                                        <th>Hình thức thanh toán</th>
+                                                        <th>Ghi chú</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>{{ $donHang->tennguoinhan }}</td>
+                                                        <td>{{ $donHang->diachikhachhang }}</td>
+                                                        <td>{{ $donHang->sdtnguoinhan }}</td>
+                                                        <td>{{ $donHang->phuongthucthanhtoan }}</td>
+                                                        <td>{{ $donHang->ghichucuakhachhang }}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
 
-                                <div class="form-group text-right mb-0 mt-5">
-                                            <a href="/quantri/coso" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
-                                            <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product'>
+                                        <div class=" box-detail" style="width: 95%;">
+                                            <div class="table-responsive">
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading mt-0">Chi Tiết Đơn Hàng</h4>
+                                                    </div>
+                                                </div>
 
-                                </div>
+                                                <table class="table mb-0">
+                                                    <thead class="thead-light">
+                                                    <tr class="text-center" >
+                                                        <th width="5%">STT</th>
+                                                        <th width="17%">Tên sản phẩm</th>
+                                                        <th width="8%">ML</th>
+                                                        <th width="14%">Số lượng Kho</th>
+                                                        <th width="14%">Số lượng đặt</th>
+                                                        <th width="14%">Giá trước giảm</th>
+                                                        <th width="14%">Giá sau giảm</th>
+                                                        <th width="14%">Tổng tiền</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <form action="{{url('quantri/donhangchitiet/detail/'.$idDetail->id.'/edit')}}" novalidate method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                        @foreach ($sanpham as $item)
+                                                    <tr class="text-center table-tuong">
+                                                        <td>{{ $loop->index + 1 }}</td>
 
+                                                        <td>{{ $item->name }}</td>
 
-                            </form>
+                                                        <td>{{$item->ml}}
+                                                        </td>
+
+                                                        <td>{{$item->tonkho}}
+                                                        </td>
+
+                                                        <td>
+                                                            <input type="number" name="soluong[]" value="{{$item->soluong}}" parsley-trigger="change" required
+                                                            placeholder="Nhập tên nhà sản xuất" id="ml" class="form-control" id="userName">
+                                                            <input type="hidden" name="id[]" value="{{$item->id}}">
+                                                        </td>
+
+                                                        <td>{{$item->dongiatruocgiamgia}}
+                                                        </td>
+
+                                                        <td>{{$item->dongiasaugiamgia}}
+                                                        </td>
+
+                                                        <td>{{ number_format($item->tongtien) }}
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+
+                                                        <div class=" text-right mb-2">
+                                                            <a href="/quantri/donhang" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
+                                                            <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product'>
+
+                                                        </div>
+                                                </form>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
 
                         </div>
                     </div><!-- end col -->

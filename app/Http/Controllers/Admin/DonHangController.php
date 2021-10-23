@@ -24,10 +24,12 @@ class DonHangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(DonHangRepository $DonHang , KhachHangRepository $KhachHang)
+    public function __construct(DonHangRepository $DonHang , KhachHangRepository $khachHang, DonHangChiTietRepository $DonHangChiTiet)
     {
         $this->DonHang = $DonHang;
-        $this->KhachHang = $KhachHang;
+        $this->KhachHang = $khachHang;
+        $this->DonHangChiTiet = $DonHangChiTiet;
+
     }
     public function index()
     {
@@ -125,6 +127,7 @@ class DonHangController extends Controller
 
         return redirect('quantri/donhang')->with('success','Xoá thành công');
     }
+
 
 
 }

@@ -11,7 +11,7 @@ class DonHangChitiet extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
     'iddonhang ',
-    'idsanpham ',
+    'idsanphamchitiet ',
     'img',
     'soluong',
     'dongiatruocgiamgia',

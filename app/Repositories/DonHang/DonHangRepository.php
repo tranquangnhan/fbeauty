@@ -10,22 +10,12 @@ class DonHangRepository extends BaseRepository implements DonHangRepositoryInter
     public function getModel(){
         return \App\Models\Admin\DonHangModel::class;
     }
-    public function active_donhang($id){
-        return $this->model->where('id' , ' = ' ,$id)->update(['trangthai'=>0]);
-        return Redirect::to('index');
 
+    public function getDonHangChiTietByIdDonHang($id){
+        return $this->model->where('iddonhang','=',$id)->get();
     }
-    public function active_donhang1($id){
-        return $this->model->where('id' , ' = ' ,$id)->update(['trangthai'=>1]);
-
-    }
-    public function active_donhang2($id){
-        return $this->model->where('id' , ' = ' ,$id)->update(['trangthai'=>2]);
-
-    }
-    public function active_donhang3($id){
-        return $this->model->where('id' , ' = ' ,$id)->update(['trangthai'=>3]);
-
+    public function getKhachHangChiTietByIdDonHang($id){
+        return $this->model->where('idkhachhang','=',$id)->get();
     }
 
 }

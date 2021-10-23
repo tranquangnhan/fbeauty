@@ -4,21 +4,22 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
+use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use Illuminate\Http\Request;
 class DonHangchitietController extends Controller
 {
     private $DonHangChiTiet;
     private $DonHang;
-    private $SanPham;
+    private $khachHang;
     /**
      * CosoController constructor.
      */
-    public function __construct(DonHangChiTietRepository $DonHangChiTiet , DonHangRepository $DonHang , SanPhamRepository $SanPham)
+    public function __construct(DonHangChiTietRepository $DonHangChiTiet , DonHangRepository $DonHang , SanPhamRepository $SanPham ,KhachHangRepository $khachHang)
     {
         $this->DonHangChiTiet = $DonHangChiTiet;
         $this->DonHang = $DonHang;
-        $this->SanPham = $SanPham;
+        $this->khachHang = $khachHang;
     }
 
 
@@ -47,25 +48,37 @@ class DonHangchitietController extends Controller
      */
 
     function editDetailDonHang($id){
+        $donHang = $this->DonHang->find($id);
 
-        $data = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
-        // $datadonhangchitiet = $this->DonHangChiTiet->find($id);
-        // $donhang = $this->DonHang->find($datadonhangchitiet->iddonhang);
-        // $sanpham = $this->SanPham->find($datadonhangchitiet->idsanpham);
+        $khachHang = $this->DonHangChiTiet->getDonHangChiTietByIdKhachHangInnerJoin($id);
+        //dd($khachHang);
+        $sanpham = $this->DonHangChiTiet->getDonHangChiTietByIdDonHangInnerJoin($id);
 
-        return view('Admin.DonHang.detail',compact('data'));
+        return view('Admin.DonHang.detail', compact('donHang','sanpham','khachHang'));
     }
 
 
     function updateDetailDonHang(Request $request, $id){
         $data = [
             'soluong'=> $request->soluong,
-            'dongiatruocgiamgia'=> $request->truocgiamgia,
-            'dongiasaugiamgia'=>$request->saugiamgia
         ];
+        // dd($data);
+        if(count($request->soluong)>0){
+            $array = [];
+         for ($i=0; $i < count($request->id) ; $i++) {
+             $data = [
+                'soluong'=> $request ->soluong[$i],
+             ];
+                array_push($array,$data);
 
-        //$this->DonHangChiTiet->updateDetailByIdDH($id,$data);
-dd($data);
-        //return redirect('quantri/donhang')->with('success','Sửa thành công');
+            $this->DonHangChiTiet->updateDetailByIdDH($request->id[$i],$data);
+         }
+
+         //dd($array);
+        }
+
+
+
+        return redirect('quantri/donhang')->with('success','Sửa thành công');
     }
 }

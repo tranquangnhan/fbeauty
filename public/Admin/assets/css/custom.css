@@ -1,30 +1,37 @@
-.box-detail-wrapper{
+.box-detail-wrapper {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.box-detail{
+
+.box-detail {
     width: 46%;
     padding: 3rem;
-    margin:1rem;
-    box-shadow:
-    1px 2px 8px hsl(220deg 60% 50% / 0.3)
+    margin: 1rem;
+    box-shadow: 1px 2px 8px hsl(220deg 60% 50% / 0.3)
 }
-.remove-field{
+
+.remove-field {
     font-size: 20pt;
     width: 40px;
     height: 40px;
     line-height: 20px;
 }
 
-.note-btn{
+.note-btn {
     color: #333 !important;
 }
-.align-center{
+
+.align-center {
     justify-content: center;
     align-items: center;
     display: flex;
 }
-.border-error{
+
+.border-error {
     border: 1px solid red !important;
+}
+
+.table-tuong td {
+    vertical-align: middle;
 }

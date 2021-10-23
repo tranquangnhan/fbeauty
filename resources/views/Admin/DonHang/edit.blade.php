@@ -36,7 +36,6 @@
 
                                 <div class="row">
                                     <div class="col-lg-12">
-<<<<<<< HEAD
                                     <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="">Tên Người Đặt</label><span style="color:red;"> (*)</span>
@@ -51,23 +50,6 @@
                                             <div class="form-group col-md-4">
                                                 <label for="">Tên Người Nhận</label><span style="color:red;"> (*)</span>
                                                 <input type="text" name="namenguoinhan" class="form-control @error('name') border-error @enderror name" value="{{$data->tennguoinhan}}"  parsley-trigger="change" required
-=======
-                                        <div class="form-group">
-                                            <label for="">Tên Người Đặt</label><span style="color:red;"> (*)</span>
-
-                                            <input type="text" name="namedat" class="form-control @error('name') border-error @enderror name" value="{{$khachHang->name}}"  parsley-trigger="change" required readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="magiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->idgiamgia}}"  parsley-trigger="change" required >
-                                            <!-- <select class="form-control input-sm m-bot15" name="magiamgia" >
-                                                <option value="">{{$data->idgiamgia}}</option>
-                                                </select> -->
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Tên Người Nhận</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="namenguoinhan" class="form-control @error('name') border-error @enderror name" value="{{$data->tennguoinhan}}"  parsley-trigger="change" required
->>>>>>> 40e4e9810106aab5a8e8018ee49ac079ca6af792
                                                    placeholder="Tên Người Nhận" >
                                             </div>
                                     </div>

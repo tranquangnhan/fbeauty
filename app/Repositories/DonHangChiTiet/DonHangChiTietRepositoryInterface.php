@@ -20,6 +20,6 @@ interface DonHangChiTietRepositoryInterface
 
     public function updateDetailByIdDH($id,$data);
 
-    // public function getDonHangChiTietByIdDonHangInnerJoin($id);
+    public function getDonHangChiTietByIdKhachHangInnerJoin($id);
 
 }

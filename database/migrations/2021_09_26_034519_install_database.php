@@ -246,13 +246,13 @@ class InstallDatabase extends Migration
         Schema::create('donhangchitiet', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('iddonhang');
-            $table->unsignedInteger('idsanpham');
+            $table->unsignedInteger('idsanphamchitiet');
             $table->string('img',255);
             $table->unsignedInteger('soluong');
             $table->double('dongiatruocgiamgia',10,0);
             $table->double('dongiasaugiamgia',10,0);
             $table->foreign('iddonhang')->references('id')->on('donhang');
-            $table->foreign('idsanpham')->references('id')->on('sanpham');
+            $table->foreign('idsanphamchitiet')->references('id')->on('sanphamchitiet');
             $table->timestamps();
         });
 
