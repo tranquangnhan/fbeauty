@@ -21,6 +21,21 @@ class Controller extends BaseController
     const KHACHHANG_DA_ACTIVE = 1;
     const TRANGTHAI_LICH_OPEN = 1;
 
+    /**
+     * ID_LIENQUAN_SP=1 LÀ SẢN PHẨM
+     * ID_LIENQUAN_DV=0 LÀ DỊCH VỤ
+     * TRANGTHAITHANHTOAN=1 ĐÃ THANH TOÁN
+     * TRANGTHAITHANHTOAN !=1 CHƯA THANH TOÁN
+     */
+    const ID_LIENQUAN_SP_=1;
+    const ID_LIENQUAN_DV_=0;
+    const TRANGTHAITHANHTOAN=1;
+    /**
+    *LOAIGIAM=1 LÀ %
+     * LOAIGIAM=0 LÀ tiền
+     */
+    const LOAIGIAM=1;
+
     function uploadSingle($file){
         if($file == null) return null;
         $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
