@@ -24,6 +24,7 @@ use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepositoryInterface;
+use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -47,6 +48,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(HoaDonChiTietRepositoryInterface::class, HoaDonChiTietRepository::class);
         $this->app->singleton(LichRepositoryInterface::class, LichRepository::class);
         $this->app->singleton(LieuTrinhRepositoryInterface::class,LieuTrinhRepository::class);
+        $this->app->singleton(LieuTrinhChiTietRepositoryInterface::class, LieuTrinhRepository::class);
     }
 
     /**

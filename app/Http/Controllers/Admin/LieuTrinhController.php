@@ -47,22 +47,11 @@ class LieuTrinhController extends Controller
      */
     public function create()
     {
-        $KhachHang = $this->KhachHang->find(1);
-        $LieuTrinh = $this->LieuTrinh->find(1);
-        $LieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin(1);
-        $NhanVien = $this->NhanVien->find($LieuTrinh->idnhanvien);
-        // dd($LieuTrinhChiTiet);
-
-        return view("Admin.LieuTrinh.create",compact('KhachHang','LieuTrinh','LieuTrinhChiTiet','NhanVien'));
+       
     }
 
 
-    function searchDichVu(Request $request){
-        $valueSearch = $this->DichVu->search($request->searchValue);
-
-        return response()->json($valueSearch);
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -71,7 +60,22 @@ class LieuTrinhController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->trangthai);
+        $trangThai = ($request->trangthai === "on") ? 1 : 0;
+        $imgkhachhang = $this->uploadSingle($request->imgkhachhang);
+        $data = [
+            'idlieutrinh' =>$request->id,
+            'iddichvu' => $request->iddichvu,
+            'idnhanvien' => $request->idnhanvien,
+            'mota' => $request->mota,
+            'ngay' => strtotime($request->ngay),
+            'trangthai' => $trangThai,
+            'imgkhachhang' =>   $imgkhachhang,
+        ];
+
+       $res =  $this->LieuTrinhChiTiet->create($data);
+    
+        return redirect('quantri/lieutrinh/'.$request->id.'/edit');
     }
 
     /**
@@ -93,9 +97,64 @@ class LieuTrinhController extends Controller
      */
     public function edit($id)
     {
-        //
+   
+        $LieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
+        $NhanVien =  $this->NhanVien->getAll();
+        $DichVu =  $this->DichVu->getAll();
+
+        view()->share('URL_IMG',Controller::URL_IMG);
+        view()->share('id',$id);
+
+        return view("Admin.LieuTrinh.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu'));
     }
 
+
+    public function editNameDv(Request $request){
+       
+        switch ($request->name) {
+            case 'mota':
+                $data= [
+                    'mota'=> $request->value
+                ];
+                $res = $this->LieuTrinhChiTiet->update($request->pk,$data);
+                break;
+            case 'date':
+                // validate
+                $messsages = array(
+                    'value.date'=>'Bạn nhập không đúng định dạng ngày',
+                    'value.after'=>'Ngày nhập phải lớn hơn ngày hiện tại',
+                );
+
+                $request->validate([
+                    'value' => 'date|after:today'
+                ], $messsages);
+              
+                $data= [
+                    'ngay'=> strtotime($request->value)
+                ];
+
+                $res = $this->LieuTrinhChiTiet->update($request->pk,$data);
+                break;
+            default:
+                # code...
+                break;
+        }
+
+        return response()->json($res);
+    }
+
+    function editImgLieuTrinh(Request $request){
+  
+        $img = $this->uploadSingle($request->file('file'));
+        
+        $data= [
+            'imgkhachhang'=> $img
+        ];
+
+        $res = $this->LieuTrinhChiTiet->update($request->idlieutrinhgan,$data);
+
+        return response()->json($res);
+    }
     /**
      * Update the specified resource in storage.
      *

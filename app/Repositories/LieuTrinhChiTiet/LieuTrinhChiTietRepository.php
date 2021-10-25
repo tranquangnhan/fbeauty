@@ -32,8 +32,13 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
         $this->model->select("dichvu.img as imgdichvu",
         "dichvu.name as tendv",
         "nhanvien.name as tennv",
-        "nhanvien.img as imgnv",
+        "nhanvien.avatar as imgnv",
         "dichvu.motangan as motadv",
+        "lieutrinhchitiet.ngay",
+        "lieutrinhchitiet.mota",
+        "lieutrinhchitiet.trangthai",
+        "lieutrinhchitiet.imgkhachhang",
+        "lieutrinhchitiet.id as idlieutrinh"
         )
         ->join('dichvu', 'lieutrinhchitiet.iddichvu', '=', 'dichvu.id')
         ->join('nhanvien','lieutrinhchitiet.idnhanvien','=','nhanvien.id')

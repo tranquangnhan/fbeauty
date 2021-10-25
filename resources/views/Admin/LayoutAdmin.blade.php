@@ -33,7 +33,7 @@
     <!-- Icons Css -->
     <link href="{{ asset('Admin/assets') }}/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <!-- App Css-->
-    <link href="{{ asset('Admin/assets') }}/css/app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('Admin/assets') }}/css/app.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('Admin/assets') }}/css/inputfile.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
 
     {{-- code nhúng của Quốc --}}
@@ -762,7 +762,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <script src="{{ asset('Admin/assets') }}/js/pages/texteditor.js"></script>
-<script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
+
 
 <script src="{{ asset('Admin/assets') }}/libs/datatables/jquery.dataTables.min.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.js"></script>
@@ -772,6 +772,9 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/lieutrinh.nhan.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 <script src="{{ asset('Admin/assets') }}/js/pages/form-wizard.init.js"></script>
+
+
+<script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
 {{-- end code nhúng bởi Nhân --}}
 
 {{-- code nhúng bởi Tưởng --}}

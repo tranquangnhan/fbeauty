@@ -14,12 +14,15 @@ class Controller extends BaseController
 
     const BASE_URL_UPLOAD = 'Admin/assets/images/users/';
     const URL_IMG = 'uploads/';
+    const BASE_URL_UPLOAD_STAFF = 'uploads/imgusers/';
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
     const LOAI_DANHMUC_BLOG = 3;
     const KHACHHANG_CHUA_ACTIVE = 0;
     const KHACHHANG_DA_ACTIVE = 1;
     const TRANGTHAI_LICH_OPEN = 1;
+
+   
 
     function uploadSingle($file){
         if($file == null) return null;
@@ -40,7 +43,7 @@ class Controller extends BaseController
         if (!$check) {
             return false;
         } else {
-            $img->move(self::BASE_URL_UPLOAD, $img->getClientOriginalName());
+            $img->move(self::BASE_URL_UPLOAD_STAFF, $img->getClientOriginalName());
             return true;
         }
     }
@@ -59,4 +62,6 @@ class Controller extends BaseController
     public function handleError($error){
         return Redirect::back()->withErrors($error);
     }
+
+    
 }

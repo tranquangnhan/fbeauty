@@ -157,8 +157,8 @@ class KhachHangController extends Controller
     public function detailKhachHang($id){
         $KhachHang = $this->KhachHang->find($id);
         $LieuTrinh =  $this->LieuTrinh->findLieuTrinhByIdKh($KhachHang->id);
-        view()->share('URL_IMG', Controller::URL_IMG);
-        
+        view()->share('URL_IMG',Controller::BASE_URL_UPLOAD_STAFF);
+
         return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh'));
 
     } 

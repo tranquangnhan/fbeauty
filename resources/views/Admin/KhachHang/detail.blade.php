@@ -21,7 +21,7 @@
                             </div>
                             <div class="right ml-2">
                                 <div class="boxnguoidung">
-                                    <p>Anh:</p><H3> {{$KhachHang->name}} </H3>
+                                    <p>Anh(chị):</p><h4> {{$KhachHang->name}} </h4>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3">
@@ -69,11 +69,10 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Nhân Viên Làm</th>
-                                                        <th>Position</th>
-                                                        <th>Office</th>
-                                                        <th>Age</th>
-                                                        <th>Start date</th>
-                                                        <th>Salary</th>
+                                                        <th>Ngày bắt đầu</th>
+                                                        <th>Ngày Kết thúc</th>
+                                                        <th>Ghi Chú</th>
+                                                        <th>Hành Động</th>
                                                     </tr>
                                                 </thead>
                                             
@@ -85,11 +84,12 @@
                                                             <td>
                                                                 <img style="object-fit:cover; border-radius:10px" class="img-admin" width="150" height="100" src="{{ asset($URL_IMG.$item->imgnv) }}"><br>
                                                             </td>
-                                                            <td>System Architect</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>61</td>
-                                                            <td>2011/04/25</td>
-                                                            <td>$320,800</td>
+                                                            <td>{{date('d-m-Y',$item->ngaybatdau) }}</td>
+                                                            <td> {{date('d-m-Y',$item->dukienketthuc) }}</td>
+                                                            <td>{{$item->ghichu}}</td>
+                                                            <td class="d-flex justify-content-center">
+                                                                <a class="btn btn-primary mr-2 mt-3" href="{{route('lieutrinh.edit',$item->idlieutrinh)}}" role="button"><i class="fa fa-edit"></i></a>
+                                                            </td>
                                                         </tr>
 
                                                     @endforeach
