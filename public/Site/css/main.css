@@ -44,6 +44,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    /* font-family: 'Fira Sans Condensed', sans-serif; */
     font-size: 107%;
     margin: 0px;
     padding: 0px;
@@ -68,9 +69,22 @@ body {
 .logo-custom {
     background: var(--main-color);
     padding: .2em 1.2em;
-    color: var(--black-1);
     font-weight: bold;
     font-size: 1em;
+    color: white;
+    font-size: 2em;
+}
+
+.header-img {
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-img-2 {
+    height: 500px;
+    position: relative;
+    overflow: hidden;
 }
 
 .color-black-1 {
@@ -95,10 +109,9 @@ body {
 
 /* header css */
 .nav-link {
-    font-family: Roboto;
-    font-weight: bold;
+    font-weight: 500;
     font-size: .8em;
-    /* letter-spacing: 0.09em; */
+    /* letter-spacing: 0.04em; */
     /* text-transform: uppercase; */
     color: var(--black-1) !important;
     position: relative;
@@ -189,6 +202,17 @@ li.nav-item.active .nav-link::before {
     font-weight: 500;
     font-size: .7em;
     text-transform: uppercase;
+}
+
+.title-6 {
+    font-weight: bold;
+    font-size: 2.5em;
+    line-height: 75px;
+    text-align: center;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-feature-settings: 'tnum'on;
+    color: #FFFFFF;
 }
 
 /* .line-before {
@@ -870,6 +894,40 @@ img.im-small {
     border: 2px solid var(--black-1);
 }
 
+.btn-6 {
+    color: white;
+    border: 0px solid var(--black-1);
+    background: none;
+    margin: 0 auto;
+    position: relative;
+    transition: 0.3s;
+    z-index: 10;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: .7em;
+    background: var(--main-color);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 1em 3em;
+}
+
+.btn-7 {
+    color: black;
+    border: 0px solid var(--black-1);
+    background: none;
+    margin: 0 auto;
+    position: relative;
+    transition: 0.3s;
+    z-index: 10;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: .7em;
+    background: white;
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 16%);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 1em 3em;
+}
 
 .blog-bigsize {
     position: relative;
@@ -2440,6 +2498,7 @@ form.form-phone-number {
 }
 
 @keyframes lds-default {
+
     0%,
     20%,
     80%,
@@ -2589,7 +2648,11 @@ input:focus-visible {
 .fa-bo-loc-doc .loc-item .body-loc a {
     color: black;
     flex-grow: 1;
-    font-size: 1em;
+    font-size: .9em;
+}
+
+.rounded-pill {
+    border-radius: 50rem !important;
 }
 
 span.box-soluong {
@@ -2602,10 +2665,10 @@ span.box-soluong {
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    border-radius: 50rem!important;
+    border-radius: 50rem !important;
 }
 
-.product-info .product-catergory{
+.product-info .product-catergory {
     color: black;
     font-size: .8em;
 }
@@ -2687,6 +2750,451 @@ span.box-soluong {
     object-fit: contain;
 }
 
+.breadcrumb {
+    padding: 0px;
+    margin: 0px;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    color: #ffffff;
+    content: "|";
+}
+
+span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
+    outline: none;
+}
+
+.breadcrumb-item {
+    font-size: .8em;
+    font-weight: 500;
+    font-size: .7em;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+
+.breadcrumb-item.active {
+    color: #ffffff73;
+}
+
+.breadcrumb-item a {
+    color: #ffffff;
+}
+
+.nav-custom {
+    position: absolute;
+    width: 100%;
+    margin-top: 2em;
+}
+
+.fa-slider-images {
+    min-height: 400px;
+    background: white;
+    /* background: var(--main-color-3-bg); */
+    width: 100%;
+}
+
+.fa-info-sanpham {
+    min-height: 400px;
+    /* background: var(--main-color-3-bg); */
+    background: white;
+    width: 100%;
+}
+
+.owl-dot {
+    height: 10px;
+    background: red;
+    display: inline-block;
+    width: 10px;
+}
+
+.img-sanpham-item {
+    width: 100%;
+    margin: 0 auto;
+    height: 400px;
+}
+
+.img-sanpham-item img {
+    height: 100%;
+    object-fit: contain;
+}
+
+div#custom-dots-1 {
+    background: none;
+    padding: 1em;
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+.fa-custom-nav-owl {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    top: 0px;
+    height: 100%;
+}
+
+.custom-nav-owl {
+    width: 50px;
+    height: 60px;
+    background: gainsboro;
+    line-height: 60px;
+    text-align: center;
+    color: var(--gray-2);
+    background: #ffffff91;
+    font-size: 1.6em;
+    margin: .5em;
+    transition: .4s;
+}
+
+.custom-nav-owl:hover {
+    background: var(--main-color);
+    color: white;
+}
+
+.fa-custom-nav-owl:hover .fa-custom-nav-owl button {
+    background: none;
+}
+
+.owl-theme .owl-nav [class*='owl-']:hover {
+    background: none !important;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.dot-custom {
+    background: #f2f2f2;
+    padding: .3em;
+    margin: .5em;
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+}
+
+.dot-custom {
+    transition: .3s;
+}
+
+.dot-custom.active {
+    transform: scale(1.2);
+}
+
+.box-giamgia-1 {
+    position: absolute;
+    z-index: 11;
+    /* width: 50px; */
+    /* height: 30px; */
+    line-height: 20px;
+    text-align: center;
+    background: var(--main-color);
+    color: white;
+    padding: .8em .4em;
+    font-weight: 300;
+    font-size: .8em;
+    right: 50px;
+}
+
+.basic-btn-gray {
+    display: inline-block;
+    background: var(--gray-1);
+    padding: .3em 1em;
+    margin: .2em;
+    transition: .4s;
+}
+
+.basic-btn-gray.active {
+    background: var(--main-color);
+    color: white;
+}
+
+
+.fa-info-sanpham .product-info .product-name {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.text-bold {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.giasanpham {
+    font-size: 1.6em;
+    font-weight: 500;
+}
+
+.list-info-sanpham {
+    margin-left: 1em;
+    border-left: 1px solid var(--gray-3);
+    padding-left: 1em;
+}
+
+.list-info-sanpham small {
+    font-size: .875rem;
+    color: #767676;
+    text-transform: capitalize;
+}
+
+.inline-group {
+    max-width: 9rem;
+    margin: .2em;
+    padding: 0;
+}
+
+.inline-group .form-control {
+    text-align: right;
+}
+
+.form-control[type="number"]::-webkit-inner-spin-button,
+.form-control[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.btn-cal {
+    border-radius: 0px;
+}
+
+.btn-cal:hover {
+    background: none;
+    color: black;
+}
+
+.btn-outline-secondary.focus,
+.btn-outline-secondary:focus {
+    box-shadow: 0 0 0 0;
+}
+
+.btn-cal:focus-visible {
+    outline: -webkit-focus-ring-color auto 0px;
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled).active,
+.btn-outline-secondary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-secondary.dropdown-toggle {
+    color: black;
+    background-color: white;
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
+.btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-outline-secondary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0rem rgb(108 117 125 / 50%);
+}
+
+.fa-mota .noidung {
+    background: var(--gray-4);
+    min-height: 400px;
+}
+
+.title-cs-1 {
+    color: black;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.shadow-2 {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 16%);
+}
+
+.left-bar {
+    margin-left: 1em;
+    border-left: 1px solid var(--gray-3);
+    padding-left: 1em;
+}
+
+.giagiam {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.header-text {
+    font-weight: 500;
+}
+
+.giohang-header {
+    padding: 1.8em 2em;
+    margin-bottom: 1.5em;
+}
+
+.giohang-header .header-title {
+    font-weight: 400;
+    transition: .3s;
+    font-size: 1.3em;
+}
+
+.giohang-header .header-text {
+    font-size: .875rem;
+    color: #767676;
+    text-transform: capitalize;
+}
+
+.giohang-header .header-text:hover {
+    color: var(--main-color);
+}
+
+.giohang-body {
+    margin-bottom: 0em;
+}
+
+.giohang-item {
+    padding: 1.8em 1em;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 1.5em;
+}
+
+.giohang-item .img-sanpham {
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+.btn-8 {
+    border-radius: 0px;
+    background-color: var(--main-color);
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 32px;
+    padding: 16px;
+    /* width: 220px; */
+    transition: all 0.5s;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: .7em;
+    background: var(--main-color);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 1em 3em;
+}
+
+.btn-8 {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn-8:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 1px;
+    right: -20px;
+    transition: 0.5s;
+    font-size: 2em;
+    height: 100%;
+}
+
+.btn-8:hover {
+    padding-right: 4.4em;
+    padding-left: 2.9em;
+}
+
+.btn-8:hover:after {
+    opacity: 1;
+    right: 30px;
+}
+
+.thongtinkhachhang {
+    padding: .8em 2em;
+    margin-bottom: 1.5em;
+}
+
+.thongtinkhachhang .title {
+    color: black;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.color-red {
+    color: red;
+}
+
+.form-custom {
+    border-radius: 0px;
+    box-shadow: 0px 0px 1px rgb(0 0 0 / 44%);
+    border: 0px;
+}
+
+.shadow-1 {
+    box-shadow: 0px 0px 1px rgb(0 0 0 / 44%);
+}
+
+.thanhtoan {
+    margin-top: 0px;
+    min-height: 300px;
+    padding: 1.8em 2em;
+    margin-bottom: 1.5em;
+}
+
+.title-9 {
+    font-weight: 400;
+    transition: .3s;
+    font-size: 1.3em;
+}
+
+.phuongthuc {
+    margin-top: 0px;
+    padding: 1.8em 2em;
+    margin-bottom: 1.5em;
+}
+
+.phuongthuc button {
+    border: none;
+    padding: .5em 2em;
+}
+
+.btn-9 {
+    border: 0px;
+    background: var(--main-color);
+    color: white;
+    font-size: .9em;
+    font-weight: 400;
+    width: 35%;
+    height: 100%;
+}
+
+.ip-gray-1 {
+    background: var(--gray-1);
+    color: white;
+}
+
+.w-80 {
+    width: 80% !important;
+}
+
+.modal-content-custom {
+    background: none;
+    border: 0px;
+}
+
+.modal-content-custom .custom-option {
+    background: white;
+    padding: .8em 1.4em;
+    color: black;
+    border-radius: 5px;
+    margin-bottom: 1em;
+    transition: .3s;
+}
+
+.custom-option.active {
+    background: var(--main-color);
+    color: white;
+}
+
+.giohang {
+    margin-bottom: 1.5em;
+}
 
 /* Reponsive */
 @media (min-width: 1200px) {
