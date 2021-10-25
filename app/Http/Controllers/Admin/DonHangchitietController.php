@@ -48,36 +48,32 @@ class DonHangchitietController extends Controller
      */
 
     function editDetailDonHang($id){
+
+
         $donHang = $this->DonHang->find($id);
 
-        $khachHang = $this->DonHangChiTiet->getDonHangChiTietByIdKhachHangInnerJoin($id);
-        //dd($khachHang);
+        $khachHang = $this->DonHang->getDonHangAndKhachHangById($id);
+
         $sanpham = $this->DonHangChiTiet->getDonHangChiTietByIdDonHangInnerJoin($id);
 
-        return view('Admin.DonHang.detail', compact('donHang','sanpham','khachHang'));
+        $Tong = $this->DonHangChiTiet->getIdTongthanhtoanByIdDonHangChiTtiet($id);
+
+        return view('Admin.DonHang.detail', compact('donHang','sanpham','khachHang','Tong'));
     }
 
 
     function updateDetailDonHang(Request $request, $id){
-        $data = [
-            'soluong'=> $request->soluong,
-        ];
-        // dd($data);
+
         if(count($request->soluong)>0){
-            $array = [];
          for ($i=0; $i < count($request->id) ; $i++) {
              $data = [
-                'soluong'=> $request ->soluong[$i],
+                'soluong'=> $request->soluong[$i]
              ];
-                array_push($array,$data);
 
             $this->DonHangChiTiet->updateDetailByIdDH($request->id[$i],$data);
          }
 
-         //dd($array);
         }
-
-
 
         return redirect('quantri/donhang')->with('success','Sửa thành công');
     }

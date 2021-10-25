@@ -24,19 +24,22 @@ class DonHangChiTietRepository extends BaseRepository implements DonHangChiTietR
 
     // }
     public function getDonHangChiTietByIdDonHangInnerJoin($id){
-        return $this->model->select('*', DB::raw('dongiasaugiamgia * soluong as tongtien'))
+        return $this->model->select('*', DB::raw('donhangchitiet.dongiasaugiamgia * donhangchitiet.soluong as tongtien, donhangchitiet.id as iddonhangchitiet'))
         ->join('sanphamchitiet', 'sanphamchitiet.id', '=', 'donhangchitiet.idsanphamchitiet')
         ->join('sanpham', 'sanpham.id', '=', 'sanphamchitiet.idsanpham')
         ->where('iddonhang','=',$id)->get();
     }
 
-    public function getDonHangChiTietByIdKhachHangInnerJoin($id){
-        return $this->model->select('*')
-        ->join('donhang', 'donhang.id', '=', 'donhangchitiet.iddonhang')
-        ->join('khachhang', 'khachhang.id', '=', 'donhang.idkhachhang')
-        ->where('iddonhang','=',$id)->get();
+    public function getIdTongthanhtoanByIdDonHangChiTtiet($id) {
+        return $this->model->select(DB::raw('SUM(dongiasaugiamgia * soluong) as tongtiendonhang'))
+        ->where('iddonhang', '=', $id)
+        ->groupBy('iddonhang')
+        ->first();
     }
 
+    public function getIdDonHangByIdDonHangChiTtiet($id) {
+        return $this->model->select('iddonhang')->find($id);
+    }
 
 
 }

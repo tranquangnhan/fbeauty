@@ -35,3 +35,18 @@
 .table-tuong td {
     vertical-align: middle;
 }
+
+.text-right a {
+    margin-right: 1.1rem;
+}
+
+.box-tuong .box-detail {
+    padding: 1.5rem;
+    width: 100%;
+    margin: 0;
+}
+
+.float-center {
+    margin-left: 15%;
+    float: left;
+}
