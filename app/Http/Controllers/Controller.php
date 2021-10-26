@@ -19,7 +19,7 @@ class Controller extends BaseController
     const LOAI_DANHMUC_BLOG = 3;
     const KHACHHANG_CHUA_ACTIVE = 0;
     const KHACHHANG_DA_ACTIVE = 1;
-    const TRANGTHAI_LICH_OPEN = 1;
+    const TRANGTHAI_LICH_OPEN = 0;
 
     /**
      * ID_LIENQUAN_SP=1 LÀ SẢN PHẨM

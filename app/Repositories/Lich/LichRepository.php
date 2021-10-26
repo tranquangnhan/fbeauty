@@ -21,9 +21,9 @@ class LichRepository extends BaseRepository implements LichRepositoryInterface
     public function getLichByThuAndCoSo($thu, $idCoSo)
     {
         return $this->model::where([
-                ['thutrongtuan', '=', $thu],
-                ['idcoso', '=', $idCoSo],
-            ])->get();
+            ['thutrongtuan', '=', $thu],
+            ['idcoso', '=', $idCoSo],
+        ])->get();
     }
 
     public function getLichActive($thu, $idCoSo, $gio)

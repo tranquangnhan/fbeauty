@@ -32,8 +32,8 @@
                                 <li class="nav-item {{ ($pathActive == 'lien-he') ? 'active' : '' }}">
                                     <a class="nav-link" href="#">Liên Hệ</a>
                                 </li>
-                                <li class="nav-item {{ ($pathActive == 'blog') ? 'active' : '' }}">
-                                    <a class="nav-link" href="#">Blog</a>
+                                <li class="nav-item {{ ($pathActive == 'bai-viet') ? 'active' : '' }}">
+                                    <a class="nav-link" href="/bai-viet">Blog</a>
                                 </li>
                             </ul>
                             <div class="box-icon">
