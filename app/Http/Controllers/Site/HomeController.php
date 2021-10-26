@@ -121,6 +121,16 @@ class HomeController extends Controller
         return view("Site.thanhtoan", $this->data);
     }
 
+    public function baiviet() {
+        $this->data['pathActive']          = 'bai-viet';
+        $this->data['namePage']            = 'Bài viết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/bai-viet', 'name' => 'Bài viết'],
+        ];
+
+        return view("Site.baiviet", $this->data);
+    }
+
     public function getNhanVienByIdCoSo(Request $request, $id) {
         try {
             if ($request->ajax())

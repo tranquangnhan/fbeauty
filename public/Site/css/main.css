@@ -5,7 +5,7 @@
     --black-1: #000000;
     --black-2: #474747;
     --black-3: #555;
-    --main-color: #e87c7b;
+    --main-color: #ea3f3e;
     --main-color-2: #f28b8a;
     --main-color-3-bg: #FCC3C3;
     --main-color-4-bg: #ffd0c0;
@@ -938,7 +938,7 @@ img.im-small {
 .blog-bigsize .box-danhmuc {
     position: absolute;
     bottom: -15px;
-    background: var(--black-1);
+    background: var(--main-color);
     padding: .7em 2em;
     font-weight: bold;
     font-size: .7em;
@@ -1112,6 +1112,13 @@ img.im-small {
 
 .box-shadow-1 {
     box-shadow: 0px 2px 20px rgb(0 0 0 / 15%);
+}
+
+.line-main-color {
+    background: var(--main-color);
+    height: 4px;
+    width: 30%;
+
 }
 
 .title-3 {
@@ -3194,6 +3201,68 @@ div#custom-dots-1 {
 
 .giohang {
     margin-bottom: 1.5em;
+}
+
+.small-blog-item {
+    border-bottom: 1px solid #EAEAEA;
+    padding: 1.7em .2em;
+}
+
+.text-small-1 {
+    color: #666;
+    font-size: 12px;
+}
+
+.box-danhmuc-1 {
+    background: var(--main-color);
+    color: white;
+    padding: .4em .7em;
+    font-weight: 500;
+}
+
+.list-dm-blog .danhmuc-item {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid #fff;
+}
+
+.list-dm-blog .danhmuc-item::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.list-danhmuc .danhmuc-item span {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0 20px;
+    line-height: 30px;
+    border-radius: 5px;
+}
+
+.list-danhmuc .danhmuc-item .name {
+
+}
+
+.list-danhmuc .danhmuc-item .number {
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+
 }
 
 /* Reponsive */

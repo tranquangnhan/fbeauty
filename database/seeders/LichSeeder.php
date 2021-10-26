@@ -18,7 +18,7 @@ class LichSeeder extends Seeder
         $idcoso = 1;
         $gio = 8;
         $gioketthuc=20;
-        $trangthai = 1;
+        $trangthai = 0;
         $phut = 0;
         for ($thu=0; $thu<=6; $thu++){
             for ($i = 0; $i <= 300; $i++) {
