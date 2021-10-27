@@ -11,15 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
-    <style>
-        .select-custom{
-            border-radius: 10px;
-            border-bottom: 2px solid grey;
-            border-top: 0;
-            border-left: 0;
-            border-right: 0;
-        }
-    </style>
+    <script src="{{ asset('Admin/assets') }}/js/app.min.js"></script>
+
 </head>
 <body>
 <div class="login">
@@ -33,11 +26,15 @@
             </div>
         @endif
         <div class="mb-3">
-            <select class="form-control select2 select-custom">
-                <option>Chọn cơ sở</option>
-                <option value="AK">Alaska</option>
-                <option value="HI">Hawaii</option>
+            <select class="form-control select2 select-custom" name="coso">
+                <option value="">Chọn cơ sở</option>
+                @foreach ($coSo as $item)
+                    <option value="{{$item->id}}">{{$item->name}}</option>
+                @endforeach
             </select>
+            @error('coso')
+            <span class="badge bg-danger text-white float-left mb-1 ml-2">{{ $message }}</span>
+            @enderror
         </div>
         <div class="group"><input type="text" name="email" placeholder="Email" value="{{old('email')}}"><i
                 class="fa fa-user"></i>

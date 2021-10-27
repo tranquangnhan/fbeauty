@@ -111,6 +111,28 @@ body:after{
     clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
 
+.select-custom{
+    border-radius: 10px;
+    border-bottom: 2px solid grey !important;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 20px;
+    padding-right:1rem;
+    
+}
+.select-custom option{
+    font-weight: bold;
+}
+.select-custom:focus option{
+    color:  #ff1464;
+ 
+}
+.select-custom:focus{
+    box-shadow: 0 0 0 0 #ffff !important;
+    color: #ff1464;
+}
+
 @media (max-width: 767px){
     body:before, body:after{
         height: 150px;
