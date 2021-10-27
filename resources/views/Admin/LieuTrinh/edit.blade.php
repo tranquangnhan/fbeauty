@@ -93,25 +93,39 @@
                             <article class="timeline-item @if($loop->index % 2 == 0) alt @endif">
                                 <div class="timeline-desk">
                                     <div class="panel">
-                                        <div class="row">
+                                        <div class="row boxlieutrinh">
+                                            <form action="{{route('lieutrinh.destroy',$item->idlieutrinhchitiet)}}"  method="post">
+                                                @csrf
+                                                {!!method_field('delete')!!}
+                                                <button class="icon-delete" type="submit">
+                                                    <i class="mdi mdi-delete" ></i>
+                                                </button>
+                                            </form>
                                             <div class="col-lg-3 center @if($loop->index % 2 == 0) order-1 @else order-2 @endif">
-                                                <input type="hidden" value="{{$item->idlieutrinh}}" id="idlieutrinh" class="idlieutrinh">
+                                                <input type="hidden" value="{{$item->idlieutrinhchitiet}}" id="idlieutrinhchitiet" class="idlieutrinhchitiet">
                                                 <img onclick="showFullImage(event)" class="imglieutrinh" src="{{ asset($URL_IMG.$item->imgkhachhang) }}" alt="">
                                             </div>
                                             <div class="col-lg-9 @if($loop->index % 2 == 0) order-2 @else order-1 @endif">
+                                              
                                                 <div class="panel-body">
                                                     @if ($item->trangthai == 0)
                                                      <span class="arrow-alt"></span>
                                                     @endif
-                                                    <span class="timeline-icon @if($item->trangthai === 0) bg-danger @else bg-success @endif"><i class="mdi mdi-circle"></i></span>
+                                                    <form action="{{route('lieutrinh.update',$item->idlieutrinhchitiet)}}" method="post">
+                                                        @csrf
+                                                        {!! method_field('patch') !!}
+                                                        <label for="update{{$item->idlieutrinhchitiet}}">
+                                                            <span class="timeline-icon @if($item->trangthai === 0) bg-danger @else bg-success @endif"><i class="mdi @if($item->trangthai === 0) mdi-close @else mdi-check @endif"></i></span>
+                                                        </label>
+                                                        <button class="updatelieutrinhct" id="update{{$item->idlieutrinhchitiet}}" type="submit"></button>
+                                                    </form>
                                                     @csrf
                                                     <p class="timeline-date text-muted"><strong>NV: ({{$item->tennv}})</strong></p> 
                                                     <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
-                                                    <p class="timeline-date text-muted date" title="Click để sửa" id="date" data-value="{{date('d-m-Y',$item->ngay)}}" data-format="DD-MM-YYYY" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="{{$item->idlieutrinh}}" ><small>{{date('d-m-Y',$item->ngay)}}</small>
+                                                    <p class="timeline-date text-muted date" title="Click để sửa" id="date" data-value="{{date('d-m-Y',$item->ngay)}}" data-format="DD-MM-YYYY" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="{{$item->idlieutrinhchitiet}}" ><small>{{date('d-m-Y',$item->ngay)}}</small>
                                                     </p>
-                                                    <p class="mota" id="mota" title="Click để sửa" data-pk="{{$item->idlieutrinh}}" >{{$item->mota}} </p>
+                                                    <p class="mota" id="mota" title="Click để sửa" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>
                                                     <div>
-                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,7 +173,7 @@
             <div ><i class="fa fa-edit"></i></div>
         </label>
         <input type="file" id="inputfile" class="inputfile">
-        <input type="hidden" id="idlieutrinhgan">
+        <input type="hidden" id="idlieutrinhchitietgan">
         @csrf
       </div>
     </div>

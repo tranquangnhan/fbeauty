@@ -150,3 +150,54 @@ $(document).ready(function() {
 
 });
 
+
+ async function delLieuTrinh(id){
+
+    var formData = new FormData();
+    
+    formData.append('id',id);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN':  $('input[name="_token"]').val(),
+        },
+    });
+
+    if(check){
+        await $.ajax({
+            type: "POST",
+            url: "quantri/edittrangthailieutrinh",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response)
+            }
+        });
+
+    }
+   
+}
+
+async function checkDelete(text) { 
+
+    return await Swal.fire({
+        title: 'Bạn có chắc chắn không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Đồng Ý',
+        cancelButtonText: 'Huỷ'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Đã xoá!',
+                'Xoá thành công!',
+                'success'
+              )
+            return true;
+        }else{
+            return false;
+        }
+      })
+ }

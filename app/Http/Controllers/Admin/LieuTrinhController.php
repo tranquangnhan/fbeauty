@@ -155,6 +155,13 @@ class LieuTrinhController extends Controller
 
         return response()->json($res);
     }
+
+
+    // public function editTrangThaiLieuTrinh(Request $request){
+    //     $id =  $request->id;
+    //     $res =  $this->LieuTrinhChiTiet->delete($id);
+    //     return  $res;
+    // }
     /**
      * Update the specified resource in storage.
      *
@@ -164,7 +171,15 @@ class LieuTrinhController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $item = $this->LieuTrinhChiTiet->find($id);
+        $data = [
+            'trangthai' => ($item->trangthai === 1) ? 0 : 1 
+        ]; 
+        $res = $this->LieuTrinhChiTiet->update($id,$data);
+        if($res){
+            return  redirect()->back();
+        }
     }
 
     /**
@@ -175,6 +190,10 @@ class LieuTrinhController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res =  $this->LieuTrinhChiTiet->delete($id);
+      
+        if($res){
+            return  redirect()->back();
+        }
     }
 }

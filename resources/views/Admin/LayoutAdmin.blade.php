@@ -60,6 +60,7 @@
     <link href="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('Admin/assets') }}/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('Admin/assets') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     {{-- end code nhúng của Nhân --}}
 <body>
 
@@ -772,9 +773,11 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/lieutrinh.nhan.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 <script src="{{ asset('Admin/assets') }}/js/pages/form-wizard.init.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
+
 {{-- end code nhúng bởi Nhân --}}
 
 {{-- code nhúng bởi Tưởng --}}
