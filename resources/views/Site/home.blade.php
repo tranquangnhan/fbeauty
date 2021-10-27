@@ -614,41 +614,36 @@
     </div>
 </div>
 <div class="box-blog">
-    <div class="list-blog">
-        <div class="mb-4">
-            <div class="container">
+    <div class="container">
+        <div class="list-blog p-0">
+            <div class="mb-4">
                 <div class="d-flex align-items-center">
-                    <div class="head-blog-item blog-title">
-                        <div class="w-100 text-left">
-                            <div class="title-small">
-                                TIN TỨC & SỰ KIỆN
-                            </div>
-                            <div class="title-3">
-                                Bí Quyết Khỏe Và Đẹp
+                        <div class="head-blog-item blog-title">
+                            <div class="w-100 text-left d-flex align-items-center">
+                                <div class="title-3 mr-4">
+                                    Tin tức mới
+                                </div>
+                                <div class="line-main-color"></div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="head-blog-item">
-                        <div class="d-flex">
-                            <div class="d-flex align-items-center text-2 mr-4">Tìm kiếm theo</div>
-                            <ul class="nav nav-tabs" id="myTab-1" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link btn-3 active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">Mới nhất</a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link btn-3" id="lastweek-tab" data-toggle="tab" href="#lastweek" role="tab" aria-controls="lastweek" aria-selected="false">Tuần trước</a>
-                                </li>
-                            </ul>
+                        <div class="head-blog-item">
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center text-2 mr-4">Tìm kiếm theo</div>
+                                <ul class="nav nav-tabs" id="myTab-1" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link btn-3 active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">Mới nhất</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link btn-3" id="lastweek-tab" data-toggle="tab" href="#lastweek" role="tab" aria-controls="lastweek" aria-selected="false">Tuần trước</a>
+                                    </li>
+                                </ul>
+                            </div>
+
                         </div>
-
-                    </div>
 
                 </div>
             </div>
-        </div>
-
-        <div class="container">
             <div class="list-tabs">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
@@ -660,8 +655,7 @@
                                     </div>
 
                                     <div class="img-1 w-100">
-                                        <img class="img-fluid"
-                                            src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                        <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/xddn35VlCA.jpg" alt="">
                                     </div>
 
                                     <div class="blog-content-bigsize">
@@ -680,8 +674,7 @@
                                         </div>
 
                                         <div class="mt-3">
-                                            <a href=""
-                                                class="">
+                                            <a href="" class="">
                                                 <button class="
                                                 btn-line px-0 color-gray-2">
                                                 Đọc ngay
@@ -695,140 +688,103 @@
                             </div>
 
                             <div class="col-xl-5 pl-0">
-                                <div class="list-blog-small">
-                                    <div class="small-blog-item">
+                                <div class="list-blog-small pl-5">
+                                    <div class="small-blog-item box-tin-hv pt-0">
                                         <div class="row">
                                             <div class="col-xl-5">
-                                                <div class="img-1">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg"
-                                                        alt="">
+                                                <div class="img-1 image-tin-1">
+                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="text-bl-1 limit-text-row-2 mb-2">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải
-                                                        Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
                                                 <div class="row">
-                                                    <div class="col-xl-6 color-gray-2 hover-color-black">
-                                                        21/9/2021
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                        <div class="mr-3">
+                                                            <a href="" class="box-danhmuc-1">
+                                                            Sức khỏe</a>
+                                                        </div>
+                                                        <span>24 / 1 / 2021</span>
                                                     </div>
-                                                    <div class="col-xl-6 text-right">
-                                                        <a href=""
-                                                            class="">
-                                                            <button class="
-                                                            btn-line color-gray-2">
-                                                            Đọc ngay
-                                                            </button>
-                                                        </a>
-                                                    </div>
+                                                </div>
+                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
+                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="small-blog-item mt-4">
+                                    <div class="small-blog-item box-tin-hv">
                                         <div class="row">
                                             <div class="col-xl-5">
-                                                <div class="img-1">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('Site/images') }}/image 8 (2).png"
-                                                        alt="">
+                                                <div class="img-1 image-tin-1">
+                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="text-bl-1 limit-text-row-2 mb-2">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải
-                                                        Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
                                                 <div class="row">
-                                                    <div class="col-xl-6 color-gray-2 hover-color-black">
-                                                        21/9/2021
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                        <div class="mr-3">
+                                                            <a href="" class="box-danhmuc-1">
+                                                            Sức khỏe</a>
+                                                        </div>
+                                                        <span>24 / 1 / 2021</span>
                                                     </div>
-                                                    <div class="col-xl-6 text-right">
-                                                        <a href=""
-                                                            class="">
-                                                            <button class="
-                                                            btn-line color-gray-2">
-                                                            Đọc ngay
-                                                            </button>
-                                                        </a>
-                                                    </div>
+                                                </div>
+                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
+                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="small-blog-item mt-4">
+                                    <div class="small-blog-item box-tin-hv">
                                         <div class="row">
                                             <div class="col-xl-5">
-                                                <div class="img-1">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg"
-                                                        alt="">
+                                                <div class="img-1 image-tin-1">
+                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="text-bl-1 limit-text-row-2 mb-2">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải
-                                                        Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
                                                 <div class="row">
-                                                    <div class="col-xl-6 color-gray-2 hover-color-black">
-                                                        21/9/2021
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                        <div class="mr-3">
+                                                            <a href="" class="box-danhmuc-1">
+                                                            Sức khỏe</a>
+                                                        </div>
+                                                        <span>24 / 1 / 2021</span>
                                                     </div>
-                                                    <div class="col-xl-6 text-right">
-                                                        <a href=""
-                                                            class="">
-                                                            <button class="
-                                                            btn-line color-gray-2">
-                                                            Đọc ngay
-                                                            </button>
-                                                        </a>
-                                                    </div>
+                                                </div>
+                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
+                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="small-blog-item mt-4">
+                                    <div class="small-blog-item box-tin-hv">
                                         <div class="row">
                                             <div class="col-xl-5">
-                                                <div class="img-1">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg"
-                                                        alt="">
+                                                <div class="img-1 image-tin-1">
+                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="text-bl-1 limit-text-row-2 mb-2">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải
-                                                        Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
                                                 <div class="row">
-                                                    <div class="col-xl-6 color-gray-2 hover-color-black">
-                                                        21/9/2021
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                        <div class="mr-3">
+                                                            <a href="" class="box-danhmuc-1">
+                                                            Sức khỏe</a>
+                                                        </div>
+                                                        <span>24 / 1 / 2021</span>
                                                     </div>
-                                                    <div class="col-xl-6 text-right">
-                                                        <a href=""
-                                                            class="">
-                                                            <button class="
-                                                            btn-line color-gray-2">
-                                                            Đọc ngay
-                                                            </button>
-                                                        </a>
-                                                    </div>
+                                                </div>
+                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
+                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="w-100 my-4">
-                                        <a href="">
-                                            <button class="btn-full">Xem thêm</button>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -842,8 +798,7 @@
                                     </div>
 
                                     <div class="img-1 w-100">
-                                        <img class="img-fluid"
-                                            src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                        <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/xddn35VlCA.jpg" alt="">
                                     </div>
 
                                     <div class="blog-content-bigsize">
@@ -862,8 +817,7 @@
                                         </div>
 
                                         <div class="mt-3">
-                                            <a href=""
-                                                class="">
+                                            <a href="" class="">
                                                 <button class="
                                                 btn-line px-0 color-gray-2">
                                                 Đọc ngay
@@ -877,147 +831,109 @@
                             </div>
 
                             <div class="col-xl-5 pl-0">
-                                <div class="list-blog-small">
-                                    <div class="small-blog-item">
+                                <div class="list-blog-small pl-5">
+                                    <div class="small-blog-item box-tin-hv pt-0">
                                         <div class="row">
                                             <div class="col-xl-5">
-                                                <div class="img-1">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg"
-                                                        alt="">
+                                                <div class="img-1 image-tin-1">
+                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="text-bl-1 limit-text-row-2 mb-2">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải
-                                                        Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
                                                 <div class="row">
-                                                    <div class="col-xl-6 color-gray-2 hover-color-black">
-                                                        21/9/2021
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                        <div class="mr-3">
+                                                            <a href="" class="box-danhmuc-1">
+                                                            Sức khỏe</a>
+                                                        </div>
+                                                        <span>24 / 1 / 2021</span>
                                                     </div>
-                                                    <div class="col-xl-6 text-right">
-                                                        <a href=""
-                                                            class="">
-                                                            <button class="
-                                                            btn-line color-gray-2">
-                                                            Đọc ngay
-                                                            </button>
-                                                        </a>
-                                                    </div>
+                                                </div>
+                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
+                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="small-blog-item mt-4">
+                                    <div class="small-blog-item box-tin-hv">
                                         <div class="row">
                                             <div class="col-xl-5">
-                                                <div class="img-1">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('Site/images') }}/image 8 (2).png"
-                                                        alt="">
+                                                <div class="img-1 image-tin-1">
+                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="text-bl-1 limit-text-row-2 mb-2">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải
-                                                        Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
                                                 <div class="row">
-                                                    <div class="col-xl-6 color-gray-2 hover-color-black">
-                                                        21/9/2021
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                        <div class="mr-3">
+                                                            <a href="" class="box-danhmuc-1">
+                                                            Sức khỏe</a>
+                                                        </div>
+                                                        <span>24 / 1 / 2021</span>
                                                     </div>
-                                                    <div class="col-xl-6 text-right">
-                                                        <a href=""
-                                                            class="">
-                                                            <button class="
-                                                            btn-line color-gray-2">
-                                                            Đọc ngay
-                                                            </button>
-                                                        </a>
-                                                    </div>
+                                                </div>
+                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
+                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="small-blog-item mt-4">
+                                    <div class="small-blog-item box-tin-hv">
                                         <div class="row">
                                             <div class="col-xl-5">
-                                                <div class="img-1">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg"
-                                                        alt="">
+                                                <div class="img-1 image-tin-1">
+                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="text-bl-1 limit-text-row-2 mb-2">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải
-                                                        Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
                                                 <div class="row">
-                                                    <div class="col-xl-6 color-gray-2 hover-color-black">
-                                                        21/9/2021
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                        <div class="mr-3">
+                                                            <a href="" class="box-danhmuc-1">
+                                                            Sức khỏe</a>
+                                                        </div>
+                                                        <span>24 / 1 / 2021</span>
                                                     </div>
-                                                    <div class="col-xl-6 text-right">
-                                                        <a href=""
-                                                            class="">
-                                                            <button class="
-                                                            btn-line color-gray-2">
-                                                            Đọc ngay
-                                                            </button>
-                                                        </a>
-                                                    </div>
+                                                </div>
+                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
+                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="small-blog-item mt-4">
+                                    <div class="small-blog-item box-tin-hv">
                                         <div class="row">
                                             <div class="col-xl-5">
-                                                <div class="img-1">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('Site/images') }}/nhung-loi-ich-cua-viec-di-spa-ban-nen-biet-va-trai-nghiem-aki1-min-scaled.jpg"
-                                                        alt="">
+                                                <div class="img-1 image-tin-1">
+                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="text-bl-1 limit-text-row-2 mb-2">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải
-                                                        Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
                                                 <div class="row">
-                                                    <div class="col-xl-6 color-gray-2 hover-color-black">
-                                                        21/9/2021
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                        <div class="mr-3">
+                                                            <a href="" class="box-danhmuc-1">
+                                                            Sức khỏe</a>
+                                                        </div>
+                                                        <span>24 / 1 / 2021</span>
                                                     </div>
-                                                    <div class="col-xl-6 text-right">
-                                                        <a href=""
-                                                            class="">
-                                                            <button class="
-                                                            btn-line color-gray-2">
-                                                            Đọc ngay
-                                                            </button>
-                                                        </a>
-                                                    </div>
+                                                </div>
+                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
+                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="w-100 my-4">
-                                        <a href="">
-                                            <button class="btn-full">Xem thêm</button>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
