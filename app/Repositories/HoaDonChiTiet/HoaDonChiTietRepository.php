@@ -15,4 +15,8 @@ class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRep
     {
         return HoaDonChiTietModel::class;
     }
+
+    public function getHoaDonCTByIdHoaDon($id){
+        return $this->model->select("*")->where('idhoadon', '=', $id)->get();
+    }
 }

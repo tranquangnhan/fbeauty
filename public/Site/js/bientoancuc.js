@@ -44,7 +44,7 @@ const elementListNhanVien = $('.list-nhanvien');
 
 const elementValueTime = $('.value-time');
 
-const trangThaiLichSanSang = 1;
+const trangThaiLichSanSang = 0;
 
 var totalPriceDichVu = 0;
 

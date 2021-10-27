@@ -78,8 +78,57 @@ class HomeController extends Controller
     }
 
     public function sanpham() {
-        $this->data['pathActive']         = 'san-pham';
+        $this->data['pathActive']       = 'san-pham';
+        $this->data['namePage']         = 'Sản phẩm';
+        $this->data['breadcrumbArray']  = [
+            ['link' => '', 'name' => 'Sản phẩm'],
+        ];
+
         return view("Site.sanpham", $this->data);
+    }
+
+    public function sanphamchitiet() {
+        $this->data['pathActive']          = 'san-pham';
+        $this->data['namePage']            = 'Sản phẩm chi tiết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '', 'name' => 'Tên sản phẩm'],
+        ];
+
+        return view("Site.sanpham-chitiet", $this->data);
+    }
+
+    public function giohang() {
+        $this->data['pathActive']          = 'san-pham';
+        $this->data['namePage']            = 'Giỏ hàng';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '', 'name' => 'Giỏ hàng'],
+        ];
+
+        return view("Site.giohang", $this->data);
+    }
+
+    public function thanhtoan() {
+        $this->data['pathActive']          = 'san-pham';
+        $this->data['namePage']            = 'Thanh toán';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '/gio-hang', 'name' => 'Giỏ hàng'],
+            ['link' => '', 'name' => 'Thanh toán'],
+        ];
+
+        return view("Site.thanhtoan", $this->data);
+    }
+
+    public function baiviet() {
+        $this->data['pathActive']          = 'bai-viet';
+        $this->data['namePage']            = 'Bài viết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/bai-viet', 'name' => 'Bài viết'],
+        ];
+
+        return view("Site.baiviet", $this->data);
     }
 
     public function getNhanVienByIdCoSo(Request $request, $id) {

@@ -5,15 +5,7 @@
 @endsection
 
 @section('main')
-@include('Site.slide-logo')
-<div class="fa-breadcrumb">
-    <div class="container">
-        <div class="child-breadcrumb">
-            @include('Site.breadcrumb')
-        </div>
-    </div>
-</div>
-<div class="fa-sanpham">
+<div class="fa-sanpham mt-4">
     <div class="container">
         <div class="row">
             <div class="col-xl-3">
@@ -27,31 +19,59 @@
                     <hr>
                     <div class="fa-bo-loc-doc mt-2">
                         <div class="loc-item">
-                            <div class="title-loc">Danh mục</div>
+                            <h6 class="title-loc">Danh mục</h6>
                             <ul class="body-loc">
                                 <li>
-                                    <a href="">Da mặt</a>
-                                    <span class="box-soluong">102</span>
+                                    <a href="">Da mặt
+                                        <span class="badge badge-pill badge-primary background-color-main float-right">102</span>
+                                    </a>
+
                                 </li>
-                                <li><a href="">Trị thâm</a><span class="box-soluong">26</span></li>
-                                <li><a href="">Body</a><span class="box-soluong">36</span></li>
+                                <li>
+                                    <a href="">Trị thâm
+                                        <span class="badge badge-pill badge-primary background-color-main float-right">13</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">Body
+                                        <span class="badge badge-pill badge-primary background-color-main float-right">36</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <hr>
                         <div class="loc-item">
-                            <div class="title-loc">Mức giá</div>
+                            <h6 class="title-loc">Mức giá</h6>
+                            <div class="price-range">
 
+                            </div>
+
+
+                            <div class="range-gia mt-3 text-left">
+                                Giá: <span class="min-price" price-value="100000">100,000 đ</span>
+                                -
+                                <span class="max-price" price-value="10000000">10,000,000 đ</span>
+                            </div>
                         </div>
                         <hr>
                         <div class="loc-item">
-                            <div class="title-loc">Thương hiệu</div>
+                            <h6 class="title-loc">Thương hiệu</h6>
                             <ul class="body-loc">
                                 <li>
-                                    <a href="">Some by mi</a>
-                                    <span class="box-soluong">102</span>
+                                    <a href="">Some by mi
+                                        <span class="badge badge-pill badge-primary background-color-main float-right">102</span>
+                                    </a>
                                 </li>
-                                <li><a href="">Simple</a><span class="box-soluong">26</span></li>
-                                <li><a href="">Body</a><span class="box-soluong">36</span></li>
+                                <li>
+                                    <a href="">Simple
+                                        <span class="badge badge-pill badge-primary background-color-main float-right">42</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">Body
+                                        <span class="badge badge-pill badge-primary background-color-main float-right">10</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <hr>
@@ -116,7 +136,7 @@
                                                     <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
                                                 </div>
                                                 <div class="col-xl-9 pl-0 position-relative">
-                                                    <div class="btn-add-wishlist btn-sticky">
+                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
                                                         <div class="box-cicrle">
                                                             <i class="fas fa-heart heart-full"></i>
                                                             <i class="far fa-heart heart-line"></i>
@@ -156,7 +176,7 @@
                                                     <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
                                                 </div>
                                                 <div class="col-xl-9 pl-0 position-relative">
-                                                    <div class="btn-add-wishlist btn-sticky">
+                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
                                                         <div class="box-cicrle">
                                                             <i class="fas fa-heart heart-full"></i>
                                                             <i class="far fa-heart heart-line"></i>
@@ -197,7 +217,7 @@
                                                     <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
                                                 </div>
                                                 <div class="col-xl-9 pl-0 position-relative">
-                                                    <div class="btn-add-wishlist btn-sticky">
+                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
                                                         <div class="box-cicrle">
                                                             <i class="fas fa-heart heart-full"></i>
                                                             <i class="far fa-heart heart-line"></i>
@@ -239,7 +259,7 @@
                                         <div class="col">
                                             <div class="card rounded-0 product-card child-item-sanpham zbar">
                                                 <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky">
+                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
                                                         <div class="box-cicrle">
                                                             <i class="fas fa-heart heart-full"></i>
                                                             <i class="far fa-heart heart-line"></i>
@@ -275,7 +295,7 @@
                                         <div class="col">
                                             <div class="card rounded-0 product-card child-item-sanpham zbar">
                                                 <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky">
+                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
                                                         <div class="box-cicrle">
                                                             <i class="fas fa-heart heart-full"></i>
                                                             <i class="far fa-heart heart-line"></i>
@@ -311,7 +331,7 @@
                                         <div class="col">
                                             <div class="card rounded-0 product-card child-item-sanpham zbar">
                                                 <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky">
+                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
                                                         <div class="box-cicrle">
                                                             <i class="fas fa-heart heart-full"></i>
                                                             <i class="far fa-heart heart-line"></i>
@@ -347,7 +367,7 @@
                                         <div class="col">
                                             <div class="card rounded-0 product-card child-item-sanpham zbar">
                                                 <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky">
+                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
                                                         <div class="box-cicrle">
                                                             <i class="fas fa-heart heart-full"></i>
                                                             <i class="far fa-heart heart-line"></i>
@@ -383,7 +403,7 @@
                                         <div class="col">
                                             <div class="card rounded-0 product-card child-item-sanpham zbar">
                                                 <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky">
+                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
                                                         <div class="box-cicrle">
                                                             <i class="fas fa-heart heart-full"></i>
                                                             <i class="far fa-heart heart-line"></i>
@@ -419,7 +439,7 @@
                                         <div class="col">
                                             <div class="card rounded-0 product-card child-item-sanpham zbar">
                                                 <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky">
+                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
                                                         <div class="box-cicrle">
                                                             <i class="fas fa-heart heart-full"></i>
                                                             <i class="far fa-heart heart-line"></i>
