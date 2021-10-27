@@ -80,6 +80,13 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('/active-2/{id}', [DonHangController::class,'active_2']);
 
     Route::resource('lieutrinh', LieuTrinhController::class);
+
+    Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
+    Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
+    // Route::post('lieutrinh/edittrangthailieutrinh/', [LieuTrinhController::class,'editTrangThaiLieuTrinh']);
+    
+    Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
+   
 });
 
 Route::group(['prefix' => '/'], function (){

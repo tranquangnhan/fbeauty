@@ -1,3 +1,6 @@
+
+## rich text editor
+https://froala.com/
 ## Build laravel echo server 
 
 - 1. npm i

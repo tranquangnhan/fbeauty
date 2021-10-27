@@ -8,11 +8,13 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     const BASE_URL_UPLOAD = 'Admin/assets/images/users/';
+    const URL_IMG = 'uploads/';
     const BASE_URL_UPLOAD_STAFF = 'uploads/imgusers/';
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
@@ -20,6 +22,8 @@ class Controller extends BaseController
     const KHACHHANG_CHUA_ACTIVE = 0;
     const KHACHHANG_DA_ACTIVE = 1;
     const TRANGTHAI_LICH_OPEN = 0;
+
+ 
 
     /**
      * ID_LIENQUAN_SP=1 LÀ SẢN PHẨM
@@ -35,6 +39,8 @@ class Controller extends BaseController
      * LOAIGIAM=0 LÀ tiền
      */
     const LOAIGIAM=1;
+
+   
 
     function uploadSingle($file){
         if($file == null) return null;
@@ -74,4 +80,6 @@ class Controller extends BaseController
     public function handleError($error){
         return Redirect::back()->withErrors($error);
     }
+
+    
 }
