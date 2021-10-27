@@ -11,11 +11,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+    <style>
+        .select-custom{
+            border-radius: 10px;
+            border-bottom: 2px solid grey;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+        }
+    </style>
 </head>
 <body>
 <div class="login">
     <i class="fa fa-empire"></i>
-    <h2>Login</h2>
+    <h2>Đăng Nhập</h2>
     <form action="{{URL::to("quantri/login")}}" method="post">
         @csrf
         @if(session('thongbao'))
@@ -23,6 +32,13 @@
                 <span class="font-weight-bold">Tên tài khoản hoặc mật khẩu không đúng !</span>
             </div>
         @endif
+        <div class="mb-3">
+            <select class="form-control select2 select-custom">
+                <option>Chọn cơ sở</option>
+                <option value="AK">Alaska</option>
+                <option value="HI">Hawaii</option>
+            </select>
+        </div>
         <div class="group"><input type="text" name="email" placeholder="Email" value="{{old('email')}}"><i
                 class="fa fa-user"></i>
             @error('email')
