@@ -34,18 +34,18 @@
 
 <body>
     @if ($pathActive != 'trang-chu')
-        @include('Site.header-2')
+        @include('Site.components.header-2')
     @else
-        @include('Site.header-1')
+        @include('Site.components.header-1')
     @endif
     <main class="">
         @if ($pathActive != 'trang-chu')
-            @include('Site.slide-logo')
+            @include('Site.components.slide-logo')
         @endif
         @yield('main')
     </main>
-    @include('Site.footer')
-    @include('Site.datlich')
+    @include('Site.components.footer')
+    @include('Site.components.datlich')
 
 </body>
 
