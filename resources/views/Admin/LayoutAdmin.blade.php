@@ -33,7 +33,7 @@
     <!-- Icons Css -->
     <link href="{{ asset('Admin/assets') }}/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <!-- App Css-->
-    <link href="{{ asset('Admin/assets') }}/css/app.min.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('Admin/assets') }}/css/app.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('Admin/assets') }}/css/inputfile.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
 
     {{-- code nhúng của Quốc --}}
@@ -60,6 +60,7 @@
     <link href="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('Admin/assets') }}/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('Admin/assets') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     {{-- end code nhúng của Nhân --}}
 <body>
 
@@ -446,7 +447,7 @@
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("hoadon.index")}}">Danh sách</a></li>
+                                <li><a href="{{route("hoadon.show", 1)}}">Danh sách</a></li>
                             </ul>
                         </li>
 
@@ -762,13 +763,21 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <script src="{{ asset('Admin/assets') }}/js/pages/texteditor.js"></script>
-<script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
+
 
 <script src="{{ asset('Admin/assets') }}/libs/datatables/jquery.dataTables.min.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.js"></script>
 
 <script src="{{ asset('Admin/assets') }}/js/pages/form-xeditable.init.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.min.js"></script>
+<script src="{{ asset('Admin/assets') }}/js/pages/lieutrinh.nhan.js"></script>
+<script src="{{ asset('Admin/assets') }}/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+<script src="{{ asset('Admin/assets') }}/js/pages/form-wizard.init.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
+
 {{-- end code nhúng bởi Nhân --}}
 
 {{-- code nhúng bởi Tưởng --}}

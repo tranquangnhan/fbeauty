@@ -20,8 +20,6 @@
                                         <th width="20%">Hình ảnh</th>
                                         <th width="15%">Điện thoại</th>  
                                         <th width="30%">Email</th>  
-                                        {{-- <th width="20%">Mật khẩu</th>   --}}
-                                        {{-- <th width="10%">idgoogle</th>   --}}
                                         <th width="15%">Hành động</th>  
                                     </tr>
                                 </thead>
@@ -43,13 +41,8 @@
                                             <td>
                                                 {{$item->email}}
                                             </td> 
-                                            {{-- <td>
-                                               {{$item->password}} 
-                                            </td> 
-                                            <td>
-                                                {{$item->idgoogle}} 
-                                            </td>  --}}
                                             <td class="d-flex">
+                                                <a href="{{url('quantri/khachhang/detail/'.$item->id)}}" class="d-flex justify-content-center mr-2"><div class="btn btn-success"><i class="dripicons-search"></i></div></a>
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('khachhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
                                                 <form action="{{route('khachhang.destroy',$item->id)}}"  method="post">
                                                     @csrf

@@ -296,8 +296,16 @@ function firstPageModalValidCheck(phone, coSo) {
     $('.form-phone-number').removeClass(classError);
     $('.select-coso').removeClass(classError);
 
-    if (phone == '') {
+    var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+    if(phone !== ''){
+        if (vnf_regex.test(phone) == false) {
+            error = true;
+            console.log('Số điện thoại của bạn không đúng định dạng!');
+            $('.form-phone-number').addClass(classError);
+        }
+    }else {
         error = true;
+        console.log('Bạn chưa điền số điện thoại!');
         $('.form-phone-number').addClass(classError);
     }
 
@@ -419,3 +427,12 @@ function uncheckDichVu() {
         tinhTongVaPushArrayIdDichVu();
     }
 }
+
+var dataShowError;
+$('.custom-error').hover(function () {
+        dataShowError = $(this).attr('icon-error-of');
+        $("[error-of='"+dataShowError+"']").fadeIn(150);
+    }, function () {
+        $("[error-of='"+dataShowError+"']").fadeOut(150);
+    }
+);

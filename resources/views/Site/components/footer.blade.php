@@ -1,3 +1,30 @@
+<div class="box-guimail p-2">
+    <div class="w-100 text-center position-relative" style="z-index: 30;margin: 7em 0em;">
+        <div class="guimail-content">
+            <div class="container">
+                <div class="w-100 text-center">
+                    <div class="title-small text-center">
+                        ĐỂ LẠI EMAIL
+                    </div>
+                </div>
+
+                <div class="title-3">
+                    Đăng Ký Và Là Người Đầu Tiên Biết Về <br>Các Sản Phẩm Đặc Biệt, Sự Kiện Và Hơn Thế Nữa!
+                </div>
+                <form action="" class="form-subscribe">
+                    <div class="bg-white div-subscribe">
+                        <input type="text" placeholder="Nhập email của bạn">
+                        <button type="submit" class="btn-nor">Gửi email</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {{-- <div class="background-img img-1">
+            <img src="{{ asset('Site/images') }}/Rectangle 184.png" alt="">
+        </div> --}}
+    </div>
+</div>
 <footer>
     <div class="footer-bg">
         <div class="container">

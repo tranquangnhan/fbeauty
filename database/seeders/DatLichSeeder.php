@@ -21,20 +21,18 @@ class DatLichSeeder extends Seeder
         $dateTime3 = $date . '11:00:00';
         $dateTime4 = $date . '17:00:00';
 
-
-
         DB::table('datlich')->insert([
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 7, 'idnhanvien' => 1, 'thoigiandat' => strtotime($dateTime1)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 9, 'idnhanvien' => 3, 'thoigiandat' => strtotime($dateTime1)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 10, 'idnhanvien' => 4, 'thoigiandat' => strtotime($dateTime1)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 11, 'idnhanvien' => 6, 'thoigiandat' => strtotime($dateTime1)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 12, 'idnhanvien' => 2, 'thoigiandat' => strtotime($dateTime2)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 7, 'idnhanvien' => 4, 'thoigiandat' => strtotime($dateTime2)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 8, 'idnhanvien' => 6, 'thoigiandat' => strtotime($dateTime2)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 9, 'idnhanvien' => 5, 'thoigiandat' => strtotime($dateTime2)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 8, 'idnhanvien' => 3, 'thoigiandat' => strtotime($dateTime3)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 9, 'idnhanvien' => 4, 'thoigiandat' => strtotime($dateTime3)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 8, 'idnhanvien' => 3, 'thoigiandat' => strtotime($dateTime4)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 1, 'idnhanvien' => 1, 'thoigiandat' => strtotime($dateTime1)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 2, 'idnhanvien' => 3, 'thoigiandat' => strtotime($dateTime1)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 3, 'idnhanvien' => 4, 'thoigiandat' => strtotime($dateTime1)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 4, 'idnhanvien' => 6, 'thoigiandat' => strtotime($dateTime1)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 5, 'idnhanvien' => 2, 'thoigiandat' => strtotime($dateTime2)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 6, 'idnhanvien' => 4, 'thoigiandat' => strtotime($dateTime2)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 2, 'idnhanvien' => 6, 'thoigiandat' => strtotime($dateTime2)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 3, 'idnhanvien' => 5, 'thoigiandat' => strtotime($dateTime2)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 4, 'idnhanvien' => 3, 'thoigiandat' => strtotime($dateTime3)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 2, 'idnhanvien' => 4, 'thoigiandat' => strtotime($dateTime3)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 5, 'idnhanvien' => 3, 'thoigiandat' => strtotime($dateTime4)],
         ]);
     }
 }

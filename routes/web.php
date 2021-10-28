@@ -81,12 +81,29 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'editDetailDonHang']);
     Route::post('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'updateDetailDonHang']);
 
+<<<<<<< HEAD
+=======
+    Route::resource('lieutrinh', LieuTrinhController::class);
+
+    Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
+    Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
+    // Route::post('lieutrinh/edittrangthailieutrinh/', [LieuTrinhController::class,'editTrangThaiLieuTrinh']);
+
+    Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
+
+>>>>>>> fcf734c2cbf9cbec408027da4761dc3e54f0ad38
 });
 
 Route::group(['prefix' => '/'], function (){
     Route::get('trang-chu', [HomeController::class, "index"]);
+    Route::get('san-pham', [HomeController::class, "sanpham"]);
+    Route::get('san-pham/chi-tiet', [HomeController::class, "sanphamchitiet"]);
+    Route::get('gio-hang', [HomeController::class, "giohang"]);
+    Route::get('thanh-toan', [HomeController::class, "thanhtoan"]);
+    Route::get('bai-viet', [HomeController::class, "baiviet"]);
+    Route::get('bai-viet/ten-bai-viet', [HomeController::class, "baivietchitiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
-
 });
+

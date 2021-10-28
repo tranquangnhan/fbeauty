@@ -23,6 +23,7 @@ class CheckLogin extends FormRequest
      */
     public function rules() {
         return [
+            'coso'=> 'required|integer',
             'email' => 'required|email',
             'password' => 'required'
         ];
@@ -30,6 +31,8 @@ class CheckLogin extends FormRequest
 
     public function messages() {
         return [
+            'coso.required'=> 'Bạn chưa chọn cơ sở',
+            'coso.integer'=> 'Cơ sở phải là số',
             'email.required' => 'Bạn chưa nhập email',
             'email.email' => 'Tài khoản không đúng',
             'password.required' => 'Bạn chưa nhập mật khẩu',
@@ -38,6 +41,7 @@ class CheckLogin extends FormRequest
 
     public function attributes(){
         return [
+            'coso' => 'Cơ Sở',
             'Email' => 'Email',
             'password' => 'Mật khẩu'
         ];

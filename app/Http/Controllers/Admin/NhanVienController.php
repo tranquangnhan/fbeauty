@@ -8,7 +8,6 @@ use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
 use Illuminate\Http\Request;
-
 class NhanVienController extends Controller
 {
     private $nhanvien;
@@ -59,6 +58,8 @@ class NhanVienController extends Controller
      */
     public function store(NhanVien $request)
     {
+        $coSo = session()->get('coso');
+
         $img = $request->file('urlHinh');
         $extension = $img->getClientOriginalExtension();
         $CheckEmail = $this->nhanvien->CheckEmail($request->email);
@@ -92,7 +93,7 @@ class NhanVienController extends Controller
                 'sdt' => $request->sdt,
                 'gioitinh' => $request->gioitinh,
                 'avatar' => $_FILES["urlHinh"]["name"],
-                'idcoso' => $request->coso,
+                'idcoso' => $coSo,
                 'iddichvu' => $request->dichvu,
                 'role' => $request->role,
                 'active' => $request->active,
@@ -205,6 +206,8 @@ class NhanVienController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $coSo = session()->get('coso');
+
         $img = $request->file('urlHinh');
         $password = $request->password;
         $newpass = "";
@@ -236,7 +239,7 @@ class NhanVienController extends Controller
                 'password' => $newpass,
                 'gioitinh' => $request->gioitinh,
                 'avatar' => $newpicture,
-                'idcoso' => $request->coso,
+                'idcoso' => $coSo,
                 'iddichvu' => $request->dichvu,
                 'role' => $request->role,
                 'active' => $request->active,

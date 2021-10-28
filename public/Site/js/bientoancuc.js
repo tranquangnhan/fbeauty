@@ -44,7 +44,7 @@ const elementListNhanVien = $('.list-nhanvien');
 
 const elementValueTime = $('.value-time');
 
-const trangThaiLichSanSang = 1;
+const trangThaiLichSanSang = 0;
 
 var totalPriceDichVu = 0;
 
@@ -69,6 +69,8 @@ var ngaySelected = todayDMY;
 var nhanVienSelected = 0;
 
 var timeSelected = '';
+
+var khungGio;
 
 var objectNhanVienSelected = {
     'id': '0',

@@ -10,5 +10,5 @@ interface DichVuRepositoryInterface extends RepositoryInterface
 {
     public function getDichVu();
     public function getDichVuTheoDanhMuc($iddanhmuc);
-
+    public function search($valueSearch);
 }

@@ -122,7 +122,7 @@
                                                     <div class="col-md-6">
                                                         <div id="imageA" class="mt-2">
                                                             <img
-                                                                src="{{asset("Admin/assets/images/users")}}/{{$nhanvien->avatar}}">
+                                                                src="{{asset(\App\Http\Controllers\Controller::BASE_URL_UPLOAD_STAFF)}}/{{$nhanvien->avatar}}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -130,17 +130,7 @@
 
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="w-100" for="coso">Chọn cơ sở:(<span
-                                                        class="text-danger">*</span>)
-                                                    <select class="form-control select2" name="coso">
-                                                        @foreach ($coso as $item)
-                                                            <option
-                                                                value="{{$item['id']}}" <?php echo ($nhanvien->idcoso == $item['id']) ? 'selected' : '';?>>{{$item['name']}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </label>
-                                            </div>
+                                           
                                             <div class="form-group">
                                                 <label class="w-100" for="dichvu">Chọn dịch vụ:(<span
                                                         class="text-danger">*</span>)
