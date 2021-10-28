@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Repositories\DonHang;
+namespace App\Repositories\DonHangChiTiet;
 
 
-interface DonHangRepositoryInterface
+interface DonHangChiTietRepositoryInterface
 {
     public function getAll();
 
@@ -18,7 +18,10 @@ interface DonHangRepositoryInterface
 
     public function getDonHangChiTietByIdDonHang($id);
 
-    public function getKhachHangChiTietByIdDonHang($id);
+    public function updateDetailByIdDH($id,$data);
 
-    public function getDonHangAndKhachHangById($id);
+    public function getIdTongthanhtoanByIdDonHangChiTtiet($id);
+
+    public function getIdDonHangByIdDonHangChiTtiet($id);
+
 }

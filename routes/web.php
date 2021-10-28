@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DonHangController;
 
 use App\Http\Controllers\Admin\DichVuController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\DonHangchitietController;
 use App\Http\Controllers\Admin\HoaDonChiTietController;
 use App\Http\Controllers\Admin\HoaDonController;
 use App\Http\Controllers\Admin\KhachHangController;
@@ -72,13 +73,16 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::post('lich/updateTime/{id}', [LichController::class, 'updateTime']);
     // quản lý cơ sở
     Route::resource('coso', CoSoController::class);
-    Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
+   Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
 
     Route::resource('donhang', DonHangController::class);
-    Route::get('/active/{id}', [DonHangController::class,'active']);
-    Route::get('/active-1/{id}', [DonHangController::class,'active_1']);
-    Route::get('/active-2/{id}', [DonHangController::class,'active_2']);
+    Route::resource('donhangchitiet', DonHangController::class);
 
+    Route::get('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'editDetailDonHang']);
+    Route::post('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'updateDetailDonHang']);
+
+<<<<<<< HEAD
+=======
     Route::resource('lieutrinh', LieuTrinhController::class);
 
     Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
@@ -87,6 +91,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 
     Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
 
+>>>>>>> fcf734c2cbf9cbec408027da4761dc3e54f0ad38
 });
 
 Route::group(['prefix' => '/'], function (){

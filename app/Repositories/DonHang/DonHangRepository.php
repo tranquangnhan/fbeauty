@@ -10,22 +10,25 @@ class DonHangRepository extends BaseRepository implements DonHangRepositoryInter
     public function getModel(){
         return \App\Models\Admin\DonHangModel::class;
     }
-    public function active_donhang($id){
-        return $this->model->where('id' , ' = ' ,$id)->update(['trangthai'=>0]);
-        return Redirect::to('index');
 
+    public function getDonHangChiTietByIdDonHang($id){
+        return $this->model->where('iddonhang','=',$id)->get();
     }
-    public function active_donhang1($id){
-        return $this->model->where('id' , ' = ' ,$id)->update(['trangthai'=>1]);
-
-    }
-    public function active_donhang2($id){
-        return $this->model->where('id' , ' = ' ,$id)->update(['trangthai'=>2]);
-
-    }
-    public function active_donhang3($id){
-        return $this->model->where('id' , ' = ' ,$id)->update(['trangthai'=>3]);
-
+    public function getKhachHangChiTietByIdDonHang($id){
+        return $this->model->where('idkhachhang','=',$id)->get();
     }
 
+    public function getDonHangAndKhachHangById($id) {
+        return $this->model->select('khachhang.name','khachhang.sdt','khachhang.email')
+        ->join('khachhang', 'khachhang.id', '=', 'donhang.idkhachhang')->find($id);
+
+        // ->select('idTin', 'TieuDe', 'urlHinh', 'Ngay', 'Ten', 'TomTat',
+        //          'Content','SoLanXem', 'tags', 'tin.lang', 'users.hoten', 'users.idUser',
+        //          'loaitin.idLT','loaitin.Ten', 'theloai.idTL','theloai.TenTL', 'slug_tin', 'theloai.slug_theloai', 'loaitin.slug_loaitin')
+        // ->join('loaitin', 'tin.idLT', '=', 'loaitin.idLT')
+        // ->join('users', 'tin.idUser', '=', 'users.idUser')
+        // ->join('theloai', 'tin.idTL', '=', 'theloai.idTL')
+        // ->where('tin.idTin', '=', $idTin)
+        // ->first();
+    }
 }

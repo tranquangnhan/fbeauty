@@ -146,10 +146,9 @@ class CoSoController extends Controller
             'huyen' => $request->wards
         ];
 
-        $this->Coso->update($id, $data);
+       $this->Coso->update($id,$data);
 
-
-        return redirect('quantri/coso')->with('success', 'Sửa thành công');
+        return redirect('quantri/coso')->with('success','Sửa thành công');
     }
 
     /**

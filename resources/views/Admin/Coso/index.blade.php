@@ -11,9 +11,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
-                        <h4 class="mt-0 header-title">Danh Mục</h4>
+                        <h4 class="mt-0 header-title"> Cơ Sở </h4>
                         <p class="text-muted font-14 mb-3">
-                        Đây là danh mục.
+                        Đây là Cơ Sở.
                         </p>
                         <div>
                              <button class="btn btn-primary waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Thêm Danh Mục</button>

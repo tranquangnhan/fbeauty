@@ -39,7 +39,7 @@
                                         <div class="form-group">
                                             <label for="">Tên Cơ Sở</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="name" class="form-control @error('name') border-error @enderror name" value="{{$data->name}}"  parsley-trigger="change" required
-                                                   placeholder="Tên Danh Mục" >
+                                                   placeholder="Tên Cơ Sở" >
                                         </div>
                                         <div class="form-group">
                                             <label for="">Địa chỉ cụ thể</label><span style="color:red;"> (*)</span>
@@ -71,7 +71,7 @@
                                               @if($data->quan == $cii->maqh)
                                               <option value="{{$cii->maqh}}" selected>{{$cii->name_quanhuyen}}</option>
                                                 @else
-                                                '<option value="{{$cii->maqh}}">{{$cii->name_quanhuyen}}</option>'
+                                                <option value="{{$cii->maqh}}">{{$cii->name_quanhuyen}}</option>
                                                 @endif
                                                 @endforeach
                                               </select>
