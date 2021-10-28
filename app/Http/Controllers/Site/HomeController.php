@@ -74,7 +74,7 @@ class HomeController extends Controller
         $this->data['blog2']    = $blog2;
         $this->data['pathActive']     = 'trang-chu';
 
-        return view("Site.home", $this->data);
+        return view("Site.pages.home", $this->data);
     }
 
     public function sanpham() {
@@ -84,7 +84,7 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
 
-        return view("Site.sanpham", $this->data);
+        return view("Site.pages.sanpham", $this->data);
     }
 
     public function sanphamchitiet() {
@@ -95,7 +95,7 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Tên sản phẩm'],
         ];
 
-        return view("Site.sanpham-chitiet", $this->data);
+        return view("Site.pages.sanpham-chitiet", $this->data);
     }
 
     public function giohang() {
@@ -106,7 +106,7 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Giỏ hàng'],
         ];
 
-        return view("Site.giohang", $this->data);
+        return view("Site.pages.giohang", $this->data);
     }
 
     public function thanhtoan() {
@@ -118,7 +118,7 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Thanh toán'],
         ];
 
-        return view("Site.thanhtoan", $this->data);
+        return view("Site.pages.thanhtoan", $this->data);
     }
 
     public function baiviet() {
@@ -128,7 +128,18 @@ class HomeController extends Controller
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
         ];
 
-        return view("Site.baiviet", $this->data);
+        return view("Site.pages.baiviet", $this->data);
+    }
+
+    public function baivietchitiet() {
+        $this->data['pathActive']          = 'bai-viet';
+        $this->data['namePage']            = 'Tên Bài viết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/bai-viet', 'name' => 'Bài viết'],
+            ['link' => '', 'name' => 'Tên Bài viết'],
+        ];
+
+        return view("Site.pages.baivietchitiet", $this->data);
     }
 
     public function getNhanVienByIdCoSo(Request $request, $id) {

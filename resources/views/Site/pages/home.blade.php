@@ -479,7 +479,7 @@
 </div>
 
 <div class="box-product">
-    @include('Site.slide-logo')
+    @include('Site.components.slide-logo')
     <div class="list-product">
         <div class="container">
             <div class="w-100 text-center mb-4">

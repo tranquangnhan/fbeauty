@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="w-100 text-center">
-                        @include('Site.breadcrumb')
+                        @include('Site.components.breadcrumb')
                     </div>
 
                 </div>
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="w-100 text-center">
-                        @include('Site.breadcrumb')
+                        @include('Site.components.breadcrumb')
                     </div>
                 </div>
 
