@@ -88,7 +88,7 @@
                                                          style="height: 250px; object-fit: cover"
                                                          class="thumb-img img-fluid overflow-hidden w-100 hoverbg"
                                                          alt="work-thumbnail">
-                                                    <a href="{{URL::to("quantri/nhanvien/xoaImgKH", auth()->user()->id)}}/phantu/{{$id}}" class="p-1 bg-primary rounded position-absolute btnxoa" style="right: 7%; top: 7%;"  title="Xóa"><i class="fa fa-trash text-white"></i></a>
+                                                    <a href="{{URL::to("quantri/nhanvien/xoaImgKH", auth()->user()->id)}}/phantu/{{$id}}" class="p-1 bg-primary rounded position-absolute btnxoa" style="right: 7%; top: 7%;"  data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash text-white"></i></a>
                                                 </a>
                                             </div>
                                         </div>
