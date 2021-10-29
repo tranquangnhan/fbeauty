@@ -7,7 +7,7 @@ use App\Models\Admin\LieuTrinhChiTietModel;
 use App\Repositories\BaseRepository;
 
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepositoryInterface;
-
+use Carbon\Carbon;
 class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiTietRepositoryInterface
 {
     protected $model;
@@ -44,4 +44,10 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
         ->join('nhanvien','lieutrinhchitiet.idnhanvien','=','nhanvien.id')
         ->where('idlieutrinh','=',$id)->get();
     }   
+
+    public function selectDate(){
+        $dt = Carbon::now('Asia/Ho_Chi_Minh');
+        return $this->model->select("idlieutrinh","id")->whereDate('created_at', '=', $dt->toDateString())->get();
+    }
 }
+

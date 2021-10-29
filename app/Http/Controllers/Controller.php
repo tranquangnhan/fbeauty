@@ -40,7 +40,6 @@ class Controller extends BaseController
      */
     const LOAIGIAM=1;
 
-   
 
     function uploadSingle($file){
         if($file == null) return null;

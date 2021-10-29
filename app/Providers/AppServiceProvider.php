@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Admin\CoSoController;
+use App\Models\Admin\CosoModel;
+use Illuminate\Support\Facades\View;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DanhMuc\DanhmucRepositoryInterface;
 use App\Repositories\DichVu\DichVuRepository;
@@ -29,6 +32,7 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    
     /**
      * Register any application services.
      *
@@ -58,6 +62,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+       $this->composerNavigation();
+    }
+
+
+
+    public function composerNavigation(){
+        View::composer('Admin.LayoutAdmin', function($view )
+        {
+            $data = CosoModel::all();
+
+            $view->with('coSo', $data );
+        }
+     );
     }
 }
