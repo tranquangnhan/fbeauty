@@ -14,7 +14,7 @@ class DangNhapAdminController extends Controller
     public function __construct(CosoRepository $CoSo)
     {
         $this->CoSo = $CoSo;
- 
+       
     }
     public function index(){
  
@@ -24,6 +24,7 @@ class DangNhapAdminController extends Controller
 
     public function checkin(CheckLogin $request)
     {
+
         $request->session()->put('coso', $request->coso);
     
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {

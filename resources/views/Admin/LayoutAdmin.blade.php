@@ -110,7 +110,7 @@
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item active">
                             <div class="notify-icon">
-                                <img src="{{ asset('Admin/assets') }}/images/users/{{auth()->user()->avatar}}"
+                                <img src="{{ asset('uploads/imgusers/') }}{{auth()->user()->avatar}}"
                                      class="img-fluid rounded-circle" alt=""/></div>
                             <p class="notify-details">Cristina Pride</p>
                             <p class="text-muted mb-0 user-msg">
@@ -183,29 +183,31 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#"
                    role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('Admin/assets') }}/images/users/{{auth()->user()->avatar}}" alt="user-image"
-                         class="rounded-circle">
+                    <img src="{{$BASE_URL_UPLOAD_STAFF}}/{{auth()->user()->avatar}}" alt="user-image"
+                         class="rounded-circle img-fluid" style="object-fit: cover">
                     <span class="pro-user-name ml-1">
-                                Nowak <i class="mdi mdi-chevron-down"></i>
+                                {{auth()->user()->name}} <i class="mdi mdi-chevron-down"></i>
                             </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
                     <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
+                        <h6 class="text-overflow m-0">Chọn cơ sở !</h6>
                     </div>
-
+                    @foreach ($coSo as $item)
+                        <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item">
+                            <i class="fe-user"></i>
+                            <span>{{$item->name}}</span>
+                        </a>
+                    @endforeach
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-user"></i>
-                        <span>Tài khoản của bạn</span>
-                    </a>
-
+                  
+                  
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings"></i>
                         <span>Cài đặt</span>
-                    </a>
+                    </a> --}}
 
 
                     <div class="dropdown-divider"></div>
@@ -263,8 +265,8 @@
     <!-- ========== Left Sidebar Start ========== -->
     <div class="left-side-menu">
         <div class="user-box text-center">
-            <img src="{{ asset('Admin/assets') }}/images/users/{{auth()->user()->avatar}}" alt="user-img"
-                 title="Mat Helme" class="rounded-circle img-thumbnail avatar-md">
+            <img src="{{ $BASE_URL_UPLOAD_STAFF}}/{{auth()->user()->avatar}}" alt="user-img"
+                 title="Mat Helme" style="object-fit: cover" class="rounded-circle img-thumbnail avatar-md">
             <div class="dropdown">
                 <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown"
                    aria-expanded="false">{{auth()->user()->name}}</a>
@@ -410,7 +412,7 @@
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("nhanvien.index")}}">Danh sách</a></li>
                                 <li><a href="{{route("nhanvien.create")}}">Thêm nhân viên</a></li>
-                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Thêm ảnh khách <hàng></hàng></a></li>
+                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Thêm ảnh khách hàng</a></li>
                                 <li><a href="{{URL::to("quantri/nhanvien/imgcustomer/pictures")}}">Tất cả ảnh khách hàng</a></li>
                             </ul>
                         </li>

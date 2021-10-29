@@ -37,7 +37,9 @@ class LieuTrinhController extends Controller
      */
     public function index()
     {
-        //
+         
+    //    $data=  $this->LieuTrinhChiTiet->selectDate();
+    //    dd($data);
     }
 
     /**
