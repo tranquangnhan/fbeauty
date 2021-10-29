@@ -1,3 +1,4 @@
+<?php  use Illuminate\Support\Facades\Auth; $user = Auth::user();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -319,32 +320,28 @@
             <!--- Sidemenu -->
             <div id="sidebar-menu">
 
-                <ul class="metismenu" id="side-menu">
-
-
-
-                <?php  use Illuminate\Support\Facades\Auth; $user = Auth::user();?>
-                <!--- Nhân viên -->
-                    @if($user->role == 0)
-                        <li>
+                <ul class="metismenu pb-5" id="side-menu">
+             
+                    @if( $user->role == 1)
+                         <li class="menu-title">Chung</li>
+                          <!--- Cơ Sở -->
+                            <li>
+                                <a href="index.html">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Thống kê </span>
+                                </a>
+                            </li>
+                          <li>
                             <a href="javascript: void(0);">
-                                <i class="mdi mdi-page-layout-sidebar-left"></i>
-                                <span> Ảnh khách hàng </span>
+                            <i class="mdi mdi-home"></i>
+                                <span> Cơ Sở </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Xem ảnh </a></li>
+                                <li><a href="{{route("coso.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
-                        <!--- ADMIN -->
-                    @elseif($user->role == 1)
-                        <li>
-                            <a href="index.html">
-                                <i class="mdi mdi-view-dashboard"></i>
-                                <span> Thống kê </span>
-                            </a>
-                        </li>
-                        <!--- Danh mục -->
+                            <!--- Danh mục -->
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="mdi mdi-page-layout-sidebar-left"></i>
@@ -356,9 +353,50 @@
                             </ul>
                         </li>
 
+                        <li class="menu-title">Khách Hàng</li>
+                        <!--- Khách hàng -->
                         <li>
                             <a href="javascript: void(0);">
-                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <i class="mdi mdi-account-cowboy-hat"></i>
+                                <span> Khách hàng </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("khachhang.index")}}">Danh sách</a></li>
+                                <li><a href="{{route("khachhang.create")}}">Thêm Khách hàng</a></li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if($user->role == 1 || $user->role == 0)
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="mdi mdi-folder-image"></i>
+                            <span> Ảnh khách hàng </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Xem ảnh </a></li>
+                        </ul>
+                    </li>
+                    @endif
+
+                    @if($user->role == 1 )
+                        <li class="menu-title">Đặt Lịch</li>
+                   
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-book-open"></i>
+                                <span> Hóa đơn </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("hoadon.show", session()->get('coso'))}}">Danh sách</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-calendar-month"></i>
                                 <span> Lịch </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -366,11 +404,15 @@
                                 <li><a href="{{route("lich.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
+                
+                    <!--- Nhân viên -->
+                  
+                        
 
                         <!--- Dịch vụ -->
                         <li>
                             <a href="javascript: void(0);">
-                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <i class="mdi mdi-room-service"></i>
                                 <span> Dịch vụ </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -379,32 +421,12 @@
                                 <li><a href="{{route("dichvu.create")}}">Thêm Dịch vụ</a></li>
                             </ul>
                         </li>
-                         <!--- Cơ Sở -->
-                         <li>
-                            <a href="javascript: void(0);">
-                            <i class="fas fa-house-user"></i>
-                                <span> Cơ Sở </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("coso.index")}}">Danh sách</a></li>
-                            </ul>
-                        </li>
-                          <!--- Đơn Hàng -->
-                          <li>
-                            <a href="javascript: void(0);">
-                            <i class="fas fa-dolly"></i>
-                                <span> Đơn Hàng </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("donhang.index")}}">Danh sách</a></li>
-                            </ul>
-                        </li>
+                       
+                        <li class="menu-title">Nhân Viên</li>
                         <!--- Nhân viên -->
                         <li>
                             <a href="javascript: void(0);">
-                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <i class="mdi mdi-account-circle-outline "></i>
                                 <span> Nhân viên </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -416,9 +438,12 @@
                             </ul>
                         </li>
 
+                      
+
+                        <li class="menu-title">Sản Phẩm</li>
                         <li>
                             <a href="javascript: void(0);">
-                                <i class="mdi mdi-texture"></i>
+                                <i class="mdi mdi-truck-outline"></i>
                                 <span class="badge badge-warning float-right">7</span>
                                 <span> Sản Phẩm </span>
                             </a>
@@ -426,36 +451,26 @@
                                 <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
                                 <li><a href="{{route("sanpham.index")}}">Danh Sách</a></li>
                             </ul>
-                        </li>
+                        </li>   
+                        <!--- Đơn Hàng -->
+                        <li>
+                          <a href="javascript: void(0);">
+                          <i class="fas fa-dolly"></i>
+                              <span> Đơn Hàng </span>
+                              <span class="menu-arrow"></span>
+                          </a>
+                          <ul class="nav-second-level" aria-expanded="false">
+                              <li><a href="{{route("donhang.index")}}">Danh sách</a></li>
+                          </ul>
+                      </li>
 
-                        <!--- Khách hàng -->
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="mdi mdi-page-layout-sidebar-left"></i>
-                                <span> Khách hàng </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("khachhang.index")}}">Danh sách</a></li>
-                                <li><a href="{{route("khachhang.create")}}">Thêm Khách hàng</a></li>
-                            </ul>
-                        </li>
-                        <!--- Hóa đơn -->
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="mdi mdi-page-layout-sidebar-left"></i>
-                                <span> Hóa đơn </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("hoadon.show", session()->get('coso'))}}">Danh sách</a></li>
-                            </ul>
-                        </li>
+
+                        <li class="menu-title">Bài Viết</li>
 
                          <!--- Blog -->
-                        <li>
+                        <li class="mb-5">
                             <a href="javascript: void(0);">
-                                <i class="mdi mdi-page-layout-sidebar-left"></i>
+                                <i class="mdi mdi-blogger"></i>
                                 <span> Blog </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -464,184 +479,12 @@
                                 <li><a href="{{route("blog.create")}}">Thêm blog</a></li>
                             </ul>
                         </li>
-
+                        <div class="mb-10"></div>
                     @endif
+                 
 
-                    <li class="menu-title">Apps</li>
-
-                    <li>
-                        <a href="apps-chat.html">
-                            <i class="mdi mdi-forum"></i>
-                            <span class="badge badge-purple float-right">New</span>
-                            <span> Chat </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="calendar.html">
-                            <i class="mdi mdi-calendar"></i>
-                            <span> Calendar </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="inbox.html">
-                            <i class="mdi mdi-email"></i>
-                            <span> Mail </span>
-                        </a>
-                    </li>
-
-                    <li class="menu-title">Components</li>
-
-                    <li>
-                        <a href="ui-typography.html">
-                            <i class="mdi mdi-format-font"></i>
-                            <span> Typography </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-invert-colors"></i>
-                            <span> User Interface </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="ui-buttons.html">Buttons</a></li>
-                            <li><a href="ui-cards.html">Cards</a></li>
-                            <li><a href="ui-draggable-cards.html">Draggable Cards</a></li>
-                            <li><a href="ui-checkbox-radio.html">Checkboxs-Radios</a></li>
-                            <li><a href="ui-material-icons.html">Material Design</a></li>
-                            <li><a href="ui-font-awesome-icons.html">Font Awesome 5</a></li>
-                            <li><a href="ui-dripicons.html">Dripicons</a></li>
-                            <li><a href="ui-feather-icons.html">Feather Icons</a></li>
-                            <li><a href="ui-themify-icons.html">Themify Icons</a></li>
-                            <li><a href="ui-modals.html">Modals</a></li>
-                            <li><a href="ui-notification.html">Notification</a></li>
-                            <li><a href="ui-range-slider.html">Range Slider</a></li>
-                            <li><a href="ui-components.html">Components</a>
-                            <li><a href="ui-sweetalert.html">Sweet Alert</a>
-                            <li><a href="ui-treeview.html">Tree view</a>
-                            <li><a href="ui-widgets.html">Widgets</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-texture"></i>
-                            <span class="badge badge-warning float-right">7</span>
-                            <span> Forms </span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="form-elements.html">General Elements</a></li>
-                            <li><a href="form-advanced.html">Advanced Form</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            <li><a href="form-wizard.html">Form Wizard</a></li>
-                            <li><a href="form-fileupload.html">Form Uploads</a></li>
-                            <li><a href="form-quilljs.html">Quilljs Editor</a></li>
-                            <li><a href="form-xeditable.html">X-editable</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-view-list"></i>
-                            <span> Tables </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="tables-basic.html">Basic Tables</a></li>
-                            <li><a href="tables-datatable.html">Data Tables</a></li>
-                            <li><a href="tables-responsive.html">Responsive Table</a></li>
-                            <li><a href="tables-editable.html">Editable Table</a></li>
-                            <li><a href="tables-tablesaw.html">Tablesaw Table</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-chart-donut-variant"></i>
-                            <span> Charts </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="charts-flot.html">Flot Charts</a></li>
-                            <li><a href="charts-morris.html">Morris Charts</a></li>
-                            <li><a href="charts-chartist.html">Chartist Charts</a></li>
-                            <li><a href="charts-chartjs.html">Chartjs Charts</a></li>
-                            <li><a href="charts-other.html">Other Charts</a></li>
-                        </ul>
-                    </li>
-
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-file-multiple"></i>
-                            <span> Pages </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="pages-starter.html">Starter Page</a></li>
-                            <li><a href="pages-login.html">Login</a></li>
-                            <li><a href="pages-register.html">Register</a></li>
-                            <li><a href="pages-recoverpw.html">Recover Password</a></li>
-                            <li><a href="pages-lock-screen.html">Lock Screen</a></li>
-                            <li><a href="pages-confirm-mail.html">Confirm Mail</a></li>
-                            <li><a href="pages-404.html">Error 404</a></li>
-                            <li><a href="pages-500.html">Error 500</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-layers"></i>
-                            <span> Extra Pages </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="extras-projects.html">Projects</a></li>
-                            <li><a href="extras-tour.html">Tour</a></li>
-                            <li><a href="extras-taskboard.html">Taskboard</a></li>
-                            <li><a href="extras-taskdetail.html">Task Detail</a></li>
-                            <li><a href="extras-profile.html">Profile</a></li>
-                            <li><a href="extras-maps.html">Maps</a></li>
-                            <li><a href="extras-contact.html">Contact list</a></li>
-                            <li><a href="extras-pricing.html">Pricing</a></li>
-                            <li><a href="extras-timeline.html">Timeline</a></li>
-                            <li><a href="extras-invoice.html">Invoice</a></li>
-                            <li><a href="extras-faq.html">FAQs</a></li>
-                            <li><a href="extras-gallery.html">Gallery</a></li>
-                            <li><a href="extras-email-templates.html">Email Templates</a></li>
-                            <li><a href="extras-maintenance.html">Maintenance</a></li>
-                            <li><a href="extras-comingsoon.html">Coming Soon</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-share-variant"></i>
-                            <span> Multi Level </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level nav" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);">Level 1.1</a>
-                            </li>
-                            <li>
-                                <a href="javascript: void(0);" aria-expanded="false">Level 1.2
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <ul class="nav-third-level nav" aria-expanded="false">
-                                    <li>
-                                        <a href="javascript: void(0);">Level 2.1</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript: void(0);">Level 2.2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                   
+                
                 </ul>
 
             </div>
@@ -728,9 +571,7 @@
 <!-- Right bar overlay-->
 <div class="rightbar-overlay"></div>
 
-<a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-    <i class="mdi mdi-cog-outline mdi-spin"></i> &nbsp;Choose Demos
-</a>
+
 
 <!-- Vendor js -->
 <script src="{{ asset('Admin/assets') }}/js/vendor.min.js"></script>
