@@ -81,8 +81,6 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'editDetailDonHang']);
     Route::post('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'updateDetailDonHang']);
 
-<<<<<<< HEAD
-=======
     Route::resource('lieutrinh', LieuTrinhController::class);
 
     Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
@@ -91,7 +89,6 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 
     Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
 
->>>>>>> fcf734c2cbf9cbec408027da4761dc3e54f0ad38
 });
 
 Route::group(['prefix' => '/'], function (){

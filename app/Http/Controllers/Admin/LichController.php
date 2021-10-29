@@ -31,7 +31,7 @@ class LichController extends Controller
      */
     public function index()
     {
-        $cs = $this->Coso->getAll();
+        $cs = $this->Coso->getCosoByIdSessionCoso();
         return view("Admin.Lich.index", ['coso' => $cs]);
     }
 
