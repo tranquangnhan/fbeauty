@@ -32,7 +32,7 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    
+
     /**
      * Register any application services.
      *
@@ -79,11 +79,11 @@ class AppServiceProvider extends ServiceProvider
     }
 
     public function composerShareConstant(){
-        
+
         View::composer('*', function($view )
         {
-            $view->with('BASE_URL_UPLOAD_STAFF', Controller::BASE_URL_UPLOAD_STAFF);
-            $view->with('BASE_URL_UPLOAD', Controller::BASE_URL_UPLOAD);
+            $view->with('BASE_URL_UPLOAD_STAFF', asset(Controller::BASE_URL_UPLOAD_STAFF));
+            $view->with('BASE_URL_UPLOAD', asset(Controller::BASE_URL_UPLOAD));
         }
         );
     }

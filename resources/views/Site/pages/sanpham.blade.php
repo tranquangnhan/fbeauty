@@ -6,7 +6,7 @@
 
 @section('main')
 <div class="fa-sanpham mt-4">
-    <div class="container">
+    <div class="container p-4">
         <div class="row">
             <div class="col-xl-3">
                 <div class="fa-left w-100">
@@ -93,7 +93,6 @@
                                             <option value="1">Sản phẩm bán chạy</option>
                                             <option value="2">Giá thấp đến cao</option>
                                             <option value="2">Giá cao đến thấp</option>
-
                                         </select>
                                     </div>
                                 </div>
@@ -106,10 +105,10 @@
                                     </div>
                                     <ul class="fa-checkbox-loc nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item px-0" role="presentation">
-                                            <a class="nav-link btn-3 custom-2 bg-gray-1 active" id="grid-tab" data-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="true"> <i class="fas fa-bars"></i></a>
+                                            <a class="nav-link btn-3 custom-2 bg-gray-1 " id="grid-tab" data-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="true"> <i class="fas fa-bars"></i></a>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <a class="nav-link btn-3 custom-2 bg-gray-1" id="navbarsanpham-tab" data-toggle="tab" href="#navbarsanpham" role="tab" aria-controls="navbar" aria-selected="false"><i class="fas fa-grip-horizontal"></i></a>
+                                            <a class="nav-link btn-3 custom-2 bg-gray-1 active" id="navbarsanpham-tab" data-toggle="tab" href="#navbarsanpham" role="tab" aria-controls="navbar" aria-selected="false"><i class="fas fa-grip-horizontal"></i></a>
                                         </li>
                                     </ul>
                                     {{-- <div class=" d-flex">
@@ -128,7 +127,7 @@
                     <div class="list-sanpham-2">
                         <div class="list-tabs">
                             <div class="tab-content" id="tabsanpham">
-                                <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
+                                <div class="tab-pane fade " id="grid" role="tabpanel" aria-labelledby="grid-tab">
                                     <div class="fa-list-sanpham">
                                         <div class="item-sanpham">
                                             <div class="child-item-sanpham row g-0">
@@ -254,7 +253,7 @@
 
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="navbarsanpham" role="tabpanel" aria-labelledby="navbarsanpham-tab">
+                                <div class="tab-pane fade show active" id="navbarsanpham" role="tabpanel" aria-labelledby="navbarsanpham-tab">
                                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
                                         <div class="col">
                                             <div class="card rounded-0 product-card child-item-sanpham zbar">
