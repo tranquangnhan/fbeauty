@@ -2,7 +2,7 @@
 
 @section('content')
     <style>
-        .demos-show-btn{
+        .demos-show-btn {
             display: none;
         }
     </style>
@@ -42,7 +42,7 @@
                                         <div class="float-left mt-1">
                                             <address>
                                                 <strong>Liệu trình</strong><br>
-                                                <?php $infolieutrinh = \Illuminate\Support\Facades\DB::table('lieutrinh')->select("*")->where('id','=', $idlieutrinh)->get();?>
+                                                <?php $infolieutrinh = \Illuminate\Support\Facades\DB::table('lieutrinh')->select("*")->where('id', '=', $idlieutrinh)->get();?>
 
                                                 <table class="table table-bordered">
                                                     <thead>
@@ -63,11 +63,19 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="float-right mt-3">
-                                            <p><strong>Ngày tạo: </strong> {{date_format(date_create($hoadon->created_at), 'd-m-Y')}}</p>
-                                            <p><strong>Giờ: </strong> {{date_format(date_create($hoadon->created_at), 'H:i:s')}}</p>
-                                            <p class="m-t-10"><strong>Trạng thái: </strong> <span class="label label-pink"><?php echo($hoadon->trangthai == \App\Http\Controllers\Controller::TRANGTHAITHANHTOAN)?'Đã thanh toán':'Chưa thanh toán';?></span></p>
-                                            <p class="m-t-10"><strong>Thu ngân: </strong> <span class="label label-pink">{{$thungan->name}}</span></p>
-                                            <p class="m-t-10"><strong>Nhân viên: </strong> <span class="label label-pink">{{$TenNhanVien->name}}</span></p>
+                                            <p><strong>Ngày
+                                                    tạo: </strong> {{date_format(date_create($hoadon->created_at), 'd-m-Y')}}
+                                            </p>
+                                            <p>
+                                                <strong>Giờ: </strong> {{date_format(date_create($hoadon->created_at), 'H:i:s')}}
+                                            </p>
+                                            <p class="m-t-10"><strong>Trạng thái: </strong> <span
+                                                    class="label label-pink"><?php echo ($hoadon->trangthai == \App\Http\Controllers\Controller::TRANGTHAITHANHTOAN) ? 'Đã thanh toán' : 'Chưa thanh toán';?></span>
+                                            </p>
+                                            <p class="m-t-10"><strong>Thu ngân: </strong> <span
+                                                    class="label label-pink">{{$thungan->name}}</span></p>
+                                            <p class="m-t-10"><strong>Nhân viên: </strong> <span
+                                                    class="label label-pink">{{$TenNhanVien->name}}</span></p>
                                         </div>
                                     </div><!-- end col -->
                                 </div>
@@ -78,38 +86,42 @@
                                         <div class="table-responsive">
                                             <table class="table mt-4">
                                                 <thead>
-                                                <tr><th>STT</th>
+                                                <tr>
+                                                    <th>STT</th>
                                                     <th>Tên dịch vụ / Sản phẩm</th>
                                                     <th>Mô tả</th>
                                                     <th>Số lượng</th>
                                                     <th>Giá (VND)</th>
                                                     <th>Tổng tiền (VND)</th>
-                                                </tr></thead>
+                                                </tr>
+                                                </thead>
                                                 <tbody>
                                                 @foreach($hdct as $in =>$hdchitiet)
                                                     <tr>
                                                         <td>{{$in+=1}}</td>
-                                                    <?php if ($hdchitiet->type == \App\Http\Controllers\Controller::ID_LIENQUAN_SP_)
+                                                        <?php if ($hdchitiet->type == \App\Http\Controllers\Controller::ID_LIENQUAN_SP_)
                                                         {
-                                                            $tensp=\Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("sanphamchitiet.*", "sanpham.name AS TenSP")->join('sanpham', 'sanphamchitiet.idsanpham', '=', 'sanpham.id')->where('sanphamchitiet.id', '=', $hdchitiet->idlienquan)->get();
-                                                       ?>
-                                                       Sản phẩm:  <td>{{$tensp[0]->TenSP}}</td>
+                                                        $tensp = \Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("sanphamchitiet.*", "sanpham.name AS TenSP")->join('sanpham', 'sanphamchitiet.idsanpham', '=', 'sanpham.id')->where('sanphamchitiet.id', '=', $hdchitiet->idlienquan)->get();
+                                                        ?>
+                                                        Sản phẩm:
+                                                        <td>{{$tensp[0]->TenSP}}</td>
                                                         <td>{{$tensp[0]->ml}} ml</td>
                                                         <?php
                                                         }
                                                         else{
-                                                            $tendichvu=\Illuminate\Support\Facades\DB::table('dichvu')->select("*")->where('id', '=', $hdchitiet->idlienquan)->get();
-                                                       ?>
-                                                        Dịch vụ: <td>{{$tendichvu[0]->name}}</td>
+                                                        $tendichvu = \Illuminate\Support\Facades\DB::table('dichvu')->select("*")->where('id', '=', $hdchitiet->idlienquan)->get();
+                                                        ?>
+                                                        Dịch vụ:
+                                                        <td>{{$tendichvu[0]->name}}</td>
                                                         <td>{{ substr($tendichvu[0]->motangan, 0, 25)}}...</td>
                                                         <?php
                                                         }
                                                         ?>
-                                                    <td>{{$hdchitiet->soluong}}</td>
-                                                    <td>{{number_format($hdchitiet->dongiasaugiamgia), ""}}</td>
-                                                    <td>{{number_format($hdchitiet->dongiasaugiamgia*$hdchitiet->soluong), ""}} </td>
-                                                </tr>
-                                                    @endforeach
+                                                        <td>{{$hdchitiet->soluong}}</td>
+                                                        <td>{{number_format($hdchitiet->dongiasaugiamgia), ""}}</td>
+                                                        <td>{{number_format($hdchitiet->dongiasaugiamgia*$hdchitiet->soluong), ""}} </td>
+                                                    </tr>
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -126,22 +138,27 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-6 offset-xl-3">
-                                        <p class="text-right"><b>Tổng: </b> {{number_format($hoadon->tongtientruocgiamgia), ""}} VND</p>
+                                        <p class="text-right">
+                                            <b>Tổng: </b> {{number_format($hoadon->tongtientruocgiamgia), ""}} VND</p>
                                         @if($hoadon->idgiamgia!="")
-                                            <?php $magiam=\Illuminate\Support\Facades\DB::table('giamgia')->select("*")->where('id', '=', $hoadon->idgiamgia)->get();?>
-                                                <p class="text-right"><strong>Mã giảm giá: </strong> {{$magiam[0]->ma}}</p>
-                                                <p class="text-right"><strong>Giảm: </strong> {{number_format($magiam[0]->number), ""}} <?php echo($magiam[0]->loai == \App\Http\Controllers\Controller::LOAIGIAM)?'%':'VND';?></p>
-                                            @else
+                                            <?php $magiam = \Illuminate\Support\Facades\DB::table('giamgia')->select("*")->where('id', '=', $hoadon->idgiamgia)->get();?>
+                                            <p class="text-right"><strong>Mã giảm giá: </strong> {{$magiam[0]->ma}}</p>
+                                            <p class="text-right">
+                                                <strong>Giảm: </strong> {{number_format($magiam[0]->number), ""}} <?php echo ($magiam[0]->loai == \App\Http\Controllers\Controller::LOAIGIAM) ? '%' : 'VND';?>
+                                            </p>
+                                        @else
                                             <p class="text-right">Giảm giá: <strong>Không</strong></p>
-                                            @endif
+                                        @endif
                                         <hr>
-                                        <p class="text-right" style="font-size: 13pt;"><b>THÀNH TIỀN: </b>{{number_format($hoadon->tongtiensaugiamgia), ""}} VND</p>
+                                        <p class="text-right" style="font-size: 13pt;"><b>THÀNH
+                                                TIỀN: </b>{{number_format($hoadon->tongtiensaugiamgia), ""}} VND</p>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="d-print-none">
                                     <div class="float-right">
-                                        <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light"><i class="fa fa-print"></i></a>
+                                        <a href="javascript:window.print()"
+                                           class="btn btn-dark waves-effect waves-light"><i class="fa fa-print"></i></a>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
