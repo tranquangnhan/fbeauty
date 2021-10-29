@@ -131,7 +131,7 @@ class InstallDatabase extends Migration
             $table->unsignedInteger('idlieutrinh');
             $table->unsignedInteger('iddichvu');
             $table->unsignedInteger('idnhanvien');
-            $table->string('mota',255);
+            $table->longText('mota');
             $table->unsignedInteger('ngay');
             $table->boolean('trangthai');
             $table->string('imgkhachhang');
