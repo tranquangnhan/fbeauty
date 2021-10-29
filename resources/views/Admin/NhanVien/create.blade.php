@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <label class="w-100" for="files">Avatar nhân
                                                             viên:(<span class="text-danger">*</span>)
                                                             <div class="wrapper">
@@ -104,7 +104,7 @@
                                                             @enderror
                                                         </label>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                         <div id="imageA" class="mt-2"></div>
                                                     </div>
                                                 </div>
