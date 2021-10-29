@@ -142,7 +142,6 @@
                                 <div class="d-print-none">
                                     <div class="float-right">
                                         <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light"><i class="fa fa-print"></i></a>
-                                        <a href="#" class="btn btn-primary waves-effect waves-light">Submit</a>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
