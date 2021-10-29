@@ -6,6 +6,7 @@ namespace App\Repositories\Coso;
 
 interface CosoRepositoryInterface
 {
+    public function getCosoByIdSessionCoso();
     public function getAll();
 
     public function find($id);

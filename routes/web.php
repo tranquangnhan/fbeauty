@@ -73,7 +73,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::post('lich/updateTime/{id}', [LichController::class, 'updateTime']);
     // quản lý cơ sở
     Route::resource('coso', CoSoController::class);
-   Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
+    Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
+    Route::get('coso/changecoso/{id}', [CoSoController::class,'changeCoSo']);
 
     Route::resource('donhang', DonHangController::class);
     Route::resource('donhangchitiet', DonHangController::class);
@@ -81,12 +82,25 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'editDetailDonHang']);
     Route::post('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'updateDetailDonHang']);
 
+    Route::resource('lieutrinh', LieuTrinhController::class);
+
+    Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
+    Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
+
+    Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
+
 });
 
 Route::group(['prefix' => '/'], function (){
     Route::get('trang-chu', [HomeController::class, "index"]);
+    Route::get('san-pham', [HomeController::class, "sanpham"]);
+    Route::get('san-pham/chi-tiet', [HomeController::class, "sanphamchitiet"]);
+    Route::get('gio-hang', [HomeController::class, "giohang"]);
+    Route::get('thanh-toan', [HomeController::class, "thanhtoan"]);
+    Route::get('bai-viet', [HomeController::class, "baiviet"]);
+    Route::get('bai-viet/ten-bai-viet', [HomeController::class, "baivietchitiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
-
 });
+

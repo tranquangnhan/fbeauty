@@ -14,7 +14,7 @@
                             <h4 class="mt-0 header-title">Thêm nhân viên</h4>
                             <div>
                                 <a href="{{route("nhanvien.index")}}"
-                                   class="btn btn-primary waves-effect waves-light mb-3">Danh sách nhân viên --></a>
+                                   class="btn btn-primary waves-effect waves-light mb-3"><--Danh sách nhân viên</a>
                             </div>
                             <form action="{{route('nhanvien.store')}}" id="ktform" enctype="multipart/form-data"
                                   method="post">
@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <label class="w-100" for="files">Avatar nhân
                                                             viên:(<span class="text-danger">*</span>)
                                                             <div class="wrapper">
@@ -104,7 +104,7 @@
                                                             @enderror
                                                         </label>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                         <div id="imageA" class="mt-2"></div>
                                                     </div>
                                                 </div>
@@ -112,17 +112,6 @@
 
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="w-100" for="coso">Chọn cơ sở:(<span
-                                                        class="text-danger">*</span>)
-                                                    <select class="form-control select2" name="coso">
-                                                        @foreach ($coso as $item)
-                                                            <option
-                                                                value="{{$item['id']}}">{{$item['name']}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </label>
-                                            </div>
                                             <div class="form-group">
                                                 <label class="w-100" for="dichvu">Chọn dịch vụ:(<span
                                                         class="text-danger">*</span>)

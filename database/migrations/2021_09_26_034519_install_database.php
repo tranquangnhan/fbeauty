@@ -92,7 +92,7 @@ class InstallDatabase extends Migration
             $table->string('email',255)->unique()->nullable();
             $table->string('password',255)->nullable();
             $table->string('idgoogle',255)->nullable();
-            $table->boolean('active')->default(0)->nullable();
+            $table->boolean('active',1);
             $table->string('img',255)->nullable();
             $table->string('randomkey',255)->nullable();
             $table->unsignedInteger('exp')->nullable();

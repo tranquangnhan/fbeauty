@@ -98,6 +98,14 @@ class CoSoController extends Controller
         }
     }
 
+
+    public function changeCoSo($id){
+        if($id>0){
+            session()->put('coso', $id);
+            return redirect()->back();
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
