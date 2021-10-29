@@ -24,9 +24,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $i=> $item)
+                                    @foreach ($data as $item)
                                         <tr>
-                                            <td>{{$i+=1}}</td>
+                                            <td>{{++$loop->index}}</td>
                                             <td>{{$item->name}} <br>
                                                 <?php if($item->trangthai == 0) echo "<div class=\"bg-danger mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
@@ -35,7 +35,7 @@
                                                 <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
                                             </td> 
                                             <td>
-                                                {{$item->danhmuc}}
+                                                {{$item->namedm}}
                                             </td> 
                                             <td>
                                                 {{$item->motangan}}
@@ -43,7 +43,7 @@
                                             <td>
                                                 {{number_format($item->dongia), ''}} VND
                                             </td> 
-                                            <td class="d-flex">
+                                            <td class="d-flex border-none">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('dichvu.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
                                                 <form action="{{route('dichvu.destroy',$item->id)}}"  method="post">
                                                     @csrf
