@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\CoSoController;
 use App\Models\Admin\CosoModel;
 use Illuminate\Support\Facades\View;
@@ -63,6 +63,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
        $this->composerNavigation();
+       $this->composerShareConstant();
     }
 
 
@@ -75,5 +76,15 @@ class AppServiceProvider extends ServiceProvider
             $view->with('coSo', $data );
         }
      );
+    }
+
+    public function composerShareConstant(){
+        
+        View::composer('*', function($view )
+        {
+            $view->with('BASE_URL_UPLOAD_STAFF', Controller::BASE_URL_UPLOAD_STAFF);
+            $view->with('BASE_URL_UPLOAD', Controller::BASE_URL_UPLOAD);
+        }
+        );
     }
 }

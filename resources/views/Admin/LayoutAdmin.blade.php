@@ -183,7 +183,7 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#"
                    role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('uploads/imgusers') }}/{{auth()->user()->avatar}}" alt="user-image"
+                    <img src="{{$BASE_URL_UPLOAD_STAFF}}/{{auth()->user()->avatar}}" alt="user-image"
                          class="rounded-circle img-fluid" style="object-fit: cover">
                     <span class="pro-user-name ml-1">
                                 {{auth()->user()->name}} <i class="mdi mdi-chevron-down"></i>
@@ -195,7 +195,7 @@
                         <h6 class="text-overflow m-0">Chọn cơ sở !</h6>
                     </div>
                     @foreach ($coSo as $item)
-                        <a href="" class="dropdown-item notify-item">
+                        <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item">
                             <i class="fe-user"></i>
                             <span>{{$item->name}}</span>
                         </a>
@@ -265,7 +265,7 @@
     <!-- ========== Left Sidebar Start ========== -->
     <div class="left-side-menu">
         <div class="user-box text-center">
-            <img src="{{ asset('uploads/imgusers') }}/{{auth()->user()->avatar}}" alt="user-img"
+            <img src="{{ $BASE_URL_UPLOAD_STAFF}}/{{auth()->user()->avatar}}" alt="user-img"
                  title="Mat Helme" style="object-fit: cover" class="rounded-circle img-thumbnail avatar-md">
             <div class="dropdown">
                 <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown"
