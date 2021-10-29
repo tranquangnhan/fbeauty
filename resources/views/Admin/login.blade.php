@@ -18,20 +18,21 @@
 <div class="login">
     <i class="fa fa-empire"></i>
     <h2>Đăng Nhập</h2>
-    <form action="{{URL::to("quantri/login")}}" method="post">
+
+    <form action="{{URL::to("quantri/login")}}" method="post" >
         @csrf
         @if(session('thongbao'))
             <div class="alert alert-warning alert-dismissible fade show rounded-pill mb-2" role="alert">
                 <span class="font-weight-bold">Tên tài khoản hoặc mật khẩu không đúng !</span>
             </div>
         @endif
-        <div class="mb-3">
-            <select class="form-control select2 select-custom" name="coso">
+        <div class="group">
+            <select class="text-secondary" name="coso" style="-webkit-appearance: none;">
                 <option value="">Chọn cơ sở</option>
                 @foreach ($coSo as $item)
                     <option value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach
-            </select>
+            </select><i class="fa fa-angle-down"></i>
             @error('coso')
             <span class="badge bg-danger text-white float-left mb-1 ml-2">{{ $message }}</span>
             @enderror
@@ -49,9 +50,6 @@
             @enderror
         </div>
         <button class="rounded-pill"><i class="fa fa-send"></i>Đăng nhập</button>
-
-
-
     </form>
 </div>
 </body>

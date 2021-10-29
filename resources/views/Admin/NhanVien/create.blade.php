@@ -14,7 +14,7 @@
                             <h4 class="mt-0 header-title">Thêm nhân viên</h4>
                             <div>
                                 <a href="{{route("nhanvien.index")}}"
-                                   class="btn btn-primary waves-effect waves-light mb-3">Danh sách nhân viên --></a>
+                                   class="btn btn-primary waves-effect waves-light mb-3"><--Danh sách nhân viên</a>
                             </div>
                             <form action="{{route('nhanvien.store')}}" id="ktform" enctype="multipart/form-data"
                                   method="post">

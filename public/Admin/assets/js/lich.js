@@ -33,7 +33,7 @@ function showgio(id, res) {
         '<th scope="col">Số lượng khách</th>\n' +
         '<th scope="col">Giờ \n' +
         '</th>\n' +
-        '<th scope="col">Mark all (_nghỉ_)' +
+        '<th scope="col">Chọn tất cả ( nghỉ )' +
         '<input type="checkbox" class="ml-1" id="checkall' + id + '" onclick="checkAll(' + id + ')">' +
         '</th>\n' +
         '<th scope="col" width="15%"><button onclick="upCoSo(' + id + ')" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-gear fa-spin" style="font-size:20px; color: white;"></i> Cài đặt</button></th>\n' +
