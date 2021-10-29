@@ -28,7 +28,7 @@
                                 @endif
                             </div>
                             <table class="table table-striped table-bordered dt-responsive nowrap">
-                                <thead class="bg-success text-white">
+                                <thead class="bg-primary text-white">
                                 <tr>
                                     <th scope="" width="5%">STT</th>
                                     <th scope="">Khách hàng</th>
@@ -57,17 +57,20 @@
                                             <br>
                                             <strong>Email: </strong> {{$hd->emailNV}}
                                         </td>
-                                        <td><strong>Trước giảm: </strong> {{number_format($hd->tongtientruocgiamgia), ""}} VND
-                                        <br>
-                                            <strong>Sau giảm: </strong>{{number_format($hd->tongtiensaugiamgia), ""}} VND
+                                        <td><strong>Trước
+                                                giảm: </strong> {{number_format($hd->tongtientruocgiamgia), ""}} VND
+                                            <br>
+                                            <strong>Sau giảm: </strong>{{number_format($hd->tongtiensaugiamgia), ""}}
+                                            VND
                                         </td>
-                                        <td><?php echo($hd->trangthai==\App\Http\Controllers\Controller::TRANGTHAITHANHTOAN)?'Đã thanh toán':'Chưa thanh toán';?>
-                                        <br>
+                                        <td><?php echo ($hd->trangthai == \App\Http\Controllers\Controller::TRANGTHAITHANHTOAN) ? ' <span class="badge badge-success"><i class="fa fa-check-circle" ></i> Đã thanh toán</span>' : '<span class="badge badge-danger"><i class="fa fa-minus-circle"></i> Chưa thanh toán</span>';?>
+                                            <br>
                                             <strong>Ngày: </strong> {{date_format(date_create($hd->created_at), "d-m-Y")}}
                                             <br>
                                             <strong>Giờ: </strong> {{date_format(date_create($hd->created_at), "H:i:s")}}
                                         </td>
-                                        <td><a href="{{route("hoadonchitiet.show",$hd->id)}}" class="btn btn-success"><i class="fa fa-eye" style="color: white;"></i></a></td>
+                                        <td><a href="{{route("hoadonchitiet.show",$hd->id)}}" class="btn btn-primary"><i
+                                                    class="fa fa-eye" style="color: white;"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

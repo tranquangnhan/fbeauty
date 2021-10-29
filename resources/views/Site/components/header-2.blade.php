@@ -19,14 +19,14 @@
                                 <div class="collapse navbar-collapse pr-4" id="navbarSupportedContent" style="flex-grow: 0">
                                     <ul class="navbar-nav mr-auto">
                                         <li class="nav-item {{ ($pathActive == 'trang-chu') ? 'active' : '' }}">
-                                            <a class="nav-link" href="/trang-chu">Trang Chủ <span
+                                            <a class="nav-link" href="{{URL::to("/trang-chu")}}">Trang Chủ <span
                                                     class="sr-only">(current)</span></a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="button btn-datlich nav-link" href="javascript:void(0)" data-show="one">Đặt Lịch</a>
                                         </li>
                                         <li class="nav-item {{ ($pathActive == 'san-pham') ? 'active' : '' }}">
-                                            <a class="nav-link" href="/san-pham">Sản Phẩm</a>
+                                            <a class="nav-link" href="{{URL::to("/san-pham")}}">Sản Phẩm</a>
                                         </li>
                                         <li class="nav-item {{ ($pathActive == 've-chung-toi') ? 'active' : '' }}">
                                             <a class="nav-link" href="#">Về Chúng Tôi</a>

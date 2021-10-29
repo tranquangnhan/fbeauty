@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     color: #444;
-    font-family: calibri;
+    font-family: Calibri;
 }
 
 body{
@@ -17,22 +17,23 @@ body{
 .login {
     text-align: center;
     position: relative;
-    width: 400px;
+    width: 450px;
 }
 
-input, button {
+input, select, button {
     width: 100%;
     border: 0;
     border-radius: 20px;
 }
 
-input{
+input, select{
     border-bottom: 2px solid grey;
     padding: 12px 40px 12px 20px;
+    outline:none;
 }
 
 
-input, button, .group i, p, a{
+input, button, select, .group i, p, a{
     font-size: 13.3333px;
     font-weight: 600;
 }
@@ -119,14 +120,14 @@ body:after{
     border-right: 0 !important;
     border-radius: 20px;
     padding-right:1rem;
-    
+
 }
 .select-custom option{
     font-weight: bold;
 }
 .select-custom:focus option{
     color:  #ff1464;
- 
+
 }
 .select-custom:focus{
     box-shadow: 0 0 0 0 #ffff !important;

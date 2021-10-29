@@ -10,7 +10,7 @@
 
                 <div class="row">
                     <div class="col-sm-9 bg-white">
-                        <h4 class="header-title mt-1">Ảnh khách hàng</h4>
+                        <p class="header-title mt-1">Ảnh khách hàng</p>
                         <form id="ktform" action="{{URL::to('quantri/nhanvien/uploadKH', auth()->user()->id)}}"
                               method="post" enctype="multipart/form-data">
                             @csrf
@@ -88,7 +88,7 @@
                                                          style="height: 250px; object-fit: cover"
                                                          class="thumb-img img-fluid overflow-hidden w-100 hoverbg"
                                                          alt="work-thumbnail">
-                                                    <a href="{{URL::to("quantri/nhanvien/xoaImgKH", auth()->user()->id)}}/phantu/{{$id}}" class="p-2 bg-primary rounded-circle position-absolute btnxoa" style="right: 5%; top: 5%;"  title="Xóa"><i class="fa fa-trash text-white"></i></a>
+                                                    <a href="{{URL::to("quantri/nhanvien/xoaImgKH", auth()->user()->id)}}/phantu/{{$id}}" class="p-1 bg-primary rounded position-absolute btnxoa" style="right: 7%; top: 7%;"  title="Xóa"><i class="fa fa-trash text-white"></i></a>
                                                 </a>
                                             </div>
                                         </div>
