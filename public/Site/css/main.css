@@ -5,8 +5,8 @@
     --black-1: #000000;
     --black-2: #474747;
     --black-3: #555;
-    --main-color: #ea3f3e;
-    --main-color-2: #FFEAEA;
+    --main-color: #FFA188;
+    --main-color-2: #FFF5F2;
     --main-color-3-bg: #FCC3C3;
     --main-color-4-bg: #ffd0c0;
     --gray-1: #F8F8F8;
@@ -88,6 +88,15 @@ body {
     height: 500px;
     position: relative;
     overflow: hidden;
+}
+
+.btn-full-color {
+    background: var(--main-color);
+    text-transform: capitalize;
+    font-weight: 500;
+    color: white;
+    border: none;
+    padding: 0.8em 1.9em;
 }
 
 .color-black-1 {
@@ -557,7 +566,7 @@ img.im-small {
     flex-grow: 2;
     /* default 0 */
     padding: 1em;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .dichvu-item .img-1 img {
@@ -971,7 +980,7 @@ img.im-small {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .blog-text-1 a {
@@ -1456,7 +1465,7 @@ div#header-slide {
 }
 
 .background-service {
-    background: var(--main-color-4-bg);
+    background: var(--main-color-2);
     position: relative;
 }
 
@@ -2796,13 +2805,13 @@ span.ui-slider-handle.ui-corner-all.ui-state-default:focus {
 }
 
 .breadcrumb-item a {
-    color: #ffffff;
+    color: #ffffffd9;
 }
 
 .nav-custom {
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
-    margin-top: 2em;
+    /* margin-top: 2em; */
 }
 
 .fa-slider-images {
@@ -3277,8 +3286,6 @@ div#custom-dots-1 {
     border-radius: 5px;
 }
 
-.list-danhmuc .danhmuc-item .name {}
-
 .list-danhmuc .danhmuc-item .number {
     padding: 0;
     height: 30px;
@@ -3327,7 +3334,7 @@ div#custom-dots-1 {
 .tin-item-1 .content-tin {
     background: white;
     padding: 30px 30px 22px;
-    border-radius: 0px 0px 10px 10px;
+    /* border-radius: 0px 0px 10px 10px; */
 }
 
 .tin-item-1:hover .content-tin .box-danhmuc-1 {
@@ -3613,6 +3620,42 @@ div#custom-dots-1 {
     right: 0px;
 }
 
+.box-danhmuc-dichvu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.box-danhmuc-dichvu .item .item-img img {
+    width: 100%;
+}
+
+.box-danhmuc-dichvu .item h5 {
+    font-size: 1em;
+    text-align: center;
+    margin-top: 0.5em;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.box-danhmuc-dichvu .item {
+    width: 7%;
+    margin: 0em .7em;
+    cursor: pointer;
+}
+
+.box-danhmuc-dichvu .item .item-img {
+    width: 70%;
+    background: var(--main-color-2);
+    padding: 0.9em;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.box-danhmuc-dichvu .item.active .item-img {
+    background: var(--main-color);
+}
 /* Reponsive */
 @media (min-width: 1200px) {
     .container {
