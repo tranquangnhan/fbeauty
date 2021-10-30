@@ -77,7 +77,7 @@ class HomeController extends Controller
         return view("Site.pages.home", $this->data);
     }
 
-    public function sanpham() {
+    public function viewSanPham() {
         $this->data['pathActive']       = 'san-pham';
         $this->data['namePage']         = 'Sản phẩm';
         $this->data['breadcrumbArray']  = [
@@ -87,7 +87,7 @@ class HomeController extends Controller
         return view("Site.pages.sanpham", $this->data);
     }
 
-    public function sanphamchitiet() {
+    public function viewSanPhamChiTiet() {
         $this->data['pathActive']          = 'san-pham';
         $this->data['namePage']            = 'Sản phẩm chi tiết';
         $this->data['breadcrumbArray']     = [
@@ -98,7 +98,7 @@ class HomeController extends Controller
         return view("Site.pages.sanpham-chitiet", $this->data);
     }
 
-    public function giohang() {
+    public function viewGioHang() {
         $this->data['pathActive']          = 'san-pham';
         $this->data['namePage']            = 'Giỏ hàng';
         $this->data['breadcrumbArray']     = [
@@ -109,7 +109,7 @@ class HomeController extends Controller
         return view("Site.pages.giohang", $this->data);
     }
 
-    public function thanhtoan() {
+    public function viewThanhToan() {
         $this->data['pathActive']          = 'san-pham';
         $this->data['namePage']            = 'Thanh toán';
         $this->data['breadcrumbArray']     = [
@@ -121,7 +121,7 @@ class HomeController extends Controller
         return view("Site.pages.thanhtoan", $this->data);
     }
 
-    public function baiviet() {
+    public function viewBaiViet() {
         $this->data['pathActive']          = 'bai-viet';
         $this->data['namePage']            = 'Bài viết';
         $this->data['breadcrumbArray']     = [
@@ -131,7 +131,7 @@ class HomeController extends Controller
         return view("Site.pages.baiviet", $this->data);
     }
 
-    public function baivietchitiet() {
+    public function viewBaiVietChiTiet() {
         $this->data['pathActive']          = 'bai-viet';
         $this->data['namePage']            = 'Tên Bài viết';
         $this->data['breadcrumbArray']     = [
@@ -142,6 +142,16 @@ class HomeController extends Controller
         return view("Site.pages.baivietchitiet", $this->data);
     }
 
+    public function viewDichVu() {
+        $this->data['pathActive']          = 'dich-vu';
+        $this->data['namePage']            = 'Dịch Vụ';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '', 'name' => 'Dịch Vụ'],
+        ];
+
+        return view("Site.pages.dichvu", $this->data);
+    }
+    
     public function getNhanVienByIdCoSo(Request $request, $id) {
         try {
             if ($request->ajax())
