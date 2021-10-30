@@ -388,6 +388,17 @@
                                 <li><a href="{{route("coso.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
+                        <!--- Giảm Giá -->
+                        <li>
+                            <a href="javascript: void(0);">
+                            <i class="fas fa-house-user"></i>
+                                <span> Giảm Giá </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("giamgia.index")}}">Danh sách</a></li>
+                            </ul>
+                        </li>
                           <!--- Đơn Hàng -->
                           <li>
                             <a href="javascript: void(0);">
