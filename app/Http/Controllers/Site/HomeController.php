@@ -151,7 +151,19 @@ class HomeController extends Controller
 
         return view("Site.pages.dichvu", $this->data);
     }
-    
+
+    public function viewDichVuChiTiet() {
+        $this->data['pathActive']          = 'dich-vu';
+        $this->data['namePage']            = 'Dịch Vụ';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/dich-vu', 'name' => 'Dịch Vụ'],
+            ['link' => '', 'name' => 'Tên Dịch Vụ'],
+
+        ];
+
+        return view("Site.pages.dichvuchitiet", $this->data);
+    }
+
     public function getNhanVienByIdCoSo(Request $request, $id) {
         try {
             if ($request->ajax())

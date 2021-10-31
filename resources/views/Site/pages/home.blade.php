@@ -493,126 +493,165 @@
             </div>
 
             <div class="box-pro">
-                <div class="owl-carousel owl-theme" id="product-slide">
-                    @foreach ($sanPham as $item)
-                    <div class="pro-fa-item">
-                        <div class="pro-item ml-0">
-                            <div class="img-1  bg-gray-1">
-                                <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
 
-                                <div class="box-icon">
-                                    <div class="icon-item d-inline-block">
-                                        <a href=""><i class="fas fa-search color-black-1"></i></a>
-                                    </div>
-                                    <div class="icon-item d-inline-block position-relative icon-cart">
-                                        <div class="cal-icon-cart">+</div>
-                                        <a href=""><i class="fas fa-shopping-cart color-black-1"></i></a>
+                    <div class="col">
+                        <div class="card rounded-0 product-card child-item-sanpham zbar">
+                            <div class="card-header bg-transparent border-bottom-0">
+                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                    <div class="box-cicrle">
+                                        <i class="fas fa-heart heart-full"></i>
+                                        <i class="far fa-heart heart-line"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="content-1">
-                                <div class="text-1 limit-text-row-1 ">
-                                    {{$item->name}}
+                            <img src="http://127.0.0.1:8000/uploads/hyarunic-removebg-preview.png" class="card-img-top img-sanpham-zbar" alt="...">
+                            <div class="card-body text-center">
+                                <div class="product-info">
+                                    <a href="javascript:;">
+                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                    </a>
+                                    <a href="javascript:;">
+                                        <h6 class="product-name mb-2">Product Short Name</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <div class="mb-1 product-price">
+                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                            <button class="w-100 btn-sanpham btn-5" style="opacity: 0;"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                            <button class="w-100 btn-sanpham btn-5 mt-2" style="opacity: 0;"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-2">100.000 vnđ</div>
                             </div>
                         </div>
                     </div>
 
-                    @endforeach
+                    <div class="col">
+                        <div class="card rounded-0 product-card child-item-sanpham zbar">
+                            <div class="card-header bg-transparent border-bottom-0">
+                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                    <div class="box-cicrle">
+                                        <i class="fas fa-heart heart-full"></i>
+                                        <i class="far fa-heart heart-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="http://127.0.0.1:8000/uploads/hyarunic-removebg-preview.png" class="card-img-top img-sanpham-zbar" alt="...">
+                            <div class="card-body text-center">
+                                <div class="product-info">
+                                    <a href="javascript:;">
+                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                    </a>
+                                    <a href="javascript:;">
+                                        <h6 class="product-name mb-2">Product Short Name</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <div class="mb-1 product-price">
+                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                            <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                            <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card rounded-0 product-card child-item-sanpham zbar">
+                            <div class="card-header bg-transparent border-bottom-0">
+                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                    <div class="box-cicrle">
+                                        <i class="fas fa-heart heart-full"></i>
+                                        <i class="far fa-heart heart-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="http://127.0.0.1:8000/uploads/hyarunic-removebg-preview.png" class="card-img-top img-sanpham-zbar" alt="...">
+                            <div class="card-body text-center">
+                                <div class="product-info">
+                                    <a href="javascript:;">
+                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                    </a>
+                                    <a href="javascript:;">
+                                        <h6 class="product-name mb-2">Product Short Name</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <div class="mb-1 product-price">
+                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                            <button class="w-100 btn-sanpham btn-5" style="opacity: 0;"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                            <button class="w-100 btn-sanpham btn-5 mt-2" style="opacity: 0;"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card rounded-0 product-card child-item-sanpham zbar">
+                            <div class="card-header bg-transparent border-bottom-0">
+                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                    <div class="box-cicrle">
+                                        <i class="fas fa-heart heart-full"></i>
+                                        <i class="far fa-heart heart-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="http://127.0.0.1:8000/uploads/hyarunic-removebg-preview.png" class="card-img-top img-sanpham-zbar" alt="...">
+                            <div class="card-body text-center">
+                                <div class="product-info">
+                                    <a href="javascript:;">
+                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                    </a>
+                                    <a href="javascript:;">
+                                        <h6 class="product-name mb-2">Product Short Name</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <div class="mb-1 product-price">
+                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                            <button class="w-100 btn-sanpham btn-5" style="opacity: 0;"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                            <button class="w-100 btn-sanpham btn-5 mt-2" style="opacity: 0;"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="w-100 text-center mt-3">
+            {{-- <div class="w-100 text-center mt-3">
                 <a href="">
                     <button class="btn-full">Xem tất cả</button>
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
 
-<div class="box-lieutrinh mt-5">
-    <div class="bg-lieutrinh">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-3">
-                    <div class="box-title-lieutrinh">
-                        <div class="title-3">
-                            Điều Trị <br> Theo Liệu Trình
-                        </div>
+@include('Site.components.gioithieulieutrinh')
 
-                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt.
-                        </p>
-
-                        <div class="w-100 text-left mb-4">
-                            <button data-show="one" class="button btn-5 btn-datlich">Đặt lịch</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-9">
-                    <div class="cac-buoc-lieutrinh">
-                        <div class="lieutrinh-item">
-                            {{-- <div class="number-1">
-                                1
-                            </div> --}}
-
-                            <div class="title-5">
-                                Kế Hoạch
-                            </div>
-                            <div class="icon-1 mt-4">
-                                <img class="" src=" {{ asset('Site/images/icon') }}/task.png"
-                                    alt="">
-                            </div>
-                            <div class="text-2 mt-4 color-white font-weight-300">
-                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit
-                            </div>
-                        </div>
-
-                        <div class="lieutrinh-item">
-                            {{-- <div class="number-1">
-                                1
-                            </div> --}}
-
-                            <div class="title-5">
-                                Theo Dõi
-                            </div>
-
-                            <div class="icon-1 mt-4">
-                                <img class="" src=" {{ asset('Site/images/icon') }}/doctor.png"
-                                    alt="">
-                            </div>
-
-                            <div class="text-2 mt-4 color-white font-weight-300">
-                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit
-                            </div>
-                        </div>
-
-                        <div class="lieutrinh-item">
-                            {{-- <div class="number-1">
-                                1
-                            </div> --}}
-
-                            <div class="title-5">
-                                Hỗ Trợ
-                            </div>
-
-                            <div class="icon-1 mt-4">
-                                <img class="" src="
-                                    {{ asset('Site/images/icon') }}/customer-service.png" alt="">
-                            </div>
-
-                            <div class="text-2 mt-4 color-white font-weight-300">
-                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="box-blog">
     <div class="container">
         <div class="list-blog p-0">
@@ -939,4 +978,7 @@
 </div>
 
 
+@endsection
+@section('javascript')
+    <script src="{{ asset('Site/js') }}/sanpham.js"></script>
 @endsection

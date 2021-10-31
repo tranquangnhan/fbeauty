@@ -1,7 +1,8 @@
 // URL //
-const getNhanVienByIdCoSoUrl = 'nhanviencuacoso/'; // nhanviencuacoso/id
-const getGioTheoThuUrl = 'getDataKhungGio/'; // getGio/{thu}
-const postDatLichUrl = 'datLich/';
+const serverNameUrl = 'http://127.0.0.1:8000/';
+const getNhanVienByIdCoSoUrl = serverNameUrl + 'nhanviencuacoso/'; // nhanviencuacoso/id
+const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/'; // getGio/{thu}
+const postDatLichUrl = serverNameUrl + 'datLich/';
 const rootUrlImage = '/Site/images/';
 // URL //
 
