@@ -1,7 +1,7 @@
 <div id="modal-container">
     <div class="modal-background">
         <div class="close-modal background-close"></div>
-        <div class="modal" style="width: 50%;height: auto;">
+        <div class="modal" style="width: 50%;height: auto;max-height: 90%;">
             <div class="noidung-modal h-100 w-100">
                 <div class="row h-100">
                     <div class="col-xl-12 p-0">
