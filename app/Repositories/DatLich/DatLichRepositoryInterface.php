@@ -7,6 +7,8 @@ interface DatLichRepositoryInterface extends RepositoryInterface
 {
     public function getModel();
     public function getAllCungCoSo($idCoSo);
+    public function getAll2CungCoSo($idCoSo);
+    public function getdv();
     public function findDatLichCuaNhanVienTheoThoiGian($thoiGianDat, $idNhanVien);
     public function getSoLanKhachDatByTimeStamp($thoiGianDat);
 }

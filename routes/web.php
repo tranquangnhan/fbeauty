@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\SanPhamChiTietController;
 use App\Http\Controllers\Admin\ThongkeController;
+use App\Http\Controllers\Admin\DatLichController;
 
 use App\Http\Controllers\Site\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 
     Route::resource('hoadon', HoaDonController::class);
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
+
+    Route::resource('datlich', DatLichController::class);
 
     Route::resource('lich', LichController::class);
     Route::get('lich/{id}/thungay/{idthu}', [LichController::class, 'showlich']);
