@@ -154,6 +154,6 @@
         </div>
     </div>
     <div class="w-100 footer-copyright">
-        Copyright ©2021 Beauty & Spa. All Rights Reserved
+        ©2021 Bản quyền FBeauty. Đã đăng ký bản quyền
     </div>
 </footer>

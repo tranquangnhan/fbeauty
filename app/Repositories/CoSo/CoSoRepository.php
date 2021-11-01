@@ -13,4 +13,9 @@ class CosoRepository extends BaseRepository implements CosoRepositoryInterface
     //     return \App\Models\Admin\City::class;
     // }
 
+    public function getCosoByIdSessionCoso(){
+        $coSo = session()->get('coso');
+        return $this->model->select("*")->where('id', '=', $coSo)->get();
+    }
+
 }

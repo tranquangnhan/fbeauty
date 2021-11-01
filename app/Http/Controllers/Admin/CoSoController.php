@@ -98,6 +98,14 @@ class CoSoController extends Controller
         }
     }
 
+
+    public function changeCoSo($id){
+        if($id>0){
+            session()->put('coso', $id);
+            return redirect()->back();
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -146,10 +154,9 @@ class CoSoController extends Controller
             'huyen' => $request->wards
         ];
 
-        $this->Coso->update($id, $data);
+       $this->Coso->update($id,$data);
 
-
-        return redirect('quantri/coso')->with('success', 'Sửa thành công');
+        return redirect('quantri/coso')->with('success','Sửa thành công');
     }
 
     /**

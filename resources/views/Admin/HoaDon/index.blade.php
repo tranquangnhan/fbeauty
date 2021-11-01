@@ -12,23 +12,8 @@
                     <div class="col-12">
                         <div class="card-box">
                             <h4 class="mt-0 header-title">Hóa đơn</h4>
-                            <p class="text-muted font-14 mb-3">
-                                Đây là nhân viên.
-                            </p>
+                            <p class="mt-0 text-secondary">Cơ sở: <strong>{{$coso->name}}</strong></p>
                             <!-- Example split danger button -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-danger">Action</button>
-                                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
                             <div class="container">
                                 @if(session('thanhcong'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -43,21 +28,51 @@
                                 @endif
                             </div>
                             <table class="table table-striped table-bordered dt-responsive nowrap">
-                                <thead class="thead-light">
+                                <thead class="bg-primary text-white">
                                 <tr>
-                                    <th scope="">STT</th>
-                                    <th width="37%">Thông tin nhân viên</th>
-                                    <th width="20%">Cơ sở & dịch vụ</th>
-                                    <th width="10%">Avatar</th>
-                                    <th width="22%">Phân quyền</th>
-                                    <th width="">Sửa</th>
+                                    <th scope="" width="5%">STT</th>
+                                    <th scope="">Khách hàng</th>
+                                    <th scope="">Nhân viên</th>
+                                    <th scope="">Tổng tiền</th>
+                                    <th scope="">Trạng thái</th>
+                                    <th scope="" width="5%">Xem</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
-
-
-
+                                @foreach($hoadon as $index => $hd)
+                                    <tr>
+                                        <td>{{$index+=1}}</td>
+                                        <td><strong>Tên: </strong>{{$hd->tenKh}}
+                                            <br>
+                                            <strong>SĐT: </strong> {{$hd->sodienthoai}}
+                                            <br>
+                                            @if(isset($hd->idgiamgia))
+                                                <?php $giamgia = \Illuminate\Support\Facades\DB::table('giamgia')->select('*')->where('id', '=', $hd->idgiamgia)->get();?>
+                                                <strong>Mã giảm giá: </strong> {{$giamgia[0]->ma}}
+                                                <br>
+                                                <strong>Mô tả: </strong> {{$giamgia[0]->name}}
+                                            @endif
+                                        </td>
+                                        <td><strong>Tên: </strong>{{$hd->tenNV}}
+                                            <br>
+                                            <strong>Email: </strong> {{$hd->emailNV}}
+                                        </td>
+                                        <td><strong>Trước
+                                                giảm: </strong> {{number_format($hd->tongtientruocgiamgia), ""}} VND
+                                            <br>
+                                            <strong>Sau giảm: </strong>{{number_format($hd->tongtiensaugiamgia), ""}}
+                                            VND
+                                        </td>
+                                        <td><?php echo ($hd->trangthai == \App\Http\Controllers\Controller::TRANGTHAITHANHTOAN) ? ' <span class="badge badge-success"><i class="fa fa-check-circle" ></i> Đã thanh toán</span>' : '<span class="badge badge-danger"><i class="fa fa-minus-circle"></i> Chưa thanh toán</span>';?>
+                                            <br>
+                                            <strong>Ngày: </strong> {{date_format(date_create($hd->created_at), "d-m-Y")}}
+                                            <br>
+                                            <strong>Giờ: </strong> {{date_format(date_create($hd->created_at), "H:i:s")}}
+                                        </td>
+                                        <td><a href="{{route("hoadonchitiet.show",$hd->id)}}" class="btn btn-primary"><i
+                                                    class="fa fa-eye" style="color: white;"></i></a></td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

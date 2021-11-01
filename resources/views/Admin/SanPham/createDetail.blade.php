@@ -45,8 +45,14 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
+
+
+
+=======
                           
                           
+>>>>>>> 40e4e9810106aab5a8e8018ee49ac079ca6af792
                             <div class="form-group text-right mb-0 mt-5">
                                 <a href="/quantri/sanpham" clas="btn btn-secondary waves-effect waves-light">Huỷ</a>
                                 <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">

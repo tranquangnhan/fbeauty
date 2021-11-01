@@ -28,7 +28,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                
+
                                 @foreach ($data as $item)
                                     <tr>
                                         <td class="">{{$loop->index}}</td>
@@ -59,15 +59,15 @@
                         <ul class="pagination pagination-split">
                             <?php
                             // echo $Pagination;
-                            ?>      
+                            ?>
                         </ul>
-                    </nav>    
-                      
+                    </nav>
+
                 </div>
             </div>
-                 
-         
-            
+
+
+
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->

@@ -24,6 +24,10 @@ class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietR
         );
     }
 
+    public function getSanPhamChiTietByID($id){
+        return $this->model->where("idsanpham","=",$id)->get();
+    }
+
     public function updateDetailByIdSp($id,$data){
         return $this->model->where("idsanpham","=",$id)->update($data);
     }

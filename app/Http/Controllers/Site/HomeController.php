@@ -74,12 +74,94 @@ class HomeController extends Controller
         $this->data['blog2']    = $blog2;
         $this->data['pathActive']     = 'trang-chu';
 
-        return view("Site.home", $this->data);
+        return view("Site.pages.home", $this->data);
     }
 
-    public function sanpham() {
-        $this->data['pathActive']         = 'san-pham';
-        return view("Site.sanpham", $this->data);
+    public function viewSanPham() {
+        $this->data['pathActive']       = 'san-pham';
+        $this->data['namePage']         = 'Sản phẩm';
+        $this->data['breadcrumbArray']  = [
+            ['link' => '', 'name' => 'Sản phẩm'],
+        ];
+
+        return view("Site.pages.sanpham", $this->data);
+    }
+
+    public function viewSanPhamChiTiet() {
+        $this->data['pathActive']          = 'san-pham';
+        $this->data['namePage']            = 'Sản phẩm chi tiết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '', 'name' => 'Tên sản phẩm'],
+        ];
+
+        return view("Site.pages.sanpham-chitiet", $this->data);
+    }
+
+    public function viewGioHang() {
+        $this->data['pathActive']          = 'san-pham';
+        $this->data['namePage']            = 'Giỏ hàng';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '', 'name' => 'Giỏ hàng'],
+        ];
+
+        return view("Site.pages.giohang", $this->data);
+    }
+
+    public function viewThanhToan() {
+        $this->data['pathActive']          = 'san-pham';
+        $this->data['namePage']            = 'Thanh toán';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '/gio-hang', 'name' => 'Giỏ hàng'],
+            ['link' => '', 'name' => 'Thanh toán'],
+        ];
+
+        return view("Site.pages.thanhtoan", $this->data);
+    }
+
+    public function viewBaiViet() {
+        $this->data['pathActive']          = 'bai-viet';
+        $this->data['namePage']            = 'Bài viết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/bai-viet', 'name' => 'Bài viết'],
+        ];
+
+        return view("Site.pages.baiviet", $this->data);
+    }
+
+    public function viewBaiVietChiTiet() {
+        $this->data['pathActive']          = 'bai-viet';
+        $this->data['namePage']            = 'Tên Bài viết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/bai-viet', 'name' => 'Bài viết'],
+            ['link' => '', 'name' => 'Tên Bài viết'],
+        ];
+
+        return view("Site.pages.baivietchitiet", $this->data);
+    }
+
+    public function viewDichVu() {
+        $this->data['pathActive']          = 'dich-vu';
+        $this->data['namePage']            = 'Dịch Vụ';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '', 'name' => 'Dịch Vụ'],
+        ];
+
+        return view("Site.pages.dichvu", $this->data);
+    }
+
+    public function viewDichVuChiTiet() {
+        $this->data['pathActive']          = 'dich-vu';
+        $this->data['namePage']            = 'Dịch Vụ';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/dich-vu', 'name' => 'Dịch Vụ'],
+            ['link' => '', 'name' => 'Tên Dịch Vụ'],
+
+        ];
+
+        return view("Site.pages.dichvuchitiet", $this->data);
     }
 
     public function getNhanVienByIdCoSo(Request $request, $id) {

@@ -418,7 +418,7 @@ function checkKhungGio(objectDatLich) {
     if (khungGio != null && idCoSo == objectDatLich.idcoso) {
         let ngayDatYMD = moment.unix(objectDatLich.thoiGianDat).format("YYYY-MM-DD");
         if (ngayDatYMD == khungGio.ngay) {
-            timViTriVaClose(lich, objectDatLich);
+            timViTriVaClose(khungGio, objectDatLich);
         }
 
     }
@@ -428,15 +428,15 @@ function timViTriVaClose(khungGio, objectDatLich) {
     let thoiGianDatHMS = moment.unix(objectDatLich.thoiGianDat).format("HH:mm:ss");
     let arrLich = khungGio.lich;
 
-    arrLich.forEach(lich => {
-        if (thoiGianDatHMS == lich.gio) {
-            lich.soKhachDaDat++;
-            if (lich.soKhachDaDat >= lich.soluongkhach) {
-                checkVaCloseLich(lich.id);
+    arrLich.forEach(lichItem => {
+        if (thoiGianDatHMS == lichItem.gio) {
+            lichItem.soKhachDaDat++;
+            if (lichItem.soKhachDaDat >= lichItem.soluongkhach) {
+                checkVaCloseLich(lichItem.id);
             }
 
             if (nhanVienSelected == objectDatLich.idnhanvien) {
-                checkVaCloseLich(lich.id);
+                checkVaCloseLich(lichItem.id);
             }
         }
     });

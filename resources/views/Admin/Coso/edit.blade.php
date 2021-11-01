@@ -39,7 +39,7 @@
                                         <div class="form-group">
                                             <label for="">Tên Cơ Sở</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="name" class="form-control @error('name') border-error @enderror name" value="{{$data->name}}"  parsley-trigger="change" required
-                                                   placeholder="Tên Danh Mục" >
+                                                   placeholder="Tên Cơ Sở" >
                                         </div>
                                         <div class="form-group">
                                             <label for="">Địa chỉ cụ thể</label><span style="color:red;"> (*)</span>
@@ -68,10 +68,10 @@
                                               <select  name="province" id="province" class="form-control input-sm m-bot15 choose province"  >
                                               <option value="" selected>-----{{__('Chọn Quận/Huyện')}}-----</option>
                                               @foreach($province as $key => $cii)
-                                              @if($data->quanhuyen == $cii->maqh)
+                                              @if($data->quan == $cii->maqh)
                                               <option value="{{$cii->maqh}}" selected>{{$cii->name_quanhuyen}}</option>
                                                 @else
-                                                '<option value="{{$cii->maqh}}">{{$cii->name_quanhuyen}}</option>'
+                                                <option value="{{$cii->maqh}}">{{$cii->name_quanhuyen}}</option>
                                                 @endif
                                                 @endforeach
                                               </select>
@@ -85,7 +85,7 @@
                                               <select name="wards" id="wards" class=" form-control input-sm m-bot15 wards" >
                                                 <option value="">-----{{__('Chọn Xã/Phường')}}-----</option>
                                                 @foreach($wards as $key => $ciii)
-                                              @if($data->diachi == $ciii->xaid)
+                                              @if($data->huyen == $ciii->xaid)
                                               <option value="{{$ciii->xaid}}" selected>{{$ciii->name_xaphuong}}</option>
                                                 @else
                                                 <option value="{{$ciii->xaid}}">{{$ciii->name_xaphuong}}</option>

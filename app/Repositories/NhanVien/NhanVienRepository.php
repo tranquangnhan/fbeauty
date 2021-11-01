@@ -11,17 +11,23 @@ use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 class NhanVienRepository extends BaseRepository implements NhanVienRepositoryInterface
 {
     protected $model;
-
     public function getModel()
     {
         return NhanVien::class;
     }
+    public function setModel()
+    {
+        $this->model = app()->make(
+            $this->getModel()
+        );
+    }
 
     public function getNhanVien()
     {
+        $coSo = session()->get('coso');
         return $this->model->select('nhanvien.*', 'dichvu.name AS dichvu', 'coso.name AS coso')
             ->join('dichvu', 'nhanvien.iddichvu', '=', 'dichvu.id')
-            ->join('coso', 'nhanvien.idcoso', '=', 'coso.id')
+            ->join('coso', 'nhanvien.idcoso', '=', 'coso.id')->where("nhanvien.idcoso","=",$coSo)
             ->get();
     }
 

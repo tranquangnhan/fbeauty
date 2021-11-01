@@ -27,7 +27,8 @@ class DichVuController extends Controller
      */
     public function index()
     {
-        $data = $this->DichVu->getDichVu();
+        $data = $this->DichVu->dichVuInerjoinDanhMuc();
+ 
         return view("Admin.DichVu.index", ['data' => $data]);
     }
 
