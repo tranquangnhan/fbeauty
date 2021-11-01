@@ -82,8 +82,9 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function($view )
         {
-            $view->with('BASE_URL_UPLOAD_STAFF', asset(Controller::BASE_URL_UPLOAD_STAFF));
-            $view->with('BASE_URL_UPLOAD', asset(Controller::BASE_URL_UPLOAD));
+            $view->with('BASE_URL_UPLOAD_STAFF', Controller::BASE_URL_UPLOAD_STAFF);
+            $view->with('BASE_URL_UPLOAD', Controller::BASE_URL_UPLOAD);
+            $view->with('URL_IMG', Controller::URL_IMG);
         }
         );
     }

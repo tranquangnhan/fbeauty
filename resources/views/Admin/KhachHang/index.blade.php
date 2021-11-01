@@ -33,7 +33,7 @@
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
                                             </td>
                                             <td> 
-                                                <img style="object-fit:cover; border-radius:10px" class="img-admin" width="100%" height="90" src="{{ asset('uploads/'.$item->img) }}">
+                                                <img  class="img-common"  src="{{ asset('uploads/'.$item->img) }}">
                                             </td> 
                                             <td>
                                                 {{$item->sdt}}
@@ -41,7 +41,7 @@
                                             <td>
                                                 {{$item->email}}
                                             </td> 
-                                            <td class="d-flex">
+                                            <td class="d-flex border-none">
                                                 <a href="{{url('quantri/khachhang/detail/'.$item->id)}}" class="d-flex justify-content-center mr-2"><div class="btn btn-success"><i class="dripicons-search"></i></div></a>
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('khachhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
                                                 <form action="{{route('khachhang.destroy',$item->id)}}"  method="post">

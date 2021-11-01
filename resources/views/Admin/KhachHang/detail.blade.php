@@ -1,5 +1,6 @@
 @extends('Admin.LayoutAdmin')
 @section('content')
+
 <div class="content-page">
     <div class="content">
 
@@ -82,7 +83,7 @@
                                                         <tr>
                                                             <td>1</td>
                                                             <td>
-                                                                <img style="object-fit:cover; border-radius:10px" class="img-admin" width="150" height="100" src="{{ asset($URL_IMG.$item->imgnv) }}"><br>
+                                                                <img  class="img-common"  src="{{ asset($BASE_URL_UPLOAD_STAFF.$item->imgnv) }}"><br>
                                                             </td>
                                                             <td>{{date('d-m-Y',$item->ngaybatdau) }}</td>
                                                             <td> {{date('d-m-Y',$item->dukienketthuc) }}</td>

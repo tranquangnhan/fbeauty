@@ -51,6 +51,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('khachhang', KhachHangController::class);
     Route::resource('blog', BlogController::class);
 
+    Route::delete('/sanpham/detail/{id}/del', [SanPhamChiTietController::class,'destroy']);
     Route::get('/sanpham/detail/{id}', [SanPhamChiTietController::class,'createDetailProduct']);
     Route::post('/sanpham/detail/{id}', [SanPhamChiTietController::class,'postDetailProduct']);
     Route::get('/sanpham/detail/{id}/edit', [SanPhamChiTietController::class,'editDetailProduct']);

@@ -30,7 +30,7 @@
 
                         <h4 class="header-title mt-0 mb-4">Sửa Sản Phẩm</h4>
 
-                        <form data-parsley-validate action="{{route('sanpham.update',$data->id)}}" novalidate method="post" enctype="multipart/form-data">
+                        <form  action="{{route('sanpham.update',$data->id)}}"  method="post" enctype="multipart/form-data">
                             @csrf
                             {!! method_field('patch') !!}
 
@@ -75,7 +75,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="">Mô Tả</label>
-                                        <textarea class=" @error('mota') border-error @enderror"  style="height: 100px;width:100%; border:1px solid #ccc" name="mota" >{{$data->mota}}</textarea>   
+                                        <textarea class="form-control @error('mota') border-error @enderror"  style="height: 100px;width:100%; border:1px solid #ccc" name="mota" >{{$data->mota}}</textarea>   
                                         @if ($errors->has('mota'))
                                             <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('mota')[0]}}</li></ul>
                                         @endif 

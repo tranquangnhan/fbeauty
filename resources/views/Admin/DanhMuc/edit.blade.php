@@ -34,9 +34,16 @@
                         Chỉnh sửa thông tin của danh mục.
                         </p>
 
-                        <form data-parsley-validate action="{{route('danhmuc.update',$data->id)}}" novalidate method="post">
+                        <form data-parsley-validate action="{{route('danhmuc.update',$data->id)}}" novalidate method="post"  enctype="multipart/form-data">
                             @csrf
                             {!! method_field('patch') !!}
+                           
+                            <div class="form-group">
+                                <label for="">Ảnh Danh Mục</label> <br>
+                                <img width="200px" height="100px" class="objectcv" src="{{$URL_IMG.$data->img}}" alt="">
+                                <input type="file" name="img"  parsley-trigger="change" required
+                                placeholder="Nhập tên nhà sản xuất" class="form-control mt-3" id="img">
+                            </div>
                             <div class="form-group">
                                 <label for="">Tên Danh Mục</label>
                                 <input type="text" name="name" value="{{$data->name}}"  parsley-trigger="change" required
@@ -52,7 +59,8 @@
                                         $array = [
                                             ['id'=>1,'name'=>"Sản Phẩm"],
                                             ['id'=>2,'name'=>"Dịch Vụ"],
-                                            ['id'=>3,'name'=>"Bài Viết"]
+                                            ['id'=>3,'name'=>"Bài Viết"],
+                                            ['id'=>4,'name'=>"Thương Hiệu"]
                                         ];
                                     @endphp
                                     <select class="form-control select2" name="loai">

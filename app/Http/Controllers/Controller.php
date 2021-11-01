@@ -43,7 +43,7 @@ class Controller extends BaseController
 
     function uploadSingle($file){
         if($file == null) return null;
-        $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
+        $filename = 'photo-' . time() . '.' . $file->getClientOriginalExtension();
 
         Storage::disk('public')->put($filename, file_get_contents($file));
 

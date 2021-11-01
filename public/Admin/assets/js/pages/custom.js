@@ -1,7 +1,7 @@
 const pathUploadImg = 'http://127.0.0.1:8000/';
 $("#add-field").click(function() {
     $("#some_div").append(`
-    <div class=" box-detail"  >
+    <div class="box-detail"  >
         <div class="input-block " >
             <div class="form-group">
                 <label >Nhập số ml</label>
@@ -29,7 +29,7 @@ $("#add-field").click(function() {
 });
 
 $(document).on("click", ".remove-field", function() {
-    $(this).closest(".input-block").remove();
+    $(this).closest(".box-detail").remove();
 });
 
 $(document).ready(function() {

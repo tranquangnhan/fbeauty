@@ -41,6 +41,7 @@ class InstallDatabase extends Migration
             $table->increments('id');
             $table->string('name',255);
             $table->string('slug',255);
+            $table->string('img',255)->nullable();
             $table->boolean('loai');
             $table->timestamps();
         });

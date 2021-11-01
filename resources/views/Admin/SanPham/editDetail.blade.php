@@ -28,20 +28,37 @@
 
                         <h4 class="header-title mt-0 mb-4">Sửa chi tiết sản phẩm</h4>
 
-                        <form data-parsley-validate action="{{url('quantri/sanpham/detail/'.$data?:[0]->idsanpham.'/edit')}}" novalidate method="post" enctype="multipart/form-data">
+                        <form data-parsley-validate action="{{URL::to('quantri/sanpham/detail/'.$data[0]->idsanpham.'/edit')}}"  method="post" enctype="multipart/form-data">
                             @csrf
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                               
+                                
+                                     @endif
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="form-group">
                                             <input type="button" id="add-field" class="btn btn-primary" value="+ Thêm Mới">
                                             <div id="some_div" class="box-detail-wrapper">
+                                               
 
                                                 @foreach ($data as $item)
                                                         <div class=" box-detail"  >
                                                             <div class="input-block " >
                                                                 <div class="form-group">
                                                                     <label >Số ml</label>
+                                                                    <input type="hidden" name="id[]"  value="{{$item->id}}">
                                                                     <input type="number" name="ml[]" value="{{$item->ml}}" parsley-trigger="change" required
                                                                     placeholder="Nhập tên nhà sản xuất" id="ml" class="form-control" id="userName">
                                                                 </div>
@@ -57,9 +74,11 @@
                                                                     <input type="number" name="dongia[]" value="{{$item->dongia}}"  parsley-trigger="change" required
                                                                     placeholder="Đơn giá sản phẩm" class="form-control" id="userName">
                                                                 </div>
-
-
-                                                                <input type="button" class="remove-field btn btn-danger" value="-">
+                                                                <form action="{{URL::to('quantri/sanpham/detail/'.$item->id.'/del')}}" method="post">
+                                                                    @csrf
+                                                                    {!!method_field('delete')!!}
+                                                                    <input type="submit" class="btn btn-danger" value="-">
+                                                                </form>
                                                             </div>
                                                         </div>
                                                 @endforeach

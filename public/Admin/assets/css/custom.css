@@ -1,6 +1,15 @@
 .border-none{
     border:0 !important;
 }
+.objectcv{
+    object-fit: cover;
+}
+.img-common{
+    width: 150px;
+    height: 100px;
+    border-radius: 3px;
+    object-fit: cover;
+}
 .mb-10{
     margin-bottom: 10rem;
 }

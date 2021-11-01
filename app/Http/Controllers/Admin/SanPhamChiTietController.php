@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SanPhamChiTiet;
+use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
-use Illuminate\Http\Request;
+
 
 class SanPhamChiTietController extends Controller
 {
     private $SanPhamChiTiet;
-
-    public function __construct(SanPhamChiTietRepository $SanPhamChiTiet)
+    private $DonHangChiTiet;
+    public function __construct(SanPhamChiTietRepository $SanPhamChiTiet,DonHangChiTietRepository $DonHangChiTiet)
     {
         $this->SanPhamChiTiet = $SanPhamChiTiet;
+        $this->DonHangChiTiet = $DonHangChiTiet;
     }
 
     public function createDetailProduct(){
@@ -50,14 +52,16 @@ class SanPhamChiTietController extends Controller
     function editDetailProduct($id){
 
         $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
-
         return view('Admin.SanPham.editDetail',compact('data'));
     }
 
 
 
-    function updateDetailProduct(SanPhamChiTiet $request, $id){
-        $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
+    function updateDetailProduct(SanPhamChiTiet $request, $idsp){
+
+        $id = $request->id;
+        $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($idsp);
+
         $ml = $request->ml;
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
@@ -70,34 +74,52 @@ class SanPhamChiTietController extends Controller
 
             for ($i=0; $i < count($ml); $i++) {
 
+                if(strlen($ml[$i]) > 4){
+                    return  $this->handleError('Số ml không được lớn hơn 9999');
+                }
+
                 $data = [
                     'ml'=>  $ml[$i],
                     'tonkho'=>$tonkho[$i],
                     'dongia'=>$dongia[$i]
                 ];
-
-                $this->SanPhamChiTiet->updateDetailByIdSp($id,$data);
-
+    
+                $res = $this->SanPhamChiTiet->update($id[$i],$data);
+            }
+            if($res) {
+              
+                return redirect('quantri/sanpham')->with('success','Sửa thành công');
             }
 
-        }else{
-            $this->SanPhamChiTiet->delDetailByIdSp($id);
+        }
+        else{
+            // $this->SanPhamChiTiet->delDetailByIdSp($id);
 
-            for ($i=0; $i < count($ml); $i++) {
+            // for ($i=0; $i < count($ml); $i++) {
 
-                $data = [
-                    'idsanpham'=> $id,
-                    'ml'=>  $ml[$i],
-                    'tonkho'=>$tonkho[$i],
-                    'dongia'=>$dongia[$i]
-                ];
+            //     $data = [
+            //         'idsanpham'=> $id,
+            //         'ml'=>  $ml[$i],
+            //         'tonkho'=>$tonkho[$i],
+            //         'dongia'=>$dongia[$i]
+            //     ];
 
-                $this->SanPhamChiTiet->create($data);
-            }
+            //     $this->SanPhamChiTiet->create($data);
+            // }
         }
 
 
-        return redirect('quantri/sanpham')->with('success','Sửa thành công');
+        
     }
-    // this is test
+  
+    public function destroy($id)
+    {
+        $hasDonHang = $this->DonHangChiTiet->findDonHangChiTietByIdDonHang($id);
+        if(count($hasDonHang)>0){
+            return  $this->handleError('Sản phẩm đã tồn tại trong đơn hàng, không thể xoá');
+        }else{
+            $this->SanPhamChiTiet->delete($id);
+        }
+    }
+
 }

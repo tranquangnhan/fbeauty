@@ -11,6 +11,7 @@ class DanhMuc extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'name',
+        'img',
         'slug',
         'loai'
     ];
