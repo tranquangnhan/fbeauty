@@ -16,80 +16,83 @@ class SanPhamChiTietController extends Controller
         $this->SanPhamChiTiet = $SanPhamChiTiet;
     }
 
-    public function createDetailProduct(){
+    public function createDetailProduct()
+    {
 
         return view('Admin.SanPham.createDetail');
     }
 
-    public function postDetailProduct(SanPhamChiTiet $request){
+    public function postDetailProduct(SanPhamChiTiet $request)
+    {
 
         $idsanpham = $request->route('id');
         $ml = $request->ml;
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
-        if($ml[0] != null && $tonkho[0] != null && $dongia[0] != null){
+        if ($ml[0] != null && $tonkho[0] != null && $dongia[0] != null) {
 
-            for ($i=0; $i < count($ml); $i++) {
+            for ($i = 0; $i < count($ml); $i++) {
 
                 $data = [
-                    'idsanpham'=>$idsanpham,
-                    'ml'=>  $ml[$i],
-                    'tonkho'=>$tonkho[$i],
-                    'dongia'=>$dongia[$i]
+                    'idsanpham' => $idsanpham,
+                    'ml' => $ml[$i],
+                    'tonkho' => $tonkho[$i],
+                    'dongia' => $dongia[$i]
                 ];
                 $this->SanPhamChiTiet->create($data);
             }
 
-        }else{
+        } else {
             return $this->handleError('Dữ liệu không được để trống');
         }
-        return redirect('quantri/sanpham')->with('success','Thêm thành công');
+        return redirect('quantri/sanpham')->with('success', 'Thêm thành công');
     }
 
 
-    function editDetailProduct($id){
+    function editDetailProduct($id)
+    {
 
         $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
 
-        return view('Admin.SanPham.editDetail',compact('data'));
+        return view('Admin.SanPham.editDetail', compact('data'));
     }
 
 
-
-    function updateDetailProduct(SanPhamChiTiet $request, $id){
+    function updateDetailProduct(SanPhamChiTiet $request, $id)
+    {
         $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
         $ml = $request->ml;
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
 
-        if($ml[0] == null || $tonkho[0] == null || $dongia[0] == null){
+        if ($ml[0] == null || $tonkho[0] == null || $dongia[0] == null) {
             return $this->handleError('Dữ liệu không được để trống');
         }
 
-        if(count($data) === count($request->dongia)){
+        if (count($data) === count($request->dongia)) {
 
-            for ($i=0; $i < count($ml); $i++) {
+            for ($i = 0; $i < count($ml); $i++) {
 
                 $data = [
-                    'ml'=>  $ml[$i],
-                    'tonkho'=>$tonkho[$i],
-                    'dongia'=>$dongia[$i]
+                    'ml' => $ml[$i],
+                    'tonkho' => $tonkho[$i],
+                    'dongia' => $dongia[$i]
                 ];
 
-                $this->SanPhamChiTiet->updateDetailByIdSp($id,$data);
+                $this->SanPhamChiTiet->updateDetailByIdSp($id, $data);
 
             }
 
-        }else{
+        } else {
             $this->SanPhamChiTiet->delDetailByIdSp($id);
 
-            for ($i=0; $i < count($ml); $i++) {
+            for ($i = 0; $i < count($ml); $i++) {
 
                 $data = [
-                    'idsanpham'=> $id,
-                    'ml'=>  $ml[$i],
-                    'tonkho'=>$tonkho[$i],
-                    'dongia'=>$dongia[$i]
+                    'idsanpham' => $id,
+                    'ml' => $ml[$i],
+                    'tonkho' => $tonkho[$i],
+                    'dongia' => $dongia[$i]
                 ];
 
                 $this->SanPhamChiTiet->create($data);
@@ -97,7 +100,20 @@ class SanPhamChiTietController extends Controller
         }
 
 
-        return redirect('quantri/sanpham')->with('success','Sửa thành công');
+        return redirect('quantri/sanpham')->with('success', 'Sửa thành công');
     }
-    // this is test
+
+    /**
+     *Lấy sp đến hóa đơn
+     */
+    public function getSanPhamToHoaDon()
+    {
+        $data = $this->SanPhamChiTiet->getSanPhamChiTietToHoaDon();
+        return $data;
+    }
+
+    public function getSanPhamChiTietToHoaDon($id, $idsp){
+        $data= $this->SanPhamChiTiet->getSanPhamChiTiet($idsp);
+        return $data;
+    }
 }

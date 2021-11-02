@@ -69,8 +69,11 @@
                                             <br>
                                             <strong>Giờ: </strong> {{date_format(date_create($hd->created_at), "H:i:s")}}
                                         </td>
-                                        <td><a href="{{route("hoadonchitiet.show",$hd->id)}}" class="btn btn-primary"><i
-                                                    class="fa fa-eye" style="color: white;"></i></a></td>
+                                        <td><a href="{{route("hoadonchitiet.show",$hd->id)}}" class="btn btn-primary mb-2" data-toggle="tooltip" data-placement="right" title="Xem hóa đơn" ><i
+                                                    class="fa fa-eye"  style="color: white;"></i></a>
+                                            <a href="{{route("hoadon.edit",$hd->id)}}" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Sửa" ><i
+                                                    class="fa fa-edit"  style="color: white;"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

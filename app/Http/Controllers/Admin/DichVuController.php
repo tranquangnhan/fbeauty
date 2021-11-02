@@ -24,12 +24,18 @@ class DichVuController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * Get Dich Vụ To Hóa Đơn
      */
     public function index()
     {
         $data = $this->DichVu->dichVuInerjoinDanhMuc();
- 
+
         return view("Admin.DichVu.index", ['data' => $data]);
+    }
+
+    public function getDichVuToHoaDon(){
+        $data=$this->DichVu->getAll();
+        return $data;
     }
 
     /**
@@ -72,7 +78,6 @@ class DichVuController extends Controller
                 'noidung' => $request->noidung,
                 'trangthai' => $request->trangthai
             ];
-
             $this->DichVu->create($DichVu);
             return redirect('quantri/dichvu')->with('success', 'Thêm dịch vụ thành công');
         } else {
@@ -132,7 +137,7 @@ class DichVuController extends Controller
 
             $this->DichVu->update($id, $DichVu);
             return redirect('quantri/dichvu')->with('thanhcong', 'Sửa dịch vụ thành công');
-        
+
     }
 
     /**
@@ -146,5 +151,10 @@ class DichVuController extends Controller
         $this->DichVu->delete($id);
 
         return redirect('quantri/dichvu')->with('success', 'Xoá thành công');
+    }
+
+    public function getDichVuByIdToHoaDon($id, $iddv){
+        $data=$this->DichVu->getDichVuByID($iddv);
+        return $data;
     }
 }
