@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Coso\CosoRepository;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
+use App\Repositories\GiamGia\GiamGiaRepository;
 use App\Repositories\HoaDon\HoaDonRepositoryInterface;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepositoryInterface;
+use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -18,14 +20,20 @@ class HoaDonController extends Controller
     private $dichvu;
     private $hoadon;
     private $hoadonchitiet;
-    public function __construct(HoaDonRepositoryInterface $hoadon, HoaDonChiTietRepositoryInterface $hoadonchitiet,NhanVienRepositoryInterface $nhanvien, CosoRepository $coso, DichVuRepositoryInterface $dichvu)
+    private $khachhang;
+    private $giamgia;
+
+    public function __construct(GiamGiaRepository $giamgia, KhachHangRepository $khachhang, HoaDonRepositoryInterface $hoadon, HoaDonChiTietRepositoryInterface $hoadonchitiet, NhanVienRepositoryInterface $nhanvien, CosoRepository $coso, DichVuRepositoryInterface $dichvu)
     {
         $this->nhanvien = $nhanvien;
         $this->coso = $coso;
         $this->dichvu = $dichvu;
-        $this->hoadon =$hoadon;
-        $this->hoadonchitiet=$hoadonchitiet;
+        $this->hoadon = $hoadon;
+        $this->hoadonchitiet = $hoadonchitiet;
+        $this->khachhang = $khachhang;
+        $this->giamgia = $giamgia;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,7 +58,7 @@ class HoaDonController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -61,32 +69,39 @@ class HoaDonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $hoadon=$this->hoadon->ShowHoaDonByIdCoso($id);
-        $coso=$this->coso->find($id);
-        return view("Admin.HoaDon.index", ['hoadon'=>$hoadon, 'coso'=>$coso]);
+        $hoadon = $this->hoadon->ShowHoaDonByIdCoso($id);
+        $coso = $this->coso->find($id);
+        return view("Admin.HoaDon.index", ['hoadon' => $hoadon, 'coso' => $coso]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $hd = $this->hoadon->find($id);
+        $coso = $this->coso->find($hd->idcoso);
+        $customer = $this->khachhang->find($id);
+        $ThuNgan = $this->nhanvien->find($hd->idthungan);
+        $idlieutrinh = $hd->idlieutrinh;
+        $TenNhanVien = $this->nhanvien->find($hd->idnhanvien);
+        $hdct = $this->hoadonchitiet->getHoaDonCTByIdHoaDon($id);
+        return view("Admin.HoaDon.edit", ['customer' => $customer, 'hoadon' => $hd, 'coso' => $coso, 'hdct' => $hdct, 'thungan' => $ThuNgan, 'TenNhanVien' => $TenNhanVien, 'idlieutrinh' => $idlieutrinh]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -97,11 +112,71 @@ class HoaDonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
     }
+
+    /**
+     *Giảm giá
+     */
+    public function getGiamGiaToHoaDon($id, $idgiamgia)
+    {
+        $data = $this->giamgia->find($idgiamgia);
+        return $data;
+    }
+
+    public function ApDungGiamGia($id, $code, $tien)
+    {
+        $checkCode = $this->giamgia->CheckCODE($code);
+        if ($checkCode == false) {
+            $giamgia = $this->giamgia->GetGiamGiaByCODE($code);
+            if ($tien >= $giamgia[0]["max"]) {
+                $ma = ['idgiamgia' => $giamgia[0]["id"]];
+                $today = date('Y-m-d');
+                if (strtotime($today) < $giamgia[0]["ngayhethan"]) {
+                    $this->hoadon->update($id, $ma);
+                    return true;
+                } else {
+                    $thongbao = [
+                        "thongbao" => 'Mã giảm giá đã hết hạn'
+                    ];
+                    return $thongbao;
+                }
+
+            } else {
+                $thongbao = [
+                    "thongbao" => 'Giá hóa đơn không đủ điều kiện'
+                ];
+
+                return $thongbao;
+            }
+        } else {
+            $thongbao = [
+                "thongbao" => 'Không có mã này'
+            ];
+            return $thongbao;
+        }
+    }
+
+    public function CapNhatGia($id, $tien, $tongtien){
+        $tong=[
+            'tongtientruocgiamgia'=>$tien,
+            'tongtiensaugiamgia'=>$tongtien
+        ];
+        $this->hoadon->update($id, $tong);
+        return true;
+    }
+
+    public function XoaHoaDonChiTiet($id, $idhdct){
+        $this->hoadonchitiet->delete($idhdct);
+        $thongbao = [
+            "thongbao" => 'Xóa thành công'
+        ];
+        return $thongbao;
+    }
+
 }

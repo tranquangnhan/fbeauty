@@ -8,6 +8,7 @@ use App\Repositories\DichVu\DichVuRepositoryInterface;
 use App\Repositories\HoaDon\HoaDonRepositoryInterface;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepositoryInterface;
 use App\Repositories\NhanVien\NhanVienRepositoryInterface;
+use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Illuminate\Http\Request;
 
 class HoaDonChiTietController extends Controller
@@ -17,14 +18,16 @@ class HoaDonChiTietController extends Controller
     private $hoadon;
     private $hoadonchitiet;
     private $coso;
+    private $sanphamchitiet;
 
-    public function __construct(CosoRepository $coso, HoaDonRepositoryInterface $hoadon, HoaDonChiTietRepositoryInterface $hoadonchitiet, NhanVienRepositoryInterface $nhanvien, DichVuRepositoryInterface $dichvu)
+    public function __construct(SanPhamChiTietRepository $sanphamchitiet, CosoRepository $coso, HoaDonRepositoryInterface $hoadon, HoaDonChiTietRepositoryInterface $hoadonchitiet, NhanVienRepositoryInterface $nhanvien, DichVuRepositoryInterface $dichvu)
     {
         $this->nhanvien = $nhanvien;
         $this->dichvu = $dichvu;
         $this->hoadon = $hoadon;
         $this->hoadonchitiet = $hoadonchitiet;
         $this->coso = $coso;
+        $this->sanphamchitiet = $sanphamchitiet;
     }
 
     /**
@@ -68,11 +71,11 @@ class HoaDonChiTietController extends Controller
     {
         $hd = $this->hoadon->find($id);
         $coso = $this->coso->find($hd->idcoso);
-        $ThuNgan=$this->nhanvien->find($hd->idthungan);
-        $idlieutrinh=$hd->idlieutrinh;
-        $TenNhanVien=$this->nhanvien->find($hd->idnhanvien);
+        $ThuNgan = $this->nhanvien->find($hd->idthungan);
+        $idlieutrinh = $hd->idlieutrinh;
+        $TenNhanVien = $this->nhanvien->find($hd->idnhanvien);
         $hdct = $this->hoadonchitiet->getHoaDonCTByIdHoaDon($id);
-        return view("Admin.HoaDon.chitiet", ['hoadon'=>$hd,'coso' => $coso, 'hdct' => $hdct, 'thungan'=>$ThuNgan, 'TenNhanVien'=>$TenNhanVien, 'idlieutrinh'=>$idlieutrinh]);
+        return view("Admin.HoaDon.chitiet", ['hoadon' => $hd, 'coso' => $coso, 'hdct' => $hdct, 'thungan' => $ThuNgan, 'TenNhanVien' => $TenNhanVien, 'idlieutrinh' => $idlieutrinh]);
     }
 
     /**
@@ -108,4 +111,80 @@ class HoaDonChiTietController extends Controller
     {
         //
     }
+
+    public function getHoaDonChiTiet($id)
+    {
+        $hdct = $this->hoadonchitiet->getHoaDonCTByIdHoaDon($id);
+        return $hdct;
+    }
+
+    public function ThemSanPhamVaoHoaDon($id, $idsp)
+    {
+        $checkSpTonTai = $this->hoadonchitiet->CheckSpTonTai($id, $idsp);
+        if ($checkSpTonTai == false) {
+            $hdct = $this->hoadonchitiet->getHDCT($id, $idsp);
+            $soluong = ['soluong' => ($hdct[0]->soluong + 1)];
+            $this->hoadonchitiet->update($hdct[0]->id, $soluong);
+            $thongbao = [
+                "thongbao" => 'Thêm thành công'
+            ];
+            return $thongbao;
+        } else {
+            $sanphamct = $this->sanphamchitiet->find($idsp);
+            $hoadon = [
+                'idhoadon' => $id,
+                'idlienquan' => $sanphamct->id,
+                'type' => 1,
+                'soluong' => 1,
+                'dongiatruocgiamgia' => $sanphamct->dongia,
+                'dongiasaugiamgia' => $sanphamct->dongia
+            ];
+            $this->hoadonchitiet->create($hoadon);
+            $thongbao = [
+                "thongbao" => 'Thêm thành công'
+            ];
+            return $thongbao;
+        }
+
+    }
+
+    public function ThemDichVuVaoHoaDon($id, $iddichvu)
+    {
+        $checkDVTonTai = $this->hoadonchitiet->CheckDVTonTai($id, $iddichvu);
+        if ($checkDVTonTai == false) {
+            $thongbao = [
+                "thongbao" => 'Dịch vụ đã tồn tại !!'
+            ];
+            return $thongbao;
+        } else {
+            $dv = $this->dichvu->find($iddichvu);
+            if ($dv->giamgia!="")
+            {
+               $khuyenmai= $dv->dongia - (($dv->dongia * $dv->giamgia) / 100);
+            }
+            else{
+                $khuyenmai=$dv->dongia;
+            }
+            $hoadon = [
+                'idhoadon' => $id,
+                'idlienquan' => $dv->id,
+                'type' => 0,
+                'soluong' => 1,
+                'dongiatruocgiamgia' => $dv->dongia,
+                'dongiasaugiamgia' =>$khuyenmai
+            ];
+            $this->hoadonchitiet->create($hoadon);
+            $thongbao = [
+                "thongbao" => 'Thêm dịch vụ thành công'
+            ];
+            return $thongbao;
+        }
+    }
+
+    public function CapNhatSoLuong($id, $idhdct, $soluong){
+        $sl=['soluong'=>$soluong];
+        $this->hoadonchitiet->update($idhdct, $sl);
+        return true;
+    }
+
 }
