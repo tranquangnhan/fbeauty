@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LieuTrinh;
 use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
@@ -60,9 +61,10 @@ class LieuTrinhController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LieuTrinh $request)
     {
-        // dd($request->trangthai);
+      
+        
         $trangThai = ($request->trangthai === "on") ? 1 : 0;
         $imgkhachhang = $this->uploadSingle($request->imgkhachhang);
         $data = [
@@ -72,12 +74,15 @@ class LieuTrinhController extends Controller
             'mota' => $request->mota,
             'ngay' => strtotime($request->ngay),
             'trangthai' => $trangThai,
-            'imgkhachhang' =>   $imgkhachhang,
+            'imgkhachhang' =>$imgkhachhang,
         ];
 
-       $res =  $this->LieuTrinhChiTiet->create($data);
-    
-        return redirect('quantri/lieutrinh/'.$request->id.'/edit');
+        $res = $this->LieuTrinhChiTiet->create($data);
+        if($res){
+            return redirect('quantri/lieutrinh/'.$request->id.'/edit');
+        }else{
+            // print_r($validate);
+        }
     }
 
     /**
@@ -104,7 +109,6 @@ class LieuTrinhController extends Controller
         $NhanVien =  $this->NhanVien->getAll();
         $DichVu =  $this->DichVu->getAll();
 
-        view()->share('URL_IMG',Controller::URL_IMG);
         view()->share('id',$id);
 
         return view("Admin.LieuTrinh.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu'));
@@ -123,12 +127,13 @@ class LieuTrinhController extends Controller
             case 'date':
                 // validate
                 $messsages = array(
+                    'value.required'=>'Bắt buộc phải nhập ngày',
                     'value.date'=>'Bạn nhập không đúng định dạng ngày',
                     'value.after'=>'Ngày nhập phải lớn hơn ngày hiện tại',
                 );
 
                 $request->validate([
-                    'value' => 'date|after:today'
+                    'value' => 'required|date|after:today'
                 ], $messsages);
               
                 $data= [
