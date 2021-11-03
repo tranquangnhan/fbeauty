@@ -391,7 +391,7 @@
                         <!--- Giảm Giá -->
                         <li>
                             <a href="javascript: void(0);">
-                            <i class="fas fa-house-user"></i>
+                                <i class="fas fa-percentage"></i>
                                 <span> Giảm Giá </span>
                                 <span class="menu-arrow"></span>
                             </a>

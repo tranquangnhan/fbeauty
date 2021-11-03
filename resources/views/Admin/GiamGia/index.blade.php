@@ -28,27 +28,50 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                         </div>
                                         <div class="modal-body">
-                                                {{-- <div class="form-group">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
                                                     <label for="">Tên Giảm Giá</label><span style="color:red;"> (*)</span>
                                                     <input type="text" name="name" class="form-control @error('name') border-error @enderror name" value="{{old('name')}}"  parsley-trigger="change" required
                                                         placeholder="Tên Giảm Giá" >
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="">Địa chỉ cụ thể</label><span style="color:red;"> (*)</span>
-                                                    <input type="text" name="diachi" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('diachi')}}"  parsley-trigger="change" required
-                                                        placeholder="Địa Chỉ Cụ Thể" >
-                                                </div> --}}
-                                                {{-- <div class="form-group">
-                                                    <label for="">  Chọn Tỉnh/Thành Phố</label><span style="color:red;"> (*)</span>
-                                                    <div>
-                                                    <select class="form-control input-sm m-bot15 choose city" name="city" id="city"  >
-                                                        <option value="">-----{{__('Chọn Thành Phố')}}-----</option>
-                                                        @foreach($city as $key => $ci)
-                                                        <option value="{{$ci->matp}}">{{$ci->name_city}}</option>
-                                                        @endforeach
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
+                                                    <input type="text" name="ma" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('ma')}}"  parsley-trigger="change" required
+                                                        placeholder="Mã Giảm Giá" >
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Khoảng Giá Từ </label><span style="color:red;"> (*)</span>
+                                                    <input type="number" name="number" class="form-control @error('name') border-error @enderror name" value="{{old('number')}}"  parsley-trigger="change" required
+                                                        placeholder="Khoảng Giá Từ " >
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Khoảng Giá Tối Đa</label><span style="color:red;"> (*)</span>
+                                                    <input type="number" name="max" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('max')}}"  parsley-trigger="change" required
+                                                        placeholder="Khoảng Giá Tối Đa" >
+                                                </div>
+                                            </div>
+                                             <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Loại Giảm Giá </label><span style="color:red;"> (*)</span>
+                                                    <select name="loai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{old('loai')}}" parsley-trigger="change">
+                                                        <option  value="0">Giảm Theo Giá</option>
+                                                        <option  value="1">Giảm Theo %</option>
                                                     </select>
                                                 </div>
-                                                </div> --}}
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Ngày Tạo</label><span style="color:red;"> (*)</span>
+                                                    <input type="date" name="ngaytao" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('max')}}"  parsley-trigger="change" required
+                                                        placeholder="Khoảng Giá Tối Đa" >
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Ngày Hết Hạn</label><span style="color:red;"> (*)</span>
+                                                    <input type="date" name="ngayhethan" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('max')}}"  parsley-trigger="change" required
+                                                        placeholder="Khoảng Giá Tối Đa" >
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Huỷ</button>
@@ -61,35 +84,48 @@
 
                         <table class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
-                                    <tr>
+                                    <tr class="text-center">
                                         <th width="5%">STT</th>
-                                        <th width="10%">Tên Giảm Giá</th>
-                                        <th width="11%">Mã Giảm Giá</th>
-                                        <th width="11%">Giảm Giá Từ</th>
-                                        <th width="11%">Giảm Giá đến</th>
-                                        <th width="11%">Loại Giảm Giá</th>
-                                        <th width="11%">Ngày Tạo Mã</th>
-                                        <th width="11%">Ngày Hết Hạn</th>
-                                        <th width="11%">Hành Động</th>
+                                        <th width="11%">Tên Giảm Giá</th>
+                                        <th width="12%">Mã Giảm Giá</th>
+                                        <th width="12%">Giảm Giá Từ</th>
+                                        <th width="12%">Giảm Giá đến</th>
+                                        <th width="12%">Loại Giảm Giá</th>
+                                        <th width="12%">Ngày Tạo Mã</th>
+                                        <th width="12%">Ngày Hết Hạn</th>
+                                        <th width="12%">Hành Động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php $i=0; ?>
                                     @foreach ($data as $row)
                                     <?php $i++; ?>
-                                        <tr>
+                                        <tr class="text-center">
                                             <td>{{$i}}</td>
                                             <td class="" >{{$row->name}}</td>
                                             <td class="" >{{$row->ma}}</td>
-                                            <td class="" >{{$row->number}}</td>
-                                            <td class="" >{{$row->max}}</td>
-                                            <td class="" >{{$row->loai}}</td>
-                                            <td class="" >{{$row->ngaytao}}</td>
-                                            <td class="" >{{$row->ngayhethan}}</td>
+                                            <td class="" >{{number_format($row->number)}} VNĐ</td>
+                                            <td class="" >{{number_format($row->max)}} VNĐ</td>
+                                            <td class="" >
+                                                <?php
+                                                if($row->loai==0)
+                                                {
+                                                    ?>
+                                                   <span> Giảm Theo Giá </span>
+                                                    <?php
+                                                }else{
+                                                ?>
+                                                <span> Giảm Theo % </span>
+                                                <?php
+                                            }
+                                            ?>
+                                            </td>
+                                            <td class="" >{{date('d-m-Y',$row->ngaytao)}}</td>
+                                            <td class="" >{{date('d-m-Y',$row->ngayhethan)}}</td>
 
                                             <td class="d-flex">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('coso.edit',$row->id)}}" role="button"><i class="fa fa-edit"></i></a>
-                                                <form action="{{route('coso.destroy',$row->id)}}"  method="post">
+                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('giamgia.edit',$row->id)}}" role="button"><i class="fa fa-edit"></i></a>
+                                                <form action="{{route('giamgia.destroy',$row->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
                                                     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
+
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Province;
 use App\Models\Admin\GiamGiaModel;
@@ -30,7 +32,11 @@ class GiamGiaController extends Controller
     public function index()
     {
         $data = $this->GiamGia->getAll();
-        // $city = $this->City->find($data->idkhachhang);
+
+        // $mytime = Carbon::now();
+        // if(($mytime-1) < $mytime){
+
+        // }
 
         return view('Admin.GiamGia.index', compact('data'));
     }
@@ -47,10 +53,12 @@ class GiamGiaController extends Controller
 
         $data = [
             'name' => $request->name,
-            'diachi' => $request->diachi,
-            'tinh' => $request->city,
-            'quan' => $request->province,
-            'huyen' => $request->wards
+            'ma' => $request->ma,
+            'number' => $request->number,
+            'max' => $request->max,
+            'loai' => $request->loai,
+            'ngaytao' => strtotime($request->ngaytao),
+            'ngayhethan' =>strtotime($request->ngayhethan)
         ];
 
        $data= $this->GiamGia->create($data);
@@ -79,7 +87,7 @@ class GiamGiaController extends Controller
     public function edit($id)
     {
 
-        $data = $this->Coso->find($id);
+        $data = $this->GiamGia->find($id);
         //dd($data->tinh);
         return view('Admin.giamgia.edit', compact('data'));
 
@@ -97,11 +105,14 @@ class GiamGiaController extends Controller
 
         $data = [
             'name' => $request->name,
-            'diachi' => $request->diachi,
-            'tinh' => $request->city,
-            'quan' => $request->province,
-            'huyen' => $request->wards
+            'ma' => $request->ma,
+            'number' => $request->number,
+            'max' => $request->max,
+            'loai' => $request->loai,
+            'ngaytao' => strtotime($request->ngaytao),
+            'ngayhethan' =>strtotime($request->ngayhethan)
         ];
+
 
        $this->GiamGia->update($id,$data);
 
