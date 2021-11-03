@@ -24,5 +24,8 @@ interface DonHangChiTietRepositoryInterface
 
     public function getIdDonHangByIdDonHangChiTtiet($id);
 
-    public function findDonHangChiTietByIdDonHang($idDonHang);
+    public function findDonHangChiTietByIdSanPhamChiTiet($idDonHang);
+
+  
+
 }

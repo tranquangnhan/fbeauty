@@ -18,38 +18,41 @@ class SanPhamChiTietController extends Controller
         $this->DonHangChiTiet = $DonHangChiTiet;
     }
 
-    public function createDetailProduct(){
-
+    public function createDetailProduct()
+    {
         return view('Admin.SanPham.createDetail');
     }
 
-    public function postDetailProduct(SanPhamChiTiet $request){
-
+    public function postDetailProduct(SanPhamChiTiet $request)
+    {
         $idsanpham = $request->route('id');
         $ml = $request->ml;
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
-        if($ml[0] != null && $tonkho[0] != null && $dongia[0] != null){
-
-            for ($i=0; $i < count($ml); $i++) {
-
-                $data = [
-                    'idsanpham'=>$idsanpham,
-                    'ml'=>  $ml[$i],
-                    'tonkho'=>$tonkho[$i],
-                    'dongia'=>$dongia[$i]
-                ];
-                $this->SanPhamChiTiet->create($data);
+        if ($ml != null && $tonkho != null && $dongia != null) {
+            if(strlen($ml) > 4){
+                return  $this->handleError('Số ml không được lớn hơn 9999');
             }
-
-        }else{
+            $data = [
+                'idsanpham' => $idsanpham,
+                'ml' => $ml,
+                'tonkho' => $tonkho,
+                'dongia' => $dongia
+            ];
+           $res =  $this->SanPhamChiTiet->create($data);
+           if($res === false){
+                return $this->handleError('Thêm dữ liệu thất bại, vui lòng thử lại');
+           }else{
+            return redirect('quantri/sanpham/detail/'.$idsanpham.'/edit')->with('success', 'Thêm thành công');
+           }
+        } else {
             return $this->handleError('Dữ liệu không được để trống');
         }
-        return redirect('quantri/sanpham')->with('success','Thêm thành công');
     }
 
 
-    function editDetailProduct($id){
+    function editDetailProduct($id)
+    {
 
         $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
         return view('Admin.SanPham.editDetail',compact('data'));
@@ -66,22 +69,22 @@ class SanPhamChiTietController extends Controller
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
 
-        if($ml[0] == null || $tonkho[0] == null || $dongia[0] == null){
+        if ($ml[0] == null || $tonkho[0] == null || $dongia[0] == null) {
             return $this->handleError('Dữ liệu không được để trống');
         }
 
-        if(count($data) === count($request->dongia)){
+        if (count($data) === count($request->dongia)) {
 
-            for ($i=0; $i < count($ml); $i++) {
+            for ($i = 0; $i < count($ml); $i++) {
 
                 if(strlen($ml[$i]) > 4){
                     return  $this->handleError('Số ml không được lớn hơn 9999');
                 }
 
                 $data = [
-                    'ml'=>  $ml[$i],
-                    'tonkho'=>$tonkho[$i],
-                    'dongia'=>$dongia[$i]
+                    'ml' => $ml[$i],
+                    'tonkho' => $tonkho[$i],
+                    'dongia' => $dongia[$i]
                 ];
     
                 $res = $this->SanPhamChiTiet->update($id[$i],$data);
@@ -92,34 +95,56 @@ class SanPhamChiTietController extends Controller
             }
 
         }
-        else{
-            // $this->SanPhamChiTiet->delDetailByIdSp($id);
-
-            // for ($i=0; $i < count($ml); $i++) {
-
-            //     $data = [
-            //         'idsanpham'=> $id,
-            //         'ml'=>  $ml[$i],
-            //         'tonkho'=>$tonkho[$i],
-            //         'dongia'=>$dongia[$i]
-            //     ];
-
-            //     $this->SanPhamChiTiet->create($data);
-            // }
-        }
-
-
         
     }
   
     public function destroy($id)
     {
-        $hasDonHang = $this->DonHangChiTiet->findDonHangChiTietByIdDonHang($id);
+        $hasDonHang = $this->DonHangChiTiet->findDonHangChiTietByIdSanPhamChiTiet($id);
+        
         if(count($hasDonHang)>0){
-            return  $this->handleError('Sản phẩm đã tồn tại trong đơn hàng, không thể xoá');
+            $response = [
+                'type'=>'error',
+                'errorMessage'=>'Sản phẩm đã tồn tại trong đơn hàng, không thể xoá',
+                'errorCode'=>401
+            ];
+            return response()->json($response);
         }else{
-            $this->SanPhamChiTiet->delete($id);
+            $res = $this->SanPhamChiTiet->delete($id);
+            if($res){
+                $response = [
+                    'type'=>'success',
+                    'successMessage'=>'Đã xoá thành công!',
+                    'successCode'=>201
+                ];
+            }else{
+
+                $response = [
+                    'type'=>'error',
+                    'errorMessage'=>'Xoá thất bại, có lỗi!',
+                    'errorCode'=>401
+                ];
+            }
+
+            return response()->json($response);
+          
         }
     }
+
+
+        /**
+     *Lấy sp đến hóa đơn
+     */
+    public function getSanPhamToHoaDon()
+    {
+        $data = $this->SanPhamChiTiet->getSanPhamChiTietToHoaDon();
+        return $data;
+    }
+
+    public function getSanPhamChiTietToHoaDon($id, $idsp){
+        $data= $this->SanPhamChiTiet->getSanPhamChiTiet($idsp);
+        return $data;
+    }
+    // this is test
 
 }

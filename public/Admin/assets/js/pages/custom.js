@@ -1,5 +1,5 @@
 const pathUploadImg = 'http://127.0.0.1:8000/';
-$("#add-field").click(function() {
+$("#add-field").click(function () {
     $("#some_div").append(`
     <div class="box-detail"  >
         <div class="input-block " >
@@ -20,19 +20,17 @@ $("#add-field").click(function() {
                  <input type="number" name="dongia[]"  parsley-trigger="change" required
                 placeholder="Đơn giá sản phẩm" class="form-control" id="userName">
             </div>
-           
-
-            <input type="button" class="remove-field btn btn-danger" value="-">
+            
         </div>
     </div>
     `);
 });
 
-$(document).on("click", ".remove-field", function() {
+$(document).on("click", ".remove-field", function () {
     $(this).closest(".box-detail").remove();
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#key-table').DataTable(
         {
             "language": {
@@ -41,19 +39,19 @@ $(document).ready(function() {
                 "info": "Xem trang _PAGE_ / tổng _PAGES_",
                 "infoEmpty": "No records available",
                 "infoFiltered": "(filtered from _MAX_ total records)",
-                "search":"Tìm Kiếm",
+                "search": "Tìm Kiếm",
                 "paginate": {
-                    "first":      "Trang Đầu",
-                    "last":       "Trang Cuối",
-                    "next":       "Trang Sau",
-                    "previous":   "Trang Trước"
+                    "first": "Trang Đầu",
+                    "last": "Trang Cuối",
+                    "next": "Trang Sau",
+                    "previous": "Trang Trước"
                 },
             }
         }
     );
 });
 
-function showFullImage(event){
+function showFullImage(event) {
     const srcImage = event.target.getAttribute("src");
     const idLieuTrinh = $(event.target).prev().val();
     $('#myModal').modal('show')
@@ -62,25 +60,25 @@ function showFullImage(event){
 
 }
 
-function changeSrcImg(srcImage){
+function changeSrcImg(srcImage) {
     $("#imgshow").attr("src", srcImage);
 }
 
-function changImg(){
+function changImg() {
 
-   $("#inputfile").change(function (e) { 
-       e.preventDefault();
+    $("#inputfile").change(function (e) {
+        e.preventDefault();
 
-       var formData = new FormData();
-       const idlieutrinhgan = $("#idlieutrinhgan").val();
-       var file = $('#inputfile')[0].files;
+        var formData = new FormData();
+        const idlieutrinhgan = $("#idlieutrinhgan").val();
+        var file = $('#inputfile')[0].files;
 
-       formData.append('idlieutrinhgan',idlieutrinhgan);
-       formData.append('file',file[0]);
-       
-       $.ajaxSetup({
+        formData.append('idlieutrinhgan', idlieutrinhgan);
+        formData.append('file', file[0]);
+
+        $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN':  $('input[name="_token"]').val(),
+                'X-CSRF-TOKEN': $('input[name="_token"]').val(),
             },
         });
 
@@ -92,29 +90,29 @@ function changImg(){
             processData: false,
             success: function (response) {
 
-                changeSrcImg(pathUploadImg+'uploads/'+response.imgkhachhang);
-                $.each($(".idlieutrinh"), function (index, val) { 
-                    if(val.value == response.id) {
-                        $(val.nextElementSibling).attr("src", pathUploadImg+'uploads/'+response.imgkhachhang);
+                changeSrcImg(pathUploadImg + 'uploads/' + response.imgkhachhang);
+                $.each($(".idlieutrinh"), function (index, val) {
+                    if (val.value == response.id) {
+                        $(val.nextElementSibling).attr("src", pathUploadImg + 'uploads/' + response.imgkhachhang);
                     }
                 });
-            
+
             }
         });
 
-   });
+    });
 }
 changImg()
 
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     $.fn.editable.defaults.mode = 'inline';
-    $.fn.editable.defaults.ajaxOptions = {type: "PUT"};
+    $.fn.editable.defaults.ajaxOptions = { type: "PUT" };
 
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN':  $('input[name="_token"]').val(),
+            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
         },
     });
 
@@ -123,62 +121,37 @@ $(document).ready(function() {
         pk: 1,
         url: 'quantri/editnamedv',
         title: 'Enter username',
-        success: function(response) {
-            if(response.status == 'error') return response.msg;
+        success: function (response) {
+            if (response.status == 'error') return response.msg;
         },
-        error:function(err){
-           if(err.status === 500){
-             alert('Bạn chưa nhập nội dung!');
-           }
+        error: function (err) {
+            if (err.status === 500) {
+                alert('Bạn chưa nhập nội dung!');
+            }
         }
     });
 
     $('.date').editable({
-        format: 'yyyy-mm-dd',    
-        viewformat: 'dd/mm/yyyy',    
+        format: 'yyyy-mm-dd',
+        viewformat: 'dd/mm/yyyy',
         url: 'quantri/editnamedv',
         title: 'Enter date',
-        success: function(response) {
-            if(response.status == 'error') return response.msg; 
+        success: function (response) {
+            if (response.status == 'error') return response.msg;
         },
-        error:function(err){
-           if(err.responseText){
-               alert(JSON.parse(err.responseText).errors.value[0])
-           }
+        error: function (err) {
+            if (err.responseText) {
+                alert(JSON.parse(err.responseText).errors.value[0])
+            }
         }
     });
 
 });
 
 
- async function delLieuTrinh(id){
 
-    var formData = new FormData();
-    
-    formData.append('id',id);
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN':  $('input[name="_token"]').val(),
-        },
-    });
 
-    if(check){
-        await $.ajax({
-            type: "POST",
-            url: "quantri/edittrangthailieutrinh",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                console.log(response)
-            }
-        });
-
-    }
-   
-}
-
-async function checkDelete(text) { 
+async function checkDelete() {
 
     return await Swal.fire({
         title: 'Bạn có chắc chắn không?',
@@ -188,16 +161,67 @@ async function checkDelete(text) {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Đồng Ý',
         cancelButtonText: 'Huỷ'
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire(
-                'Đã xoá!',
-                'Xoá thành công!',
-                'success'
-              )
             return true;
-        }else{
+        } else {
             return false;
         }
-      })
- }
+    })
+}
+
+async function iconfirm(e) {
+    var r = confirm("Bạn có chắc chắn xoá");
+    if (r == true) {
+
+        return true;
+    }   
+    else {
+        return false;
+    }
+}
+
+function alertMessage(type, title, message) {
+    Swal.fire(
+        title,
+        message,
+        type
+    )
+}
+
+async function deleteLieutrinh(id, e) {
+    e.preventDefault();
+    const check = await checkDelete('Bạn có chắc không');
+    if (check) {
+        var formData = new FormData();
+
+        formData.append('idchitiet', id);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+            },
+        });
+
+        if (check) {
+            await $.ajax({
+                type: "POST",
+                url: "quantri/sanpham/detail/" + id + "/del",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.type === 'error') {
+                        alertMessage('error', 'Không thể xoá!', response.errorMessage)
+                    } else {
+
+                        alertMessage('success', 'Xoá Thành Công!', response.successMessage)
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1000)
+                    }
+                }
+            });
+
+        }
+    }
+}

@@ -37,4 +37,19 @@ class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietR
         return $this->model->where('idsanpham',"=",$id)->get();
     }
 
+    public function getSanPhamChiTietToHoaDon(){
+        return $this->model->select('sanphamchitiet.*', 'sanpham.name')
+            ->join('sanpham', 'sanphamchitiet.idsanpham', '=', 'sanpham.id')
+            ->orderBy('sanphamchitiet.idsanpham', 'desc')
+            ->get();
+    }
+
+    public function getSanPhamChiTiet($idsp){
+        return $this->model->select('sanphamchitiet.*', 'sanpham.name')
+            ->join('sanpham', 'sanphamchitiet.idsanpham', '=', 'sanpham.id')
+            ->where('sanphamchitiet.id', '=', $idsp)
+            ->get();
+    }
+
+  
 }

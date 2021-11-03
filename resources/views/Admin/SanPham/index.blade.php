@@ -12,9 +12,24 @@
                 <div class="col-12">
                     <div class="card-box">
                         <h4 class="mt-0 header-title">Sản Phẩm</h4>
+                        
                         <p class="text-muted font-14 mb-3">
                         Tất cả sản phẩm có trong cửa hàng.
                         </p>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                           
+                                 @endif
+                            </div>
+                        </div>
                         <table id="key-table" class="table table-hover table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
@@ -40,7 +55,7 @@
                                             <form action="{{route('sanpham.destroy',$item->id)}}"  method="post">
                                                 @csrf
                                                 {!!method_field('delete')!!}
-                                                <button type="submit" class="btn btn-danger"><i class=" dripicons-trash"></i></button>
+                                                <button  onclick="return iconfirm()" type="submit"  class="btn btn-danger"><i class=" dripicons-trash"></i></button>
                                             </form>
                                         </td>
                                     </tr>
