@@ -115,6 +115,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('hoadon/{id}/edit/themsanpham/{idsp}',[HoaDonChiTietController::class, 'ThemSanPhamVaoHoaDon']);
     Route::get('hoadon/{id}/edit/themdichvu/{iddv}',[HoaDonChiTietController::class, 'ThemDichVuVaoHoaDon']);
     Route::get('hoadon/{id}/edit/capnhatsoluong/{idhdct}/soluong/{soluong}',[HoaDonChiTietController::class, 'CapNhatSoLuong']);
+    Route::get('hoadon/{id}/edit/huygiamgia/{tien}',[HoaDonChiTietController::class, 'HuyGiamGia']);
 });
 
 Route::group(['prefix' => '/'], function (){

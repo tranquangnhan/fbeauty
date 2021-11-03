@@ -162,16 +162,18 @@ class HoaDonController extends Controller
         }
     }
 
-    public function CapNhatGia($id, $tien, $tongtien){
-        $tong=[
-            'tongtientruocgiamgia'=>$tien,
-            'tongtiensaugiamgia'=>$tongtien
+    public function CapNhatGia($id, $tien, $tongtien)
+    {
+        $tong = [
+            'tongtientruocgiamgia' => $tien,
+            'tongtiensaugiamgia' => $tongtien
         ];
         $this->hoadon->update($id, $tong);
         return true;
     }
 
-    public function XoaHoaDonChiTiet($id, $idhdct){
+    public function XoaHoaDonChiTiet($id, $idhdct)
+    {
         $this->hoadonchitiet->delete($idhdct);
         $thongbao = [
             "thongbao" => 'Xóa thành công'

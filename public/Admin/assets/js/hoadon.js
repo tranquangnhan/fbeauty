@@ -47,7 +47,7 @@ function ShowHoaDon(res) {
         }
         sp += '<tr class="bg-light pb-5" style=" box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">\n' +
             '<th scope="row">' + namesp.responseJSON[0].name.substring(0, 40) + ' ' + mota + '</th>\n' +
-            '<td class="w-15"><input type="number" id="soluong'+res[i].id+'" onkeyup="UPdateSL('+res[i].id+')" min="0" class="w-75" value="' + res[i].soluong + '"></td>\n' +
+            '<td class="w-15"><input type="number" id="soluong' + res[i].id + '" onkeyup="UPdateSL(' + res[i].id + ')" min="0" class="w-75" value="' + res[i].soluong + '"></td>\n' +
             '<td>' + res[i].dongiasaugiamgia.toLocaleString() + '</td>\n' +
             '<td>' + (res[i].dongiasaugiamgia * res[i].soluong).toLocaleString() + '</td>\n' +
             '<td><button onclick="XoaHDCT(' + res[i].id + ')" class="bg-primary p-1 border-radius-1" style="border-radius: 5px; outline: none; border: none;" data-toggle="tooltip" data-placement="right" title="Xóa"><i class="fa fa-trash" style="color: #ffffff"></i></button></td>\n' +
@@ -64,11 +64,13 @@ function ShowHoaDon(res) {
             } else {
                 tiengiam = giamgia.responseJSON["number"];
             }
-            tenmagiam = giamgia.responseJSON["name"];
+            tenmagiam = giamgia.responseJSON["name"] + ' <button onclick="HuyCode()" class="bg-primary p-1 border-radius-1" style="border-radius: 5px; outline: none; border: none;" data-toggle="tooltip" data-placement="right" title="Hủy mã">Hủy</button>';
         } else {
             tiengiam = 0;
             tenmagiam = 'Hóa đơn của bạn không đủ ' + responseJSON["max"].toLocaleString() + 'để áp dụng mã';
         }
+    } else {
+        tenmagiam = 'Không có';
     }
 
     document.getElementById('ShowHoaDon').innerHTML = sp;
@@ -125,7 +127,7 @@ function ShowDichVu(res) {
     for (let i = 0; i < res.length; i++) {
         span += '<li class="list-group-item row" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">\n' +
             '<span class="float-left col-10 pl-0">' + res[i].name + '' +
-            '<p>Giá: <strong>' + (res[i].dongia - ((res[i].dongia * res[i].giamgia)/100)).toLocaleString() + '</strong> VND</p>' +
+            '<p>Giá: <strong>' + (res[i].dongia - ((res[i].dongia * res[i].giamgia) / 100)).toLocaleString() + '</strong> VND</p>' +
             '</span>\n' +
             '<span class=" col-2 float-right" onclick="GetDichVu(' + res[i].id + ')"><i class="fa fa-plus circle-icon" data-toggle="tooltip" data-placement="right" title="Thêm"></i></span>\n' +
             '</li>';
@@ -302,10 +304,10 @@ function XoaHDCT(id) {
 }
 
 function UPdateSL(id) {
-    var soluong=document.getElementById("soluong"+id).value;
-    if (soluong!="" && soluong>0 && soluong<=100){
+    var soluong = document.getElementById("soluong" + id).value;
+    if (soluong != "" && soluong > 0 && soluong <= 100) {
         $.ajax({
-            url: document.URL + '/capnhatsoluong/' + id +'/soluong/'+soluong,
+            url: document.URL + '/capnhatsoluong/' + id + '/soluong/' + soluong,
             type: 'GET',
             async: false,
             dataType: 'json',
@@ -316,4 +318,34 @@ function UPdateSL(id) {
         HoaDon();
     }
 
+}
+
+function HuyCode() {
+    var tien = document.getElementById('thanhtien').innerText;
+    var x = confirm("Bạn chắn chắn muốn hủy mã này ?");
+    if (x) {
+        $.ajax({
+            url: document.URL + '/huygiamgia/' + tien.replaceAll(',', ''),
+            type: 'GET',
+            async: false,
+            dataType: 'json',
+            data: {
+                thanhtien: tien
+            },
+            success: function (respon) {
+                iziToast.success({
+                    title: respon.thongbao,
+                    message: '',
+                    position: 'bottomRight',
+                    backgroundColor: 'green',
+                    titleColor: 'white',
+                    messageColor: 'white',
+                    iconColor: 'white',
+                });
+            }
+        });
+        HoaDon();
+    } else {
+        return false;
+    }
 }

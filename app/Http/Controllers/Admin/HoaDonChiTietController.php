@@ -158,12 +158,10 @@ class HoaDonChiTietController extends Controller
             return $thongbao;
         } else {
             $dv = $this->dichvu->find($iddichvu);
-            if ($dv->giamgia!="")
-            {
-               $khuyenmai= $dv->dongia - (($dv->dongia * $dv->giamgia) / 100);
-            }
-            else{
-                $khuyenmai=$dv->dongia;
+            if ($dv->giamgia != "") {
+                $khuyenmai = $dv->dongia - (($dv->dongia * $dv->giamgia) / 100);
+            } else {
+                $khuyenmai = $dv->dongia;
             }
             $hoadon = [
                 'idhoadon' => $id,
@@ -171,7 +169,7 @@ class HoaDonChiTietController extends Controller
                 'type' => 0,
                 'soluong' => 1,
                 'dongiatruocgiamgia' => $dv->dongia,
-                'dongiasaugiamgia' =>$khuyenmai
+                'dongiasaugiamgia' => $khuyenmai
             ];
             $this->hoadonchitiet->create($hoadon);
             $thongbao = [
@@ -181,10 +179,21 @@ class HoaDonChiTietController extends Controller
         }
     }
 
-    public function CapNhatSoLuong($id, $idhdct, $soluong){
-        $sl=['soluong'=>$soluong];
+    public function CapNhatSoLuong($id, $idhdct, $soluong)
+    {
+        $sl = ['soluong' => $soluong];
         $this->hoadonchitiet->update($idhdct, $sl);
         return true;
+    }
+
+    public function HuyGiamGia($id, $tien)
+    {
+        $tien = ['tongtiensaugiamgia' => $tien, 'idgiamgia' => null];
+        $this->hoadon->update($id, $tien);
+        $thongbao = [
+            "thongbao" => 'Hủy giảm giá thành công'
+        ];
+        return $thongbao;
     }
 
 }
