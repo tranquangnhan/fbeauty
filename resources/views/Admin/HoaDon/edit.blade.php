@@ -76,7 +76,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="">Mã giảm giá hóa đơn:</td>
-                                                <td class="float-right" id="magiamgia">Không có</td>
+                                                <td class="float-right" id="magiamgia"></td>
                                             </tr>
                                             <tr>
                                                 <td class="">Giảm:</td>
@@ -94,8 +94,8 @@
                                 <hr>
                                 <div class="d-print-none">
                                     <div class="float-right">
-                                        <a href="javascript:window.print()"
-                                           class="btn btn-dark waves-effect waves-light"><i class="fa fa-print"></i></a>
+                                        <a href="{{route('hoadonchitiet.show', $hoadon->id)}}"
+                                           class="btn btn-dark waves-effect waves-light">In hóa đơn<i class="fa fa-print"></i></a>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
