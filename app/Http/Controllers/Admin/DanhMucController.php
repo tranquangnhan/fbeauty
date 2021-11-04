@@ -7,6 +7,7 @@ use App\Repositories\DanhMuc\DanhMucRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\DanhMuc;
+use App\Http\Requests\DanhMucEdit;
 
 class DanhMucController extends Controller
 {
@@ -44,10 +45,11 @@ class DanhMucController extends Controller
      */
     public function store(DanhMuc $request)
     {
-        $validated = $request->validated();
 
+        $img =  $this->uploadSingle($request->img);
         $data = [
             'name'=> $request->name,
+            'img'=> $img,
             'slug'=>Str::slug($request->name),
             'loai'=>$request->loai
         ];
@@ -86,16 +88,18 @@ class DanhMucController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DanhMuc $request, $id)
+    public function update(DanhMucEdit $request, $id)
     {
-
-        $validated = $request->validated();
-
         $data = [
             'name'=> $request->name,
             'slug'=>Str::slug($request->name),
             'loai'=>$request->loai
         ];
+
+        if($request->img){
+            $img =  $this->uploadSingle($request->img);
+            $data['img'] = $img;
+        }
 
         $this->DanhMuc->update($id,$data);
         

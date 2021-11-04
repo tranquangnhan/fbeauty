@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                         <h4 class="page-title">Liệu Trình Chi Tiết</h4>
-
+                   
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Trang</a></li>
@@ -22,6 +22,21 @@
                         </div>
 
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+               
+                
+                     @endif
                 </div>
             </div>
             <!-- end page title -->
@@ -33,7 +48,7 @@
                             <div class="time-show first">
                                 <a  data-toggle="modal" data-target="#myModal2" class="btn btn-primary width-lg" >Thêm Mới</a>
                             </div>
-                        
+
                             <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -56,7 +71,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-    
+
                                                 <div class="form-group">
                                                     <select class="form-control select2" name="iddichvu">
                                                         @foreach ($DichVu as $item)
@@ -75,7 +90,7 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
-                                                        <input class="form-control" placeholder="Nhập nội dung" id="example-date" type="text" name="mota">
+                                                        <textarea class="form-control" rows="5" id="example-textarea" placeholder="Nhập nội dung" name="mota"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,11 +117,11 @@
                                                 </button>
                                             </form>
                                             <div class="col-lg-3 center @if($loop->index % 2 == 0) order-1 @else order-2 @endif">
-                                                <input type="hidden" value="{{$item->idlieutrinhchitiet}}" id="idlieutrinhchitiet" class="idlieutrinhchitiet">
-                                                <img onclick="showFullImage(event)" class="imglieutrinh" src="{{ asset($URL_IMG.$item->imgkhachhang) }}" alt="">
+                                                <input type="hidden" value="{{$item->idlieutrinhchitiet}}" id="idlieutrinhgan" class="idlieutrinhchitiet">
+                                                <img onclick="showFullImage(event)" class="imglieutrinh" src="{{asset($URL_IMG.$item->imgkhachhang) }}" alt="">
                                             </div>
                                             <div class="col-lg-9 @if($loop->index % 2 == 0) order-2 @else order-1 @endif">
-                                              
+
                                                 <div class="panel-body">
                                                     @if ($item->trangthai == 0)
                                                      <span class="arrow-alt"></span>
@@ -120,11 +135,11 @@
                                                         <button class="updatelieutrinhct" id="update{{$item->idlieutrinhchitiet}}" type="submit"></button>
                                                     </form>
                                                     @csrf
-                                                    <p class="timeline-date text-muted"><strong>NV: ({{$item->tennv}})</strong></p> 
+                                                    <p class="timeline-date text-muted"><strong>NV: ({{$item->tennv}})</strong></p>
                                                     <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
                                                     <p class="timeline-date text-muted date" title="Click để sửa" id="date" data-value="{{date('d-m-Y',$item->ngay)}}" data-format="DD-MM-YYYY" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="{{$item->idlieutrinhchitiet}}" ><small>{{date('d-m-Y',$item->ngay)}}</small>
                                                     </p>
-                                                    <p class="mota" id="mota" title="Click để sửa" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>
+                                                    <p class="mota" id="mota" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>
                                                     <div>
                                                     </div>
                                                 </div>
@@ -134,12 +149,12 @@
                                 </div>
                             </article>
                         @endforeach
-                        
+
                     </div>
                 </div>
             </div>
-            <!-- end row -->        
-            
+            <!-- end row -->
+
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->
@@ -149,7 +164,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                   2016 - 2020 &copy; Adminto theme by <a href="">Coderthemes</a> 
+                   2016 - 2020 &copy; Adminto theme by <a href="">Coderthemes</a>
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-right footer-links d-none d-sm-block">

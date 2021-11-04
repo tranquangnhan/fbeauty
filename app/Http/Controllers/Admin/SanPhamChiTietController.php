@@ -4,100 +4,147 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SanPhamChiTiet;
+use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
-use Illuminate\Http\Request;
+
 
 class SanPhamChiTietController extends Controller
 {
     private $SanPhamChiTiet;
-
-    public function __construct(SanPhamChiTietRepository $SanPhamChiTiet)
+    private $DonHangChiTiet;
+    public function __construct(SanPhamChiTietRepository $SanPhamChiTiet,DonHangChiTietRepository $DonHangChiTiet)
     {
         $this->SanPhamChiTiet = $SanPhamChiTiet;
+        $this->DonHangChiTiet = $DonHangChiTiet;
     }
 
-    public function createDetailProduct(){
-
+    public function createDetailProduct()
+    {
         return view('Admin.SanPham.createDetail');
     }
 
-    public function postDetailProduct(SanPhamChiTiet $request){
-
+    public function postDetailProduct(SanPhamChiTiet $request)
+    {
         $idsanpham = $request->route('id');
         $ml = $request->ml;
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
-        if($ml[0] != null && $tonkho[0] != null && $dongia[0] != null){
-
-            for ($i=0; $i < count($ml); $i++) {
-
-                $data = [
-                    'idsanpham'=>$idsanpham,
-                    'ml'=>  $ml[$i],
-                    'tonkho'=>$tonkho[$i],
-                    'dongia'=>$dongia[$i]
-                ];
-                $this->SanPhamChiTiet->create($data);
+        if ($ml != null && $tonkho != null && $dongia != null) {
+            if(strlen($ml) > 4){
+                return  $this->handleError('Số ml không được lớn hơn 9999');
             }
-
-        }else{
+            $data = [
+                'idsanpham' => $idsanpham,
+                'ml' => $ml,
+                'tonkho' => $tonkho,
+                'dongia' => $dongia
+            ];
+           $res =  $this->SanPhamChiTiet->create($data);
+           if($res === false){
+                return $this->handleError('Thêm dữ liệu thất bại, vui lòng thử lại');
+           }else{
+            return redirect('quantri/sanpham/detail/'.$idsanpham.'/edit')->with('success', 'Thêm thành công');
+           }
+        } else {
             return $this->handleError('Dữ liệu không được để trống');
         }
-        return redirect('quantri/sanpham')->with('success','Thêm thành công');
     }
 
 
-    function editDetailProduct($id){
+    function editDetailProduct($id)
+    {
 
         $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
-
         return view('Admin.SanPham.editDetail',compact('data'));
     }
 
 
 
-    function updateDetailProduct(SanPhamChiTiet $request, $id){
-        $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
+    function updateDetailProduct(SanPhamChiTiet $request, $idsp){
+
+        $id = $request->id;
+        $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($idsp);
+
         $ml = $request->ml;
         $tonkho = $request->tonkho;
         $dongia = $request->dongia;
 
-        if($ml[0] == null || $tonkho[0] == null || $dongia[0] == null){
+        if ($ml[0] == null || $tonkho[0] == null || $dongia[0] == null) {
             return $this->handleError('Dữ liệu không được để trống');
         }
 
-        if(count($data) === count($request->dongia)){
+        if (count($data) === count($request->dongia)) {
 
-            for ($i=0; $i < count($ml); $i++) {
+            for ($i = 0; $i < count($ml); $i++) {
 
-                $data = [
-                    'ml'=>  $ml[$i],
-                    'tonkho'=>$tonkho[$i],
-                    'dongia'=>$dongia[$i]
-                ];
-
-                $this->SanPhamChiTiet->updateDetailByIdSp($id,$data);
-
-            }
-
-        }else{
-            $this->SanPhamChiTiet->delDetailByIdSp($id);
-
-            for ($i=0; $i < count($ml); $i++) {
+                if(strlen($ml[$i]) > 4){
+                    return  $this->handleError('Số ml không được lớn hơn 9999');
+                }
 
                 $data = [
-                    'idsanpham'=> $id,
-                    'ml'=>  $ml[$i],
-                    'tonkho'=>$tonkho[$i],
-                    'dongia'=>$dongia[$i]
+                    'ml' => $ml[$i],
+                    'tonkho' => $tonkho[$i],
+                    'dongia' => $dongia[$i]
                 ];
-
-                $this->SanPhamChiTiet->create($data);
+    
+                $res = $this->SanPhamChiTiet->update($id[$i],$data);
             }
+            if($res) {
+              
+                return redirect('quantri/sanpham')->with('success','Sửa thành công');
+            }
+
         }
+        
+    }
+  
+    public function destroy($id)
+    {
+        $hasDonHang = $this->DonHangChiTiet->findDonHangChiTietByIdSanPhamChiTiet($id);
+        
+        if(count($hasDonHang)>0){
+            $response = [
+                'type'=>'error',
+                'errorMessage'=>'Sản phẩm đã tồn tại trong đơn hàng, không thể xoá',
+                'errorCode'=>401
+            ];
+            return response()->json($response);
+        }else{
+            $res = $this->SanPhamChiTiet->delete($id);
+            if($res){
+                $response = [
+                    'type'=>'success',
+                    'successMessage'=>'Đã xoá thành công!',
+                    'successCode'=>201
+                ];
+            }else{
+
+                $response = [
+                    'type'=>'error',
+                    'errorMessage'=>'Xoá thất bại, có lỗi!',
+                    'errorCode'=>401
+                ];
+            }
+
+            return response()->json($response);
+          
+        }
+    }
 
 
-        return redirect('quantri/sanpham')->with('success','Sửa thành công');
+        /**
+     *Lấy sp đến hóa đơn
+     */
+    public function getSanPhamToHoaDon()
+    {
+        $data = $this->SanPhamChiTiet->getSanPhamChiTietToHoaDon();
+        return $data;
+    }
+
+    public function getSanPhamChiTietToHoaDon($id, $idsp){
+        $data= $this->SanPhamChiTiet->getSanPhamChiTiet($idsp);
+        return $data;
     }
     // this is test
+
 }

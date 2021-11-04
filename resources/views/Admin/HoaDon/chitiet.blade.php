@@ -20,7 +20,7 @@
                             <div class="panel-body">
                                 <div class="clearfix">
                                     <div class="float-left">
-                                        <p style="font-size: 22pt;">Hóa đơn FBeauty</p>
+                                        <p style="font-size: 22pt;">Hóa đơn FBeauty </p>
                                     </div>
                                     <div class="float-right">
                                         <p style="font-size: 15pt;">Hóa đơn #<br>
@@ -53,8 +53,8 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        <td>{{$infolieutrinh[0]->ngaybatdau}}</td>
-                                                        <td>{{$infolieutrinh[0]->dukienketthuc}}</td>
+                                                        <td>{{date('d-m-Y',$infolieutrinh[0]->ngaybatdau)}}</td>
+                                                        <td>{{date('d-m-Y',$infolieutrinh[0]->dukienketthuc)}}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -83,6 +83,7 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
+                                        Chi tiết hóa đơn -->
                                         <div class="table-responsive">
                                             <table class="table mt-4">
                                                 <thead>
@@ -103,7 +104,6 @@
                                                         {
                                                         $tensp = \Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("sanphamchitiet.*", "sanpham.name AS TenSP")->join('sanpham', 'sanphamchitiet.idsanpham', '=', 'sanpham.id')->where('sanphamchitiet.id', '=', $hdchitiet->idlienquan)->get();
                                                         ?>
-                                                        Sản phẩm:
                                                         <td>{{$tensp[0]->TenSP}}</td>
                                                         <td>{{$tensp[0]->ml}} ml</td>
                                                         <?php
@@ -111,7 +111,7 @@
                                                         else{
                                                         $tendichvu = \Illuminate\Support\Facades\DB::table('dichvu')->select("*")->where('id', '=', $hdchitiet->idlienquan)->get();
                                                         ?>
-                                                        Dịch vụ:
+
                                                         <td>{{$tendichvu[0]->name}}</td>
                                                         <td>{{ substr($tendichvu[0]->motangan, 0, 25)}}...</td>
                                                         <?php
@@ -142,7 +142,7 @@
                                             <b>Tổng: </b> {{number_format($hoadon->tongtientruocgiamgia), ""}} VND</p>
                                         @if($hoadon->idgiamgia!="")
                                             <?php $magiam = \Illuminate\Support\Facades\DB::table('giamgia')->select("*")->where('id', '=', $hoadon->idgiamgia)->get();?>
-                                            <p class="text-right"><strong>Mã giảm giá: </strong> {{$magiam[0]->ma}}</p>
+                                            <p class="text-right"><strong>Mã giảm giá: </strong> {{$magiam[0]->name}}</p>
                                             <p class="text-right">
                                                 <strong>Giảm: </strong> {{number_format($magiam[0]->number), ""}} <?php echo ($magiam[0]->loai == \App\Http\Controllers\Controller::LOAIGIAM) ? '%' : 'VND';?>
                                             </p>

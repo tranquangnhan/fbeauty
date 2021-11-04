@@ -1,7 +1,7 @@
-<div id="modal-container">
+<div class="modal-container" id="modal-datlich">
     <div class="modal-background">
-        <div class="close-modal background-close"></div>
-        <div class="modal" style="width: 50%;height: auto;max-height: 90%;">
+        <div class="close-modal background-close" type-modal="modal-datlich"></div>
+        <div class="modal modal-main" style="width: 50%;height: auto;max-height: 90%;">
             <div class="noidung-modal h-100 w-100">
                 <div class="row h-100">
                     <div class="col-xl-12 p-0">
@@ -431,13 +431,10 @@
                     </div> --}}
                 </div>
 
-                <div class="close close-modal button-close-modal">
+                <div class="close close-modal button-close-modal" type-modal="modal-datlich">
                     x
                 </div>
             </div>
-            {{-- <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-                        <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-                    </svg> --}}
         </div>
     </div>
 </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SanPham;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\SanPham\SanPhamRepository;
+use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -15,10 +16,13 @@ class SanPhamController extends Controller
     private $SanPham;
     private $idloai = 1;
 
-    public function __construct(DanhMucRepository $DanhMuc,SanPhamRepository $SanPham)
+    public function __construct(DanhMucRepository $DanhMuc,
+    SanPhamRepository $SanPham,
+    SanPhamChiTietRepository $SanPhamChiTiet)
     {
         $this->DanhMuc = $DanhMuc;
         $this->SanPham = $SanPham;
+        $this->SanPhamChiTiet = $SanPhamChiTiet;
     }
 
     /**
@@ -130,8 +134,12 @@ class SanPhamController extends Controller
      */
     public function destroy($id)
     {
-        // check sản phẩm chi tiết
-        $this->SanPham->delete($id);
-        return redirect('quantri/sanpham')->with('success','Xoá thành công');
+        $hasChiTiet = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
+        if(count($hasChiTiet)>0){
+            return redirect('quantri/sanpham')->withErrors('Xoá không thành công, sản phẩm tồn tại sản phẩm chi tiết!');
+        }else{
+             $this->SanPham->delete($id);
+             return redirect('quantri/sanpham')->with('success','Xoá thành công!');
+        }
     }
 }
