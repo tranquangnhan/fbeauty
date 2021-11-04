@@ -46,7 +46,7 @@
     </main>
     @include('Site.components.footer')
     @include('Site.components.datlich')
-
+    @include('Site.components.modal-user')
 </body>
 
 </html>

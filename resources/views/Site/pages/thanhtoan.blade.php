@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="col-xl-4">
-                        <div class="header-text">Giá / Tồn kho</div>
+                        <div class="header-text">Giá sản phẩm</div>
                     </div>
                     <div class="col-xl-1">
                         <div class="header-text">Số lượng</div>
@@ -74,10 +74,6 @@
                                 <span class="giagiam">500,999 đ </span>
                                 <span class="gia left-bar">300,999 đ </span>
                                 <span class="left-bar dungtich"> 30ml</span>
-                            </div>
-
-                            <div class="tonkho mt-2">
-                                <span class="tonkho">Tồn kho: </span><span class="tonkho"> 305</span>
                             </div>
                         </div>
                     </div>
