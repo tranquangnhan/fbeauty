@@ -66,6 +66,7 @@
 <script src="{{ asset('Site/js') }}/bientoancuc.js"></script>
 <script src="{{ asset('Site/js') }}/main.js"></script>
 <script src="{{ asset('Site/js') }}/datlich.js"></script>
+<script src="{{ asset('Site/js') }}/authen.js"></script>
 
 {{-- Sweetalert 2 --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

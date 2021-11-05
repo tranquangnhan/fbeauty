@@ -94,8 +94,6 @@ $('.close-modal').click(function(){
     $('body').removeClass('modal-active');
 });
 
-
-
 var modalDatLichSlide = $('#modal-datlich-slide');
 $(modalDatLichSlide).owlCarousel({
     loop: true,
@@ -441,3 +439,4 @@ $('.custom-error').hover(function () {
         $("[error-of='"+dataShowError+"']").fadeOut(150);
     }
 );
+
