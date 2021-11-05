@@ -9,6 +9,7 @@ use App\Models\Admin\Province;
 use App\Models\Admin\GiamGiaModel;
 use App\Repositories\GiamGia\GiamGiaRepository;
 use Illuminate\Http\Request;
+use App\Http\Requests\GiamGia;
 
 class GiamGiaController extends Controller
 {
@@ -32,12 +33,7 @@ class GiamGiaController extends Controller
     public function index()
     {
         $data = $this->GiamGia->getAll();
-
-        // $mytime = Carbon::now();
-        // if(($mytime-1) < $mytime){
-
-        // }
-
+        $mytime = Carbon::now();
         return view('Admin.GiamGia.index', compact('data'));
     }
 
@@ -50,16 +46,26 @@ class GiamGiaController extends Controller
     public function store(Request $request)
     {
         // $validated = $request->validated();
+        $mytime = Carbon::now()->format('Y-m-d');
+    if($request->ngayhethan > $request->ngaytao){
+        if ($request->ngaytao >= $mytime) {
+            $data = [
+                'name' => $request->name,
+                'ma' => $request->ma,
+                'number' => $request->number,
+                'max' => $request->max,
+                'loai' => $request->loai,
+                'ngaytao' => strtotime($request->ngaytao),
+                'ngayhethan' =>strtotime($request->ngayhethan)
+            ];
+        } else {
+            return redirect('quantri/giamgia')->with('Vui lòng kiểm tra ngày tạo phải lớn hơn hoặc bằng ngày hiện tại');
+        }
+    } else {
+        return redirect('quantri/giamgia')->with('Vui lòng kiểm tra ngày tạo phải nhỏ hơn ngày hết hạn');
+    }
 
-        $data = [
-            'name' => $request->name,
-            'ma' => $request->ma,
-            'number' => $request->number,
-            'max' => $request->max,
-            'loai' => $request->loai,
-            'ngaytao' => strtotime($request->ngaytao),
-            'ngayhethan' =>strtotime($request->ngayhethan)
-        ];
+
 
        $data= $this->GiamGia->create($data);
         return redirect('quantri/giamgia')->with('success', 'Thêm thành công');
@@ -100,8 +106,9 @@ class GiamGiaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GiamGia $request, $id)
     {
+        $validated = $request->validated();
 
         $data = [
             'name' => $request->name,

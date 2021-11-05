@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
-                            <p class="mt-0 header-title btn btn-success">Lịch làm việc theo từng cơ sở</p>
+                            <p class="mt-0 header-title btn btn-primary">Lịch làm việc</p>
                             <div class="container">
                                 @if(session('thanhcong'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">

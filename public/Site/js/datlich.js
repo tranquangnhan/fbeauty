@@ -149,6 +149,7 @@ function loadGio(ngay, idNhanVien) {
             'idNhanVien': idNhanVien
         },
         success: function (respon) {
+            khungGio = respon;
             if (respon.success == true) {
                 var html = loopGetHTMLKhungGio(respon.lich, respon.ngay);
                 $('.list-option-khunggio .option-item').remove();
@@ -179,13 +180,13 @@ function rowHTMLGio(rowLich, ngay) {
     var html = ``;
     if (rowLich.coNhanVien == 'false' || rowLich.soKhachDaDat >= rowLich.soluongkhach || quaGio == true || !rowLich.trangthai == trangThaiLichSanSang) {
         html += `
-            <div class="option-item time-bg time-close">
+            <div class="option-item time-bg time-close" fa-data-id-lich="${rowLich.id}">
                 <div class="picktime" data-option-time="${rowLich.gio}">${rowLich.gio}</div>
             </div>
         `
     } else {
         html += `
-            <div class="option-item option-time time-bg">
+            <div class="option-item option-time time-bg" fa-data-id-lich="${rowLich.id}">
                 <div class="picktime" data-option-time="${rowLich.gio}">${rowLich.gio}</div>
             </div>
         `
@@ -259,7 +260,8 @@ function showDuLieuDatLich() {
     $('.check-phone').html(phoneNumber);
     $('.check-ngay').html(ngaySelected);
     $('.check-gio').html(timeSelected);
-    $('.check-coso').html(idCoSo);
+
+    $('.check-coso').html($('.value-coso').html());
     var listDichVuHTML = loopDichVuSelected();
     var listDichVuElement = $('.list-dichvu-selected');
     listDichVuElement.children().remove();
@@ -303,7 +305,7 @@ function rowDichVuSelected(dichVu) {
 function rowNhanVienPage4() {
     var html =
     `
-        <div class="img-1" style="width: 27%;">
+        <div class="img-1" style="width: 19%;">
             <img src="${rootUrlImage}${objectNhanVienSelected.imgUrl}" alt="">
         </div>
         <div class="">
@@ -410,4 +412,41 @@ var showLoading = function () {
 
 function resetModal() {
     location.reload();
+}
+
+function checkKhungGio(objectDatLich) {
+    if (khungGio != null && idCoSo == objectDatLich.idcoso) {
+        let ngayDatYMD = moment.unix(objectDatLich.thoiGianDat).format("YYYY-MM-DD");
+        if (ngayDatYMD == khungGio.ngay) {
+            timViTriVaClose(khungGio, objectDatLich);
+        }
+
+    }
+}
+
+function timViTriVaClose(khungGio, objectDatLich) {
+    let thoiGianDatHMS = moment.unix(objectDatLich.thoiGianDat).format("HH:mm:ss");
+    let arrLich = khungGio.lich;
+
+    arrLich.forEach(lichItem => {
+        if (thoiGianDatHMS == lichItem.gio) {
+            lichItem.soKhachDaDat++;
+            if (lichItem.soKhachDaDat >= lichItem.soluongkhach) {
+                checkVaCloseLich(lichItem.id);
+            }
+
+            if (nhanVienSelected == objectDatLich.idnhanvien) {
+                checkVaCloseLich(lichItem.id);
+            }
+        }
+    });
+}
+
+function checkVaCloseLich(idLich) {
+    let elementLich = $("[fa-data-id-lich='"+idLich+"']");
+    let hasClose = elementLich.hasClass('time-close');
+    if (hasClose == false) {
+        elementLich.addClass('time-close');
+        elementLich.removeClass('option-time');
+    }
 }

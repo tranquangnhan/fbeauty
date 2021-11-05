@@ -51,7 +51,7 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="">Khoảng Giá Từ </label><span style="color:red;"> (*)</span>
-                                                <input type="number" name="number" class="form-control @error('name') border-error @enderror name" value="{{$data->number}}"  parsley-trigger="change" required
+                                                <input type="number" name="number" class="form-control @error('number') border-error @enderror number" value="{{$data->number}}"  parsley-trigger="change" required
                                                     placeholder="Khoảng Giá Từ " >
                                             </div>
                                             <div class="form-group col-md-4">
@@ -64,20 +64,19 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="">Loại Giảm Giá </label><span style="color:red;"> (*)</span>
-                                                <select name="loai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->trangthai}}" parsley-trigger="change">
+                                                <select name="loai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('loai') border-error @enderror loai" value="{{$data->loai}}" parsley-trigger="change">
                                                     <option {{$data->loai == '0'? 'selected':''}} value="0">Giảm Theo Giá</option>
                                                     <option {{$data->loai == '1'? 'selected':''}} value="1">Giảm Theo %</option>
                                                 </select>
                                                 </div>
                                             <div class="form-group col-md-4">
                                                 <label for="">Ngày Tạo</label><span style="color:red;"> (*)</span>
-                                                <input type="date" name="ngaytao" class="form-control @error('diachi') border-error @enderror diachi" value="{{date('d-m-Y',$data->ngaytao)}}"  parsley-trigger="change" required
+                                                <input type="date" name="ngaytao" class="form-control @error('ngaytao') border-error @enderror ngaytao" value="{{$data->ngaytao}}"  parsley-trigger="change" required
                                                     placeholder="Khoảng Giá Tối Đa" >
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="">Ngày Hết Hạn</label><span style="color:red;"> (*)</span>
-                                                <input type="date" name="ngayhethan" class="form-control @error('diachi') border-error @enderror diachi" value="{{date('d-m-Y',$data
-                                                ->ngayhethan)}}"  parsley-trigger="change" required
+                                                <input type="date" name="ngayhethan" class="form-control @error('ngayhethan') border-error @enderror ngayhethan" value="{{$data->ngayhethan}}"  parsley-trigger="change" required
                                                     placeholder="Khoảng Giá Tối Đa" >
                                             </div>
                                         </div>

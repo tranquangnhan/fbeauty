@@ -8,5 +8,5 @@ use App\Repositories\RepositoryInterface;
 
 interface HoaDonRepositoryInterface extends RepositoryInterface
 {
-
+    public function ShowHoaDonByIdCoso($id);
 }

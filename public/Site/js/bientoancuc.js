@@ -1,7 +1,8 @@
 // URL //
-const getNhanVienByIdCoSoUrl = 'nhanviencuacoso/'; // nhanviencuacoso/id
-const getGioTheoThuUrl = 'getDataKhungGio/'; // getGio/{thu}
-const postDatLichUrl = 'datLich/';
+const serverNameUrl = 'http://127.0.0.1:8000/';
+const getNhanVienByIdCoSoUrl = serverNameUrl + 'nhanviencuacoso/'; // nhanviencuacoso/id
+const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/'; // getGio/{thu}
+const postDatLichUrl = serverNameUrl + 'datLich/';
 const rootUrlImage = '/Site/images/';
 // URL //
 
@@ -44,7 +45,7 @@ const elementListNhanVien = $('.list-nhanvien');
 
 const elementValueTime = $('.value-time');
 
-const trangThaiLichSanSang = 1;
+const trangThaiLichSanSang = 0;
 
 var totalPriceDichVu = 0;
 
@@ -69,6 +70,8 @@ var ngaySelected = todayDMY;
 var nhanVienSelected = 0;
 
 var timeSelected = '';
+
+var khungGio;
 
 var objectNhanVienSelected = {
     'id': '0',

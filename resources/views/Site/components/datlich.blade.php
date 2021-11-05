@@ -1,7 +1,7 @@
 <div id="modal-container">
     <div class="modal-background">
         <div class="close-modal background-close"></div>
-        <div class="modal" style="width: 50%;height: auto;">
+        <div class="modal" style="width: 50%;height: auto;max-height: 90%;">
             <div class="noidung-modal h-100 w-100">
                 <div class="row h-100">
                     <div class="col-xl-12 p-0">
@@ -19,14 +19,27 @@
 
                                         <form action="" class="fa-custom form-phone-number">
                                             <div class="div-phone-number">
-                                                <input type="number" id="phoneNumber" placeholder="Nhập số điện thoại của bạn">
+                                                <input type="text" id="phoneNumber" placeholder="Nhập số điện thoại của bạn">
                                             </div>
+                                            <div class="custom-error d-flex align-items-center" icon-error-of="phone">
+                                                <div class="custom-1">
+                                                    <div class="box-icon">
+                                                        <i class="fas fa-times"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="fa-custom-error-text d-flex align-items-center">
+                                                <div class="custom-error-text phone-error-text" error-of="phone">
+                                                    Không được bỏ trống
+                                                </div>
+                                            </div>
+
                                         </form>
 
                                         <div class="select-custom fa-custom select-coso">
                                             <div class="select-fa">
                                                 <div class="name-select d-flex align-items-center" data-mov="13">
-                                                    <div class="tendanhmuc value-coso" data-coso="0">
+                                                    <div class="tendanhmuc value-coso limit-text-row-1" data-coso="0">
                                                         Chọn cơ sở
                                                     </div>
                                                     <div class="icon-1">
@@ -36,20 +49,28 @@
 
                                                 <div class="list-option coso-fa" slide-mov="13">
                                                     @foreach ($listCoSo as $coSo)
-                                                        <div class="option-item coso-fa date-bg pickcoso">
-                                                            <div class="position-relative z-index-999 pickcoso-children" data-option-coso="{{ $coSo->id }}">{{ $coSo->name }}</div>
+                                                        <div class="option-item coso-fa date-bg pickcoso d-block">
+                                                            <div class="position-relative z-index-999 pickcoso-children d-flex" data-option-coso="{{ $coSo->id }}">
+                                                                <div class="d-inline-block" style="width: 11%;">
+                                                                    {{ $coSo->name }}:
+                                                                </div>
+                                                                <div class="d-inline-block">
+                                                                    {{ $coSo->diachi }}
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     @endforeach
 
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
 
 
                                     <div class="control-slide-datlich d-flex justify-content-end">
-                                        <button type="button" class="button-href-basic check-next-step">Xác nhận</button>
+                                        <button type="button" class="button-href-basic check-next-step">Tiếp theo <i class="fas fa-angle-right"></i>
+
+                                        </button>
                                     </div>
                                 </div>
 
@@ -131,7 +152,9 @@
                                     </div>
                                     <div class="control-slide-datlich d-flex align-items-center">
                                         <button type="button" class="button-href-basic prev-step mr-auto">Quay lại</button>
-                                        <button type="button" class="button-href-basic next-step">Tiếp theo</button>
+                                        <button type="button" class="button-href-basic next-step">Tiếp theo <i class="fas fa-angle-right"></i>
+
+                                        </button>
                                     </div>
                                 </div>
 
@@ -246,7 +269,9 @@
 
                                     <div class="control-slide-datlich d-flex">
                                         <button type="button" class="button-href-basic prev-step mr-auto">Quay lại</button>
-                                        <button type="button" class="button-href-basic next-step">Tiếp theo</button>
+                                        <button type="button" class="button-href-basic next-step">Tiếp theo <i class="fas fa-angle-right"></i>
+
+                                        </button>
                                     </div>
                                 </div>
 
@@ -416,3 +441,15 @@
         </div>
     </div>
 </div>
+<script>
+    window.laravel_echo_port='{{env("LARAVEL_ECHO_PORT")}}';
+</script>
+<script src="//{{ Request::getHost() }}:{{env('LARAVEL_ECHO_PORT')}}/socket.io/socket.io.js"></script>
+<script src="{{ url('/js/laravel-echo-setup.js') }}" type="text/javascript"></script>
+
+<script type="text/javascript">
+window.Echo.channel('laravel_database_datlich-channel')
+    .listen('.DatLichEvent', (data) => {
+        checkKhungGio(data.respon);
+});
+</script>

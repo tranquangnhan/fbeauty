@@ -16,7 +16,7 @@ use App\Repositories\KhachHang\KhachHangRepository;
 use App\Models\Admin\KhachHangModel;
 use App\Models\Admin\DatLichModel;
 use Carbon\Carbon;
-
+use App\Events\SendDatLich;
 class HomeController extends Controller
 {
     private $data = array();
@@ -59,20 +59,109 @@ class HomeController extends Controller
 
         $this->data = array(
             'listCoSo' => $listCoSo,
-            'listDanhMucDichVu' => $listDanhMucDichVu
+            'listDanhMucDichVu' => $listDanhMucDichVu,
+            'pathActive' => '',
         );
     }
 
     public function index() {
-        $sanPham = $this->SanPham->getAll();
-        $blog = $this->Blog->getBlog1();
-        $blog2 = $this->Blog->getBlog2();
+        $sanPham   = $this->SanPham->getAll();
+        $blog      = $this->Blog->getBlog1();
+        $blog2     = $this->Blog->getBlog2();
 
-        $this->data['sanPham'] = $sanPham;
-        $this->data['blog'] = $blog;
-        $this->data['blog2'] = $blog2;
+        $this->data['sanPham']  = $sanPham;
+        $this->data['blog']     = $blog;
+        $this->data['blog2']    = $blog2;
+        $this->data['pathActive']     = 'trang-chu';
 
-        return view("Site.home", $this->data);
+        return view("Site.pages.home", $this->data);
+    }
+
+    public function viewSanPham() {
+        $this->data['pathActive']       = 'san-pham';
+        $this->data['namePage']         = 'Sản phẩm';
+        $this->data['breadcrumbArray']  = [
+            ['link' => '', 'name' => 'Sản phẩm'],
+        ];
+
+        return view("Site.pages.sanpham", $this->data);
+    }
+
+    public function viewSanPhamChiTiet() {
+        $this->data['pathActive']          = 'san-pham';
+        $this->data['namePage']            = 'Sản phẩm chi tiết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '', 'name' => 'Tên sản phẩm'],
+        ];
+
+        return view("Site.pages.sanpham-chitiet", $this->data);
+    }
+
+    public function viewGioHang() {
+        $this->data['pathActive']          = 'san-pham';
+        $this->data['namePage']            = 'Giỏ hàng';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '', 'name' => 'Giỏ hàng'],
+        ];
+
+        return view("Site.pages.giohang", $this->data);
+    }
+
+    public function viewThanhToan() {
+        $this->data['pathActive']          = 'san-pham';
+        $this->data['namePage']            = 'Thanh toán';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '/gio-hang', 'name' => 'Giỏ hàng'],
+            ['link' => '', 'name' => 'Thanh toán'],
+        ];
+
+        return view("Site.pages.thanhtoan", $this->data);
+    }
+
+    public function viewBaiViet() {
+        $this->data['pathActive']          = 'bai-viet';
+        $this->data['namePage']            = 'Bài viết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/bai-viet', 'name' => 'Bài viết'],
+        ];
+
+        return view("Site.pages.baiviet", $this->data);
+    }
+
+    public function viewBaiVietChiTiet() {
+        $this->data['pathActive']          = 'bai-viet';
+        $this->data['namePage']            = 'Tên Bài viết';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/bai-viet', 'name' => 'Bài viết'],
+            ['link' => '', 'name' => 'Tên Bài viết'],
+        ];
+
+        return view("Site.pages.baivietchitiet", $this->data);
+    }
+
+    public function viewDichVu() {
+        $this->data['pathActive']          = 'dich-vu';
+        $this->data['namePage']            = 'Dịch Vụ';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '', 'name' => 'Dịch Vụ'],
+        ];
+
+        return view("Site.pages.dichvu", $this->data);
+    }
+
+    public function viewDichVuChiTiet() {
+        $this->data['pathActive']          = 'dich-vu';
+        $this->data['namePage']            = 'Dịch Vụ';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/dich-vu', 'name' => 'Dịch Vụ'],
+            ['link' => '', 'name' => 'Tên Dịch Vụ'],
+
+        ];
+
+        return view("Site.pages.dichvuchitiet", $this->data);
     }
 
     public function getNhanVienByIdCoSo(Request $request, $id) {
@@ -165,6 +254,10 @@ class HomeController extends Controller
                     if (!$datLich) {
                         $error = true;
                         $textMess = 'Đặt lịch không thành công vui lòng thử lại';
+                    } else {
+                        event(
+                            $e = new SendDatLich($datLich)
+                        );
                     }
                 }
 
@@ -355,7 +448,6 @@ class HomeController extends Controller
         $datLich->idnhanvien = $request->idNhanVien;
         $datLich->thoiGianDat = $request->thoiGianDat;
         $datLich->save();
-
         return $datLich;
     }
 }

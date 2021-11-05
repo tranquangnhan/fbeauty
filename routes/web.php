@@ -74,7 +74,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::post('lich/updateTime/{id}', [LichController::class, 'updateTime']);
     // quản lý cơ sở
     Route::resource('coso', CoSoController::class);
-   Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
+    Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
+    Route::get('coso/changecoso/{id}', [CoSoController::class,'changeCoSo']);
 
     Route::resource('donhang', DonHangController::class);
 
@@ -84,12 +85,54 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     // quản lý giảm giá
     Route::resource('giamgia', GiamGiaController::class);
 
+    Route::resource('lieutrinh', LieuTrinhController::class);
+
+    Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
+    Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
+
+    Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
+
+    /**
+    *1: Lấy DỊch vụ đến Hóa đơn
+     * 2: Lấy Sp chi tiết đến hóa Đơn
+     * 3: Lấy hóa đơn chi tiết
+     * 4: lấy sản phẩm chi tiết
+     * 5: Lấy dịch vụ
+     * 6: Lấy giảm giá
+     * 7: Xét điều kiện giảm giá
+     * 8:Cập nhật giá
+     * 9:Xóa
+     * 10:Thêm sản phẩm vào hóa đơn chi tiết
+     * 11:Thêm dịch vụ vào hóa đơn chi tiết
+     * 12: Cập nhật số lượng
+     */
+    Route::get('hoadon/{id}/edit/getDichVu',[DichVuController::class, 'getDichVuToHoaDon']);
+    Route::get('hoadon/{id}/edit/getSanPham',[SanPhamChiTietController::class, 'getSanPhamToHoaDon']);
+    Route::get('hoadon/{id}/edit/getHoaDonChiTiet',[HoaDonChiTietController::class, 'getHoaDonChiTiet']);
+    Route::get('hoadon/{id}/edit/sanphamchitiet/{idsp}',[SanPhamChiTietController::class, 'getSanPhamChiTietToHoaDon']);
+    Route::get('hoadon/{id}/edit/dichvu/{idsp}',[DichVuController::class, 'getDichVuByIdToHoaDon']);
+    Route::get('hoadon/{id}/edit/getgiamgia/{idgiamgia}',[HoaDonController::class, 'getGiamGiaToHoaDon']);
+    Route::get('hoadon/{id}/edit/discount/{name}/thanhtien/{tien}',[HoaDonController::class, 'ApDungGiamGia']);
+    Route::get('hoadon/{id}/edit/capnhatgia/{tien}/tongtien/{tongtien}',[HoaDonController::class, 'CapNhatGia']);
+    Route::get('hoadon/{id}/edit/xoahoadonchitiet/{idhdct}',[HoaDonController::class, 'XoaHoaDonChiTiet']);
+    Route::get('hoadon/{id}/edit/themsanpham/{idsp}',[HoaDonChiTietController::class, 'ThemSanPhamVaoHoaDon']);
+    Route::get('hoadon/{id}/edit/themdichvu/{iddv}',[HoaDonChiTietController::class, 'ThemDichVuVaoHoaDon']);
+    Route::get('hoadon/{id}/edit/capnhatsoluong/{idhdct}/soluong/{soluong}',[HoaDonChiTietController::class, 'CapNhatSoLuong']);
+    Route::get('hoadon/{id}/edit/huygiamgia/{tien}',[HoaDonChiTietController::class, 'HuyGiamGia']);
 });
 
 Route::group(['prefix' => '/'], function (){
     Route::get('trang-chu', [HomeController::class, "index"]);
+    Route::get('san-pham', [HomeController::class, "viewSanPham"]);
+    Route::get('san-pham/chi-tiet', [HomeController::class, "viewSanPhamChiTiet"]);
+    Route::get('gio-hang', [HomeController::class, "viewGioHang"]);
+    Route::get('thanh-toan', [HomeController::class, "viewThanhToan"]);
+    Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
+    Route::get('bai-viet/ten-bai-viet', [HomeController::class, "viewBaiVietChiTiet"]);
+    Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+    Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
-
 });
+

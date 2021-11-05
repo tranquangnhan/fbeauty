@@ -1,6 +1,7 @@
 @extends('Admin.LayoutAdmin')
 
 @section('content')
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
 <div class="content-page">
     <div class="content">
 
@@ -16,7 +17,7 @@
                         Đây là Giảm Giá.
                         </p>
                         <div>
-                             <button class="btn btn-primary waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Thêm Danh Mục</button>
+                             <button class="btn btn-primary waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Thêm Giảm Giá</button>
                         </div>
                         <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -36,38 +37,40 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
-                                                    <input type="text" name="ma" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('ma')}}"  parsley-trigger="change" required
+                                                    <input type="text" name="ma" class="form-control @error('ma') border-error @enderror ma" value="{{old('ma')}}"  parsley-trigger="change" required
                                                         placeholder="Mã Giảm Giá" >
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="">Khoảng Giá Từ </label><span style="color:red;"> (*)</span>
-                                                    <input type="number" name="number" class="form-control @error('name') border-error @enderror name" value="{{old('number')}}"  parsley-trigger="change" required
+                                                    <input type="number" name="number" class="form-control @error('number') border-error @enderror name" value="{{old('number')}}"  parsley-trigger="change" required
                                                         placeholder="Khoảng Giá Từ " >
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="">Khoảng Giá Tối Đa</label><span style="color:red;"> (*)</span>
-                                                    <input type="number" name="max" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('max')}}"  parsley-trigger="change" required
+                                                    <input type="number" name="max" class="form-control @error('max') border-error @enderror diachi" value="{{old('max')}}"  parsley-trigger="change" required
                                                         placeholder="Khoảng Giá Tối Đa" >
                                                 </div>
                                             </div>
                                              <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Ngày Tạo</label><span style="color:red;"> (*)</span>
+                                                    <input type="date" name="ngaytao" class="form-control @error('ngaytao') border-error @enderror ngaytao" value="{{old('ngaytao')}}"  parsley-trigger="change" required
+                                                        placeholder="Khoảng Giá Tối Đa" >
+                                                </div>
+
                                                 <div class="form-group col-md-4">
                                                     <label for="">Loại Giảm Giá </label><span style="color:red;"> (*)</span>
-                                                    <select name="loai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{old('loai')}}" parsley-trigger="change">
+                                                    <select name="loai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('loai') border-error @enderror loai" value="{{old('loai')}}" parsley-trigger="change">
                                                         <option  value="0">Giảm Theo Giá</option>
                                                         <option  value="1">Giảm Theo %</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="">Ngày Tạo</label><span style="color:red;"> (*)</span>
-                                                    <input type="date" name="ngaytao" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('max')}}"  parsley-trigger="change" required
-                                                        placeholder="Khoảng Giá Tối Đa" >
-                                                </div>
+
                                                 <div class="form-group col-md-6">
                                                     <label for="">Ngày Hết Hạn</label><span style="color:red;"> (*)</span>
-                                                    <input type="date" name="ngayhethan" class="form-control @error('diachi') border-error @enderror diachi" value="{{old('max')}}"  parsley-trigger="change" required
+                                                    <input type="date" name="ngayhethan" class="form-control @error('ngayhethan') border-error @enderror ngayhethan" value="{{old('ngayhethan')}}"  parsley-trigger="change" required
                                                         placeholder="Khoảng Giá Tối Đa" >
                                                 </div>
                                             </div>
@@ -163,4 +166,8 @@
 
 </div>
 
+
+@endsection
+@section('custom-javascript')
+    <script src="{{ asset('Admin/assets') }}/js/pages/giamgia.js"></script>
 @endsection

@@ -17,9 +17,7 @@ class HoaDonChiTietModel extends Model
         'soluong',
         'idlieutrinh',
         'idgiamgia',
-        'tongtientruocgiamgia',
-        'tongtiensaugiamgia',
-        'trangthai',
-        'ghichu'
+        'dongiatruocgiamgia',
+        'dongiasaugiamgia'
     ];
 }

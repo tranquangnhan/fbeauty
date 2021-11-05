@@ -18,6 +18,7 @@ class DonHangController extends Controller
 
     private $DonHang;
     private $khachHang;
+    private $GiamGia;
     private $DonHangChiTiet;
     /**
      * Display a listing of the resource.
@@ -28,6 +29,7 @@ class DonHangController extends Controller
     {
         $this->DonHang = $DonHang;
         $this->KhachHang = $khachHang;
+        //$this->GiamGia = $GiamGia;
         $this->DonHangChiTiet = $DonHangChiTiet;
 
     }
@@ -81,6 +83,7 @@ class DonHangController extends Controller
         $dataDHCT = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
         $data  = $this->DonHang->find($id);
         $khachHang  = $this->KhachHang->find($data->idkhachhang);
+        //$GiamGia  = $this->GiamGia->find($data->idgiamgia);
         return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT'));
     }
 

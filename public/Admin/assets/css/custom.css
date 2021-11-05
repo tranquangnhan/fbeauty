@@ -1,3 +1,9 @@
+.border-none{
+    border:0 !important;
+}
+.mb-10{
+    margin-bottom: 10rem;
+}
 .box-detail-wrapper {
     display: flex;
     justify-content: space-between;
@@ -8,7 +14,7 @@
     width: 46%;
     padding: 3rem;
     margin: 1rem;
-    box-shadow: 1px 2px 8px hsl(220deg 60% 50% / 0.3)
+    box-shadow: 1px 2px 8px hsl(220deg 60% 50% / 0.3);
 }
 
 .remove-field {
@@ -49,4 +55,110 @@
 .float-center {
     margin-left: 15%;
     float: left;
+}
+.imgdichvu {
+    object-fit: cover;
+}
+/* start khách hàng */
+.boxinfouser {
+    width: 100%;
+    display: flex;
+}
+.boxinfouser i {
+    font-size: 20pt;
+}
+.right {
+    width: 90%;
+}
+/* end khách hàng */
+.boxnguoidung {
+    display: flex;
+    align-items: center;
+}
+.boxnguoidung h3 {
+    padding: 0;
+}
+.boxnguoidung p {
+    margin: 0;
+    margin-right: 5px;
+}
+.imglieutrinh {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#imgshow {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.editable-click,
+a.editable-click,
+a.editable-click:hover {
+    border: 0 !important;
+}
+.date {
+    max-width: 800px;
+    max-height: 800px;
+    position: relative;
+}
+.boxcontent {
+    position: relative;
+}
+.boxedit {
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-color);
+    text-align: center;
+    line-height: 40px;
+    border-radius: 3px;
+    color: white;
+    transition: 0.5s all;
+    cursor: pointer;
+}
+.boxedit:hover {
+    color: #ccc;
+}
+.inputfile {
+    display: none;
+}
+.boxlieutrinh {
+    position: relative;
+}
+.timeline-desk:hover .icon-delete {
+    visibility: visible;
+    transition: all 0.5s ease-in-out;
+}
+.timeline-icon {
+    cursor: pointer;
+}
+.icon-delete {
+    position: absolute;
+    left: 0;
+    top: -25px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    background-color: var(--main-color);
+    text-align: center;
+    border-radius: 3px;
+    color: white;
+    visibility: hidden;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.updatelieutrinhct {
+    display: none;
 }

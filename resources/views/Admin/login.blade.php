@@ -11,18 +11,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+    <script src="{{ asset('Admin/assets') }}/js/app.min.js"></script>
+
 </head>
 <body>
 <div class="login">
     <i class="fa fa-empire"></i>
-    <h2>Login</h2>
-    <form action="{{URL::to("quantri/login")}}" method="post">
+    <h2>Đăng Nhập</h2>
+
+    <form action="{{URL::to("quantri/login")}}" method="post" >
         @csrf
         @if(session('thongbao'))
             <div class="alert alert-warning alert-dismissible fade show rounded-pill mb-2" role="alert">
                 <span class="font-weight-bold">Tên tài khoản hoặc mật khẩu không đúng !</span>
             </div>
         @endif
+        <div class="group">
+            <select class="text-secondary" name="coso" style="-webkit-appearance: none;">
+                <option value="">Chọn cơ sở</option>
+                @foreach ($coSo as $item)
+                    <option value="{{$item->id}}">{{$item->name}}</option>
+                @endforeach
+            </select><i class="fa fa-angle-down"></i>
+            @error('coso')
+            <span class="badge bg-danger text-white float-left mb-1 ml-2">{{ $message }}</span>
+            @enderror
+        </div>
         <div class="group"><input type="text" name="email" placeholder="Email" value="{{old('email')}}"><i
                 class="fa fa-user"></i>
             @error('email')
@@ -36,9 +50,6 @@
             @enderror
         </div>
         <button class="rounded-pill"><i class="fa fa-send"></i>Đăng nhập</button>
-
-
-
     </form>
 </div>
 </body>
