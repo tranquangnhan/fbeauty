@@ -181,7 +181,7 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#"
                    role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{$BASE_URL_UPLOAD_STAFF}}/{{auth()->user()->avatar}}" alt="user-image"
+                    <img src="{{asset($BASE_URL_UPLOAD_STAFF.auth()->user()->avatar)}}" alt="user-image"
                          class="rounded-circle img-fluid" style="object-fit: cover">
                     <span class="pro-user-name ml-1">
                                 {{auth()->user()->name}} <i class="mdi mdi-chevron-down"></i>
@@ -192,19 +192,15 @@
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Chọn cơ sở !</h6>
                     </div>
-                    {{-- @foreach ($coSo as $item)
+
+                    @foreach ($coSo as $item)
+
                         <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item">
                             <i class="fe-user"></i>
                             <span>{{$item->name}}</span>
                         </a>
-                    @endforeach --}}
-                    <!-- item-->
+                    @endforeach
 
-                    <!-- item-->
-                    {{-- <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings"></i>
-                        <span>Cài đặt</span>
-                    </a> --}}
 
 
                     <div class="dropdown-divider"></div>
@@ -349,6 +345,17 @@
                                 <li><a href="{{route("danhmuc.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-calendar-month"></i>
+                                <span> Lịch </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("lich.index")}}">Danh sách</a></li>
+                            </ul>
+                        </li>
+
 
                         <li class="menu-title">Khách Hàng</li>
                         <!--- Khách hàng -->

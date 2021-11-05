@@ -86,7 +86,7 @@
                                         </td>
                                         <td>
                                             <img class="w-100 m-auto"
-                                                 src="{{asset(\App\Http\Controllers\Controller::BASE_URL_UPLOAD_STAFF)}}/{{$item->avatar}}">
+                                                 src="{{asset($BASE_URL_UPLOAD_STAFF.$item->avatar)}}">
                                         </td>
                                         <td>
                                             <div class="row">

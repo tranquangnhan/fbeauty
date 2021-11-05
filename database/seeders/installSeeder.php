@@ -20,14 +20,14 @@ class installSeeder extends Seeder
             ['name'=>'Cơ sở 2','diachi'=> '778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
         ]);
         DB::table('danhmuc')->insert([
-            ['id' => 1, 'name'=>'Chăm sóc da mặt', 'slug'=> Str::slug('Chăm sóc da mặt', '-'), 'loai'=>'1'],
-            ['id' => 2, 'name'=>'Điều trị mụn, sẹo', 'slug'=> Str::slug('Điều trị mụn, sẹo', '-'), 'loai'=>'1'],
-            ['id' => 3, 'name'=>'Dịch vụ trị nám, tàn nhang', 'slug'=> Str::slug('Dịch vụ trị nám', '-'), 'loai'=>'1'],
-            ['id' => 4, 'name'=>'Làm trẻ hóa da', 'slug'=> Str::slug('Làm trẻ hóa da', '-'), 'loai'=>'1'],
-            ['id' => 5, 'name'=>'Dịch vụ massage', 'slug'=> Str::slug('Dịch vụ massage', '-'), 'loai'=>'1'],
-            ['id' => 6, 'name'=>'Dịch vụ giảm béo', 'slug'=> Str::slug('Dịch vụ giảm béo', '-'), 'loai'=>'1'],
-            ['id' => 7, 'name'=>'Làm đẹp', 'slug'=> Str::slug('Làm đẹp', '-'), 'loai'=>'2'],
-            ['id' => 8, 'name'=>'Trắng da', 'slug'=> Str::slug('Trắng da', '-'), 'loai'=>'3'],
+            ['id' => 1, 'name'=>'Chăm sóc da mặt','img'=>'photo-1635608885.jpg','slug'=> Str::slug('Chăm sóc da mặt', '-'), 'loai'=>'1'],
+            ['id' => 2, 'name'=>'Điều trị mụn, sẹo','img'=>'photo-1635608926.jpg','slug'=> Str::slug('Điều trị mụn, sẹo', '-'), 'loai'=>'1'],
+            ['id' => 3, 'name'=>'Dịch vụ trị nám, tàn nhang','img'=>'photo-1635608979.jpg', 'slug'=> Str::slug('Dịch vụ trị nám', '-'), 'loai'=>'1'],
+            ['id' => 4, 'name'=>'Làm trẻ hóa da','img'=>'photo-1635609024.jpg','slug'=> Str::slug('Làm trẻ hóa da', '-'), 'loai'=>'1'],
+            ['id' => 5, 'name'=>'Dịch vụ massage','img'=>'photo-1635609047.jpg','slug'=> Str::slug('Dịch vụ massage', '-'), 'loai'=>'1'],
+            ['id' => 6, 'name'=>'Dịch vụ giảm béo','img'=>'photo-1635609071.jpg','slug'=> Str::slug('Dịch vụ giảm béo', '-'), 'loai'=>'1'],
+            ['id' => 7, 'name'=>'Làm đẹp','img'=>'photo-1635609118.jpg','slug'=> Str::slug('Làm đẹp', '-'), 'loai'=>'2'],
+            ['id' => 8, 'name'=>'Trắng da','img'=>'photo-1635609158.jpg','slug'=> Str::slug('Trắng da', '-'), 'loai'=>'3'],
         ]);
         DB::table('dichvu')->insert([
             ['name'=>'Xăm Chân Mày', 'slug' => Str::slug('Xăm Chân Mày'), 'img'=>'xam_chan_may.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. ', 'dongia'=>2000000, 'noidung'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. Bạn có thể hình dung đây là phương pháp tương tự như việc xăm tattoo lên cơ thể vậy. Chuyên viên sẽ vẽ khung chân mày trước sau đó sử dụng kim chuyên dụng đưa mực xuyên sâu qua da để hoàn thiện theo khuôn chân mày. ', 'trangthai'=> 1],

@@ -105,168 +105,77 @@
                                     </div>
                                     <ul class="fa-checkbox-loc nav nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item px-0" role="presentation">
-                                            <a class="nav-link btn-3 custom-2 bg-gray-1 " id="grid-tab" data-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="true"> <i class="fas fa-bars"></i></a>
+                                            <span class="nav-link btn-3 custom-2 bg-gray-1 active change-column-control" type-column='single'><i class="fas fa-bars"></i></span>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <a class="nav-link btn-3 custom-2 bg-gray-1 active" id="navbarsanpham-tab" data-toggle="tab" href="#navbarsanpham" role="tab" aria-controls="navbar" aria-selected="false"><i class="fas fa-grip-horizontal"></i></a>
+                                            <span class="nav-link btn-3 custom-2 bg-gray-1 change-column-control" type-column='multiple'><i class="fas fa-grip-horizontal"></i></span>
                                         </li>
                                     </ul>
-                                    {{-- <div class=" d-flex">
-                                        <div class="checkbox-loc-item active">
-
-                                        </div>
-
-                                        <div class="checkbox-loc-item">
-
-                                        </div>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="list-sanpham-2">
-                        <div class="list-tabs">
-                            <div class="tab-content" id="tabsanpham">
-                                <div class="tab-pane fade " id="grid" role="tabpanel" aria-labelledby="grid-tab">
-                                    <div class="fa-list-sanpham">
-                                        <div class="item-sanpham">
-                                            <div class="child-item-sanpham row g-0">
-                                                <div class="col-xl-3">
-                                                    <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
+                        <div class="fa-list-sanpham">
+                            <div class="row">
+                                <div class="col-xl-12 fa-sanpham-item">
+                                    <div class="item-sanpham w-100">
+                                        <div class="child-item-sanpham row g-0">
+                                            <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                                <div class="box-cicrle">
+                                                    <i class="fas fa-heart heart-full"></i>
+                                                    <i class="far fa-heart heart-line"></i>
                                                 </div>
-                                                <div class="col-xl-9 pl-0 position-relative">
-                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                                        <div class="box-cicrle">
-                                                            <i class="fas fa-heart heart-full"></i>
-                                                            <i class="far fa-heart heart-line"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-body pl-0">
-                                                        <div class="product-info">
-                                                            <a href="javascript:;">
-                                                                <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                                            </a>
-                                                            <a href="javascript:;">
-                                                                <h6 class="product-name mb-2">Product Short Name</h6>
-                                                            </a>
-                                                            <p class="card-text product-motangan">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="mb-1 product-price">
-                                                                    <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-action mt-2">
-                                                                <div class="d-flex gap-2">
-                                                                    {{-- <button class="btn-3 active btn-light mr-2"><i class="fas fa-heart"></i> Yêu thích</button> --}}
-                                                                    <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                                    <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                            </div>
+                                            <div class="col-xl-3 fa-image-sanpham">
+                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
+                                            </div>
+                                            <div class="col-xl-9 fa-content-sanpham pl-0 position-relative">
 
-                                                                </div>
+                                                <div class="card-body pl-0">
+                                                    <div class="product-info">
+                                                        <a href="javascript:;">
+                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                                        </a>
+                                                        <a href="javascript:;">
+                                                            <h6 class="product-name mb-2">Product Short Name</h6>
+                                                        </a>
+                                                        <p class="card-text product-motangan">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        <div class="d-flex align-items-center fa-product-price">
+                                                            <div class="mb-1 product-price">
+                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-action mt-2">
+                                                            <div class="d-flex gap-2">
+                                                                {{-- <button class="btn-3 active btn-light mr-2"><i class="fas fa-heart"></i> Yêu thích</button> --}}
+                                                                <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                                <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="item-sanpham">
-                                            <div class="child-item-sanpham row g-0">
-                                                <div class="col-xl-3">
-                                                    <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
-                                                </div>
-                                                <div class="col-xl-9 pl-0 position-relative">
-                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                                        <div class="box-cicrle">
-                                                            <i class="fas fa-heart heart-full"></i>
-                                                            <i class="far fa-heart heart-line"></i>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="card-body pl-0">
-                                                        <div class="product-info">
-                                                            <a href="javascript:;">
-                                                                <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                                            </a>
-                                                            <a href="javascript:;">
-                                                                <h6 class="product-name mb-2">Product Short Name</h6>
-                                                            </a>
-                                                            <p class="card-text product-motangan">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="mb-1 product-price">
-                                                                    <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-action mt-2">
-                                                                <div class="d-flex gap-2">
-                                                                    {{-- <button class="btn-3 active btn-light mr-2"><i class="fas fa-heart"></i> Yêu thích</button> --}}
-                                                                    <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                                    <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="item-sanpham">
-                                            <div class="child-item-sanpham row g-0">
-                                                <div class="col-xl-3">
-                                                    <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
-                                                </div>
-                                                <div class="col-xl-9 pl-0 position-relative">
-                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                                        <div class="box-cicrle">
-                                                            <i class="fas fa-heart heart-full"></i>
-                                                            <i class="far fa-heart heart-line"></i>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="card-body pl-0">
-                                                        <div class="product-info">
-                                                            <a href="javascript:;">
-                                                                <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                                            </a>
-                                                            <a href="javascript:;">
-                                                                <h6 class="product-name mb-2">Product Short Name</h6>
-                                                            </a>
-                                                            <p class="card-text product-motangan">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="mb-1 product-price">
-                                                                    <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-action mt-2">
-                                                                <div class="d-flex gap-2">
-                                                                    {{-- <button class="btn-3 active btn-light mr-2"><i class="fas fa-heart"></i> Yêu thích</button> --}}
-                                                                    <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                                    <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
-                                <div class="tab-pane fade show active" id="navbarsanpham" role="tabpanel" aria-labelledby="navbarsanpham-tab">
-                                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
-                                        <div class="col">
-                                            <div class="card rounded-0 product-card child-item-sanpham zbar">
-                                                <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                                        <div class="box-cicrle">
-                                                            <i class="fas fa-heart heart-full"></i>
-                                                            <i class="far fa-heart heart-line"></i>
-                                                        </div>
-                                                    </div>
+
+                                <div class="col-xl-12 fa-sanpham-item">
+                                    <div class="item-sanpham w-100">
+                                        <div class="child-item-sanpham row g-0">
+                                            <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                                <div class="box-cicrle">
+                                                    <i class="fas fa-heart heart-full"></i>
+                                                    <i class="far fa-heart heart-line"></i>
                                                 </div>
-                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                                                <div class="card-body text-center">
+                                            </div>
+                                            <div class="col-xl-3 fa-image-sanpham">
+                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
+                                            </div>
+                                            <div class="col-xl-9 fa-content-sanpham pl-0 position-relative">
+
+                                                <div class="card-body pl-0">
                                                     <div class="product-info">
                                                         <a href="javascript:;">
                                                             <p class="product-catergory font-13 mb-1">Catergory Name</p>
@@ -274,208 +183,202 @@
                                                         <a href="javascript:;">
                                                             <h6 class="product-name mb-2">Product Short Name</h6>
                                                         </a>
-                                                        <div class="d-flex align-items-center justify-content-center">
+                                                        <p class="card-text product-motangan">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        <div class="d-flex align-items-center fa-product-price">
                                                             <div class="mb-1 product-price">
                                                                 <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
                                                             </div>
                                                         </div>
                                                         <div class="product-action mt-2">
-                                                            <div class="d-grid gap-2">
-                                                                <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                                <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                                            <div class="d-flex gap-2">
+                                                                {{-- <button class="btn-3 active btn-light mr-2"><i class="fas fa-heart"></i> Yêu thích</button> --}}
+                                                                <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                                <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="col">
-                                            <div class="card rounded-0 product-card child-item-sanpham zbar">
-                                                <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                                        <div class="box-cicrle">
-                                                            <i class="fas fa-heart heart-full"></i>
-                                                            <i class="far fa-heart heart-line"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                                                <div class="card-body text-center">
-                                                    <div class="product-info">
-                                                        <a href="javascript:;">
-                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                                        </a>
-                                                        <a href="javascript:;">
-                                                            <h6 class="product-name mb-2">Product Short Name</h6>
-                                                        </a>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            <div class="mb-1 product-price">
-                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-action mt-2">
-                                                            <div class="d-grid gap-2">
-                                                                <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                                <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col">
-                                            <div class="card rounded-0 product-card child-item-sanpham zbar">
-                                                <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                                        <div class="box-cicrle">
-                                                            <i class="fas fa-heart heart-full"></i>
-                                                            <i class="far fa-heart heart-line"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                                                <div class="card-body text-center">
-                                                    <div class="product-info">
-                                                        <a href="javascript:;">
-                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                                        </a>
-                                                        <a href="javascript:;">
-                                                            <h6 class="product-name mb-2">Product Short Name</h6>
-                                                        </a>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            <div class="mb-1 product-price">
-                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-action mt-2">
-                                                            <div class="d-grid gap-2">
-                                                                <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                                <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col">
-                                            <div class="card rounded-0 product-card child-item-sanpham zbar">
-                                                <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                                        <div class="box-cicrle">
-                                                            <i class="fas fa-heart heart-full"></i>
-                                                            <i class="far fa-heart heart-line"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                                                <div class="card-body text-center">
-                                                    <div class="product-info">
-                                                        <a href="javascript:;">
-                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                                        </a>
-                                                        <a href="javascript:;">
-                                                            <h6 class="product-name mb-2">Product Short Name</h6>
-                                                        </a>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            <div class="mb-1 product-price">
-                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-action mt-2">
-                                                            <div class="d-grid gap-2">
-                                                                <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                                <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col">
-                                            <div class="card rounded-0 product-card child-item-sanpham zbar">
-                                                <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                                        <div class="box-cicrle">
-                                                            <i class="fas fa-heart heart-full"></i>
-                                                            <i class="far fa-heart heart-line"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                                                <div class="card-body text-center">
-                                                    <div class="product-info">
-                                                        <a href="javascript:;">
-                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                                        </a>
-                                                        <a href="javascript:;">
-                                                            <h6 class="product-name mb-2">Product Short Name</h6>
-                                                        </a>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            <div class="mb-1 product-price">
-                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-action mt-2">
-                                                            <div class="d-grid gap-2">
-                                                                <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                                <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col">
-                                            <div class="card rounded-0 product-card child-item-sanpham zbar">
-                                                <div class="card-header bg-transparent border-bottom-0">
-                                                    <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                                        <div class="box-cicrle">
-                                                            <i class="fas fa-heart heart-full"></i>
-                                                            <i class="far fa-heart heart-line"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                                                <div class="card-body text-center">
-                                                    <div class="product-info">
-                                                        <a href="javascript:;">
-                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                                        </a>
-                                                        <a href="javascript:;">
-                                                            <h6 class="product-name mb-2">Product Short Name</h6>
-                                                        </a>
-                                                        <div class="d-flex align-items-center justify-content-center">
-                                                            <div class="mb-1 product-price">
-                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-action mt-2">
-                                                            <div class="d-grid gap-2">
-                                                                <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                                <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
+
+                                <div class="col-xl-12 fa-sanpham-item">
+                                    <div class="item-sanpham w-100">
+                                        <div class="child-item-sanpham row g-0">
+                                            <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                                <div class="box-cicrle">
+                                                    <i class="fas fa-heart heart-full"></i>
+                                                    <i class="far fa-heart heart-line"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 fa-image-sanpham">
+                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
+                                            </div>
+                                            <div class="col-xl-9 fa-content-sanpham pl-0 position-relative">
+
+                                                <div class="card-body pl-0">
+                                                    <div class="product-info">
+                                                        <a href="javascript:;">
+                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                                        </a>
+                                                        <a href="javascript:;">
+                                                            <h6 class="product-name mb-2">Product Short Name</h6>
+                                                        </a>
+                                                        <p class="card-text product-motangan">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        <div class="d-flex align-items-center fa-product-price">
+                                                            <div class="mb-1 product-price">
+                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-action mt-2">
+                                                            <div class="d-flex gap-2">
+                                                                {{-- <button class="btn-3 active btn-light mr-2"><i class="fas fa-heart"></i> Yêu thích</button> --}}
+                                                                <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                                <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12 fa-sanpham-item">
+                                    <div class="item-sanpham w-100">
+                                        <div class="child-item-sanpham row g-0">
+                                            <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                                <div class="box-cicrle">
+                                                    <i class="fas fa-heart heart-full"></i>
+                                                    <i class="far fa-heart heart-line"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 fa-image-sanpham">
+                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
+                                            </div>
+                                            <div class="col-xl-9 fa-content-sanpham pl-0 position-relative">
+
+                                                <div class="card-body pl-0">
+                                                    <div class="product-info">
+                                                        <a href="javascript:;">
+                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                                        </a>
+                                                        <a href="javascript:;">
+                                                            <h6 class="product-name mb-2">Product Short Name</h6>
+                                                        </a>
+                                                        <p class="card-text product-motangan">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        <div class="d-flex align-items-center fa-product-price">
+                                                            <div class="mb-1 product-price">
+                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-action mt-2">
+                                                            <div class="d-flex gap-2">
+                                                                {{-- <button class="btn-3 active btn-light mr-2"><i class="fas fa-heart"></i> Yêu thích</button> --}}
+                                                                <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                                <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12 fa-sanpham-item">
+                                    <div class="item-sanpham w-100">
+                                        <div class="child-item-sanpham row g-0">
+                                            <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                                <div class="box-cicrle">
+                                                    <i class="fas fa-heart heart-full"></i>
+                                                    <i class="far fa-heart heart-line"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 fa-image-sanpham">
+                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
+                                            </div>
+                                            <div class="col-xl-9 fa-content-sanpham pl-0 position-relative">
+
+                                                <div class="card-body pl-0">
+                                                    <div class="product-info">
+                                                        <a href="javascript:;">
+                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                                        </a>
+                                                        <a href="javascript:;">
+                                                            <h6 class="product-name mb-2">Product Short Name</h6>
+                                                        </a>
+                                                        <p class="card-text product-motangan">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        <div class="d-flex align-items-center fa-product-price">
+                                                            <div class="mb-1 product-price">
+                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-action mt-2">
+                                                            <div class="d-flex gap-2">
+                                                                {{-- <button class="btn-3 active btn-light mr-2"><i class="fas fa-heart"></i> Yêu thích</button> --}}
+                                                                <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                                <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-12 fa-sanpham-item">
+                                    <div class="item-sanpham w-100">
+                                        <div class="child-item-sanpham row g-0">
+                                            <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                                <div class="box-cicrle">
+                                                    <i class="fas fa-heart heart-full"></i>
+                                                    <i class="far fa-heart heart-line"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 fa-image-sanpham">
+                                                <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-fluid" alt="...">
+                                            </div>
+                                            <div class="col-xl-9 fa-content-sanpham pl-0 position-relative">
+
+                                                <div class="card-body pl-0">
+                                                    <div class="product-info">
+                                                        <a href="javascript:;">
+                                                            <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                                        </a>
+                                                        <a href="javascript:;">
+                                                            <h6 class="product-name mb-2">Product Short Name</h6>
+                                                        </a>
+                                                        <p class="card-text product-motangan">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        <div class="d-flex align-items-center fa-product-price">
+                                                            <div class="mb-1 product-price">
+                                                                <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-action mt-2">
+                                                            <div class="d-flex gap-2">
+                                                                {{-- <button class="btn-3 active btn-light mr-2"><i class="fas fa-heart"></i> Yêu thích</button> --}}
+                                                                <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                                <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -52,8 +52,10 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('khachhang', KhachHangController::class);
     Route::resource('blog', BlogController::class);
 
-    Route::get('/sanpham/detail/{id}', [SanPhamChiTietController::class,'createDetailProduct']);
-    Route::post('/sanpham/detail/{id}', [SanPhamChiTietController::class,'postDetailProduct']);
+    // Route::post('/sanpham/detail/store', [SanPhamChiTietController::class,'store']);
+    Route::post('/sanpham/detail/{id}/del', [SanPhamChiTietController::class,'destroy']);
+    Route::post('/sanpham/detail/{id}/store', [SanPhamChiTietController::class,'postDetailProduct']);
+
     Route::get('/sanpham/detail/{id}/edit', [SanPhamChiTietController::class,'editDetailProduct']);
     Route::post('/sanpham/detail/{id}/edit', [SanPhamChiTietController::class,'updateDetailProduct']);
 
@@ -130,9 +132,11 @@ Route::group(['prefix' => '/'], function (){
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
     Route::get('bai-viet/ten-bai-viet', [HomeController::class, "viewBaiVietChiTiet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+
     Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
+    Route::post('checkIssetUser', [HomeController::class, "checkIssetUser"]);
 });
 

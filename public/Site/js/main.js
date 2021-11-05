@@ -79,17 +79,20 @@ headerSlide.on('changed.owl.carousel', function(event) {
 
 
 // modal
-$('.button').click(function(){
-    var buttonId = $(this).attr('data-show');
-    $('#modal-container').removeAttr('class').addClass(buttonId);
+$('.btn-modal-main').click(function(){
+    let typeModal = $(this).attr('type-modal');
+    let modalAction = $('#' + typeModal);
+    modalAction.removeAttr('class');
+    modalAction.addClass('modal-container show');
     $('body').addClass('modal-active');
-  })
+});
 
-  $('.close-modal').click(function(){
-    $('#modal-container').addClass('out');
+$('.close-modal').click(function(){
+    let typeModal = $(this).attr('type-modal');
+    let modalAction = $('#' + typeModal);
+    modalAction.addClass('out');
     $('body').removeClass('modal-active');
-  });
-
+});
 
 var modalDatLichSlide = $('#modal-datlich-slide');
 $(modalDatLichSlide).owlCarousel({
@@ -436,3 +439,4 @@ $('.custom-error').hover(function () {
         $("[error-of='"+dataShowError+"']").fadeOut(150);
     }
 );
+

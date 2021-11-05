@@ -70,7 +70,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="">Mô Tả</label>
-                                        <textarea class=" @error('mota') border-error @enderror"  style="height: 100px;width:100%; border:1px solid #ccc" name="mota" ></textarea>   
+                                        <textarea class="form-control @error('mota') border-error @enderror"  style="height: 100px;width:100%; border:1px solid #ccc" name="mota" ></textarea>   
                                         @if ($errors->has('mota'))
                                             <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('mota')[0]}}</li></ul>
                                         @endif

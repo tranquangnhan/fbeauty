@@ -16,7 +16,7 @@
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="button btn-datlich nav-link" href="javascript:void(0)" data-show="one">Đặt Lịch</a>
+                    <a class="btn-modal-main nav-link" type-modal="modal-datlich" href="javascript:void(0)" data-show="one">Đặt Lịch</a>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'san-pham') ? 'active' : '' }}">
                     <a class="nav-link" href="/san-pham">Sản Phẩm</a>
@@ -39,7 +39,7 @@
                     <a href=""><i class="fas fa-search color-black-2"></i></a>
                 </div>
                 <div class="icon-item d-inline-block hover-scale-1">
-                    <a href=""><i class="fas fa-user-alt color-black-2"></i></a>
+                    <a class="btn-modal-main" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
                 </div>
                 <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
                     <div class="number-cart">0</div>
