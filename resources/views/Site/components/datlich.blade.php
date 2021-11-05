@@ -109,7 +109,7 @@
                                                                         <div class="mid-content">
                                                                             <div class="d-flex align-items-center">
                                                                                 <div class="ml-2">
-                                                                                    <a class="name-dichvu" href="javascript:void(0)">{{ $dichVu->name }}</a>
+                                                                                    <span class="name-dichvu" href="javascript:void(0)">{{ $dichVu->name }}</span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

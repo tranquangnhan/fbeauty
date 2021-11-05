@@ -1721,7 +1721,9 @@ button:focus {
 }
 
 /* modal */
-
+.noidung-modal.fa-user{
+    min-height: 100px;
+}
 
 .modal-container {
     position: fixed;
@@ -3798,6 +3800,66 @@ img {
 
 .btn-cal i {
     color: white;
+}
+
+.noidung-modal.fa-content-user {
+    min-height: 100px;
+}
+
+.modal-container .modal-background .modal .fa-content-user {
+    background: none;
+}
+
+.modal.modal-main.fa-content-user {
+    background: none;
+    min-height: 100px;
+    width: 30% !important;
+    height: auto;
+    max-height: 90%;
+}
+
+.btn-8.for-authen:hover::after {
+    right: 142px;
+}
+
+.ip-number-box {
+    margin: 0.5em;
+    text-align: center;
+    border-radius: 3px;
+    border: 0px;
+    background: var(--gray-1);
+    height: 43px;
+    transition: .3s;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.ip-number-box::-webkit-outer-spin-button,
+.ip-number-box::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.fa-modal-user {
+    width: 300%;
+    display: flex;
+    transition: .2s;
+}
+
+.modal-user-item {
+    background: white;
+    width: 100%;
+    float: left;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    padding: 1.2em 2em;
+    transition: .5s;
+    text-align: left;
 }
 
 /* Reponsive */
