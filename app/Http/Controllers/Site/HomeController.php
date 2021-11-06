@@ -291,6 +291,27 @@ class HomeController extends Controller
         }
     }
 
+    public function checkIssetUser(Request $request) {
+        try {
+            if ($request->ajax())
+            {
+                $response = Array(
+                    'success' => true,
+                    'request' => $request,
+                    'sdt' => $request->phoneNumber
+                );
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getNhanVienTam($id) {
         return  $this->NhanVien->getNhanVienByIdCoSo( $id);
     }

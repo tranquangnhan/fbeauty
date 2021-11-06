@@ -28,9 +28,6 @@ class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietR
         return $this->model->where("idsanpham","=",$id)->get();
     }
 
-    public function updateDetailByIdSp($id,$data){
-        return $this->model->where("idsanpham","=",$id)->update($data);
-    }
 
     public function delDetailByIdSp($id){
        return $this->model->where("idsanpham","=",$id)->delete();
@@ -40,4 +37,19 @@ class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietR
         return $this->model->where('idsanpham',"=",$id)->get();
     }
 
+    public function getSanPhamChiTietToHoaDon(){
+        return $this->model->select('sanphamchitiet.*', 'sanpham.name')
+            ->join('sanpham', 'sanphamchitiet.idsanpham', '=', 'sanpham.id')
+            ->orderBy('sanphamchitiet.idsanpham', 'desc')
+            ->get();
+    }
+
+    public function getSanPhamChiTiet($idsp){
+        return $this->model->select('sanphamchitiet.*', 'sanpham.name')
+            ->join('sanpham', 'sanphamchitiet.idsanpham', '=', 'sanpham.id')
+            ->where('sanphamchitiet.id', '=', $idsp)
+            ->get();
+    }
+
+  
 }

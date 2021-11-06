@@ -75,3 +75,32 @@ $('.btn-plus, .btn-minus').on('click', function(e) {
       input[0][isNegative ? 'stepDown' : 'stepUp']()
     }
   })
+
+$('.change-column-control').click(function (e) {
+    e.preventDefault();
+    if (!$(this).hasClass('active')) {
+        $('.change-column-control').removeClass('active');
+        $(this).addClass('active');
+
+        var typeColumn = $(this).attr('type-column');
+        if (typeColumn == 'single') {
+            $('.fa-sanpham-item').removeClass('col-xl-4');
+            $('.fa-sanpham-item').addClass('col-xl-12');
+
+            $('.fa-image-sanpham').removeClass('col-xl-12');
+            $('.fa-image-sanpham').addClass('col-xl-3');
+
+            $('.fa-content-sanpham').removeClass('col-xl-12');
+            $('.fa-content-sanpham').addClass('col-xl-9');
+        } else {
+            $('.fa-sanpham-item').removeClass('col-xl-12');
+            $('.fa-sanpham-item').addClass('col-xl-4');
+
+            $('.fa-image-sanpham').removeClass('col-xl-3');
+            $('.fa-image-sanpham').addClass('col-xl-12');
+
+            $('.fa-content-sanpham').removeClass('col-xl-9');
+            $('.fa-content-sanpham').addClass('col-xl-12');
+        }
+    }
+});

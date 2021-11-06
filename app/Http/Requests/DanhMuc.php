@@ -25,6 +25,7 @@ class DanhMuc extends FormRequest
     {
         return [
             'name' => 'required',
+            'img' => 'required',
             'loai'=>'required'
         ];
     }
@@ -32,6 +33,7 @@ class DanhMuc extends FormRequest
     public function messages() {
         return [
             'name.required' => 'Bạn chưa nhập tên danh mục',
+            'img.required' => 'Bạn chưa chọn ảnh',
             'loai.required' => 'Bạn chưa chọn loại',
         ];
     }
@@ -39,6 +41,7 @@ class DanhMuc extends FormRequest
     public function attributes(){
         return [
             'name' => 'Tên Danh Mục',
+            'img' => 'Ảnh Danh Mục',
             'loai' => 'loại'
         ];
     }

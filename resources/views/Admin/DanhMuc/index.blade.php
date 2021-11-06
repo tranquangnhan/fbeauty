@@ -23,11 +23,16 @@
                                 <div class="modal-content">
                                     <form action="{{route('danhmuc.store')}}"  enctype="multipart/form-data" method="post">
                                         @csrf
+
                                         <div class="modal-header">
                                             <h4 class="modal-title" id="myModalLabel">Thêm Danh Mục</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                         </div>
                                         <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="file" name="img"  parsley-trigger="change" required
+                                                placeholder="Nhập tên nhà sản xuất" class="form-control" id="img">
+                                            </div>
                                             <div class="form-group">
                                                 <input type="text" name="name"  parsley-trigger="change" required
                                                 placeholder="Nhập tên nhà sản xuất" class="form-control" id="userName">
@@ -38,7 +43,8 @@
                                                     $array = [
                                                         ['id'=>1,'name'=>"Sản Phẩm"],
                                                         ['id'=>2,'name'=>"Dịch Vụ"],
-                                                        ['id'=>3,'name'=>"Bài Viết"]
+                                                        ['id'=>3,'name'=>"Bài Viết"],
+                                                        ['id'=>4,'name'=>"Thương Hiệu"]
                                                     ];
                                                 @endphp
                                                 <select class="form-control select2" name="loai">
@@ -61,7 +67,8 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="10%">STT</th>
-                                        <th width="60%">Tên Danh Mục</th>
+                                        <th width="20%">Ảnh Danh Mục</th>
+                                        <th width="40%">Tên Danh Mục</th>
                                         <th width="15%">Loại</th>  
                                         <th width="15%">Hành Động</th>  
                                     </tr>
@@ -71,6 +78,7 @@
 
                                         <tr>
                                             <td>{{$item->id}}</td>
+                                            <td><img  class="objectcv img-common" src="{{asset($URL_IMG.$item->img)}}" alt=""></td>
                                             <td>{{$item->name}}</td>
                                             <td>
                                                 @foreach ($array as $row)
@@ -79,7 +87,7 @@
                                                     @endif
                                                 @endforeach
                                             </td> 
-                                            <td class="d-flex">
+                                            <td class="d-flex border-none">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
                                                 <form action="{{route('danhmuc.destroy',$item->id)}}"  method="post">
                                                     @csrf

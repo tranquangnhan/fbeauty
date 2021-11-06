@@ -19,7 +19,7 @@
                     <div class="header-text text-left">Tên sản phẩm</div>
                 </div>
                 <div class="col-xl-3">
-                    <div class="header-text">Giá / Tồn kho</div>
+                    <div class="header-text">Giá sản phẩm</div>
                 </div>
                 <div class="col-xl-2">
                     <div class="header-text">Số lượng</div>
@@ -31,8 +31,8 @@
             </div>
         </div>
 
-        <div class="giohang-body ">
-            <div class="row shadow-2  align-items-center giohang-item">
+        <div class="giohang-body">
+            <div class="row shadow-2 align-items-center giohang-item">
                 <div class="col-xl-2 d-flex  align-items-center">
                     <div class="custom-select-all mr-2">
                         <input type="checkbox" class="select-all-product" name="" id="">
@@ -51,23 +51,19 @@
                             <span class="gia left-bar">300,999 đ </span>
                             <span class="left-bar dungtich"> 30ml</span>
                         </div>
-
-                        <div class="tonkho mt-2">
-                            <span class="tonkho">Tồn kho: </span><span class="tonkho"> 305</span>
-                        </div>
                     </div>
                 </div>
                 <div class="col-xl-2">
                     <div class="body-text">
                         <div class="input-group inline-group">
                             <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary btn-minus btn-cal">
+                                <button class="btn btn-minus btn-cal">
                                 <i class="fa fa-minus"></i>
                                 </button>
                             </div>
                             <input class="form-control text-center quantity" min="1" name="quantity" value="1" type="number">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary btn-plus btn-cal">
+                                <button class="btn btn-plus btn-cal">
                                 <i class="fa fa-plus"></i>
                                 </button>
                             </div>
@@ -82,7 +78,7 @@
                 <div class="col-xl-1 text-center">Xóa</div>
             </div>
 
-            <div class="row shadow-2  align-items-center giohang-item">
+            <div class="row shadow-2 align-items-center giohang-item">
                 <div class="col-xl-2 d-flex  align-items-center">
                     <div class="custom-select-all mr-2">
                         <input type="checkbox" class="select-all-product" name="" id="">
@@ -101,23 +97,19 @@
                             <span class="gia left-bar">300,999 đ </span>
                             <span class="left-bar dungtich"> 30ml</span>
                         </div>
-
-                        <div class="tonkho mt-2">
-                            <span class="tonkho">Tồn kho: </span><span class="tonkho"> 305</span>
-                        </div>
                     </div>
                 </div>
                 <div class="col-xl-2">
                     <div class="body-text">
                         <div class="input-group inline-group">
                             <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary btn-minus btn-cal">
+                                <button class="btn btn-minus btn-cal">
                                 <i class="fa fa-minus"></i>
                                 </button>
                             </div>
                             <input class="form-control text-center quantity" min="1" name="quantity" value="1" type="number">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary btn-plus btn-cal">
+                                <button class="btn btn-plus btn-cal">
                                 <i class="fa fa-plus"></i>
                                 </button>
                             </div>
@@ -132,7 +124,7 @@
                 <div class="col-xl-1 text-center">Xóa</div>
             </div>
 
-            <div class="row shadow-2  align-items-center giohang-item">
+            <div class="row shadow-2 align-items-center giohang-item">
                 <div class="col-xl-2 d-flex  align-items-center">
                     <div class="custom-select-all mr-2">
                         <input type="checkbox" class="select-all-product" name="" id="">
@@ -151,23 +143,19 @@
                             <span class="gia left-bar">300,999 đ </span>
                             <span class="left-bar dungtich"> 30ml</span>
                         </div>
-
-                        <div class="tonkho mt-2">
-                            <span class="tonkho">Tồn kho: </span><span class="tonkho"> 305</span>
-                        </div>
                     </div>
                 </div>
                 <div class="col-xl-2">
                     <div class="body-text">
                         <div class="input-group inline-group">
                             <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary btn-minus btn-cal">
+                                <button class="btn btn-minus btn-cal">
                                 <i class="fa fa-minus"></i>
                                 </button>
                             </div>
                             <input class="form-control text-center quantity" min="1" name="quantity" value="1" type="number">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary btn-plus btn-cal">
+                                <button class="btn btn-plus btn-cal">
                                 <i class="fa fa-plus"></i>
                                 </button>
                             </div>
