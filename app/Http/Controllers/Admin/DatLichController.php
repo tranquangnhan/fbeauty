@@ -28,6 +28,8 @@ class DatLichController extends Controller
         $this->DichVu = $DichVu;
         $this->KhachHang = $KhachHang;
         $this->NhanVien = $NhanVien;
+
+       
     }
 
     /**
@@ -37,10 +39,41 @@ class DatLichController extends Controller
      */
     public function index()
     {
-        // $data = $this->DatLich->getAll2CungCoSo(1);
-        $data=$this->DatLich->getdv();
-        dd($data);
-        return view('Admin.DatLich.index',compact($data));
+        
+        $data = $this->DatLich->getAllCungCoSo(1);
+        $data2 =$this->DatLich->getAll2CungCoSo(1);
+        $data3 = $this->DatLich->getAllCungCoSo(1);
+        $list = array(
+            [$data, $data2, $data3]
+        );
+        // dd($list);
+        for ($y = 0; $y < count($list); $y++){
+            foreach ($list[$y] as $datlich)  {    
+                foreach ($datlich as $item) {
+                    $arrayNameObject = array();
+                
+                    $arrayIddichvu = json_decode($item->iddichvu);
+                    
+                    for ($i = 0; $i < count($arrayIddichvu); $i++) {
+                        $name = $this->DichVu->getNameByid($arrayIddichvu[$i]);
+                        
+                        $arrayName = [
+                            ['id'=> $arrayIddichvu[$i], 'name' => $name],                
+                        ];
+
+                        $arrayNameObject[] = $arrayName;
+                    }
+
+                    $item['arrNameObject'] = $arrayNameObject;
+                }
+                
+               
+            }
+            // dd($item[$i]);
+        }
+
+        // dd($list);
+        return view('Admin.DatLich.index',['data' => $data, 'data2' => $data2]);
     }
 
     /**
@@ -50,8 +83,11 @@ class DatLichController extends Controller
      */
     public function create()
     {
-        $cate = $this->DanhMuc->findDanhMucByIdLoai($this->idloai);
-        return view('Admin.DatLich.create',compact('cate'));
+        $DichVu = $this->DichVu->getAll();
+        $DatLich = $this->DatLich->getAll();
+        $KhachHang = $this->KhachHang->getAll();
+        $NhanVien = $this->NhanVien->getAll();
+        return view('Admin.DatLich.create',['DichVu' => $DichVu, 'DatLich' => $DatLich, 'KhachHang' => $KhachHang, 'NhanVien' => $NhanVien]);
     }
 
     /**
@@ -61,19 +97,21 @@ class DatLichController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-                
+    {                        
+        
+        $stringDichVu = array_map('intval', $request->iddichvu);
+        $stringDichVu = json_encode($stringDichVu);
+        $time = strtotime($request->thoigiandat);
         $data = [
-            'iddanhmuc'=>$request->iddanhmuc,
-            'name'=> $request->name,
-            'mota'=>$request->mota,
-            'noidung'=>$request->noidung,
-            "trangthai"=>$request->trangthai
+            'idcoso'=>$request->idcoso,
+            'iddichvu'=> $stringDichVu,
+            'idnhanvien'=>$request->idnhanvien,
+            'idkhachhang'=>$request->idkhachhang,
+            "thoigiandat"=>$time
         ];
-
         $data= $this->DatLich->create($data);
 
-        return redirect('/quantri/DatLich/detail/'.$data->id.'')->with('success','Thêm thành công');
+        return redirect('quantri/datlich')->with('success', 'Đăt lịch thành công');
     }
 
    
@@ -97,9 +135,13 @@ class DatLichController extends Controller
      */
     public function edit($id)
     {
+        $DichVu = $this->DichVu->getAll();
+        $DatLich = $this->DatLich->getAll();
+        $KhachHang = $this->KhachHang->getAll();
+        $NhanVien = $this->NhanVien->getAll();
         $data  = $this->DatLich->find($id);
-        $cate  = $this->DanhMuc->getAll();
-        return view("Admin.DatLich.edit",compact('data','cate'));
+        // $cate  = $this->DanhMuc->getAll();
+        return view("Admin.DatLich.edit",compact('data','DichVu','DatLich','KhachHang','NhanVien'));
     }
 
     /**
