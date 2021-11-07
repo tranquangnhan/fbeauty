@@ -44,7 +44,6 @@ class SanPham extends FormRequest
             'mota.min' => 'Mô tả phải trên 3 kí tự',
             'noidung.required' => 'Nội dung bắt buộc nhập',
             'trangthai.integer' => 'Trạng thái phải là số nguyên',
-            'img.required' => 'Bắt buộc chọn hình ảnh',
         ];
     }
 
