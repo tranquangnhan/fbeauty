@@ -9,6 +9,7 @@
     --main-color-2: #FFF5F2;
     --main-color-3-bg: #FCC3C3;
     --main-color-4-bg: #ffd0c0;
+    --color-error: #ff4836;
     --gray-1: #F8F8F8;
     --gray-2: #999999;
     --gray-3: #cacaca;
@@ -974,6 +975,7 @@ img.im-small {
 
 .blog-bigsize .img-1 {
     height: 100%;
+    max-height: 367px;
 }
 
 .blog-bigsize .img-1 img {
@@ -1721,9 +1723,11 @@ button:focus {
 }
 
 /* modal */
+.noidung-modal.fa-user{
+    min-height: 100px;
+}
 
-
-#modal-container {
+.modal-container {
     position: fixed;
     display: table;
     height: 100%;
@@ -1743,34 +1747,34 @@ button:focus {
     z-index: 100;
 }
 
-#modal-container.one {
+.modal-container.show {
     transform: scaleY(0.01) scaleX(0);
     animation: unfoldIn .4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#modal-container.one .modal-background .modal {
+.modal-container.show .modal-background .modal {
     transform: scale(0);
     animation: zoomIn 0.2s 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#modal-container.one.out {
+.modal-container.show.out {
     transform: scale(1);
     animation: unfoldOut .3s 0.1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#modal-container.one.out .modal-background .modal {
+.modal-container.show.out .modal-background .modal {
     animation: zoomOut 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#modal-container .modal-background {
+.modal-container .modal-background {
     display: table-cell;
     background: rgb(0 0 0 / 12%);
     text-align: center;
     vertical-align: middle;
 }
 
-#modal-container .modal-background .modal {
-    background: white;
+.modal-container .modal-background .modal {
+    /* background: white; */
     /* padding: 50px; */
     display: inline-block;
     border-radius: 3px;
@@ -1778,18 +1782,18 @@ button:focus {
     position: relative;
 }
 
-#modal-container .modal-background .modal h2 {
+.modal-container .modal-background .modal h2 {
     font-size: 25px;
     line-height: 25px;
     margin-bottom: 15px;
 }
 
-#modal-container .modal-background .modal p {
+.modal-container .modal-background .modal p {
     font-size: 18px;
     line-height: 22px;
 }
 
-#modal-container .modal-background .modal .modal-svg {
+.modal-container .modal-background .modal .modal-svg {
     position: absolute;
     top: 0;
     left: 0;
@@ -1798,7 +1802,7 @@ button:focus {
     border-radius: 3px;
 }
 
-#modal-container .modal-background .modal .modal-svg rect {
+.modal-container .modal-background .modal .modal-svg rect {
     stroke: #fff;
     stroke-width: 2px;
     stroke-dasharray: 778;
@@ -1907,6 +1911,7 @@ button:focus {
     width: 400%;
     overflow-x: auto;
     transition: .2s;
+    align-items: center;
 }
 
 .datlich-step {
@@ -2249,7 +2254,7 @@ form.form-phone-number {
 }
 
 .control-short {
-    background: white;
+    /* background: white; */
     height: 40px;
     width: 100%;
     position: absolute;
@@ -2715,6 +2720,7 @@ span.box-soluong {
 .child-item-sanpham {
     margin: 1em 0em;
     transition: 0.4s;
+    position: relative;
 }
 
 .child-item-sanpham:hover {
@@ -2984,8 +2990,8 @@ div#custom-dots-1 {
 }
 
 .btn-cal:hover {
-    background: none;
-    color: black;
+    background: var(--main-color);
+    /* color: black; */
 }
 
 .btn-outline-secondary.focus,
@@ -3629,10 +3635,6 @@ div#custom-dots-1 {
     flex: 1 0 25%;
 }
 
-.list-dichvu {
-    /* display: flex; */
-}
-
 .item-dichvu-2 {
     background-color: white;
     text-align: center;
@@ -3756,7 +3758,121 @@ img {
     padding: 2.7em;
 }
 
+.fa-image-sanpham.col-xl-12 img {
+    height: 200px;
+    object-fit: contain;
+}
 
+.fa-content-sanpham.col-xl-12 {
+    padding: 0px 15px !important;
+    text-align: center;
+}
+
+.fa-content-sanpham.col-xl-12 .card-body {
+    padding: 1.25rem !important;
+}
+
+.fa-content-sanpham.col-xl-12 .card-body .product-motangan {
+    display: none !important;
+}
+
+.fa-content-sanpham.col-xl-12 .card-body .fa-product-price {
+    justify-content: center !important;
+}
+
+.fa-content-sanpham.col-xl-12 .card-body .product-action .gap-2 {
+    display: block !important;
+}
+
+.fa-content-sanpham.col-xl-12 .card-body .product-action .gap-2 button{
+    width: 100% !important;
+}
+
+.fa-content-sanpham.col-xl-12 .card-body .product-action .gap-2 button:last-child{
+    margin-top: .5rem!important;
+}
+
+.fa-content-sanpham.col-xl-12 .card-body .product-action .gap-2 button:first-child{
+    margin: 0 !important;
+}
+
+.btn-cal {
+    background: var(--main-color);
+    border: 0px;
+}
+
+.btn-cal i {
+    color: white;
+}
+
+.noidung-modal.fa-content-user {
+    min-height: 100px;
+}
+
+.modal-container .modal-background .modal .fa-content-user {
+    background: none;
+}
+
+.modal.modal-main.fa-content-user {
+    background: none;
+    min-height: 100px;
+    width: 30% !important;
+    height: auto;
+    max-height: 90%;
+}
+
+.btn-8.for-authen:hover::after {
+    right: 142px;
+}
+
+.ip-number-box {
+    margin: 0.5em;
+    text-align: center;
+    border-radius: 3px;
+    border: 0px;
+    background: var(--gray-1);
+    height: 43px;
+    transition: .3s;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.ip-number-box::-webkit-outer-spin-button,
+.ip-number-box::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.fa-modal-user {
+    width: 400%;
+    display: flex;
+    transition: .2s;
+}
+
+.modal-user-item {
+    background: white;
+    width: 100%;
+    float: left;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    padding: 1.5em 2em;
+    transition: .5s;
+    text-align: left;
+}
+
+.countDownOTP {
+    cursor: auto !important;
+}
+
+.text-error {
+    font-size: .8em;
+    color: var(--color-error);
+}
 
 /* Reponsive */
 @media (min-width: 1200px) {

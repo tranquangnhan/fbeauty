@@ -129,9 +129,17 @@ Route::group(['prefix' => '/'], function (){
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
     Route::get('bai-viet/ten-bai-viet', [HomeController::class, "viewBaiVietChiTiet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+
     Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
+    Route::post('site-login', [HomeController::class, "login"]);
+    Route::get('site-logout', [HomeController::class, "logoutSite"]);
+    Route::post('sendOTPSMS', [HomeController::class, "sendOTPSMS"]);
+    Route::get('removeOTP', [HomeController::class, "removeOTP"]);
+    Route::post('checkOTP', [HomeController::class, "checkOTP"]);
+    Route::post('newPassword', [HomeController::class, "newPassword"]);
+    Route::post('checkIssetUser', [HomeController::class, "checkIssetUser"]);
 });
 

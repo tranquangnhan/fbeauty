@@ -23,7 +23,6 @@ class Controller extends BaseController
     const KHACHHANG_DA_ACTIVE = 1;
     const TRANGTHAI_LICH_OPEN = 0;
 
- 
 
     /**
      * ID_LIENQUAN_SP=1 LÀ SẢN PHẨM
@@ -80,5 +79,5 @@ class Controller extends BaseController
         return Redirect::back()->withErrors($error);
     }
 
-    
+
 }
