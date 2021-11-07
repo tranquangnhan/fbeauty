@@ -197,11 +197,17 @@
                     </div>
                    
                     @foreach ($coSo as $item)
-                    
-                        <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item">
-                            <i class="fe-user"></i>
-                            <span>{{$item->name}}</span>
-                        </a>
+                        @if(session()->get('coso') == $item->id)
+                            <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item selected">
+                                <i class="fe-user"></i>
+                                <span >{{$item->name}}</span>
+                            </a>
+                        @else 
+                            <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item ">
+                                <i class="fe-user"></i>
+                                <span >{{$item->name}}</span>
+                            </a>
+                        @endif
                     @endforeach
                  
 

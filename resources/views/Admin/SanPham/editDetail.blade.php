@@ -110,7 +110,7 @@
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{URL::to('quantri/sanpham/detail/'.$data[0]->id.'/store')}}"  enctype="multipart/form-data" method="post">
+            <form action="{{URL::to('quantri/sanpham/detail/'.$data[0]->idsanpham.'/store')}}"  enctype="multipart/form-data" method="post">
                 @csrf
 
                 <div class="modal-header">

@@ -171,3 +171,6 @@ a.editable-click:hover {
 .updatelieutrinhct {
     display: none;
 }
+.selected{
+    background-color: #d1d4d6;
+}

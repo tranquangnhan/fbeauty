@@ -53,9 +53,13 @@ class SanPhamChiTietController extends Controller
 
     function editDetailProduct($id)
     {
-
+        
         $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
-        return view('Admin.SanPham.editDetail',compact('data'));
+        if(count($data) === 0){
+            return redirect('quantri/sanpham/detail/'.$id.'/create')->with('idDetail',$id);
+        }else{
+            return view('Admin.SanPham.editDetail',compact('data'));
+        }
     }
 
 

@@ -7,7 +7,6 @@ use App\Http\Requests\SanPham;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class SanPhamController extends Controller
@@ -69,8 +68,8 @@ class SanPhamController extends Controller
         ];
 
         $data= $this->SanPham->create($data);
-
-        return redirect('/quantri/sanpham/detail/'.$data->id.'')->with('success','Thêm thành công');
+    
+        return redirect('/quantri/sanpham/detail/'.$data->id.'/create')->with('idDetail',$data->id);
     }
 
    
