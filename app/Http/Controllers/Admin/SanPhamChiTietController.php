@@ -43,7 +43,8 @@ class SanPhamChiTietController extends Controller
            if($res === false){
                 return $this->handleError('Thêm dữ liệu thất bại, vui lòng thử lại');
            }else{
-            return redirect('quantri/sanpham/detail/'.$idsanpham.'/edit')->with('success', 'Thêm thành công');
+                $request->session()->forget('idSanPham');
+                return redirect('quantri/sanpham/detail/'.$idsanpham.'/edit')->with('success', 'Thêm thành công');
            }
         } else {
             return $this->handleError('Dữ liệu không được để trống');

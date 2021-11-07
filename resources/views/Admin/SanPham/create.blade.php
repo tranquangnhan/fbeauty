@@ -30,12 +30,12 @@
 
                         <h4 class="header-title mt-0 mb-4">Thêm Sản Phẩm</h4>
 
-                        <form data-parsley-validate action="{{route('sanpham.store')}}" novalidate method="post" enctype="multipart/form-data">
+                        <form  action="{{route('sanpham.store')}}"  method="post" enctype="multipart/form-data">
                             @csrf
                            
                             <div class="form-group">
                                 <label for="">Hình ảnh</label>
-                               <input type="file" name="img" >
+                               <input type="file" name="img" onchange="previewImg(event)" required > <br>
                                @if ($errors->has('img'))
                                     <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('img')[0]}}</li></ul>
                                 @endif
@@ -98,7 +98,7 @@
                             </div>
                           
                             <div class="form-group text-right mb-0 mt-5">
-                                <a href="/quantri/sanpham" clas="btn btn-secondary waves-effect waves-light">Huỷ</a>
+                                <a href="/quantri/sanpham" class="btn-cancel">Huỷ</a>
                                 <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
                             </div>
                         </form>

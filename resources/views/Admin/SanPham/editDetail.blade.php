@@ -96,7 +96,7 @@
 
                             <div class="form-group text-right mb-0 mt-5">
                                 <a href="/quantri/sanpham" clas="btn btn-secondary waves-effect waves-light">Huỷ</a>
-                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Sửa">
+                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Hoàn Tất">
                             </div>
                         </form>
                     </div>

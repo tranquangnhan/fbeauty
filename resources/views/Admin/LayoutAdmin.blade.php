@@ -67,11 +67,12 @@
 
 <!-- Begin page -->
 <div id="wrapper">
-
+    
     <!-- Topbar Start -->
     <div class="navbar-custom">
+        
         <ul class="list-unstyled topnav-menu float-right mb-0">
-
+            
             <li class="d-none d-sm-block">
                 <form class="app-search">
                     <div class="app-search-box">
@@ -86,13 +87,20 @@
                     </div>
                 </form>
             </li>
-
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false" aria-expanded="false">
+                    <i class="mdi mdi-home noti-icon"></i>
+                    <span class="badge badge-primary rounded-circle noti-icon-badge">{{session()->get('coso')}}</span>
+                </a>
+            </li>
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="false" aria-expanded="false">
                     <i class="fe-bell noti-icon"></i>
                     <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
                 </a>
+                
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
                     <!-- item-->
@@ -228,7 +236,7 @@
                     <i class="fe-settings noti-icon"></i>
                 </a>
             </li>
-
+            
 
         </ul>
 
@@ -623,6 +631,7 @@
 
 <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
 
+<script src="{{ asset('Admin/assets') }}/js/pages/common.nhan.js"></script>
 {{-- end code nhúng bởi Nhân --}}
 
 {{-- code nhúng bởi Tưởng --}}
