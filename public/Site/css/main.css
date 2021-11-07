@@ -9,6 +9,7 @@
     --main-color-2: #FFF5F2;
     --main-color-3-bg: #FCC3C3;
     --main-color-4-bg: #ffd0c0;
+    --color-error: #ff4836;
     --gray-1: #F8F8F8;
     --gray-2: #999999;
     --gray-3: #cacaca;
@@ -974,6 +975,7 @@ img.im-small {
 
 .blog-bigsize .img-1 {
     height: 100%;
+    max-height: 367px;
 }
 
 .blog-bigsize .img-1 img {
@@ -1772,7 +1774,7 @@ button:focus {
 }
 
 .modal-container .modal-background .modal {
-    background: white;
+    /* background: white; */
     /* padding: 50px; */
     display: inline-block;
     border-radius: 3px;
@@ -1909,6 +1911,7 @@ button:focus {
     width: 400%;
     overflow-x: auto;
     transition: .2s;
+    align-items: center;
 }
 
 .datlich-step {
@@ -2251,7 +2254,7 @@ form.form-phone-number {
 }
 
 .control-short {
-    background: white;
+    /* background: white; */
     height: 40px;
     width: 100%;
     position: absolute;
@@ -3845,7 +3848,7 @@ input[type=number] {
 }
 
 .fa-modal-user {
-    width: 300%;
+    width: 400%;
     display: flex;
     transition: .2s;
 }
@@ -3857,9 +3860,18 @@ input[type=number] {
     position: relative;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    padding: 1.2em 2em;
+    padding: 1.5em 2em;
     transition: .5s;
     text-align: left;
+}
+
+.countDownOTP {
+    cursor: auto !important;
+}
+
+.text-error {
+    font-size: .8em;
+    color: var(--color-error);
 }
 
 /* Reponsive */

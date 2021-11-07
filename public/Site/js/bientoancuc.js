@@ -4,6 +4,12 @@ const getNhanVienByIdCoSoUrl = serverNameUrl + 'nhanviencuacoso/'; // nhanviencu
 const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/'; // getGio/{thu}
 const postDatLichUrl = serverNameUrl + 'datLich/';
 const rootUrlImage = '/Site/images/';
+const checkIssetUserUrl = serverNameUrl + 'checkIssetUser';
+const siteLoginUrl = serverNameUrl + 'site-login';
+const sendOTPSMSUrl = serverNameUrl + 'sendOTPSMS';
+const removeOTPUrl = serverNameUrl + 'removeOTP';
+const checkOTPUrl = serverNameUrl + 'checkOTP';
+const newPasswordUrl = serverNameUrl + 'newPassword';
 // URL //
 
 const timeMoving = 100;
@@ -56,8 +62,6 @@ var todayYMD = moment().format('YYYY-MM-DD');
 var currentTime = moment().format('HH:mm:ss');
 
 var gioiHanDatLich = moment().add(10, 'minutes').format('HH:mm:ss');
-
-var timeSelected;
 
 var idCoSo;
 
