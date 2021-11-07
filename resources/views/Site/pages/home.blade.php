@@ -494,7 +494,6 @@
 
             <div class="box-pro">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-
                     <div class="col">
                         <div class="card rounded-0 product-card child-item-sanpham zbar">
                             <div class="card-header bg-transparent border-bottom-0">
@@ -505,7 +504,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="http://127.0.0.1:8000/uploads/hyarunic-removebg-preview.png" class="card-img-top img-sanpham-zbar" alt="...">
+                            <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
                             <div class="card-body text-center">
                                 <div class="product-info">
                                     <a href="javascript:;">
@@ -541,43 +540,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="http://127.0.0.1:8000/uploads/hyarunic-removebg-preview.png" class="card-img-top img-sanpham-zbar" alt="...">
-                            <div class="card-body text-center">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <div class="mb-1 product-price">
-                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                            <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card rounded-0 product-card child-item-sanpham zbar">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                    <div class="box-cicrle">
-                                        <i class="fas fa-heart heart-full"></i>
-                                        <i class="far fa-heart heart-line"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="http://127.0.0.1:8000/uploads/hyarunic-removebg-preview.png" class="card-img-top img-sanpham-zbar" alt="...">
+                            <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
                             <div class="card-body text-center">
                                 <div class="product-info">
                                     <a href="javascript:;">
@@ -613,7 +576,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="http://127.0.0.1:8000/uploads/hyarunic-removebg-preview.png" class="card-img-top img-sanpham-zbar" alt="...">
+                            <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
                             <div class="card-body text-center">
                                 <div class="product-info">
                                     <a href="javascript:;">
@@ -639,6 +602,41 @@
                         </div>
                     </div>
 
+                    <div class="col">
+                        <div class="card rounded-0 product-card child-item-sanpham zbar">
+                            <div class="card-header bg-transparent border-bottom-0">
+                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                                    <div class="box-cicrle">
+                                        <i class="fas fa-heart heart-full"></i>
+                                        <i class="far fa-heart heart-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
+                            <div class="card-body text-center">
+                                <div class="product-info">
+                                    <a href="javascript:;">
+                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                    </a>
+                                    <a href="javascript:;">
+                                        <h6 class="product-name mb-2">Product Short Name</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <div class="mb-1 product-price">
+                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                            <button class="w-100 btn-sanpham btn-5" style="opacity: 0;"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                            <button class="w-100 btn-sanpham btn-5 mt-2" style="opacity: 0;"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             {{-- <div class="w-100 text-center mt-3">
@@ -694,7 +692,7 @@
                                     </div>
 
                                     <div class="img-1 w-100">
-                                        <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/xddn35VlCA.jpg" alt="">
+                                        <img class="img-fluid" src="{{ asset('uploads/beauty-spa.jpg') }}" alt="">
                                     </div>
 
                                     <div class="blog-content-bigsize">
@@ -732,7 +730,7 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
@@ -756,7 +754,7 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
@@ -780,7 +778,7 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
@@ -804,7 +802,7 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
@@ -837,7 +835,7 @@
                                     </div>
 
                                     <div class="img-1 w-100">
-                                        <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/xddn35VlCA.jpg" alt="">
+                                        <img class="img-fluid" src="{{ asset('uploads/beauty-spa.jpg') }}" alt="">
                                     </div>
 
                                     <div class="blog-content-bigsize">
@@ -875,7 +873,7 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
@@ -899,7 +897,7 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
@@ -923,7 +921,7 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
@@ -947,7 +945,7 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">

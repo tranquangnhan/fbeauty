@@ -40,6 +40,13 @@
                 </div>
                 <div class="icon-item d-inline-block hover-scale-1">
                     <a class="btn-modal-main" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
+                    @if (session()->has('khachHang') && session('khachHang') != '')
+                        @if (session('khachHang')->name != '')
+                            {{ session('khachHang')->name }}
+                        @else
+                            {{ session('khachHang')->sdt }}
+                        @endif
+                    @endif
                 </div>
                 <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
                     <div class="number-cart">0</div>

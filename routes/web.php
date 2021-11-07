@@ -134,6 +134,12 @@ Route::group(['prefix' => '/'], function (){
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
+    Route::post('site-login', [HomeController::class, "login"]);
+    Route::get('site-logout', [HomeController::class, "logoutSite"]);
+    Route::post('sendOTPSMS', [HomeController::class, "sendOTPSMS"]);
+    Route::get('removeOTP', [HomeController::class, "removeOTP"]);
+    Route::post('checkOTP', [HomeController::class, "checkOTP"]);
+    Route::post('newPassword', [HomeController::class, "newPassword"]);
     Route::post('checkIssetUser', [HomeController::class, "checkIssetUser"]);
 });
 
