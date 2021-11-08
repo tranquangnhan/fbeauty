@@ -119,7 +119,7 @@ class InstallDatabase extends Migration
             $table->unsignedInteger('idkhachhang');
             $table->unsignedInteger('ngaybatdau');
             $table->unsignedInteger('dukienketthuc');
-            $table->string('ghichu',255);
+            $table->string('ghichu',255)->nullable();
             $table->boolean('trangthai');
             $table->foreign('idnhanvien')->references('id')->on('nhanvien');
             $table->foreign('idkhachhang')->references('id')->on('khachhang');

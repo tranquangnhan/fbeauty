@@ -35,7 +35,6 @@
                         </ul>
                     </div>
                
-                
                      @endif
                 </div>
             </div>
@@ -137,6 +136,7 @@
                                                     @csrf
                                                     <p class="timeline-date text-muted"><strong>NV: ({{$item->tennv}})</strong></p>
                                                     <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
+                                                    <p class=" text-danger">{{number_format($item->dongia)," "}} VNĐ</p>
                                                     <p class="timeline-date text-muted date" title="Click để sửa" id="date" data-value="{{date('d-m-Y',$item->ngay)}}" data-format="DD-MM-YYYY" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="{{$item->idlieutrinhchitiet}}" ><small>{{date('d-m-Y',$item->ngay)}}</small>
                                                     </p>
                                                     <p class="mota" id="mota" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>

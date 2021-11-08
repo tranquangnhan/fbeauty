@@ -34,6 +34,7 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
         "nhanvien.name as tennv",
         "nhanvien.avatar as imgnv",
         "dichvu.motangan as motadv",
+        "dichvu.dongia",
         "lieutrinhchitiet.ngay",
         "lieutrinhchitiet.mota",
         "lieutrinhchitiet.trangthai",
@@ -48,6 +49,10 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
     public function selectDate(){
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
         return $this->model->select("idlieutrinh","id")->whereDate('created_at', '=', $dt->toDateString())->get();
+    }
+
+    public function findLieuTrinhChiTietByIdLieuTrinh($id){
+        return $this->model->where('idlieutrinh','=',$id)->get();
     }
 }
 

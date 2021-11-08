@@ -90,7 +90,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
 
     Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
-
+    Route::post('khachhang/themlieutrinh/{id}/store', [KhachHangController::class,'storeLieuTrinh']);
+    Route::delete('khachhang/xoalieutrinh/{id}/delete', [KhachHangController::class,'delLieuTrinh']);
     /**
     *1: Lấy DỊch vụ đến Hóa đơn
      * 2: Lấy Sp chi tiết đến hóa Đơn

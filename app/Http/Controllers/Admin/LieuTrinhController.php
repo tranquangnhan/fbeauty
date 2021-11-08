@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LieuTrinh;
+use App\Http\Requests\LieuTrinhChiTiet;
 use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
@@ -61,10 +61,9 @@ class LieuTrinhController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LieuTrinh $request)
+    public function store(LieuTrinhChiTiet $request)
     {
       
-        
         $trangThai = ($request->trangthai === "on") ? 1 : 0;
         $imgkhachhang = $this->uploadSingle($request->imgkhachhang);
         $data = [
