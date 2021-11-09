@@ -24,8 +24,8 @@ class LieuTrinh extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|integer',
-            'idkhachhang' => 'required|integer',
+            
+            'idnhanvien' => 'required|integer',
             'ngaybatdau'=>'date|after:today',
             'dukienketthuc'=>'date|after:today',
         ];
@@ -34,10 +34,8 @@ class LieuTrinh extends FormRequest
 
     public function messages() {
         return [
-            'id.required' => 'Bạn chưa chọn id nhân viên',
-            'id.integer' => 'Id nhân viên phải là số',
-            'idkhachhang.required' => 'Bạn chưa chọn id khách hàng',
-            'idkhachhang.integer' => 'Id khách hàng phải là số',
+            'idnhanvien.required' => 'Bạn chưa chọn khách hàng',
+            'idnhanvien.integer' => 'Id khách hàng phải là số',
             'ngaybatdau.date' => 'Ngày bắt đầu phải định dạng ngày tháng',
             'ngaybatdau.after' => 'Ngày bắt đầu phải là tương lai',
             'dukienketthuc.date' => 'Ngày bắt đầu phải định dạng ngày tháng',
@@ -48,9 +46,7 @@ class LieuTrinh extends FormRequest
 
     public function attributes(){
         return [
-            
-            'id'=>'Id nhân viên',
-            'idkhachhang'=>'Id khách hàng',
+            'idnhanvien'=>'Id nhân viên',
             'ngaybatdau'=>'Ngày bắt đầu ',
             'dukienketthuc'=>'Dự kiến kết thúc',
             'ghichu'=>'Ghi chú',

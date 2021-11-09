@@ -1,30 +1,5 @@
 const pathUploadImg = 'http://127.0.0.1:8000/';
-$("#add-field").click(function () {
-    $("#some_div").append(`
-    <div class="box-detail"  >
-        <div class="input-block " >
-            <div class="form-group">
-                <label >Nhập số ml</label>
-                <input type="number" name="ml[]"  parsley-trigger="change" required
-                placeholder="Nhập tên nhà sản xuất" class="form-control" id="userName">
-            </div>
 
-            <div class="form-group">
-                <label >Nhập số lượt tồn kho</label>
-                <input type="number" name="tonkho[]"  parsley-trigger="change" required
-                placeholder="Nhập Số lượt tồn kho" class="form-control" id="userName">
-             </div>
-
-            <div class="form-group">
-                <label >Nhập đơn giá sản phẩm</label>
-                 <input type="number" name="dongia[]"  parsley-trigger="change" required
-                placeholder="Đơn giá sản phẩm" class="form-control" id="userName">
-            </div>
-            
-        </div>
-    </div>
-    `);
-});
 
 $(document).on("click", ".remove-field", function () {
     $(this).closest(".box-detail").remove();
@@ -81,24 +56,28 @@ function changImg() {
                 'X-CSRF-TOKEN': $('input[name="_token"]').val(),
             },
         });
+        if(file[0] != undefined){
+        
+            $.ajax({
+                type: "POST",
+                url: "quantri/editimglieutrinh",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    changeSrcImg(pathUploadImg + 'uploads/' + response.imgkhachhang);
+                    
+                    $.each($(".idlieutrinhchitiet"), function (index, val) {
+                        console.log(val.value)
+                        if (val.value == response.id) {
+                            $(val.nextElementSibling).attr("src", pathUploadImg + 'uploads/' + response.imgkhachhang);
+                        }
+                    });
 
-        $.ajax({
-            type: "POST",
-            url: "quantri/editimglieutrinh",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-
-                changeSrcImg(pathUploadImg + 'uploads/' + response.imgkhachhang);
-                $.each($(".idlieutrinh"), function (index, val) {
-                    if (val.value == response.id) {
-                        $(val.nextElementSibling).attr("src", pathUploadImg + 'uploads/' + response.imgkhachhang);
-                    }
-                });
-
-            }
-        });
+                }
+            });
+             
+         }
 
     });
 }

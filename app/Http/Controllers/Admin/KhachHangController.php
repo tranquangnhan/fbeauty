@@ -169,7 +169,7 @@ class KhachHangController extends Controller
     } 
 
     public function storeLieuTrinh(LieuTrinh $request){
-       
+        
         $data = [
             'idnhanvien' => $request->idnhanvien,
             'idkhachhang' => $request->id,

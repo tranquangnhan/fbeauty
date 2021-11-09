@@ -154,7 +154,22 @@
                 </div>
             </div>
             <!-- end row -->
-
+            <div class="row d-flex justify-content-end mb-3">
+                <div class="col-lg-3">
+                    @php
+                        $tongtien =0;
+                      
+                    @endphp
+                   
+                    @foreach ($LieuTrinhChiTiet as $item)
+                       @php
+                             $tongtien += $item->dongia;
+                       @endphp
+                    @endforeach
+                    Tổng tiền: <strong class="text-danger">{{number_format($tongtien),""}}</strong> VNĐ
+                   <a name="" id="" class="btn btn-primary mt-3" href="#" role="button">Tiến Hành Thanh Toán</a>
+                </div>
+            </div>
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->
