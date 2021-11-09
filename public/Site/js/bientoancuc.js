@@ -1,5 +1,4 @@
-// URL //
-const serverNameUrl = 'http://127.0.0.1:8000/';
+const serverNameUrl = $('#server-name').val();
 const getNhanVienByIdCoSoUrl = serverNameUrl + 'nhanviencuacoso/'; // nhanviencuacoso/id
 const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/'; // getGio/{thu}
 const postDatLichUrl = serverNameUrl + 'datLich/';
@@ -10,7 +9,7 @@ const sendOTPSMSUrl = serverNameUrl + 'sendOTPSMS';
 const removeOTPUrl = serverNameUrl + 'removeOTP';
 const checkOTPUrl = serverNameUrl + 'checkOTP';
 const newPasswordUrl = serverNameUrl + 'newPassword';
-// URL //
+const skipCreatePasswordUrl = serverNameUrl + 'skipCreatePassword';
 
 const timeMoving = 100;
 const lengthSlideBooking = $('.datlich-step').length;

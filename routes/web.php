@@ -139,6 +139,7 @@ Route::group(['prefix' => '/'], function (){
     Route::post('sendOTPSMS', [HomeController::class, "sendOTPSMS"]);
     Route::get('removeOTP', [HomeController::class, "removeOTP"]);
     Route::post('checkOTP', [HomeController::class, "checkOTP"]);
+    Route::post('skipCreatePassword', [HomeController::class, "skipCreatePassword"]);
     Route::post('newPassword', [HomeController::class, "newPassword"]);
     Route::post('checkIssetUser', [HomeController::class, "checkIssetUser"]);
 });
