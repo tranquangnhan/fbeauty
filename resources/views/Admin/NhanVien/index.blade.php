@@ -11,10 +11,16 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
-                            <h4 class="mt-0 header-title">Nhân viên</h4>
-                            <p class="text-muted font-14 mb-3">
-                                Đây là nhân viên.
-                            </p>
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <h4 class="mt-0 header-title">Nhân viên cơ sở </h4>
+                                    <p class="text-muted font-14 mb-3">
+                                        Đây danh sách nhân viên đang hoạt động tại cơ sở.
+                                    </p>
+                                </div>
+                            </div>
+                           
+
                             <div>
                                 <a href="{{route("nhanvien.create")}}"
                                    class="btn btn-primary waves-effect waves-light mb-3">Thêm nhân viên

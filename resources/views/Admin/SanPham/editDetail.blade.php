@@ -96,7 +96,7 @@
 
                             <div class="form-group text-right mb-0 mt-5">
                                 <a href="/quantri/sanpham" clas="btn btn-secondary waves-effect waves-light">Huỷ</a>
-                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Sửa">
+                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Hoàn Tất">
                             </div>
                         </form>
                     </div>
@@ -110,7 +110,7 @@
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{URL::to('quantri/sanpham/detail/'.$data[0]->id.'/store')}}"  enctype="multipart/form-data" method="post">
+            <form action="{{URL::to('quantri/sanpham/detail/'.$data[0]->idsanpham.'/store')}}"  enctype="multipart/form-data" method="post">
                 @csrf
 
                 <div class="modal-header">

@@ -16,6 +16,9 @@
                         <p class="text-muted font-14 mb-3">
                         Tất cả sản phẩm có trong cửa hàng.
                         </p>
+                        <div>
+                            <a class="btn btn-primary waves-effect waves-light mb-3" href="quantri/sanpham/create">Thêm Sản Phẩm</a>
+                       </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 @if ($errors->any())
