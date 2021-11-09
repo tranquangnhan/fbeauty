@@ -102,7 +102,6 @@ function callLogin(password) {
         _token: _token
     }
 
-    console.log(data);
     $.ajax({
         async: true,
         type: "POST",
@@ -216,7 +215,6 @@ function sendOTPSMS() {
         url: sendOTPSMSUrl,
         data: data,
         success: function (respon) {
-            console.log(respon);
             if (respon.success) {
                 timeOTPNotValid = respon.timeOTPNotValid;
                 countDownOTPTimeIsValid();
@@ -284,8 +282,6 @@ function checkOTP(OTP) {
                     confirmButtonText: 'Thử lại',
                 });
             }
-
-            console.log(respon);
         },
         error: function () {
             swal.fire({
@@ -312,6 +308,7 @@ $('.newPasswordButton').click(function (e) {
         createNewPassword(password, phoneNumberAuthen);
     }
 });
+
 function createNewPassword(password, phoneNumber) {
     let _token = $('meta[name="csrf-token"]').attr('content');
     let data = {
@@ -327,7 +324,44 @@ function createNewPassword(password, phoneNumber) {
         data: data,
         success: function (respon) {
             if (respon.success) {
-                console.log(respon);
+                location.reload();
+            } else {
+                swal.fire({
+                    icon: 'error',
+                    title: respon.titleMess,
+                    text: respon.textMess,
+                    confirmButtonText: 'Thử lại',
+                });
+            }
+        },
+        error: function () {
+            swal.fire({
+                icon: 'error',
+                title: 'Đã xảy ra lỗi !',
+                text: 'Lỗi khi check OTP',
+                confirmButtonText: 'Thử lại',
+            });
+        }
+    });
+}
+
+$('.skip-password').click(function (e) {
+    e.preventDefault();
+    skipCreatePassword(phoneNumberAuthen);
+});
+
+function skipCreatePassword(phoneNumber) {
+    let data = {
+        sdt: phoneNumber,
+    }
+
+    $.ajax({
+        async: true,
+        type: "POST",
+        url: skipCreatePasswordUrl,
+        data: data,
+        success: function (respon) {
+            if (respon.success) {
                 location.reload();
             } else {
                 swal.fire({

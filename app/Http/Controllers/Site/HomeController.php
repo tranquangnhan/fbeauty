@@ -21,7 +21,7 @@ use App\Events\SendDatLich;
 use App\Http\Requests\KhachHang;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\loginSiteRequest;
-
+use App\Http\Controllers\freeSMSController;
 class HomeController extends Controller
 {
     private $data = array();
@@ -34,6 +34,7 @@ class HomeController extends Controller
     private $KhachHang;
     private $SanPham;
     private $limitTimeNum = 10;
+    private $freeSMSController;
     /**
      * CosoController constructor.
      */
@@ -46,9 +47,9 @@ class HomeController extends Controller
         DatLichRepository $DatLich,
         KhachHangRepository $KhachHang,
         BlogRepository $Blog,
-        SanPhamRepository $SanPham
-        )
+        SanPhamRepository $SanPham)
     {
+        $this->freeSMSController = new freeSMSController;
         $this->Coso = $Coso;
         $this->DanhMuc = $DanhMuc;
         $this->Dichvu = $Dichvu;
@@ -296,6 +297,52 @@ class HomeController extends Controller
         }
     }
 
+    public function skipCreatePassword(Request $request) {
+        try {
+            if ($request->ajax())
+            {
+                $error = $this->checkSDTValid($request->sdt);
+
+                if ($error == false) {
+                    $khachHang = $this->KhachHang->checkLoginSite($request->sdt);
+
+                    if ($khachHang) {
+                        session(['khachHang' => $khachHang]);
+
+                        $response = Array (
+                            'success' => true,
+                            'sdt' => $request->sdt,
+                            'type' => 'Login with OTP'
+                        );
+
+                    } else {
+                        $response = Array (
+                            'success' => false,
+                            'titleMess' => 'Đã xảy ra lỗi !',
+                            'textMess' => 'Không tìm thấy số điện thoại. Vui lòng đăng ký lại'
+                        );
+                    }
+                    session(['khachHang' => $khachHang]);
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => 'Số điện thoại không đúng định dạng',
+                        'request' => $request
+                    );
+                }
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function newPassword(Request $request) {
         try {
             if ($request->ajax())
@@ -361,8 +408,8 @@ class HomeController extends Controller
                     if (session('OTP') == $request->OTP) {
                         $response = Array (
                             'success' => true,
-                            'OTP' => $request->OTP,
-                            'SOTP' => session('OTP')
+                            'OTP' => $request->OTP
+                            // 'SOTP' => session('OTP')
                         );
 
                         session()->forget('OTP');
@@ -429,22 +476,38 @@ class HomeController extends Controller
         }
     }
 
+    public function makeOTP() {
+        $OTP = random_int(100000, 999999);;
+        session(['OTP' => $OTP]);
+
+        return $OTP;
+    }
+
+    public function makeTimeOTPNotValid() {
+        $currentTimestamp = time() * 1000; // lấy timestamp * 1000 vì sử dụng bên js
+        $timeOTPNotValid = $currentTimestamp + 60000; // 60s sau
+        session(['timeOTPNotValid' => $timeOTPNotValid]);
+
+        return $timeOTPNotValid;
+    }
+
     public function sendOTPSMS(Request $request) {
         try {
             if ($request->ajax())
             {
-                $currentTimestamp = time() * 1000; // lấy timestamp * 1000 vì sử dụng bên js
-                $timeOTPNotValid = $currentTimestamp + 60000; // 60s sau
-                session(['timeOTPNotValid' => $timeOTPNotValid]);
+                $OTP = $this->makeOTP();
 
-                $OTP = random_int(100000, 999999);;
-                session(['OTP' => $OTP]);
+                // Ví dụ sdt: 0868970582 => +84868970582
+                $sdt = '+84' . substr($request->sdt, 1, strlen($request->sdt));
+                $message = '[Fbeauty]: '. $OTP . ' la ma OTP cua ban. Ma se het han trong vong 10 phut. Vui long khong chia se ma nay trong bat ki truong hop nao!';
+                $this->freeSMSController->sendSingleMessage($sdt, $message);
 
+                $timeOTPNotValid = $this->makeTimeOTPNotValid();
                 $response = Array (
                     'success' => true,
                     'sdt' => $request->sdt,
-                    'OTP' => $OTP,
-                    'timeOTPNotValid' => $timeOTPNotValid
+                    'timeOTPNotValid' => $timeOTPNotValid,
+                    'phoneNumber' => $sdt,
                 );
             }
 
@@ -739,8 +802,7 @@ class HomeController extends Controller
         $type = false;
         $mess = '';
 
-        $pattern = "/((09|03|07|08|05)+([0-9]{8})\b)/";
-        if (preg_match($pattern, $request->sdt) == 0) {
+        if ($this->checkSDTValid($request->sdt) == true) {
             $type = true;
             $mess = 'Số điện thoại không đúng định dạng';
         } else if (strlen($request->password) != 6) {
@@ -752,5 +814,16 @@ class HomeController extends Controller
             'type' => $type,
             'mess' => $mess
         );
+    }
+
+    public function checkSDTValid($sdt) {
+        $error = false;
+
+        $pattern = "/((09|03|07|08|05)+([0-9]{8})\b)/";
+        if (preg_match($pattern, $sdt) == 0) {
+            $error = true;
+        }
+
+        return $error;
     }
 }
