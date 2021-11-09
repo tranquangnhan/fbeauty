@@ -76,8 +76,8 @@
                     </div>
 
                     <div class="modal-user-item h-100" data-authen="3">
-                        <div class="title-3 text-left color-main uppercase">Nhập OTP</div>
-                        <div class="text-10 text-left">Nhập mật khẩu mới
+                        <div class="title-3 text-left color-main uppercase">Nhập mật khẩu mới</div>
+                        <div class="text-10 text-left">Bạn có thể chọn bỏ qua nếu không muốn dùng mật khẩu
                         </div>
                         <div class="fa-list-input-new-password d-flex w-100 mt-1">
                             <input type="number" class="new-password new-password-box ip-number-box w-100 ml-0" maxlength="1" name="new-password">
@@ -90,6 +90,7 @@
                         <span class="text-error password-new-error"></span>
                         <div class="d-flex py-3">
                             <button type="button" class="button-href-basic prev-authen mr-auto">Quay lại</button>
+                            <button type="button" class="button-href-basic skip-password">Bỏ qua</button>
                         </div>
 
                         <a href="">
