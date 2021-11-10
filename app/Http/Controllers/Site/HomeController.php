@@ -208,7 +208,7 @@ class HomeController extends Controller
                 } else {
                     $khachHang = $this->KhachHang->getBySdt($request->soDienThoai);
                     if ($khachHang == null) {
-                        $khachHang = $this->createNewKhachHang($request->soDienThoai);
+                        $khachHang = $this->createNewKhachHang($request->soDienThoai, $request->idCoSo, $request->nameKhachHang);
                     }
                 }
 
@@ -241,18 +241,31 @@ class HomeController extends Controller
                 }
 
                 if ($error == false) {
-                    $nhanVien = $this->NhanVien->findNhanVienByIdAndCoSo($request->idNhanVien, $request->idCoSo);
-                    if ($nhanVien) {
-                        // check nhan vien
-                        $nhanVienRanh = $this->checkNhanVienRanh($request->thoiGianDat, $nhanVien->id);
-                        if (!$nhanVienRanh) {
+                    if ($request->idNhanVien > 0) {
+                        $nhanVien = $this->NhanVien->findNhanVienByIdAndCoSo($request->idNhanVien, $request->idCoSo);
+                        if ($nhanVien) {
+                            // check nhan vien
+                            $nhanVienRanh = $this->checkNhanVienRanh($request->thoiGianDat, $nhanVien->id);
+                            if (!$nhanVienRanh) {
+                                $error = true;
+                                $textMess = 'Chuyên viên bạn chọn đã có lịch vào ' . $request->ngay . ' ' . $request->gio . '. Hãy chọn giờ khác hoặc chuyên viên khác bạn nhé.';
+                            }
+                        } else {
                             $error = true;
-                            $textMess = 'Chuyên viên bạn chọn đã có lịch vào ' . $request->ngay . ' ' . $request->gio . '. Hãy chọn giờ khác hoặc chuyên viên khác bạn nhé.';
+                            $textMess = 'Không tìm thấy nhân viên';
                         }
                     } else {
-                        $error = true;
-                        $textMess = 'Không tìm thấy nhân viên';
+                        if ($request->idNhanVien != 0) {
+                            $error = true;
+                            $textMess = 'Vui lòng thử lại trong ít phút nhé !.';
+                        } else {
+                            if ($request->listDichVu == '') {
+                                $request->listDichVu = '[0]';
+                            }
+                        }
+
                     }
+
                 }
 
                 if ($error == false) {
@@ -268,14 +281,19 @@ class HomeController extends Controller
                 }
 
                 if ($error == false) {
+                    $sdt = '+84' . substr($request->soDienThoai, 1, strlen($request->soDienThoai));
+                    $message = $this->makeMessageCamOnDatLich($request->idCoSo, $request->ngay, $request->gio);
+                    $this->freeSMSController->sendSingleMessage($sdt, $message);
+
                     $response = Array(
                         'success' => true,
                         'datLich' => $datLich,
                         'khachHang' => $khachHang,
                         'ngay' => $request->ngay,
                         'gio' => $request->gio,
-                        'nhanVien' => $nhanVien,
-                        'nhanVienRanh' => $nhanVienRanh
+                        'request' => $request,
+                        'message' => $message,
+                        'sdt' => $sdt
                     );
                 } else {
                     $response = Array(
@@ -295,6 +313,17 @@ class HomeController extends Controller
                 'textMess' => $e->getMessage()
             ]);
         }
+    }
+
+    public function makeMessageCamOnDatLich($idCoSo, $ngay, $gio) {
+        $diachi = $this->Coso->getDiaChiById($idCoSo);
+        $dateFormatDMY = date("d/m/Y", strtotime($ngay));
+        $indexDauHaiChamFirst = stripos($gio, ':');
+        $gioChenChuH = substr_replace($gio ,"h", $indexDauHaiChamFirst, 1);
+        $gioDaFormat = substr($gioChenChuH, 0, strlen($gioChenChuH) - 3);
+        $message = '[Fbeauty]: Dat lich thanh cong. Thoi gian dat lich vao ngay '.$dateFormatDMY.' luc '.$gioDaFormat.' tai dia chi '.$diachi.'. Ban co the dang nhap bang so dien thoai da dat lich vao trang web fbeauty.com de xem thong tin chi tiet. Cam on ban da quan tam dich vu cua chung toi';
+
+        return $message;
     }
 
     public function skipCreatePassword(Request $request) {
@@ -755,9 +784,11 @@ class HomeController extends Controller
         }
     }
 
-    public function createNewKhachHang($sdt) {
+    public function createNewKhachHang($sdt, $idCoSo, $name) {
         $khachHang = new KhachHangModel;
         $khachHang->sdt = $sdt;
+        $khachHang->idcoso = $idCoSo;
+        $khachHang->name = $name;
         $khachHang->active = Controller::KHACHHANG_CHUA_ACTIVE;
         $khachHang->save();
 
