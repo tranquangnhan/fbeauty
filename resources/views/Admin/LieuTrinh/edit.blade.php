@@ -167,7 +167,7 @@
                        @endphp
                     @endforeach
                     Tổng tiền: <strong class="text-danger">{{number_format($tongtien),""}}</strong> VNĐ
-                   <a name="" id="" class="btn btn-primary mt-3" href="#" role="button">Tiến Hành Thanh Toán</a>
+                   <a class="btn btn-primary mt-3" href="quantri/hoadon/addhoadonbylieutrinh/{{$id}}/store" role="button">Tiến Hành Thanh Toán</a>
                 </div>
             </div>
         </div> <!-- container-fluid -->

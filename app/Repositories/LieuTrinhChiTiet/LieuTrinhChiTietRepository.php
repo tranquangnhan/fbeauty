@@ -39,7 +39,8 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
         "lieutrinhchitiet.mota",
         "lieutrinhchitiet.trangthai",
         "lieutrinhchitiet.imgkhachhang",
-        "lieutrinhchitiet.id as idlieutrinhchitiet"
+        "lieutrinhchitiet.id as idlieutrinhchitiet",
+        "lieutrinhchitiet.iddichvu"
         )
         ->join('dichvu', 'lieutrinhchitiet.iddichvu', '=', 'dichvu.id')
         ->join('nhanvien','lieutrinhchitiet.idnhanvien','=','nhanvien.id')
@@ -54,5 +55,7 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
     public function findLieuTrinhChiTietByIdLieuTrinh($id){
         return $this->model->where('idlieutrinh','=',$id)->get();
     }
+
+    
 }
 

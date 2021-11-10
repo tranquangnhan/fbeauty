@@ -10,6 +10,8 @@ use App\Repositories\GiamGia\GiamGiaRepository;
 use App\Repositories\HoaDon\HoaDonRepositoryInterface;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepositoryInterface;
 use App\Repositories\KhachHang\KhachHangRepository;
+use App\Repositories\LieuTrinh\LieuTrinhRepository;
+use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -22,8 +24,18 @@ class HoaDonController extends Controller
     private $hoadonchitiet;
     private $khachhang;
     private $giamgia;
-
-    public function __construct(GiamGiaRepository $giamgia, KhachHangRepository $khachhang, HoaDonRepositoryInterface $hoadon, HoaDonChiTietRepositoryInterface $hoadonchitiet, NhanVienRepositoryInterface $nhanvien, CosoRepository $coso, DichVuRepositoryInterface $dichvu)
+    private $LieuTrinh;
+    public function __construct(
+    GiamGiaRepository $giamgia,
+    KhachHangRepository $khachhang,
+    HoaDonRepositoryInterface $hoadon,
+    HoaDonChiTietRepositoryInterface $hoadonchitiet,
+    NhanVienRepositoryInterface $nhanvien,
+    CosoRepository $coso,
+    DichVuRepositoryInterface $dichvu,
+    LieuTrinhRepository $LieuTrinh,
+    LieuTrinhChiTietRepository $LieuTrinhChiTiet
+    )
     {
         $this->nhanvien = $nhanvien;
         $this->coso = $coso;
@@ -32,6 +44,8 @@ class HoaDonController extends Controller
         $this->hoadonchitiet = $hoadonchitiet;
         $this->khachhang = $khachhang;
         $this->giamgia = $giamgia;
+        $this->LieuTrinh = $LieuTrinh;
+        $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
     }
 
     /**
@@ -179,6 +193,72 @@ class HoaDonController extends Controller
             "thongbao" => 'Xóa thành công'
         ];
         return $thongbao;
+    }
+
+    public function addHoaDonByIdLieuTrinh($id){
+       
+       $lieuTrinh =  $this->LieuTrinh->find($id);
+       $lieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
+       $tongtien = 0;
+       for ($i=0; $i < count($lieuTrinhChiTiet); $i++) { 
+        $tongtien += $lieuTrinhChiTiet[$i]->dongia;
+       }
+
+       $dataHoaDon = [
+            'idkhachhang' =>$lieuTrinh->idkhachhang ,
+            'idcoso' => session()->get('coso'),
+            'idnhanvien'=> $lieuTrinh->idnhanvien,
+            'idthungan'=> $lieuTrinh->idnhanvien,
+            'idlieutrinh'=> $lieuTrinh->id,
+            'tongtientruocgiamgia'=> $tongtien,
+            'tongtiensaugiamgia'=> $tongtien,
+            'trangthai'=> 0,
+            'ghichu'=>$lieuTrinh->ghichu
+        ];
+
+        // check nếu mà chưa có id === -1 thì tạo ngược lại update
+    //    if(session()->get('idHoaDon') == null){
+    //     $hoaDon = $this->hoadon->create($dataHoaDon);
+        
+    //     if($hoaDon){
+    //         for ($i=0; $i < count($lieuTrinhChiTiet); $i++) { 
+    //             $dataHoaDonChiTiet = [
+    //                 'idhoadon' =>$hoaDon->id,
+    //                 'idlienquan' => $lieuTrinhChiTiet[$i]->iddichvu,
+    //                 'iddichvu'=> $lieuTrinh->idnhanvien,
+    //                 'type'=> 0,
+    //                 'soluong'=> 1,
+    //                 'dongiatruocgiamgia'=> $lieuTrinhChiTiet[$i]->dongia,
+    //                 'dongiasaugiamgia'=> $lieuTrinhChiTiet[$i]->dongia,
+    //             ];
+    //             $this->hoadonchitiet->create($dataHoaDonChiTiet);
+    //         }
+    //         return redirect('/quantri/hoadonchitiet/'.$hoaDon->id);
+    //     }
+
+    //     session()->put('idHoaDon',$hoaDon->id);
+
+    //    }else{
+    //     $hoaDon = $this->hoadon->update(session()->get('idHoaDon'),$dataHoaDon);
+    //     dd("sửa xong");
+    //     if($hoaDon){
+    //         for ($i=0; $i < count($lieuTrinhChiTiet); $i++) { 
+    //             $dataHoaDonChiTiet = [
+    //                 'idhoadon' =>$hoaDon->id,
+    //                 'idlienquan' => $lieuTrinhChiTiet[$i]->iddichvu,
+    //                 'iddichvu'=> $lieuTrinh->idnhanvien,
+    //                 'type'=> 0,
+    //                 'soluong'=> 1,
+    //                 'dongiatruocgiamgia'=> $lieuTrinhChiTiet[$i]->dongia,
+    //                 'dongiasaugiamgia'=> $lieuTrinhChiTiet[$i]->dongia,
+    //             ];
+    //             $t\his->hoadonchitiet->update($dataHoaDonChiTiet,session()->get('idHoaDon'));
+    //         }
+    //         // return redirect('/quantri/hoadonchitiet/'.$hoaDon->id);
+           
+    //     }
+    //    }
+    
     }
 
 }
