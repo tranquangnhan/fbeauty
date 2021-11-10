@@ -16,8 +16,8 @@ class installSeeder extends Seeder
     public function run()
     {
         DB::table('coso')->insert([
-            ['name'=>'Cơ sở 1','diachi'=> 'Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
-            ['name'=>'Cơ sở 2','diachi'=> '778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
+            ['id'=>1,'name'=>'Cơ sở 1','diachi'=> 'Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
+            ['id'=>2,'name'=>'Cơ sở 2','diachi'=> '778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
         ]);
         DB::table('danhmuc')->insert([
             ['id' => 1, 'name'=>'Chăm sóc da mặt','img'=>'photo-1635608885.jpg','slug'=> Str::slug('Chăm sóc da mặt', '-'), 'loai'=>'1'],
@@ -30,8 +30,8 @@ class installSeeder extends Seeder
             ['id' => 8, 'name'=>'Trắng da','img'=>'photo-1635609158.jpg','slug'=> Str::slug('Trắng da', '-'), 'loai'=>'3'],
         ]);
         DB::table('dichvu')->insert([
-            ['name'=>'Xăm Chân Mày', 'slug' => Str::slug('Xăm Chân Mày'), 'img'=>'xam_chan_may.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. ', 'dongia'=>2000000, 'noidung'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. Bạn có thể hình dung đây là phương pháp tương tự như việc xăm tattoo lên cơ thể vậy. Chuyên viên sẽ vẽ khung chân mày trước sau đó sử dụng kim chuyên dụng đưa mực xuyên sâu qua da để hoàn thiện theo khuôn chân mày. ', 'trangthai'=> 1],
-            ['name'=>'Spa Điều Trị Mụn', 'slug' => Str::slug('Spa Điều Trị Mụn'), 'img'=>'dieu_tri_mun.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Ở trên đã giới thiệu về phun xăm thẩm mỹ chân mày, môi rồi phải không? Nhưng chắc chắn nhiều bạn cũng sẽ không quan tâm nhiều bằng dịch vụ spa này đâu đúng không? ', 'dongia'=>4000000, 'noidung'=>'Ở trên đã giới thiệu về phun xăm thẩm mỹ chân mày, môi rồi phải không? Nhưng chắc chắn nhiều bạn cũng sẽ không quan tâm nhiều bằng dịch vụ spa này đâu đúng không? Đó là điều trị mụn như thế nào an toàn nhất, chất lượng nhất cho làn da cũng như sức khỏe của mình. Vì hiện nay xã hội phát triển và quá nhiều thứ trong không khí bị ô nhiễm mà làn da lại “được hưởng” một cách trực tiếp nhất hằng ngày, hằng giờ, chính vì thế mụn rất dễ được sinh ra. Vậy là cách nào để đến với dịch vụ spa và chọn đúng, chuẩn phương pháp điều trị mụn để tránh tiền mất tật mua? An tâm bên Miss Tram đều có gợi ý cho bạn sau đây.
+            ['id'=>1,'name'=>'Xăm Chân Mày', 'slug' => Str::slug('Xăm Chân Mày'), 'img'=>'xam_chan_may.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. ', 'dongia'=>2000000, 'noidung'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. Bạn có thể hình dung đây là phương pháp tương tự như việc xăm tattoo lên cơ thể vậy. Chuyên viên sẽ vẽ khung chân mày trước sau đó sử dụng kim chuyên dụng đưa mực xuyên sâu qua da để hoàn thiện theo khuôn chân mày. ', 'trangthai'=> 1],
+            ['id'=>2,'name'=>'Spa Điều Trị Mụn', 'slug' => Str::slug('Spa Điều Trị Mụn'), 'img'=>'dieu_tri_mun.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Ở trên đã giới thiệu về phun xăm thẩm mỹ chân mày, môi rồi phải không? Nhưng chắc chắn nhiều bạn cũng sẽ không quan tâm nhiều bằng dịch vụ spa này đâu đúng không? ', 'dongia'=>4000000, 'noidung'=>'Ở trên đã giới thiệu về phun xăm thẩm mỹ chân mày, môi rồi phải không? Nhưng chắc chắn nhiều bạn cũng sẽ không quan tâm nhiều bằng dịch vụ spa này đâu đúng không? Đó là điều trị mụn như thế nào an toàn nhất, chất lượng nhất cho làn da cũng như sức khỏe của mình. Vì hiện nay xã hội phát triển và quá nhiều thứ trong không khí bị ô nhiễm mà làn da lại “được hưởng” một cách trực tiếp nhất hằng ngày, hằng giờ, chính vì thế mụn rất dễ được sinh ra. Vậy là cách nào để đến với dịch vụ spa và chọn đúng, chuẩn phương pháp điều trị mụn để tránh tiền mất tật mua? An tâm bên Miss Tram đều có gợi ý cho bạn sau đây.
 
             Dịch vụ điều trị mụn phù hợp cho từng loại mụn, loại da tại Miss Trâm
 
@@ -83,8 +83,8 @@ class installSeeder extends Seeder
             + Chi phí điều trị khá rẻ, phù hợp với mọi độ tuổi
 
             Nhược điểm: Chỉ giải quyết được tình trạng mụn trên bề mặt da. Bạn nên duy trì chăm sóc da thường xuyên để kiểm soát nốt mụn mới càng sớm càng tốt.', 'trangthai'=> 1],
-            ['name'=>'Xăm Môi Truyền Thống', 'slug' => Str::slug('Xăm Môi Truyền Thống'), 'img'=>'xam_moi_truyen_thong.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Thường thì đối với các tỉnh lẻ, không phải nằm thành phố lớn như Hồ Chí Minh, Hà Nội, Cần Thơ, Đà Nẵng thì phương pháp này được sử dụng khá nhiều, ', 'dongia'=>3000000, 'noidung'=>'Thường thì đối với các tỉnh lẻ, không phải nằm thành phố lớn như Hồ Chí Minh, Hà Nội, Cần Thơ, Đà Nẵng thì phương pháp này được sử dụng khá nhiều, vì với viêc cập nhật kiến thức, kỹ thuật và đầu tư máy móc ở các tỉnh của các chủ tiệm spa, thẩm mỹ viện hầu như không có. Với xăm môi truyền thống, chuyên viên sẽ dùng kim đâm xuyên qua lớp sừng, sau đó thoa đều mực xăm lên hoặc lấy mũi kim nhúng vào mực trước rồi lăn lên da. Màu sắc sau khi xăm môi sẽ đậm hơn, mực xăm lại không được tự nhiên cho lắm, khi nhìn vào dễ phát hiện ra dấu tích thẩm mỹ.', 'trangthai'=> 1],
-            ['name'=>'Spa Điều Trị Mụn Lưng', 'slug' => Str::slug('Spa Điều Trị Mụn Lưng'), 'img'=>'dieu_tri_mun_lung.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Điều trị mụn lưng, đọc đến đây có bạn sẽ hỏi sao không gộp vào điều trị mụn ở trên? Không vì điều trị mụn lưng nó thành một mảng khác so với điều trị mụn ở trên là nói về điều trị mụn trên mặt rồi. ', 'dongia'=>3500000, 'noidung'=>'Điều trị mụn lưng, đọc đến đây có bạn sẽ hỏi sao không gộp vào điều trị mụn ở trên? Không vì điều trị mụn lưng nó thành một mảng khác so với điều trị mụn ở trên là nói về điều trị mụn trên mặt rồi. Vậy thì hãy cùng khám phá xem có bao nhiêu cách, công nghệ điều trị mụn lưng lại dịch vụ spa làm đẹp Miss Trâm nào?
+            ['id'=>3,'name'=>'Xăm Môi Truyền Thống', 'slug' => Str::slug('Xăm Môi Truyền Thống'), 'img'=>'xam_moi_truyen_thong.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Thường thì đối với các tỉnh lẻ, không phải nằm thành phố lớn như Hồ Chí Minh, Hà Nội, Cần Thơ, Đà Nẵng thì phương pháp này được sử dụng khá nhiều, ', 'dongia'=>3000000, 'noidung'=>'Thường thì đối với các tỉnh lẻ, không phải nằm thành phố lớn như Hồ Chí Minh, Hà Nội, Cần Thơ, Đà Nẵng thì phương pháp này được sử dụng khá nhiều, vì với viêc cập nhật kiến thức, kỹ thuật và đầu tư máy móc ở các tỉnh của các chủ tiệm spa, thẩm mỹ viện hầu như không có. Với xăm môi truyền thống, chuyên viên sẽ dùng kim đâm xuyên qua lớp sừng, sau đó thoa đều mực xăm lên hoặc lấy mũi kim nhúng vào mực trước rồi lăn lên da. Màu sắc sau khi xăm môi sẽ đậm hơn, mực xăm lại không được tự nhiên cho lắm, khi nhìn vào dễ phát hiện ra dấu tích thẩm mỹ.', 'trangthai'=> 1],
+            ['id'=>4,'name'=>'Spa Điều Trị Mụn Lưng', 'slug' => Str::slug('Spa Điều Trị Mụn Lưng'), 'img'=>'dieu_tri_mun_lung.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Điều trị mụn lưng, đọc đến đây có bạn sẽ hỏi sao không gộp vào điều trị mụn ở trên? Không vì điều trị mụn lưng nó thành một mảng khác so với điều trị mụn ở trên là nói về điều trị mụn trên mặt rồi. ', 'dongia'=>3500000, 'noidung'=>'Điều trị mụn lưng, đọc đến đây có bạn sẽ hỏi sao không gộp vào điều trị mụn ở trên? Không vì điều trị mụn lưng nó thành một mảng khác so với điều trị mụn ở trên là nói về điều trị mụn trên mặt rồi. Vậy thì hãy cùng khám phá xem có bao nhiêu cách, công nghệ điều trị mụn lưng lại dịch vụ spa làm đẹp Miss Trâm nào?
 
             Dịch vụ spa điều trị mụn lưng
 
@@ -102,7 +102,7 @@ class installSeeder extends Seeder
             Phi kim, lăn kim vi điểm còn góp phần kích thích tái tạo biểu bì, tăng sinh Keratinocyte (lớp sừng của da) và các tế bào gốc. Khi đó, lớp Keratin được đẩy lên trên và hình thành một lớp gọi là thượng bì bảo vệ cơ thể dưới tác động của môi trường xung quanh.
 
             ', 'trangthai'=> 1],
-            ['name'=>'Spa Trẻ Hóa Da Tự Nhiên', 'slug' => Str::slug('Spa Trẻ Hóa Da Tự Nhiên'), 'img'=>'tre_hoa_da.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Da bạn bị lão hóa? Theo thời gian xã hội phát triển thì tỷ lệ ngược với da của bạn lão hóa càng nhanh và càng trẻ hóa độ tuổi ra. Vậy làm thế nào? Chả nhẽ cứ là đi phẩu thuật hay sao?', 'dongia'=>3000000, 'noidung'=>'Da bạn bị lão hóa? Theo thời gian xã hội phát triển thì tỷ lệ ngược với da của bạn lão hóa càng nhanh và càng trẻ hóa độ tuổi ra. Vậy làm thế nào? Chả nhẽ cứ là đi phẩu thuật hay sao? Không không,… Bí quyết cho bạn dịch vụ spa làm đẹp trẻ hóa da tự nhiên từ Miss Tram như sau:
+            ['id'=>5,'name'=>'Spa Trẻ Hóa Da Tự Nhiên', 'slug' => Str::slug('Spa Trẻ Hóa Da Tự Nhiên'), 'img'=>'tre_hoa_da.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Da bạn bị lão hóa? Theo thời gian xã hội phát triển thì tỷ lệ ngược với da của bạn lão hóa càng nhanh và càng trẻ hóa độ tuổi ra. Vậy làm thế nào? Chả nhẽ cứ là đi phẩu thuật hay sao?', 'dongia'=>3000000, 'noidung'=>'Da bạn bị lão hóa? Theo thời gian xã hội phát triển thì tỷ lệ ngược với da của bạn lão hóa càng nhanh và càng trẻ hóa độ tuổi ra. Vậy làm thế nào? Chả nhẽ cứ là đi phẩu thuật hay sao? Không không,… Bí quyết cho bạn dịch vụ spa làm đẹp trẻ hóa da tự nhiên từ Miss Tram như sau:
 
             Dịch vụ spa trẻ hóa da tự nhiên tại thẩm mỹ viện miss tram
 
@@ -121,28 +121,28 @@ class installSeeder extends Seeder
         ]);
 
         DB::table('nhanvien')->insert([
-            ['idcoso'=>1,'iddichvu'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> '$2y$10$iimuFe7voEEthMTFQvRBX.hk1XrL3O1W7lXTZPCxktAIWkuEmY692','role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['idcoso'=>1,'iddichvu'=>1, 'email'=>'longnh.2401@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Long', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['idcoso'=>1,'iddichvu'=>1, 'email'=>'tuong2712@gmail.com','password'=> '$2y$10$nlRY7DRJfQQLSbI0aV7h9usw0waQxL9uGbNFQChi.06.YIigQCC3q','role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['idcoso'=>1,'iddichvu'=>1, 'email'=>'nhanvien@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'nhân viên', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['idcoso'=>1,'iddichvu'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['idcoso'=>1,'iddichvu'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'idcoso'=>1,'iddichvu'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> '$2y$10$iimuFe7voEEthMTFQvRBX.hk1XrL3O1W7lXTZPCxktAIWkuEmY692','role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>2,'idcoso'=>1,'iddichvu'=>1, 'email'=>'longnh.2401@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Long', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'idcoso'=>1,'iddichvu'=>1, 'email'=>'tuong2712@gmail.com','password'=> '$2y$10$nlRY7DRJfQQLSbI0aV7h9usw0waQxL9uGbNFQChi.06.YIigQCC3q','role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>4,'idcoso'=>1,'iddichvu'=>1, 'email'=>'nhanvien@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'nhân viên', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>5,'idcoso'=>1,'iddichvu'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>6,'idcoso'=>1,'iddichvu'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('giamgia')->insert([
-            ['name'=>'MAXSALE150','ma'=>'FB01', 'number'=>25000,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'10252021' ,'ngayhethan'=>'10252029','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['name'=>'MAXSALE250','ma'=>'FB02', 'number'=>250000,'max'=> 950000,'loai'=>0 ,'ngaytao'=>'10252021' ,'ngayhethan'=>'10252029','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['name'=>'MAXSALE200','ma'=>'FB03', 'number'=>150000,'max'=> 200000,'loai'=>1 ,'ngaytao'=>'10252021' ,'ngayhethan'=>'10252029','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'name'=>'MAXSALE150','ma'=>'FB01', 'number'=>25000,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'1635699600' ,'ngayhethan'=>'1637341200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>2,'name'=>'MAXSALE250','ma'=>'FB02', 'number'=>250000,'max'=> 950000,'loai'=>0 ,'ngaytao'=>'1637686800' ,'ngayhethan'=>'1640883600','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'name'=>'MAXSALE200','ma'=>'FB03', 'number'=>150000,'max'=> 200000,'loai'=>1 ,'ngaytao'=>'1635958800' ,'ngayhethan'=>'1638205200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('khachhang')->insert([
-            ['name' => 'Long', 'sdt'=> '0965286055','email'=>'long@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'a2c0894d9a3e77602e2f.jpg'],
-            ['name' => 'Nhân', 'sdt'=> '0965286056','email'=>'nhan@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => '88e5bb095c89b1d7e898.jpg'],
-            ['name' => 'Ly Ly', 'sdt'=> '0965286057', 'email'=>'lyly@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang1.jpg'],
-            ['name' => 'Hương Hương', 'sdt'=> '0965286058', 'email'=>'huonghuong@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang5.jpg'],
-            ['name' => 'Thảo', 'sdt'=> '0965286059', 'email'=>'thao@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang6.jpg'],
-            ['name' => 'Thảo Mai', 'sdt'=> '0965286060', 'email'=>'thaomai@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang7.jpg']
+            ['id'=>1,'name' => 'Long', 'sdt'=> '0965286055','email'=>'long@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'a2c0894d9a3e77602e2f.jpg'],
+            ['id'=>2,'name' => 'Nhân', 'sdt'=> '0965286056','email'=>'nhan@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => '88e5bb095c89b1d7e898.jpg'],
+            ['id'=>3,'name' => 'Ly Ly', 'sdt'=> '0965286057', 'email'=>'lyly@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang1.jpg'],
+            ['id'=>4,'name' => 'Hương Hương', 'sdt'=> '0965286058', 'email'=>'huonghuong@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang5.jpg'],
+            ['id'=>5,'name' => 'Thảo', 'sdt'=> '0965286059', 'email'=>'thao@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang6.jpg'],
+            ['id'=>6,'name' => 'Thảo Mai', 'sdt'=> '0965286060', 'email'=>'thaomai@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang7.jpg']
         ]);
         DB::table('blog')->insert([
-            ['iddm' => '8', 'img' => 'dieu_tri_mun_uc_che.jpg', 'name' => 'DR.Seoul trị và ức chế mụn VAS 4.0 cho da mụn và nhạy cảm', 'slug' => Str::slug('DR.Seoul trị và ức chế mụn VAS 4.0 cho da mụn và nhạy cảm', '-'),'motangan'=>'Seoul Trị và ức chế Mụn VAS 4.0 – Một trong những liệu trình chăm sóc và điều trị mới nhất dành cho những khách hàng gặp phải vấn đề mụn tại Seoul Spa.', 'noidung' => 'Ưu điểm của liệu trình DR. Seoul Trị và ức chế Mụn VAS 4.0
+            ['id'=>1,'iddm' => '8', 'img' => 'dieu_tri_mun_uc_che.jpg', 'name' => 'DR.Seoul trị và ức chế mụn VAS 4.0 cho da mụn và nhạy cảm', 'slug' => Str::slug('DR.Seoul trị và ức chế mụn VAS 4.0 cho da mụn và nhạy cảm', '-'),'motangan'=>'Seoul Trị và ức chế Mụn VAS 4.0 – Một trong những liệu trình chăm sóc và điều trị mới nhất dành cho những khách hàng gặp phải vấn đề mụn tại Seoul Spa.', 'noidung' => 'Ưu điểm của liệu trình DR. Seoul Trị và ức chế Mụn VAS 4.0
             Với sự nâng cấp công nghệ nhằm bắt kịp với xu hướng thẩm mỹ trên thế giới, liệu trình DR. Seoul Trị và ức chế Mụn VAS 4.0 tỏ ra vô cùng vượt trội và phù hợp với nhiều khách hàng tại Seoul Spa bởi:
 
             Có khả năng ngăn chặn tối đa nguy cơ xuất hiện mụn trên da
@@ -212,7 +212,7 @@ class installSeeder extends Seeder
             Tốt nhất là không sử dụng các loại mỹ phẩm trong thời gian phục hồi theo chỉ định, chỉ nên dùng một số sản phẩm dưỡng ẩm phù hợp và dịu nhẹ để xoa dịu làn da sau khi lấy nhân mụn.
             Phi kim da và đi tinh chất sẽ khiến da trở nên nhạy cảm và yếu hơn nhiều so với lúc bình thường. Vì vậy bạn nên chú trọng bảo vệ và che chắn da khỏi những yếu tố có hại như khói bụi, ánh nắng mặt trời một cách kỹ càng.', 'trangthai' => '1'],
 
-            ['iddm' => '7', 'img' => 'LHA_tri_mun.jpg', 'name' => 'Bạn đã biết gì về LHA- ngôi sao trị mụn thế hệ mới', 'slug' => Str::slug('Bạn đã biết gì về LHA- ngôi sao trị mụn thế hệ mới', '-'),'motangan'=>'Để mà nói về hoạt chất trị mụn thì chẳng ai là không biết AHA, BHA,…vân vân mây mây. Thế nhưng có một hoạt chất nghe vừa lạ vừa quen,', 'noidung' => 'Để mà nói về hoạt chất trị mụn thì chẳng ai là không biết AHA, BHA,…vân vân mây mây. Thế nhưng có một hoạt chất nghe vừa lạ vừa quen, đó là LHA liệu bạn đã biết chưa? Nếu chưa thì hôm nay chúng mình sẽ cùng tìm hiểu sâu về em nó nha, các bạn đang tìm hoạt chất trị mụn “chân ái” càng không thể bỏ qua đâu.
+            ['id'=>2,'iddm' => '7', 'img' => 'LHA_tri_mun.jpg', 'name' => 'Bạn đã biết gì về LHA- ngôi sao trị mụn thế hệ mới', 'slug' => Str::slug('Bạn đã biết gì về LHA- ngôi sao trị mụn thế hệ mới', '-'),'motangan'=>'Để mà nói về hoạt chất trị mụn thì chẳng ai là không biết AHA, BHA,…vân vân mây mây. Thế nhưng có một hoạt chất nghe vừa lạ vừa quen,', 'noidung' => 'Để mà nói về hoạt chất trị mụn thì chẳng ai là không biết AHA, BHA,…vân vân mây mây. Thế nhưng có một hoạt chất nghe vừa lạ vừa quen, đó là LHA liệu bạn đã biết chưa? Nếu chưa thì hôm nay chúng mình sẽ cùng tìm hiểu sâu về em nó nha, các bạn đang tìm hoạt chất trị mụn “chân ái” càng không thể bỏ qua đâu.
 
             Giữa LHA và BHA có gì khác biệt?
             Chúng ta đều biết BHA- Beta Hydroxy Acid thường được biết đến dưới dạng Salicylic Acid, có thể tan trong dầu. Do đó tác động sâu đến lỗ chân lông, có khả năng “thanh lọc” da, đẩy những bụi bẩn trong lỗ chân lông lên bề mặt da để làm sạch. LHA cũng vậy, ẻm thuộc cùng họ hàng với BHA đấy chứ nhưng vẫn có một số khác biệt dưới đây nè!
@@ -241,7 +241,7 @@ class installSeeder extends Seeder
             Nếu gặp hiện tượng khô, bong tróc, mẩn đỏ, ngứa nên dừng lại để da nghỉ ngơi.
             ', 'trangthai' => '1'],
 
-            ['iddm' => '6', 'img' => '1tang1.jpg', 'name' => 'MUA 1 TẶNG 1 BEST-SELLER', 'slug' => Str::slug('Ở ĐÂY BẠN MUA 1 ĐƯỢC THÊM TẶNG 1 BEST-SELLER, DANH SÁCH LÊN TỚI 50 SẢN PHẨM BEST-SELLER Các bạn tưởng Mint đã tổ chức sinh nhật xong rồi á?', '-'),'motangan'=>'Ở ĐÂY BẠN MUA 1 ĐƯỢC THÊM TẶNG 1 BEST-SELLER, DANH SÁCH LÊN TỚI 50 SẢN PHẨM BEST-SELLER','noidung'=>'Ở ĐÂY BẠN MUA 1 ĐƯỢC THÊM TẶNG 1 BEST-SELLER, DANH SÁCH LÊN TỚI 50 SẢN PHẨM BEST-SELLER
+            ['id'=>3,'iddm' => '6', 'img' => '1tang1.jpg', 'name' => 'MUA 1 TẶNG 1 BEST-SELLER', 'slug' => Str::slug('Ở ĐÂY BẠN MUA 1 ĐƯỢC THÊM TẶNG 1 BEST-SELLER, DANH SÁCH LÊN TỚI 50 SẢN PHẨM BEST-SELLER Các bạn tưởng Mint đã tổ chức sinh nhật xong rồi á?', '-'),'motangan'=>'Ở ĐÂY BẠN MUA 1 ĐƯỢC THÊM TẶNG 1 BEST-SELLER, DANH SÁCH LÊN TỚI 50 SẢN PHẨM BEST-SELLER','noidung'=>'Ở ĐÂY BẠN MUA 1 ĐƯỢC THÊM TẶNG 1 BEST-SELLER, DANH SÁCH LÊN TỚI 50 SẢN PHẨM BEST-SELLER
             Các bạn tưởng Mint đã tổ chức sinh nhật xong rồi á? Không phải đâu nha, lại có thêm 1 deal cực kì hấp dẫn với các bạn của Mint đây. Sinh nhật chúng mình mà người được nhận quà lại là các bạn đó.
             Mua sản phẩm nào được tặng thêm sản phẩm đó, từ drugstore cho tới highend không thiếu mức giá nào đâu nha.
             Chương trình diễn ra:
@@ -457,14 +457,14 @@ class installSeeder extends Seeder
 
         ]);
         DB::table('donhang')->insert([
-            ['idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['idkhachhang'=>'2','idgiamgia'=>'2', 'tennguoinhan'=>'Hùng','diachikhachhang'=> '345/3 Tổ 29 , Khu phố 2 , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737032' ,'tongtientruocgiamgia'=>'21000000' ,'tongtiensaugiamgia'=>'20000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'BE','trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['idkhachhang'=>'3','idgiamgia'=>'3', 'tennguoinhan'=>'Ly Ly','diachikhachhang'=> '186 , Phường Thái Hà , Q.Đống Đa , Hà Nội','sdtnguoinhan'=>'0845737033' ,'tongtientruocgiamgia'=>'5000000' ,'tongtiensaugiamgia'=>'5500000','ghichucuakhachhang'=> 'Em sẽ nhận được đơn hàng full tuần nha ạ','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'DHL','trangthai'=>2,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['idkhachhang'=>'4','idgiamgia'=>'2', 'tennguoinhan'=>'Thảo','diachikhachhang'=> '415 Nguyễn Trãi , Phường 7 , Q.5 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'30000000' ,'tongtiensaugiamgia'=>'28000000','ghichucuakhachhang'=> '','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>4,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['idkhachhang'=>'5','idgiamgia'=>'1', 'tennguoinhan'=>'Thảo Mai','diachikhachhang'=> 'Tầng 1, 28 Seongam-ro 13-gil, Mapo-gu, Seoul','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'35000000' ,'tongtiensaugiamgia'=>'30000000','ghichucuakhachhang'=> '주문은 이번주말에 받아볼께요 감사합니다','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'FEDEX','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>2,'idkhachhang'=>'2','idgiamgia'=>'2', 'tennguoinhan'=>'Hùng','diachikhachhang'=> '345/3 Tổ 29 , Khu phố 2 , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737032' ,'tongtientruocgiamgia'=>'21000000' ,'tongtiensaugiamgia'=>'20000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'BE','trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'idkhachhang'=>'3','idgiamgia'=>'3', 'tennguoinhan'=>'Ly Ly','diachikhachhang'=> '186 , Phường Thái Hà , Q.Đống Đa , Hà Nội','sdtnguoinhan'=>'0845737033' ,'tongtientruocgiamgia'=>'5000000' ,'tongtiensaugiamgia'=>'5500000','ghichucuakhachhang'=> 'Em sẽ nhận được đơn hàng full tuần nha ạ','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'DHL','trangthai'=>2,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>4,'idkhachhang'=>'4','idgiamgia'=>'2', 'tennguoinhan'=>'Thảo','diachikhachhang'=> '415 Nguyễn Trãi , Phường 7 , Q.5 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'30000000' ,'tongtiensaugiamgia'=>'28000000','ghichucuakhachhang'=> '','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>4,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>5,'idkhachhang'=>'5','idgiamgia'=>'1', 'tennguoinhan'=>'Thảo Mai','diachikhachhang'=> 'Tầng 1, 28 Seongam-ro 13-gil, Mapo-gu, Seoul','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'35000000' ,'tongtiensaugiamgia'=>'30000000','ghichucuakhachhang'=> '주문은 이번주말에 받아볼께요 감사합니다','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'FEDEX','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('sanpham')->insert([
-            ['iddanhmuc'=>1,'name'=>'LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', 'slug'=> Str::slug('LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', '-'),'img'=>'profile-photo-1635519235.png','mota'=> 'Mặt nạ “siêu dưỡng da” được ngâm trong 30ml The Treatment Lotion ngay lập tức mang đến sự tăng cường hydrat hoá giúp chữa lành,','noidung'=>'Mặt nạ tấm với công nghệ ôm sát của Nhật Bản và hàng triệu sợi vi mô tinh khiết độc đáo tăng cường sự tập trung của quá trình hydrat hóa chữa lành, làm rạng rỡ, đầy đặn và truyền vào da một nguồn năng lượng mạnh mẽ có tác dụng hồi sinh làn da chỉ trong tíc tắc.
+            ['id'=>1,'iddanhmuc'=>1,'name'=>'LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', 'slug'=> Str::slug('LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', '-'),'img'=>'profile-photo-1635519235.png','mota'=> 'Mặt nạ “siêu dưỡng da” được ngâm trong 30ml The Treatment Lotion ngay lập tức mang đến sự tăng cường hydrat hoá giúp chữa lành,','noidung'=>'Mặt nạ tấm với công nghệ ôm sát của Nhật Bản và hàng triệu sợi vi mô tinh khiết độc đáo tăng cường sự tập trung của quá trình hydrat hóa chữa lành, làm rạng rỡ, đầy đặn và truyền vào da một nguồn năng lượng mạnh mẽ có tác dụng hồi sinh làn da chỉ trong tíc tắc.
 
             - Kết cấu vi mô độc đáo của các sợi phản lực tinh khiết nhẹ nhàng ôm lấy làn da để chúng ta có thể hoạt động trong khi sử dụng mặt nạ.
 
@@ -482,7 +482,7 @@ class installSeeder extends Seeder
 
             Sản xuất tại Nhật Bản' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['iddanhmuc'=>2,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'profile-photo-1635519265.png','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
+            ['id'=>2,'iddanhmuc'=>2,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'profile-photo-1635519265.png','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
 
              - Chứa thành phần tái tạo tế bào Miracle Broth™ - "thuốc tiên" huyền thoại có trong mọi sản phẩm La Mer - truyền vào da những lợi ích tái tạo có nguồn gốc từ biển, chữa lành và làm đầy, làm mịn các các nếp nhăn, để lộ sự rạng rỡ mới cho làn da.
 
@@ -496,7 +496,7 @@ class installSeeder extends Seeder
 
              Không chứa Paraben, Phthalates, Sulfates, Sulfites.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['iddanhmuc'=>3,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'profile-photo-1635519289.png','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
+            ['id'=>3,'iddanhmuc'=>3,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'profile-photo-1635519289.png','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
 
             Phương pháp điều trị huyền thoại của La Mer Miracle Broth™ được bào chế với các chất chống oxy hóa giúp bảo vệ đôi môi, ngay lập tức làm đầy đặn và làm rõ các đường nét.
 
@@ -512,7 +512,7 @@ class installSeeder extends Seeder
 
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['iddanhmuc'=>4,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'profile-photo-1635519312.png','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
+            ['id'=>4,'iddanhmuc'=>4,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'profile-photo-1635519312.png','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
 
             - Ngay lập tức làm mềm độ nhám, nuôi dưỡng và giúp làm dịu sự khô da môi nghiêm trọng.
 
@@ -524,7 +524,7 @@ class installSeeder extends Seeder
 
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['iddanhmuc'=>5,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'profile-photo-1635519333.jpg','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
+            ['id'=>5,'iddanhmuc'=>5,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'profile-photo-1635519333.jpg','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
 
             - Với gấp ba lần lượng "thuốc tiên" Miracle Broth™ so với phiên bản cũ, truyền vào da nguồn năng lượng thiết yếu và hydrat hóa chữa lành, hỗ trợ đổi mới cho vùng mắt mịn màng và sáng hơn.
 
@@ -546,7 +546,7 @@ class installSeeder extends Seeder
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.
 
             ' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['iddanhmuc'=>6,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'profile-photo-1635519355.jpg','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
+            ['id'=>6,'iddanhmuc'=>6,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'profile-photo-1635519355.jpg','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
 
             Khi dùng độc lập, công thức Soft Focus Complex sẽ làm mờ lỗ chân lông, nếp nhăn và các khuyết điểm khác trên da. Khi sử dụng như kem lót, công thức này sẽ giúp kem nền đạt được hiệu ứng hoàn hảo nhất, và giữ cho lớp trang điểm bền bỉ suốt 12 tiếng*. Invisiblur Perfecting Shield Broad Spectrum SPF 30 PA +++ còn không hề chứa Parabens, Sulfates, Phthalates, Gluten và các thành phần có chiết xuất từ động vật.
 
@@ -555,61 +555,61 @@ class installSeeder extends Seeder
             Thành phần nổi bật:' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL]
         ]);
         DB::table('sanphamchitiet')->insert([
-            ['idsanpham' => 1, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '590000'],
-            ['idsanpham' => 1, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '690000'],
-            ['idsanpham' => 1, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '890000'],
-            ['idsanpham' => 2, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '1500000'],
-            ['idsanpham' => 2, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '1600000'],
-            ['idsanpham' => 2, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '1800000'],
-            ['idsanpham' => 3, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '3600000'],
-            ['idsanpham' => 3, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '3800000'],
-            ['idsanpham' => 3, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '4000000'],
-            ['idsanpham' => 4, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '1650000'],
-            ['idsanpham' => 4, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '1850000'],
-            ['idsanpham' => 4, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '2000000'],
-            ['idsanpham' => 5, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '4700000'],
-            ['idsanpham' => 5, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '4800000'],
-            ['idsanpham' => 5, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '5000000'],
+            ['id'=>1,'idsanpham' => 1, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '590000'],
+            ['id'=>2,'idsanpham' => 1, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '690000'],
+            ['id'=>3,'idsanpham' => 1, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '890000'],
+            ['id'=>4,'idsanpham' => 2, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '1500000'],
+            ['id'=>5,'idsanpham' => 2, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '1600000'],
+            ['id'=>6,'idsanpham' => 2, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '1800000'],
+            ['id'=>7,'idsanpham' => 3, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '3600000'],
+            ['id'=>8,'idsanpham' => 3, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '3800000'],
+            ['id'=>9,'idsanpham' => 3, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '4000000'],
+            ['id'=>10,'idsanpham' => 4, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '1650000'],
+            ['id'=>11,'idsanpham' => 4, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '1850000'],
+            ['id'=>12,'idsanpham' => 4, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '2000000'],
+            ['id'=>13,'idsanpham' => 5, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '4700000'],
+            ['id'=>14,'idsanpham' => 5, 'ml'=> '450', 'soluotmua' => '99', 'tonkho' => '300', 'dongia' => '4800000'],
+            ['id'=>15,'idsanpham' => 5, 'ml'=> '750', 'soluotmua' => '80', 'tonkho' => '300', 'dongia' => '5000000'],
         ]);
         DB::table('donhangchitiet')->insert([
-            ['iddonhang' => 1, 'idsanphamchitiet'=> 1, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '590000','dongiasaugiamgia'=>'550000'],
-            ['iddonhang' => 1, 'idsanphamchitiet'=> 2, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '690000','dongiasaugiamgia'=>'650000'],
-            ['iddonhang' => 1, 'idsanphamchitiet'=> 3, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '890000','dongiasaugiamgia'=>'850000'],
-            ['iddonhang' => 2, 'idsanphamchitiet'=> 4, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '1500000','dongiasaugiamgia'=>'1450000'],
-            ['iddonhang' => 2, 'idsanphamchitiet'=> 5, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '1600000','dongiasaugiamgia'=>'155000'],
-            ['iddonhang' => 2, 'idsanphamchitiet'=> 6, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '1800000','dongiasaugiamgia'=>'1700000'],
-            ['iddonhang' => 3, 'idsanphamchitiet'=> 7, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '3600000','dongiasaugiamgia'=>'3100000'],
-            ['iddonhang' => 3, 'idsanphamchitiet'=> 8, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '3800000','dongiasaugiamgia'=>'375000000'],
-            ['iddonhang' => 3, 'idsanphamchitiet'=> 9, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '4000000','dongiasaugiamgia'=>'3900000'],
+            ['id'=>1,'iddonhang' => 1, 'idsanphamchitiet'=> 1, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '590000','dongiasaugiamgia'=>'550000'],
+            ['id'=>2,'iddonhang' => 1, 'idsanphamchitiet'=> 2, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '690000','dongiasaugiamgia'=>'650000'],
+            ['id'=>3,'iddonhang' => 1, 'idsanphamchitiet'=> 3, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '890000','dongiasaugiamgia'=>'850000'],
+            ['id'=>4,'iddonhang' => 2, 'idsanphamchitiet'=> 4, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '1500000','dongiasaugiamgia'=>'1450000'],
+            ['id'=>5,'iddonhang' => 2, 'idsanphamchitiet'=> 5, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '1600000','dongiasaugiamgia'=>'155000'],
+            ['id'=>6,'iddonhang' => 2, 'idsanphamchitiet'=> 6, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '1800000','dongiasaugiamgia'=>'1700000'],
+            ['id'=>7,'iddonhang' => 3, 'idsanphamchitiet'=> 7, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '3600000','dongiasaugiamgia'=>'3100000'],
+            ['id'=>8,'iddonhang' => 3, 'idsanphamchitiet'=> 8, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '3800000','dongiasaugiamgia'=>'375000000'],
+            ['id'=>9,'iddonhang' => 3, 'idsanphamchitiet'=> 9, 'img' => 'cchamsocda.jpg', 'soluong' => '5', 'dongiatruocgiamgia' => '4000000','dongiasaugiamgia'=>'3900000'],
         ]);
         DB::table('giohang')->insert([
-            ['idkhachhang' => 1],
-            ['idkhachhang' => 2],
-            ['idkhachhang' => 3],
-            ['idkhachhang' => 4],
-            ['idkhachhang' => 5],
+            ['id'=>1,'idkhachhang' => 1],
+            ['id'=>2,'idkhachhang' => 2],
+            ['id'=>3,'idkhachhang' => 3],
+            ['id'=>4,'idkhachhang' => 4],
+            ['id'=>5,'idkhachhang' => 5],
         ]);
         DB::table('giohangchitiet')->insert([
-            ['idgiohang' => 1, 'idsanpham'=> 1,'soluong' => 2],
-            ['idgiohang' => 1, 'idsanpham'=> 2,'soluong' => 2],
-            ['idgiohang' => 2, 'idsanpham'=> 3,'soluong' => 3],
-            ['idgiohang' => 2, 'idsanpham'=> 4,'soluong' => 3],
-            ['idgiohang' => 3, 'idsanpham'=> 5,'soluong' => 4],
-            ['idgiohang' => 3, 'idsanpham'=> 6,'soluong' => 4],
-            ['idgiohang' => 4, 'idsanpham'=> 1,'soluong' => 5],
-            ['idgiohang' => 5, 'idsanpham'=> 2,'soluong' => 5],
+            ['id'=>1,'idgiohang' => 1, 'idsanphamchitiet'=> 1,'soluong' => 2],
+            ['id'=>2,'idgiohang' => 1, 'idsanphamchitiet'=> 2,'soluong' => 2],
+            ['id'=>3,'idgiohang' => 2, 'idsanphamchitiet'=> 3,'soluong' => 3],
+            ['id'=>4,'idgiohang' => 2, 'idsanphamchitiet'=> 4,'soluong' => 3],
+            ['id'=>5,'idgiohang' => 3, 'idsanphamchitiet'=> 5,'soluong' => 4],
+            ['id'=>6,'idgiohang' => 3, 'idsanphamchitiet'=> 6,'soluong' => 4],
+            ['id'=>7,'idgiohang' => 4, 'idsanphamchitiet'=> 1,'soluong' => 5],
+            ['id'=>8,'idgiohang' => 5, 'idsanphamchitiet'=> 2,'soluong' => 5],
         ]);
         DB::table('lieutrinh')->insert([
-            ['idnhanvien'=>1,'idkhachhang'=>6,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 2,'idkhachhang'=> 5,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 3,'idkhachhang'=> 4,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 4,'idkhachhang'=> 3,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu' =>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 5,'idkhachhang'=> 2,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 6,'idkhachhang'=> 1,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>1,'idnhanvien'=>1,'idkhachhang'=>6,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>2,'idnhanvien'=>2,'idkhachhang'=>5,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>3,'idnhanvien'=>3,'idkhachhang'=>4,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>4,'idnhanvien'=>4,'idkhachhang'=>3,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu' =>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>5,'idnhanvien'=>5,'idkhachhang'=>2,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>6,'idnhanvien'=>6,'idkhachhang'=>1,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
 
         ]);
         DB::table('lieutrinhchitiet')->insert([
-            ['idlieutrinh' => 1, 'iddichvu'=> 1,'idnhanvien'=> 1, 'mota' =>'Bước 1: Kiểm tra tình trạng da
+            ['id'=>1,'idlieutrinh' => 1, 'iddichvu'=> 1,'idnhanvien'=> 1, 'mota' =>'Bước 1: Kiểm tra tình trạng da
             chăm sóc da cơ bản tại spa
             Kiểm tra da/ Soi da là bước đầu tiên trong quy trình chăm sóc da cơ bản tại spa
             Hầu hết các spa uy tín hiện nay đều trang bị máy soi da để phân tích và đánh giá chi tiết tình trạng da của bạn. Khi nắm được da của bạn thuộc loại da nào và đang gặp vấn đề gì sẽ đưa ra được những lời khuyên và phương pháp chăm sóc da phù hợp. Một phương pháp làm đẹp có thể tốt với người này nhưng lại không tốt với người kia, đó rất có thể do chúng ta chưa thực sự hiểu làn da của mình.
@@ -658,7 +658,7 @@ class installSeeder extends Seeder
             Quy trình chăm sóc da cơ bản ở spa sẽ được kết thúc bằng bước dưỡng ẩm cho da bằng kem dưỡng hoặc nước cân bằng độ ẩm cho làn da.
 
             Trên đây là 8 bước trong quy trình chăm sóc da cơ bản tại spa mà bạn nên áp dụng vào cơ sở của mình hoặc tham khảo để lựa chọn spa sử dụng dịch vụ. Giá dịch vụ cũng phụ thuộc rất nhiều vào chất lượng của từng spa nên bạn cần lựa chọn kỹ lưỡng để chăm sóc làn da của mình nhé!', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang1.jpg'],
-            ['idlieutrinh' => 2, 'iddichvu'=> 2,'idnhanvien'=> 2, 'mota' =>'Các bước chuẩn bị xăm, phun môi:
+            ['id'=>2,'idlieutrinh' => 2, 'iddichvu'=> 2,'idnhanvien'=> 2, 'mota' =>'Các bước chuẩn bị xăm, phun môi:
 
             Chọn màu môi, dáng môi
             Tiêm 1-2 mũi thuốc tê vào môi
@@ -675,7 +675,7 @@ class installSeeder extends Seeder
             Không nên chọn những màu quá đỏ, sẽ khó đánh loại son khác nếu chúng ta muốn có chút thay đổi. Xu hướng chung là chọn gram màu nhẹ nhàng
             Không nên chọn màu có thiên hướng quá cam vì sau khi ngả màu, màu môi sẽ hơi vàng
             Nên chọn màu đỏ không pha để khi xuống màu nó sẽ thành đỏ hoặc hồng.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang2.jpg'],
-            ['idlieutrinh' => 3, 'iddichvu'=> 3,'idnhanvien'=> 3, 'mota' =>'Bước 1: Làm sạch
+            ['id'=>3,'idlieutrinh' => 3, 'iddichvu'=> 3,'idnhanvien'=> 3, 'mota' =>'Bước 1: Làm sạch
 
             Bước đầu tiên này nên thực hiện vào mỗi buổi sáng và buổi tối.
 
@@ -710,7 +710,7 @@ class installSeeder extends Seeder
             SPF được khuyến nghị hàng ngày ở mọi lứa tuổi.
 
             Một lưu ý đó là bạn nên thoa một loại kem dưỡng bằng chất lỏng nhẹ trước ví dụ như huyết thanh, kem dưỡng ẩm, sau đó mới đến kem chống nắng.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang3.jpg'],
-            ['idlieutrinh' => 4, 'iddichvu'=> 4,'idnhanvien'=> 4, 'mota' =>'1. Bước 1: Làm sạch và sát khuẩn da mặt
+            ['id'=>4,'idlieutrinh' => 4, 'iddichvu'=> 4,'idnhanvien'=> 4, 'mota' =>'1. Bước 1: Làm sạch và sát khuẩn da mặt
             Đây là bước cơ bản cho tất cả các liệu trình chăm sóc và điều trị da liễu. Làm sạch da sẽ loại bỏ vi khuẩn trú ngụ trên da, hạn chế tối đa vi khuẩn xâm nhập sâu vào nang lông trong khi nặn mụn.
             Bước làm sạch này thường sử dụng:
 
@@ -729,7 +729,7 @@ class installSeeder extends Seeder
             Đầu nhọn của que lấy mụn sẽ dùng để châm đầu mụn, đầu tròn còn lại dùng để ấn xuống để đẩy nhân mụn ra ngoài. Thao tác nặn mụn sẽ dùng lực vừa phải để vừa đẩy nhân mụn ra ngoài mà không gây tổn thương nhiều cho da.
             5. Bước 5: Sát khuẩn và chăm sóc da sau mụn
             Sau khi nặn mụn, các chuyên gia, bác sĩ sẽ sát trùng vị trí mụn. Dung dịch thường được sử dụng là nước muối sinh lý hoặc các dung dịch sát khuẩn chuyên dụng như Povidine 10% để ngăn ngừa nhiễm trùng, nhiễm vi khuẩn.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang4.jpg'],
-            ['idlieutrinh' => 5, 'iddichvu'=> 5,'idnhanvien'=> 5, 'mota' =>'Thời gian thực hiện và các bước trong liệu trình Điều Trị Mụn Lưng tại Fbeauty
+            ['id'=>5,'idlieutrinh' => 5, 'iddichvu'=> 5,'idnhanvien'=> 5, 'mota' =>'Thời gian thực hiện và các bước trong liệu trình Điều Trị Mụn Lưng tại Fbeauty
             Bước 1: Rửa và làm sạch các lớp bụi bẩn trên bề mặt da
 
             Bước 2: Tẩy tế bào chết giúp loại bỏ lớp tế bào già cội sần sùi thô ráp, đồng thời làm thông thoáng lỗ chân lông để các bước điều trị tiếp theo hiệu quả hơn.
@@ -747,7 +747,7 @@ class installSeeder extends Seeder
             Bước 8: Thắp ánh sáng sinh học ức chế tuyến bã nhờn, hạn chế nhiễm trùng vết thương, giảm kích ứng da, làm diệu và giảm đau, phục hồi tế bào da hư tổn, kích thích tuần hoàn máu, tái tạo da.
 
             Bước 9: Phun oxy giúp làm sạch sâu, bổ sung dưỡng chất cần thiết nuôi dưỡng một làn da tươi sáng, khỏe mạnh từ bên trong đồng thời ngăn chặn mọi quá trình lão hóa', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang5.jpg'],
-            ['idlieutrinh' => 6, 'iddichvu'=> 1,'idnhanvien'=> 6, 'mota' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            ['id'=>6,'idlieutrinh' => 6, 'iddichvu'=> 1,'idnhanvien'=> 6, 'mota' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
             Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
 
             QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
@@ -767,41 +767,32 @@ class installSeeder extends Seeder
 
         ]);
         DB::table('hoadon')->insert([
-            ['idkhachhang' => 1, 'idcoso'=> 1, 'idnhanvien'=> 1, 'idthungan' => 1,'idlieutrinh'=> 1,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '1500000','tongtiensaugiamgia'=>'1450000', 'trangthai'=>0, 'ghichu'=>'dịch vụ rất đa dạng và bắt mắt '],
-            ['idkhachhang' => 2, 'idcoso'=> 2, 'idnhanvien'=> 2, 'idthungan' => 2,'idlieutrinh'=> 2,'idgiamgia'=> 2, 'tongtientruocgiamgia'=> '3600000','tongtiensaugiamgia'=>'3400000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng '],
-            ['idkhachhang' => 3, 'idcoso'=> 2, 'idnhanvien'=> 3, 'idthungan' => 3,'idlieutrinh'=> 3,'idgiamgia'=> 3, 'tongtientruocgiamgia'=> '4000000','tongtiensaugiamgia'=>'45000000', 'trangthai'=>2, 'ghichu'=>'dịch vụ rất đa dạng '],
-            ['idkhachhang' => 4, 'idcoso'=> 1, 'idnhanvien'=> 4, 'idthungan' => 4,'idlieutrinh'=> 3,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '16000000','tongtiensaugiamgia'=>'15000000', 'trangthai'=>3, 'ghichu'=>'dịch vụ rất đa dạng '],
-            ['idkhachhang' => 5, 'idcoso'=> 2, 'idnhanvien'=> 5, 'idthungan' => 5,'idlieutrinh'=> 2,'idgiamgia'=> 2, 'tongtientruocgiamgia'=> '3800000','tongtiensaugiamgia'=>'35000000', 'trangthai'=>0, 'ghichu'=>'dịch vụ rất đa dạng '],
-            ['idkhachhang' => 6, 'idcoso'=> 2, 'idnhanvien'=> 6, 'idthungan' => 6,'idlieutrinh'=> 2,'idgiamgia'=> 3, 'tongtientruocgiamgia'=> '10000000','tongtiensaugiamgia'=>'9000000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng '],
-        ]);
-        DB::table('lieutrinh')->insert([
-            ['idnhanvien'=>1,'idkhachhang'=>6,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 2,'idkhachhang'=> 5,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 3,'idkhachhang'=> 4,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 4,'idkhachhang'=> 3,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu' =>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 5,'idkhachhang'=> 2,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['idnhanvien'=> 6,'idkhachhang'=> 1,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-
+            ['id'=>1,'idkhachhang' => 1, 'idcoso'=> 1, 'idnhanvien'=> 1, 'idthungan' => 1,'idlieutrinh'=> 1,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '1500000','tongtiensaugiamgia'=>'1450000', 'trangthai'=>0, 'ghichu'=>'dịch vụ rất đa dạng và bắt mắt '],
+            ['id'=>2,'idkhachhang' => 2, 'idcoso'=> 2, 'idnhanvien'=> 2, 'idthungan' => 2,'idlieutrinh'=> 2,'idgiamgia'=> 2, 'tongtientruocgiamgia'=> '3600000','tongtiensaugiamgia'=>'3400000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng '],
+            ['id'=>3,'idkhachhang' => 3, 'idcoso'=> 2, 'idnhanvien'=> 3, 'idthungan' => 3,'idlieutrinh'=> 3,'idgiamgia'=> 3, 'tongtientruocgiamgia'=> '4000000','tongtiensaugiamgia'=>'45000000', 'trangthai'=>2, 'ghichu'=>'dịch vụ rất đa dạng '],
+            ['id'=>4,'idkhachhang' => 4, 'idcoso'=> 1, 'idnhanvien'=> 4, 'idthungan' => 4,'idlieutrinh'=> 3,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '16000000','tongtiensaugiamgia'=>'15000000', 'trangthai'=>3, 'ghichu'=>'dịch vụ rất đa dạng '],
+            ['id'=>5,'idkhachhang' => 5, 'idcoso'=> 2, 'idnhanvien'=> 5, 'idthungan' => 5,'idlieutrinh'=> 2,'idgiamgia'=> 2, 'tongtientruocgiamgia'=> '3800000','tongtiensaugiamgia'=>'35000000', 'trangthai'=>0, 'ghichu'=>'dịch vụ rất đa dạng '],
+            ['id'=>6,'idkhachhang' => 6, 'idcoso'=> 2, 'idnhanvien'=> 6, 'idthungan' => 6,'idlieutrinh'=> 2,'idgiamgia'=> 3, 'tongtientruocgiamgia'=> '10000000','tongtiensaugiamgia'=>'9000000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng '],
         ]);
           DB::table('hoadonchitiet')->insert([
-            ['idhoadon'=>1,'idlienquan'=>1,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'15000000','dongiasaugiamgia'=>'14000000'],
-            ['idhoadon'=>2,'idlienquan'=>2,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'18000000','dongiasaugiamgia'=>'17500000'],
-            ['idhoadon'=>3,'idlienquan'=>3,'type'=>2,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000'],
-            ['idhoadon'=>4,'idlienquan'=>4,'type'=>3,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000'],
+            ['id'=>1,'idhoadon'=>1,'idlienquan'=>1,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'15000000','dongiasaugiamgia'=>'14000000'],
+            ['id'=>2,'idhoadon'=>2,'idlienquan'=>2,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'18000000','dongiasaugiamgia'=>'17500000'],
+            ['id'=>3,'idhoadon'=>3,'idlienquan'=>3,'type'=>2,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000'],
+            ['id'=>4,'idhoadon'=>4,'idlienquan'=>4,'type'=>3,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000'],
         ]);
-           DB::table('subscribed')->insert([
-            ['email'=>'ly@gmail.com'],
-            ['email'=>'huong@gmail.com'],
-            ['email'=>'thao@gmail.com'],
-            ['email'=>'thaomai@mail.com'],
+           DB::table('theodoi')->insert([
+            ['id'=>1,'email'=>'ly@gmail.com'],
+            ['id'=>2,'email'=>'huong@gmail.com'],
+            ['id'=>3,'email'=>'thao@gmail.com'],
+            ['id'=>4,'email'=>'thaomai@mail.com'],
         ]);
-        DB::table('wishlist')->insert([
-            ['idkhachhang'=>1,'idsanpham'=>1],
-            ['idkhachhang'=>2,'idsanpham'=>2],
-            ['idkhachhang'=>1,'idsanpham'=>3],
-            ['idkhachhang'=>2,'idsanpham'=>4],
-            ['idkhachhang'=>1,'idsanpham'=>5],
-            ['idkhachhang'=>2,'idsanpham'=>6],
+        DB::table('yeuthich')->insert([
+            ['id'=>1,'idkhachhang'=>1,'idsanphamchitiet'=>1],
+            ['id'=>2,'idkhachhang'=>2,'idsanphamchitiet'=>2],
+            ['id'=>3,'idkhachhang'=>1,'idsanphamchitiet'=>3],
+            ['id'=>4,'idkhachhang'=>2,'idsanphamchitiet'=>4],
+            ['id'=>5,'idkhachhang'=>1,'idsanphamchitiet'=>5],
+            ['id'=>6,'idkhachhang'=>2,'idsanphamchitiet'=>6],
 
         ]);
 

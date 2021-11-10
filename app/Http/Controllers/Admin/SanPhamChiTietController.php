@@ -91,22 +91,22 @@ class SanPhamChiTietController extends Controller
                     'tonkho' => $tonkho[$i],
                     'dongia' => $dongia[$i]
                 ];
-    
+
                 $res = $this->SanPhamChiTiet->update($id[$i],$data);
             }
             if($res) {
-              
+
                 return redirect('quantri/sanpham')->with('success','Sửa thành công');
             }
 
         }
         
     }
-  
+
     public function destroy($id)
     {
-        $hasDonHang = $this->DonHangChiTiet->findDonHangChiTietByIdSanPhamChiTiet($id);
-        
+        $hasDonHang = $this->GiamGia->findDonHangChiTietByIdSanPhamChiTiet($id);
+
         if(count($hasDonHang)>0){
             $response = [
                 'type'=>'error',
@@ -132,7 +132,7 @@ class SanPhamChiTietController extends Controller
             }
 
             return response()->json($response);
-          
+
         }
     }
 

@@ -31,4 +31,7 @@ class DonHangRepository extends BaseRepository implements DonHangRepositoryInter
         // ->where('tin.idTin', '=', $idTin)
         // ->first();
     }
+    public function findDonHangByIdGiamGia($idDonHang){
+        return $this->model->select("*")->where('id', '=', $idDonHang)->get();
+    }
 }
