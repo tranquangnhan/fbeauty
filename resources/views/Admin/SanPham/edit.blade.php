@@ -36,7 +36,7 @@
 
                             <div class="form-group">
                                 <label for="">Hình ảnh</label><br>
-                                <img width="130" height="90" style="object-fit: cover" src="{{ asset('uploads/'.$data->img) }}" alt=""><br><br>
+                                <img width="130" height="90" style="object-fit: cover"  src="{{ asset('uploads/'.$data->img) }}" alt=""><br><br>
                                <input type="file" name="img" >
                                @if ($errors->has('img'))
                                     <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('img')[0]}}</li></ul>

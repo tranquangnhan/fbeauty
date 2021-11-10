@@ -30,7 +30,8 @@
                                                            required
                                                            placeholder="Tên nhân viên" class="form-control"
                                                            value="{{old('username')}}"
-                                                           id="username">
+                                                           id="username"
+                                                           >
                                                     @error('username')
                                                     <span class="badge badge-danger">{{$message}}</span>
                                                     @enderror

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\Blog\BlogRepository;
@@ -17,6 +18,10 @@ use App\Models\Admin\KhachHangModel;
 use App\Models\Admin\DatLichModel;
 use Carbon\Carbon;
 use App\Events\SendDatLich;
+use App\Http\Requests\KhachHang;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\loginSiteRequest;
+use App\Http\Controllers\freeSMSController;
 class HomeController extends Controller
 {
     private $data = array();
@@ -29,6 +34,7 @@ class HomeController extends Controller
     private $KhachHang;
     private $SanPham;
     private $limitTimeNum = 10;
+    private $freeSMSController;
     /**
      * CosoController constructor.
      */
@@ -41,9 +47,9 @@ class HomeController extends Controller
         DatLichRepository $DatLich,
         KhachHangRepository $KhachHang,
         BlogRepository $Blog,
-        SanPhamRepository $SanPham
-        )
+        SanPhamRepository $SanPham)
     {
+        $this->freeSMSController = new freeSMSController;
         $this->Coso = $Coso;
         $this->DanhMuc = $DanhMuc;
         $this->Dichvu = $Dichvu;
@@ -202,7 +208,7 @@ class HomeController extends Controller
                 } else {
                     $khachHang = $this->KhachHang->getBySdt($request->soDienThoai);
                     if ($khachHang == null) {
-                        $khachHang = $this->createNewKhachHang($request->soDienThoai);
+                        $khachHang = $this->createNewKhachHang($request->soDienThoai, $request->idCoSo, $request->nameKhachHang);
                     }
                 }
 
@@ -235,18 +241,31 @@ class HomeController extends Controller
                 }
 
                 if ($error == false) {
-                    $nhanVien = $this->NhanVien->findNhanVienByIdAndCoSo($request->idNhanVien, $request->idCoSo);
-                    if ($nhanVien) {
-                        // check nhan vien
-                        $nhanVienRanh = $this->checkNhanVienRanh($request->thoiGianDat, $nhanVien->id);
-                        if (!$nhanVienRanh) {
+                    if ($request->idNhanVien > 0) {
+                        $nhanVien = $this->NhanVien->findNhanVienByIdAndCoSo($request->idNhanVien, $request->idCoSo);
+                        if ($nhanVien) {
+                            // check nhan vien
+                            $nhanVienRanh = $this->checkNhanVienRanh($request->thoiGianDat, $nhanVien->id);
+                            if (!$nhanVienRanh) {
+                                $error = true;
+                                $textMess = 'Chuyên viên bạn chọn đã có lịch vào ' . $request->ngay . ' ' . $request->gio . '. Hãy chọn giờ khác hoặc chuyên viên khác bạn nhé.';
+                            }
+                        } else {
                             $error = true;
-                            $textMess = 'Chuyên viên bạn chọn đã có lịch vào ' . $request->ngay . ' ' . $request->gio . '. Hãy chọn giờ khác hoặc chuyên viên khác bạn nhé.';
+                            $textMess = 'Không tìm thấy nhân viên';
                         }
                     } else {
-                        $error = true;
-                        $textMess = 'Không tìm thấy nhân viên';
+                        if ($request->idNhanVien != 0) {
+                            $error = true;
+                            $textMess = 'Vui lòng thử lại trong ít phút nhé !.';
+                        } else {
+                            if ($request->listDichVu == '') {
+                                $request->listDichVu = '[0]';
+                            }
+                        }
+
                     }
+
                 }
 
                 if ($error == false) {
@@ -262,14 +281,19 @@ class HomeController extends Controller
                 }
 
                 if ($error == false) {
+                    $sdt = '+84' . substr($request->soDienThoai, 1, strlen($request->soDienThoai));
+                    $message = $this->makeMessageCamOnDatLich($request->idCoSo, $request->ngay, $request->gio);
+                    $this->freeSMSController->sendSingleMessage($sdt, $message);
+
                     $response = Array(
                         'success' => true,
                         'datLich' => $datLich,
                         'khachHang' => $khachHang,
                         'ngay' => $request->ngay,
                         'gio' => $request->gio,
-                        'nhanVien' => $nhanVien,
-                        'nhanVienRanh' => $nhanVienRanh
+                        'request' => $request,
+                        'message' => $message,
+                        'sdt' => $sdt
                     );
                 } else {
                     $response = Array(
@@ -291,14 +315,322 @@ class HomeController extends Controller
         }
     }
 
+    public function makeMessageCamOnDatLich($idCoSo, $ngay, $gio) {
+        $diachi = $this->Coso->getDiaChiById($idCoSo);
+        $dateFormatDMY = date("d/m/Y", strtotime($ngay));
+        $indexDauHaiChamFirst = stripos($gio, ':');
+        $gioChenChuH = substr_replace($gio ,"h", $indexDauHaiChamFirst, 1);
+        $gioDaFormat = substr($gioChenChuH, 0, strlen($gioChenChuH) - 3);
+        $message = '[Fbeauty]: Dat lich thanh cong. Thoi gian dat lich vao ngay '.$dateFormatDMY.' luc '.$gioDaFormat.' tai dia chi '.$diachi.'. Ban co the dang nhap bang so dien thoai da dat lich vao trang web fbeauty.com de xem thong tin chi tiet. Cam on ban da quan tam dich vu cua chung toi';
+
+        return $message;
+    }
+
+    public function skipCreatePassword(Request $request) {
+        try {
+            if ($request->ajax())
+            {
+                $error = $this->checkSDTValid($request->sdt);
+
+                if ($error == false) {
+                    $khachHang = $this->KhachHang->checkLoginSite($request->sdt);
+
+                    if ($khachHang) {
+                        session(['khachHang' => $khachHang]);
+
+                        $response = Array (
+                            'success' => true,
+                            'sdt' => $request->sdt,
+                            'type' => 'Login with OTP'
+                        );
+
+                    } else {
+                        $response = Array (
+                            'success' => false,
+                            'titleMess' => 'Đã xảy ra lỗi !',
+                            'textMess' => 'Không tìm thấy số điện thoại. Vui lòng đăng ký lại'
+                        );
+                    }
+                    session(['khachHang' => $khachHang]);
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => 'Số điện thoại không đúng định dạng',
+                        'request' => $request
+                    );
+                }
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function newPassword(Request $request) {
+        try {
+            if ($request->ajax())
+            {
+                $errors = $this->checkLoginSiteValid($request);
+
+                if ($errors['type'] == false) {
+                    $khachHang = $this->KhachHang->checkLoginSite($request->sdt);
+
+                    if ($khachHang) {
+                        if ($khachHang->active == Controller::KHACHHANG_DA_ACTIVE) {
+                            $this->updateKhachHang($khachHang->id, $request->password);
+                            $response = Array (
+                                'success' => true,
+                                'sdt' => $request->sdt,
+                                'password' => $request->password,
+                                'type' => 'update'
+                            );
+                        } else {
+                            $this->updateKhachHangActive($khachHang->id, $request->password);
+                            $response = Array (
+                                'success' => true,
+                                'sdt' => $request->sdt,
+                                'password' => $request->password,
+                                'type' => 'update active'
+                            );
+                        }
+                    } else {
+                        $khachHang = $this->createKhachHangActive($request->sdt, $request->password);
+                        $response = Array (
+                            'success' => true,
+                            'sdt' => $request->sdt,
+                            'password' => $request->password,
+                            'type' => 'create new'
+                        );
+                    }
+                    session(['khachHang' => $khachHang]);
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => $errors['mess']
+                    );
+                }
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function checkOTP(Request $request) {
+        try {
+            if ($request->ajax())
+            {
+                $errors = $this->checkOTPValid($request->OTP);
+                if ($errors['type'] == false) {
+                    if (session('OTP') == $request->OTP) {
+                        $response = Array (
+                            'success' => true,
+                            'OTP' => $request->OTP
+                            // 'SOTP' => session('OTP')
+                        );
+
+                        session()->forget('OTP');
+                    } else {
+                        $response = Array (
+                            'success' => false,
+                            'titleMess' => 'Đã xảy ra lỗi !',
+                            'textMess' => 'Mã xác nhận OTP không đúng. Vui lòng nhập lại'
+                        );
+                    }
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => $errors['mess']
+                    );
+                }
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function checkOTPValid($OTP) {
+        $type = false;
+        $mess = '';
+
+        if (strlen($OTP) != 6) {
+            $type = true;
+            $mess = 'OTP không đúng định dạng';
+        }
+
+        return array(
+            'type' => $type,
+            'mess' => $mess
+        );
+    }
+
+    public function removeOTP(Request $request) {
+        try {
+            if ($request->ajax())
+            {
+                session()->forget('OTP');
+                session()->forget('timeOTPNotValid');
+
+                $response = Array (
+                    'success' => true,
+                );
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function makeOTP() {
+        $OTP = random_int(100000, 999999);;
+        session(['OTP' => $OTP]);
+
+        return $OTP;
+    }
+
+    public function makeTimeOTPNotValid() {
+        $currentTimestamp = time() * 1000; // lấy timestamp * 1000 vì sử dụng bên js
+        $timeOTPNotValid = $currentTimestamp + 60000; // 60s sau
+        session(['timeOTPNotValid' => $timeOTPNotValid]);
+
+        return $timeOTPNotValid;
+    }
+
+    public function sendOTPSMS(Request $request) {
+        try {
+            if ($request->ajax())
+            {
+                $OTP = $this->makeOTP();
+
+                // Ví dụ sdt: 0868970582 => +84868970582
+                $sdt = '+84' . substr($request->sdt, 1, strlen($request->sdt));
+                $message = '[Fbeauty]: '. $OTP . ' la ma OTP cua ban. Ma se het han trong vong 10 phut. Vui long khong chia se ma nay trong bat ki truong hop nao!';
+                $this->freeSMSController->sendSingleMessage($sdt, $message);
+
+                $timeOTPNotValid = $this->makeTimeOTPNotValid();
+                $response = Array (
+                    'success' => true,
+                    'sdt' => $request->sdt,
+                    'timeOTPNotValid' => $timeOTPNotValid,
+                    'phoneNumber' => $sdt,
+                );
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function logoutSite() {
+        session()->forget('khachHang');
+        return redirect()->back();
+    }
+
+    public function login(Request $request) {
+        try {
+            if ($request->ajax())
+            {
+                $errors = $this->checkLoginSiteValid($request);
+
+                if ($errors['type'] == false) {
+                    $khachHang = $this->KhachHang->checkLoginSite($request->sdt);
+
+                    if ($khachHang) {
+                        if (Hash::check($request->password, $khachHang->password)) {
+                            if ($khachHang->active == 1) {
+                                session(['khachHang' => $khachHang]);
+                                $response = Array(
+                                    'success' => true,
+                                    'khachHang' => $khachHang
+                                );
+                            } else {
+                                $response = Array(
+                                    'success' => false,
+                                    'titleMess' => 'Đã xảy ra lỗi !',
+                                    'textMess' => 'Tài khoản của bạn bị chưa kích hoạt hoặc bị chặn. Vui lòng liên hệ để được hỗ trợ'
+                                );
+                            }
+                        } else {
+                            $response = Array(
+                                'success' => false,
+                                'titleMess' => 'Đã xảy ra lỗi !',
+                                'textMess' => 'Mật khẩu không chính xác'
+                            );
+                        }
+                    } else {
+                        $response = Array(
+                            'success' => false,
+                            'titleMess' => 'Đã xảy ra lỗi !',
+                            'textMess' => 'Tài khoản khách hàng không tồn tại'
+                        );
+                    }
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => $errors['mess']
+                    );
+                }
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function checkIssetUser(Request $request) {
         try {
             if ($request->ajax())
             {
+                $user = $this->KhachHang->checkIssetUserByPhoneNumber($request->phoneNumber);
+
+                if ($user == null) {
+                    // Sdt chưa active hoặc chưa tạo
+                    // Gửi OTP bằng SMS
+                    $checkIssetUser = false;
+                } else {
+                    $checkIssetUser = true;
+                }
+
                 $response = Array(
                     'success' => true,
                     'request' => $request,
-                    'sdt' => $request->phoneNumber
+                    'sdt' => $request->phoneNumber,
+                    'checkIssetUser' => $checkIssetUser
                 );
             }
 
@@ -452,13 +784,38 @@ class HomeController extends Controller
         }
     }
 
-    public function createNewKhachHang($sdt) {
+    public function createNewKhachHang($sdt, $idCoSo, $name) {
         $khachHang = new KhachHangModel;
         $khachHang->sdt = $sdt;
+        $khachHang->idcoso = $idCoSo;
+        $khachHang->name = $name;
         $khachHang->active = Controller::KHACHHANG_CHUA_ACTIVE;
         $khachHang->save();
 
         return $khachHang;
+    }
+
+    public function createKhachHangActive($sdt, $password) {
+        $khachHang = new KhachHangModel;
+        $khachHang->sdt = $sdt;
+        $khachHang->password = bcrypt($password);
+        $khachHang->active = Controller::KHACHHANG_DA_ACTIVE;
+        $khachHang->save();
+
+        return $khachHang;
+    }
+
+    public function updateKhachHang($id, $password) {
+        $khachHang = KhachHangModel::find($id);
+        $khachHang->password = bcrypt($password);
+        $khachHang->save();
+    }
+
+    public function updateKhachHangActive($id, $password) {
+        $khachHang = KhachHangModel::find($id);
+        $khachHang->password = bcrypt($password);
+        $khachHang->active = Controller::KHACHHANG_DA_ACTIVE;
+        $khachHang->save();
     }
 
     public function createNewDatLich($request, $idKhachHang) {
@@ -470,5 +827,34 @@ class HomeController extends Controller
         $datLich->thoiGianDat = $request->thoiGianDat;
         $datLich->save();
         return $datLich;
+    }
+
+    public function checkLoginSiteValid($request) {
+        $type = false;
+        $mess = '';
+
+        if ($this->checkSDTValid($request->sdt) == true) {
+            $type = true;
+            $mess = 'Số điện thoại không đúng định dạng';
+        } else if (strlen($request->password) != 6) {
+            $type = true;
+            $mess = 'Mật khẩu không đúng định dạng';
+        }
+
+        return array(
+            'type' => $type,
+            'mess' => $mess
+        );
+    }
+
+    public function checkSDTValid($sdt) {
+        $error = false;
+
+        $pattern = "/((09|03|07|08|05)+([0-9]{8})\b)/";
+        if (preg_match($pattern, $sdt) == 0) {
+            $error = true;
+        }
+
+        return $error;
     }
 }

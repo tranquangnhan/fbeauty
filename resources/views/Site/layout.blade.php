@@ -33,6 +33,7 @@
 </head>
 
 <body>
+    <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
     @if ($pathActive != 'trang-chu')
         @include('Site.components.header-2')
     @else

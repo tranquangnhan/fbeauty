@@ -67,6 +67,7 @@
 
     <!-- Topbar Start -->
     <div class="navbar-custom">
+
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
             <li class="d-none d-sm-block">
@@ -83,13 +84,20 @@
                     </div>
                 </form>
             </li>
-
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false" aria-expanded="false">
+                    <i class="mdi mdi-home noti-icon"></i>
+                    <span class="badge badge-primary rounded-circle noti-icon-badge">{{session()->get('coso')}}</span>
+                </a>
+            </li>
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="false" aria-expanded="false">
                     <i class="fe-bell noti-icon"></i>
                     <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
                 </a>
+
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
                     <!-- item-->
@@ -194,10 +202,17 @@
                     </div>
 
                     @foreach ($coSo as $item)
-                        <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item">
-                            <i class="fe-user"></i>
-                            <span>{{$item->name}}</span>
-                        </a>
+                        @if(session()->get('coso') == $item->id)
+                            <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item selected">
+                                <i class="fe-user"></i>
+                                <span >{{$item->name}}</span>
+                            </a>
+                        @else
+                            <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item ">
+                                <i class="fe-user"></i>
+                                <span >{{$item->name}}</span>
+                            </a>
+                        @endif
                     @endforeach
 
 
@@ -627,6 +642,7 @@
 
 <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
 
+<script src="{{ asset('Admin/assets') }}/js/pages/common.nhan.js"></script>
 {{-- end code nhúng bởi Nhân --}}
 
 {{-- code nhúng bởi Tưởng --}}

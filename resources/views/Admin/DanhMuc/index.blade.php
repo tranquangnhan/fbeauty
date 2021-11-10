@@ -30,7 +30,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="form-group">
-                                                <input type="file" name="img"  parsley-trigger="change" required
+                                                <input type="file" name="img"  onchange="previewImg(event)" parsley-trigger="change" required
                                                 placeholder="Nhập tên nhà sản xuất" class="form-control" id="img">
                                             </div>
                                             <div class="form-group">
