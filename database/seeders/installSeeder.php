@@ -134,12 +134,12 @@ class installSeeder extends Seeder
             ['id'=>3,'name'=>'MAXSALE200','ma'=>'FB03', 'number'=>150000,'max'=> 200000,'loai'=>1 ,'ngaytao'=>'1635958800' ,'ngayhethan'=>'1638205200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('khachhang')->insert([
-            ['id'=>1,'name' => 'Long', 'sdt'=> '0965286055','email'=>'long@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'a2c0894d9a3e77602e2f.jpg'],
-            ['id'=>2,'name' => 'Nhân', 'sdt'=> '0965286056','email'=>'nhan@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => '88e5bb095c89b1d7e898.jpg'],
-            ['id'=>3,'name' => 'Ly Ly', 'sdt'=> '0965286057', 'email'=>'lyly@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang1.jpg'],
-            ['id'=>4,'name' => 'Hương Hương', 'sdt'=> '0965286058', 'email'=>'huonghuong@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang5.jpg'],
-            ['id'=>5,'name' => 'Thảo', 'sdt'=> '0965286059', 'email'=>'thao@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang6.jpg'],
-            ['id'=>6,'name' => 'Thảo Mai', 'sdt'=> '0965286060', 'email'=>'thaomai@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang7.jpg']
+            ['id'=>1,'name' => 'Long','idcoso' => 1, 'sdt'=> '0965286055','email'=>'long@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'a2c0894d9a3e77602e2f.jpg'],
+            ['id'=>2,'name' => 'Nhân','idcoso' => 1, 'sdt'=> '0965286056','email'=>'nhan@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => '88e5bb095c89b1d7e898.jpg'],
+            ['id'=>3,'name' => 'Ly Ly','idcoso' => 1, 'sdt'=> '0965286057', 'email'=>'lyly@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang1.jpg'],
+            ['id'=>4,'name' => 'Hương Hương','idcoso' => 1, 'sdt'=> '0965286058', 'email'=>'huonghuong@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang5.jpg'],
+            ['id'=>5,'name' => 'Thảo','idcoso' => 1, 'sdt'=> '0965286059', 'email'=>'thao@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang6.jpg'],
+            ['id'=>6,'name' => 'Thảo Mai','idcoso' => 1, 'sdt'=> '0965286060', 'email'=>'thaomai@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang7.jpg']
         ]);
         DB::table('blog')->insert([
             ['id'=>1,'iddm' => '8', 'img' => 'dieu_tri_mun_uc_che.jpg', 'name' => 'DR.Seoul trị và ức chế mụn VAS 4.0 cho da mụn và nhạy cảm', 'slug' => Str::slug('DR.Seoul trị và ức chế mụn VAS 4.0 cho da mụn và nhạy cảm', '-'),'motangan'=>'Seoul Trị và ức chế Mụn VAS 4.0 – Một trong những liệu trình chăm sóc và điều trị mới nhất dành cho những khách hàng gặp phải vấn đề mụn tại Seoul Spa.', 'noidung' => 'Ưu điểm của liệu trình DR. Seoul Trị và ức chế Mụn VAS 4.0
