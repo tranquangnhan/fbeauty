@@ -19,6 +19,20 @@
                         <div>
                              <button class="btn btn-primary waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Thêm Giảm Giá</button>
                         </div>
+                        <div class="container">
+                            @if(session('thanhcong'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{session('thanhcong')}}
+                                </div>
+                            @endif
+
+                            @if(session('thatbai'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{session('thatbai')}}
+                                </div>
+                            @endif
+
+                        </div>
                         <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -42,31 +56,33 @@
                                                 </div>
                                             </div>
                                             <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="">Loại Giảm Giá </label><span style="color:red;"> (*)</span>
+                                                    <select name="loai" id="inputState" onclick="select()" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('loai') border-error @enderror loai" value="{{old('loai')}}" parsley-trigger="change">
+                                                        <option  value="0">Giảm Theo Giá</option>
+                                                        <option  value="1">Giảm Theo %</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="">Khoảng Giá Từ </label><span style="color:red;"> (*)</span>
-                                                    <input type="number" name="number" class="form-control @error('number') border-error @enderror name" value="{{old('number')}}"  parsley-trigger="change" required
+                                                    <label for="">Giảm Tối Đa Theo Giá </label><span style="color:red;"> (*)</span>
+                                                    <input type="number" name="number" id="giamgia" value="0" class="form-control @error('number') border-error @enderror name" value="{{old('number')}}"  parsley-trigger="change" required disabled
                                                         placeholder="Khoảng Giá Từ " >
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="">Khoảng Giá Tối Đa</label><span style="color:red;"> (*)</span>
-                                                    <input type="number" name="max" class="form-control @error('max') border-error @enderror diachi" value="{{old('max')}}"  parsley-trigger="change" required
+                                                    <label for="">Giảm Tối Đa Theo %</label><span style="color:red;"> (*)</span>
+                                                    <input type="number" name="max" id="giamgia1" value="0" class="form-control @error('max') border-error @enderror diachi" value="{{old('max')}}"  parsley-trigger="change" required disabled
                                                         placeholder="Khoảng Giá Tối Đa" >
                                                 </div>
                                             </div>
                                              <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="">Ngày Tạo</label><span style="color:red;"> (*)</span>
-                                                    <input type="date" name="ngaytao" class="form-control @error('ngaytao') border-error @enderror ngaytao" value="{{old('ngaytao')}}"  parsley-trigger="change" required
-                                                        placeholder="Khoảng Giá Tối Đa" >
+                                                    <label for="">Ngày Áp Dụng</label><span style="color:red;"> (*)</span>
+                                                    <input type="date" name="ngaytao" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose">
                                                 </div>
 
-                                                <div class="form-group col-md-4">
-                                                    <label for="">Loại Giảm Giá </label><span style="color:red;"> (*)</span>
-                                                    <select name="loai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('loai') border-error @enderror loai" value="{{old('loai')}}" parsley-trigger="change">
-                                                        <option  value="0">Giảm Theo Giá</option>
-                                                        <option  value="1">Giảm Theo %</option>
-                                                    </select>
-                                                </div>
+
 
                                                 <div class="form-group col-md-6">
                                                     <label for="">Ngày Hết Hạn</label><span style="color:red;"> (*)</span>
@@ -127,7 +143,8 @@
                                             <td class="" >{{date('d-m-Y',$row->ngayhethan)}}</td>
 
                                             <td class="d-flex">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('giamgia.edit',$row->id)}}" role="button"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route("giamgia.edit",$row->id)}}" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Sửa" ><i
+                                                    class="fa fa-edit"  style="color: white;"></i></a>
                                                 <form action="{{route('giamgia.destroy',$row->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}

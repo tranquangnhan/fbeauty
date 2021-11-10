@@ -194,7 +194,6 @@
                     </div>
 
                     @foreach ($coSo as $item)
-
                         <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item">
                             <i class="fe-user"></i>
                             <span>{{$item->name}}</span>
@@ -633,6 +632,7 @@
 {{-- code nhúng bởi Tưởng --}}
 <script src="{{ asset('Admin/assets') }}/js/pages/coso.js"></script>
 
+<script src="{{ asset('Admin/assets') }}/libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
 {{-- end code nhúng bởi Tưởng --}}
 

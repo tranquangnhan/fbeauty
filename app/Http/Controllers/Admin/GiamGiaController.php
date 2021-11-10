@@ -10,17 +10,20 @@ use App\Models\Admin\GiamGiaModel;
 use App\Repositories\GiamGia\GiamGiaRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\GiamGia;
+use App\Repositories\DonHang\DonHangRepository;
 
 class GiamGiaController extends Controller
 {
     private $GiamGia;
+    private $DonHang;
 
     /**
      * GiamGiaController constructor.
      */
-    public function __construct(GiamGiaRepository $GiamGia)
+    public function __construct(GiamGiaRepository $GiamGia ,DonHangRepository $DonHang)
     {
         $this->GiamGia = $GiamGia;
+        $this->DonHang = $DonHang;
         // ProvinceRepository $Province , WardsRepository $wards
     }
 
@@ -109,7 +112,7 @@ class GiamGiaController extends Controller
     public function update(GiamGia $request, $id)
     {
         $validated = $request->validated();
-
+        if($validated == true ){
         $data = [
             'name' => $request->name,
             'ma' => $request->ma,
@@ -123,7 +126,12 @@ class GiamGiaController extends Controller
 
        $this->GiamGia->update($id,$data);
 
-        return redirect('quantri/giamgia')->with('success','Sửa thành công');
+       return redirect('quantri/giamgia')->with('thanhcong', 'Sửa nhân viên thành công');
+    } else {
+        return redirect('quantri/giamgia')->with('thatbai', 'Avatar không hợp lệ');
+    }
+
+        // return redirect('quantri/giamgia')->with('success','Sửa thành công');
     }
 
     /**
@@ -135,15 +143,11 @@ class GiamGiaController extends Controller
     public function destroy($id)
     {
         $this->GiamGia->delete($id);
-        return redirect('quantri/giamgia')->with('success', 'Xoá thành công');
-        // if ($id > 0){
-        //     $this->Coso->delete($id);
-        // }
-        //  return response()->json([
-        //    'title' => 'Đã xóa!',
-        //    'text' => 'Cơ sở id' . $id . 'đã xóa thành công',
-        //    'status' => 'success!',
-        //  ]);
 
+        return redirect('quantri/giamgia')->with('success', 'Xoá thành công');
     }
+    // public function findDonHangByIdGiamGia($id, $idDonHang){
+    //     $data=$this->DonHang->getDichVuByID($idDonHang);
+    //     return $data;
+    // }
 }
