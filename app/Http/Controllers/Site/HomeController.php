@@ -88,8 +88,15 @@ class HomeController extends Controller
         $this->data['breadcrumbArray']  = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
+        $danhmuc= $this->DanhMuc->getAll();
+        return view("Site.pages.sanpham", $this->data, ['danhmuc'=>$danhmuc]);
+    }
 
-        return view("Site.pages.sanpham", $this->data);
+    public function getSanPham($soluong){
+        $sanpham=$this->SanPham->getSanPhamJoinDanhMuc($soluong);
+        $sl=$this->SanPham->DemSanPham();
+        $data=['sanpham'=>$sanpham, 'sl'=>$sl];
+        return $data;
     }
 
     public function viewSanPhamChiTiet() {
@@ -102,6 +109,14 @@ class HomeController extends Controller
 
         return view("Site.pages.sanpham-chitiet", $this->data);
     }
+
+//    public function FilterByDanhMuc(Request $request){
+//        $dataArray = [];
+//        $dataArray=$request->data;
+//        $sanpham=$this->SanPham->FilterByDM($request->soluong, $dataArray);
+//        $dataSP=['sanpham'=>$sanpham, 'sl'=>count($sanpham)];
+//        return $dataSP;
+//    }
 
     public function viewGioHang() {
         $this->data['pathActive']          = 'san-pham';

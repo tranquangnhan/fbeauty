@@ -2727,6 +2727,10 @@ span.box-soluong {
     box-shadow: 0px 2px 20px rgb(0 0 0 / 15%);
 }
 
+.child-item-sanpham:hover .btn-sanpham{
+    opacity: 1;
+}
+
 .product-action {
     min-height: 45px;
 }
@@ -2739,6 +2743,7 @@ span.box-soluong {
     position: absolute;
     right: 20px;
     top: 20px;
+    z-index: 2;
 }
 
 .box-cicrle {

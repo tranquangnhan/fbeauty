@@ -19,10 +19,10 @@
                     <a class="btn-modal-main nav-link" type-modal="modal-datlich" href="javascript:void(0)" data-show="one">Đặt Lịch</a>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'san-pham') ? 'active' : '' }}">
-                    <a class="nav-link" href="/san-pham">Sản Phẩm</a>
+                    <a class="nav-link" href="{{URL::to('/san-pham')}}">Sản Phẩm</a>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'dich-vu') ? 'active' : '' }}">
-                    <a class="nav-link" href="/dich-vu">Dịch Vụ</a>
+                    <a class="nav-link" href="{{URL::to('/dich-vu')}}">Dịch Vụ</a>
                 </li>
                 <li class="nav-item {{ ($pathActive == 've-chung-toi') ? 'active' : '' }}">
                     <a class="nav-link" href="#">Về Chúng Tôi</a>
@@ -31,7 +31,7 @@
                     <a class="nav-link" href="#">Liên Hệ</a>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'bai-viet') ? 'active' : '' }}">
-                    <a class="nav-link" href="/bai-viet">Blog</a>
+                    <a class="nav-link" href="{{URL::to('/bai-vietr')}}">Blog</a>
                 </li>
             </ul>
             <div class="box-icon">

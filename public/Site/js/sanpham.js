@@ -83,7 +83,7 @@ $('.change-column-control').click(function (e) {
         $(this).addClass('active');
 
         var typeColumn = $(this).attr('type-column');
-        if (typeColumn == 'single') {
+        if (typeColumn == 'multiple') {
             $('.fa-sanpham-item').removeClass('col-xl-4');
             $('.fa-sanpham-item').addClass('col-xl-12');
 
