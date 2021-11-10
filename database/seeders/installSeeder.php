@@ -769,9 +769,9 @@ class installSeeder extends Seeder
         DB::table('hoadon')->insert([
             ['id'=>1,'idkhachhang' => 1, 'idcoso'=> 1, 'idnhanvien'=> 1, 'idthungan' => 1,'idlieutrinh'=> 1,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '1500000','tongtiensaugiamgia'=>'1450000', 'trangthai'=>0, 'ghichu'=>'dịch vụ rất đa dạng và bắt mắt '],
             ['id'=>2,'idkhachhang' => 2, 'idcoso'=> 2, 'idnhanvien'=> 2, 'idthungan' => 2,'idlieutrinh'=> 2,'idgiamgia'=> 2, 'tongtientruocgiamgia'=> '3600000','tongtiensaugiamgia'=>'3400000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng '],
-            ['id'=>3,'idkhachhang' => 3, 'idcoso'=> 2, 'idnhanvien'=> 3, 'idthungan' => 3,'idlieutrinh'=> 3,'idgiamgia'=> 3, 'tongtientruocgiamgia'=> '4000000','tongtiensaugiamgia'=>'45000000', 'trangthai'=>2, 'ghichu'=>'dịch vụ rất đa dạng '],
-            ['id'=>4,'idkhachhang' => 4, 'idcoso'=> 1, 'idnhanvien'=> 4, 'idthungan' => 4,'idlieutrinh'=> 3,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '16000000','tongtiensaugiamgia'=>'15000000', 'trangthai'=>3, 'ghichu'=>'dịch vụ rất đa dạng '],
-            ['id'=>5,'idkhachhang' => 5, 'idcoso'=> 2, 'idnhanvien'=> 5, 'idthungan' => 5,'idlieutrinh'=> 2,'idgiamgia'=> 2, 'tongtientruocgiamgia'=> '3800000','tongtiensaugiamgia'=>'35000000', 'trangthai'=>0, 'ghichu'=>'dịch vụ rất đa dạng '],
+            ['id'=>3,'idkhachhang' => 3, 'idcoso'=> 2, 'idnhanvien'=> 3, 'idthungan' => 3,'idlieutrinh'=> 3,'idgiamgia'=> 3, 'tongtientruocgiamgia'=> '4000000','tongtiensaugiamgia'=>'45000000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng '],
+            ['id'=>4,'idkhachhang' => 4, 'idcoso'=> 1, 'idnhanvien'=> 4, 'idthungan' => 4,'idlieutrinh'=> 3,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '16000000','tongtiensaugiamgia'=>'15000000', 'trangthai'=>0, 'ghichu'=>'dịch vụ rất đa dạng '],
+            ['id'=>5,'idkhachhang' => 5, 'idcoso'=> 2, 'idnhanvien'=> 5, 'idthungan' => 5,'idlieutrinh'=> 2,'idgiamgia'=> 2, 'tongtientruocgiamgia'=> '3800000','tongtiensaugiamgia'=>'35000000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng '],
             ['id'=>6,'idkhachhang' => 6, 'idcoso'=> 2, 'idnhanvien'=> 6, 'idthungan' => 6,'idlieutrinh'=> 2,'idgiamgia'=> 3, 'tongtientruocgiamgia'=> '10000000','tongtiensaugiamgia'=>'9000000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng '],
         ]);
           DB::table('hoadonchitiet')->insert([
