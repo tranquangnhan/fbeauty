@@ -32,8 +32,8 @@ class InstallDatabase extends Migration
         Schema::dropIfExists('donhang');
         Schema::dropIfExists('donhangchitiet');
         Schema::dropIfExists('nhanvien');
-        Schema::dropIfExists('wishlist');
-        Schema::dropIfExists('subscribed');
+        Schema::dropIfExists('yeuthich');
+        Schema::dropIfExists('theodoi');
         Schema::dropIfExists('giohang');
         Schema::dropIfExists('giohangchitiet');
 
@@ -278,7 +278,7 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
-        Schema::create('wishlist', function (Blueprint $table) {
+        Schema::create('yeuthich', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idkhachhang');
             $table->unsignedInteger('idsanphamchitiet');
@@ -287,7 +287,7 @@ class InstallDatabase extends Migration
             $table->foreign('idsanphamchitiet')->references('id')->on('sanpham');
         });
 
-        Schema::create('subscribed', function (Blueprint $table) {
+        Schema::create('theodoi', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email');
             $table->timestamps();

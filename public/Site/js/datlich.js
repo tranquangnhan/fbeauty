@@ -216,6 +216,7 @@ $('.date-click').click(function (e) {
     $('.date-click').removeClass('clicked');
     $(this).addClass('clicked');
 
+    timeSelected = '';
     soXuLiBatDongBo = 1;
     spinnerBatDongBo();
     ngaySelected = valDate;
@@ -236,6 +237,7 @@ $(document).on('click', ".option-nhanvien", function() {
     elementValueNhanVien.html(text);
     elementValueNhanVien.attr(attrValueNhanVien, nhanVienSelected);
     $('.option-nhanvien').removeClass('clicked');
+    timeSelected = '';
     $(this).addClass('clicked');
     soXuLiBatDongBo = 1;
     spinnerBatDongBo();
@@ -327,6 +329,7 @@ function datLich() {
         idCoSo: idCoSo,
         listDichVu: arrIdDichVu.toString(),
         idNhanVien: nhanVienSelected,
+        nameKhachHang: nameKhachHang,
         ngay: ngaySelected,
         gio: timeSelected,
         soDienThoai: phoneNumber,
@@ -350,6 +353,7 @@ function datLich() {
                 url: postDatLichUrl,
                 data: data,
                 success: function (respon) {
+                    console.log(respon);
                     if (respon.success == true) {
                         swal.fire({
                             icon: 'success',

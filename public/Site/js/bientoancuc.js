@@ -1,10 +1,15 @@
-// URL //
-const serverNameUrl = 'http://127.0.0.1:8000/';
+const serverNameUrl = $('#server-name').val();
 const getNhanVienByIdCoSoUrl = serverNameUrl + 'nhanviencuacoso/'; // nhanviencuacoso/id
 const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/'; // getGio/{thu}
 const postDatLichUrl = serverNameUrl + 'datLich/';
 const rootUrlImage = '/Site/images/';
-// URL //
+const checkIssetUserUrl = serverNameUrl + 'checkIssetUser';
+const siteLoginUrl = serverNameUrl + 'site-login';
+const sendOTPSMSUrl = serverNameUrl + 'sendOTPSMS';
+const removeOTPUrl = serverNameUrl + 'removeOTP';
+const checkOTPUrl = serverNameUrl + 'checkOTP';
+const newPasswordUrl = serverNameUrl + 'newPassword';
+const skipCreatePasswordUrl = serverNameUrl + 'skipCreatePassword';
 
 const timeMoving = 100;
 const lengthSlideBooking = $('.datlich-step').length;
@@ -57,8 +62,6 @@ var currentTime = moment().format('HH:mm:ss');
 
 var gioiHanDatLich = moment().add(10, 'minutes').format('HH:mm:ss');
 
-var timeSelected;
-
 var idCoSo;
 
 var phoneNumber;
@@ -68,6 +71,8 @@ var soXuLiBatDongBo = 0;
 var ngaySelected = todayDMY;
 
 var nhanVienSelected = 0;
+
+var nameKhachHang = '';
 
 var timeSelected = '';
 

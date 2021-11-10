@@ -43,7 +43,8 @@ class SanPhamChiTietController extends Controller
            if($res === false){
                 return $this->handleError('Thêm dữ liệu thất bại, vui lòng thử lại');
            }else{
-            return redirect('quantri/sanpham/detail/'.$idsanpham.'/edit')->with('success', 'Thêm thành công');
+                $request->session()->forget('idSanPham');
+                return redirect('quantri/sanpham/detail/'.$idsanpham.'/edit')->with('success', 'Thêm thành công');
            }
         } else {
             return $this->handleError('Dữ liệu không được để trống');
@@ -53,9 +54,13 @@ class SanPhamChiTietController extends Controller
 
     function editDetailProduct($id)
     {
-
+        
         $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
-        return view('Admin.SanPham.editDetail',compact('data'));
+        if(count($data) === 0){
+            return redirect('quantri/sanpham/detail/'.$id.'/create')->with('idDetail',$id);
+        }else{
+            return view('Admin.SanPham.editDetail',compact('data'));
+        }
     }
 
 
@@ -86,22 +91,22 @@ class SanPhamChiTietController extends Controller
                     'tonkho' => $tonkho[$i],
                     'dongia' => $dongia[$i]
                 ];
-    
+
                 $res = $this->SanPhamChiTiet->update($id[$i],$data);
             }
             if($res) {
-              
+
                 return redirect('quantri/sanpham')->with('success','Sửa thành công');
             }
 
         }
         
     }
-  
+
     public function destroy($id)
     {
-        $hasDonHang = $this->DonHangChiTiet->findDonHangChiTietByIdSanPhamChiTiet($id);
-        
+        $hasDonHang = $this->GiamGia->findDonHangChiTietByIdSanPhamChiTiet($id);
+
         if(count($hasDonHang)>0){
             $response = [
                 'type'=>'error',
@@ -127,7 +132,7 @@ class SanPhamChiTietController extends Controller
             }
 
             return response()->json($response);
-          
+
         }
     }
 

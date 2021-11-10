@@ -7,7 +7,6 @@ use App\Http\Requests\SanPham;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class SanPhamController extends Controller
@@ -58,19 +57,43 @@ class SanPhamController extends Controller
         
         $img = $this->uploadSingle($request->file('img'));
         
-        $data = [
-            'iddanhmuc'=>$request->iddanhmuc,
-            'name'=> $request->name,
-            'slug'=>Str::slug($request->name),
-            "img"=>$img,
-            'mota'=>$request->mota,
-            'noidung'=>$request->noidung,
-            "trangthai"=>$request->trangthai
-        ];
+        if($request->session()->get('idSanPham')){
+           
+            $idUpdate =  $request->session()->get('idSanPham');
+      
+            $data = [
+                'iddanhmuc'=>$request->iddanhmuc,
+                'name'=> $request->name,
+                'slug'=>Str::slug($request->name),
+                "img"=>$img,
+                'mota'=>$request->mota,
+                'noidung'=>$request->noidung,
+                "trangthai"=>$request->trangthai
+            ];
+    
+            $data = $this->SanPham->update($idUpdate,$data);
+            if($data){
+                return redirect('/quantri/sanpham/detail/'.$data->id.'/create')->with('idDetail',$data->id);
+            }
+        }else{
+            $data = [
+                'iddanhmuc'=>$request->iddanhmuc,
+                'name'=> $request->name,
+                'slug'=>Str::slug($request->name),
+                "img"=>$img,
+                'mota'=>$request->mota,
+                'noidung'=>$request->noidung,
+                "trangthai"=>$request->trangthai
+            ];
+    
+            $data = $this->SanPham->create($data);
+            $request->session()->put('idSanPham', $data->id);
+            if($data){
+                return redirect('/quantri/sanpham/detail/'.$data->id.'/create')->with('idDetail',$data->id);
+            }
+        }
+        
 
-        $data= $this->SanPham->create($data);
-
-        return redirect('/quantri/sanpham/detail/'.$data->id.'')->with('success','Thêm thành công');
     }
 
    
