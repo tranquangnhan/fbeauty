@@ -329,6 +329,7 @@ function datLich() {
         idCoSo: idCoSo,
         listDichVu: arrIdDichVu.toString(),
         idNhanVien: nhanVienSelected,
+        nameKhachHang: nameKhachHang,
         ngay: ngaySelected,
         gio: timeSelected,
         soDienThoai: phoneNumber,
@@ -352,6 +353,7 @@ function datLich() {
                 url: postDatLichUrl,
                 data: data,
                 success: function (respon) {
+                    console.log(respon);
                     if (respon.success == true) {
                         swal.fire({
                             icon: 'success',
