@@ -72,6 +72,8 @@ var ngaySelected = todayDMY;
 
 var nhanVienSelected = 0;
 
+var nameKhachHang = '';
+
 var timeSelected = '';
 
 var khungGio;

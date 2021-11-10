@@ -37,6 +37,7 @@ function checkIssetUser(phoneNumber) {
         success: function (respon) {
             if (respon.checkIssetUser) {
                 movePageAuthen(pageAuthenPass);
+                $('.comfirm-sdt').html(phoneNumber);
             } else {
                 sendOTPSMS();
             }
