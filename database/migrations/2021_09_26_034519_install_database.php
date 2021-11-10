@@ -273,7 +273,6 @@ class InstallDatabase extends Migration
             $table->string('avatar',255);
             $table->boolean('trangthai');
             $table->foreign('idcoso')->references('id')->on('coso');
-            $table->foreign('iddichvu')->references('id')->on('dichvu');
             $table->rememberToken();
             $table->timestamps();
         });
