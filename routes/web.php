@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DonHangController;
 use App\Http\Controllers\Admin\DichVuController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DonHangchitietController;
+use App\Http\Controllers\Admin\GiamGiaController;
 use App\Http\Controllers\Admin\HoaDonChiTietController;
 use App\Http\Controllers\Admin\HoaDonController;
 use App\Http\Controllers\Admin\KhachHangController;
@@ -80,9 +81,10 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 
     Route::resource('donhang', DonHangController::class);
     Route::resource('donhangchitiet', DonHangController::class);
-
     Route::get('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'editDetailDonHang']);
     Route::post('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'updateDetailDonHang']);
+    // quản lý giảm giá
+    Route::resource('giamgia', GiamGiaController::class);
 
     Route::resource('lieutrinh', LieuTrinhController::class);
 

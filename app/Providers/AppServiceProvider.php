@@ -69,7 +69,7 @@ class AppServiceProvider extends ServiceProvider
 
 
     public function composerNavigation(){
-        View::composer('Admin.LayoutAdmin', function($view )
+        View::composer('Admin.LayoutAdmin', function($view)
         {
             $data = CosoModel::all();
 

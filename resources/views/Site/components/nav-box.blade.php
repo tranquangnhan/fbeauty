@@ -57,24 +57,28 @@
                 <li class="icon-item d-inline-block hover-scale-1">
                     <a href=""><i class="fas fa-search color-black-2"></i></a>
                 </li>
+                @if (session()->has('khachHang') && session('khachHang') != '')
                 <li class="icon-item d-inline-block fa-dropdown-custom-1">
-                    <a class="btn-modal-main" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
-                    @if (session()->has('khachHang') && session('khachHang') != '')
-                        <ul class="dropdown-custom-1" style="right: 0px;">
-                            <li class="dropdown-custom-item">
-                                <a href="">
-                                    @if (session('khachHang')->name != '')
-                                        {{ session('khachHang')->name }}
-                                    @else
-                                        {{ session('khachHang')->sdt }}
-                                    @endif
-                                </a>
-                            </li>
-                            <li class="dropdown-custom-item"><a href="">Thông tin tài khoản</a></li>
-                            <li class="dropdown-custom-item"><a href="{{URL::to("/site-logout")}}">Đăng xuất</a></li>
-                        </ul>
-                    @endif
+                    <a href="javascript:void(0)"><i class="fas fa-user-alt color-black-2"></i></a>
+                    <ul class="dropdown-custom-1" style="right: 0px;">
+                        <li class="dropdown-custom-item">
+                            <a href="">
+                                @if (session('khachHang')->name != '')
+                                    {{ session('khachHang')->name }}
+                                @else
+                                    {{ session('khachHang')->sdt }}
+                                @endif
+                            </a>
+                        </li>
+                        <li class="dropdown-custom-item"><a href="">Thông tin tài khoản</a></li>
+                        <li class="dropdown-custom-item"><a href="/site-logout">Đăng xuất</a></li>
+                    </ul>
                 </li>
+                @else
+                <li class="icon-item d-inline-block">
+                    <a class="btn-modal-main" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
+                </li>
+                @endif
                 <li class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
                     <span class="badge badge-pill badge-primary number-cart">0</span>
                     <a href=""><i class="fas fa-shopping-cart color-black-2"></i></a>

@@ -29,6 +29,7 @@ class LichSeeder extends Seeder
                     DB::table('lich')->insert([
                         ['idcoso' => $idcoso, 'thutrongtuan' => $thu, 'soluongkhach' => $soluongkhach, 'gio' => $toTime, 'trangthai' => $trangthai]
                     ]);
+                    
                     $phut += $khoanGiuaKhungGio;
                     if ($phut >= 60) {
                         $gio += 1;
