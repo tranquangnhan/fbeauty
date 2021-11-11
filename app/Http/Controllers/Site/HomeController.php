@@ -209,6 +209,10 @@ class HomeController extends Controller
                     $khachHang = $this->KhachHang->getBySdt($request->soDienThoai);
                     if ($khachHang == null) {
                         $khachHang = $this->createNewKhachHang($request->soDienThoai, $request->idCoSo, $request->nameKhachHang);
+                    } else {
+                        if ($khachHang->name == '') {
+                            $khachHang = $this->updateKhachHangCoSoVaName($khachHang->id, $request->idCoSo, $request->nameKhachHang);
+                        }
                     }
                 }
 
@@ -255,7 +259,7 @@ class HomeController extends Controller
                             $textMess = 'Không tìm thấy nhân viên';
                         }
                     } else {
-                        if ($request->idNhanVien != 0) {
+                        if ($request->idNhanVien != 0) { // 0 = Spa chọn nhân viên
                             $error = true;
                             $textMess = 'Vui lòng thử lại trong ít phút nhé !.';
                         } else {
@@ -808,6 +812,13 @@ class HomeController extends Controller
     public function updateKhachHang($id, $password) {
         $khachHang = KhachHangModel::find($id);
         $khachHang->password = bcrypt($password);
+        $khachHang->save();
+    }
+
+    public function updateKhachHangCoSoVaName($id, $idCoSo, $name) {
+        $khachHang = KhachHangModel::find($id);
+        $khachHang->name = $name;
+        $khachHang->idcoso = $idCoSo;
         $khachHang->save();
     }
 

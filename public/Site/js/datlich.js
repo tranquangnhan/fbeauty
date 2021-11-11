@@ -327,7 +327,7 @@ function datLich() {
 
     let data = {
         idCoSo: idCoSo,
-        listDichVu: arrIdDichVu.toString(),
+        listDichVu: JSON.stringify(arrIdDichVu),
         idNhanVien: nhanVienSelected,
         nameKhachHang: nameKhachHang,
         ngay: ngaySelected,
