@@ -103,7 +103,7 @@
                                             lọc
                                         </label></p>
                                     <p><label for="locgia" class="hover-pink">
-                                            <input type="radio" name="locgia" id="locgia" onclick="Locgia('')"> Giá:
+                                            <input type="radio" name="locgia" id="locgia" onclick="Locgia('g1')"> Giá:
                                             <span class="min-price" price-value="100000"> < 500,000 đ</span>
                                         </label></p>
                                     <p><label for="locgia1" class="hover-pink">
@@ -126,30 +126,6 @@
                                         </label>
                                     </p>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="loc-item">
-                                <h6 class="title-loc">Thương hiệu</h6>
-                                <ul class="body-loc">
-                                    <li>
-                                        <a href="">Some by mi
-                                            <span
-                                                class="badge badge-pill badge-primary background-color-main float-right">102</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">Simple
-                                            <span
-                                                class="badge badge-pill badge-primary background-color-main float-right">42</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">Body
-                                            <span
-                                                class="badge badge-pill badge-primary background-color-main float-right">10</span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
                             <hr>
                         </div>
@@ -179,16 +155,16 @@
                                 <div class="col-xl-7 align-items-center">
                                     <div class="d-flex justify-content-end">
                                         <div class="text-small d-flex align-items-center">
-                                            Tìm kiếm "Sửa rửa mặt" có 25 kết quả
+
                                         </div>
                                         <ul class="fa-checkbox-loc nav nav-tabs" id="myTab" role="tablist">
                                             <li class="nav-item px-0" role="presentation">
                                                 <span
-                                                    class="nav-link btn-3 custom-2 bg-gray-1 active change-column-control"
+                                                    class="nav-link  custom-2 bg-gray-1 active change-column-control"
                                                     type-column='single'><i class="fas fa-grip-horizontal"></i></span>
                                             </li>
                                             <li class="nav-item" role="presentation">
-                                                <span class="nav-link btn-3 custom-2 bg-gray-1 change-column-control"
+                                                <span class="nav-link  custom-2 bg-gray-1 change-column-control"
                                                       type-column='multiple'><i class="fas fa-bars"></i></span>
                                             </li>
                                         </ul>

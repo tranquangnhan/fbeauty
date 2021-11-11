@@ -101,7 +101,7 @@ function FilterGia(data, bienkhac) {
     } else if (bienkhac == 'g1') {
         datas = {
             sanpham: mang.filter(function (e) {
-                return e.dongia <= 500000
+                return e.dongia < 500000;
             }),
         }
         FilterName(datas, bien)
@@ -159,6 +159,15 @@ function ShowSanPham(data) {
         } else {
             thetich = 0
         }
+        var anhsp=data.sanpham[i].img.split('"').join('').slice(1, -1).split(',');
+        var boxgiamgia='';
+        if (data.sanpham[i].giamgia !=null ){
+            boxgiamgia='<div class="btn-add-discout btn-sticky hover-scale-1">\n' +
+                '                                        <div class="box-cicrle-giamgia p-2 rounded text-white">\n' +
+                '                                            <span style="font-size: 10pt;">'+data.sanpham[i].giamgia+'%</span>\n' +
+                '                                        </div>\n' +
+                '                                    </div>';
+        }
         sp += '<div class="col-xl-4 fa-sanpham-item" id="AnHienSP' + (i + 1) + '">\n' +
             '                                    <div class="item-sanpham w-100">\n' +
             '                                        <div class="child-item-sanpham row g-0">\n' +
@@ -166,10 +175,11 @@ function ShowSanPham(data) {
             '                                                <div class="box-cicrle" style="z-index: 9999;">\n' +
             '                                                    <i class="fas fa-heart heart-full"></i>\n' +
             '                                                    <i class="far fa-heart heart-line"></i>\n' +
-            '                                                </div>\n' +
-            '                                            </div>\n' +
+            '                                                </div> \n' +
+            '                                            </div>' +
+            ''+boxgiamgia+'\n' +
             '                                            <div class="col-xl-12 fa-image-sanpham ">\n' +
-            '                                                <img src="'+document.URL.replace('san-pham', '')+'uploads/' + data.sanpham[i].img + '" class="img-fluid" alt="...">\n' +
+            '                                                <img src="'+document.URL.replace('san-pham', '')+'uploads/' + anhsp[0] + '" class="img-fluid" alt="...">\n' +
             '                                            </div>\n' +
             '                                            <div class="col-xl-12 fa-content-sanpham pl-0 position-relative">\n' +
             '\n' +
@@ -178,7 +188,7 @@ function ShowSanPham(data) {
             '                                                        <a href="javascript:;">\n' +
             '                                                            <p class="product-catergory font-13 mb-1">' + data.sanpham[i].tendm + '</p>\n' +
             '                                                        </a>\n' +
-            '                                                        <a href="javascript:;">\n' +
+            '                                                        <a href="'+document.URL+'/chi-tiet/'+data.sanpham[i].id+'">\n' +
             '                                                            <h6 class="product-name mb-2">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
             '                                                        </a>\n' +
             '                                                        <p class="card-text product-motangan">' + data.sanpham[i].mota + '</p>\n' +
@@ -190,7 +200,7 @@ function ShowSanPham(data) {
             '                                                        <div class="product-action mt-2">\n' +
             '                                                            <div class="d-flex gap-2">\n' +
             '                                                                <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>\n' +
-            '                                                                <button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button>\n' +
+            '                                                                <a href="'+document.URL+'/chi-tiet/'+data.sanpham[i].id+'"><button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
             '\n' +
             '                                                            </div>\n' +
             '                                                        </div>\n' +
@@ -200,6 +210,7 @@ function ShowSanPham(data) {
             '                                        </div>\n' +
             '                                    </div>\n' +
             '                                </div>';
+
     }
     document.getElementById("showSP").innerHTML = sp;
     ShowPhanTrang(sanphambandau)
