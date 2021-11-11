@@ -23,7 +23,11 @@
                                 <div class="w-100">
                                     <div class="fa-custom form-custom-datlich form-name-khachhang mr-2">
                                         <div class="div-phone-number">
-                                            <input type="text" id="name" class="nameKhachHang" placeholder="Tên của bạn">
+                                            <input type="text" id="name" class="nameKhachHang" placeholder="Tên của bạn"
+                                            @if (session()->has('khachHang') && session('khachHang') != '')
+                                                value="{{ session('khachHang')->name }}"
+                                            @endif
+                                            >
                                         </div>
                                     </div>
                                     <span class="text-error name-datlich-error"></span>
@@ -31,7 +35,11 @@
                                 <div class="w-100">
                                     <div class="fa-custom form-custom-datlich form-phone-number">
                                         <div class="div-phone-number">
-                                            <input type="text" id="phoneNumber" placeholder="Nhập số điện thoại của bạn">
+                                            <input type="text" id="phoneNumber" placeholder="Nhập số điện thoại của bạn"
+                                            @if (session()->has('khachHang') && session('khachHang') != '')
+                                                value="{{ session('khachHang')->sdt }}"
+                                            @endif
+                                        >
                                         </div>
                                     </div>
                                     <span class="text-error phone-datlich-error"></span>
@@ -502,29 +510,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="control-short">
-                    <div class="control-item active" data-step="0">
-                        <i class="fas fa-check icon-check"></i>
-                    </div>
-                    <div class="control-item" data-step="1">
-                        <i class="fas fa-check icon-check"></i>
-                    </div>
-                    <div class="control-item" data-step="2">
-                        <i class="fas fa-check icon-check"></i>
-                    </div>
-                    <div class="control-item final" data-step="3">
-                        <i class="fas fa-check icon-check"></i>
-                    </div>
-                </div> --}}
-                {{-- <div class="row h-100">
-                    <div class="col-xl-12 p-0">
-                        <div class="box-content-datlich h-100">
-
-
-
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
