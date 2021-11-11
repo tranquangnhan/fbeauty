@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers\Site;
 
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
-use App\Repositories\SanPham\SanPhamRepository;
-use App\Repositories\Blog\BlogRepository;
-use Illuminate\Http\Request;
-use App\Repositories\Coso\CoSoRepository;
-use App\Repositories\DanhMuc\DanhMucRepository;
-use App\Repositories\DichVu\DichVuRepository;
-use App\Repositories\NhanVien\NhanVienRepository;
-use App\Repositories\Lich\LichRepository;
-use App\Repositories\DatLich\DatLichRepository;
-use App\Repositories\KhachHang\KhachHangRepository;
-use App\Models\Admin\KhachHangModel;
-use App\Models\Admin\DatLichModel;
-use Carbon\Carbon;
 use App\Events\SendDatLich;
-use App\Http\Requests\KhachHang;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\loginSiteRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\freeSMSController;
+use App\Models\Admin\DatLichModel;
+use App\Models\Admin\KhachHangModel;
+use App\Repositories\Blog\BlogRepository;
+use App\Repositories\Coso\CosoRepository;
+use App\Repositories\DanhMuc\DanhMucRepository;
+use App\Repositories\DatLich\DatLichRepository;
+use App\Repositories\DichVu\DichVuRepository;
+use App\Repositories\KhachHang\KhachHangRepository;
+use App\Repositories\Lich\LichRepository;
+use App\Repositories\NhanVien\NhanVienRepository;
+use App\Repositories\SanPham\SanPhamRepository;
+use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 class HomeController extends Controller
 {
     private $data = array();
@@ -35,6 +34,8 @@ class HomeController extends Controller
     private $SanPham;
     private $limitTimeNum = 10;
     private $freeSMSController;
+    private $SanPhamChiTiet;
+
     /**
      * CosoController constructor.
      */
@@ -47,7 +48,9 @@ class HomeController extends Controller
         DatLichRepository $DatLich,
         KhachHangRepository $KhachHang,
         BlogRepository $Blog,
-        SanPhamRepository $SanPham)
+        SanPhamRepository $SanPham,
+        SanPhamChiTietRepository $SanPhamChiTiet
+)
     {
         $this->freeSMSController = new freeSMSController;
         $this->Coso = $Coso;
@@ -59,7 +62,7 @@ class HomeController extends Controller
         $this->KhachHang = $KhachHang;
         $this->Blog = $Blog;
         $this->SanPham = $SanPham;
-
+        $this->SanPhamChiTiet=$SanPhamChiTiet;
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
 
@@ -70,44 +73,60 @@ class HomeController extends Controller
         );
     }
 
-    public function index() {
-        $sanPham   = $this->SanPham->getAll();
-        $blog      = $this->Blog->getBlog1();
-        $blog2     = $this->Blog->getBlog2();
+    public function index()
+    {
+        $sanPham = $this->SanPham->getAll();
+        $blog = $this->Blog->getBlog1();
+        $blog2 = $this->Blog->getBlog2();
 
-        $this->data['sanPham']  = $sanPham;
-        $this->data['blog']     = $blog;
-        $this->data['blog2']    = $blog2;
-        $this->data['pathActive']     = 'trang-chu';
+        $this->data['sanPham'] = $sanPham;
+        $this->data['blog'] = $blog;
+        $this->data['blog2'] = $blog2;
+        $this->data['pathActive'] = 'trang-chu';
 
         return view("Site.pages.home", $this->data);
     }
 
-    public function viewSanPham() {
-        $this->data['pathActive']       = 'san-pham';
-        $this->data['namePage']         = 'Sản phẩm';
-        $this->data['breadcrumbArray']  = [
+    public function viewSanPham()
+    {
+        $this->data['pathActive'] = 'san-pham';
+        $this->data['namePage'] = 'Sản phẩm';
+        $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
-
-        return view("Site.pages.sanpham", $this->data);
+        $danhmuc = $this->DanhMuc->getAll();
+        return view("Site.pages.sanpham", $this->data, ['danhmuc' => $danhmuc, 'danhmuc1' => $danhmuc, 'danhmuc2' => $danhmuc, 'danhmuc3' => $danhmuc]);
     }
 
-    public function viewSanPhamChiTiet() {
-        $this->data['pathActive']          = 'san-pham';
-        $this->data['namePage']            = 'Sản phẩm chi tiết';
-        $this->data['breadcrumbArray']     = [
+    public function getSanPham($soluong)
+    {
+        $sanpham = $this->SanPham->getSanPhamJoinDanhMuc($soluong);
+        $sl = $this->SanPham->DemSanPham();
+        $data = ['sanpham' => $sanpham];
+        return $data;
+    }
+
+    public function viewSanPhamChiTiet($id)
+    {
+
+        $this->data['pathActive'] = 'san-pham';
+        $this->data['namePage'] = 'Sản phẩm chi tiết';
+        $this->data['breadcrumbArray'] = [
             ['link' => '/san-pham', 'name' => 'Sản phẩm'],
             ['link' => '', 'name' => 'Tên sản phẩm'],
         ];
-
-        return view("Site.pages.sanpham-chitiet", $this->data);
+        $sanpham=$this->SanPham->getSanPhamJoinDanhMucID($id);
+        $sanphamchitiet=$this->SanPhamChiTiet->getSanPhamChiTietByID($id);
+        $sanphamchitietlimit=$this->SanPhamChiTiet->getSanPhamChiTietByIDLimit($id);
+        return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitiet'=>$sanphamchitiet, 'sanphamchitietlimit'=>$sanphamchitietlimit]);
     }
 
-    public function viewGioHang() {
-        $this->data['pathActive']          = 'san-pham';
-        $this->data['namePage']            = 'Giỏ hàng';
-        $this->data['breadcrumbArray']     = [
+
+    public function viewGioHang()
+    {
+        $this->data['pathActive'] = 'san-pham';
+        $this->data['namePage'] = 'Giỏ hàng';
+        $this->data['breadcrumbArray'] = [
             ['link' => '/san-pham', 'name' => 'Sản phẩm'],
             ['link' => '', 'name' => 'Giỏ hàng'],
         ];
@@ -115,10 +134,11 @@ class HomeController extends Controller
         return view("Site.pages.giohang", $this->data);
     }
 
-    public function viewThanhToan() {
-        $this->data['pathActive']          = 'san-pham';
-        $this->data['namePage']            = 'Thanh toán';
-        $this->data['breadcrumbArray']     = [
+    public function viewThanhToan()
+    {
+        $this->data['pathActive'] = 'san-pham';
+        $this->data['namePage'] = 'Thanh toán';
+        $this->data['breadcrumbArray'] = [
             ['link' => '/san-pham', 'name' => 'Sản phẩm'],
             ['link' => '/gio-hang', 'name' => 'Giỏ hàng'],
             ['link' => '', 'name' => 'Thanh toán'],
@@ -127,20 +147,22 @@ class HomeController extends Controller
         return view("Site.pages.thanhtoan", $this->data);
     }
 
-    public function viewBaiViet() {
-        $this->data['pathActive']          = 'bai-viet';
-        $this->data['namePage']            = 'Bài viết';
-        $this->data['breadcrumbArray']     = [
+    public function viewBaiViet()
+    {
+        $this->data['pathActive'] = 'bai-viet';
+        $this->data['namePage'] = 'Bài viết';
+        $this->data['breadcrumbArray'] = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
         ];
 
         return view("Site.pages.baiviet", $this->data);
     }
 
-    public function viewBaiVietChiTiet() {
-        $this->data['pathActive']          = 'bai-viet';
-        $this->data['namePage']            = 'Tên Bài viết';
-        $this->data['breadcrumbArray']     = [
+    public function viewBaiVietChiTiet()
+    {
+        $this->data['pathActive'] = 'bai-viet';
+        $this->data['namePage'] = 'Tên Bài viết';
+        $this->data['breadcrumbArray'] = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
             ['link' => '', 'name' => 'Tên Bài viết'],
         ];
@@ -148,20 +170,22 @@ class HomeController extends Controller
         return view("Site.pages.baivietchitiet", $this->data);
     }
 
-    public function viewDichVu() {
-        $this->data['pathActive']          = 'dich-vu';
-        $this->data['namePage']            = 'Dịch Vụ';
-        $this->data['breadcrumbArray']     = [
+    public function viewDichVu()
+    {
+        $this->data['pathActive'] = 'dich-vu';
+        $this->data['namePage'] = 'Dịch Vụ';
+        $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
 
         return view("Site.pages.dichvu", $this->data);
     }
 
-    public function viewDichVuChiTiet() {
-        $this->data['pathActive']          = 'dich-vu';
-        $this->data['namePage']            = 'Dịch Vụ';
-        $this->data['breadcrumbArray']     = [
+    public function viewDichVuChiTiet()
+    {
+        $this->data['pathActive'] = 'dich-vu';
+        $this->data['namePage'] = 'Dịch Vụ';
+        $this->data['breadcrumbArray'] = [
             ['link' => '/dich-vu', 'name' => 'Dịch Vụ'],
             ['link' => '', 'name' => 'Tên Dịch Vụ'],
 
@@ -170,10 +194,10 @@ class HomeController extends Controller
         return view("Site.pages.dichvuchitiet", $this->data);
     }
 
-    public function getNhanVienByIdCoSo(Request $request, $id) {
+    public function getNhanVienByIdCoSo(Request $request, $id)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 $id = (int)$id;
                 if ($id > 0) {
                     $listNhanVien = $this->getNhanVienTam($id);
@@ -196,10 +220,10 @@ class HomeController extends Controller
         }
     }
 
-    public function datLich(Request $request) {
+    public function datLich(Request $request)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 $error = false;
 
                 if ($request->soDienThoai == '') {
@@ -319,21 +343,22 @@ class HomeController extends Controller
         }
     }
 
-    public function makeMessageCamOnDatLich($idCoSo, $ngay, $gio) {
+    public function makeMessageCamOnDatLich($idCoSo, $ngay, $gio)
+    {
         $diachi = $this->Coso->getDiaChiById($idCoSo);
         $dateFormatDMY = date("d/m/Y", strtotime($ngay));
         $indexDauHaiChamFirst = stripos($gio, ':');
-        $gioChenChuH = substr_replace($gio ,"h", $indexDauHaiChamFirst, 1);
+        $gioChenChuH = substr_replace($gio, "h", $indexDauHaiChamFirst, 1);
         $gioDaFormat = substr($gioChenChuH, 0, strlen($gioChenChuH) - 3);
-        $message = '[Fbeauty]: Dat lich thanh cong. Thoi gian dat lich vao ngay '.$dateFormatDMY.' luc '.$gioDaFormat.' tai dia chi '.$diachi.'. Ban co the dang nhap bang so dien thoai da dat lich vao trang web fbeauty.com de xem thong tin chi tiet. Cam on ban da quan tam dich vu cua chung toi';
+        $message = '[Fbeauty]: Dat lich thanh cong. Thoi gian dat lich vao ngay ' . $dateFormatDMY . ' luc ' . $gioDaFormat . ' tai dia chi ' . $diachi . '. Ban co the dang nhap bang so dien thoai da dat lich vao trang web fbeauty.com de xem thong tin chi tiet. Cam on ban da quan tam dich vu cua chung toi';
 
         return $message;
     }
 
-    public function skipCreatePassword(Request $request) {
+    public function skipCreatePassword(Request $request)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 $error = $this->checkSDTValid($request->sdt);
 
                 if ($error == false) {
@@ -342,14 +367,14 @@ class HomeController extends Controller
                     if ($khachHang) {
                         session(['khachHang' => $khachHang]);
 
-                        $response = Array (
+                        $response = Array(
                             'success' => true,
                             'sdt' => $request->sdt,
                             'type' => 'Login with OTP'
                         );
 
                     } else {
-                        $response = Array (
+                        $response = Array(
                             'success' => false,
                             'titleMess' => 'Đã xảy ra lỗi !',
                             'textMess' => 'Không tìm thấy số điện thoại. Vui lòng đăng ký lại'
@@ -376,10 +401,10 @@ class HomeController extends Controller
         }
     }
 
-    public function newPassword(Request $request) {
+    public function newPassword(Request $request)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 $errors = $this->checkLoginSiteValid($request);
 
                 if ($errors['type'] == false) {
@@ -388,7 +413,7 @@ class HomeController extends Controller
                     if ($khachHang) {
                         if ($khachHang->active == Controller::KHACHHANG_DA_ACTIVE) {
                             $this->updateKhachHang($khachHang->id, $request->password);
-                            $response = Array (
+                            $response = Array(
                                 'success' => true,
                                 'sdt' => $request->sdt,
                                 'password' => $request->password,
@@ -396,7 +421,7 @@ class HomeController extends Controller
                             );
                         } else {
                             $this->updateKhachHangActive($khachHang->id, $request->password);
-                            $response = Array (
+                            $response = Array(
                                 'success' => true,
                                 'sdt' => $request->sdt,
                                 'password' => $request->password,
@@ -405,7 +430,7 @@ class HomeController extends Controller
                         }
                     } else {
                         $khachHang = $this->createKhachHangActive($request->sdt, $request->password);
-                        $response = Array (
+                        $response = Array(
                             'success' => true,
                             'sdt' => $request->sdt,
                             'password' => $request->password,
@@ -432,14 +457,14 @@ class HomeController extends Controller
         }
     }
 
-    public function checkOTP(Request $request) {
+    public function checkOTP(Request $request)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 $errors = $this->checkOTPValid($request->OTP);
                 if ($errors['type'] == false) {
                     if (session('OTP') == $request->OTP) {
-                        $response = Array (
+                        $response = Array(
                             'success' => true,
                             'OTP' => $request->OTP
                             // 'SOTP' => session('OTP')
@@ -447,7 +472,7 @@ class HomeController extends Controller
 
                         session()->forget('OTP');
                     } else {
-                        $response = Array (
+                        $response = Array(
                             'success' => false,
                             'titleMess' => 'Đã xảy ra lỗi !',
                             'textMess' => 'Mã xác nhận OTP không đúng. Vui lòng nhập lại'
@@ -472,7 +497,8 @@ class HomeController extends Controller
         }
     }
 
-    public function checkOTPValid($OTP) {
+    public function checkOTPValid($OTP)
+    {
         $type = false;
         $mess = '';
 
@@ -487,14 +513,14 @@ class HomeController extends Controller
         );
     }
 
-    public function removeOTP(Request $request) {
+    public function removeOTP(Request $request)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 session()->forget('OTP');
                 session()->forget('timeOTPNotValid');
 
-                $response = Array (
+                $response = Array(
                     'success' => true,
                 );
             }
@@ -509,14 +535,16 @@ class HomeController extends Controller
         }
     }
 
-    public function makeOTP() {
+    public function makeOTP()
+    {
         $OTP = random_int(100000, 999999);;
         session(['OTP' => $OTP]);
 
         return $OTP;
     }
 
-    public function makeTimeOTPNotValid() {
+    public function makeTimeOTPNotValid()
+    {
         $currentTimestamp = time() * 1000; // lấy timestamp * 1000 vì sử dụng bên js
         $timeOTPNotValid = $currentTimestamp + 60000; // 60s sau
         session(['timeOTPNotValid' => $timeOTPNotValid]);
@@ -524,19 +552,19 @@ class HomeController extends Controller
         return $timeOTPNotValid;
     }
 
-    public function sendOTPSMS(Request $request) {
+    public function sendOTPSMS(Request $request)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 $OTP = $this->makeOTP();
 
                 // Ví dụ sdt: 0868970582 => +84868970582
                 $sdt = '+84' . substr($request->sdt, 1, strlen($request->sdt));
-                $message = '[Fbeauty]: '. $OTP . ' la ma OTP cua ban. Ma se het han trong vong 10 phut. Vui long khong chia se ma nay trong bat ki truong hop nao!';
+                $message = '[Fbeauty]: ' . $OTP . ' la ma OTP cua ban. Ma se het han trong vong 10 phut. Vui long khong chia se ma nay trong bat ki truong hop nao!';
                 $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                 $timeOTPNotValid = $this->makeTimeOTPNotValid();
-                $response = Array (
+                $response = Array(
                     'success' => true,
                     'sdt' => $request->sdt,
                     'timeOTPNotValid' => $timeOTPNotValid,
@@ -554,15 +582,16 @@ class HomeController extends Controller
         }
     }
 
-    public function logoutSite() {
+    public function logoutSite()
+    {
         session()->forget('khachHang');
         return redirect()->back();
     }
 
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 $errors = $this->checkLoginSiteValid($request);
 
                 if ($errors['type'] == false) {
@@ -616,10 +645,10 @@ class HomeController extends Controller
         }
     }
 
-    public function checkIssetUser(Request $request) {
+    public function checkIssetUser(Request $request)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 $user = $this->KhachHang->checkIssetUserByPhoneNumber($request->phoneNumber);
 
                 if ($user == null) {
@@ -648,11 +677,13 @@ class HomeController extends Controller
         }
     }
 
-    public function getNhanVienTam($id) {
-        return  $this->NhanVien->getNhanVienByIdCoSo( $id);
+    public function getNhanVienTam($id)
+    {
+        return $this->NhanVien->getNhanVienByIdCoSo($id);
     }
 
-    public function checkNhanVienRanh($thoiGianDat, $idNhanVien) {
+    public function checkNhanVienRanh($thoiGianDat, $idNhanVien)
+    {
         $nhanVien = $this->DatLich->findDatLichCuaNhanVienTheoThoiGian($thoiGianDat, $idNhanVien);
         if (!$nhanVien) {
             $check = true;
@@ -662,7 +693,8 @@ class HomeController extends Controller
         return $check;
     }
 
-    public function getDichVuTheoDanhMuc() {
+    public function getDichVuTheoDanhMuc()
+    {
         $listDanhMuc = $this->DanhMuc->findDanhMucByIdLoai(Controller::LOAI_DANHMUC_DICHVU);
 
         foreach ($listDanhMuc as $row) {
@@ -673,7 +705,8 @@ class HomeController extends Controller
         return $listDanhMuc;
     }
 
-    public function layDatLichCungNgay($request) {
+    public function layDatLichCungNgay($request)
+    {
         $allDatLich = $this->DatLich->getAllCungCoSo($request->idCoSo);
 
         $datLichOfDay = array();
@@ -687,27 +720,31 @@ class HomeController extends Controller
         return $datLichOfDay;
     }
 
-    public function getLimitTime() {
+    public function getLimitTime()
+    {
         $carbonNow = Carbon::now();
         $limitTime = $carbonNow->addMinute($this->limitTimeNum);
         $limitTimeFormat = $limitTime->toTimeString();
         return $limitTimeFormat;
     }
 
-    public function getCurrentDatet() {
+    public function getCurrentDatet()
+    {
         $carbonNow = Carbon::now();
         $currentDate = $carbonNow->toDateString();
         return $currentDate;
     }
 
-    public function getThuByNgay($ngay) {
+    public function getThuByNgay($ngay)
+    {
         $newCarbon = new Carbon($ngay);
         $thu = $newCarbon->dayOfWeek;
 
         return $thu;
     }
 
-    public function checkTrangThaiLich($thu, $idCoSo, $gio) {
+    public function checkTrangThaiLich($thu, $idCoSo, $gio)
+    {
         $lich = $this->Lich->getLichActive($thu, $idCoSo, $gio);
         if ($lich) {
             $active = true;
@@ -717,10 +754,10 @@ class HomeController extends Controller
         return $lich;
     }
 
-    public function getDataKhungGio(Request $request) {
+    public function getDataKhungGio(Request $request)
+    {
         try {
-            if ($request->ajax())
-            {
+            if ($request->ajax()) {
                 $Lich = $this->Lich->getLichByThuAndCoSo($request->thu, $request->idCoSo);
                 $datLichOfDay = $this->layDatLichCungNgay($request);
 
@@ -730,12 +767,9 @@ class HomeController extends Controller
                     $rowLich->coNhanVien = 'true';
                 }
 
-                if ($request->idNhanVien > 0)
-                {
+                if ($request->idNhanVien > 0) {
                     $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request);
-                }
-                else
-                {
+                } else {
                     $this->tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich);
                 }
 
@@ -760,7 +794,8 @@ class HomeController extends Controller
         }
     }
 
-    public function tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request) {
+    public function tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request)
+    {
         foreach ($datLichOfDay as $rowDatLichOfDate) {
             $time = date('H:i:s', $rowDatLichOfDate->thoigiandat);
             foreach ($Lich as $rowLich) {
@@ -777,7 +812,8 @@ class HomeController extends Controller
         }
     }
 
-    public function tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich) {
+    public function tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich)
+    {
         foreach ($datLichOfDay as $rowDatLichOfDate) {
             $time = date('H:i:s', $rowDatLichOfDate->thoigiandat);
             foreach ($Lich as $rowLich) {
@@ -788,7 +824,8 @@ class HomeController extends Controller
         }
     }
 
-    public function createNewKhachHang($sdt, $idCoSo, $name) {
+    public function createNewKhachHang($sdt, $idCoSo, $name)
+    {
         $khachHang = new KhachHangModel;
         $khachHang->sdt = $sdt;
         $khachHang->idcoso = $idCoSo;
@@ -799,7 +836,8 @@ class HomeController extends Controller
         return $khachHang;
     }
 
-    public function createKhachHangActive($sdt, $password) {
+    public function createKhachHangActive($sdt, $password)
+    {
         $khachHang = new KhachHangModel;
         $khachHang->sdt = $sdt;
         $khachHang->password = bcrypt($password);
@@ -809,7 +847,8 @@ class HomeController extends Controller
         return $khachHang;
     }
 
-    public function updateKhachHang($id, $password) {
+    public function updateKhachHang($id, $password)
+    {
         $khachHang = KhachHangModel::find($id);
         $khachHang->password = bcrypt($password);
         $khachHang->save();
@@ -829,7 +868,8 @@ class HomeController extends Controller
         $khachHang->save();
     }
 
-    public function createNewDatLich($request, $idKhachHang) {
+    public function createNewDatLich($request, $idKhachHang)
+    {
         $datLich = new DatLichModel;
         $datLich->idcoso = $request->idCoSo;
         $datLich->iddichvu = $request->listDichVu;
@@ -840,7 +880,8 @@ class HomeController extends Controller
         return $datLich;
     }
 
-    public function checkLoginSiteValid($request) {
+    public function checkLoginSiteValid($request)
+    {
         $type = false;
         $mess = '';
 
@@ -858,7 +899,8 @@ class HomeController extends Controller
         );
     }
 
-    public function checkSDTValid($sdt) {
+    public function checkSDTValid($sdt)
+    {
         $error = false;
 
         $pattern = "/((09|03|07|08|05)+([0-9]{8})\b)/";
