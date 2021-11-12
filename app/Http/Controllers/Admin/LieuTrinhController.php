@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LieuTrinhChiTiet;
 use App\Repositories\DichVu\DichVuRepository;
+use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
@@ -21,7 +22,8 @@ class LieuTrinhController extends Controller
         LieuTrinhRepository $LieuTrinh,
         LieuTrinhChiTietRepository $LieuTrinhChiTiet,
         NhanVienRepository $NhanVien,
-        DichVuRepository $DichVu
+        DichVuRepository $DichVu,
+        HoaDonRepository $HoaDon,
     )
     {
         $this->KhachHang = $KhachHang;
@@ -29,6 +31,7 @@ class LieuTrinhController extends Controller
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
         $this->NhanVien = $NhanVien;
         $this->DichVu = $DichVu;
+        $this->HoaDon = $HoaDon;
     }
 
     /**
@@ -107,10 +110,12 @@ class LieuTrinhController extends Controller
         $LieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
         $NhanVien =  $this->NhanVien->getAll();
         $DichVu =  $this->DichVu->getAll();
-
+        $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($id);
+        // dd($findHoaDon);
+        $hasHoaDon = count($findHoaDon);
         view()->share('id',$id);
 
-        return view("Admin.LieuTrinh.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu'));
+        return view("Admin.LieuTrinh.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu','hasHoaDon'));
     }
 
 

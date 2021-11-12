@@ -40,7 +40,7 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
         "lieutrinhchitiet.trangthai",
         "lieutrinhchitiet.imgkhachhang",
         "lieutrinhchitiet.id as idlieutrinhchitiet",
-        "lieutrinhchitiet.iddichvu"
+        "lieutrinhchitiet.iddichvu",
         )
         ->join('dichvu', 'lieutrinhchitiet.iddichvu', '=', 'dichvu.id')
         ->join('nhanvien','lieutrinhchitiet.idnhanvien','=','nhanvien.id')

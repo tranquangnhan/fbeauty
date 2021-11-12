@@ -204,3 +204,13 @@ async function deleteLieutrinh(id, e) {
         }
     }
 }
+
+function checkConfirm(){
+    var r = confirm("Xác nhận ? .Hoá đơn đã thanh toán sẽ không thể thay đổi ?");
+    if (r == true) {
+        return true;
+    }   
+    else {
+        return false;
+    }
+}

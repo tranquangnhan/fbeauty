@@ -24,4 +24,10 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
             ->orderBy('hoadon.id', 'desc')
             ->get();
     }
+
+    public function findHoaDonByIdLieuTrinh($id){
+        return  $this->model
+        ->where('idlieutrinh', '=', $id)
+        ->get();
+    }
 }

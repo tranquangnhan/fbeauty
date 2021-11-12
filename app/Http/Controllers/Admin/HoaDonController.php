@@ -26,17 +26,16 @@ class HoaDonController extends Controller
     private $giamgia;
     private $LieuTrinh;
     public function __construct(
-    GiamGiaRepository $giamgia,
-    KhachHangRepository $khachhang,
-    HoaDonRepositoryInterface $hoadon,
-    HoaDonChiTietRepositoryInterface $hoadonchitiet,
-    NhanVienRepositoryInterface $nhanvien,
-    CosoRepository $coso,
-    DichVuRepositoryInterface $dichvu,
-    LieuTrinhRepository $LieuTrinh,
-    LieuTrinhChiTietRepository $LieuTrinhChiTiet
-    )
-    {
+        GiamGiaRepository $giamgia,
+        KhachHangRepository $khachhang,
+        HoaDonRepositoryInterface $hoadon,
+        HoaDonChiTietRepositoryInterface $hoadonchitiet,
+        NhanVienRepositoryInterface $nhanvien,
+        CosoRepository $coso,
+        DichVuRepositoryInterface $dichvu,
+        LieuTrinhRepository $LieuTrinh,
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet
+    ) {
         $this->nhanvien = $nhanvien;
         $this->coso = $coso;
         $this->dichvu = $dichvu;
@@ -55,8 +54,8 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-//        $coso=$this->coso->getAll();
-//        return view("Admin.HoaDon.index", ['coso'=>$coso]);
+        //        $coso=$this->coso->getAll();
+        //        return view("Admin.HoaDon.index", ['coso'=>$coso]);
     }
 
     /**
@@ -160,7 +159,6 @@ class HoaDonController extends Controller
                     ];
                     return $thongbao;
                 }
-
             } else {
                 $thongbao = [
                     "thongbao" => 'Giá hóa đơn không đủ điều kiện'
@@ -195,70 +193,44 @@ class HoaDonController extends Controller
         return $thongbao;
     }
 
-    public function addHoaDonByIdLieuTrinh($id){
-       
-       $lieuTrinh =  $this->LieuTrinh->find($id);
-       $lieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
-       $tongtien = 0;
-       for ($i=0; $i < count($lieuTrinhChiTiet); $i++) { 
-        $tongtien += $lieuTrinhChiTiet[$i]->dongia;
-       }
+    public function addHoaDonByIdLieuTrinh($id)
+    {
 
-       $dataHoaDon = [
-            'idkhachhang' =>$lieuTrinh->idkhachhang ,
+        $lieuTrinh =  $this->LieuTrinh->find($id);
+        $lieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
+        $tongtien = 0;
+        for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
+            $tongtien += $lieuTrinhChiTiet[$i]->dongia;
+        }
+        $dataHoaDon = [
+            'idkhachhang' => $lieuTrinh->idkhachhang,
             'idcoso' => session()->get('coso'),
-            'idnhanvien'=> $lieuTrinh->idnhanvien,
-            'idthungan'=> $lieuTrinh->idnhanvien,
-            'idlieutrinh'=> $lieuTrinh->id,
-            'tongtientruocgiamgia'=> $tongtien,
-            'tongtiensaugiamgia'=> $tongtien,
-            'trangthai'=> 0,
-            'ghichu'=>$lieuTrinh->ghichu
+            'idnhanvien' => $lieuTrinh->idnhanvien,
+            'idthungan' => $lieuTrinh->idnhanvien,
+            'idlieutrinh' => $lieuTrinh->id,
+            'tongtientruocgiamgia' => $tongtien,
+            'tongtiensaugiamgia' => $tongtien,
+            'trangthai' => 1,
+            'ghichu' => $lieuTrinh->ghichu
         ];
-
-        // check nếu mà chưa có id === -1 thì tạo ngược lại update
-    //    if(session()->get('idHoaDon') == null){
-    //     $hoaDon = $this->hoadon->create($dataHoaDon);
-        
-    //     if($hoaDon){
-    //         for ($i=0; $i < count($lieuTrinhChiTiet); $i++) { 
-    //             $dataHoaDonChiTiet = [
-    //                 'idhoadon' =>$hoaDon->id,
-    //                 'idlienquan' => $lieuTrinhChiTiet[$i]->iddichvu,
-    //                 'iddichvu'=> $lieuTrinh->idnhanvien,
-    //                 'type'=> 0,
-    //                 'soluong'=> 1,
-    //                 'dongiatruocgiamgia'=> $lieuTrinhChiTiet[$i]->dongia,
-    //                 'dongiasaugiamgia'=> $lieuTrinhChiTiet[$i]->dongia,
-    //             ];
-    //             $this->hoadonchitiet->create($dataHoaDonChiTiet);
-    //         }
-    //         return redirect('/quantri/hoadonchitiet/'.$hoaDon->id);
-    //     }
-
-    //     session()->put('idHoaDon',$hoaDon->id);
-
-    //    }else{
-    //     $hoaDon = $this->hoadon->update(session()->get('idHoaDon'),$dataHoaDon);
-    //     dd("sửa xong");
-    //     if($hoaDon){
-    //         for ($i=0; $i < count($lieuTrinhChiTiet); $i++) { 
-    //             $dataHoaDonChiTiet = [
-    //                 'idhoadon' =>$hoaDon->id,
-    //                 'idlienquan' => $lieuTrinhChiTiet[$i]->iddichvu,
-    //                 'iddichvu'=> $lieuTrinh->idnhanvien,
-    //                 'type'=> 0,
-    //                 'soluong'=> 1,
-    //                 'dongiatruocgiamgia'=> $lieuTrinhChiTiet[$i]->dongia,
-    //                 'dongiasaugiamgia'=> $lieuTrinhChiTiet[$i]->dongia,
-    //             ];
-    //             $t\his->hoadonchitiet->update($dataHoaDonChiTiet,session()->get('idHoaDon'));
-    //         }
-    //         // return redirect('/quantri/hoadonchitiet/'.$hoaDon->id);
-           
-    //     }
-    //    }
-    
+       
+        $hoaDon = $this->hoadon->create($dataHoaDon);
+            
+        if ($hoaDon) {
+            for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
+                $dataHoaDonChiTiet = [
+                    'idhoadon' => $hoaDon->id,
+                    'idlienquan' => $lieuTrinhChiTiet[$i]->iddichvu,
+                    'type' => 0,
+                    'soluong' => 1,
+                    'dongiatruocgiamgia' => $lieuTrinhChiTiet[$i]->dongia,
+                    'dongiasaugiamgia' => $lieuTrinhChiTiet[$i]->dongia,
+                ];
+                $this->hoadonchitiet->create($dataHoaDonChiTiet);
+            }
+            
+            return redirect('/quantri/hoadonchitiet/' . $hoaDon->id);
+        }
+       
     }
-
 }

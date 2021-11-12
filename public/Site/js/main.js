@@ -163,7 +163,8 @@ function checkStepAndCallAction() {
     if (activeStep == step_1) {
         phoneNumber = $('#phoneNumber').val();
         idCoSo = $('.value-coso').attr('data-coso');
-        var error = firstPageModalValidCheck(phoneNumber, idCoSo);
+        nameKhachHang = $('.nameKhachHang').val();
+        var error = firstPageModalValidCheck(phoneNumber, idCoSo, nameKhachHang);
         if (error) {
             checkMove = false;
             controlShortOne.removeClass('done');
@@ -178,6 +179,14 @@ function checkStepAndCallAction() {
     }
 
     if (activeStep == step_2) {
+        if(checkBoxTuVan.prop('checked')){
+            let idNhanVienKhiKhachChonTuVan = 0;
+            nhanVienSelected = idNhanVienKhiKhachChonTuVan;
+            $('.select-nhanvien').hide();
+        } else {
+            $('.select-nhanvien').show();
+        }
+
         var error = seccondPageModalCheck();
         if (error) {
             checkMove = false;
@@ -259,7 +268,10 @@ function lastPageModalCheck(idCoSo, phoneNumber, timeSelected, dichVuChecked) {
 function pageModalCheckThree() {
     var error = false;
     $('.select-time').removeClass(classError);
+    $('.time-datlich-error').html('');
+
     if(!timeSelected > 0){
+        $('.time-datlich-error').html('Bạn chưa chọn khung giờ đến !');
         $('.select-time').addClass(classError);
         error = true;
     }
@@ -290,34 +302,54 @@ function spinnerBatDongBo() {
 function seccondPageModalCheck() {
     var error = false;
     $('.select-dichvu').removeClass(classError);
+    $('.dichvu-datlich-error').html('');
+
     if(!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0){
         $('.select-dichvu').addClass(classError);
+        $('.dichvu-datlich-error').html('Bạn chưa chọn dịch vụ !');
         error = true;
     }
 
     return error;
 }
 
-function firstPageModalValidCheck(phone, coSo) {
+function firstPageModalValidCheck(phone, coSo, nameKhachHang) {
     var error = false;
+
     $('.form-phone-number').removeClass(classError);
     $('.select-coso').removeClass(classError);
+    $('.form-name-khachhang').removeClass(classError);
+
+    $('.phone-datlich-error').html('');
+    $('.name-datlich-error').html('');
+    $('.coso-datlich-error').html('');
+
+    if (nameKhachHang.length == 0) {
+        error = true;
+        $('.name-datlich-error').html('Tên của bạn không được để trống !');
+        $('.form-name-khachhang').addClass(classError);
+    } else if (nameKhachHang.length < 4 ||nameKhachHang.length > 55) {
+        error = true;
+        $('.name-datlich-error').html('Tên phải từ 4 - 55 ký tự');
+        $('.form-name-khachhang').addClass(classError);
+    }
 
     var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
     if(phone !== ''){
         if (vnf_regex.test(phone) == false) {
             error = true;
-            console.log('Số điện thoại của bạn không đúng định dạng!');
+            $('.phone-datlich-error').html('Số điện thoại của bạn không đúng định dạng !');
             $('.form-phone-number').addClass(classError);
         }
-    }else {
+    } else {
         error = true;
-        console.log('Bạn chưa điền số điện thoại!');
+        $('.phone-datlich-error').html('Bạn chưa điền số điện thoại !');
         $('.form-phone-number').addClass(classError);
     }
 
     if (parseInt(coSo) == 0) {
         error = true;
+        $('.coso-datlich-error').html('Bạn chưa chọn cơ sở !');
         $('.select-coso').addClass(classError);
     }
 

@@ -18,4 +18,9 @@ class CosoRepository extends BaseRepository implements CosoRepositoryInterface
         return $this->model->select("*")->where('id', '=', $coSo)->get();
     }
 
+    public function getDiaChiById($idCoSo) {
+        $coSo = $this->model::select('diachi')->find($idCoSo);
+        return $coSo->diachi;
+    }
+
 }

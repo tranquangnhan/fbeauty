@@ -590,14 +590,14 @@ class installSeeder extends Seeder
             ['idkhachhang' => 5],
         ]);
         DB::table('giohangchitiet')->insert([
-            ['idgiohang' => 1, 'idsanpham'=> 1,'soluong' => 2],
-            ['idgiohang' => 1, 'idsanpham'=> 2,'soluong' => 2],
-            ['idgiohang' => 2, 'idsanpham'=> 3,'soluong' => 3],
-            ['idgiohang' => 2, 'idsanpham'=> 4,'soluong' => 3],
-            ['idgiohang' => 3, 'idsanpham'=> 5,'soluong' => 4],
-            ['idgiohang' => 3, 'idsanpham'=> 6,'soluong' => 4],
-            ['idgiohang' => 4, 'idsanpham'=> 1,'soluong' => 5],
-            ['idgiohang' => 5, 'idsanpham'=> 2,'soluong' => 5],
+            ['idgiohang' => 1, 'idsanphamchitiet'=> 1,'soluong' => 2],
+            ['idgiohang' => 1, 'idsanphamchitiet'=> 2,'soluong' => 2],
+            ['idgiohang' => 2, 'idsanphamchitiet'=> 3,'soluong' => 3],
+            ['idgiohang' => 2, 'idsanphamchitiet'=> 4,'soluong' => 3],
+            ['idgiohang' => 3, 'idsanphamchitiet'=> 5,'soluong' => 4],
+            ['idgiohang' => 3, 'idsanphamchitiet'=> 6,'soluong' => 4],
+            ['idgiohang' => 4, 'idsanphamchitiet'=> 1,'soluong' => 5],
+            ['idgiohang' => 5, 'idsanphamchitiet'=> 2,'soluong' => 5],
         ]);
         DB::table('lieutrinh')->insert([
             ['idnhanvien'=>1,'idkhachhang'=>6,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
@@ -796,12 +796,12 @@ class installSeeder extends Seeder
             ['email'=>'thaomai@mail.com'],
         ]);
         DB::table('wishlist')->insert([
-            ['idkhachhang'=>1,'idsanpham'=>1],
-            ['idkhachhang'=>2,'idsanpham'=>2],
-            ['idkhachhang'=>1,'idsanpham'=>3],
-            ['idkhachhang'=>2,'idsanpham'=>4],
-            ['idkhachhang'=>1,'idsanpham'=>5],
-            ['idkhachhang'=>2,'idsanpham'=>6],
+            ['idkhachhang'=>1,'idsanphamchitiet'=>1],
+            ['idkhachhang'=>2,'idsanphamchitiet'=>2],
+            ['idkhachhang'=>1,'idsanphamchitiet'=>3],
+            ['idkhachhang'=>2,'idsanphamchitiet'=>4],
+            ['idkhachhang'=>1,'idsanphamchitiet'=>5],
+            ['idkhachhang'=>2,'idsanphamchitiet'=>6],
 
         ]);
 
