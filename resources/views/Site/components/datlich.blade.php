@@ -1,5 +1,5 @@
 <div class="modal-container" id="modal-datlich">
-    <div class="modal-background">
+    <div class="modal-background modal-box-datlich">
         <div class="close-modal background-close" type-modal="modal-datlich"></div>
         <div class="modal modal-main" style="width: 50%;height: auto;max-height: 90%;">
             <div class="noidung-modal h-100 w-100">

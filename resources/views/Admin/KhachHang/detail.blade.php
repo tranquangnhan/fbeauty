@@ -65,6 +65,21 @@
                                 <div class="tab-pane" id="basictab1">
                                     <div class="row">
                                         <div class="col-12">
+                                            <input type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#myModal" value="Thêm Liệu Trình">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    @if ($errors->any())
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                                <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                               
+                                                     @endif
+                                                </div>
+                                            </div>
                                             <table class="table table-centered mb-0" id="btn-editable">
                                                 <thead>
                                                     <tr>
@@ -90,6 +105,11 @@
                                                             <td>{{$item->ghichu}}</td>
                                                             <td class="d-flex justify-content-center">
                                                                 <a class="btn btn-primary mr-2 mt-3" href="{{route('lieutrinh.edit',$item->idlieutrinh)}}" role="button"><i class="fa fa-edit"></i></a>
+                                                                <form action="{{URL::to('quantri/khachhang/xoalieutrinh/'.$item->idlieutrinh.'/delete')}}" method="post">
+                                                                    @csrf
+                                                                    {!!method_field('delete')!!}
+                                                                    <button class="btn btn-danger mr-2 mt-3" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                                </form>
                                                             </td>
                                                         </tr>
 
@@ -183,5 +203,47 @@
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->
+</div>
+
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{URL::to('quantri/khachhang/themlieutrinh/'.$KhachHang->id.'/store')}}"  enctype="multipart/form-data" method="post">
+                @csrf
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Thêm Liệu Trình Chi Tiết</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label >Nhân Viên</label>
+                        <select class="form-control select2 @error('iddanhmuc') border-error @enderror" name="idnhanvien">
+                            <option value="">Chọn</option>
+                            @foreach ($NhanVien as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label >Nhập thời gian bắt đầu</label>
+                        <input class="form-control" id="example-date" type="date" name="ngaybatdau">
+                    </div>
+                    <div class="form-group">
+                        <label >Nhập dự kiến kết thúc</label>
+                        <input class="form-control" id="example-date" type="date" name="dukienketthuc">
+                    </div>
+                    <div class="form-group">
+                        <label >Nhập ghi chú</label>
+                        <textarea class="form-control" name="ghichu" rows="5" id="example-textarea" placeholder="Nhập ghi chú"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Huỷ</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Thêm</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>
 @endsection

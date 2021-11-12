@@ -93,6 +93,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
 
     Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
+    Route::post('khachhang/themlieutrinh/{id}/store', [KhachHangController::class,'storeLieuTrinh']);
+    Route::delete('khachhang/xoalieutrinh/{id}/delete', [KhachHangController::class,'delLieuTrinh']);
 
     /**
     *1: Lấy DỊch vụ đến Hóa đơn
@@ -121,6 +123,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('hoadon/{id}/edit/themdichvu/{iddv}',[HoaDonChiTietController::class, 'ThemDichVuVaoHoaDon']);
     Route::get('hoadon/{id}/edit/capnhatsoluong/{idhdct}/soluong/{soluong}',[HoaDonChiTietController::class, 'CapNhatSoLuong']);
     Route::get('hoadon/{id}/edit/huygiamgia/{tien}',[HoaDonChiTietController::class, 'HuyGiamGia']);
+    // nhan add hoá đơn by id liệu trình
+    Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class,'addHoaDonByIdLieuTrinh']);    
 });
 
 Route::group(['prefix' => '/'], function (){
@@ -137,6 +141,7 @@ Route::group(['prefix' => '/'], function (){
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
     Route::get('bai-viet/ten-bai-viet', [HomeController::class, "viewBaiVietChiTiet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+    Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
 
     Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);

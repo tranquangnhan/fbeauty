@@ -70,7 +70,7 @@
                                 @endif
                             </a>
                         </li>
-                        <li class="dropdown-custom-item"><a href="">Thông tin tài khoản</a></li>
+                        <li class="dropdown-custom-item"><a href="/thong-tin-tai-khoan">Thông tin tài khoản</a></li>
                         <li class="dropdown-custom-item"><a href="/site-logout">Đăng xuất</a></li>
                     </ul>
                 </li>
