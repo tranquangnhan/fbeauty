@@ -130,8 +130,10 @@ Route::group(['prefix' => '/'], function (){
     Route::get('gio-hang', [HomeController::class, "viewGioHang"]);
     Route::get('thanh-toan', [HomeController::class, "viewThanhToan"]);
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
-    Route::get('bai-viet/ten-bai-viet', [HomeController::class, "viewBaiVietChiTiet"]);
+    Route::get('bai-viet/{id}', [HomeController::class, "viewBaiVietChiTiet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+    Route::get('lien-he', [HomeController::class, "viewLienHe"]);
+    Route::get('gioi-thieu', [HomeController::class, "viewGioiThieu"]);
 
     Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);

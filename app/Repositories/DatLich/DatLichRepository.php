@@ -31,6 +31,7 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         // elect('dichvu')->value("name")->first();
         // dd($getall)
         $date = Carbon::now('Asia/Ho_Chi_Minh');
+        
         return $this->model->select('datlich.*', 'datlich.id','nhanvien.name as namenv','khachhang.name as namekh')
       
         // ->join('dichvu','datlich.iddichvu', '=', 'dichvu.id')
@@ -44,11 +45,7 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
 
 
     }
-    // public function getAllTravel(){
-    
-    //     return DB::table('dichvu')->select('name')->where('dichvu.id',1)->first();
 
-    // }
     public function getdv(){
         return DichVuModel::class;
     }

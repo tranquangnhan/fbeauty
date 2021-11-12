@@ -122,16 +122,58 @@ class HomeController extends Controller
     }
 
     public function viewBaiViet() {
+        $blog      = $this->Blog->getBlog1();
+        $danhmuc   = $this->DanhMuc->getAll();
+           
+        //  for ($i = 0; $i < count($danhmuc);$i++){
+
+        //     $arrayid = $danhmuc[$i]->id;
+        //     $arrayIddanhmuc = json_decode($arrayid);
+        //             dd($arrayid);
+
+            
+        // }
+        // for ($y = 0; $y < count($danhmuc); $y++){
+        //     foreach ($danhmuc[$y] as $datlich)  {    
+        //     foreach ($datlich as $item)  {    
+        //         // $arrayIddichvu = [];
+        //     $arrayIddichvu = json_decode( $item->id);
+        //     // $idd = $item->id;
+        //     // $blogbyid = $this->Blog->getblogbyiddm(count($arrayIddichvu));
+        //     dd($blogbyid);}
+        //     }
+        // }
+        
+        $getBlog2     = $this->Blog->getBlog2();
+        $blog3     = $this->Blog->getLastWeek1();
+        $blog4     = $this->Blog->getLastWeek2();
+        $blognew   = $this->Blog->getBlognew();
+        $getBlog2 = $this->Blog->getBlog2();
+
+        $this->data['blog']     = $blog;
+        $this->data['blog3']    = $blog3;
+        $this->data['blog4']    = $blog4;
+        $this->data['blognew']    = $blognew;
+        $this->data['danhmuc']    = $danhmuc;
+        $this->data['getBlog2']     = $getBlog2;
+
         $this->data['pathActive']          = 'bai-viet';
         $this->data['namePage']            = 'Bài viết';
         $this->data['breadcrumbArray']     = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
         ];
-
         return view("Site.pages.baiviet", $this->data);
     }
 
-    public function viewBaiVietChiTiet() {
+    public function viewBaiVietChiTiet($id) {
+        $getBlog2 = $this->Blog->getBlog2();
+        $danhmuc   = $this->DanhMuc->getAll();
+        $viewdetail = $this->Blog->editBlog($id);
+        
+        $this->data['getBlog2']     = $getBlog2;
+        $this->data['danhmuc']     = $danhmuc;
+        $this->data['viewdetail']    = $viewdetail;
+
         $this->data['pathActive']          = 'bai-viet';
         $this->data['namePage']            = 'Tên Bài viết';
         $this->data['breadcrumbArray']     = [
@@ -470,5 +512,24 @@ class HomeController extends Controller
         $datLich->thoiGianDat = $request->thoiGianDat;
         $datLich->save();
         return $datLich;
+    }
+
+    public function viewLienHe() {
+        $this->data['pathActive']          = 'lien-he';
+        $this->data['namePage']            = 'Liên Hệ';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '', 'name' => 'Liên Hệ'],
+        ];
+
+        return view("Site.pages.contact", $this->data);
+    }
+    public function viewGioiThieu() {
+        $this->data['pathActive']          = 'gioi-thieu';
+        $this->data['namePage']            = 'Giới thiệu';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '', 'name' => 'Giới thiệu'],
+        ];
+
+        return view("Site.pages.gioithieu", $this->data);
     }
 }
