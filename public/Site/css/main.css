@@ -2738,10 +2738,15 @@ span.box-soluong {
     margin: 1em 0em;
     transition: 0.4s;
     position: relative;
+    border-radius: 10px !important;
 }
 
 .child-item-sanpham:hover {
-    box-shadow: 0px 2px 20px rgb(0 0 0 / 15%);
+    box-shadow: 0px 2px 20px rgb(255, 165, 172);
+}
+
+.child-item-sanpham:hover .btn-sanpham{
+    opacity: 1;
 }
 
 .product-action {
@@ -2756,6 +2761,14 @@ span.box-soluong {
     position: absolute;
     right: 20px;
     top: 20px;
+    z-index: 2;
+}
+
+.btn-add-discout.btn-sticky {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 2;
 }
 
 .box-cicrle {
@@ -2763,6 +2776,18 @@ span.box-soluong {
     height: 2.2rem;
     font-size: 1em;
     background-color: var(--gray-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #212529;
+}
+
+.box-cicrle-giamgia {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1em;
+    background-color: rgb(255,182,193);
     display: flex;
     align-items: center;
     justify-content: center;

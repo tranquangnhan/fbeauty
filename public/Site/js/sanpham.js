@@ -21,7 +21,7 @@ imageSanPhamSlider.owlCarousel({
     margin:10,
     nav:true,
     autoplay:true,
-    autoplayTimeout: 2000,
+    autoplayTimeout: 3000,
     autoplayHoverPause:true,
     navText: ['<div class="custom-nav-owl" aria-label="Previous"><i class="fas fa-angle-left"></i></div>','<div class="custom-nav-owl" aria-label="Next"><i class="fas fa-angle-right"></i>     </div>'],
     dotsContainer: '#custom-dots-1',
@@ -83,7 +83,7 @@ $('.change-column-control').click(function (e) {
         $(this).addClass('active');
 
         var typeColumn = $(this).attr('type-column');
-        if (typeColumn == 'single') {
+        if (typeColumn == 'multiple') {
             $('.fa-sanpham-item').removeClass('col-xl-4');
             $('.fa-sanpham-item').addClass('col-xl-12');
 
