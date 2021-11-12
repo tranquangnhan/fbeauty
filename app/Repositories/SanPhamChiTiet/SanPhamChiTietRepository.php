@@ -28,6 +28,10 @@ class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietR
         return $this->model->where("idsanpham","=",$id)->get();
     }
 
+    public function getSanPhamChiTietByIDLimit($id){
+        return $this->model->where("idsanpham","=",$id)->limit(1)->get();
+    }
+
 
     public function delDetailByIdSp($id){
        return $this->model->where("idsanpham","=",$id)->delete();
@@ -51,5 +55,5 @@ class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietR
             ->get();
     }
 
-  
+
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DonHangController;
 use App\Http\Controllers\Admin\DichVuController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DonHangchitietController;
+use App\Http\Controllers\Admin\GiamGiaController;
 use App\Http\Controllers\Admin\HoaDonChiTietController;
 use App\Http\Controllers\Admin\HoaDonController;
 use App\Http\Controllers\Admin\KhachHangController;
@@ -52,7 +53,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('khachhang', KhachHangController::class);
     Route::resource('blog', BlogController::class);
 
-    // Route::post('/sanpham/detail/store', [SanPhamChiTietController::class,'store']);
+    Route::get('/sanpham/detail/{id}/create', [SanPhamChiTietController::class,'createDetailProduct']);
     Route::post('/sanpham/detail/{id}/del', [SanPhamChiTietController::class,'destroy']);
     Route::post('/sanpham/detail/{id}/store', [SanPhamChiTietController::class,'postDetailProduct']);
 
@@ -83,9 +84,10 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 
     Route::resource('donhang', DonHangController::class);
     Route::resource('donhangchitiet', DonHangController::class);
-
     Route::get('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'editDetailDonHang']);
     Route::post('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'updateDetailDonHang']);
+    // quản lý giảm giá
+    Route::resource('giamgia', GiamGiaController::class);
 
     Route::resource('lieutrinh', LieuTrinhController::class);
 
@@ -126,7 +128,9 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 Route::group(['prefix' => '/'], function (){
     Route::get('trang-chu', [HomeController::class, "index"]);
     Route::get('san-pham', [HomeController::class, "viewSanPham"]);
-    Route::get('san-pham/chi-tiet', [HomeController::class, "viewSanPhamChiTiet"]);
+    Route::get('san-pham/soluong/{id}', [HomeController::class, "getSanPham"]);
+    Route::get('san-pham/chi-tiet/{id}', [HomeController::class, "viewSanPhamChiTiet"]);
+
     Route::get('gio-hang', [HomeController::class, "viewGioHang"]);
     Route::get('thanh-toan', [HomeController::class, "viewThanhToan"]);
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
@@ -134,11 +138,19 @@ Route::group(['prefix' => '/'], function (){
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
     Route::get('lien-he', [HomeController::class, "viewLienHe"]);
     Route::get('gioi-thieu', [HomeController::class, "viewGioiThieu"]);
+    Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
 
     Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
+    Route::post('site-login', [HomeController::class, "login"]);
+    Route::get('site-logout', [HomeController::class, "logoutSite"]);
+    Route::post('sendOTPSMS', [HomeController::class, "sendOTPSMS"]);
+    Route::get('removeOTP', [HomeController::class, "removeOTP"]);
+    Route::post('checkOTP', [HomeController::class, "checkOTP"]);
+    Route::post('skipCreatePassword', [HomeController::class, "skipCreatePassword"]);
+    Route::post('newPassword', [HomeController::class, "newPassword"]);
     Route::post('checkIssetUser', [HomeController::class, "checkIssetUser"]);
 });
 

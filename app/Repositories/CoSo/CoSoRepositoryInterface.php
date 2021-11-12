@@ -7,6 +7,7 @@ namespace App\Repositories\Coso;
 interface CosoRepositoryInterface
 {
     public function getCosoByIdSessionCoso();
+
     public function getAll();
 
     public function find($id);
@@ -16,4 +17,6 @@ interface CosoRepositoryInterface
     public function update($id,$attributes = []);
 
     public function delete($id);
+
+    public function getDiaChiById($idCoSo);
 }

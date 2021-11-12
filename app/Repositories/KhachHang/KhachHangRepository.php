@@ -28,4 +28,17 @@ class KhachHangRepository extends BaseRepository implements KhachHangRepositoryI
     public function getBySdt($sdt) {
         return $this->model::where('sdt', '=', $sdt)->first();
     }
+
+    public function checkIssetUserByPhoneNumber($phoneNumber) {
+        return $this->model::where([
+            ['sdt', '=', $phoneNumber],
+            ['password', '!=', null],
+        ])->first();
+    }
+
+    public function checkLoginSite($sdt) {
+        return $this->model::where([
+            ['sdt', '=', $sdt],
+        ])->first();
+    }
 }

@@ -18,33 +18,71 @@
                 <li class="nav-item">
                     <a class="btn-modal-main nav-link" type-modal="modal-datlich" href="javascript:void(0)" data-show="one">Đặt Lịch</a>
                 </li>
-                <li class="nav-item {{ ($pathActive == 'san-pham') ? 'active' : '' }}">
+                <li class="nav-item {{ ($pathActive == 'san-pham') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/san-pham">Sản Phẩm</a>
+                    <ul class="dropdown-custom-1">
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item {{ ($pathActive == 'dich-vu') ? 'active' : '' }}">
+                <li class="nav-item {{ ($pathActive == 'dich-vu') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/dich-vu">Dịch Vụ</a>
+                    <ul class="dropdown-custom-1">
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                    </ul>
                 </li>
+
                 <li class="nav-item {{ ($pathActive == 've-chung-toi') ? 'active' : '' }}">
                     <a class="nav-link" href="#">Về Chúng Tôi</a>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'lien-he') ? 'active' : '' }}">
                     <a class="nav-link" href="#">Liên Hệ</a>
                 </li>
-                <li class="nav-item {{ ($pathActive == 'bai-viet') ? 'active' : '' }}">
+                <li class="nav-item {{ ($pathActive == 'bai-viet') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/bai-viet">Blog</a>
+                    <ul class="dropdown-custom-1">
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+                    </ul>
                 </li>
             </ul>
             <div class="box-icon">
-                <div class="icon-item d-inline-block hover-scale-1">
+                <li class="icon-item d-inline-block hover-scale-1">
                     <a href=""><i class="fas fa-search color-black-2"></i></a>
-                </div>
-                <div class="icon-item d-inline-block hover-scale-1">
+                </li>
+                @if (session()->has('khachHang') && session('khachHang') != '')
+                <li class="icon-item d-inline-block fa-dropdown-custom-1">
+                    <a href="javascript:void(0)"><i class="fas fa-user-alt color-black-2"></i></a>
+                    <ul class="dropdown-custom-1" style="right: 0px;">
+                        <li class="dropdown-custom-item">
+                            <a href="">
+                                @if (session('khachHang')->name != '')
+                                    {{ session('khachHang')->name }}
+                                @else
+                                    {{ session('khachHang')->sdt }}
+                                @endif
+                            </a>
+                        </li>
+                        <li class="dropdown-custom-item"><a href="/thong-tin-tai-khoan">Thông tin tài khoản</a></li>
+                        <li class="dropdown-custom-item"><a href="/site-logout">Đăng xuất</a></li>
+                    </ul>
+                </li>
+                @else
+                <li class="icon-item d-inline-block">
                     <a class="btn-modal-main" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
-                </div>
-                <div class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
-                    <div class="number-cart">0</div>
+                </li>
+                @endif
+                <li class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
+                    <span class="badge badge-pill badge-primary number-cart">0</span>
                     <a href=""><i class="fas fa-shopping-cart color-black-2"></i></a>
-                </div>
+                </li>
             </div>
         </div>
     </nav>

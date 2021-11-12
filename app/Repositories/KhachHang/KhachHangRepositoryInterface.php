@@ -12,4 +12,6 @@ public function getModel();
 public function CheckEmail($email);
 public function CheckSdt($sdt);
 public function getBySdt($sdt);
+public function checkIssetUserByPhoneNumber($phoneNumber);
+public function checkLoginSite($sdt);
 }
