@@ -47,6 +47,7 @@
                                                         ['id'=>4,'name'=>"Thương Hiệu"]
                                                     ];
                                                 @endphp
+                                
                                                 <select class="form-control select2" name="loai">
                                                     @foreach ($array as $item)
                                                         <option value="{{$item['id']}}">{{$item['name']}}</option>

@@ -793,7 +793,6 @@ class installSeeder extends Seeder
             ['id'=>4,'idkhachhang'=>2,'idsanphamchitiet'=>4],
             ['id'=>5,'idkhachhang'=>1,'idsanphamchitiet'=>5],
             ['id'=>6,'idkhachhang'=>2,'idsanphamchitiet'=>6],
-
         ]);
 
 

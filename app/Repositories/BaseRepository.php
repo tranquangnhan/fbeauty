@@ -51,6 +51,7 @@ abstract class BaseRepository implements RepositoryInterface{
         return false;
     }
 
+
     public function delete($id)
     {
         $result = $this->find($id);

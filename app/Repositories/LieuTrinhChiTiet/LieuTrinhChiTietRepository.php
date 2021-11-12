@@ -34,11 +34,13 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
         "nhanvien.name as tennv",
         "nhanvien.avatar as imgnv",
         "dichvu.motangan as motadv",
+        "dichvu.dongia",
         "lieutrinhchitiet.ngay",
         "lieutrinhchitiet.mota",
         "lieutrinhchitiet.trangthai",
         "lieutrinhchitiet.imgkhachhang",
-        "lieutrinhchitiet.id as idlieutrinhchitiet"
+        "lieutrinhchitiet.id as idlieutrinhchitiet",
+        "lieutrinhchitiet.iddichvu",
         )
         ->join('dichvu', 'lieutrinhchitiet.iddichvu', '=', 'dichvu.id')
         ->join('nhanvien','lieutrinhchitiet.idnhanvien','=','nhanvien.id')
@@ -49,5 +51,11 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
         $dt = Carbon::now('Asia/Ho_Chi_Minh');
         return $this->model->select("idlieutrinh","id")->whereDate('created_at', '=', $dt->toDateString())->get();
     }
+
+    public function findLieuTrinhChiTietByIdLieuTrinh($id){
+        return $this->model->where('idlieutrinh','=',$id)->get();
+    }
+
+    
 }
 
