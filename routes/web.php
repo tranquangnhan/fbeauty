@@ -68,6 +68,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get("nhanvien/imgcustomer/pictures", [NhanVienController::class, "AllImgKH"]);
 
     Route::resource('hoadon', HoaDonController::class);
+    Route::get('hoadon/trangthaithanhtoan/{id}', [HoaDonController::class, "trangthaithanhtoan"]);
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
 
     Route::resource('lich', LichController::class);
@@ -124,7 +125,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('hoadon/{id}/edit/capnhatsoluong/{idhdct}/soluong/{soluong}',[HoaDonChiTietController::class, 'CapNhatSoLuong']);
     Route::get('hoadon/{id}/edit/huygiamgia/{tien}',[HoaDonChiTietController::class, 'HuyGiamGia']);
     // nhan add hoá đơn by id liệu trình
-    Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class,'addHoaDonByIdLieuTrinh']);    
+    Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class,'addHoaDonByIdLieuTrinh']);
 });
 
 Route::group(['prefix' => '/'], function (){
