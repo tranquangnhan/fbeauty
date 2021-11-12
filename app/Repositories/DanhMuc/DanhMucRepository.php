@@ -15,7 +15,9 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
     public function getModel(){
         return \App\Models\Admin\DanhMuc::class;
     }
-
+    public function getalldanhmuc(){
+        return $this->model->select('danhmuc.*')->limit(6)->get();
+    }
     public function setModel()
     {
         $this->model = app()->make(
@@ -27,4 +29,5 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
         return $this->model->where("loai","=",$idLoai)->get();
     }
 
+   
 }

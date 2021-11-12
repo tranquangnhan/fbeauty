@@ -22,8 +22,9 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     {
         return $this->model->select('dichvu.*', 'dichvu.id','danhmuc.name AS danhmuc')
             ->join('danhmuc', 'dichvu.iddm', '=', 'danhmuc.id')
-            ->where('dichvu.id', $id)
+            ->where('dichvu.id', $id)->limit(10)
             ->get();
+            
     }
 
     public function getDichVuTheoDanhMuc($iddanhmuc)

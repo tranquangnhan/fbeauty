@@ -1,7 +1,7 @@
 @extends('site.layout')
 
 @section('title')
-    Tên Bài viết
+        {{$viewdetail[0]->name}}
 @endsection
 
 @section('main')
@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-xl-9">
                     <div class="blog-detail">
-                        <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                        <img src="{{ asset('uploads') }}/{{$viewdetail[0]->img}}" alt="">
                         <div class="blog-content-detail box-shadow-1">
                             <div class="blog-head">
                                 <div class="row">
@@ -18,14 +18,13 @@
                                         class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                         <div class="mr-3">
                                             <a href="" class="box-danhmuc-1 fz-1em2">
-                                                Sức khỏe</a>
+                                                {{$viewdetail[0]->danhmuc}}</a>
                                         </div>
-                                        <span class="fz-1em1">Thứ ba, 26/10/2021, 21:00 (GMT+7)</span>
+                                        <span class="fz-1em1">{{$viewdetail[0]->created_at}}</span>
                                     </div>
                                 </div>
                                 <div class="name-blog mt-3">
-                                    <h1 class=" font-weight-600">How To Pot You Web App To Microsoft Clone Teams Is Really
-                                        Ready For Take Fight.</h1>
+                                    <h1 class=" font-weight-600">{{$viewdetail[0]->name}}.</h1>
                                 </div>
 
                                 <div class="list-reac d-flex">
@@ -39,17 +38,12 @@
                             <div class="blog-body">
                                 <div class="noidungngan">
                                     <div class="border-z border-left-z"></div>
-                                    <p class="m-0">On your list of places where people might access your web app,
-                                        Teams is probably number “not-on-the-list”.
-                                        But it turns out that making your app accessible where your users are already
-                                        working has some profound
-                                        for benefits. In this article, we’ll look athow Teams makes web apps for every
-                                        company</p>
+                                    <p class="m-0">{{$viewdetail[0]->motangan}}.</p>
                                     <div class="border-z border-right-z"></div>
                                 </div>
 
                                 <div class="noidung">
-
+                                    {{$viewdetail[0]->noidung}}.
                                 </div>
                             </div>
                         </div>

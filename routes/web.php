@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\SanPhamChiTietController;
 use App\Http\Controllers\Admin\ThongkeController;
+use App\Http\Controllers\Admin\DatLichController;
 
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\YeuThichController;
@@ -70,6 +71,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('hoadon', HoaDonController::class);
     Route::get('hoadon/trangthaithanhtoan/{id}', [HoaDonController::class, "trangthaithanhtoan"]);
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
+
+    Route::resource('datlich', DatLichController::class);
 
     Route::resource('lich', LichController::class);
     Route::get('lich/{id}/thungay/{idthu}', [LichController::class, 'showlich']);
@@ -140,8 +143,10 @@ Route::group(['prefix' => '/'], function (){
     Route::get('gio-hang', [HomeController::class, "viewGioHang"]);
     Route::get('thanh-toan', [HomeController::class, "viewThanhToan"]);
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
-    Route::get('bai-viet/ten-bai-viet', [HomeController::class, "viewBaiVietChiTiet"]);
+    Route::get('bai-viet/{id}', [HomeController::class, "viewBaiVietChiTiet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+    Route::get('lien-he', [HomeController::class, "viewLienHe"]);
+    Route::get('gioi-thieu', [HomeController::class, "viewGioiThieu"]);
     Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
 
     Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
