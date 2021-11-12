@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KhachHang;
+use App\Http\Requests\LieuTrinh;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
+use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
+use App\Repositories\NhanVien\NhanVienRepository;
 use Illuminate\Http\Request;
 
 class KhachHangController extends Controller
@@ -15,11 +18,15 @@ class KhachHangController extends Controller
     private $LieuTrinh;
     public function __construct(
         KhachHangRepository $KhachHang,
-        LieuTrinhRepository $LieuTrinh         
+        LieuTrinhRepository $LieuTrinh,
+        NhanVienRepository $NhanVien,
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet
         )
     {
         $this->KhachHang = $KhachHang;
         $this->LieuTrinh = $LieuTrinh;
+        $this->NhanVien = $NhanVien;
+        $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
     }
 
     /**
@@ -157,10 +164,39 @@ class KhachHangController extends Controller
     public function detailKhachHang($id){
         $KhachHang = $this->KhachHang->find($id);
         $LieuTrinh =  $this->LieuTrinh->findLieuTrinhByIdKh($KhachHang->id);
-        view()->share('URL_IMG',Controller::BASE_URL_UPLOAD_STAFF);
-
-        return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh'));
-
+        $NhanVien = $this->NhanVien->getAll();
+        return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh','NhanVien'));
     } 
+
+    public function storeLieuTrinh(LieuTrinh $request){
+        
+        $data = [
+            'idnhanvien' => $request->idnhanvien,
+            'idkhachhang' => $request->id,
+            'ngaybatdau' => strtotime($request->ngaybatdau),
+            'dukienketthuc' => strtotime($request->dukienketthuc),
+            'ghichu' => $request->ghichu,
+            'trangthai' => 0,
+        ];
+
+        $res = $this->LieuTrinh->create($data);
+        if($res){
+           return redirect()->back();
+        }else{
+           return $this->handleError('Có lỗi khi thêm');
+        }
+    }
+
+    public function delLieuTrinh($id){
+      
+        $hasLieuTrinhChiTiet =  $this->LieuTrinhChiTiet->findLieuTrinhChiTietByIdLieuTrinh($id);
+     
+        if(count($hasLieuTrinhChiTiet)>0){
+            return $this->handleError('Không thể xoá vì đã tồn tại liệu trình chi tiết. Vui lòng xoá liệu trình chi tiết trước!');
+         }else{
+            $res = $this->LieuTrinh->delete($id);
+            return redirect()->back();
+         }
+    }
 
 }

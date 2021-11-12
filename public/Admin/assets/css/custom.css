@@ -185,3 +185,8 @@ a.editable-click:hover {
     border-radius: 4px;
     object-fit: cover;
 }
+/* .fixed-bottom{
+    display: fixed;
+    bottom: 3%;
+    right: 0;
+} */
