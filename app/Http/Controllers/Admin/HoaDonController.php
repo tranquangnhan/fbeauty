@@ -213,9 +213,9 @@ class HoaDonController extends Controller
             'trangthai' => 1,
             'ghichu' => $lieuTrinh->ghichu
         ];
-       
+
         $hoaDon = $this->hoadon->create($dataHoaDon);
-            
+
         if ($hoaDon) {
             for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
                 $dataHoaDonChiTiet = [
@@ -228,9 +228,26 @@ class HoaDonController extends Controller
                 ];
                 $this->hoadonchitiet->create($dataHoaDonChiTiet);
             }
-            
+
             return redirect('/quantri/hoadonchitiet/' . $hoaDon->id);
         }
-       
+
+    }
+
+    public function trangthaithanhtoan($id){
+        $hoadon=$this->hoadon->find($id);
+        if ($hoadon->trangthai == 0){
+            $tt=[
+                "trangthai"=>1
+            ];
+            $this->hoadon->update($id, $tt);
+        }
+        else{
+            $tt=[
+                "trangthai"=>0
+            ];
+            $this->hoadon->update($id, $tt);
+        }
+        return redirect(route("hoadon.show", session()->get('coso')));
     }
 }

@@ -46,7 +46,6 @@ function BeFore(data, bienkhac) {
         FilterGia(ArrayFlow, bien)
 
     } else {
-        console.log(bienkhac)
         ArrayFlow = data;
         FilterGia(ArrayFlow, bien)
     }
@@ -159,57 +158,43 @@ function ShowSanPham(data) {
         } else {
             thetich = 0
         }
-        var anhsp=data.sanpham[i].img.split('"').join('').slice(1, -1).split(',');
-        var boxgiamgia='';
-        if (data.sanpham[i].giamgia !=null ){
-            boxgiamgia='<div class="btn-add-discout btn-sticky hover-scale-1">\n' +
-                '                                        <div class="box-cicrle-giamgia p-2 rounded text-white">\n' +
-                '                                            <span style="font-size: 10pt;">'+data.sanpham[i].giamgia+'%</span>\n' +
-                '                                        </div>\n' +
-                '                                    </div>';
+        var yeuthich = GetYeuThich(data.sanpham[i].id);
+        var anhsp = data.sanpham[i].img.split('"').join('').slice(1, -1).split(',');
+        var boxgiamgia = '';
+        if (data.sanpham[i].giamgia != null) {
+            boxgiamgia = '<div class="btn-add-discout btn-sticky hover-scale-1">\n' +
+                '<div class="box-cicrle-giamgia p-2 rounded text-white">\n' +
+                '<span style="font-size: 10pt;">' + data.sanpham[i].giamgia + '%</span>\n' +
+                '</div></div>';
         }
         sp += '<div class="col-xl-4 fa-sanpham-item" id="AnHienSP' + (i + 1) + '">\n' +
-            '                                    <div class="item-sanpham w-100">\n' +
-            '                                        <div class="child-item-sanpham row g-0">\n' +
-            '                                            <div class="btn-add-wishlist btn-sticky hover-scale-1">\n' +
-            '                                                <div class="box-cicrle" style="z-index: 9999;">\n' +
-            '                                                    <i class="fas fa-heart heart-full"></i>\n' +
-            '                                                    <i class="far fa-heart heart-line"></i>\n' +
-            '                                                </div> \n' +
-            '                                            </div>' +
-            ''+boxgiamgia+'\n' +
-            '                                            <div class="col-xl-12 fa-image-sanpham ">\n' +
-            '                                                <img src="'+document.URL.replace('san-pham', '')+'uploads/' + anhsp[0] + '" class="img-fluid" alt="...">\n' +
-            '                                            </div>\n' +
-            '                                            <div class="col-xl-12 fa-content-sanpham pl-0 position-relative">\n' +
-            '\n' +
-            '                                                <div class="card-body pl-0">\n' +
-            '                                                    <div class="product-info">\n' +
-            '                                                        <a href="javascript:;">\n' +
-            '                                                            <p class="product-catergory font-13 mb-1">' + data.sanpham[i].tendm + '</p>\n' +
-            '                                                        </a>\n' +
-            '                                                        <a href="'+document.URL+'/chi-tiet/'+data.sanpham[i].id+'">\n' +
-            '                                                            <h6 class="product-name mb-2">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
-            '                                                        </a>\n' +
-            '                                                        <p class="card-text product-motangan">' + data.sanpham[i].mota + '</p>\n' +
-            '                                                        <div class="d-flex align-items-center fa-product-price">\n' +
-            '                                                            <div class="mb-1 product-price">\n' +
-            '                                                                <span class="me-1 text-decoration-line-through">' + Number(data.sanpham[i].dongia).toLocaleString() + '</span>đ / <span>' + thetich + '</span>ml  \n' +
-            '                                                            </div>\n' +
-            '                                                        </div>\n' +
-            '                                                        <div class="product-action mt-2">\n' +
-            '                                                            <div class="d-flex gap-2">\n' +
-            '                                                                <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>\n' +
-            '                                                                <a href="'+document.URL+'/chi-tiet/'+data.sanpham[i].id+'"><button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
-            '\n' +
-            '                                                            </div>\n' +
-            '                                                        </div>\n' +
-            '                                                    </div>\n' +
-            '                                                </div>\n' +
-            '                                            </div>\n' +
-            '                                        </div>\n' +
-            '                                    </div>\n' +
-            '                                </div>';
+            ' <div class="item-sanpham w-100">\n' +
+            ' <div class="child-item-sanpham row g-0">\n' +
+            ' <div class="btn-add-wishlist btn-sticky hover-scale-1 '+yeuthich+'" id="tym'+data.sanpham[i].id+'" onclick="AddYeuThich('+data.sanpham[i].id+')">\n' +
+            '<div class="box-cicrle" id="yt" style="z-index: 9999;">' +
+            '<i class="fas fa-heart heart-full"></i><i class="far fa-heart heart-line" ></i>\n' +
+            '</div></div>' + boxgiamgia + ' <div class="col-xl-12 fa-image-sanpham ">\n' +
+            '<img src="' + document.URL.replace('san-pham', '') + 'uploads/' + anhsp[0] + '" class="img-fluid" alt="...">\n' +
+            '</div>\n' +
+            '<div class="col-xl-12 fa-content-sanpham pl-0 position-relative"> <div class="card-body pl-0">\n' +
+            '<div class="product-info">\n' +
+            ' <a href="javascript:;">\n' +
+            '<p class="product-catergory font-13 mb-1">' + data.sanpham[i].tendm + '</p>\n' +
+            '</a>\n' +
+            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].id + '">\n' +
+            ' <h6 class="product-name mb-2">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
+            '  </a>\n' +
+            ' <p class="card-text product-motangan">' + data.sanpham[i].mota + '</p>\n' +
+            '<div class="d-flex align-items-center fa-product-price">\n' +
+            '<div class="mb-1 product-price">\n' +
+            ' <span class="me-1 text-decoration-line-through">' + Number(data.sanpham[i].dongia).toLocaleString() + '</span>đ / <span>' + thetich + '</span>ml  \n' +
+            '</div>\n' +
+            '</div>\n' +
+            '<div class="product-action mt-2">\n' +
+            '<div class="d-flex gap-2">\n' +
+            ' <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>\n' +
+            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].id + '"><button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
+            '</div></div></div></div></div></div></div></div>';
 
     }
     document.getElementById("showSP").innerHTML = sp;
@@ -217,6 +202,25 @@ function ShowSanPham(data) {
 }
 
 SanPham(sanphambandau)
+
+function GetYeuThich(id) {
+    var yeuthich = '';
+    $.ajax({
+        url: document.URL + '/checkyeuthich/' + id,
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: {idsp: id},
+        success: function (datayeuthich) {
+            if (datayeuthich == 0) {
+                yeuthich = 'active';
+            } else {
+                yeuthich = '';
+            }
+        }
+    });
+    return yeuthich;
+}
 
 function SapXep() {
     let x = $("#sapxep").val();

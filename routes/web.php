@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\ThongkeController;
 use App\Http\Controllers\Admin\DatLichController;
 
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\YeuThichController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,6 +69,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get("nhanvien/imgcustomer/pictures", [NhanVienController::class, "AllImgKH"]);
 
     Route::resource('hoadon', HoaDonController::class);
+    Route::get('hoadon/trangthaithanhtoan/{id}', [HoaDonController::class, "trangthaithanhtoan"]);
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
 
     Route::resource('datlich', DatLichController::class);
@@ -126,14 +128,17 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('hoadon/{id}/edit/capnhatsoluong/{idhdct}/soluong/{soluong}',[HoaDonChiTietController::class, 'CapNhatSoLuong']);
     Route::get('hoadon/{id}/edit/huygiamgia/{tien}',[HoaDonChiTietController::class, 'HuyGiamGia']);
     // nhan add hoá đơn by id liệu trình
-    Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class,'addHoaDonByIdLieuTrinh']);    
+    Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class,'addHoaDonByIdLieuTrinh']);
 });
 
 Route::group(['prefix' => '/'], function (){
+    Route::get('', [HomeController::class, "index"]);
     Route::get('trang-chu', [HomeController::class, "index"]);
     Route::get('san-pham', [HomeController::class, "viewSanPham"]);
     Route::get('san-pham/soluong/{id}', [HomeController::class, "getSanPham"]);
     Route::get('san-pham/chi-tiet/{id}', [HomeController::class, "viewSanPhamChiTiet"]);
+    Route::get('san-pham/checkyeuthich/{id}', [YeuThichController::class, "getSanPhamYeuThich"]);
+    Route::get('addyeuthichsp/{id}', [YeuThichController::class, "AddSanPhamYeuThich"]);
 
     Route::get('gio-hang', [HomeController::class, "viewGioHang"]);
     Route::get('thanh-toan', [HomeController::class, "viewThanhToan"]);

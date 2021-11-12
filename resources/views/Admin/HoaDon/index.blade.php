@@ -63,7 +63,9 @@
                                             <strong>Sau giảm: </strong>{{number_format($hd->tongtiensaugiamgia), ""}}
                                             VND
                                         </td>
-                                        <td><?php echo ($hd->trangthai == \App\Http\Controllers\Controller::TRANGTHAITHANHTOAN) ? ' <span class="badge badge-success"><i class="fa fa-check-circle" ></i> Đã thanh toán</span>' : '<span class="badge badge-danger"><i class="fa fa-minus-circle"></i> Chưa thanh toán</span>';?>
+                                        <td><?php echo ($hd->trangthai == \App\Http\Controllers\Controller::TRANGTHAITHANHTOAN) ?
+                                                ' <a href="'.URL::to("quantri/hoadon/trangthaithanhtoan", $hd->id).'"><span class="badge badge-success p-1"><i class="fa fa-check-circle" ></i> Đã thanh toán</span></a>' :
+                                                '<a href="'.URL::to("quantri/hoadon/trangthaithanhtoan", $hd->id).'"><span class="badge badge-danger p-1"><i class="fa fa-minus-circle"></i> Chưa thanh toán</span></a>';?>
                                             <br>
                                             <strong>Ngày: </strong> {{date_format(date_create($hd->created_at), "d-m-Y")}}
                                             <br>
