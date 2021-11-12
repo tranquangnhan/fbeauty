@@ -194,8 +194,18 @@ class HomeController extends Controller
         return view("Site.pages.dichvuchitiet", $this->data);
     }
 
-    public function getNhanVienByIdCoSo(Request $request, $id)
-    {
+    public function viewProfileUser() {
+        $this->data['pathActive']          = 'thong-tin-tai-khoan';
+        $this->data['namePage']            = 'Thông tin tài khoảng';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '', 'name' => 'Thông tin tài khoảng'],
+
+        ];
+
+        return view("Site.pages.profile-user", $this->data);
+    }
+
+    public function getNhanVienByIdCoSo(Request $request, $id) {
         try {
             if ($request->ajax()) {
                 $id = (int)$id;

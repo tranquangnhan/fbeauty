@@ -130,7 +130,7 @@ body {
     position: relative;
     z-index: 8;
     cursor: pointer;
-    padding: .9rem 1rem !important;
+    /* padding: .9rem 1rem !important; */
 }
 
 .nav-link::before {
@@ -979,7 +979,7 @@ img.im-small {
 
 .blog-bigsize .img-1 {
     height: 100%;
-    max-height: 367px;
+    /* max-height: 367px; */
 }
 
 .blog-bigsize .img-1 img {
@@ -3542,7 +3542,8 @@ div#custom-dots-1 {
     background: white;
     padding: 24px 18px 22px;
     /* border-radius: 0px 0px 10px 10px; */
-    border: 2px solid #F4F4F4;
+    /* border: 2px solid #F4F4F4; */
+    box-shadow: 0px 1px 7px rgb(0 0 0 / 15%);
 }
 
 .mb-30px {
@@ -3975,6 +3976,147 @@ input[type=number] {
 .child-spinner .spinner-border {
     position: absolute;
     top: calc(50% - 1rem);
+}
+
+.fa-profile-user {
+    padding: 5em;
+}
+
+.fa-profile-user .profile-header{
+    min-height: 500px;
+    background: var(--main-color);
+    width: 100%;
+}
+
+.profile-user {
+    width: 100%;
+    min-height: 300px;
+    padding: 1.5em 0.8em;
+}
+
+.list-control .header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+    padding: 1em 0em;
+}
+
+.list-control .header img {
+    border-radius: 50%;
+    width: 58px;
+    height: 58px;
+    margin-right: 1em;
+}
+
+.list-control .header h5 {
+    font-size: .9em;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.list-control .header button {
+    border: none;
+    background: none;
+    color: var(--gray-2);
+    font-size: .9em;
+    font-weight: 400;
+}
+
+.list-control .body .profile-tab-control-a {
+    font-size: .9em;
+    font-weight: 400;
+    font-size: .9em;
+    font-weight: 400;
+    background: none;
+    color: var(--black-1) !important;
+    padding: 0em;
+}
+
+.list-control .body .profile-tab-control-a i {
+    margin-right: .3em;
+}
+
+.list-control .body .profile-tab-control-a.active {
+    color: var(--main-color) !important;
+}
+
+.profile-tab-control-li {
+    padding: 0 !important;
+    margin-top: .8em;
+}
+
+.profile-user .list-tabs {
+    border: 1px solid #efefef;
+    padding: 1em;
+    min-height: 500px;
+}
+
+.profile-user .list-tabs .header-tab {
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 1em;
+}
+
+.form-control-custom {
+    display: flex;
+    align-items: center;
+    margin-top: 0.8em;
+}
+
+.form-control-custom .left {
+    width: 20%;
+    text-align: right;
+    color: var(--gray-2);
+    font-size: .9em;
+    font-weight: 400;
+}
+
+.form-control-custom .right {
+    text-align: left;
+    padding-left: 1em;
+    font-size: .9em;
+    font-weight: 400;
+    width: 80%;
+    background: none;
+    color: var(--black-1) !important;
+}
+
+.donmua-tab .nav-item{
+    flex-shrink: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.box-donhang {
+    padding: 1em 1.5em;
+    box-shadow: 0px 0px 6px rgb(0 0 0 / 15%);
+}
+
+.box-donhang .header{
+    padding-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-none {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.text-gray {
+    color: var(--gray-2);
+    font-size: .9em;
+    font-weight: 400;
+}
+
+.tongthanhtoan {
+    padding-top: 1em;
+    border-top: 1px solid #efefef;
+}
+
+.tongthanhtoan .price-total {
+    color: var(--main-color);
+    font-size: 1.4em;
+    font-weight: 600;
 }
 
 /* Reponsive */
