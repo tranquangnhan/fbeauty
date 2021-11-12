@@ -21,4 +21,6 @@ interface DonHangRepositoryInterface
     public function getKhachHangChiTietByIdDonHang($id);
 
     public function getDonHangAndKhachHangById($id);
+
+    public function findDonHangByIdGiamGia($id);
 }

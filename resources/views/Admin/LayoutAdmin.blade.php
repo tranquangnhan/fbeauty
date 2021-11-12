@@ -18,8 +18,7 @@
 
     <link href="{{ asset('Admin/assets') }}/libs/multiselect/multi-select.css" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('Admin/assets') }}/libs/select2/select2.min.css" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('Admin/assets') }}/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css"
-          rel="stylesheet"/>
+    <link href="{{ asset('Admin/assets') }}/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css"rel="stylesheet"/>
     <link href="{{ asset('Admin/assets') }}/libs/switchery/switchery.min.css" rel="stylesheet"/>
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
@@ -27,10 +26,8 @@
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
 
-
     <!-- Bootstrap Css -->
-    <link href="{{ asset('Admin/assets') }}/css/bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('Admin/assets') }}/css/bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet"type="text/css"/>
     <!-- Icons Css -->
     <link href="{{ asset('Admin/assets') }}/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <!-- App Css-->
@@ -67,12 +64,12 @@
 
 <!-- Begin page -->
 <div id="wrapper">
-    
+
     <!-- Topbar Start -->
     <div class="navbar-custom">
-        
+
         <ul class="list-unstyled topnav-menu float-right mb-0">
-            
+
             <li class="d-none d-sm-block">
                 <form class="app-search">
                     <div class="app-search-box">
@@ -100,7 +97,7 @@
                     <i class="fe-bell noti-icon"></i>
                     <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
                 </a>
-                
+
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
                     <!-- item-->
@@ -203,21 +200,21 @@
                     <div class="dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Chọn cơ sở !</h6>
                     </div>
-                   
+
                     @foreach ($coSo as $item)
                         @if(session()->get('coso') == $item->id)
                             <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item selected">
                                 <i class="fe-user"></i>
                                 <span >{{$item->name}}</span>
                             </a>
-                        @else 
+                        @else
                             <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item ">
                                 <i class="fe-user"></i>
                                 <span >{{$item->name}}</span>
                             </a>
                         @endif
                     @endforeach
-                 
+
 
 
                     <div class="dropdown-divider"></div>
@@ -236,7 +233,7 @@
                     <i class="fe-settings noti-icon"></i>
                 </a>
             </li>
-            
+
 
         </ul>
 
@@ -331,7 +328,7 @@
             <div id="sidebar-menu">
 
                 <ul class="metismenu pb-5" id="side-menu">
-             
+
                     @if( $user->role == 1)
                          <li class="menu-title">Chung</li>
                           <!--- Cơ Sở -->
@@ -372,7 +369,7 @@
                                 <li><a href="{{route("lich.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
-                
+
 
                         <li class="menu-title">Khách Hàng</li>
                         <!--- Khách hàng -->
@@ -404,24 +401,38 @@
 
                     @if($user->role == 1 )
                         <li class="menu-title">Đặt Lịch</li>
-                   
+
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="mdi mdi-book-open"></i>
                                 <span> Hóa đơn </span>
                                 <span class="menu-arrow"></span>
                             </a>
+
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-calendar-month"></i>
+                                <span> Lịch </span>
+                                <span class="menu-arrow"></span>
+                            </a>
                             <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("hoadon.show", session()->get('coso'))}}">Danh sách</a></li>
+                                <li><a href="{{route("lich.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
-                       
-                    <!--- Nhân viên -->
-                  
-                        
-
-                        <!--- Dịch vụ -->
+                        <!--- Giảm Giá -->
                         <li>
+                            <a href="javascript: void(0);">
+                                <i class="fas fa-percentage"></i>
+                                <span> Giảm Giá </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("giamgia.index")}}">Danh sách</a></li>
+                            </ul>
+                        </li>
+                          <!--- Đơn Hàng -->
+                          <li>
                             <a href="javascript: void(0);">
                                 <i class="mdi mdi-room-service"></i>
                                 <span> Dịch vụ </span>
@@ -432,7 +443,7 @@
                                 <li><a href="{{route("dichvu.create")}}">Thêm Dịch vụ</a></li>
                             </ul>
                         </li>
-                       
+
                         <li class="menu-title">Nhân Viên</li>
                         <!--- Nhân viên -->
                         <li>
@@ -449,7 +460,7 @@
                             </ul>
                         </li>
 
-                      
+
 
                         <li class="menu-title">Sản Phẩm</li>
                         <li>
@@ -462,7 +473,7 @@
                                 <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
                                 <li><a href="{{route("sanpham.index")}}">Danh Sách</a></li>
                             </ul>
-                        </li>   
+                        </li>
                         <!--- Đơn Hàng -->
                         <li>
                           <a href="javascript: void(0);">
@@ -492,10 +503,10 @@
                         </li>
                         <div class="mb-10"></div>
                     @endif
-                 
 
-                   
-                
+
+
+
                 </ul>
 
             </div>
@@ -626,7 +637,7 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/lieutrinh.nhan.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 <script src="{{ asset('Admin/assets') }}/js/pages/form-wizard.init.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
 
 <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
@@ -636,6 +647,9 @@
 
 {{-- code nhúng bởi Tưởng --}}
 <script src="{{ asset('Admin/assets') }}/js/pages/coso.js"></script>
+
+<script src="{{ asset('Admin/assets') }}/libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
 {{-- end code nhúng bởi Tưởng --}}
 
 {{--code của quốc--}}
@@ -648,6 +662,7 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/gallery.init.js"></script>
 {{--end code của quốc--}}
 
+@yield('custom-javascript')
 </body>
 
 </html>

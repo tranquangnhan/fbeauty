@@ -1,3 +1,11 @@
+var w = window.innerWidth;
+$('.modal-box-datlich').css('max-width', w);
+
+$(window).resize(function() {
+    let w = window.innerWidth;
+    $('.modal-box-datlich').css('max-width', w);
+});
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

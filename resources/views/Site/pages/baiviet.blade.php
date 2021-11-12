@@ -436,7 +436,48 @@
                             </div>
                         </div>
                         <div class="col-xl-3">
-                            @include('Site.components.list-social')
+                            <div class="title-box-2">
+                                <span>Mạng xã hội</span>
+                            </div>
+
+                            <div class="list-social">
+                                <a href="#">
+                                    <span><i class="fab fa-facebook-f"></i> <span>15000</span> <small class="fz-0em9"> Like</small></span>
+                                    <span class="fz-0em9">Like</span>
+                                </a>
+
+                                <a href="#">
+                                    <span><i class="fab fa-twitter"></i> <span>15000</span> <small class="fz-0em9"> Tweet</small></span>
+                                    <span class="fz-0em9">Like</span>
+                                </a>
+
+                                <a href="#">
+                                    <span><i class="fab fa-instagram"></i><span>32k+</span> <small class="fz-0em9"> Follower</small></span>
+                                    <span class="fz-0em9">Follower</span>
+                                </a>
+
+                                <a href="#">
+                                    <span><i class="fab fa-youtube"></i> <span>15000</span> <small class="fz-0em9"> Subscriber</small></span>
+                                    <span class="fz-0em9">Subscribe</span>
+                                </a>
+                            </div>
+
+                            <div class="datlich mt-4">
+                                <div class="child-box-tin-2 d-flex align-items-center box-small" style="background: url('{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg');">
+                                    <div class="content-tin background-white">
+                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                            <a href="" class="color-white hover-pink">Trải nghiệm cảm giác spa <br> đỉnh cao tại Fbeauty spa</a>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                <div class="mr-3">
+                                                    <a href="" class="box-danhmuc-1 maincolor">Đặt lịch</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1338,21 +1379,7 @@
 
                     </div>
                     <div class="col-xl-3">
-                        <div class="box-lienhe  text-center mt-4">
-                            <div class="child-box-tin-2 d-flex align-items-center box-small" style="background: url('{{ asset('Site/images') }}/beauty-spa.jpg');">
-                                <div class="content-tin background-white">
-                                    <div class="box-logo">
-                                        <a class="" href="#">Logo Fbeauty</a>
-                                    </div>
-                                    <p class="text-small-2">Để được trực tiếp giải đáp mọi thắc mắc về dịch vụ mà Agribank cung cấp và được hướng dẫn xử lý</p>
-                                    <div class="w-100 text-center mt-3">
-                                        <a href="">
-                                            <button class="btn-full">Liên hệ</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('Site.components.box-lienhe')
 
                         <div class="list-blog-small p-0">
                             <div class="title-box-1">

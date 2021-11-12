@@ -1,5 +1,5 @@
 
-@extends('Admin.layoutadmin')
+@extends('Admin.LayoutAdmin')
 @section('content')
 
     <!-- ============================================================== -->

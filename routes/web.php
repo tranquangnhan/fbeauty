@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DonHangController;
 use App\Http\Controllers\Admin\DichVuController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DonHangchitietController;
+use App\Http\Controllers\Admin\GiamGiaController;
 use App\Http\Controllers\Admin\HoaDonChiTietController;
 use App\Http\Controllers\Admin\HoaDonController;
 use App\Http\Controllers\Admin\KhachHangController;
@@ -80,9 +81,10 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 
     Route::resource('donhang', DonHangController::class);
     Route::resource('donhangchitiet', DonHangController::class);
-
     Route::get('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'editDetailDonHang']);
     Route::post('/donhangchitiet/detail/{id}/edit', [DonHangchitietController::class,'updateDetailDonHang']);
+    // quản lý giảm giá
+    Route::resource('giamgia', GiamGiaController::class);
 
     Route::resource('lieutrinh', LieuTrinhController::class);
 
@@ -127,12 +129,15 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
 Route::group(['prefix' => '/'], function (){
     Route::get('trang-chu', [HomeController::class, "index"]);
     Route::get('san-pham', [HomeController::class, "viewSanPham"]);
-    Route::get('san-pham/chi-tiet', [HomeController::class, "viewSanPhamChiTiet"]);
+    Route::get('san-pham/soluong/{id}', [HomeController::class, "getSanPham"]);
+    Route::get('san-pham/chi-tiet/{id}', [HomeController::class, "viewSanPhamChiTiet"]);
+
     Route::get('gio-hang', [HomeController::class, "viewGioHang"]);
     Route::get('thanh-toan', [HomeController::class, "viewThanhToan"]);
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
     Route::get('bai-viet/ten-bai-viet', [HomeController::class, "viewBaiVietChiTiet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+    Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
 
     Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
