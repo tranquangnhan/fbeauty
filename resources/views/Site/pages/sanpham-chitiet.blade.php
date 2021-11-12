@@ -126,12 +126,31 @@
                     <div class="col-3">
                     <div class="card product-card child-item-sanpham zbar">
                         <div class="card-header bg-transparent border-bottom-0">
-                            <div class="btn-add-wishlist btn-sticky hover-scale-1">
+                            @if(session()->has('khachHang') && session('khachHang') != '')
+                                <?php $checkyeuthich= \Illuminate\Support\Facades\DB::table('yeuthich')->where('idkhachhang', session('khachHang')->id)->where('idsanphamchitiet', $splq->id)->doesntExist()?>
+                                    <?php if ($checkyeuthich == false) {?>
+                                    <div class="btn-add-wishlist btn-sticky hover-scale-1 active" id="tym{{$splq->id}}" onclick="AddYeuThich({{$splq->id}})">
                                 <div class="box-cicrle">
                                     <i class="fas fa-heart heart-full"></i>
                                     <i class="far fa-heart heart-line"></i>
                                 </div>
                             </div>
+                                        <?php } else{?>
+                                        <div class="btn-add-wishlist btn-sticky hover-scale-1" id="tym{{$splq->id}}" onclick="AddYeuThich({{$splq->id}})">
+                                            <div class="box-cicrle">
+                                                <i class="fas fa-heart heart-full"></i>
+                                                <i class="far fa-heart heart-line"></i>
+                                            </div>
+                                        </div>
+                                        <?php }?>
+                            @else
+                                <div class="btn-add-wishlist btn-sticky hover-scale-1" id="tym{{$splq->id}}" onclick="AddYeuThich({{$splq->id}})">
+                                    <div class="box-cicrle">
+                                        <i class="fas fa-heart heart-full"></i>
+                                        <i class="far fa-heart heart-line"></i>
+                                    </div>
+                                </div>
+                                @endif
                             @if($sanpham[0]->giamgia !="")
                             <div class="btn-add-discout btn-sticky hover-scale-1">
                                 <div class="box-cicrle-giamgia p-2 rounded text-white">
@@ -147,7 +166,7 @@
                                     <p class="product-catergory font-13 mb-1">{{$sanpham[0]->tendm}}</p>
                                 </a>
                                 <a href="{{URL::to("san-pham/chi-tiet", $splq->id)}}">
-                                    <h6 class="product-name mb-2"><?php if (strlen($splq->name)<= 45){echo $splq->name;}else  { echo substr($splq->name, 0, 45).'...';}?></h6>
+                                    <h6 class="product-name mb-2"><?php if (strlen($splq->name)<= 47){echo $splq->name;}else  { echo substr($splq->name, 0, 47).'...';}?></h6>
                                 </a>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <div class="mb-1 product-price">
@@ -184,12 +203,31 @@
                     <div class="col-3">
                         <div class="card rounded-0 product-card child-item-sanpham zbar">
                             <div class="card-header bg-transparent border-bottom-0">
-                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                    <div class="box-cicrle">
-                                        <i class="fas fa-heart heart-full"></i>
-                                        <i class="far fa-heart heart-line"></i>
+                                @if(session()->has('khachHang') && session('khachHang') != '')
+                                    <?php $checkyeuthich1= \Illuminate\Support\Facades\DB::table('yeuthich')->where('idkhachhang', session('khachHang')->id)->where('idsanphamchitiet', $spk->id)->doesntExist()?>
+                                    <?php if ($checkyeuthich1 == false) {?>
+                                    <div class="btn-add-wishlist btn-sticky hover-scale-1 active" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
+                                        <div class="box-cicrle">
+                                            <i class="fas fa-heart heart-full"></i>
+                                            <i class="far fa-heart heart-line"></i>
+                                        </div>
                                     </div>
-                                </div>
+                                    <?php } else{?>
+                                    <div class="btn-add-wishlist btn-sticky hover-scale-1" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
+                                        <div class="box-cicrle">
+                                            <i class="fas fa-heart heart-full"></i>
+                                            <i class="far fa-heart heart-line"></i>
+                                        </div>
+                                    </div>
+                                    <?php }?>
+                                @else
+                                    <div class="btn-add-wishlist btn-sticky hover-scale-1" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
+                                        <div class="box-cicrle">
+                                            <i class="fas fa-heart heart-full"></i>
+                                            <i class="far fa-heart heart-line"></i>
+                                        </div>
+                                    </div>
+                                @endif
                                 @if($spk->giamgia !="")
                                     <div class="btn-add-discout btn-sticky hover-scale-1">
                                         <div class="box-cicrle-giamgia p-2 rounded text-white">

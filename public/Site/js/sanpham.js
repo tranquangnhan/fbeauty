@@ -104,3 +104,21 @@ $('.change-column-control').click(function (e) {
         }
     }
 });
+
+function AddYeuThich(id) {
+    $.ajax({
+        url: window.location.hash + '/addyeuthichsp/' + id,
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: {idsp: id},
+        success: function (datayeuthich) {
+            if (datayeuthich == 0) {
+                $("#tym"+id).removeClass('active');
+            } else {
+                $("#tym"+id).addClass('active');
+            }
+        }
+    });
+
+}
