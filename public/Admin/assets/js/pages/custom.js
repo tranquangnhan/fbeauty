@@ -1,4 +1,4 @@
-const pathUploadImg = 'http://127.0.0.1:8000/';
+const pathUploadImg = 'http://127.0.0.1:8000/uploads/khachhang/';
 
 
 $(document).on("click", ".remove-field", function () {
@@ -65,12 +65,12 @@ function changImg() {
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                    changeSrcImg(pathUploadImg + 'uploads/' + response.imgkhachhang);
+                    changeSrcImg(pathUploadImg + response.imgkhachhang);
                     
                     $.each($(".idlieutrinhchitiet"), function (index, val) {
                         console.log(val.value)
                         if (val.value == response.id) {
-                            $(val.nextElementSibling).attr("src", pathUploadImg + 'uploads/' + response.imgkhachhang);
+                            $(val.nextElementSibling).attr("src", pathUploadImg + response.imgkhachhang);
                         }
                     });
 

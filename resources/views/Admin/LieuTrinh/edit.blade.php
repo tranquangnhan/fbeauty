@@ -73,6 +73,7 @@
                                                     placeholder="Nhập tên nhà sản xuất" class="form-control" >
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="">Nhân viên làm</label>
                                                     <select class="form-control select2" name="idnhanvien">
                                                         @foreach ($NhanVien as $item)
                                                             <option value="{{$item['id']}}">{{$item['name']}}</option>
@@ -81,24 +82,26 @@
                                                 </div>
 
                                                 <div class="form-group">
+                                                    <label for="">Chọn dịch vụ</label>
                                                     <select class="form-control select2" name="iddichvu">
                                                         @foreach ($DichVu as $item)
                                                             <option value="{{$item['id']}}">{{$item['name']}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                                <label for="">Ngày làm</label>
                                                 <div class="form-group row">
                                                     <div class="col-md-8">
-                                                        <label for="">Ngày làm</label>
                                                         <input class="form-control " id="example-date" type="date" name="ngay">
                                                     </div>
-                                                    <div class="col-md-4 pl-3 align-items-center d-flex">
-                                                        <input type="checkbox" name="trangthai" class="custom-control-input mt-2" id="customCheck1">
+                                                    <div class="col-md-4 pl-3 align-items-center d-flex justify-content-center">
+                                                        <input type="checkbox" name="trangthai" class="custom-control-input" id="customCheck1">
                                                         <label class="custom-control-label" for="customCheck1">Hoàn Thành?</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
+                                                        <label for="">Ghi Chú</label>
                                                         <textarea class="form-control" rows="5" id="example-textarea" placeholder="Nhập nội dung" name="mota"></textarea>
                                                     </div>
                                                 </div>
@@ -129,7 +132,7 @@
                                             @endif
                                             <div class="col-lg-3 center @if($loop->index % 2 == 0) order-1 @else order-2 @endif">
                                                 <input type="hidden" value="{{$item->idlieutrinhchitiet}}" id="idlieutrinhgan" class="idlieutrinhchitiet">
-                                                <img onclick="showFullImage(event)" class="imglieutrinh" src="{{asset($URL_IMG.$item->imgkhachhang) }}" alt="">
+                                                <img onclick="showFullImage(event)" class="imglieutrinh" src="{{asset($BASE_URL_UPLOAD_CUSTOMER.$item->imgkhachhang) }}" alt="">
                                             </div>
                                             <div class="col-lg-9 @if($loop->index % 2 == 0) order-2 @else order-1 @endif">
 

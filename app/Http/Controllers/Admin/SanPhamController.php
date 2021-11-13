@@ -55,7 +55,7 @@ class SanPhamController extends Controller
     public function store(SanPham $request)
     {
         
-        $img = $this->uploadSingle($request->file('img'));
+        $img = $this->uploadSingle('public',$request->file('img'));
         
         if($request->session()->get('idSanPham')){
            
@@ -141,7 +141,7 @@ class SanPhamController extends Controller
         ];
 
         if($request->img !== null){
-            $img = $this->uploadSingle($request->file('img'));
+            $img = $this->uploadSingle('public',$request->file('img'));
             $data['img'] = $img;
         }
 

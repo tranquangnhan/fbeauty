@@ -66,9 +66,15 @@ class LieuTrinhController extends Controller
      */
     public function store(LieuTrinhChiTiet $request)
     {
-      
+       
+    
         $trangThai = ($request->trangthai === "on") ? 1 : 0;
-        $imgkhachhang = $this->uploadSingle($request->imgkhachhang);
+        if($request->imgkhachhang){
+            $imgkhachhang = $this->uploadSingle('imgKH', $request->imgkhachhang);
+        }else{
+            $imgkhachhang = 'default-avatar-kh.jpg';
+        }
+        
         $data = [
             'idlieutrinh' =>$request->id,
             'iddichvu' => $request->iddichvu,
@@ -111,7 +117,7 @@ class LieuTrinhController extends Controller
         $NhanVien =  $this->NhanVien->getAll();
         $DichVu =  $this->DichVu->getAll();
         $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($id);
-        // dd($findHoaDon);
+   
         $hasHoaDon = count($findHoaDon);
         view()->share('id',$id);
 
@@ -156,7 +162,7 @@ class LieuTrinhController extends Controller
 
     function editImgLieuTrinh(Request $request){
   
-        $img = $this->uploadSingle($request->file('file'));
+        $img = $this->uploadSingle('imgKH',$request->file('file'));
         
         $data= [
             'imgkhachhang'=> $img
