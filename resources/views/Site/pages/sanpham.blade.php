@@ -193,7 +193,8 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('Site/js') }}/sanpham.js"></script>
     <script src="{{ asset('Site/js') }}/showsanpham.js"></script>
+    <script src="{{ asset('Site/js') }}/sanpham.js"></script>
+
 
 @endsection

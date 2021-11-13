@@ -103,10 +103,10 @@ class DichVuController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         $DanhMuc = $this->DanhMuc->getAll();
-        $DichVu = $this->DichVu->find($id);
+        $DichVu = $this->DichVu->find($slug);
         return view("Admin.DichVu.edit", ['DanhMuc' => $DanhMuc, 'DichVu' => $DichVu]);
     }
 

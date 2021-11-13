@@ -27,10 +27,9 @@ class LieuTrinh extends FormRequest
             
             'idnhanvien' => 'required|integer',
             'ngaybatdau'=>'date|after:today',
-            'dukienketthuc'=>'date|after:today',
+            'dukienketthuc'=>'date|after:today|after_or_equal:ngaybatdau',
         ];
     }
-
 
     public function messages() {
         return [
@@ -40,7 +39,7 @@ class LieuTrinh extends FormRequest
             'ngaybatdau.after' => 'Ngày bắt đầu phải là tương lai',
             'dukienketthuc.date' => 'Ngày bắt đầu phải định dạng ngày tháng',
             'dukienketthuc.after' => 'Dự kiến kết thúc phải là tương lai',
-           
+            'dukienketthuc.after_or_equal' => 'Dự kiến kết thúc phải lớn hơn hoặc bằng thời gian bắt đầu',
         ];
     }
 
