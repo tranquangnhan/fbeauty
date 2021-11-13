@@ -333,7 +333,7 @@
                          <li class="menu-title">Chung</li>
                           <!--- Cơ Sở -->
                             <li>
-                                <a href="index.html">
+                                <a href="/quantri">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Thống kê </span>
                                 </a>
@@ -650,8 +650,11 @@
 
 {{-- code nhúng bởi Tưởng --}}
 <script src="{{ asset('Admin/assets') }}/js/pages/coso.js"></script>
-
 <script src="{{ asset('Admin/assets') }}/libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="{{ asset('Admin/assets') }}/libs/morris-js/morris.min.js"></script>
+<script src="{{ asset('Admin/assets') }}/libs/raphael/raphael.min.js"></script>
+<script src="{{ asset('Admin/assets') }}/js/pages/dashboard.init.js"></script>
+
 
 {{-- end code nhúng bởi Tưởng --}}
 
