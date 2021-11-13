@@ -10,6 +10,8 @@ use App\Repositories\GiamGia\GiamGiaRepository;
 use App\Repositories\HoaDon\HoaDonRepositoryInterface;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepositoryInterface;
 use App\Repositories\KhachHang\KhachHangRepository;
+use App\Repositories\LieuTrinh\LieuTrinhRepository;
+use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -22,9 +24,18 @@ class HoaDonController extends Controller
     private $hoadonchitiet;
     private $khachhang;
     private $giamgia;
-
-    public function __construct(GiamGiaRepository $giamgia, KhachHangRepository $khachhang, HoaDonRepositoryInterface $hoadon, HoaDonChiTietRepositoryInterface $hoadonchitiet, NhanVienRepositoryInterface $nhanvien, CosoRepository $coso, DichVuRepositoryInterface $dichvu)
-    {
+    private $LieuTrinh;
+    public function __construct(
+        GiamGiaRepository $giamgia,
+        KhachHangRepository $khachhang,
+        HoaDonRepositoryInterface $hoadon,
+        HoaDonChiTietRepositoryInterface $hoadonchitiet,
+        NhanVienRepositoryInterface $nhanvien,
+        CosoRepository $coso,
+        DichVuRepositoryInterface $dichvu,
+        LieuTrinhRepository $LieuTrinh,
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet
+    ) {
         $this->nhanvien = $nhanvien;
         $this->coso = $coso;
         $this->dichvu = $dichvu;
@@ -32,6 +43,8 @@ class HoaDonController extends Controller
         $this->hoadonchitiet = $hoadonchitiet;
         $this->khachhang = $khachhang;
         $this->giamgia = $giamgia;
+        $this->LieuTrinh = $LieuTrinh;
+        $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
     }
 
     /**
@@ -41,8 +54,8 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-//        $coso=$this->coso->getAll();
-//        return view("Admin.HoaDon.index", ['coso'=>$coso]);
+        //        $coso=$this->coso->getAll();
+        //        return view("Admin.HoaDon.index", ['coso'=>$coso]);
     }
 
     /**
@@ -146,7 +159,6 @@ class HoaDonController extends Controller
                     ];
                     return $thongbao;
                 }
-
             } else {
                 $thongbao = [
                     "thongbao" => 'Giá hóa đơn không đủ điều kiện'
@@ -181,4 +193,61 @@ class HoaDonController extends Controller
         return $thongbao;
     }
 
+    public function addHoaDonByIdLieuTrinh($id)
+    {
+
+        $lieuTrinh =  $this->LieuTrinh->find($id);
+        $lieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
+        $tongtien = 0;
+        for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
+            $tongtien += $lieuTrinhChiTiet[$i]->dongia;
+        }
+        $dataHoaDon = [
+            'idkhachhang' => $lieuTrinh->idkhachhang,
+            'idcoso' => session()->get('coso'),
+            'idnhanvien' => $lieuTrinh->idnhanvien,
+            'idthungan' => $lieuTrinh->idnhanvien,
+            'idlieutrinh' => $lieuTrinh->id,
+            'tongtientruocgiamgia' => $tongtien,
+            'tongtiensaugiamgia' => $tongtien,
+            'trangthai' => 1,
+            'ghichu' => $lieuTrinh->ghichu
+        ];
+
+        $hoaDon = $this->hoadon->create($dataHoaDon);
+
+        if ($hoaDon) {
+            for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
+                $dataHoaDonChiTiet = [
+                    'idhoadon' => $hoaDon->id,
+                    'idlienquan' => $lieuTrinhChiTiet[$i]->iddichvu,
+                    'type' => 0,
+                    'soluong' => 1,
+                    'dongiatruocgiamgia' => $lieuTrinhChiTiet[$i]->dongia,
+                    'dongiasaugiamgia' => $lieuTrinhChiTiet[$i]->dongia,
+                ];
+                $this->hoadonchitiet->create($dataHoaDonChiTiet);
+            }
+
+            return redirect('/quantri/hoadonchitiet/' . $hoaDon->id);
+        }
+
+    }
+
+    public function trangthaithanhtoan($id){
+        $hoadon=$this->hoadon->find($id);
+        if ($hoadon->trangthai == 0){
+            $tt=[
+                "trangthai"=>1
+            ];
+            $this->hoadon->update($id, $tt);
+        }
+        else{
+            $tt=[
+                "trangthai"=>0
+            ];
+            $this->hoadon->update($id, $tt);
+        }
+        return redirect(route("hoadon.show", session()->get('coso')));
+    }
 }

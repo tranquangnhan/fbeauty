@@ -18,8 +18,10 @@ use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\SanPhamChiTietController;
 use App\Http\Controllers\Admin\ThongkeController;
+use App\Http\Controllers\Admin\DatLichController;
 
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\YeuThichController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,7 +69,10 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get("nhanvien/imgcustomer/pictures", [NhanVienController::class, "AllImgKH"]);
 
     Route::resource('hoadon', HoaDonController::class);
+    Route::get('hoadon/trangthaithanhtoan/{id}', [HoaDonController::class, "trangthaithanhtoan"]);
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
+
+    Route::resource('datlich', DatLichController::class);
 
     Route::resource('lich', LichController::class);
     Route::get('lich/{id}/thungay/{idthu}', [LichController::class, 'showlich']);
@@ -92,6 +97,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
 
     Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
+    Route::post('khachhang/themlieutrinh/{id}/store', [KhachHangController::class,'storeLieuTrinh']);
+    Route::delete('khachhang/xoalieutrinh/{id}/delete', [KhachHangController::class,'delLieuTrinh']);
 
     /**
     *1: Lấy DỊch vụ đến Hóa đơn
@@ -120,19 +127,26 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('hoadon/{id}/edit/themdichvu/{iddv}',[HoaDonChiTietController::class, 'ThemDichVuVaoHoaDon']);
     Route::get('hoadon/{id}/edit/capnhatsoluong/{idhdct}/soluong/{soluong}',[HoaDonChiTietController::class, 'CapNhatSoLuong']);
     Route::get('hoadon/{id}/edit/huygiamgia/{tien}',[HoaDonChiTietController::class, 'HuyGiamGia']);
+    // nhan add hoá đơn by id liệu trình
+    Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class,'addHoaDonByIdLieuTrinh']);
 });
 
 Route::group(['prefix' => '/'], function (){
+    Route::get('', [HomeController::class, "index"]);
     Route::get('trang-chu', [HomeController::class, "index"]);
     Route::get('san-pham', [HomeController::class, "viewSanPham"]);
     Route::get('san-pham/soluong/{id}', [HomeController::class, "getSanPham"]);
     Route::get('san-pham/chi-tiet/{id}', [HomeController::class, "viewSanPhamChiTiet"]);
+    Route::get('san-pham/checkyeuthich/{id}', [YeuThichController::class, "getSanPhamYeuThich"]);
+    Route::get('addyeuthichsp/{id}', [YeuThichController::class, "AddSanPhamYeuThich"]);
 
     Route::get('gio-hang', [HomeController::class, "viewGioHang"]);
     Route::get('thanh-toan', [HomeController::class, "viewThanhToan"]);
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
-    Route::get('bai-viet/ten-bai-viet', [HomeController::class, "viewBaiVietChiTiet"]);
+    Route::get('bai-viet/{id}', [HomeController::class, "viewBaiVietChiTiet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+    Route::get('lien-he', [HomeController::class, "viewLienHe"]);
+    Route::get('gioi-thieu', [HomeController::class, "viewGioiThieu"]);
     Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
 
     Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);

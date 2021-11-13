@@ -24,46 +24,34 @@ class LieuTrinh extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|integer',
-            'iddichvu' => 'required|integer',
-            'idnhanvien'=>'required|integer',
-            'mota'=>'required|min:3|max:500',
-            'ngay'=>'date|after:today',
-            'trangthai'=>'required',
-            'imgkhachhang'=>'required',
+            
+            'idnhanvien' => 'required|integer',
+            'ngaybatdau'=>'date|after:today',
+            'dukienketthuc'=>'date|after:today',
         ];
     }
 
 
     public function messages() {
         return [
-            'idlieutrinh.required' => 'Bạn chưa chọn id liệu trình',
-            'idlieutrinh.integer' => 'Id liệu trình phải là số',
-            'iddichvu.required' => 'Bạn chưa chọn id dịch vụ',
-            'iddichvu.integer' => 'Id dịch vụ phải là số',
-            'idnhanvien.required' => 'Bạn chưa chọn id nhân viên',
-            'idnhanvien.integer' => 'Id nhân viên phải là số',
-            'mota.required' => 'Bắt buộc nhập mô tả',
-            'mota.min' => 'Mô tả quá ngắn',
-            'mota.max' => 'Mô tả quá dài',
-            'ngay.required'=>'Bắt buộc phải nhập ngày',
-            'ngay.date'=>'Bạn nhập không đúng định dạng ngày',
-            'ngay.after'=>'Ngày nhập phải lớn hơn ngày hiện tại',
-            'trangthai.required' => 'Bắt buộc nhập trạng thái',
-            'trangthai.integer' => 'Trạng thái phải là số',
-            'imgkhachhang.required' => 'Phải chọn ảnh khách hàng',
+            'idnhanvien.required' => 'Bạn chưa chọn khách hàng',
+            'idnhanvien.integer' => 'Id khách hàng phải là số',
+            'ngaybatdau.date' => 'Ngày bắt đầu phải định dạng ngày tháng',
+            'ngaybatdau.after' => 'Ngày bắt đầu phải là tương lai',
+            'dukienketthuc.date' => 'Ngày bắt đầu phải định dạng ngày tháng',
+            'dukienketthuc.after' => 'Dự kiến kết thúc phải là tương lai',
+           
         ];
     }
 
     public function attributes(){
         return [
-            'idlieutrinh' => 'Id liệu trình',
-            'iddichvu' => 'Id dịch vụ',
             'idnhanvien'=>'Id nhân viên',
-            'mota'=>'Mô tả liệu trình chi tiết',
-            'ngay'=>'Ngày bắt đầu liệu trình',
-            'trangthai'=>'Trạng thái liệu trình',
-            'imgkhachhang'=>'Ảnh khách hàng',
+            'ngaybatdau'=>'Ngày bắt đầu ',
+            'dukienketthuc'=>'Dự kiến kết thúc',
+            'ghichu'=>'Ghi chú',
         ];
     }
+
+
 }

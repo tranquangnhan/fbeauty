@@ -35,7 +35,6 @@
                         </ul>
                     </div>
                
-                
                      @endif
                 </div>
             </div>
@@ -43,10 +42,17 @@
 
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-11">
+                    <div class="d-flex justify-content-center">
+                        @if ($hasHoaDon === 0)
+                            <a data-toggle="modal" data-target="#myModal2" class="btn btn-primary width-lg text-white" >Thêm Mới</a>
+                        @endif
+                    </div>
+                   
                     <div class="timeline" dir="ltr">
+                        
                         <article class="timeline-item alt">
                             <div class="time-show first">
-                                <a  data-toggle="modal" data-target="#myModal2" class="btn btn-primary width-lg" >Thêm Mới</a>
+                             
                             </div>
 
                             <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -55,13 +61,15 @@
                                         <form action="{{route('lieutrinh.store')}}"  enctype="multipart/form-data" method="post">
                                             @csrf
                                             <input type="hidden" value="{{$id}}" name="id">
+                                        
                                             <div class="modal-header">
                                                 <h4 class="modal-title" id="myModalLabel">Thêm Liệu Trình</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
-                                                    <input type="file" name="imgkhachhang"  required
+                                                    <label for="">Ảnh </label>
+                                                    <input type="file" onchange="previewImg(event)" name="imgkhachhang" 
                                                     placeholder="Nhập tên nhà sản xuất" class="form-control" >
                                                 </div>
                                                 <div class="form-group">
@@ -81,6 +89,7 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-8">
+                                                        <label for="">Ngày làm</label>
                                                         <input class="form-control " id="example-date" type="date" name="ngay">
                                                     </div>
                                                     <div class="col-md-4 pl-3 align-items-center d-flex">
@@ -109,13 +118,15 @@
                                 <div class="timeline-desk">
                                     <div class="panel">
                                         <div class="row boxlieutrinh">
-                                            <form action="{{route('lieutrinh.destroy',$item->idlieutrinhchitiet)}}"  method="post">
-                                                @csrf
-                                                {!!method_field('delete')!!}
-                                                <button class="icon-delete" type="submit">
-                                                    <i class="mdi mdi-delete" ></i>
-                                                </button>
-                                            </form>
+                                            @if ($hasHoaDon === 0)
+                                                <form action="{{route('lieutrinh.destroy',$item->idlieutrinhchitiet)}}"  method="post">
+                                                    @csrf
+                                                    {!!method_field('delete')!!}
+                                                    <button class="icon-delete" type="submit">
+                                                        <i class="mdi mdi-delete" ></i>
+                                                    </button>
+                                                </form>
+                                            @endif
                                             <div class="col-lg-3 center @if($loop->index % 2 == 0) order-1 @else order-2 @endif">
                                                 <input type="hidden" value="{{$item->idlieutrinhchitiet}}" id="idlieutrinhgan" class="idlieutrinhchitiet">
                                                 <img onclick="showFullImage(event)" class="imglieutrinh" src="{{asset($URL_IMG.$item->imgkhachhang) }}" alt="">
@@ -137,6 +148,7 @@
                                                     @csrf
                                                     <p class="timeline-date text-muted"><strong>NV: ({{$item->tennv}})</strong></p>
                                                     <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
+                                                    <p class=" text-danger">{{number_format($item->dongia)," "}} VNĐ</p>
                                                     <p class="timeline-date text-muted date" title="Click để sửa" id="date" data-value="{{date('d-m-Y',$item->ngay)}}" data-format="DD-MM-YYYY" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="{{$item->idlieutrinhchitiet}}" ><small>{{date('d-m-Y',$item->ngay)}}</small>
                                                     </p>
                                                     <p class="mota" id="mota" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>
@@ -154,7 +166,24 @@
                 </div>
             </div>
             <!-- end row -->
-
+            <div class="row d-flex justify-content-end mb-3">
+                <div class="col-lg-3">
+                    @php
+                        $tongtien =0;
+                    @endphp
+                    @foreach ($LieuTrinhChiTiet as $item)
+                       @php
+                             $tongtien += $item->dongia;
+                       @endphp
+                    @endforeach
+                    Tổng tiền: <strong class="text-danger">{{number_format($tongtien),""}}</strong> VNĐ <br>
+                    @if ($hasHoaDon === 0)
+                        <a class="btn btn-primary mt-3" onclick="return checkConfirm()" href="quantri/hoadon/addhoadonbylieutrinh/{{$id}}/store" role="button">Tiến Hành Thanh Toán</a>
+                    @else
+                        <button class="btn btn-danger mt-2">Hoá đơn đã thanh toán</button>
+                    @endif
+                </div>
+            </div>
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->
@@ -187,7 +216,7 @@
         <label for="inputfile" class="boxedit">
             <div ><i class="fa fa-edit"></i></div>
         </label>
-        <input type="file" id="inputfile" class="inputfile">
+        <input type="file"  id="inputfile" class="inputfile">
         <input type="hidden" id="idlieutrinhchitietgan">
         @csrf
       </div>
