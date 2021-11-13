@@ -48,6 +48,8 @@
     @include('Site.components.footer')
     @include('Site.components.datlich')
     @include('Site.components.modal-user')
+    
+    @include('Site.components.modal-giohang')
 </body>
 
 </html>
