@@ -35,8 +35,10 @@ class LieuTrinhRepository extends BaseRepository implements LieuTrinhRepositoryI
         "lieutrinh.ngaybatdau",
         "lieutrinh.dukienketthuc",
         "lieutrinh.ghichu",
-        "lieutrinh.id as idlieutrinh"
+        "lieutrinh.id as idlieutrinh",
+        "lieutrinh.trangthai",
         )
-        ->join("nhanvien","nhanvien.id","=","lieutrinh.idnhanvien")->where("idkhachhang","=",$id)->get();
+        ->join("nhanvien","nhanvien.id","=","lieutrinh.idnhanvien")
+        ->where("lieutrinh.idkhachhang","=",$id)->orderBy('lieutrinh.trangthai','ASC')->get();
     }
 }

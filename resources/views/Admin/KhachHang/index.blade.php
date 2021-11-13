@@ -42,7 +42,7 @@
                                                 {{$item->email}}
                                             </td> 
                                             <td class="d-flex border-none">
-                                                <a href="{{url('quantri/khachhang/detail/'.$item->id)}}" class="d-flex justify-content-center mr-2"><div class="btn btn-success"><i class="dripicons-search"></i></div></a>
+                                                <a href="{{url('quantri/khachhang/detail/'.$item->id)}}" class="d-flex justify-content-center mr-2"><div class="btn btn-success"><i class="fa fa-info-circle"></i></div></a>
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('khachhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
                                                 <form action="{{route('khachhang.destroy',$item->id)}}"  method="post">
                                                     @csrf

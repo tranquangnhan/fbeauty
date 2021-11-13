@@ -198,56 +198,45 @@ class HoaDonController extends Controller
 
         $lieuTrinh =  $this->LieuTrinh->find($id);
         $lieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
-        $tongtien = 0;
-        for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
-            $tongtien += $lieuTrinhChiTiet[$i]->dongia;
-        }
-        $dataHoaDon = [
-            'idkhachhang' => $lieuTrinh->idkhachhang,
-            'idcoso' => session()->get('coso'),
-            'idnhanvien' => $lieuTrinh->idnhanvien,
-            'idthungan' => $lieuTrinh->idnhanvien,
-            'idlieutrinh' => $lieuTrinh->id,
-            'tongtientruocgiamgia' => $tongtien,
-            'tongtiensaugiamgia' => $tongtien,
-            'trangthai' => 1,
-            'ghichu' => $lieuTrinh->ghichu
-        ];
+        $findHoaDon = $this->hoadon->findHoaDonByIdLieuTrinh($id);
 
-        $hoaDon = $this->hoadon->create($dataHoaDon);
-
-        if ($hoaDon) {
+        if(count($findHoaDon) === 0){
+       
+            $tongtien = 0;
             for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
-                $dataHoaDonChiTiet = [
-                    'idhoadon' => $hoaDon->id,
-                    'idlienquan' => $lieuTrinhChiTiet[$i]->iddichvu,
-                    'type' => 0,
-                    'soluong' => 1,
-                    'dongiatruocgiamgia' => $lieuTrinhChiTiet[$i]->dongia,
-                    'dongiasaugiamgia' => $lieuTrinhChiTiet[$i]->dongia,
-                ];
-                $this->hoadonchitiet->create($dataHoaDonChiTiet);
+                $tongtien += $lieuTrinhChiTiet[$i]->dongia;
             }
-
-            return redirect('/quantri/hoadonchitiet/' . $hoaDon->id);
-        }
-
-    }
-
-    public function trangthaithanhtoan($id){
-        $hoadon=$this->hoadon->find($id);
-        if ($hoadon->trangthai == 0){
-            $tt=[
-                "trangthai"=>1
+            $dataHoaDon = [
+                'idkhachhang' => $lieuTrinh->idkhachhang,
+                'idcoso' => session()->get('coso'),
+                'idnhanvien' => $lieuTrinh->idnhanvien,
+                'idthungan' => $lieuTrinh->idnhanvien,
+                'idlieutrinh' => $lieuTrinh->id,
+                'tongtientruocgiamgia' => $tongtien,
+                'tongtiensaugiamgia' => $tongtien,
+                'trangthai' => 1,
+                'ghichu' => $lieuTrinh->ghichu
             ];
-            $this->hoadon->update($id, $tt);
+        
+            $hoaDon = $this->hoadon->create($dataHoaDon);
+                
+            if ($hoaDon) {
+                for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
+                    $dataHoaDonChiTiet = [
+                        'idhoadon' => $hoaDon->id,
+                        'idlienquan' => $lieuTrinhChiTiet[$i]->iddichvu,
+                        'type' => 0,
+                        'soluong' => 1,
+                        'dongiatruocgiamgia' => $lieuTrinhChiTiet[$i]->dongia,
+                        'dongiasaugiamgia' => $lieuTrinhChiTiet[$i]->dongia,
+                    ];
+                    $this->hoadonchitiet->create($dataHoaDonChiTiet);
+                }
+                return redirect('/quantri/hoadonchitiet/' . $hoaDon->id);
+            }
+            
+        }else{
+            return $this->handleError('Liệu trình đã tồn tại trong hoá đơn');
         }
-        else{
-            $tt=[
-                "trangthai"=>0
-            ];
-            $this->hoadon->update($id, $tt);
-        }
-        return redirect(route("hoadon.show", session()->get('coso')));
     }
 }

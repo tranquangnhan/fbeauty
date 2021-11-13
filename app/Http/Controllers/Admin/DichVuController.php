@@ -131,7 +131,7 @@ class DichVuController extends Controller
             ];
 
             if($request->urlHinh !== null){
-                $img = $this->uploadSingle($request->file('urlHinh'));
+                $img = $this->uploadSingle('public',$request->file('urlHinh'));
                 $DichVu['img'] = $img;
             }
 

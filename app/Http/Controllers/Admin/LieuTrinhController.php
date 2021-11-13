@@ -66,16 +66,20 @@ class LieuTrinhController extends Controller
      */
     public function store(LieuTrinhChiTiet $request)
     {
-      
-        $trangThai = ($request->trangthai === "on") ? 1 : 0;
-        $imgkhachhang = $this->uploadSingle($request->imgkhachhang);
+    
+        if($request->imgkhachhang){
+            $imgkhachhang = $this->uploadSingle('imgKH', $request->imgkhachhang);
+        }else{
+            $imgkhachhang = 'default-avatar-kh.jpg';
+        }
+        
         $data = [
             'idlieutrinh' =>$request->id,
             'iddichvu' => $request->iddichvu,
             'idnhanvien' => $request->idnhanvien,
             'mota' => $request->mota,
             'ngay' => strtotime($request->ngay),
-            'trangthai' => $trangThai,
+            'trangthai' => 0,
             'imgkhachhang' =>$imgkhachhang,
         ];
 
@@ -106,16 +110,25 @@ class LieuTrinhController extends Controller
      */
     public function edit($id)
     {
-   
+        $data = $this->LieuTrinh->find($id);
+        $NhanVien =  $this->NhanVien->getAll();
+
+        return view('Admin.LieuTrinh.edit',compact('data','NhanVien'));
+       
+    }
+
+    public function editLieuTrinhChiTiet($id){
+
         $LieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
         $NhanVien =  $this->NhanVien->getAll();
         $DichVu =  $this->DichVu->getAll();
         $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($id);
-        // dd($findHoaDon);
+   
         $hasHoaDon = count($findHoaDon);
         view()->share('id',$id);
 
-        return view("Admin.LieuTrinh.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu','hasHoaDon'));
+        return view("Admin.LieuTrinhChiTiet.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu','hasHoaDon'));
+    
     }
 
 
@@ -156,7 +169,7 @@ class LieuTrinhController extends Controller
 
     function editImgLieuTrinh(Request $request){
   
-        $img = $this->uploadSingle($request->file('file'));
+        $img = $this->uploadSingle('imgKH',$request->file('file'));
         
         $data= [
             'imgkhachhang'=> $img
@@ -182,12 +195,24 @@ class LieuTrinhController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
         $item = $this->LieuTrinhChiTiet->find($id);
-        $data = [
+        $res = $this->LieuTrinhChiTiet->update($id,[
             'trangthai' => ($item->trangthai === 1) ? 0 : 1 
-        ]; 
-        $res = $this->LieuTrinhChiTiet->update($id,$data);
+        ]);
+        $LieuTrinh = $this->LieuTrinhChiTiet->findLieuTrinhChiTietByIdLieuTrinh($item->idlieutrinh);
+        $countTrangThai = 0;
+        for ($i=0; $i < count($LieuTrinh); $i++) { 
+            if($LieuTrinh[$i]->trangthai === 1){
+                $countTrangThai += 1;
+            }
+        }
+        if($countTrangThai === count($LieuTrinh)){
+            $this->LieuTrinh->update($item->idlieutrinh,['trangthai'=>1]);
+        }else{
+            $this->LieuTrinh->update($item->idlieutrinh,['trangthai'=>0]);
+        }
+       
         if($res){
             return  redirect()->back();
         }

@@ -20,6 +20,17 @@
                            @csrf
                            {!! method_field('patch') !!}
                         <div class="row">
+                            <div class="col-md-4">
+                                    <label class="w-100" for="files">Tải ảnh khách hàng:<span style="color:red;"> (*)</span> <br>
+                                    <img class="imgpreview"  src="{{ asset($URL_IMG.$KhachHang->img) }}" alt=""><br><br>    
+                                    <input type="file" class="mt-2" name="urlHinh" onchange="previewImg(event)"  > <br>
+                                    @error('img')
+                                    <span class="badge badge-danger">{{$message}}</span>
+                                    @enderror
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Tên khách hàng</label><span style="color:red;"> (*)</span>
@@ -59,34 +70,11 @@
                                 </div>
 
                             </div>
-                            <div class="form-group ml-0 mt-2 col-12">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label class="w-100" for="files">Tải ảnh khách hàng:<span style="color:red;"> (*)</span>
-                                            <div class="wrapper"> <br>
-                                                <div class="file-upload mt-1">
-                                                    <input type="file" id="files" name="urlHinh"
-                                                        value="{{$KhachHang->img}}">
-                                                    <i class="fa fa-download " style="font-size:52px;color:blue"></i>
-                                                </div>
-                                            </div>
-                                            @error('img')
-                                            <span class="badge badge-danger">{{$message}}</span>
-                                            @enderror
-                                        </label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div id="imageA" class="mt-2">
-                                            <img style=" border-radius:10px" class="img-admin"  height="130"
-                                                src="{{ asset('uploads/'.$KhachHang->img) }}">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                          
                             <div class="form-group ml-2 mt-3">
                                 <div class="form-group">
                                     <div class="checkbox">
-                                        <input id="remember-1" {{($KhachHang->trangthai == 1 ) ? 'checked' : '' }} type="checkbox" name="trangthai" value="0"  data-parsley-multiple="remember-1">
+                                        <input id="remember-1" {{($KhachHang->active === 1 ) ? 'checked' : '' }} type="checkbox" name="active"   data-parsley-multiple="remember-1">
                                         <label for="remember-1">Trạng Thái ? </label>
                                     </div>
                                 </div>      
@@ -94,7 +82,7 @@
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
                                 <a href="/quantri/khachhang" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
-                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
+                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Sửa">
                             </div>
                         </div>
 
