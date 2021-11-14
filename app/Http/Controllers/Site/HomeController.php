@@ -158,16 +158,16 @@ class HomeController extends Controller
         // dd($listdanhmuc);
         // $getblogbyiddm   = $this->Blog->getblogbyiddm($id);
         // for ($y = 0; $y < count($danhmuc); $y++){
-        //     foreach ($danhmuc[$y] as $datlich)  {    
+        //     foreach ($danhmuc[$y] as $datlich)  {
         //         // $arrayIddichvu = [];
         //         // $arrayIddichvu = json_decode( $datlich->id);
         //         // $idd = $datlich->id;
-        //         // 
+        //         //
         //         dd($blogbyid);
-                
+
         //     }
         // }
-    
+
         $getBlog2     = $this->Blog->getBlog2();
         $blog3     = $this->Blog->getLastWeek1();
         $blog4     = $this->Blog->getLastWeek2();
@@ -195,7 +195,7 @@ class HomeController extends Controller
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAll();
         $viewdetail = $this->Blog->editBlog($id);
-        
+
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
         $this->data['viewdetail']    = $viewdetail;
@@ -757,7 +757,7 @@ class HomeController extends Controller
 
     public function layDatLichCungNgay($request)
     {
-        $allDatLich = $this->DatLich->getAllCungCoSo($request->idCoSo);
+        $allDatLich = $this->DatLich->getDatLichCungCoSo($request->idCoSo);
 
         $datLichOfDay = array();
         foreach ($allDatLich as $row) {
@@ -812,16 +812,16 @@ class HomeController extends Controller
                 $datLichOfDay = $this->layDatLichCungNgay($request);
 
                 // Set default = 0
-                foreach ($Lich as $rowLich) {
-                    $rowLich->soKhachDaDat = 0;
-                    $rowLich->coNhanVien = 'true';
-                }
+                // foreach ($Lich as $rowLich) {
+                //     $rowLich->soKhachDaDat = 0;
+                //     $rowLich->coNhanVien = 'true';
+                // }
 
-                if ($request->idNhanVien > 0) {
-                    $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request);
-                } else {
-                    $this->tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich);
-                }
+                // if ($request->idNhanVien > 0) {
+                //     $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request);
+                // } else {
+                //     $this->tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich);
+                // }
 
                 $response = Array(
                     'success' => true,
