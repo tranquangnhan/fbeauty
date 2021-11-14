@@ -185,6 +185,15 @@ a.editable-click:hover {
     border-radius: 4px;
     object-fit: cover;
 }
+
+.button-href {
+    border: none;
+    background: none;
+}
+
+.button-href:hover {
+    text-decoration: underline;
+}
 /* .fixed-bottom{
     display: fixed;
     bottom: 3%;
