@@ -155,13 +155,20 @@
                                                     @csrf
                                                     <h4 class="timeline-date text-primary date" title="Click để sửa" id="date" data-value="{{date('d-m-Y',$item->ngay)}}" data-format="DD-MM-YYYY" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="{{$item->idlieutrinhchitiet}}" >{{date('d-m-Y',$item->ngay)}}</h4>
                                                     <p class="timeline-date text-muted mt-1"><strong>Chuyên viên điều trị: {{$item->tennv}}</strong></p>
+                                                    <div class="row d-flex justify-content-end mt-1">
+                                                        <div class="col-5">
+                                                            <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <p class=" text-danger">{{number_format($item->dongia)," "}} VNĐ</p>
+                                                        </div>
 
-                                                    {{-- <div class="row d-flex">
-                                                        <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
-                                                        <p class=" text-danger">{{number_format($item->dongia)," "}} VNĐ</p>
-                                                    </div> --}}
-                                                    <p class="mota" style="margin-top: 5px !important" id="mota" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>
+                                                    </div>
+
+                                                    <p class="mota" style="margin-top: 5px !important;" id="mota" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>
+
                                                     <div>
+
                                                     </div>
                                                 </div>
                                             </div>
