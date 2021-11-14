@@ -64,10 +64,7 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
 
     public function getDatLichCungCoSo($idCoSo)
     {
-        return $this->model->select('datlich.*', 'datlich.id','dichvu.name AS dichvu','nhanvien.name AS nhanvien','khachhang.name AS khachhang')
-        ->join('dichvu','datlich.iddichvu', '=', 'dichvu.id')
-        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
-        ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
+        return $this->model->select('*')
         ->where('datlich.idcoso', $idCoSo)
         ->get();
     }
