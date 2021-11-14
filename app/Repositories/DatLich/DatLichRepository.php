@@ -31,24 +31,22 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         // elect('dichvu')->value("name")->first();
         // dd($getall)
         $date = Carbon::now('Asia/Ho_Chi_Minh');
-        
+
         return $this->model->select('datlich.*', 'datlich.id','nhanvien.name as namenv','khachhang.name as namekh')
-      
+
         // ->join('dichvu','datlich.iddichvu', '=', 'dichvu.id')
         ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
         ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
         // ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
-        ->where('datlich.idcoso', '=',$idCoSo) 
+        ->where('datlich.idcoso', '=',$idCoSo)
         ->whereDate('datlich.created_at','=', $date->toDateString())
         ->get();
-
-
-
     }
 
     public function getdv(){
         return DichVuModel::class;
     }
+
     public function findDatLichCuaNhanVienTheoThoiGian($thoiGianDat, $idNhanVien)
     {
         return $this->model::where([
@@ -62,5 +60,15 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         return $this->model::where([
             ['thoigiandat', '=', $thoiGianDat]
         ])->count();
+    }
+
+    public function getDatLichCungCoSo($idCoSo)
+    {
+        return $this->model->select('datlich.*', 'datlich.id','dichvu.name AS dichvu','nhanvien.name AS nhanvien','khachhang.name AS khachhang')
+        ->join('dichvu','datlich.iddichvu', '=', 'dichvu.id')
+        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
+        ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
+        ->where('datlich.idcoso', $idCoSo)
+        ->get();
     }
 }

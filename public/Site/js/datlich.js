@@ -157,7 +157,7 @@ function loadGio(ngay, idNhanVien) {
                 elementValueTime.html('Chọn giờ đến');
                 elementValueTime.attr(attrValueTime, '');
             } else {
-                alert('Error!<br> ' + respon.textMess);
+                alert('Error!</br> ' + respon.textMess);
             }
 
             soXuLiBatDongBo--;
