@@ -259,7 +259,6 @@ class InstallDatabase extends Migration
         Schema::create('nhanvien', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idcoso');
-            $table->unsignedInteger('iddichvu');
             $table->string('email',255)->unique();
             $table->string('password',255);
             $table->boolean('role');
