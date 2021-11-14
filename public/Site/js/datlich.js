@@ -149,6 +149,7 @@ function loadGio(ngay, idNhanVien) {
             'idNhanVien': idNhanVien
         },
         success: function (respon) {
+            console.log(respon);
             khungGio = respon;
             if (respon.success == true) {
                 var html = loopGetHTMLKhungGio(respon.lich, respon.ngay);
@@ -322,6 +323,7 @@ function rowNhanVienPage4() {
 function datLich() {
     let _token   = $('meta[name="csrf-token"]').attr('content');
     let ngayGioSelected = ngaySelected + ' ' + timeSelected;
+    console.log(ngaySelected);
     let thoiGianDat = moment(ngayGioSelected, 'DD/MM/YYYY HH:mm:ss', true).unix();
     ngaySelected = moment(ngaySelected, 'DD/MM/YYYY', true).format('YYYY-MM-DD');
 

@@ -610,7 +610,7 @@ class HomeController extends Controller
 
                 // Ví dụ sdt: 0868970582 => +84868970582
                 $sdt = '+84' . substr($request->sdt, 1, strlen($request->sdt));
-                $message = '[Fbeauty]: ' . $OTP . ' la ma OTP cua ban. Ma se het han trong vong 10 phut. Vui long khong chia se ma nay trong bat ki truong hop nao!';
+                $message = '[Fbeauty]: ' . $OTP . ' la ma OTP cua ban. Ma se het han trong vong 60s. Vui long khong chia se ma nay trong bat ki truong hop nao!';
                 $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                 $timeOTPNotValid = $this->makeTimeOTPNotValid();
@@ -812,16 +812,16 @@ class HomeController extends Controller
                 $datLichOfDay = $this->layDatLichCungNgay($request);
 
                 // Set default = 0
-                // foreach ($Lich as $rowLich) {
-                //     $rowLich->soKhachDaDat = 0;
-                //     $rowLich->coNhanVien = 'true';
-                // }
+                foreach ($Lich as $rowLich) {
+                    $rowLich->soKhachDaDat = 0;
+                    $rowLich->coNhanVien = 'true';
+                }
 
-                // if ($request->idNhanVien > 0) {
-                //     $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request);
-                // } else {
-                //     $this->tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich);
-                // }
+                if ($request->idNhanVien > 0) {
+                    $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request->idNhanVien  );
+                } else {
+                    $this->tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich);
+                }
 
                 $response = Array(
                     'success' => true,
@@ -844,12 +844,12 @@ class HomeController extends Controller
         }
     }
 
-    public function tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request)
+    public function tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $idNhanVien)
     {
         foreach ($datLichOfDay as $rowDatLichOfDate) {
             $time = date('H:i:s', $rowDatLichOfDate->thoigiandat);
             foreach ($Lich as $rowLich) {
-                if ($request->idNhanVien == $rowDatLichOfDate->idnhanvien) {
+                if ($idNhanVien == $rowDatLichOfDate->idnhanvien) {
                     if ($rowLich->gio == $time) {
                         $rowLich->coNhanVien = 'false';
                     }
