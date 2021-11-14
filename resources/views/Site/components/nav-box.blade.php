@@ -81,7 +81,12 @@
                 @endif
                 <li class="icon-item d-inline-block hover-scale-1 position-relative icon-cart">
                     <span class="badge badge-pill badge-primary number-cart">0</span>
-                    <a href=""><i class="fas fa-shopping-cart color-black-2"></i></a>
+                    <a href="javascript:void(0)"><i class="fas fa-shopping-cart color-black-2"></i></a>
+                    <ul class="dropdown-custom-1" style="right: 0px;">
+                        <li class="dropdown-custom-item">
+
+                        </li>
+                    </ul>
                 </li>
             </div>
         </div>

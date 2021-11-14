@@ -54,8 +54,9 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-        //        $coso=$this->coso->getAll();
-        //        return view("Admin.HoaDon.index", ['coso'=>$coso]);
+        $hoadon = $this->hoadon->ShowHoaDonByIdCoso(session()->get('coso'));
+        $coso = $this->coso->find(session()->get('coso'));
+        return view("Admin.HoaDon.index", ['hoadon' => $hoadon, 'coso' => $coso]);
     }
 
     /**
@@ -87,9 +88,7 @@ class HoaDonController extends Controller
      */
     public function show($id)
     {
-        $hoadon = $this->hoadon->ShowHoaDonByIdCoso($id);
-        $coso = $this->coso->find($id);
-        return view("Admin.HoaDon.index", ['hoadon' => $hoadon, 'coso' => $coso]);
+
     }
 
     /**
