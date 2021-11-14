@@ -132,12 +132,11 @@ class InstallDatabase extends Migration
             $table->unsignedInteger('idlieutrinh');
             $table->unsignedInteger('iddichvu');
             $table->unsignedInteger('idnhanvien');
-            $table->longText('mota');
+            $table->longText('ghichu');
             $table->unsignedInteger('ngay');
             $table->boolean('trangthai');
             $table->string('imgkhachhang');
             $table->foreign('idlieutrinh')->references('id')->on('lieutrinh');
-            $table->foreign('iddichvu')->references('id')->on('dichvu');
             $table->foreign('idnhanvien')->references('id')->on('nhanvien');
             $table->timestamps();
         });

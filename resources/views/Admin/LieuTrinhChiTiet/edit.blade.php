@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                         <h4 class="page-title">Liệu Trình Chi Tiết</h4>
-                   
+
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Trang</a></li>
@@ -34,25 +34,25 @@
                             @endforeach
                         </ul>
                     </div>
-               
+
                      @endif
                 </div>
             </div>
             <!-- end page title -->
 
             <div class="row d-flex justify-content-center">
-                <div class="col-sm-11">
+                <div class="col-sm-8">
                     <div class="d-flex justify-content-center">
                         @if ($hasHoaDon === 0)
                             <a data-toggle="modal" data-target="#myModal2" class="btn btn-primary width-lg text-white" >Thêm Mới</a>
                         @endif
                     </div>
-                   
+
                     <div class="timeline" dir="ltr">
-                        
+
                         <article class="timeline-item alt">
                             <div class="time-show first">
-                             
+
                             </div>
 
                             <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -61,7 +61,7 @@
                                         <form action="{{route('lieutrinh.store')}}"  enctype="multipart/form-data" method="post">
                                             @csrf
                                             <input type="hidden" value="{{$id}}" name="id">
-                                        
+
                                             <div class="modal-header">
                                                 <h4 class="modal-title" id="myModalLabel">Thêm Liệu Trình</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -69,7 +69,7 @@
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="">Ảnh </label>
-                                                    <input type="file" onchange="previewImg(event)" name="imgkhachhang" 
+                                                    <input type="file" onchange="previewImg(event)" name="imgkhachhang"
                                                     placeholder="Nhập tên nhà sản xuất" class="form-control" >
                                                 </div>
                                                 <div class="form-group">
@@ -89,7 +89,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div> --}}
-                                               
+
                                                 <div class="form-group row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -104,7 +104,7 @@
                                                     <div class="col-md-6">
                                                         <label for="">Ngày làm</label>
                                                         <input class="form-control " id="example-date" type="date" name="ngay">
-                                                    </div>   
+                                                    </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-12">
@@ -137,16 +137,13 @@
                                                     </button>
                                                 </form>
                                             @endif
-                                            <div class="col-lg-3 center @if($loop->index % 2 == 0) order-1 @else order-2 @endif">
-                                                <input type="hidden" value="{{$item->idlieutrinhchitiet}}" id="idlieutrinhgan" class="idlieutrinhchitiet">
-                                                <img onclick="showFullImage(event)" class="imglieutrinh" src="{{asset($BASE_URL_UPLOAD_CUSTOMER.$item->imgkhachhang) }}" alt="">
-                                            </div>
-                                            <div class="col-lg-9 @if($loop->index % 2 == 0) order-2 @else order-1 @endif">
 
+                                            <div class="col-lg-12 @if($loop->index % 2 == 0) order-2 @else order-1 @endif">
                                                 <div class="panel-body">
                                                     @if ($item->trangthai == 0)
-                                                     <span class="arrow-alt"></span>
+                                                        <span class="arrow-alt"></span>
                                                     @endif
+
                                                     <form action="{{route('lieutrinh.update',$item->idlieutrinhchitiet)}}" method="post">
                                                         @csrf
                                                         {!! method_field('patch') !!}
@@ -156,15 +153,25 @@
                                                         <button class="updatelieutrinhct" id="update{{$item->idlieutrinhchitiet}}" type="submit"></button>
                                                     </form>
                                                     @csrf
-                                                    <p class="timeline-date text-muted"><strong>NV: ({{$item->tennv}})</strong></p>
-                                                    <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
-                                                    <p class=" text-danger">{{number_format($item->dongia)," "}} VNĐ</p>
-                                                    <p class="timeline-date text-muted date" title="Click để sửa" id="date" data-value="{{date('d-m-Y',$item->ngay)}}" data-format="DD-MM-YYYY" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="{{$item->idlieutrinhchitiet}}" ><small>{{date('d-m-Y',$item->ngay)}}</small>
-                                                    </p>
-                                                    <p class="mota" id="mota" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>
+                                                    <h4 class="timeline-date text-primary date" title="Click để sửa" id="date" data-value="{{date('d-m-Y',$item->ngay)}}" data-format="DD-MM-YYYY" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="{{$item->idlieutrinhchitiet}}" >{{date('d-m-Y',$item->ngay)}}</h4>
+                                                    <p class="timeline-date text-muted mt-1"><strong>Chuyên viên điều trị: {{$item->tennv}}</strong></p>
+
+                                                    {{-- <div class="row d-flex">
+                                                        <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
+                                                        <p class=" text-danger">{{number_format($item->dongia)," "}} VNĐ</p>
+                                                    </div> --}}
+                                                    <p class="mota" style="margin-top: 5px !important" id="mota" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>
                                                     <div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-lg-12 d-flex justify-content-end @if($loop->index % 2 == 0) order-1 @else order-2 @endif">
+                                                <input type="hidden" value="{{$item->idlieutrinhchitiet}}" id="idlieutrinhgan" class="idlieutrinhchitiet">
+                                                <img onclick="showFullImage(event)" class="imglieutrinh" src="{{asset($BASE_URL_UPLOAD_CUSTOMER.$item->imgkhachhang) }}" alt="">
                                             </div>
                                         </div>
                                     </div>
