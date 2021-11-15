@@ -89,6 +89,9 @@ class HomeController extends Controller
 
     public function viewSanPham()
     {
+        $sanpham = $this->SanPham->getsanpham();
+
+        $this->data['sanpham'] = $sanpham;
         $this->data['pathActive'] = 'san-pham';
         $this->data['namePage'] = 'Sản phẩm';
         $this->data['breadcrumbArray'] = [
@@ -212,12 +215,22 @@ class HomeController extends Controller
 
     public function viewDichVu()
     {
+        $dichvu = $this->Dichvu->getDichVu2();
+        $dichvu1 = $this->Dichvu->getDichVu1();
+        $dichvu2 = $this->Dichvu->getDichVu3();
+        $danhmuc = $this->DanhMuc->getalldanhmuc();
+
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
+        $this->data['dichvu'] = $dichvu;
+        $this->data['dichvu1'] = $dichvu1;
+        $this->data['dichvu2'] = $dichvu2;
+        $this->data['danhmuc'] = $danhmuc;
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
-         //$dichvu = $this->Dichvu->getAll();
+        //dd($dichvu);
+
         return view("Site.pages.dichvu", $this->data);
     }
 

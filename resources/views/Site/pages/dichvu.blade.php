@@ -40,19 +40,32 @@
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
 
-
+                            @foreach ($dichvu as $dichvuitem)
                                 <div class="dichvu-item ml-0 w-100">
                                     <div class="content-1">
                                         <div class="text-7 color-main-1">
-                                            @if ($pathActive == 'dich-vu')
-                                            {{ $breadcrumbArray == 'name' }}
-                                        @endif
-
+                                            {{$dichvuitem->namedm}}
                                         </div>
 
+                                        <div class="text-8 mt-1">
+                                            {{number_format($dichvuitem->dongia)}} đ
+                                        </div>
 
+                                        <div class="img-1 mt-4">
+                                            <img class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
+                                        </div>
+
+                                        <div class="text-1 limit-text-row-1 mt-4">
+                                            {{$dichvuitem->name}}
+                                        </div>
+
+                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                            {{$dichvuitem->motangan}}
+
+                                        </p>
                                     </div>
                                 </div>
+                            @endforeach
 
 
                             </div>
@@ -61,6 +74,8 @@
                     <div class="tab-pane fade" id="giammo" role="tabpanel">
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
+                                @foreach ($danhmuc as $danhmucitem)
+
                                 <div class="dichvu-item ml-0 w-100">
                                     <div class="content-1">
                                         <div class="text-7 color-main-1">
@@ -72,11 +87,11 @@
                                         </div>
 
                                         <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
+                                            <img class="" src="{{ asset('uploads/'.$danhmucitem->img) }}" alt="">
                                         </div>
 
                                         <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
+                                            {{$danhmucitem->name}}
                                         </div>
 
                                         <p class="text-2 limit-text-row-3 mt-1 mt-3">
@@ -86,137 +101,7 @@
                                         </p>
                                     </div>
                                 </div>
-
-                                <div class="dichvu-item w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 1
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item mr-0 w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 2
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item ml-0 w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 2
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 2
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item mr-0 w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 2
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -240,37 +125,7 @@
 
                     <div class="list-dichvu mt-4">
                         <div class="row">
-                            <div class="col-xl-4">
-                                <div class="item-dichvu-2">
-                                    <div class="dichvu-header">
-                                        <div class="box-danhmuc-small">
-                                            <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
-                                            class="img-fluid" alt="">
-                                        </div>
-                                        <div class="img-dichvu">
-                                            <a href="">
-                                                <img src="{{ asset('Site/images') }}/blog-2-1024x576.jpg" alt="">
-                                            </a>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="content mt-5">
-                                        <div class="box-gia">
-                                            <span class="gia">300,999 đ </span>
-                                        </div>
-                                        <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                            <a href="">Lăn Kim Công Nghệ Cao</a>
-                                        </div>
-
-                                        <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            @foreach ($dichvu1 as $dichvu1item)
 
                             <div class="col-xl-4">
                                 <div class="item-dichvu-2">
@@ -281,7 +136,7 @@
                                         </div>
                                         <div class="img-dichvu">
                                             <a href="">
-                                                <img src="{{ asset('Site/images') }}/blog-2-1024x576.jpg" alt="">
+                                                <img src="{{ asset('uploads/'.$dichvu1item->img) }}" alt="">
                                             </a>
 
                                         </div>
@@ -289,54 +144,20 @@
 
                                     <div class="content mt-5">
                                         <div class="box-gia">
-                                            <span class="giagiam">500,999 đ </span>
-                                            <span class="gia left-bar">300,999 đ </span>
+                                            <span class="gia">{{number_format($dichvu1item->dongia)}} đ </span>
                                         </div>
                                         <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                            <a href="">Lăn Kim Công Nghệ Cao</a>
+                                            <a href=""> {{$dichvu1item->name}}</a>
                                         </div>
 
                                         <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
+                                            {{$dichvu1item->motangan}}
 
                                         </p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-xl-4">
-                                <div class="item-dichvu-2">
-                                    <div class="dichvu-header">
-                                        <div class="box-danhmuc-small">
-                                            <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
-                                            class="img-fluid" alt="">
-                                        </div>
-                                        <div class="img-dichvu">
-                                            <a href="">
-                                                <img src="{{ asset('Site/images') }}/blog-2-1024x576.jpg" alt="">
-                                            </a>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="content mt-5">
-                                        <div class="box-gia">
-                                            <span class="giagiam">500,999 đ </span>
-                                            <span class="gia left-bar">300,999 đ </span>
-                                        </div>
-                                        <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                            <a href="">Lăn Kim Công Nghệ Cao</a>
-                                        </div>
-
-                                        <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
 
                         </div>
                     </div>
@@ -354,105 +175,41 @@
 
                     <div class="list-dichvu mt-4">
                         <div class="row">
-                            <div class="col-xl-4">
-                                <div class="item-dichvu-2">
-                                    <div class="dichvu-header">
-                                        <div class="box-danhmuc-small">
-                                            <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
-                                            class="img-fluid" alt="">
-                                        </div>
-                                        <div class="img-dichvu">
-                                            <a href="">
-                                                <img src="{{ asset('Site/images') }}/blog-2-1024x576.jpg" alt="">
-                                            </a>
+                            @foreach ($dichvu2 as $dichvu2item)
 
-                                        </div>
-                                    </div>
+                                <div class="col-xl-4">
+                                    <div class="item-dichvu-2">
+                                        <div class="dichvu-header">
+                                            <div class="box-danhmuc-small">
+                                                <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
+                                                class="img-fluid" alt="">
+                                            </div>
+                                            <div class="img-dichvu">
+                                                <a href="">
+                                                    <img src="{{ asset('uploads/'.$dichvu2item->img) }}" alt="">
+                                                </a>
 
-                                    <div class="content mt-5">
-                                        <div class="box-gia">
-                                            <span class="giagiam">500,999 đ </span>
-                                            <span class="gia left-bar">300,999 đ </span>
-                                        </div>
-                                        <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                            <a href="">Lăn Kim Công Nghệ Cao</a>
+                                            </div>
                                         </div>
 
-                                        <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
+                                        <div class="content mt-5">
+                                            <div class="box-gia">
+                                                <span class="giagiam">{{number_format($dichvu2item->dongia)}} đ </span>
+                                                <span class="gia left-bar">300,999 đ </span>
+                                            </div>
+                                            <div class="name text-1 limit-text-row-1 px-5 mt-2">
+                                                <a href="">{{$dichvu2item->name}}</a>
+                                            </div>
 
-                                        </p>
+                                            <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
+                                                {{$dichvu2item->motangan}}
+
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xl-4">
-                                <div class="item-dichvu-2">
-                                    <div class="dichvu-header">
-                                        <div class="box-danhmuc-small">
-                                            <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
-                                            class="img-fluid" alt="">
-                                        </div>
-                                        <div class="img-dichvu">
-                                            <a href="">
-                                                <img src="{{ asset('Site/images') }}/blog-2-1024x576.jpg" alt="">
-                                            </a>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="content mt-5">
-                                        <div class="box-gia">
-                                            <span class="giagiam">500,999 đ </span>
-                                            <span class="gia left-bar">300,999 đ </span>
-                                        </div>
-                                        <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                            <a href="">Lăn Kim Công Nghệ Cao</a>
-                                        </div>
-
-                                        <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-4">
-                                <div class="item-dichvu-2">
-                                    <div class="dichvu-header">
-                                        <div class="box-danhmuc-small">
-                                            <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
-                                            class="img-fluid" alt="">
-                                        </div>
-                                        <div class="img-dichvu">
-                                            <a href="">
-                                                <img src="{{ asset('Site/images') }}/blog-2-1024x576.jpg" alt="">
-                                            </a>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="content mt-5">
-                                        <div class="box-gia">
-                                            <span class="giagiam">500,999 đ </span>
-                                            <span class="gia left-bar">300,999 đ </span>
-                                        </div>
-                                        <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                            <a href="">Lăn Kim Công Nghệ Cao</a>
-                                        </div>
-
-                                        <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
+                            @endforeach
 
                         </div>
                     </div>
