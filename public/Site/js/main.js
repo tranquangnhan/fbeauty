@@ -1,3 +1,11 @@
+var w = window.innerWidth;
+$('.modal-box-datlich').css('max-width', w);
+
+$(window).resize(function() {
+    let w = window.innerWidth;
+    $('.modal-box-datlich').css('max-width', w);
+});
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -476,3 +484,9 @@ $('.custom-error').hover(function () {
     }
 );
 
+
+// $('.show-giohang-fixed').click(function (e) {
+//     e.preventDefault();
+//     let id = $(this).attr('data-target');
+//     $(id).addClass('in');
+// });

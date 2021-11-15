@@ -126,12 +126,12 @@ class installSeeder extends Seeder
         ]);
 
         DB::table('nhanvien')->insert([
-            ['id'=>1,'idcoso'=>1,'iddichvu'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> '$2y$10$iimuFe7voEEthMTFQvRBX.hk1XrL3O1W7lXTZPCxktAIWkuEmY692','role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>2,'idcoso'=>1,'iddichvu'=>1, 'email'=>'longnh.2401@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Long', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>3,'idcoso'=>1,'iddichvu'=>1, 'email'=>'tuong2712@gmail.com','password'=> '$2y$10$nlRY7DRJfQQLSbI0aV7h9usw0waQxL9uGbNFQChi.06.YIigQCC3q','role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>4,'idcoso'=>1,'iddichvu'=>1, 'email'=>'nhanvien@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'nhân viên', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>5,'idcoso'=>1,'iddichvu'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>6,'idcoso'=>1,'iddichvu'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'idcoso'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> '$2y$10$iimuFe7voEEthMTFQvRBX.hk1XrL3O1W7lXTZPCxktAIWkuEmY692','role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>2,'idcoso'=>1, 'email'=>'longnh.2401@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Long', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'idcoso'=>1, 'email'=>'tuong2712@gmail.com','password'=> '$2y$10$nlRY7DRJfQQLSbI0aV7h9usw0waQxL9uGbNFQChi.06.YIigQCC3q','role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>4,'idcoso'=>1, 'email'=>'nhanvien@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'nhân viên', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>5,'idcoso'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>6,'idcoso'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('giamgia')->insert([
             ['id'=>1,'name'=>'MAXSALE150','ma'=>'FB01', 'number'=>25000,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'1635699600' ,'ngayhethan'=>'1637341200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
@@ -139,12 +139,12 @@ class installSeeder extends Seeder
             ['id'=>3,'name'=>'MAXSALE200','ma'=>'FB03', 'number'=>150000,'max'=> 200000,'loai'=>1 ,'ngaytao'=>'1635958800' ,'ngayhethan'=>'1638205200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('khachhang')->insert([
-            ['id'=>1,'name' => 'Long', 'sdt'=> '0965286055','email'=>'long@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'a2c0894d9a3e77602e2f.jpg'],
-            ['id'=>2,'name' => 'Nhân', 'sdt'=> '0965286056','email'=>'nhan@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => '88e5bb095c89b1d7e898.jpg'],
-            ['id'=>3,'name' => 'Ly Ly', 'sdt'=> '0965286057', 'email'=>'lyly@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang1.jpg'],
-            ['id'=>4,'name' => 'Hương Hương', 'sdt'=> '0965286058', 'email'=>'huonghuong@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang5.jpg'],
-            ['id'=>5,'name' => 'Thảo', 'sdt'=> '0965286059', 'email'=>'thao@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang6.jpg'],
-            ['id'=>6,'name' => 'Thảo Mai', 'sdt'=> '0965286060', 'email'=>'thaomai@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang7.jpg']
+            ['id'=>1,'name' => 'Long','idcoso' => 1, 'sdt'=> '0965286055','email'=>'long@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'a2c0894d9a3e77602e2f.jpg'],
+            ['id'=>2,'name' => 'Nhân','idcoso' => 1, 'sdt'=> '0965286056','email'=>'nhan@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => '88e5bb095c89b1d7e898.jpg'],
+            ['id'=>3,'name' => 'Ly Ly','idcoso' => 1, 'sdt'=> '0965286057', 'email'=>'lyly@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang1.jpg'],
+            ['id'=>4,'name' => 'Hương Hương','idcoso' => 1, 'sdt'=> '0965286058', 'email'=>'huonghuong@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang5.jpg'],
+            ['id'=>5,'name' => 'Thảo','idcoso' => 1, 'sdt'=> '0965286059', 'email'=>'thao@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang6.jpg'],
+            ['id'=>6,'name' => 'Thảo Mai','idcoso' => 1, 'sdt'=> '0965286060', 'email'=>'thaomai@gmail.com', 'password' => bcrypt('123123'), 'active' => 1, 'img' => 'khachhang7.jpg']
         ]);
         DB::table('blog')->insert([
             ['id'=>1,'iddm' => '8', 'img' => 'dieu_tri_mun_uc_che.jpg', 'name' => 'DR.Seoul trị và ức chế mụn VAS 4.0 cho da mụn và nhạy cảm', 'slug' => Str::slug('DR.Seoul trị và ức chế mụn VAS 4.0 cho da mụn và nhạy cảm', '-'),'motangan'=>'Seoul Trị và ức chế Mụn VAS 4.0 – Một trong những liệu trình chăm sóc và điều trị mới nhất dành cho những khách hàng gặp phải vấn đề mụn tại Seoul Spa.', 'noidung' => 'Ưu điểm của liệu trình DR. Seoul Trị và ức chế Mụn VAS 4.0
@@ -469,7 +469,7 @@ class installSeeder extends Seeder
             ['id'=>5,'idkhachhang'=>'5','idgiamgia'=>'1', 'tennguoinhan'=>'Thảo Mai','diachikhachhang'=> 'Tầng 1, 28 Seongam-ro 13-gil, Mapo-gu, Seoul','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'35000000' ,'tongtiensaugiamgia'=>'30000000','ghichucuakhachhang'=> '주문은 이번주말에 받아볼께요 감사합니다','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'FEDEX','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('sanpham')->insert([
-            ['id'=>1,'iddanhmuc'=>1,'name'=>'LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', 'slug'=> Str::slug('LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', '-'),'img'=>'profile-photo-1635519235.png','mota'=> 'Mặt nạ “siêu dưỡng da” được ngâm trong 30ml The Treatment Lotion ngay lập tức mang đến sự tăng cường hydrat hoá giúp chữa lành,','noidung'=>'Mặt nạ tấm với công nghệ ôm sát của Nhật Bản và hàng triệu sợi vi mô tinh khiết độc đáo tăng cường sự tập trung của quá trình hydrat hóa chữa lành, làm rạng rỡ, đầy đặn và truyền vào da một nguồn năng lượng mạnh mẽ có tác dụng hồi sinh làn da chỉ trong tíc tắc.
+            ['id'=>1,'iddanhmuc'=>1,'name'=>'LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', 'slug'=> Str::slug('LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', '-'),'img'=>'["profile-photo-1635519235.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Mặt nạ “siêu dưỡng da” được ngâm trong 30ml The Treatment Lotion ngay lập tức mang đến sự tăng cường hydrat hoá giúp chữa lành,','noidung'=>'Mặt nạ tấm với công nghệ ôm sát của Nhật Bản và hàng triệu sợi vi mô tinh khiết độc đáo tăng cường sự tập trung của quá trình hydrat hóa chữa lành, làm rạng rỡ, đầy đặn và truyền vào da một nguồn năng lượng mạnh mẽ có tác dụng hồi sinh làn da chỉ trong tíc tắc.
 
             - Kết cấu vi mô độc đáo của các sợi phản lực tinh khiết nhẹ nhàng ôm lấy làn da để chúng ta có thể hoạt động trong khi sử dụng mặt nạ.
 
@@ -487,7 +487,7 @@ class installSeeder extends Seeder
 
             Sản xuất tại Nhật Bản' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>2,'iddanhmuc'=>2,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'profile-photo-1635519265.png','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
+            ['id'=>2,'iddanhmuc'=>2,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
 
              - Chứa thành phần tái tạo tế bào Miracle Broth™ - "thuốc tiên" huyền thoại có trong mọi sản phẩm La Mer - truyền vào da những lợi ích tái tạo có nguồn gốc từ biển, chữa lành và làm đầy, làm mịn các các nếp nhăn, để lộ sự rạng rỡ mới cho làn da.
 
@@ -501,7 +501,7 @@ class installSeeder extends Seeder
 
              Không chứa Paraben, Phthalates, Sulfates, Sulfites.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>3,'iddanhmuc'=>3,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'profile-photo-1635519289.png','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
+            ['id'=>3,'iddanhmuc'=>3,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
 
             Phương pháp điều trị huyền thoại của La Mer Miracle Broth™ được bào chế với các chất chống oxy hóa giúp bảo vệ đôi môi, ngay lập tức làm đầy đặn và làm rõ các đường nét.
 
@@ -517,7 +517,7 @@ class installSeeder extends Seeder
 
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>4,'iddanhmuc'=>4,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'profile-photo-1635519312.png','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
+            ['id'=>4,'iddanhmuc'=>4,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
 
             - Ngay lập tức làm mềm độ nhám, nuôi dưỡng và giúp làm dịu sự khô da môi nghiêm trọng.
 
@@ -529,7 +529,7 @@ class installSeeder extends Seeder
 
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>5,'iddanhmuc'=>5,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'profile-photo-1635519333.jpg','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
+            ['id'=>5,'iddanhmuc'=>5,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
 
             - Với gấp ba lần lượng "thuốc tiên" Miracle Broth™ so với phiên bản cũ, truyền vào da nguồn năng lượng thiết yếu và hydrat hóa chữa lành, hỗ trợ đổi mới cho vùng mắt mịn màng và sáng hơn.
 
@@ -551,7 +551,7 @@ class installSeeder extends Seeder
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.
 
             ' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>6,'iddanhmuc'=>6,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'profile-photo-1635519355.jpg','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
+            ['id'=>6,'iddanhmuc'=>6,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
 
             Khi dùng độc lập, công thức Soft Focus Complex sẽ làm mờ lỗ chân lông, nếp nhăn và các khuyết điểm khác trên da. Khi sử dụng như kem lót, công thức này sẽ giúp kem nền đạt được hiệu ứng hoàn hảo nhất, và giữ cho lớp trang điểm bền bỉ suốt 12 tiếng*. Invisiblur Perfecting Shield Broad Spectrum SPF 30 PA +++ còn không hề chứa Parabens, Sulfates, Phthalates, Gluten và các thành phần có chiết xuất từ động vật.
 
@@ -614,56 +614,8 @@ class installSeeder extends Seeder
 
         ]);
         DB::table('lieutrinhchitiet')->insert([
-            ['id'=>1,'idlieutrinh' => 1, 'iddichvu'=> 1,'idnhanvien'=> 1, 'mota' =>'Bước 1: Kiểm tra tình trạng da
-            chăm sóc da cơ bản tại spa
-            Kiểm tra da/ Soi da là bước đầu tiên trong quy trình chăm sóc da cơ bản tại spa
-            Hầu hết các spa uy tín hiện nay đều trang bị máy soi da để phân tích và đánh giá chi tiết tình trạng da của bạn. Khi nắm được da của bạn thuộc loại da nào và đang gặp vấn đề gì sẽ đưa ra được những lời khuyên và phương pháp chăm sóc da phù hợp. Một phương pháp làm đẹp có thể tốt với người này nhưng lại không tốt với người kia, đó rất có thể do chúng ta chưa thực sự hiểu làn da của mình.
-
-
-
-            Bước 2: Tẩy trang
-            Đây là bước bắt buộc đối với các khách hàng có lớp trang điểm trên mặt, kể cả kem chống nắng. Bởi vì các bước làm sạch thông thường sẽ không thể lấy đi hết lớp makeup trên da. Các kỹ thuật viên sẽ dùng bông cotton thấm nước tẩy trang lau toàn bộ mặt theo chiều từ dưới lên để tẩy sạch lớp trang điểm và bụi bẩn trên da.
-
-            Các kỹ thuật viên có thể bỏ qua bước này nếu da khách hàng không thoa bất kỳ sản phẩm nào lên mặt.
-
-            chăm sóc da cơ bản tại spa
-            Rửa mặt kết hợp massage nhẹ nhàng bắt đầu quá trình chăm sóc da hoàn hảo
-            Rửa mặt sẽ giúp lấy đi những bụi bẩn và làm sạch nước tẩy trang còn sót lại trên da. Tùy thuộc vào tình trạng da của bạn mà kỹ thuật viên sẽ sử dụng loại sữa/gel rửa mặt cho da dầu, da khô hay da mụn,… Tuy nhiên, thông thường tại các spa đều sử dụng sản phẩm có nguồn gốc tự nhiên, tính chất dịu nhẹ để an toàn cho da.
-
-
-
-            Bước 4: Tẩy tế bào chết
-            Bước này giúp loại bỏ các lớp sừng hóa tồn tại sâu bên trong lỗ chân lông. Chỉ có tiến hành theo thứ tự này, làn da mới được làm sạch chuyên sâu. Với bước này các chuyên viên làm đẹp sẽ dùng kem tẩy tế bào chết có hạt chứa AHA để làm sạch và trắng da. Đồng thời, thực hiện các động tác massage với các chuyển động tròn nhỏ bằng đầu ngón tay.
-            Tuy nhiên, bước này chỉ nên thực hiện 1-2 lần/1 tuần thôi nha. Nếu các bạn mới tẩy da chết rồi đi spa thì có thể nhắc nhân viên bỏ qua bước này.
-
-
-
-            Bước 5: Xông hơi, hút dầu, hút mụn cám
-            Việc xông hơi sẽ giúp cho lỗ chân lông giãn nở, các chuyên viên dễ dàng hút sạch dầu thừa và mụn cám trên da bằng máy hút mụn. Công đoạn này cần làm một cách thận trọng và dụng cụ được đảm bảo vệ sinh.
-
-
-
-            chăm sóc da cơ bản tại spa
-            Kỹ thuật viên cần đàm bảo ống hút đã được thay mới, sát khuẩn vệ sinh trước khi dùng cho khách
-
-
-            Bước 6: Massage mặt
-            Massage mặt thường xuyên giúp các cơ thịt không bị teo tóp, tăng lực co giãn và cơ đàn hồi nên có tác dụng chống lão hoá đồng thời xoá nếp nhăn không mong muốn. Massage còn điều tiết và tăng cường cơ năng thần kinh, kích thích máu tuần hoàn khiến cơ được cung cấp đủ máu và chất dinh dưỡng. Tuy nhiên, bước này chỉ dành cho các bạn có làn da không mụn thôi nha. Bởi việc sử dụng dầu massage và chà xát lên da có thể khiến cho tình trạng da mụn tồi tệ hơn đó.
-
-            chăm sóc da cơ bản tại spa
-            Massage mặt là bước mà khách hàng được thư giãn tối da khi đến chăm sóc da tại spa
-
-
-            Bước 7: Đắp mặt nạ
-            Mặt nạ cung cấp các dưỡng chất cần thiết cho da, chống lão hóa và trắng sáng hơn. Thời gian đắp mặt nạ trên da chỉ nên để 20-30 phút thôi nha. Nếu để quá lâu, da sẽ bị khô đi và có hiệu quả không mong muốn.
-
-
-
-            Bước 8: Dưỡng ẩm cho da
-            Quy trình chăm sóc da cơ bản ở spa sẽ được kết thúc bằng bước dưỡng ẩm cho da bằng kem dưỡng hoặc nước cân bằng độ ẩm cho làn da.
-
-            Trên đây là 8 bước trong quy trình chăm sóc da cơ bản tại spa mà bạn nên áp dụng vào cơ sở của mình hoặc tham khảo để lựa chọn spa sử dụng dịch vụ. Giá dịch vụ cũng phụ thuộc rất nhiều vào chất lượng của từng spa nên bạn cần lựa chọn kỹ lưỡng để chăm sóc làn da của mình nhé!', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang1.jpg'],
-            ['id'=>2,'idlieutrinh' => 2, 'iddichvu'=> 2,'idnhanvien'=> 2, 'mota' =>'Các bước chuẩn bị xăm, phun môi:
+            ['id'=>1,'idlieutrinh' => 1, 'iddichvu'=> 1,'idnhanvien'=> 1, 'ghichu' =>'Bước 1: Kiểm tra tình trạng da trong quy trình chăm sóc da cơ bản tại spa mà bạn nên áp dụng vào cơ sở của mình hoặc tham khảo để lựa chọn spa sử dụng dịch vụ. Giá dịch vụ cũng phụ thuộc rất nhiều vào chất lượng của từng spa nên bạn cần lựa chọn kỹ lưỡng để chăm sóc làn da của mình nhé!', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang1.jpg'],
+            ['id'=>2,'idlieutrinh' => 2, 'iddichvu'=> 2,'idnhanvien'=> 2, 'ghichu' =>'Các bước chuẩn bị xăm, phun môi:
 
             Chọn màu môi, dáng môi
             Tiêm 1-2 mũi thuốc tê vào môi
@@ -680,7 +632,7 @@ class installSeeder extends Seeder
             Không nên chọn những màu quá đỏ, sẽ khó đánh loại son khác nếu chúng ta muốn có chút thay đổi. Xu hướng chung là chọn gram màu nhẹ nhàng
             Không nên chọn màu có thiên hướng quá cam vì sau khi ngả màu, màu môi sẽ hơi vàng
             Nên chọn màu đỏ không pha để khi xuống màu nó sẽ thành đỏ hoặc hồng.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang2.jpg'],
-            ['id'=>3,'idlieutrinh' => 3, 'iddichvu'=> 3,'idnhanvien'=> 3, 'mota' =>'Bước 1: Làm sạch
+            ['id'=>3,'idlieutrinh' => 3, 'iddichvu'=> 3,'idnhanvien'=> 3, 'ghichu' =>'Bước 1: Làm sạch
 
             Bước đầu tiên này nên thực hiện vào mỗi buổi sáng và buổi tối.
 
@@ -715,7 +667,7 @@ class installSeeder extends Seeder
             SPF được khuyến nghị hàng ngày ở mọi lứa tuổi.
 
             Một lưu ý đó là bạn nên thoa một loại kem dưỡng bằng chất lỏng nhẹ trước ví dụ như huyết thanh, kem dưỡng ẩm, sau đó mới đến kem chống nắng.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang3.jpg'],
-            ['id'=>4,'idlieutrinh' => 4, 'iddichvu'=> 4,'idnhanvien'=> 4, 'mota' =>'1. Bước 1: Làm sạch và sát khuẩn da mặt
+            ['id'=>4,'idlieutrinh' => 4, 'iddichvu'=> 4,'idnhanvien'=> 4, 'ghichu' =>'1. Bước 1: Làm sạch và sát khuẩn da mặt
             Đây là bước cơ bản cho tất cả các liệu trình chăm sóc và điều trị da liễu. Làm sạch da sẽ loại bỏ vi khuẩn trú ngụ trên da, hạn chế tối đa vi khuẩn xâm nhập sâu vào nang lông trong khi nặn mụn.
             Bước làm sạch này thường sử dụng:
 
@@ -734,7 +686,7 @@ class installSeeder extends Seeder
             Đầu nhọn của que lấy mụn sẽ dùng để châm đầu mụn, đầu tròn còn lại dùng để ấn xuống để đẩy nhân mụn ra ngoài. Thao tác nặn mụn sẽ dùng lực vừa phải để vừa đẩy nhân mụn ra ngoài mà không gây tổn thương nhiều cho da.
             5. Bước 5: Sát khuẩn và chăm sóc da sau mụn
             Sau khi nặn mụn, các chuyên gia, bác sĩ sẽ sát trùng vị trí mụn. Dung dịch thường được sử dụng là nước muối sinh lý hoặc các dung dịch sát khuẩn chuyên dụng như Povidine 10% để ngăn ngừa nhiễm trùng, nhiễm vi khuẩn.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang4.jpg'],
-            ['id'=>5,'idlieutrinh' => 5, 'iddichvu'=> 5,'idnhanvien'=> 5, 'mota' =>'Thời gian thực hiện và các bước trong liệu trình Điều Trị Mụn Lưng tại Fbeauty
+            ['id'=>5,'idlieutrinh' => 5, 'iddichvu'=> 5,'idnhanvien'=> 5, 'ghichu' =>'Thời gian thực hiện và các bước trong liệu trình Điều Trị Mụn Lưng tại Fbeauty
             Bước 1: Rửa và làm sạch các lớp bụi bẩn trên bề mặt da
 
             Bước 2: Tẩy tế bào chết giúp loại bỏ lớp tế bào già cội sần sùi thô ráp, đồng thời làm thông thoáng lỗ chân lông để các bước điều trị tiếp theo hiệu quả hơn.
@@ -752,7 +704,7 @@ class installSeeder extends Seeder
             Bước 8: Thắp ánh sáng sinh học ức chế tuyến bã nhờn, hạn chế nhiễm trùng vết thương, giảm kích ứng da, làm diệu và giảm đau, phục hồi tế bào da hư tổn, kích thích tuần hoàn máu, tái tạo da.
 
             Bước 9: Phun oxy giúp làm sạch sâu, bổ sung dưỡng chất cần thiết nuôi dưỡng một làn da tươi sáng, khỏe mạnh từ bên trong đồng thời ngăn chặn mọi quá trình lão hóa', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang5.jpg'],
-            ['id'=>6,'idlieutrinh' => 6, 'iddichvu'=> 1,'idnhanvien'=> 6, 'mota' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            ['id'=>6,'idlieutrinh' => 6, 'iddichvu'=> 1,'idnhanvien'=> 6, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
             Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
 
             QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
@@ -782,8 +734,8 @@ class installSeeder extends Seeder
           DB::table('hoadonchitiet')->insert([
             ['id'=>1,'idhoadon'=>1,'idlienquan'=>1,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'15000000','dongiasaugiamgia'=>'14000000'],
             ['id'=>2,'idhoadon'=>2,'idlienquan'=>2,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'18000000','dongiasaugiamgia'=>'17500000'],
-            ['id'=>3,'idhoadon'=>3,'idlienquan'=>3,'type'=>2,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000'],
-            ['id'=>4,'idhoadon'=>4,'idlienquan'=>4,'type'=>3,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000'],
+            ['id'=>3,'idhoadon'=>3,'idlienquan'=>3,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000'],
+            ['id'=>4,'idhoadon'=>4,'idlienquan'=>4,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000'],
         ]);
            DB::table('theodoi')->insert([
             ['id'=>1,'email'=>'ly@gmail.com'],
@@ -798,7 +750,6 @@ class installSeeder extends Seeder
             ['id'=>4,'idkhachhang'=>2,'idsanphamchitiet'=>4],
             ['id'=>5,'idkhachhang'=>1,'idsanphamchitiet'=>5],
             ['id'=>6,'idkhachhang'=>2,'idsanphamchitiet'=>6],
-
         ]);
 
 

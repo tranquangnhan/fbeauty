@@ -408,6 +408,9 @@
                                 <span> Hóa đơn </span>
                                 <span class="menu-arrow"></span>
                             </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("hoadon.show", session()->get('coso'))}}">Danh sách</a></li>
+                            </ul>
 
                         </li>
                         <li>
