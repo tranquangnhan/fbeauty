@@ -3,13 +3,15 @@
         <div class="close-modal background-close" type-modal="modal-user"></div>
         <div class="modal modal-main fa-content-user">
             <div class="noidung-modal">
-                <div class="box-spinner">
-                    <div class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                </div>
                 <div class="fa-modal-user">
                     <div class="modal-user-item h-100 active" data-authen="0">
+                        <div class="box-spinner">
+                            <div class="child-spinner">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="title-3 text-left color-main uppercase">Nhập số điện thoại</div>
                         <div class="text-10 text-left">Đăng nhập hoặc đăng ký bằng số điện thoại của bạn</div>
                         <div class="w-100">
@@ -26,6 +28,13 @@
                     </div>
 
                     <div class="modal-user-item h-100" data-authen="1">
+                        <div class="box-spinner">
+                            <div class="child-spinner">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="title-3 text-left color-main uppercase">Nhập mật khẩu</div>
                         <div class="text-10 text-left">Nhập mật khẩu của SĐT <span class="comfirm-sdt">0965.286.066</span> hoặc chọn <br> "Quên mật khẩu"
                         </div>
@@ -52,6 +61,13 @@
                     </div>
 
                     <div class="modal-user-item h-100" data-authen="2">
+                        <div class="box-spinner">
+                            <div class="child-spinner">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="title-3 text-left color-main uppercase">Nhập OTP</div>
                         <div class="text-10 text-left">Chúng tôi sẽ gửi cho bạn mã OTP<br> vui lòng kiểm tra tin nhắn
                         </div>
@@ -76,6 +92,13 @@
                     </div>
 
                     <div class="modal-user-item h-100" data-authen="3">
+                        <div class="box-spinner">
+                            <div class="child-spinner">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="title-3 text-left color-main uppercase">Nhập mật khẩu mới</div>
                         <div class="text-10 text-left">Bạn có thể chọn bỏ qua nếu không muốn dùng mật khẩu
                         </div>
