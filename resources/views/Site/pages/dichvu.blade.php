@@ -39,161 +39,21 @@
                     <div class="tab-pane fade show active" id="damat" role="tabpanel">
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
-                                <div class="dichvu-item ml-0 w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 1
-                                        </div>
 
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 1
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item mr-0 w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 1
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
 
                                 <div class="dichvu-item ml-0 w-100">
                                     <div class="content-1">
                                         <div class="text-7 color-main-1">
-                                            Da Mặt 1
+                                            @if ($pathActive == 'dich-vu')
+                                            {{ $breadcrumbArray == 'name' }}
+                                        @endif
+
                                         </div>
 
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
 
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
                                     </div>
                                 </div>
 
-                                <div class="dichvu-item w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 1
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="dichvu-item mr-0 w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            Da Mặt 1
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            Lăn Kim Công Nghệ Cao
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
 
                             </div>
                         </div>

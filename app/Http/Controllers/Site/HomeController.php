@@ -22,6 +22,8 @@ use App\Http\Requests\KhachHang;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\loginSiteRequest;
 use App\Http\Controllers\freeSMSController;
+use App\Models\Admin\DichVu;
+
 class HomeController extends Controller
 {
     private $data = array();
@@ -133,7 +135,6 @@ class HomeController extends Controller
         $this->data['breadcrumbArray']     = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
         ];
-
         return view("Site.pages.baiviet", $this->data);
     }
 
@@ -154,7 +155,7 @@ class HomeController extends Controller
         $this->data['breadcrumbArray']     = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
-
+         //$dichvu = $this->Dichvu->getAll();
         return view("Site.pages.dichvu", $this->data);
     }
 

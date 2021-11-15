@@ -58,9 +58,9 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="">Loại Giảm Giá </label><span style="color:red;"> (*)</span>
-                                                    <select name="loai" id="inputState" onclick="select()" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('loai') border-error @enderror loai" value="{{old('loai')}}" parsley-trigger="change">
-                                                        <option  value="0">Giảm Theo Giá</option>
-                                                        <option  value="1">Giảm Theo %</option>
+                                                    <select name="loai" id="inputState" onchange="select()" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('loai') border-error @enderror loai" value="{{old('loai')}}" parsley-trigger="change">
+                                                        <option value="0">Giảm Theo Giá</option>
+                                                        <option value="1">Giảm Theo %</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -106,12 +106,12 @@
                                     <tr class="text-center">
                                         <th width="5%">STT</th>
                                         <th width="11%">Tên Giảm Giá</th>
-                                        <th width="12%">Mã Giảm Giá</th>
-                                        <th width="12%">Giảm Giá Từ</th>
-                                        <th width="12%">Giảm Giá đến</th>
-                                        <th width="12%">Loại Giảm Giá</th>
-                                        <th width="12%">Ngày Tạo Mã</th>
-                                        <th width="12%">Ngày Hết Hạn</th>
+                                        <th width="10%">Mã Giảm Giá</th>
+                                        <th width="14%">Giảm Tối Đa Theo Giá </th>
+                                        <th width="14%">Giảm Tối Đa Theo %</th>
+                                        <th width="10%">Loại Giảm Giá</th>
+                                        <th width="11%">Ngày Tạo Mã</th>
+                                        <th width="11%">Ngày Hết Hạn</th>
                                         <th width="12%">Hành Động</th>
                                     </tr>
                                 </thead>
@@ -124,7 +124,7 @@
                                             <td class="" >{{$row->name}}</td>
                                             <td class="" >{{$row->ma}}</td>
                                             <td class="" >{{number_format($row->number)}} VNĐ</td>
-                                            <td class="" >{{number_format($row->max)}} VNĐ</td>
+                                            <td class="" >{{number_format($row->max)}} %</td>
                                             <td class="" >
                                                 <?php
                                                 if($row->loai==0)

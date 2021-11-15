@@ -105,8 +105,8 @@ class InstallDatabase extends Migration
             $table->increments('id');
             $table->string('name',255);
             $table->string('ma',50);
-            $table->integer('number')->default(0);
-            $table->double('max',10,0);
+            $table->integer('number')->default(0)->nullable();
+            $table->double('max',10,0)->nullable();
             $table->boolean('loai');
             $table->unsignedInteger('ngaytao');
             $table->unsignedInteger('ngayhethan');

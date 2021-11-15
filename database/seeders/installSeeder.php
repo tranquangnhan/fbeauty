@@ -117,6 +117,11 @@ class installSeeder extends Seeder
 
             Trẻ hóa da với Công nghệ HiFu S+ (High Intensity Focus Ultrasound)
             Công nghệ Hifu là công nghệ duy nhất hiện nay sử dụng bước sóng có thể đi vào tới độ sâu 3.0-4.5mm dưới bề mặt da. Đây được coi là khu vực sản sinh nhiều nhất collagen và elastin – các tế bào giúp da săn chắc, căng tràn và tươi trẻ. Sau khi đi sâu vào tận cùng lớp hạ bì, sóng siêu âm hội tụ cường độ cao sẽ phát tán năng lượng, săn gọn các mô cơ.', 'trangthai'=> 1],
+            ['id'=>6,'name'=>'Dịch Vụ Giảm Béo', 'slug' => Str::slug('Dịch Vụ Giảm Béo'), 'img'=>'giam_beo.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Hiện nay vấn đề giảm cân đang trở nên rất HOT và sôi động trên các cộng đồng về sức khỏe, tập gym, thậm chí là ở các fb cá nhân. Đang có sự biến đổi... ', 'dongia'=>3000000, 'noidung'=>'Tăng cân, béo phì là vấn đề mà rất nhiều chị em lo lắng, việc chăm lo cho vóc dáng dường như đã trở thành nhu cầu thiết yếu của con người trong cuộc sống hiện đại.
+
+            Do đó, giảm béo là một trong những loại hình dịch vụ “hot” nhất tại các Spa hiện nay.
+
+            Khi biết được nhu cầu làm đẹp cũng như các dịch vụ mang đến nhiều khách hàng như thế thì chẳng có lý gì mà các Spa có thể bỏ qua cả.', 'trangthai'=> 1],
 
         ]);
 
