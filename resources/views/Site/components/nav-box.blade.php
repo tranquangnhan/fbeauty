@@ -27,9 +27,6 @@
                 <li class="nav-item {{ ($pathActive == 'dich-vu') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/dich-vu">Dịch Vụ</a>
                     <ul class="dropdown-custom-1">
-                        @foreach ( $dichvu as $dichvuitem)
-                        <li class="dropdown-custom-item"><a href="">{{$dichvuitem->name}}</a></li>
-                        @endforeach
 
                     </ul>
                 </li>

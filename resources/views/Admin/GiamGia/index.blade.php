@@ -143,12 +143,12 @@
                                             <td class="" >{{date('d-m-Y',$row->ngayhethan)}}</td>
 
                                             <td class="d-flex">
-                                                <a href="{{route("giamgia.edit",$row->id)}}" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Sửa" ><i
+                                                <a href="{{route("giamgia.edit",$row->id)}}" class="btn btn-primary mr-2" data-toggle="tooltip" data-placement="right" title="Sửa" ><i
                                                     class="fa fa-edit"  style="color: white;"></i></a>
-                                                <form action="{{route('giamgia.destroy',$row->id)}}"  method="post">
+                                                <form action="{{route('giamgia.destroy',$row->id)}}"  method="post" title="Xóa">
                                                     @csrf
                                                     {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash" ></i></button>
                                                 </form>
                                             </td>
                                         </tr>

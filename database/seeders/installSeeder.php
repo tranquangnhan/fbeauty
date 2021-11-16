@@ -16,8 +16,9 @@ class installSeeder extends Seeder
     public function run()
     {
         DB::table('coso')->insert([
-            ['id'=>1,'name'=>'Cơ sở 1','diachi'=> 'Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
-            ['id'=>2,'name'=>'Cơ sở 2','diachi'=> '778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
+            ['id'=>1,'name'=>'Cơ sở 1','diachi'=> '55A – Đường 3/2 – Phường 11 – Quận 10 – TP. Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
+            ['id'=>2,'name'=>'Cơ sở 2','diachi'=> '18A Ngô Văn Năm, Quận 1, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
+            ['id'=>3,'name'=>'Cơ sở 3','diachi'=> 'Tầng 3 Tòa Udic Complex, Hoàng Đạo Thúy, Hà Nội', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
         ]);
         DB::table('danhmuc')->insert([
             ['id' => 1, 'name'=>'Chăm sóc da mặt','img'=>'photo-1635608885.jpg','slug'=> Str::slug('Chăm sóc da mặt', '-'), 'loai'=>'1'],
