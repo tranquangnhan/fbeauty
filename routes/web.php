@@ -99,7 +99,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::get('khachhang/detail/{id}', [KhachHangController::class,'detailKhachHang']);
     Route::post('khachhang/themlieutrinh/{id}/store', [KhachHangController::class,'storeLieuTrinh']);
     Route::delete('khachhang/xoalieutrinh/{id}/delete', [KhachHangController::class,'delLieuTrinh']);
-    
+
     Route::get('khachhang/lieutrinh/{id}/edit', [LieuTrinhController::class,'editLieuTrinhChiTiet']);
     Route::patch('khachhang/lieutrinh/{id}/update', [KhachHangController::class,'updateLieuTrinh']);
 
@@ -164,5 +164,6 @@ Route::group(['prefix' => '/'], function (){
     Route::post('skipCreatePassword', [HomeController::class, "skipCreatePassword"]);
     Route::post('newPassword', [HomeController::class, "newPassword"]);
     Route::post('checkIssetUser', [HomeController::class, "checkIssetUser"]);
+
 });
 

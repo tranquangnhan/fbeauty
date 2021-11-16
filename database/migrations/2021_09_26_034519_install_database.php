@@ -105,8 +105,8 @@ class InstallDatabase extends Migration
             $table->increments('id');
             $table->string('name',255);
             $table->string('ma',50);
-            $table->integer('number')->default(0);
-            $table->double('max',10,0);
+            $table->integer('number')->default(0)->nullable();
+            $table->double('max',10,0)->nullable();
             $table->boolean('loai');
             $table->unsignedInteger('ngaytao');
             $table->unsignedInteger('ngayhethan');
@@ -234,7 +234,7 @@ class InstallDatabase extends Migration
             $table->string('sdtnguoinhan',10);
             $table->double('tongtientruocgiamgia',10,0);
             $table->double('tongtiensaugiamgia',10,0);
-            $table->string('ghichucuakhachhang',255);
+            $table->string('ghichucuakhachhang',255)->nullable();
             $table->char('phuongthucthanhtoan',5);
             $table->char('phuongthucgiaohang',5);
             $table->boolean('trangthai');
@@ -304,7 +304,7 @@ class InstallDatabase extends Migration
             $table->unsignedInteger('soluong');
             $table->timestamps();
             $table->foreign('idgiohang')->references('id')->on('giohang');
-            $table->foreign('idsanphamchitiet')->references('id')->on('sanpham');
+            $table->foreign('idsanphamchitiet')->references('id')->on('sanphamchitiet');
         });
 
         Schema::enableForeignKeyConstraints();

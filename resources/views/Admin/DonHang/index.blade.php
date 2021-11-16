@@ -76,13 +76,9 @@
                                             ?>
                                             </td>
                                             <td class="d-flex align-center">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('donhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
-                                                <form action="{{route('donhang.destroy',$item->id)}}"  method="post">
-                                                    @csrf
-                                                    {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                                </form>
-                                                <a name="" id="" class="btn btn-primary mx-2" href="{{url('quantri/donhangchitiet/detail/'.$item->id.'/edit')}}" role="button"><i class="fas fa-calendar-week"></i></a>
+                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('donhang.edit',$item->id)}}" role="button"><i class="fa fa-edit" title="Sửa Đơn Hàng"></i></a>
+                                               
+                                                <a name="" id="" class="btn btn-primary " href="{{url('quantri/donhangchitiet/detail/'.$item->id.'/edit')}}" role="button"><i class="fas fa-search-dollar"></i></a>
                                             </td>
                                         </tr>
 
