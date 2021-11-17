@@ -89,6 +89,9 @@ class HomeController extends Controller
 
     public function viewSanPham()
     {
+        $sanpham = $this->SanPham->getsanpham();
+
+        $this->data['sanpham'] = $sanpham;
         $this->data['pathActive'] = 'san-pham';
         $this->data['namePage'] = 'Sản phẩm';
         $this->data['breadcrumbArray'] = [
@@ -194,11 +197,15 @@ class HomeController extends Controller
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAll();
         $viewdetail = $this->Blog->editBlog($id);
+<<<<<<< HEAD
         $viewdetail2 = $this->Blog->editBlog($id);
          foreach($viewdetail2 as $detail) {
             $viewdt = $this->Blog->getblogbyiddm3($detail->id);
             $detail['viewdt'] = $viewdt;
         }    
+=======
+
+>>>>>>> 8b3120ea486185c796ed9661848d922dd7c90d23
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
         $this->data['viewdetail']    = $viewdetail;
@@ -216,11 +223,21 @@ class HomeController extends Controller
 
     public function viewDichVu()
     {
+        $dichvu = $this->Dichvu->getDichVu2();
+        $dichvu1 = $this->Dichvu->getDichVu1();
+        $dichvu2 = $this->Dichvu->getDichVu3();
+        $danhmuc = $this->DanhMuc->getalldanhmuc();
+
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
+        $this->data['dichvu'] = $dichvu;
+        $this->data['dichvu1'] = $dichvu1;
+        $this->data['dichvu2'] = $dichvu2;
+        $this->data['danhmuc'] = $danhmuc;
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
+        //dd($dichvu);
 
         return view("Site.pages.dichvu", $this->data);
     }
@@ -639,7 +656,7 @@ class HomeController extends Controller
 
                 // Ví dụ sdt: 0868970582 => +84868970582
                 $sdt = '+84' . substr($request->sdt, 1, strlen($request->sdt));
-                $message = '[Fbeauty]: ' . $OTP . ' la ma OTP cua ban. Ma se het han trong vong 10 phut. Vui long khong chia se ma nay trong bat ki truong hop nao!';
+                $message = '[Fbeauty]: ' . $OTP . ' la ma OTP cua ban. Ma se het han trong vong 60s. Vui long khong chia se ma nay trong bat ki truong hop nao!';
                 $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                 $timeOTPNotValid = $this->makeTimeOTPNotValid();
@@ -786,7 +803,7 @@ class HomeController extends Controller
 
     public function layDatLichCungNgay($request)
     {
-        $allDatLich = $this->DatLich->getAllCungCoSo($request->idCoSo);
+        $allDatLich = $this->DatLich->getDatLichCungCoSo($request->idCoSo);
 
         $datLichOfDay = array();
         foreach ($allDatLich as $row) {
@@ -847,7 +864,7 @@ class HomeController extends Controller
                 }
 
                 if ($request->idNhanVien > 0) {
-                    $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request);
+                    $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request->idNhanVien  );
                 } else {
                     $this->tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich);
                 }
@@ -873,12 +890,12 @@ class HomeController extends Controller
         }
     }
 
-    public function tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request)
+    public function tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $idNhanVien)
     {
         foreach ($datLichOfDay as $rowDatLichOfDate) {
             $time = date('H:i:s', $rowDatLichOfDate->thoigiandat);
             foreach ($Lich as $rowLich) {
-                if ($request->idNhanVien == $rowDatLichOfDate->idnhanvien) {
+                if ($idNhanVien == $rowDatLichOfDate->idnhanvien) {
                     if ($rowLich->gio == $time) {
                         $rowLich->coNhanVien = 'false';
                     }

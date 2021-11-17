@@ -1,6 +1,8 @@
 @extends('Admin.LayoutAdmin')
 @section('content')
-
+<?php
+    use app\Http\Controllers\Admin\KhachHangController;
+?>
 <div class="content-page">
     <div class="content">
 
@@ -86,8 +88,10 @@
                                                         <th>#</th>
                                                         <th>Nhân Viên Làm</th>
                                                         <th>Ngày bắt đầu</th>
-                                                        <th>Ngày Kết thúc</th>
-                                                        <th>Ghi Chú</th>
+                                                        <th>Dự kiến Kết thúc</th>
+                                                        <th width="15%">Ghi Chú</th>
+                                                        <th>Hoàn Thành</th>
+                                                        <th>Thanh Toán</th>
                                                         <th>Hành Động</th>
                                                     </tr>
                                                 </thead>
@@ -98,12 +102,29 @@
                                                         <tr>
                                                             <td>1</td>
                                                             <td>
-                                                                <img  class="img-common"  src="{{ asset($BASE_URL_UPLOAD_STAFF.$item->imgnv) }}"><br>
+                                                                <img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($BASE_URL_UPLOAD_STAFF.$item->imgnv) }}"><br>
                                                             </td>
                                                             <td>{{date('d-m-Y',$item->ngaybatdau) }}</td>
                                                             <td> {{date('d-m-Y',$item->dukienketthuc) }}</td>
-                                                            <td>{{$item->ghichu}}</td>
+                                                            <td>{{substr($item->ghichu,0,90)}} ..</td>
+                                                          
+                                                            <td>
+                                                                @if ($item->trangthai === 0)
+                                                                    <span class="badge badge-primary badge-pill float-left ">Đang Tiến hành<i class="mdi mdi-trending-up"></i> </span>
+                                                                @else
+                                                                    <span class="badge badge-success badge-pill float-left">Hoàn Thành<i class="mdi mdi-check"></i> </span>
+                                                                @endif
+                                                            </td>
+                                                              
+                                                            <td>
+                                                                 @if (KhachHangController::checkHoaDon($item->idlieutrinh))
+                                                                    <span class="badge badge-primary badge-pill float-left "><i class="fa fa-check-circle"></i> </span>
+                                                                 @else
+                                                                    <span class="badge badge-danger badge-pill float-left"><i class="fa fa-minus-circle"></i>  </span>
+                                                                 @endif
+                                                            </td>
                                                             <td class="d-flex justify-content-center">
+                                                                <a class="btn btn-success mr-2 mt-3" href="{{URL::to('quantri/khachhang/lieutrinh/'.$item->idlieutrinh.'/edit')}}" role="button"><i class="fa fa-info-circle"></i></a>
                                                                 <a class="btn btn-primary mr-2 mt-3" href="{{route('lieutrinh.edit',$item->idlieutrinh)}}" role="button"><i class="fa fa-edit"></i></a>
                                                                 <form action="{{URL::to('quantri/khachhang/xoalieutrinh/'.$item->idlieutrinh.'/delete')}}" method="post">
                                                                     @csrf

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KhachHang;
 use App\Http\Requests\LieuTrinh;
+use App\Models\Admin\HoaDonModel;
+use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
@@ -20,13 +22,15 @@ class KhachHangController extends Controller
         KhachHangRepository $KhachHang,
         LieuTrinhRepository $LieuTrinh,
         NhanVienRepository $NhanVien,
-        LieuTrinhChiTietRepository $LieuTrinhChiTiet
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet,
+        HoaDonRepository $HoaDon
         )
     {
         $this->KhachHang = $KhachHang;
         $this->LieuTrinh = $LieuTrinh;
         $this->NhanVien = $NhanVien;
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
+        $this->HoaDon = $HoaDon;
     }
 
     /**
@@ -67,7 +71,7 @@ class KhachHangController extends Controller
                 'password' => bcrypt($request->password),
                 'sdt' => $request->sdt,
                 'img' => $img,
-                'active' => $request->active
+                'active' => ($request->active ==='on') ? 1 : 0
             ];
             $this->KhachHang->create($KhachHang);
             return redirect('quantri/khachhang')->with('thanhcong', 'Thêm nhân viên thành công');
@@ -125,6 +129,7 @@ class KhachHangController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
         $password = $request->password;
         $passnew = "";
         if ($password == null) {
@@ -140,7 +145,7 @@ class KhachHangController extends Controller
             'active' => $request->active,
         ];
         if($request->urlHinh !== null){
-            $img = $this->uploadSingle($request->file('urlHinh'));
+            $img = $this->uploadSingle('public',$request->file('urlHinh'));
             $KhachHang['img'] = $img;
         }
 
@@ -189,16 +194,44 @@ class KhachHangController extends Controller
         }
     }
 
+    public function updateLieuTrinh(LieuTrinh $request,$id){
+       
+        $data = [
+            'idnhanvien' => $request->idnhanvien,
+            'ngaybatdau' => strtotime($request->ngaybatdau),
+            'dukienketthuc' => strtotime($request->dukienketthuc),
+            'ghichu' => $request->ghichu,
+        ];
+        $res = $this->LieuTrinh->update($id,$data);
+        if($res){
+            return redirect('quantri/khachhang/detail/'. $request->idkhachhang.'');
+        }else{
+           return $this->handleError('Có lỗi khi sửa');
+        }
+    }
+
     public function delLieuTrinh($id){
       
         $hasLieuTrinhChiTiet =  $this->LieuTrinhChiTiet->findLieuTrinhChiTietByIdLieuTrinh($id);
-     
+        $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($id);
         if(count($hasLieuTrinhChiTiet)>0){
             return $this->handleError('Không thể xoá vì đã tồn tại liệu trình chi tiết. Vui lòng xoá liệu trình chi tiết trước!');
-         }else{
+         }elseif(count($findHoaDon)){
+            return $this->handleError('Không thể xoá vì liệu trình đã thanh toán!');
+         }
+         else{
+
             $res = $this->LieuTrinh->delete($id);
             return redirect()->back();
          }
     }
 
+    public static function checkHoaDon($idLieuTrinh){
+        $findHoaDon = HoaDonModel::findHoaDonByIdLieuTrinh($idLieuTrinh);
+        if($findHoaDon && $findHoaDon->trangthai === 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

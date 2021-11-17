@@ -130,7 +130,7 @@ class DichVuController extends Controller
                 'trangthai' => $request->trangthai
             ];
             if($request->urlHinh !== null){
-                $img = $this->uploadSingle($request->file('urlHinh'));
+                $img = $this->uploadSingle('public',$request->file('urlHinh'));
                 $DichVu['img'] = $img;
             }
             $this->DichVu->update($id, $DichVu);

@@ -46,7 +46,7 @@ class DanhMucController extends Controller
     public function store(DanhMuc $request)
     {
 
-        $img =  $this->uploadSingle($request->img);
+        $img =  $this->uploadSingle('public',$request->img);
         $data = [
             'name'=> $request->name,
             'img'=> $img,
@@ -97,7 +97,7 @@ class DanhMucController extends Controller
         ];
 
         if($request->img){
-            $img =  $this->uploadSingle($request->img);
+            $img =  $this->uploadSingle('public',$request->img);
             $data['img'] = $img;
         }
 

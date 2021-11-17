@@ -49,7 +49,7 @@
                                                     <p><strong>Thông Tin Người Nhận</strong></p>
                                                     <p><strong>Tên người nhận : </strong>  {{ $donHang->tennguoinhan }} </p>
                                                     <p class="m-t-10"><strong>Số điện thoại : </strong> <span class="label label-pink"> {{ $donHang->sdtnguoinhan }} </span></p>
-                                                    <p class="m-t-10"><strong>Địa chỉ người nhận  : </strong> {{ $donHang->diachikhachhang }} </p>
+                                                    <p class="m-t-10"  style="width: 350px;"><strong>Địa chỉ người nhận  : </strong> {{ $donHang->diachikhachhang }} </p>
                                                 </div>
 
                                                 <div class="float-right">

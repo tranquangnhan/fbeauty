@@ -16,8 +16,9 @@ class installSeeder extends Seeder
     public function run()
     {
         DB::table('coso')->insert([
-            ['id'=>1,'name'=>'Cơ sở 1','diachi'=> 'Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
-            ['id'=>2,'name'=>'Cơ sở 2','diachi'=> '778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
+            ['id'=>1,'name'=>'Cơ sở 1','diachi'=> '55A – Đường 3/2 – Phường 11 – Quận 10 – TP. Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
+            ['id'=>2,'name'=>'Cơ sở 2','diachi'=> '18A Ngô Văn Năm, Quận 1, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
+            ['id'=>3,'name'=>'Cơ sở 3','diachi'=> 'Tầng 3 Tòa Udic Complex, Hoàng Đạo Thúy, Hà Nội', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343']
         ]);
         DB::table('danhmuc')->insert([
             ['id' => 1, 'name'=>'Chăm sóc da mặt','img'=>'photo-1635608885.jpg','slug'=> Str::slug('Chăm sóc da mặt', '-'), 'loai'=>'1'],
@@ -117,16 +118,21 @@ class installSeeder extends Seeder
 
             Trẻ hóa da với Công nghệ HiFu S+ (High Intensity Focus Ultrasound)
             Công nghệ Hifu là công nghệ duy nhất hiện nay sử dụng bước sóng có thể đi vào tới độ sâu 3.0-4.5mm dưới bề mặt da. Đây được coi là khu vực sản sinh nhiều nhất collagen và elastin – các tế bào giúp da săn chắc, căng tràn và tươi trẻ. Sau khi đi sâu vào tận cùng lớp hạ bì, sóng siêu âm hội tụ cường độ cao sẽ phát tán năng lượng, săn gọn các mô cơ.', 'trangthai'=> 1],
+            ['id'=>6,'name'=>'Dịch Vụ Giảm Béo', 'slug' => Str::slug('Dịch Vụ Giảm Béo'), 'img'=>'giam_beo.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Hiện nay vấn đề giảm cân đang trở nên rất HOT và sôi động trên các cộng đồng về sức khỏe, tập gym, thậm chí là ở các fb cá nhân. Đang có sự biến đổi... ', 'dongia'=>3000000, 'noidung'=>'Tăng cân, béo phì là vấn đề mà rất nhiều chị em lo lắng, việc chăm lo cho vóc dáng dường như đã trở thành nhu cầu thiết yếu của con người trong cuộc sống hiện đại.
+
+            Do đó, giảm béo là một trong những loại hình dịch vụ “hot” nhất tại các Spa hiện nay.
+
+            Khi biết được nhu cầu làm đẹp cũng như các dịch vụ mang đến nhiều khách hàng như thế thì chẳng có lý gì mà các Spa có thể bỏ qua cả.', 'trangthai'=> 1],
 
         ]);
 
         DB::table('nhanvien')->insert([
-            ['id'=>1,'idcoso'=>1,'iddichvu'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> '$2y$10$iimuFe7voEEthMTFQvRBX.hk1XrL3O1W7lXTZPCxktAIWkuEmY692','role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>2,'idcoso'=>1,'iddichvu'=>1, 'email'=>'longnh.2401@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Long', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>3,'idcoso'=>1,'iddichvu'=>1, 'email'=>'tuong2712@gmail.com','password'=> '$2y$10$nlRY7DRJfQQLSbI0aV7h9usw0waQxL9uGbNFQChi.06.YIigQCC3q','role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>4,'idcoso'=>1,'iddichvu'=>1, 'email'=>'nhanvien@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'nhân viên', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>5,'idcoso'=>1,'iddichvu'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>6,'idcoso'=>1,'iddichvu'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'idcoso'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> '$2y$10$iimuFe7voEEthMTFQvRBX.hk1XrL3O1W7lXTZPCxktAIWkuEmY692','role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>2,'idcoso'=>1, 'email'=>'longnh.2401@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Long', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'idcoso'=>1, 'email'=>'tuong2712@gmail.com','password'=> '$2y$10$nlRY7DRJfQQLSbI0aV7h9usw0waQxL9uGbNFQChi.06.YIigQCC3q','role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>4,'idcoso'=>1, 'email'=>'nhanvien@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'nhân viên', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>5,'idcoso'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>6,'idcoso'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('giamgia')->insert([
             ['id'=>1,'name'=>'MAXSALE150','ma'=>'FB01', 'number'=>25000,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'1635699600' ,'ngayhethan'=>'1637341200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
@@ -609,56 +615,8 @@ class installSeeder extends Seeder
 
         ]);
         DB::table('lieutrinhchitiet')->insert([
-            ['id'=>1,'idlieutrinh' => 1, 'iddichvu'=> 1,'idnhanvien'=> 1, 'mota' =>'Bước 1: Kiểm tra tình trạng da
-            chăm sóc da cơ bản tại spa
-            Kiểm tra da/ Soi da là bước đầu tiên trong quy trình chăm sóc da cơ bản tại spa
-            Hầu hết các spa uy tín hiện nay đều trang bị máy soi da để phân tích và đánh giá chi tiết tình trạng da của bạn. Khi nắm được da của bạn thuộc loại da nào và đang gặp vấn đề gì sẽ đưa ra được những lời khuyên và phương pháp chăm sóc da phù hợp. Một phương pháp làm đẹp có thể tốt với người này nhưng lại không tốt với người kia, đó rất có thể do chúng ta chưa thực sự hiểu làn da của mình.
-
-
-
-            Bước 2: Tẩy trang
-            Đây là bước bắt buộc đối với các khách hàng có lớp trang điểm trên mặt, kể cả kem chống nắng. Bởi vì các bước làm sạch thông thường sẽ không thể lấy đi hết lớp makeup trên da. Các kỹ thuật viên sẽ dùng bông cotton thấm nước tẩy trang lau toàn bộ mặt theo chiều từ dưới lên để tẩy sạch lớp trang điểm và bụi bẩn trên da.
-
-            Các kỹ thuật viên có thể bỏ qua bước này nếu da khách hàng không thoa bất kỳ sản phẩm nào lên mặt.
-
-            chăm sóc da cơ bản tại spa
-            Rửa mặt kết hợp massage nhẹ nhàng bắt đầu quá trình chăm sóc da hoàn hảo
-            Rửa mặt sẽ giúp lấy đi những bụi bẩn và làm sạch nước tẩy trang còn sót lại trên da. Tùy thuộc vào tình trạng da của bạn mà kỹ thuật viên sẽ sử dụng loại sữa/gel rửa mặt cho da dầu, da khô hay da mụn,… Tuy nhiên, thông thường tại các spa đều sử dụng sản phẩm có nguồn gốc tự nhiên, tính chất dịu nhẹ để an toàn cho da.
-
-
-
-            Bước 4: Tẩy tế bào chết
-            Bước này giúp loại bỏ các lớp sừng hóa tồn tại sâu bên trong lỗ chân lông. Chỉ có tiến hành theo thứ tự này, làn da mới được làm sạch chuyên sâu. Với bước này các chuyên viên làm đẹp sẽ dùng kem tẩy tế bào chết có hạt chứa AHA để làm sạch và trắng da. Đồng thời, thực hiện các động tác massage với các chuyển động tròn nhỏ bằng đầu ngón tay.
-            Tuy nhiên, bước này chỉ nên thực hiện 1-2 lần/1 tuần thôi nha. Nếu các bạn mới tẩy da chết rồi đi spa thì có thể nhắc nhân viên bỏ qua bước này.
-
-
-
-            Bước 5: Xông hơi, hút dầu, hút mụn cám
-            Việc xông hơi sẽ giúp cho lỗ chân lông giãn nở, các chuyên viên dễ dàng hút sạch dầu thừa và mụn cám trên da bằng máy hút mụn. Công đoạn này cần làm một cách thận trọng và dụng cụ được đảm bảo vệ sinh.
-
-
-
-            chăm sóc da cơ bản tại spa
-            Kỹ thuật viên cần đàm bảo ống hút đã được thay mới, sát khuẩn vệ sinh trước khi dùng cho khách
-
-
-            Bước 6: Massage mặt
-            Massage mặt thường xuyên giúp các cơ thịt không bị teo tóp, tăng lực co giãn và cơ đàn hồi nên có tác dụng chống lão hoá đồng thời xoá nếp nhăn không mong muốn. Massage còn điều tiết và tăng cường cơ năng thần kinh, kích thích máu tuần hoàn khiến cơ được cung cấp đủ máu và chất dinh dưỡng. Tuy nhiên, bước này chỉ dành cho các bạn có làn da không mụn thôi nha. Bởi việc sử dụng dầu massage và chà xát lên da có thể khiến cho tình trạng da mụn tồi tệ hơn đó.
-
-            chăm sóc da cơ bản tại spa
-            Massage mặt là bước mà khách hàng được thư giãn tối da khi đến chăm sóc da tại spa
-
-
-            Bước 7: Đắp mặt nạ
-            Mặt nạ cung cấp các dưỡng chất cần thiết cho da, chống lão hóa và trắng sáng hơn. Thời gian đắp mặt nạ trên da chỉ nên để 20-30 phút thôi nha. Nếu để quá lâu, da sẽ bị khô đi và có hiệu quả không mong muốn.
-
-
-
-            Bước 8: Dưỡng ẩm cho da
-            Quy trình chăm sóc da cơ bản ở spa sẽ được kết thúc bằng bước dưỡng ẩm cho da bằng kem dưỡng hoặc nước cân bằng độ ẩm cho làn da.
-
-            Trên đây là 8 bước trong quy trình chăm sóc da cơ bản tại spa mà bạn nên áp dụng vào cơ sở của mình hoặc tham khảo để lựa chọn spa sử dụng dịch vụ. Giá dịch vụ cũng phụ thuộc rất nhiều vào chất lượng của từng spa nên bạn cần lựa chọn kỹ lưỡng để chăm sóc làn da của mình nhé!', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang1.jpg'],
-            ['id'=>2,'idlieutrinh' => 2, 'iddichvu'=> 2,'idnhanvien'=> 2, 'mota' =>'Các bước chuẩn bị xăm, phun môi:
+            ['id'=>1,'idlieutrinh' => 1, 'iddichvu'=> 1,'idnhanvien'=> 1, 'ghichu' =>'Bước 1: Kiểm tra tình trạng da trong quy trình chăm sóc da cơ bản tại spa mà bạn nên áp dụng vào cơ sở của mình hoặc tham khảo để lựa chọn spa sử dụng dịch vụ. Giá dịch vụ cũng phụ thuộc rất nhiều vào chất lượng của từng spa nên bạn cần lựa chọn kỹ lưỡng để chăm sóc làn da của mình nhé!', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang1.jpg'],
+            ['id'=>2,'idlieutrinh' => 2, 'iddichvu'=> 2,'idnhanvien'=> 2, 'ghichu' =>'Các bước chuẩn bị xăm, phun môi:
 
             Chọn màu môi, dáng môi
             Tiêm 1-2 mũi thuốc tê vào môi
@@ -675,7 +633,7 @@ class installSeeder extends Seeder
             Không nên chọn những màu quá đỏ, sẽ khó đánh loại son khác nếu chúng ta muốn có chút thay đổi. Xu hướng chung là chọn gram màu nhẹ nhàng
             Không nên chọn màu có thiên hướng quá cam vì sau khi ngả màu, màu môi sẽ hơi vàng
             Nên chọn màu đỏ không pha để khi xuống màu nó sẽ thành đỏ hoặc hồng.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang2.jpg'],
-            ['id'=>3,'idlieutrinh' => 3, 'iddichvu'=> 3,'idnhanvien'=> 3, 'mota' =>'Bước 1: Làm sạch
+            ['id'=>3,'idlieutrinh' => 3, 'iddichvu'=> 3,'idnhanvien'=> 3, 'ghichu' =>'Bước 1: Làm sạch
 
             Bước đầu tiên này nên thực hiện vào mỗi buổi sáng và buổi tối.
 
@@ -710,7 +668,7 @@ class installSeeder extends Seeder
             SPF được khuyến nghị hàng ngày ở mọi lứa tuổi.
 
             Một lưu ý đó là bạn nên thoa một loại kem dưỡng bằng chất lỏng nhẹ trước ví dụ như huyết thanh, kem dưỡng ẩm, sau đó mới đến kem chống nắng.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang3.jpg'],
-            ['id'=>4,'idlieutrinh' => 4, 'iddichvu'=> 4,'idnhanvien'=> 4, 'mota' =>'1. Bước 1: Làm sạch và sát khuẩn da mặt
+            ['id'=>4,'idlieutrinh' => 4, 'iddichvu'=> 4,'idnhanvien'=> 4, 'ghichu' =>'1. Bước 1: Làm sạch và sát khuẩn da mặt
             Đây là bước cơ bản cho tất cả các liệu trình chăm sóc và điều trị da liễu. Làm sạch da sẽ loại bỏ vi khuẩn trú ngụ trên da, hạn chế tối đa vi khuẩn xâm nhập sâu vào nang lông trong khi nặn mụn.
             Bước làm sạch này thường sử dụng:
 
@@ -729,7 +687,7 @@ class installSeeder extends Seeder
             Đầu nhọn của que lấy mụn sẽ dùng để châm đầu mụn, đầu tròn còn lại dùng để ấn xuống để đẩy nhân mụn ra ngoài. Thao tác nặn mụn sẽ dùng lực vừa phải để vừa đẩy nhân mụn ra ngoài mà không gây tổn thương nhiều cho da.
             5. Bước 5: Sát khuẩn và chăm sóc da sau mụn
             Sau khi nặn mụn, các chuyên gia, bác sĩ sẽ sát trùng vị trí mụn. Dung dịch thường được sử dụng là nước muối sinh lý hoặc các dung dịch sát khuẩn chuyên dụng như Povidine 10% để ngăn ngừa nhiễm trùng, nhiễm vi khuẩn.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang4.jpg'],
-            ['id'=>5,'idlieutrinh' => 5, 'iddichvu'=> 5,'idnhanvien'=> 5, 'mota' =>'Thời gian thực hiện và các bước trong liệu trình Điều Trị Mụn Lưng tại Fbeauty
+            ['id'=>5,'idlieutrinh' => 5, 'iddichvu'=> 5,'idnhanvien'=> 5, 'ghichu' =>'Thời gian thực hiện và các bước trong liệu trình Điều Trị Mụn Lưng tại Fbeauty
             Bước 1: Rửa và làm sạch các lớp bụi bẩn trên bề mặt da
 
             Bước 2: Tẩy tế bào chết giúp loại bỏ lớp tế bào già cội sần sùi thô ráp, đồng thời làm thông thoáng lỗ chân lông để các bước điều trị tiếp theo hiệu quả hơn.
@@ -747,7 +705,7 @@ class installSeeder extends Seeder
             Bước 8: Thắp ánh sáng sinh học ức chế tuyến bã nhờn, hạn chế nhiễm trùng vết thương, giảm kích ứng da, làm diệu và giảm đau, phục hồi tế bào da hư tổn, kích thích tuần hoàn máu, tái tạo da.
 
             Bước 9: Phun oxy giúp làm sạch sâu, bổ sung dưỡng chất cần thiết nuôi dưỡng một làn da tươi sáng, khỏe mạnh từ bên trong đồng thời ngăn chặn mọi quá trình lão hóa', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang5.jpg'],
-            ['id'=>6,'idlieutrinh' => 6, 'iddichvu'=> 1,'idnhanvien'=> 6, 'mota' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            ['id'=>6,'idlieutrinh' => 6, 'iddichvu'=> 1,'idnhanvien'=> 6, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
             Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
 
             QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC

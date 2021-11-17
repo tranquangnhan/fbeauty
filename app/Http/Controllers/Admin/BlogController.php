@@ -53,7 +53,7 @@ class BlogController extends Controller
     public function store(Blog $request)
     {
 
-        $img = $this->uploadSingle($request->file('urlHinh'));
+        $img = $this->uploadSingle('public',$request->file('urlHinh'));
 
             $Blog = [
                 'name' => $request->name,
@@ -113,10 +113,10 @@ class BlogController extends Controller
             ];
 
             if($request->urlHinh !== null){
-                $img = $this->uploadSingle($request->file('urlHinh'));
+                $img = $this->uploadSingle('public',$request->file('urlHinh'));
                 $Blog['img'] = $img;
             }
-            dd($Blog);
+        
             $this->Blog->update($id, $Blog);
             return redirect('quantri/blog')->with('thanhcong', 'Sửa bài viết thành công');
         

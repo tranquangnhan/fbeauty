@@ -457,7 +457,6 @@ $('.control-item').click(function (e) {
 function spinnerTurnOn() {
     boxSpinner.fadeIn(50);
     boxSpinner.addClass('show');
-
 }
 
 function spinnerTurnOff() {
@@ -484,3 +483,9 @@ $('.custom-error').hover(function () {
     }
 );
 
+
+// $('.show-giohang-fixed').click(function (e) {
+//     e.preventDefault();
+//     let id = $(this).attr('data-target');
+//     $(id).addClass('in');
+// });

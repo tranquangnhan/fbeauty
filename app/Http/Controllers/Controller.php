@@ -16,6 +16,7 @@ class Controller extends BaseController
     const BASE_URL_UPLOAD = 'Admin/assets/images/users/';
     const URL_IMG = 'uploads/';
     const BASE_URL_UPLOAD_STAFF = 'uploads/imgusers/';
+    const BASE_URL_UPLOAD_CUSTOMER = 'uploads/khachhang/';
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
     const LOAI_DANHMUC_BLOG = 3;
@@ -40,11 +41,11 @@ class Controller extends BaseController
     const LOAIGIAM=1;
 
 
-    function uploadSingle($file){
+    function uploadSingle($path,$file){
         if($file == null) return null;
         $filename = 'photo-' . time() . '.' . $file->getClientOriginalExtension();
 
-        Storage::disk('public')->put($filename, file_get_contents($file));
+        Storage::disk($path)->put($filename, file_get_contents($file));
 
         return $filename;
     }

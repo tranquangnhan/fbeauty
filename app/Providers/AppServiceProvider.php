@@ -4,6 +4,8 @@ namespace App\Providers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\CoSoController;
 use App\Models\Admin\CosoModel;
+use App\Repositories\YeuThich\YeuThichRepository;
+use App\Repositories\YeuThich\YeuThichRepositoryInterface;
 use Illuminate\Support\Facades\View;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DanhMuc\DanhmucRepositoryInterface;
@@ -53,6 +55,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(LichRepositoryInterface::class, LichRepository::class);
         $this->app->singleton(LieuTrinhRepositoryInterface::class,LieuTrinhRepository::class);
         $this->app->singleton(LieuTrinhChiTietRepositoryInterface::class, LieuTrinhRepository::class);
+        $this->app->singleton(YeuThichRepositoryInterface::class, YeuThichRepository::class);
+
     }
 
     /**
@@ -83,6 +87,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function($view )
         {
             $view->with('BASE_URL_UPLOAD_STAFF', Controller::BASE_URL_UPLOAD_STAFF);
+            $view->with('BASE_URL_UPLOAD_CUSTOMER', Controller::BASE_URL_UPLOAD_CUSTOMER);
             $view->with('BASE_URL_UPLOAD', Controller::BASE_URL_UPLOAD);
             $view->with('URL_IMG', Controller::URL_IMG);
         }
