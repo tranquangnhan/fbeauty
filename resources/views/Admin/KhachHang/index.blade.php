@@ -35,7 +35,7 @@
                                             <td> 
                                                 <img  class="img-common"  src="{{ asset('uploads/'.$item->img) }}">
                                             </td> 
-                                            <td>
+                                            <td> 
                                                 {{$item->sdt}}
                                             </td> 
                                             <td>

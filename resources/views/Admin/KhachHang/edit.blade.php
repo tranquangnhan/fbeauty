@@ -86,7 +86,7 @@
                             <div class="form-group ml-2 mt-3">
                                 <div class="form-group">
                                     <div class="checkbox">
-                                        <input id="remember-1" {{($KhachHang->trangthai == 1 ) ? 'checked' : '' }} type="checkbox" name="trangthai" value="0"  data-parsley-multiple="remember-1">
+                                        <input id="remember-1" {{($KhachHang->active == 1 ) ? 'checked' : '' }} type="checkbox" name="active" value="1"  data-parsley-multiple="remember-1">
                                         <label for="remember-1">Trạng Thái ? </label>
                                     </div>
                                 </div>      
@@ -94,7 +94,7 @@
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
                                 <a href="/quantri/khachhang" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
-                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
+                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Sửa">
                             </div>
                         </div>
 

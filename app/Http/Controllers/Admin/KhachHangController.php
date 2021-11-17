@@ -57,8 +57,10 @@ class KhachHangController extends Controller
      */
     public function store(KhachHang $request)
     {
-
             $img = $this->uploadSingle($request->file('urlHinh'));
+            if($img == null){
+                $img = 'defaul.jpg';
+            }
             $KhachHang = [
                 'name' => $request->name,
                 'email' => $request->email,
@@ -135,7 +137,7 @@ class KhachHangController extends Controller
             'email' => $request->email,
             'password' => $passnew,
             'sdt' => $request->sdt,
-            'active' => $request->active
+            'active' => $request->active,
         ];
         if($request->urlHinh !== null){
             $img = $this->uploadSingle($request->file('urlHinh'));

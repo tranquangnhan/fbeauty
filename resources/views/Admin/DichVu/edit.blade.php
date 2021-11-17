@@ -60,18 +60,19 @@
                             </div>
                             <div class="form-group ml-0 col-12">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="w-100" for="files">Tải ảnh dịch vụ:(<span class="text-danger">*</span>)
-                                            <div class="wrapper">
-                                                <div class="file-upload mt-2">
-                                                    <input type="file" id="files"
-                                                           name="urlHinh">
-                                                           <i class="fa fa-download " style="font-size:52px;color:blue"></i>
-                                                        </div>
+                                    <div class="col-md-4">
+                                        <label class="w-100" for="files">Tải ảnh dịch vụ neff:<span style="color:red;"> (*)</span>
+                                            <div class="wrapper"> <br>
+                                                <div class="file-upload mt-1">
+                                                    <input type="file" id="files" name="urlHinh"
+                                                        value="{{$DichVu->img}}">
+                                                    <i class="fa fa-download " style="font-size:52px;color:blue"></i>
+                                                </div>
                                             </div>
+                                            @error('img')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                         </label>
-                                        <input type="hidden" name="imgcu"
-                                               value="{{$DichVu->img}}">
                                     </div>
                                     <div class="col-md-6">
                                         <div id="imageA" class="mt-2">
@@ -108,7 +109,7 @@
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
                                 <a href="/quantri/dichvu" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
-                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
+                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Sửa">
                             </div>
                         </div>
 
