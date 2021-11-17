@@ -21,19 +21,13 @@
                 <li class="nav-item {{ ($pathActive == 'san-pham') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/san-pham">Sản Phẩm</a>
                     <ul class="dropdown-custom-1">
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+
                     </ul>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'dich-vu') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/dich-vu">Dịch Vụ</a>
                     <ul class="dropdown-custom-1">
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+
                     </ul>
                 </li>
 
@@ -46,10 +40,7 @@
                 <li class="nav-item {{ ($pathActive == 'bai-viet') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/bai-viet">Blog</a>
                     <ul class="dropdown-custom-1">
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+
                     </ul>
                 </li>
             </ul>

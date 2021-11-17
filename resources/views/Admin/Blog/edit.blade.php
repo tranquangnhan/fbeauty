@@ -91,7 +91,7 @@
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
                                 <a href="/quantri/blog" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
-                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
+                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Sửa">
                             </div>
                         </div>
 

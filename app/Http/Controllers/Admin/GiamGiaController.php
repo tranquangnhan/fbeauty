@@ -126,9 +126,9 @@ class GiamGiaController extends Controller
 
        $this->GiamGia->update($id,$data);
 
-       return redirect('quantri/giamgia')->with('thanhcong', 'Sửa nhân viên thành công');
+       return redirect('quantri/giamgia')->with('thanhcong', 'Sửa giảm giá thành công');
     } else {
-        return redirect('quantri/giamgia')->with('thatbai', 'Avatar không hợp lệ');
+        return redirect('quantri/giamgia')->with('thatbai', 'giảm giá không hợp lệ');
     }
 
         // return redirect('quantri/giamgia')->with('success','Sửa thành công');

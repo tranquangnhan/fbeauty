@@ -57,7 +57,7 @@ class DichVuController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DichVu $request )
     {
 
         $this->validate($request, [
@@ -117,7 +117,7 @@ class DichVuController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DichVu $request, $id)
     {
             $DichVu = [
                 'name' => $request->name,
@@ -129,12 +129,10 @@ class DichVuController extends Controller
                 'noidung' => $request->noidung,
                 'trangthai' => $request->trangthai
             ];
-
             if($request->urlHinh !== null){
                 $img = $this->uploadSingle('public',$request->file('urlHinh'));
                 $DichVu['img'] = $img;
             }
-
             $this->DichVu->update($id, $DichVu);
             return redirect('quantri/dichvu')->with('thanhcong', 'Sửa dịch vụ thành công');
 

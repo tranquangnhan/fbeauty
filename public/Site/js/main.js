@@ -457,7 +457,6 @@ $('.control-item').click(function (e) {
 function spinnerTurnOn() {
     boxSpinner.fadeIn(50);
     boxSpinner.addClass('show');
-
 }
 
 function spinnerTurnOff() {

@@ -89,6 +89,9 @@ class HomeController extends Controller
 
     public function viewSanPham()
     {
+        $sanpham = $this->SanPham->getsanpham();
+
+        $this->data['sanpham'] = $sanpham;
         $this->data['pathActive'] = 'san-pham';
         $this->data['namePage'] = 'Sản phẩm';
         $this->data['breadcrumbArray'] = [
@@ -149,30 +152,28 @@ class HomeController extends Controller
 
     public function viewBaiViet() {
         $blog      = $this->Blog->getBlog1();
-        $danhmuc   = $this->DanhMuc->getAll();
-        // foreach($danhmuc as $dm) {
-        //     $blogbyid = $this->Blog->getblogbyiddm($dm->id);
-        //     $danhmuc['blogs'] = $blogbyid;
-        // }
+        $listdanhmuc   = $this->DanhMuc->getAll();
+        $listdanhmuc2   = $this->DanhMuc->getall2danhmuc();
+        
+        foreach($listdanhmuc as $dm) {
+            $skip = 0;
+            $take = 6;
+            $blogbyid = $this->Blog->getBlogByIdDanhmuc($dm->id, $skip, $take);
+            $dm['blogbyid'] = $blogbyid;
+        }    
+        foreach($listdanhmuc2 as $dm) {
+            $skip_0 = 0;
+            $take_3 = 3;
+            $blogbyid2 = $this->Blog->getBlogByIdDanhmuc($dm->id, $skip_0, $take_3);
+            $dm['blogbyid2'] = $blogbyid2;
+        }    
 
         // dd($listdanhmuc);
-        // $getblogbyiddm   = $this->Blog->getblogbyiddm($id);
-        // for ($y = 0; $y < count($danhmuc); $y++){
-        //     foreach ($danhmuc[$y] as $datlich)  {    
-        //         // $arrayIddichvu = [];
-        //         // $arrayIddichvu = json_decode( $datlich->id);
-        //         // $idd = $datlich->id;
-        //         // 
-        //         dd($blogbyid);
-                
-        //     }
-        // }
-    
+        $danhmuc   = $this->DanhMuc->getAll();
         $getBlog2     = $this->Blog->getBlog2();
         $blog3     = $this->Blog->getLastWeek1();
         $blog4     = $this->Blog->getLastWeek2();
         $blognew   = $this->Blog->getBlognew();
-        // $getblogbyiddm = $this->Blog->getblogbyiddm($id);
 
         $this->data['blog']     = $blog;
         $this->data['blog']     = $blog;
@@ -181,7 +182,8 @@ class HomeController extends Controller
         $this->data['blognew']    = $blognew;
         $this->data['danhmuc']    = $danhmuc;
         $this->data['getBlog2']     = $getBlog2;
-        // $this->data['getblogbyiddm'] = $getblogbyiddm;
+        $this->data['listdanhmuc'] = $listdanhmuc;
+        $this->data['listdanhmuc2'] = $listdanhmuc2;
 
         $this->data['pathActive']          = 'bai-viet';
         $this->data['namePage']            = 'Bài viết';
@@ -195,10 +197,19 @@ class HomeController extends Controller
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAll();
         $viewdetail = $this->Blog->editBlog($id);
-        
+<<<<<<< HEAD
+        $viewdetail2 = $this->Blog->editBlog($id);
+         foreach($viewdetail2 as $detail) {
+            $viewdt = $this->Blog->getblogbyiddm3($detail->id);
+            $detail['viewdt'] = $viewdt;
+        }    
+=======
+
+>>>>>>> 8b3120ea486185c796ed9661848d922dd7c90d23
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
         $this->data['viewdetail']    = $viewdetail;
+        $this->data['viewdetail2']    = $viewdetail2;
 
         $this->data['pathActive']          = 'bai-viet';
         $this->data['namePage']            = 'Tên Bài viết';
@@ -212,11 +223,21 @@ class HomeController extends Controller
 
     public function viewDichVu()
     {
+        $dichvu = $this->Dichvu->getDichVu2();
+        $dichvu1 = $this->Dichvu->getDichVu1();
+        $dichvu2 = $this->Dichvu->getDichVu3();
+        $danhmuc = $this->DanhMuc->getalldanhmuc();
+
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
+        $this->data['dichvu'] = $dichvu;
+        $this->data['dichvu1'] = $dichvu1;
+        $this->data['dichvu2'] = $dichvu2;
+        $this->data['danhmuc'] = $danhmuc;
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
+        //dd($dichvu);
 
         return view("Site.pages.dichvu", $this->data);
     }
@@ -269,6 +290,31 @@ class HomeController extends Controller
             ]);
         }
     }
+
+    public function getBlogsPagi(Request $request)
+    {
+        try {
+            if ($request->ajax()) {               
+                $blog = $this->Blog->getBlogByIdDanhmuc($request->id, $request->skip, $request->take);
+
+                $response = Array(
+                    'success' => true,
+                    'blog' => $blog,                    
+                );
+                
+
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage()
+            ]);
+        }
+    }
+
 
     public function datLich(Request $request)
     {
@@ -610,7 +656,7 @@ class HomeController extends Controller
 
                 // Ví dụ sdt: 0868970582 => +84868970582
                 $sdt = '+84' . substr($request->sdt, 1, strlen($request->sdt));
-                $message = '[Fbeauty]: ' . $OTP . ' la ma OTP cua ban. Ma se het han trong vong 10 phut. Vui long khong chia se ma nay trong bat ki truong hop nao!';
+                $message = '[Fbeauty]: ' . $OTP . ' la ma OTP cua ban. Ma se het han trong vong 60s. Vui long khong chia se ma nay trong bat ki truong hop nao!';
                 $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                 $timeOTPNotValid = $this->makeTimeOTPNotValid();
@@ -757,7 +803,7 @@ class HomeController extends Controller
 
     public function layDatLichCungNgay($request)
     {
-        $allDatLich = $this->DatLich->getAllCungCoSo($request->idCoSo);
+        $allDatLich = $this->DatLich->getDatLichCungCoSo($request->idCoSo);
 
         $datLichOfDay = array();
         foreach ($allDatLich as $row) {
@@ -818,7 +864,7 @@ class HomeController extends Controller
                 }
 
                 if ($request->idNhanVien > 0) {
-                    $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request);
+                    $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request->idNhanVien  );
                 } else {
                     $this->tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich);
                 }
@@ -844,12 +890,12 @@ class HomeController extends Controller
         }
     }
 
-    public function tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request)
+    public function tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $idNhanVien)
     {
         foreach ($datLichOfDay as $rowDatLichOfDate) {
             $time = date('H:i:s', $rowDatLichOfDate->thoigiandat);
             foreach ($Lich as $rowLich) {
-                if ($request->idNhanVien == $rowDatLichOfDate->idnhanvien) {
+                if ($idNhanVien == $rowDatLichOfDate->idnhanvien) {
                     if ($rowLich->gio == $time) {
                         $rowLich->coNhanVien = 'false';
                     }
