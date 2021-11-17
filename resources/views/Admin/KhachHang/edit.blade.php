@@ -74,7 +74,7 @@
                             <div class="form-group ml-2 mt-3">
                                 <div class="form-group">
                                     <div class="checkbox">
-                                        <input id="remember-1" {{($KhachHang->active === 1 ) ? 'checked' : '' }} type="checkbox" name="active"   data-parsley-multiple="remember-1">
+                                        <input id="remember-1" {{($KhachHang->active == 1 ) ? 'checked' : '' }} type="checkbox" name="active" value="1"  data-parsley-multiple="remember-1">
                                         <label for="remember-1">Trạng Thái ? </label>
                                     </div>
                                 </div>      

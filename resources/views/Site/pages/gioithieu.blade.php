@@ -59,17 +59,19 @@
         </div>
     </div>
     <div class="video">
-        <iframe width="100%" height="550" src="https://www.youtube.com/embed/5RFqEdSy9nQ"
+        <iframe width="100%" style="border:2px solid #e87c7b;" height="550" src="https://www.youtube.com/embed/5RFqEdSy9nQ?autoplay=1"
         title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
         clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+    @include('Site.components.gioithieulieutrinh')
+
     <div class="introduce mb-5 col-11 mt-5 text-center container-fluid">
         <div class="card-body mt-5 nsl">
-            <i class="mb-3"><span>Trải nghiệm nghệ thuật chăm sóc</span></i>
+            <i class="mb-5"><span>Trải nghiệm nghệ thuật chăm sóc</span></i>
             <h1 class="">Hội đồng sáng lập</h1>
             <p class="card-text">Cùng với hàng ngàn nhân viên chuyên ngành Spa họ đã tạo nên một FBeauty hoàn thiện như hiện nay.</p>
         </div>
-        <div class="card-deck mt-3">
+        <div class="card-deck mt-4 mb-5">
             <div class="card container text-center border-none">
                 <img src="{{ asset('Site/images') }}/huyen.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">

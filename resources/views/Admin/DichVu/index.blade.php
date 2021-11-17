@@ -37,8 +37,8 @@
                                             <td>
                                                 {{$item->namedm}}
                                             </td> 
-                                            <td>
-                                                {{$item->motangan}}
+                                            <td >
+                                               <p style="width: 100%!important;">{{$item->motangan}}</p> 
                                             </td> 
                                             <td>
                                                 {{number_format($item->dongia), ''}} VND
