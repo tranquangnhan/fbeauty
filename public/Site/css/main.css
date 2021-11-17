@@ -71,12 +71,14 @@ body {
 }
 
 .logo-custom {
-    background: var(--main-color);
-    padding: .2em 1.2em;
+    /* background: var(--main-color); */
+    /* padding: .2em 1.2em;
     font-weight: bold;
     font-size: 1em;
     color: white;
-    font-size: 2em;
+    font-size: 2em; */
+    max-width: 6rem;
+    object-fit: contain;
 }
 
 .header-img {

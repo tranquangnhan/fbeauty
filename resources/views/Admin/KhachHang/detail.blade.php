@@ -82,6 +82,7 @@
                                                      @endif
                                                 </div>
                                             </div>
+                                           
                                             <table class="table table-centered mb-0" id="btn-editable">
                                                 <thead>
                                                     <tr>
@@ -95,7 +96,7 @@
                                                         <th>Hành Động</th>
                                                     </tr>
                                                 </thead>
-                                            
+
                                                 <tbody>
                                                     @foreach ($LieuTrinh as $item)
                                                         
@@ -104,13 +105,15 @@
                                                             <td>
                                                                 <img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($BASE_URL_UPLOAD_STAFF.$item->imgnv) }}"><br>
                                                             </td>
-                                                            <td>{{date('d-m-Y',$item->ngaybatdau) }}</td>
+                                                            <td>{{date('d-m-Y',$item->ngaybatdau) $countLieuTrinhChiTiet}} </td>
                                                             <td> {{date('d-m-Y',$item->dukienketthuc) }}</td>
                                                             <td>{{substr($item->ghichu,0,90)}} ..</td>
-                                                          
+                                                           
                                                             <td>
                                                                 @if ($item->trangthai === 0)
-                                                                    <span class="badge badge-primary badge-pill float-left ">Đang Tiến hành<i class="mdi mdi-trending-up"></i> </span>
+                                                                    @if($countLieuTrinhChiTiet>0)
+                                                                         <span class="badge badge-primary badge-pill float-left ">Đang Tiến hành<i class="mdi mdi-trending-up"></i> </span>
+                                                                    @endif
                                                                 @else
                                                                     <span class="badge badge-success badge-pill float-left">Hoàn Thành<i class="mdi mdi-check"></i> </span>
                                                                 @endif

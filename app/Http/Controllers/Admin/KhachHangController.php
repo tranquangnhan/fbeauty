@@ -170,6 +170,7 @@ class KhachHangController extends Controller
         $KhachHang = $this->KhachHang->find($id);
         $LieuTrinh =  $this->LieuTrinh->findLieuTrinhByIdKh($KhachHang->id);
         $NhanVien = $this->NhanVien->getAll();
+       
         return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh','NhanVien'));
     } 
 

@@ -112,7 +112,7 @@ class LieuTrinhController extends Controller
     {
         $data = $this->LieuTrinh->find($id);
         $NhanVien =  $this->NhanVien->getAll();
-
+       
         return view('Admin.LieuTrinh.edit',compact('data','NhanVien'));
        
     }
@@ -125,10 +125,9 @@ class LieuTrinhController extends Controller
         $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($id);
    
         $hasHoaDon = count($findHoaDon);
+        $countLieuTrinhChiTiet = count($this->LieuTrinhChiTiet->findLieuTrinhChiTietByIdLieuTrinh($id));
         view()->share('id',$id);
-
-        return view("Admin.LieuTrinhChiTiet.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu','hasHoaDon'));
-    
+        return view("Admin.LieuTrinhChiTiet.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu','hasHoaDon','countLieuTrinhChiTiet'));
     }
 
 

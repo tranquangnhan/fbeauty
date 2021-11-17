@@ -1,7 +1,7 @@
 <div class="nav-box">
     <nav class="navbar navbar-expand-lg navbar-light background-color-none p-0">
         <div class="box-logo">
-            <a class="navbar-brand text-center logo-custom color-white" href="#">Fbeauty</a>
+            <a class="navbar-brand text-center logo-custom color-white" href="#"><img src="{{ asset('Site/images') }}/logo.svg" alt=""></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
