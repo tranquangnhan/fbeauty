@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DichVu extends FormRequest
+class DichVuEdit extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,6 @@ class DichVu extends FormRequest
             'giamgia' => ['required', 'max:3'],
             'motangan' => ['required', 'min:3','max:255'],
             'noidung' => ['required', 'min:3'],
-            'urlHinh'=>['required']
 
         ];
     }
@@ -50,7 +49,6 @@ class DichVu extends FormRequest
             'motangan.max' => 'Mô tả phải nhỏ hơn 255 kí tự',
             'noidung.required' => 'Bạn chưa nhập Nội dung',
             'noidung.min' => 'Nội dung phải lớn hơn 3 kí tự',
-            'urlHinh.required' => 'Bạn chưa cập nhật hình ảnh '
         ];
     }
 
@@ -62,7 +60,6 @@ class DichVu extends FormRequest
             'giamgia' => 'Giảm giá',
             'motangan' => 'Mô tả',
             'noidung' => 'Nội dung',
-            'urlHinh'=>'Hình ảnh'
         ];
     }
 }

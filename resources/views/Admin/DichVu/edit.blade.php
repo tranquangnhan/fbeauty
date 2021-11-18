@@ -61,11 +61,10 @@
                             <div class="form-group ml-0 col-12">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label class="w-100" for="files">Tải ảnh dịch vụ neff:<span style="color:red;"> (*)</span>
+                                        <label class="w-100" for="files">Tải ảnh dịch vụ :<span style="color:red;"> (*)</span>
                                             <div class="wrapper"> <br>
                                                 <div class="file-upload mt-1">
-                                                    <input type="file" id="files" name="urlHinh"
-                                                        value="{{$DichVu->img}}">
+                                                    <input type="file" id="files" name="urlHinh">
                                                     <i class="fa fa-download " style="font-size:52px;color:blue"></i>
                                                 </div>
                                             </div>
