@@ -53,19 +53,19 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="header-title mt-0 mb-3">Sales Analytics</h4>
+                                    <h4 class="header-title mt-0 mb-3">Khách Đặt Lịch</h4>
 
                                     <div class="widget-box-2">
                                         <div class="widget-detail-2 text-right">
-                                            <span class="badge badge-success badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
-                                            <h2 class="font-weight-normal mb-1"> 8451 </h2>
-                                            <p class="text-muted mb-3">Revenue today</p>
+                                            <span class="badge badge-success badge-pill float-left mt-3">{{ $phanTramDatLich }}% <i class="mdi mdi-trending-up"></i> </span>
+                                            <h2 class="font-weight-normal mb-1"> {{ $soDatLichToday }} </h2>
+                                            <p class="text-muted mb-3">So với hôm qua</p>
                                         </div>
                                         <div class="progress progress-bar-alt-success progress-sm">
                                             <div class="progress-bar bg-success" role="progressbar"
-                                                    aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"
-                                                    style="width: 77%;">
-                                                <span class="sr-only">77% Complete</span>
+                                                    aria-valuenow="{{ $phanTramDatLich }}" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: {{ $phanTramDatLich }}%;">
+                                                <span class="sr-only">% Complete</span>
                                             </div>
                                         </div>
                                     </div>

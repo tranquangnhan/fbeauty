@@ -6,10 +6,27 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
-
+use App\Repositories\DatLich\DatLichRepository;
+use App\Repositories\DonHang\DonHangRepository;
+use App\Repositories\HoaDon\HoaDonRepository;
 class ThongkeController extends Controller
 {
     private $data = array();
+    private $DonHang;
+    private $khachHang;
+    private $GiamGia;
+    private $DonHangChiTiet;
+    private $HoaDon;
+
+    public function __construct(
+        DonHangRepository $DonHang,
+        DatLichRepository $DatLich,
+        HoaDonRepository $HoaDon
+    ){
+        $this->DatLich = $DatLich;
+        $this->DonHang = $DonHang;
+        $this->HoaDon = $HoaDon;
+    }
 
     public function index()
     {
@@ -18,15 +35,25 @@ class ThongkeController extends Controller
             ['link' => '/quantri', 'name' => 'Thống kê'],
             ['link' => '', 'name' => 'Danh sách'],
         ];
+
         $toDay = Carbon::today();
-        $thoigian = $this->getThoiGianDauVaCuoiCuaNgay($toDay->toDateString());
-        $soDatLichToday = 0;
+        $yesterday = Carbon::now()->subDays(1);
+        $this->data['soDatLichToday'] = $this->getSoDatLich($toDay);
+        $this->data['soDatLichYesterday'] = $this->getSoDatLich($yesterday);
+        $this->data['phanTramDatLich'] = ceil($this->data['soDatLichToday'] / $this->data['soDatLichYesterday'] * 100);
+
+
         $soDonDatHangToday = 0;
         $tongDoanhThuHoaDonToday = 0;
         $tongDoanhThuDathangToday = 0;
 
-
         return view("Admin.Thongke.index", $this->data);
+    }
+
+    public function getSoDatLich($ngay) {
+        $thoigian = $this->getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
+        $soDatLich = $this->DatLich->getNumDatLichByTime($thoigian['dauNgayTimestamp'], $thoigian['cuoiNgayTimestamp']);
+        return $soDatLich;
     }
 
     public function getThoiGianDauVaCuoiCuaNgay($ngay) {
