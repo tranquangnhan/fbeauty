@@ -22,7 +22,7 @@
             {{-- <div class="big-title about-title-custom title-font">About us</div> --}}
         </div>
         <div class="container">
-            <div class="row flex-row-reverse">
+        <div class="row flex-row-reverse">
                 <div class="col-xl-6" style="margin-top: 100px">
                     <div class="about-content">
                         <div class="title-small line-before">
