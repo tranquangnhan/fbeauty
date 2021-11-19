@@ -4,17 +4,45 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
 
 class ThongkeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $data = array();
+
     public function index()
     {
-        return view("Admin.Thongke.index");
+        $this->data['namePage']            = 'Thống kê';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '/quantri', 'name' => 'Thống kê'],
+            ['link' => '', 'name' => 'Danh sách'],
+        ];
+        $toDay = Carbon::today();
+        $thoigian = $this->getThoiGianDauVaCuoiCuaNgay($toDay->toDateString());
+        $soDatLichToday = 0;
+        $soDonDatHangToday = 0;
+        $tongDoanhThuHoaDonToday = 0;
+        $tongDoanhThuDathangToday = 0;
+
+
+        return view("Admin.Thongke.index", $this->data);
+    }
+
+    public function getThoiGianDauVaCuoiCuaNgay($ngay) {
+        $dauNgay = $ngay . ' 00:00:00';
+        $cuoiNgay = $ngay . ' 23:59:59';
+        $dauNgayTimestamp = Carbon::parse($dauNgay)->timestamp;
+
+        $cuoiNgayTimestamp = Carbon::parse($cuoiNgay)->timestamp;
+
+        // $taoFormatCarbon = Carbon::createFromTimestamp($dauNgayTT);
+
+
+        return array (
+            'dauNgayTimestamp' => $dauNgayTimestamp,
+            'cuoiNgayTimestamp' => $cuoiNgayTimestamp
+        );
     }
 
     /**

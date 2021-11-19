@@ -154,19 +154,19 @@ class HomeController extends Controller
         $blog      = $this->Blog->getBlog1();
         $listdanhmuc   = $this->DanhMuc->getAll();
         $listdanhmuc2   = $this->DanhMuc->getall2danhmuc();
-        
+
         foreach($listdanhmuc as $dm) {
             $skip = 0;
             $take = 6;
             $blogbyid = $this->Blog->getBlogByIdDanhmuc($dm->id, $skip, $take);
             $dm['blogbyid'] = $blogbyid;
-        }    
+        }
         foreach($listdanhmuc2 as $dm) {
             $skip_0 = 0;
             $take_3 = 3;
             $blogbyid2 = $this->Blog->getBlogByIdDanhmuc($dm->id, $skip_0, $take_3);
             $dm['blogbyid2'] = $blogbyid2;
-        }    
+        }
 
         // dd($listdanhmuc);
         $danhmuc   = $this->DanhMuc->getAll();
@@ -197,15 +197,11 @@ class HomeController extends Controller
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAll();
         $viewdetail = $this->Blog->editBlog($id);
-<<<<<<< HEAD
         $viewdetail2 = $this->Blog->editBlog($id);
          foreach($viewdetail2 as $detail) {
             $viewdt = $this->Blog->getblogbyiddm3($detail->id);
             $detail['viewdt'] = $viewdt;
-        }    
-=======
-
->>>>>>> 8b3120ea486185c796ed9661848d922dd7c90d23
+        }
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
         $this->data['viewdetail']    = $viewdetail;
@@ -294,14 +290,14 @@ class HomeController extends Controller
     public function getBlogsPagi(Request $request)
     {
         try {
-            if ($request->ajax()) {               
+            if ($request->ajax()) {
                 $blog = $this->Blog->getBlogByIdDanhmuc($request->id, $request->skip, $request->take);
 
                 $response = Array(
                     'success' => true,
-                    'blog' => $blog,                    
+                    'blog' => $blog,
                 );
-                
+
 
             }
 

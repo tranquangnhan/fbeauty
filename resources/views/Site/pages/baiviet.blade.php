@@ -60,7 +60,7 @@
                                                     </div>
                                                     <div class="blog-text-2 mt-2">
                                                         <?php
-                                                            $timestamp = strtotime($blog[0]->created_at);  
+                                                            $timestamp = strtotime($blog[0]->created_at);
                                                             print date('d-m-y', $timestamp );
                                                             ?></span>
                                                     </div>
@@ -103,7 +103,7 @@
                                                                                {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
-                                                                            $timestamp = strtotime($item->created_at);  
+                                                                            $timestamp = strtotime($item->created_at);
                                                                             print date('d-m-y', $timestamp );
                                                                             ?></span>
                                                                     </div>
@@ -139,7 +139,7 @@
                                                     </div>
                                                     <div class="blog-text-2 mt-2">
                                                         <?php
-                                                            $timestamp = strtotime($blog3[0]->created_at);  
+                                                            $timestamp = strtotime($blog3[0]->created_at);
                                                             print date('d-m-y', $timestamp );
                                                             ?>
                                                     </div>
@@ -182,7 +182,7 @@
                                                                             {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
-                                                                            $timestamp = strtotime($item->created_at);  
+                                                                            $timestamp = strtotime($item->created_at);
                                                                             print date('d-m-y', $timestamp );
                                                                             ?></span>
                                                                     </div>
@@ -267,8 +267,8 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                
-                              
+
+
                                 {{-- <div class="child-box-tin-2 d-flex align-items-end" style="background: url('{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg')">
                                     <div class="content-tin background-white">
                                         <div class="row">
@@ -336,12 +336,12 @@
 
             </div>
         </div>
-       
+
         <div class="all-blog mt-5 mb-5">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-9">
-                        @foreach ($listdanhmuc2 as $item) 
+                        @foreach ($listdanhmuc2 as $item)
 
                         <div class="danhmuc-listblog">
                             <div class="head-blog-item blog-title">
@@ -509,7 +509,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-9">
-                        @foreach ($listdanhmuc as $item) 
+                        @foreach ($listdanhmuc as $item)
                             <div class="danhmuc-listblog">
                                 <div class="head-blog-item blog-title">
                                     <div class="w-100 text-left d-flex align-items-center">
@@ -519,7 +519,7 @@
                                         <div class="line-main-color ml-auto" style="width: 75%"></div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="list-blog-1 mt-4" >
                                     <div class="row mb-60px"  data-danhmuc="{{$item->id}}">
                                             @foreach ($item->blogbyid as $data)
@@ -546,16 +546,16 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                     
+                                            </div>
+
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
-                              
+
                             <button data-iddm="{{$item->id}}" type="button" class="xemthemblog btn mb-5 mt-3" data-take="3" data-skip="6">Xem thêm</button>
                         @endforeach
-                 
+
                     </div>
                     <div class="col-xl-3">
                         @include('Site.components.box-lienhe')
