@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DichVu;
+use App\Http\Requests\DichVuEdit;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DichVu\DichVuRepository;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request\DichVu;
 use Illuminate\Support\Str;
 
 class DichVuController extends Controller
@@ -117,7 +118,7 @@ class DichVuController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DichVu $request, $id)
+    public function update(DichVuEdit $request, $id)
     {
             $DichVu = [
                 'name' => $request->name,
@@ -131,6 +132,9 @@ class DichVuController extends Controller
             ];
             if($request->urlHinh !== null){
                 $img = $this->uploadSingle('public',$request->file('urlHinh'));
+                 if($img == null){
+                    $img = 'defaul.jpg';
+                }
                 $DichVu['img'] = $img;
             }
             $this->DichVu->update($id, $DichVu);

@@ -122,20 +122,21 @@
                                 </div>
                                 <div class="tab-pane fade" id="lastweek" role="tabpanel" aria-labelledby="lastweek-tab">
                                     <div class="row">
+                                        @foreach ($blog3 as $item1)
                                         <div class="col-xl-7 pr-0">
                                             <div class="blog-bigsize">
                                                 <div class="box-danhmuc">
-                                                    {{$blog3[0]->danhmuc}}"
+                                                    {{$item1->danhmuc}}"
                                                 </div>
 
                                                 <div class="img-1 w-100">
                                                     <img class="img-fluid"
-                                                        src="{{ asset('uploads') }}/{{$blog3[0]->img}}" alt="">
+                                                        src="{{ asset('uploads') }}/{{$item1->img}}" alt="">
                                                 </div>
 
                                                 <div class="blog-content-bigsize">
                                                     <div class="blog-text-1 limit-text-row-2">
-                                                        <a href="bai-viet/{{$item->slug}}">{{$blog3[0]->name}}</a>
+                                                        <a href="bai-viet/{{$item->slug}}">{{$item1->name}}</a>
                                                     </div>
                                                     <div class="blog-text-2 mt-2">
                                                         <?php
@@ -144,7 +145,7 @@
                                                             ?>
                                                     </div>
                                                     <div class="blog-text-3 text-2 mt-2 limit-text-row-3">
-                                                        {{$blog3[0]->motangan}}
+                                                        {{$item1->motangan}}
                                                     </div>
 
                                                     <div class="mt-3">
@@ -161,7 +162,7 @@
 
                                             </div>
                                         </div>
-
+                                        @endforeach
                                         <div class="col-xl-5 pl-0">
                                             <div class="list-blog-small pl-5">
                                                 @foreach ($blog4 as $item)

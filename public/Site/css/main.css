@@ -72,12 +72,9 @@ body {
 }
 
 .logo-custom {
-    background: var(--main-color);
-    padding: .2em 1.2em;
-    font-weight: bold;
-    font-size: 1em;
-    color: white;
-    font-size: 2em;
+    /* background: var(--main-color); */
+    /* padding: .2em 1.2em; */
+    
 }
 
 .header-img {
@@ -118,7 +115,7 @@ body {
 }
 
 .box-logo {
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 
 /* header css */

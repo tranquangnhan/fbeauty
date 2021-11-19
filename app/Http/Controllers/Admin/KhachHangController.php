@@ -11,13 +11,13 @@ use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
-use Illuminate\Http\Request;
 
 class KhachHangController extends Controller
 {
 
     private $KhachHang;
     private $LieuTrinh;
+    private $idCoSo = 1;
     public function __construct(
         KhachHangRepository $KhachHang,
         LieuTrinhRepository $LieuTrinh,
@@ -31,8 +31,8 @@ class KhachHangController extends Controller
         $this->NhanVien = $NhanVien;
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
         $this->HoaDon = $HoaDon;
+        $this->HoaDon = $HoaDon;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -40,7 +40,7 @@ class KhachHangController extends Controller
      */
     public function index()
     {
-        $data = $this->KhachHang->getAll();
+        $data = $this->KhachHang->getAllCungCoSo($this->idCoSo);
         return view("Admin.khachhang.index", ['data' => $data]);
     }
 
@@ -61,17 +61,18 @@ class KhachHangController extends Controller
      */
     public function store(KhachHang $request)
     {
-            $img = $this->uploadSingle($request->file('urlHinh'));
+            $img = $this->uploadSingle('public',$request->file('urlHinh'));
             if($img == null){
                 $img = 'defaul.jpg';
             }
             $KhachHang = [
                 'name' => $request->name,
                 'email' => $request->email,
+                'idcoso' => $request->idcoso,
                 'password' => bcrypt($request->password),
                 'sdt' => $request->sdt,
                 'img' => $img,
-                'active' => ($request->active ==='on') ? 1 : 0
+                'active' => ($request->active)
             ];
             $this->KhachHang->create($KhachHang);
             return redirect('quantri/khachhang')->with('thanhcong', 'Thêm nhân viên thành công');
@@ -127,7 +128,7 @@ class KhachHangController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KhachHang $request, $id)
     {
        
         $password = $request->password;
@@ -140,15 +141,18 @@ class KhachHangController extends Controller
         $KhachHang = [
             'name' => $request->name,
             'email' => $request->email,
+            'idcoso' => $request->idcoso,
             'password' => $passnew,
             'sdt' => $request->sdt,
             'active' => $request->active,
         ];
         if($request->urlHinh !== null){
             $img = $this->uploadSingle('public',$request->file('urlHinh'));
+             if($img == null){
+                $img = 'defaul.jpg';
+            }
             $KhachHang['img'] = $img;
         }
-
         $this->KhachHang->update($id, $KhachHang);
         return redirect('quantri/khachhang')->with('thanhcong', 'Sửa nhân viên thành công');
 

@@ -238,6 +238,26 @@ class HomeController extends Controller
         return view("Site.pages.dichvu", $this->data);
     }
 
+    public function viewLienHe() {
+        $coso = $this->Coso->getAll();
+        $this->data['coso'] = $coso;
+        $this->data['pathActive']          = 'lien-he';
+        $this->data['namePage']            = 'Liên Hệ';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '', 'name' => 'Liên Hệ'],
+        ];
+
+        return view("Site.pages.contact", $this->data);
+    }
+    public function viewGioiThieu() {
+        $this->data['pathActive']          = 'gioi-thieu';
+        $this->data['namePage']            = 'Giới thiệu';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '', 'name' => 'Giới thiệu'],
+        ];
+        return view("Site.pages.gioithieu", $this->data);
+    }
+
     public function viewDichVuChiTiet()
     {
         $this->data['pathActive'] = 'dich-vu';
@@ -970,24 +990,6 @@ class HomeController extends Controller
         $datLich->thoiGianDat = $request->thoiGianDat;
         $datLich->save();
         return $datLich;
-    }
-
-    public function viewLienHe() {
-        $this->data['pathActive']          = 'lien-he';
-        $this->data['namePage']            = 'Liên Hệ';
-        $this->data['breadcrumbArray']     = [
-            ['link' => '', 'name' => 'Liên Hệ'],
-        ];
-
-        return view("Site.pages.contact", $this->data);
-    }
-    public function viewGioiThieu() {
-        $this->data['pathActive']          = 'gioi-thieu';
-        $this->data['namePage']            = 'Giới thiệu';
-        $this->data['breadcrumbArray']     = [
-            ['link' => '', 'name' => 'Giới thiệu'],
-        ];
-        return view("Site.pages.gioithieu", $this->data);
     }
     public function checkLoginSiteValid($request)
     {

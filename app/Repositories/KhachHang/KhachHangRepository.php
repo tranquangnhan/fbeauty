@@ -16,7 +16,12 @@ class KhachHangRepository extends BaseRepository implements KhachHangRepositoryI
     {
         return KhachHangModel::class;
     }
-
+    public function getAllCungCoSo($idCoSo)
+    {
+        return $this->model->select('khachhang.*', 'khachhang.id')
+        ->where('khachhang.idcoso', $idCoSo)->limit(10)
+        ->get();
+    }
     public function CheckEmail($email) {
         return $this->model->select('*')->where('email', '=', $email)->doesntExist();
     }

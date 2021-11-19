@@ -10,7 +10,7 @@
         <div class="row div-lienhe mb-5">
             <div class="col">
                 <div class="title text-center mt-5">
-                <i><span class="span-lienhe main-title">Liên hệ </span></i> 
+                <i><span class="span-lienhe main-title" style="color:black;font-family: 'Roboto', sans-serif;">Liên hệ </span></i> 
                     <h3 class="h3-title mt-0">Nhân viên tư vấn</h3>
                 </div>
                 <form class="col-11  container-fluid">
@@ -43,8 +43,14 @@
                 </div>
             </div>
         </div>
+        <div class="coso-lh text-center">
+            @foreach ($coso as $item)
+            <p><b>{{$item->name}}:</b> {{$item->diachi}}</p>
+            {{-- <p><b>Cơ sở 2:</b> 398 Nguyễn Văn Nghi, Phường 7, Quận Gò Vấp</p> --}}
+            @endforeach
+        </div>
     </div>
-    <div class="div-map col-12 mb-5">
+    <div class="div-map mb-5 mt-5">
         <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d62702.15993331947!2d106.62899721916848!3d10.820112183336422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zY8O0bmcgdmnDqm4gcGjhuqduIG3hu4FtIHF1YW5nIHRydW5n!5e0!3m2!1svi!2s!4v1636384106191!5m2!1svi!2s" 
         width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>

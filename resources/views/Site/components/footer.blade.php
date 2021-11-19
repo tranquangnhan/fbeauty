@@ -31,9 +31,8 @@
             <div class="row">
                 <div class="col-3 pr-5">
                     <div class="w-100 text-left mx-auto">
-                        <div class="box-logo">
-                            <a class="navbar-brand m-0 text-center logo-custom" style="background: white"
-                                href="#">LOGO <br>BEAUTY</a>
+                        <div class="col-6">
+                            <a class="ml-5"><img class="" src="{{asset('img/logo.svg')}}" alt=""></a>
                         </div>
 
                         <div class="text-6 text-left" style="margin-top: 2em">
