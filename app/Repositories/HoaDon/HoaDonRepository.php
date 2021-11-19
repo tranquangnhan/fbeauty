@@ -6,6 +6,7 @@ namespace App\Repositories\HoaDon;
 
 use App\Models\Admin\HoaDonModel;
 use App\Repositories\BaseRepository;
+use App\Http\Controllers\Controller;
 
 class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterface
 {
@@ -29,5 +30,13 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
         return  $this->model
         ->where('idlieutrinh', '=', $id)
         ->get();
+    }
+
+    public function getTongDoanhThuHoaDon($dauNgay, $cuoiNgay, $idCoSo) {
+        return $this->model
+        ->whereBetween('created_at', [$dauNgay, $cuoiNgay])
+        ->where('trangthai', '=', Controller::TRANGTHAI_HOADON_DA_THANH_TOAN)
+        ->where('idcoso', '=', $idCoSo)
+        ->sum('tongtiensaugiamgia');
     }
 }

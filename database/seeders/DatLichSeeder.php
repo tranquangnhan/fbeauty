@@ -15,11 +15,13 @@ class DatLichSeeder extends Seeder
     public function run()
     {
         $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $yesterday = Carbon::now()->subDays(1)->toDateString();
         $date = $now->toDateString();
-        $dateTime1 = $date . '9:00:00';
-        $dateTime2 = $date . '10:00:00';
-        $dateTime3 = $date . '11:00:00';
-        $dateTime4 = $date . '17:00:00';
+
+        $dateTime1 = $yesterday . '9:00:00';
+        $dateTime2 = $yesterday . '10:00:00';
+        $dateTime3 = $yesterday . '11:00:00';
+        $dateTime4 = $yesterday . '17:00:00';
 
         DB::table('datlich')->insert([
             ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 1, 'idnhanvien' => 0, 'thoigiandat' => strtotime($dateTime1)],

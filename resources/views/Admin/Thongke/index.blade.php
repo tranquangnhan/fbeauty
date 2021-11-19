@@ -53,19 +53,23 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="header-title mt-0 mb-3">Sales Analytics</h4>
+                                    <h4 class="header-title mt-0 mb-3">Đặt Lịch</h4>
 
                                     <div class="widget-box-2">
                                         <div class="widget-detail-2 text-right">
-                                            <span class="badge badge-success badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
-                                            <h2 class="font-weight-normal mb-1"> 8451 </h2>
-                                            <p class="text-muted mb-3">Revenue today</p>
+                                            {{-- <span class="badge badge-success badge-pill float-left mt-3">{{ $phanTramDatLich }}% <i class="mdi mdi-trending-up"></i> </span> --}}
+                                            <h2 class="font-weight-normal mb-1"> {{ $soDatLichToday }} <small>Khách</small>  </h2>
+
+                                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                                <span class="badge badge-success badge-pill float-left">{{ $phanTramDatLich }}% <i class="mdi mdi-trending-up"></i> </span>
+                                                <p class="text-muted mb-0 flex-grow-1">So với hôm qua</p>
+                                            </div>
                                         </div>
                                         <div class="progress progress-bar-alt-success progress-sm">
                                             <div class="progress-bar bg-success" role="progressbar"
-                                                    aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"
-                                                    style="width: 77%;">
-                                                <span class="sr-only">77% Complete</span>
+                                                    aria-valuenow="{{ $phanTramDatLich }}" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: {{ $phanTramDatLich }}%;">
+                                                <span class="sr-only">% Complete</span>
                                             </div>
                                         </div>
                                     </div>
@@ -90,19 +94,21 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="header-title mt-0 mb-3">Sales Analytics</h4>
+                                    <h4 class="header-title mt-0 mb-3">Doanh Thu Offline</h4>
 
                                     <div class="widget-box-2">
                                         <div class="widget-detail-2 text-right">
-                                            <span class="badge badge-primary badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
-                                            <h2 class="font-weight-normal mb-1"> 8451 </h2>
-                                            <p class="text-muted mb-3">Revenue today</p>
+                                            <h2 class="font-weight-normal mb-1"> {{ number_format($tongDoanhThuHoaDonToday, 0) }} đ</h2>
+                                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                                <span class="badge badge-primary badge-pill float-left">{{ $phanTramDoanhThu }}% <i class="mdi mdi-trending-up"></i> </span>
+                                                <p class="text-muted mb-0 flex-grow-1">So với hôm qua</p>
+                                            </div>
                                         </div>
                                         <div class="progress progress-bar-alt-primary progress-sm">
                                             <div class="progress-bar bg-primary" role="progressbar"
-                                                    aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"
-                                                    style="width: 77%;">
-                                                <span class="sr-only">77% Complete</span>
+                                                    aria-valuenow="{{ $phanTramDoanhThu }}" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: {{ $phanTramDoanhThu }}%;">
+                                                <span class="sr-only">{{ $phanTramDoanhThu }}% Complete</span>
                                             </div>
                                         </div>
                                     </div>
@@ -129,19 +135,24 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="header-title mt-0 mb-3">Sales Analytics</h4>
+                                    <h4 class="header-title mt-0 mb-3">Đơn Hàng</h4>
 
                                     <div class="widget-box-2">
                                         <div class="widget-detail-2 text-right">
-                                            <span class="badge badge-warning badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
-                                            <h2 class="font-weight-normal mb-1"> 8451 </h2>
-                                            <p class="text-muted mb-3">Revenue today</p>
+                                            <h2 class="font-weight-normal mb-1"> {{ $numDonHangToday }} <small>Đơn hôm nay</small></h2>
+                                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                                <span class="badge badge-warning badge-pill float-left">{{ $phanTramNumDonHang }}% <i class="mdi mdi-trending-up"></i> </span>
+                                                <p class="text-muted mb-0 flex-grow-1">So với hôm qua</p>
+                                            </div>
+
                                         </div>
+
+
                                         <div class="progress progress-bar-alt-warning progress-sm">
                                             <div class="progress-bar bg-warning" role="progressbar"
-                                                    aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"
-                                                    style="width: 77%;">
-                                                <span class="sr-only">77% Complete</span>
+                                                    aria-valuenow="{{ $phanTramNumDonHang }}" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: {{ $phanTramNumDonHang }}%;">
+                                                <span class="sr-only">{{ $phanTramNumDonHang }}% Complete</span>
                                             </div>
                                         </div>
                                     </div>
@@ -165,19 +176,23 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="header-title mt-0 mb-3">Daily Sales</h4>
+                                    <h4 class="header-title mt-0 mb-3">Doanh Thu Đơn Hàng</h4>
 
                                     <div class="widget-box-2">
                                         <div class="widget-detail-2 text-right">
-                                            <span class="badge badge-pink badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
-                                            <h2 class="font-weight-normal mb-1"> 158 </h2>
-                                            <p class="text-muted mb-3">Revenue today</p>
+                                            {{-- <span class="badge badge-pink badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span> --}}
+                                            <h2 title="Cho đơn hoàn thành" class="font-weight-normal mb-1"> {{ number_format($doanhThuDonHangHoanThanhToday, 0) }} đ </h2>
+                                            {{-- <p class="text-muted mb-3">Revenue today</p> --}}
+                                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                                <span class="badge badge-pink badge-pill float-left">{{ $phanTramDoanhThuDonHangHoanThanh }}% <i class="mdi mdi-trending-up"></i> </span>
+                                                <p class="text-muted mb-0 flex-grow-1">So với hôm qua</p>
+                                            </div>
                                         </div>
                                         <div class="progress progress-bar-alt-pink progress-sm">
                                             <div class="progress-bar bg-pink" role="progressbar"
-                                                    aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"
-                                                    style="width: 77%;">
-                                                <span class="sr-only">77% Complete</span>
+                                                    aria-valuenow="{{ $phanTramDoanhThuDonHangHoanThanh }}" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: {{ $phanTramDoanhThuDonHangHoanThanh }}%;">
+                                                <span class="sr-only">{{ $phanTramDoanhThuDonHangHoanThanh }}% Complete</span>
                                             </div>
                                         </div>
                                     </div>
