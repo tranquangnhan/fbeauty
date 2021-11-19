@@ -1,7 +1,7 @@
 <div class="nav-box">
     <nav class="navbar navbar-expand-lg navbar-light background-color-none p-0">
-        <div class="col-4">
-            <a class=""><img class="col-3" src="{{asset('img/logo.svg')}}" alt=""></a>
+        <div class="pl-0 flex-grow-1">
+            <a class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

@@ -74,7 +74,7 @@ body {
 .logo-custom {
     /* background: var(--main-color); */
     /* padding: .2em 1.2em; */
-    
+
 }
 
 .header-img {
@@ -951,6 +951,7 @@ img.im-small {
     position: relative;
     height: 60%;
     z-index: 20;
+    max-height: 400px;
 }
 
 .blog-bigsize .box-danhmuc {
