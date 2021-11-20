@@ -197,15 +197,11 @@ class HomeController extends Controller
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAll();
         $viewdetail = $this->Blog->editBlog($id);
-<<<<<<< HEAD
         $viewdetail2 = $this->Blog->editBlog($id);
          foreach($viewdetail2 as $detail) {
             $viewdt = $this->Blog->getblogbyiddm3($detail->id);
             $detail['viewdt'] = $viewdt;
         }    
-=======
-
->>>>>>> 8b3120ea486185c796ed9661848d922dd7c90d23
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
         $this->data['viewdetail']    = $viewdetail;
