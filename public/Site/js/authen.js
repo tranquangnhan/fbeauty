@@ -111,6 +111,7 @@ function callLogin(password) {
         success: function (respon) {
             if (respon.success) {
                 location.reload();
+                InsertGioHangData();
             } else {
                 swal.fire({
                     icon: 'error',
@@ -127,6 +128,18 @@ function callLogin(password) {
                 text: 'Lỗi khi login',
                 confirmButtonText: 'Thử lại',
             });
+        }
+    });
+}
+
+function InsertGioHangData() {
+    $.ajax({
+        url: domain + '/insergiohangdatawherelogin',
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: {},
+        success: function (data) {
         }
     });
 }

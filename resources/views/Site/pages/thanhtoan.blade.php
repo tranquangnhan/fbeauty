@@ -58,36 +58,8 @@
                 </div>
             </div>
 
-            <div class="giohang-body ">
-                <div class="row align-items-center giohang-item">
-                    <div class="col-xl-1">
-                        <div class="body-text d-flex">
-                            <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-sanpham img-fluid" alt="...">
-                        </div>
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="body-text text-left">Tên sản phẩm</div>
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="body-text">
-                            <div class="box-gia">
-                                <span class="giagiam">500,999 đ </span>
-                                <span class="gia left-bar">300,999 đ </span>
-                                <span class="left-bar dungtich"> 30ml</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-1">
-                        <div class="body-text">
-                            <span>1</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 text-right">
-                        <div class="body-text">
-                            <span class="tongtien">300,999 đ</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="giohang-body" id="payproduct">
+
             </div>
 
         </div>
@@ -118,7 +90,7 @@
                 <div class="row flex-row-reverse">
                     <div class="col-4 text-right">
                         <div class="row m-0 justify-content-end">
-                            <div class="col-10 p-0">
+                            <div class="col-12 p-0">
                                 <div class="d-flex w-100 h-100 align-items-center">
                                     <input type="text" class="form-control form-custom ip-gray-1" placeholder="Mã giảm giá" style="box-shadow: none;padding: 1.3em 1.43m;">
                                     <button class="btn-9">Sử dụng</button>
@@ -128,20 +100,20 @@
                         </div>
 
                         <div class="row justify-content-end mt-3">
-                            <div class="col-10">
+                            <div class="col-12">
                                 <div class="row">
-                                    <div class="col-6 text-right">Tổng tiền hàng <br> <small>(1 sản phẩm)</small></div>
-                                    <div class="col-6 text-right">300,888 đ</div>
+                                    <div class="col-6 text-right" >Tổng tiền hàng <br> <small>(1 sản phẩm)</small></div>
+                                    <div class="col-6 text-right"><span id="tongtienhang">0</span><span>đ</span></div>
                                 </div>
                             </div>
 
                         </div>
 
                         <div class="row justify-content-end mt-1">
-                            <div class="col-10">
+                            <div class="col-12">
                                 <div class="row">
                                     <div class="col-6 text-right">Tổng tiền sau giảm <br> <small>(0%)</small></div>
-                                    <div class="col-6 text-right">300,888 đ</div>
+                                    <div class="col-6 text-right"><span id="">0</span><span>đ</span></div>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +125,7 @@
                             <div class="col-10">
                                 <div class="row">
                                     <div class="col-6 text-right">Tổng thanh toán</div>
-                                    <div class="col-6 text-right">300,888 đ</div>
+                                    <div class="col-6 text-right" ><span id="tongthanhtoan">0</span><span>đ</span></div>
                                 </div>
                             </div>
                         </div>

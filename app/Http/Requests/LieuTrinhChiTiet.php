@@ -30,8 +30,6 @@ class LieuTrinhChiTiet extends FormRequest
             'idnhanvien'=>'required|integer',
             'mota'=>'required|min:3|max:500',
             'ngay'=>'date|after:today',
-            'trangthai'=>'required',
-            'imgkhachhang'=>'required',
         ];
     }
 
@@ -50,9 +48,7 @@ class LieuTrinhChiTiet extends FormRequest
             'ngay.required'=>'Bắt buộc phải nhập ngày',
             'ngay.date'=>'Bạn nhập không đúng định dạng ngày',
             'ngay.after'=>'Ngày nhập phải lớn hơn ngày hiện tại',
-            'trangthai.required' => 'Bắt buộc nhập trạng thái',
-            'trangthai.integer' => 'Trạng thái phải là số',
-            'imgkhachhang.required' => 'Phải chọn ảnh khách hàng',
+          
         ];
     }
 
@@ -63,8 +59,6 @@ class LieuTrinhChiTiet extends FormRequest
             'idnhanvien'=>'Id nhân viên',
             'mota'=>'Mô tả liệu trình chi tiết',
             'ngay'=>'Ngày bắt đầu liệu trình',
-            'trangthai'=>'Trạng thái liệu trình',
-            'imgkhachhang'=>'Ảnh khách hàng',
         ];
     }
 }

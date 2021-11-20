@@ -50,7 +50,7 @@
                                     <tr>
                                         <td class="">{{$loop->index}}</td>
                                         <td class="" >{{substr($item->name,0,25)}} ..</td>
-                                        <td><img  class="img-common" src="{{ asset($URL_IMG.$item->img) }}"></td>
+                                        <td><img  class="img-common" src="{{ asset($URL_IMG. json_decode($item->img)[0]) }}"></td>
                                         <td> {{substr($item->mota,0,50)}}</td>
                                         <td ><a href="{{URL::to('quantri/sanpham/detail/'.$item->id.'/edit')}}" class="d-flex justify-content-center"><div class="btn btn-success"><i class="dripicons-search"></i></div></a></td>
                                         <td class="d-flex justify-content-around">

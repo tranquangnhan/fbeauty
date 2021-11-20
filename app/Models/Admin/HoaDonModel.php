@@ -22,4 +22,10 @@ class HoaDonModel extends Model
         'trangthai',
         'ghichu'
     ];
+
+    public static function findHoaDonByIdLieuTrinh($id){
+        return HoaDonModel::where('idlieutrinh', '=', $id)
+        ->first();
+    }
+   
 }
