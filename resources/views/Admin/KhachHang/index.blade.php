@@ -5,14 +5,14 @@
     <div class="content">
         <!-- Start Content-->
         <div class="container-fluid">
+            <x-admin.common.CaseError />
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
-                        <div>
-                             <button class="btn btn-primary waves-effect waves-light mb-3" ><a class="text-white" href="{{route('khachhang.create')}}">Thêm khách hàng</a> </button>
+                        <div class="mb-3">
+                            <a name="" id="" class="btn btn-primary" href="{{route('khachhang.create')}}" role="button">Thêm Khách Hàng</a>
                         </div>
-                       
-                        <table class="table table-striped table-bordered dt-responsive nowrap">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="3%">STT</th>

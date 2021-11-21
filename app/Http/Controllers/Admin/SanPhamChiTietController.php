@@ -105,7 +105,7 @@ class SanPhamChiTietController extends Controller
 
     public function destroy($id)
     {
-        $hasDonHang = $this->GiamGia->findDonHangChiTietByIdSanPhamChiTiet($id);
+        $hasDonHang = $this->DonHangChiTiet->findDonHangChiTietByIdSanPhamChiTiet($id);
 
         if(count($hasDonHang)>0){
             $response = [
@@ -130,7 +130,6 @@ class SanPhamChiTietController extends Controller
                     'errorCode'=>401
                 ];
             }
-
             return response()->json($response);
 
         }

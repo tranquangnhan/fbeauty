@@ -32,6 +32,13 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
         ->get();
     }
 
+    
+    public function findHoaDonByIdKhachHang($id){
+        return  $this->model
+        ->where('idkhachhang', '=', $id)
+        ->get();
+    }
+
     public function getTongDoanhThuHoaDon($dauNgay, $cuoiNgay, $idCoSo) {
         return $this->model
         ->whereBetween('created_at', [$dauNgay, $cuoiNgay])
