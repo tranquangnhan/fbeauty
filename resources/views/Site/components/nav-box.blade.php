@@ -1,7 +1,7 @@
 <div class="nav-box">
     <nav class="navbar navbar-expand-lg navbar-light background-color-none p-0">
-        <div class="col-4">
-            <a class=""><img class="col-3" src="{{asset('img/logo.svg')}}" alt=""></a>
+        <div class="pl-0 flex-grow-1">
+            <a class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -21,12 +21,17 @@
                 <li class="nav-item {{ ($pathActive == 'san-pham') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/san-pham">Sản Phẩm</a>
                     <ul class="dropdown-custom-1">
-
+                        @foreach ($sanpham as $sanphamitem)
+                        <li class="dropdown-custom-item"><a href="">{{$sanphamitem->name}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'dich-vu') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/dich-vu">Dịch Vụ</a>
                     <ul class="dropdown-custom-1">
+                        @foreach ($dichvu as $dichvuitem)
+                        <li class="dropdown-custom-item"><a href="">{{$dichvuitem->name}}</a></li>
+                        @endforeach
 
                     </ul>
                 </li>
@@ -40,7 +45,9 @@
                 <li class="nav-item {{ ($pathActive == 'bai-viet') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/bai-viet">Bài viết</a>
                     <ul class="dropdown-custom-1">
-
+                        @foreach ($blog as $blogitem)
+                        <li class="dropdown-custom-item"><a href="">{{$blogitem->name}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
             </ul>

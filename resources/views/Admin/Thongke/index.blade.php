@@ -15,12 +15,17 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                                    <h4 class="page-title">Dashboard</h4>
+                                    <h4 class="page-title">{{ $namePage }}</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminto</a></li>
-                                            <li class="breadcrumb-item active">Dashboard</li>
+                                            @foreach ($breadcrumbArray as $breadcrumbItem)
+                                                @if ($breadcrumbItem['link'] == '')
+                                                    <li class="breadcrumb-item active">{{ $breadcrumbItem['name'] }}</li>
+                                                @else
+                                                    <li class="breadcrumb-item"><a href="{{ $breadcrumbItem['link'] }}">{{ $breadcrumbItem['name'] }}</a></li>
+                                                @endif
+                                            @endforeach
                                         </ol>
                                     </div>
 
@@ -30,7 +35,6 @@
                         <!-- end page title -->
 
                         <div class="row">
-
                             <div class="col-xl-3 col-md-6">
                                 <div class="card-box">
                                     <div class="dropdown float-right">
@@ -49,25 +53,29 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="header-title mt-0 mb-4">Total Revenue</h4>
+                                    <h4 class="header-title mt-0 mb-3">Đặt Lịch</h4>
 
-                                    <div class="widget-chart-1">
-                                        <div class="widget-chart-box-1 float-left" dir="ltr">
-                                            <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
-                                                   data-bgColor="#F9B9B9" value="58"
-                                                   data-skin="tron" data-angleOffset="180" data-readOnly=true
-                                                   data-thickness=".15"/>
+                                    <div class="widget-box-2">
+                                        <div class="widget-detail-2 text-right">
+                                            {{-- <span class="badge badge-success badge-pill float-left mt-3">{{ $phanTramDatLich }}% <i class="mdi mdi-trending-up"></i> </span> --}}
+                                            <h2 class="font-weight-normal mb-1"> {{ $soDatLichToday }} <small>Khách</small>  </h2>
+
+                                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                                <span class="badge badge-success badge-pill float-left">{{ $phanTramDatLich }}% <i class="mdi mdi-trending-up"></i> </span>
+                                                <p class="text-muted mb-0 flex-grow-1">So với hôm qua</p>
+                                            </div>
                                         </div>
-
-                                        <div class="widget-detail-1 text-right">
-                                            <h2 class="font-weight-normal pt-2 mb-1"> 256 </h2>
-                                            <p class="text-muted mb-1">Revenue today</p>
+                                        <div class="progress progress-bar-alt-success progress-sm">
+                                            <div class="progress-bar bg-success" role="progressbar"
+                                                    aria-valuenow="{{ $phanTramDatLich }}" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: {{ $phanTramDatLich }}%;">
+                                                <span class="sr-only">% Complete</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div><!-- end col -->
-
                             <div class="col-xl-3 col-md-6">
                                 <div class="card-box">
                                     <div class="dropdown float-right">
@@ -86,19 +94,21 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="header-title mt-0 mb-3">Sales Analytics</h4>
+                                    <h4 class="header-title mt-0 mb-3">Doanh Thu Offline</h4>
 
                                     <div class="widget-box-2">
                                         <div class="widget-detail-2 text-right">
-                                            <span class="badge badge-success badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
-                                            <h2 class="font-weight-normal mb-1"> 8451 </h2>
-                                            <p class="text-muted mb-3">Revenue today</p>
+                                            <h2 class="font-weight-normal mb-1"> {{ number_format($tongDoanhThuHoaDonToday, 0) }} đ</h2>
+                                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                                <span class="badge badge-primary badge-pill float-left">{{ $phanTramDoanhThu }}% <i class="mdi mdi-trending-up"></i> </span>
+                                                <p class="text-muted mb-0 flex-grow-1">So với hôm qua</p>
+                                            </div>
                                         </div>
-                                        <div class="progress progress-bar-alt-success progress-sm">
-                                            <div class="progress-bar bg-success" role="progressbar"
-                                                    aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"
-                                                    style="width: 77%;">
-                                                <span class="sr-only">77% Complete</span>
+                                        <div class="progress progress-bar-alt-primary progress-sm">
+                                            <div class="progress-bar bg-primary" role="progressbar"
+                                                    aria-valuenow="{{ $phanTramDoanhThu }}" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: {{ $phanTramDoanhThu }}%;">
+                                                <span class="sr-only">{{ $phanTramDoanhThu }}% Complete</span>
                                             </div>
                                         </div>
                                     </div>
@@ -106,41 +116,6 @@
 
                             </div><!-- end col -->
 
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card-box">
-                                    <div class="dropdown float-right">
-                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
-                                        </div>
-                                    </div>
-
-                                    <h4 class="header-title mt-0 mb-4">Statistics</h4>
-
-                                    <div class="widget-chart-1">
-                                        <div class="widget-chart-box-1 float-left" dir="ltr">
-                                            <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#ffbd4a"
-                                                    data-bgColor="#FFE6BA" value="80"
-                                                    data-skin="tron" data-angleOffset="180" data-readOnly=true
-                                                    data-thickness=".15"/>
-                                        </div>
-                                        <div class="widget-detail-1 text-right">
-                                            <h2 class="font-weight-normal pt-2 mb-1"> 4569 </h2>
-                                            <p class="text-muted mb-1">Revenue today</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div><!-- end col -->
 
                             <div class="col-xl-3 col-md-6">
                                 <div class="card-box">
@@ -160,19 +135,64 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="header-title mt-0 mb-3">Daily Sales</h4>
+                                    <h4 class="header-title mt-0 mb-3">Đơn Hàng</h4>
 
                                     <div class="widget-box-2">
                                         <div class="widget-detail-2 text-right">
-                                            <span class="badge badge-pink badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
-                                            <h2 class="font-weight-normal mb-1"> 158 </h2>
-                                            <p class="text-muted mb-3">Revenue today</p>
+                                            <h2 class="font-weight-normal mb-1"> {{ $numDonHangToday }} <small>Đơn hôm nay</small></h2>
+                                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                                <span class="badge badge-warning badge-pill float-left">{{ $phanTramNumDonHang }}% <i class="mdi mdi-trending-up"></i> </span>
+                                                <p class="text-muted mb-0 flex-grow-1">So với hôm qua</p>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="progress progress-bar-alt-warning progress-sm">
+                                            <div class="progress-bar bg-warning" role="progressbar"
+                                                    aria-valuenow="{{ $phanTramNumDonHang }}" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: {{ $phanTramNumDonHang }}%;">
+                                                <span class="sr-only">{{ $phanTramNumDonHang }}% Complete</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end col -->
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card-box">
+                                    <div class="dropdown float-right">
+                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="mdi mdi-dots-vertical"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="header-title mt-0 mb-3">Doanh Thu Đơn Hàng</h4>
+
+                                    <div class="widget-box-2">
+                                        <div class="widget-detail-2 text-right">
+                                            {{-- <span class="badge badge-pink badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span> --}}
+                                            <h2 title="Cho đơn hoàn thành" class="font-weight-normal mb-1"> {{ number_format($doanhThuDonHangHoanThanhToday, 0) }} đ </h2>
+                                            {{-- <p class="text-muted mb-3">Revenue today</p> --}}
+                                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                                <span class="badge badge-pink badge-pill float-left">{{ $phanTramDoanhThuDonHangHoanThanh }}% <i class="mdi mdi-trending-up"></i> </span>
+                                                <p class="text-muted mb-0 flex-grow-1">So với hôm qua</p>
+                                            </div>
                                         </div>
                                         <div class="progress progress-bar-alt-pink progress-sm">
                                             <div class="progress-bar bg-pink" role="progressbar"
-                                                    aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"
-                                                    style="width: 77%;">
-                                                <span class="sr-only">77% Complete</span>
+                                                    aria-valuenow="{{ $phanTramDoanhThuDonHangHoanThanh }}" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: {{ $phanTramDoanhThuDonHangHoanThanh }}%;">
+                                                <span class="sr-only">{{ $phanTramDoanhThuDonHangHoanThanh }}% Complete</span>
                                             </div>
                                         </div>
                                     </div>
@@ -264,72 +284,6 @@
 
                         </div>
                         <!-- end row -->
-
-
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card-box widget-user">
-                                    <div class="media">
-                                        <div class="avatar-lg mr-3">
-                                            <img src="assets/images/users/user-3.jpg" class="img-fluid rounded-circle" alt="user">
-                                        </div>
-                                        <div class="media-body overflow-hidden">
-                                            <h5 class="mt-0 mb-1">Chadengle</h5>
-                                            <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
-                                            <small class="text-warning"><b>Admin</b></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end col -->
-
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card-box widget-user">
-                                    <div class="media">
-                                        <div class="avatar-lg mr-3">
-                                            <img src="assets/images/users/user-2.jpg" class="img-fluid rounded-circle" alt="user">
-                                        </div>
-                                        <div class="media-body overflow-hidden">
-                                            <h5 class="mt-0 mb-1"> Michael Zenaty</h5>
-                                            <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
-                                            <small class="text-pink"><b>Support Lead</b></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end col -->
-
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card-box widget-user">
-                                    <div class="media">
-                                        <div class="avatar-lg mr-3">
-                                            <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="user">
-                                        </div>
-                                        <div class="media-body overflow-hidden">
-                                            <h5 class="mt-0 mb-1">Stillnotdavid</h5>
-                                            <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
-                                            <small class="text-success"><b>Designer</b></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end col -->
-
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card-box widget-user">
-                                    <div class="media">
-                                        <div class="avatar-lg mr-3">
-                                            <img src="assets/images/users/user-10.jpg" class="img-fluid rounded-circle" alt="user">
-                                        </div>
-                                        <div class="media-body overflow-hidden">
-                                            <h5 class="mt-0 mb-1">Tomaslau</h5>
-                                            <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
-                                            <small class="text-info"><b>Developer</b></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end col -->
-
-                        </div>
-                        <!-- end row -->
-
 
 
                     </div> <!-- container-fluid -->

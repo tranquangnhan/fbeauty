@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class=" mt-5 ">      
+    <div class=" mt-5 ">
         <div class="w-100 container text-center">
             <div class="title-small line-before">
                 Đội ngũ nhân viên nhiệt tình
@@ -75,7 +75,7 @@
         </div>
         <div class="w-100 mt-4">
             {{-- <iframe width="100%" style="border:2px solid #e87c7b;" height="300" src="https://www.youtube.com/embed/5RFqEdSy9nQ?autoplay=1"
-            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
             clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
             <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class="image mb-2" style="width:100%;height:100%;">
         </div>
@@ -89,12 +89,12 @@
                             <div class="title-3">
                                 Điều Trị <br> Theo Liệu Trình
                             </div>
-    
+
                             <p class="text-2 limit-text-row-3 mt-1 mt-3">
                                 Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor
                                 incididunt.
                             </p>
-    
+
                             <div class="w-100 text-left mb-4">
                                 <button data-show="one" class="button btn-5 btn-datlich">Đặt lịch</button>
                             </div>
@@ -106,7 +106,7 @@
                                 {{-- <div class="number-1">
                                     1
                                 </div> --}}
-    
+
                                 <div class="title-5">
                                     Kế Hoạch
                                 </div>
@@ -118,40 +118,40 @@
                                     Lorem ipsum dolor sit amet, con sectetur adipisicing elit
                                 </div>
                             </div>
-    
+
                             <div class="lieutrinh-item">
                                 {{-- <div class="number-1">
                                     1
                                 </div> --}}
-    
+
                                 <div class="title-5">
                                     Theo Dõi
                                 </div>
-    
+
                                 <div class="icon-1 mt-4" style="height:75px;">
                                     <img class="" src=" {{ asset('Site/images/icon') }}/doctor.png"
                                         alt="">
                                 </div>
-    
+
                                 <div class="text-2 mt-4 color-white font-weight-300">
                                     Lorem ipsum dolor sit amet, con sectetur adipisicing elit
                                 </div>
                             </div>
-    
+
                             <div class="lieutrinh-item">
                                 {{-- <div class="number-1">
                                     1
                                 </div> --}}
-    
+
                                 <div class="title-5">
                                     Hỗ Trợ
                                 </div>
-    
+
                                 <div class="icon-1 mt-4" style="height:75px;">
                                     <img class="" src="
                                         {{ asset('Site/images/icon') }}/customer-service.png" alt="">
                                 </div>
-    
+
                                 <div class="text-2 mt-4 color-white font-weight-300">
                                     Lorem ipsum dolor sit amet, con sectetur adipisicing elit
                                 </div>
@@ -162,7 +162,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="introduce mb-5 col-11 mt-5 text-center container-fluid">
         <div class="card-body mt-5 nsl">
             <div class="title-small line-before">
@@ -177,28 +177,28 @@
                 <div class="middle">
                     <div class="text ">Mrs.Jiyeon</div>
                 </div>
-               <i><span class="span-lienhe  card-title">Giám đốc điều hành </span></i> 
+               <i><span class="span-lienhe  card-title">Giám đốc điều hành </span></i>
             </div>
             <div class="card container">
                 <img src="{{ asset('uploads') }}/ceo4.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">
                     <div class="text ">Mr.Nhật Vượng</div>
                 </div>
-                <i><span class="span-lienhe text-center main-title">Phó giám đốc  </span></i> 
+                <i><span class="span-lienhe text-center main-title">Phó giám đốc  </span></i>
             </div>
             <div class="card container">
                 <img src="{{ asset('uploads') }}/ceo2.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">
                     <div class="text ">Mrs.Ngọc Lan</div>
                 </div>
-                <i><span class="span-lienhe text-center main-title">Quản lý nhân sự </span></i> 
+                <i><span class="span-lienhe text-center main-title">Quản lý nhân sự </span></i>
             </div>
             <div class="card container">
                 <img src="{{ asset('uploads') }}/ceo3.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">
                     <div class="text ">Mrs.Soyeon</div>
                 </div>
-                <i><span class="span-lienhe text-center main-title">Tổng giám đốc</span></i> 
+                <i><span class="span-lienhe text-center main-title">Tổng giám đốc</span></i>
             </div>
         </div>
     </div>
@@ -206,7 +206,7 @@
         <div class="card container">
             <div class="card-body">
                 <div class="title-small line-before text-center mt-4">
-                    Trải nghiệm cơ sở vật chất 
+                    Trải nghiệm cơ sở vật chất
                 </div>
                 <div class="text-center">
                     <h5 class="card-title mb-3" style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Cơ sở vật chất đẳng cấp</h5>
@@ -234,4 +234,7 @@
 </div>
 
 @endsection
-<link rel="stylesheet" href="{{ asset('Site/css') }}/gioithieu.css">
+@section('css')
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/gioithieu.css">
+@endsection
+
