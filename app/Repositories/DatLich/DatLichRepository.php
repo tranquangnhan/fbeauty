@@ -68,4 +68,12 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->where('datlich.idcoso', $idCoSo)
         ->get();
     }
+
+    public function getNumDatLichByTime($timeStampDauNgay, $timeStampCuoiNgay, $idCoSo) {
+        return $this->model
+        ->where('thoigiandat', '>', $timeStampDauNgay)
+        ->where('thoigiandat', '<', $timeStampCuoiNgay)
+        ->where('idcoso', '=', $idCoSo)
+        ->count();
+    }
 }

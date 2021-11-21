@@ -27,7 +27,7 @@ class DichVu extends FormRequest
             'name' => ['required', 'min:3', 'max:25'],
             'dongia' => ['required', 'min:2', 'max:10'],
             'giamgia' => ['required', 'max:3'],
-            'motangan' => ['required', 'min:3'],
+            'motangan' => ['required', 'min:3','max:255'],
             'noidung' => ['required', 'min:3'],
             'urlHinh'=>['required']
 
@@ -45,11 +45,12 @@ class DichVu extends FormRequest
             'dongia.max' => 'don gia phải nhỏ hơn 10 kí tự',
             'giamgia.required' => 'Bạn chưa nhập Giảm giá',
             'giamgia.max' => 'Giảm giá phải nhỏ hơn 3 kí tự',
-             'motangan.required' => 'Bạn chưa nhập mô tả',
-            'motangan.min' => 'mô tả phải lớn hơn 3 kí tự',
+            'motangan.required' => 'Bạn chưa nhập mô tả',
+            'motangan.min' => 'Mô tả phải lớn hơn 3 kí tự',
+            'motangan.max' => 'Mô tả phải nhỏ hơn 255 kí tự',
             'noidung.required' => 'Bạn chưa nhập Nội dung',
             'noidung.min' => 'Nội dung phải lớn hơn 3 kí tự',
-            'urlHinh.required' => 'Bạn chưa cập nhật hình ảnh ',
+            'urlHinh.required' => 'Bạn chưa cập nhật hình ảnh '
         ];
     }
 
@@ -61,7 +62,7 @@ class DichVu extends FormRequest
             'giamgia' => 'Giảm giá',
             'motangan' => 'Mô tả',
             'noidung' => 'Nội dung',
-            'urlHinh'=>'Hình anh',
+            'urlHinh'=>'Hình ảnh'
         ];
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DatLich;
 use App\Repositories\Coso\CosoRepository;
 use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\KhachHang\KhachHangRepository;

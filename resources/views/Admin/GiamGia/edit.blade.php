@@ -86,8 +86,8 @@
                                 </div>
 
                                 <div class="form-group text-right mb-0 mt-5">
-                                    <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product'>
-                                    <a href="/quantri/giamgia" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
+                                    <a href="/quantri/giamgia" clas="btn btn-secondary waves-effect waves-light" title="Hủy">Hủy</a>
+                                    <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product' title="Sửa" value="Sửa Giảm Giá">
                                 </div>
 
                             </form>

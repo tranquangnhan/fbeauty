@@ -116,43 +116,14 @@
 
                         <div class="list-blog-1 mt-4">
                             <div class="row mb-30px">
-                                <div class="col-xl-3">
-                                    <div class="tin-item-1 box-tin-hv">
-                                        <div class="image-tin-1" style="height: 220px">
-                                            <img class="img-fluid"
-                                                src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="content-tin-3 background-white">
-                                            <div class="row">
-                                                <div
-                                                    class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                    <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
-                                                    </div>
-                                                    <span>Thứ ba, 26/10/2021, 21:00</span>
-                                                </div>
-                                            </div>
-                                            <div class="text-bl-1 limit-text-row-2 mb-1 mt-3">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn
-                                                    Trong
-                                                    Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                            <p class="blog-mota mb-0">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor
-                                                in cididunt ut labore et dolore
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @foreach ($viewdetail2 as $data1)
+                                @foreach ($data1->viewdt as $data)
 
                                 <div class="col-xl-3">
                                     <div class="tin-item-1 box-tin-hv">
                                         <div class="image-tin-1" style="height: 220px">
                                             <img class="img-fluid"
-                                                src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg"
+                                                src="{{ asset('uploads') }}/{{$data->img}}"
                                                 alt="">
                                         </div>
                                         <div class="content-tin-3 background-white">
@@ -161,90 +132,23 @@
                                                     class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
                                                         <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
+                                                            {{$data->danhmuc}}</a>
                                                     </div>
-                                                    <span>Thứ ba, 26/10/2021, 21:00</span>
+                                                    <span>{{$data->created_at}}</span>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-2 mb-1 mt-3">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn
-                                                    Trong
-                                                    Bóng Đêm Siêu Độc Ở</a>
+                                                <a href="" class="hover-pink">{{$data->name}}</a>
                                             </div>
                                             <p class="blog-mota mb-0">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor
-                                                in cididunt ut labore et dolore
+                                                {{$data->motangan}}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-xl-3 ">
-                                    <div class="tin-item-1 box-tin-hv">
-                                        <div class="image-tin-1" style="height: 220px">
-                                            <img class="img-fluid"
-                                                src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="content-tin-3 background-white">
-                                            <div class="row">
-                                                <div
-                                                    class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                    <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
-                                                    </div>
-                                                    <span>Thứ ba, 26/10/2021, 21:00</span>
-                                                </div>
-                                            </div>
-                                            <div class="text-bl-1 limit-text-row-2 mb-1 mt-3">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn
-                                                    Trong
-                                                    Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                            <p class="blog-mota mb-0">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor
-                                                in cididunt ut labore et dolore
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-3 ">
-                                    <div class="tin-item-1 box-tin-hv">
-                                        <div class="image-tin-1" style="height: 220px">
-                                            <img class="img-fluid"
-                                                src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="content-tin-3 background-white">
-                                            <div class="row">
-                                                <div
-                                                    class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                    <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
-                                                    </div>
-                                                    <span>Thứ ba, 26/10/2021, 21:00</span>
-                                                </div>
-                                            </div>
-                                            <div class="text-bl-1 limit-text-row-2 mb-1 mt-3">
-                                                <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn
-                                                    Trong
-                                                    Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                            <p class="blog-mota mb-0">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor
-                                                in cididunt ut labore et dolore
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @endforeach
                             </div>
-
                         </div>
                     </div>
                 </div>

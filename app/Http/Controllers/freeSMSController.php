@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 define("SERVER", "https://admin.freesms.vn");
-define("API_KEY", "b84c0a3d476115c8cd35461f911fc98b4a6b2b72");
+define("API_KEY", "3a77d29f144d4888d0d0aaee834fc3faf3435b9e");
 
 define("USE_SPECIFIED", 0);
 define("USE_ALL_DEVICES", 1);
 define("USE_ALL_SIMS", 2);
-
 class freeSMSController extends Controller
 {
     public function index() {

@@ -67,19 +67,19 @@
                                     <div class="form-row">
                                             <div class="form-group col-md-4">
                                             <label for="">SĐT Người Nhận</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="sodienthoai" class="form-control @error('name') border-error @enderror name" value="{{$data->sdtnguoinhan}}"  parsley-trigger="change" required
+                                            <input type="number" name="sodienthoai" class="form-control @error('name') border-error @enderror name" value="{{$data->sdtnguoinhan}}"  parsley-trigger="change" required
                                                    placeholder="SĐT Người Nhận" >
                                             </div>
 
                                             <div class="form-group col-md-4">
                                             <label for="">Tổng Tiền Trước Giảm Giá</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="tongtientruocgiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->tongtientruocgiamgia}}"  parsley-trigger="change" required
+                                            <input type="number" name="tongtientruocgiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->tongtientruocgiamgia}}"  parsley-trigger="change" required
                                                    placeholder="Tổng Tiền Trước Giảm Giá" >
                                             </div>
 
                                             <div class="form-group col-md-4">
                                             <label for="">Tổng Tiền sau Giảm Giá</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="tongtiensaugiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->tongtiensaugiamgia}}"  parsley-trigger="change" required
+                                            <input type="number" name="tongtiensaugiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->tongtiensaugiamgia}}"  parsley-trigger="change" required
                                                    placeholder="Tổng Tiền sau Giảm Giá" >
                                             </div>
                                     </div>
@@ -130,7 +130,7 @@
 
                                             <a href="/quantri/donhang" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
 
-                                            <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product'>
+                                            <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update" value="Sửa Đơn Hàng" id='add_product'>
 
                                 </div>
 

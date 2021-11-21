@@ -32,13 +32,15 @@
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
                                             </td> 
                                             <td>
-                                                <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
+                                                <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="<?php if($item->img == null)
+                                                    echo 'uploads/defaul.jpg';
+                                                    else echo asset('uploads/'.$item->img) ?>">
                                             </td> 
                                             <td>
                                                 {{$item->namedm}}
                                             </td> 
-                                            <td>
-                                                {{$item->motangan}}
+                                            <td >
+                                               <p style="width: 100%!important;">{{$item->motangan}}</p> 
                                             </td> 
                                             <td>
                                                 {{number_format($item->dongia), ''}} VND
