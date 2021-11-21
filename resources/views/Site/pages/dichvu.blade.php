@@ -52,7 +52,7 @@
                                         </div>
 
                                         <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
+                                            <img href="{{$dichvuitem->id}}" class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
                                         </div>
 
                                         <div class="text-1 limit-text-row-1 mt-4">
@@ -198,7 +198,7 @@
                                                 <span class="gia left-bar">300,999 đ </span>
                                             </div>
                                             <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                                <a href="">{{$dichvu2item->name}}</a>
+                                                <a href="{{$dichvu2item->id}}">{{$dichvu2item->name}}</a>
                                             </div>
 
                                             <p class="mota text-2 limit-text-row-3 mt-1 mt-2">

@@ -120,7 +120,7 @@ class DatLichController extends Controller
         ];
 
         if($request->img !== null){
-            $img = $this->uploadSingle($request->file('img'));
+            $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('img'));
             $data['img'] = $img;
         }
 

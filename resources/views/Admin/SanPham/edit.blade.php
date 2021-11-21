@@ -36,8 +36,13 @@
 
                             <div class="form-group">
                                 <label for="">Hình ảnh</label><br>
-                                <img width="130" height="90" style="object-fit: cover"  src="{{ asset('uploads/'.$data->img) }}" alt=""><br><br>
-                               <input type="file" name="img" >
+                                <div class="d-flex">
+                                    @foreach ( json_decode($data->img)  as $item)
+                                        <img class="mr-2" width="130" height="90" style="object-fit: cover; border-radius:3px"  src="{{ asset($URL_IMG.$item) }}" alt="">
+                                    @endforeach
+                                </div>
+                              
+                               <br><br><input type="file" name="imgs[]" multiple>
                                @if ($errors->has('img'))
                                     <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('img')[0]}}</li></ul>
                                 @endif
@@ -93,7 +98,7 @@
                                 <div class="col-lg-3">
                                     <div class="form-group">
                                         <div class="checkbox">
-                                            <input id="remember-1" {{($data->trangthai == 1 ) ? 'checked' : '' }} type="checkbox" name="trangthai" value="0"  data-parsley-multiple="remember-1">
+                                            <input id="remember-1" {{($data->trangthai === 1 ) ? 'checked' : '' }} type="checkbox" name="trangthai" value="1"  data-parsley-multiple="remember-1">
                                             <label for="remember-1">Trạng Thái ? </label>
                                             @if ($errors->has('trangthai'))
                                                 <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('trangthai')[0]}}</li></ul>

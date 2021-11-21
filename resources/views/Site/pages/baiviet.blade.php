@@ -56,7 +56,7 @@
 
                                                 <div class="blog-content-bigsize">
                                                     <div class="blog-text-1 limit-text-row-2">
-                                                        <a href="bai-viet/{{$blog[0]->slug}}">{{$blog[0]->name}}</a>
+                                                        <a href="{{ asset('bai-viet') }}/{{$blog[0]->slug}}">{{$blog[0]->name}}</a>
                                                     </div>
                                                     <div class="blog-text-2 mt-2">
                                                         <?php
@@ -109,7 +109,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                                    <a href="bai-viet/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
+                                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -136,7 +136,7 @@
 
                                                 <div class="blog-content-bigsize">
                                                     <div class="blog-text-1 limit-text-row-2">
-                                                        <a href="bai-viet/{{$item->slug}}">{{$item1->name}}</a>
+                                                        <a href="{{ asset('bai-viet') }}/{{$item->slug}}">{{$item1->name}}</a>
                                                     </div>
                                                     <div class="blog-text-2 mt-2">
                                                         <?php
@@ -189,7 +189,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                                    <a href="bai-viet/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
+                                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -240,7 +240,7 @@
                                             </div>
                                         </div>
                                         <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                            <a href="bai-viet/{{$item->slug}}" class="hover-pink">
+                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
                                                 {{$blog[0]->name}}</a>
                                         </div>
                                     </div>
@@ -262,30 +262,12 @@
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                                <a href="bai-viet/{{$item->slug}}"  class="color-white hover-pink fz-1em2 font-weight-600">
+                                                <a href="{{ asset('bai-viet') }}/{{$item->slug}}"  class="color-white hover-pink fz-1em2 font-weight-600">
                                                     {{$item->name}}</a>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
-
-
-                                {{-- <div class="child-box-tin-2 d-flex align-items-end" style="background: url('{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg')">
-                                    <div class="content-tin background-white">
-                                        <div class="row">
-                                            <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                <div class="mr-3">
-                                                    <a href="" class="box-danhmuc-1 maincolor">
-                                                    Sức khỏe</a>
-                                                </div>
-                                                <span class="color-gray-5 fz-1em2">Thứ ba, 26/10/2021, 21:00 (GMT+7)</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                            <a href="" class="color-white hover-pink fz-1em2 font-weight-600">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                        </div>
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
                         <div class="col-xl-3">
@@ -373,7 +355,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-bl-1 limit-text-row-2 mb-1 mt-3">
-                                                    <a href="" class="hover-pink">{{$data->name}}</a>
+                                                    <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
                                                 </div>
                                                 <p class="blog-mota mb-0">
                                                     {{$data->motangan}}
@@ -540,7 +522,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="text-bl-1 limit-text-row-2 mb-1 mt-3">
-                                                            <a href="bai-viet/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
+                                                            <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
                                                         </div>
                                                         <p class="blog-mota mb-0">
                                                             {{$data->motangan}}

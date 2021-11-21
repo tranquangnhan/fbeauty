@@ -49,7 +49,6 @@ class DonHangchitietController extends Controller
 
     function editDetailDonHang($id){
 
-
         $donHang = $this->DonHang->find($id);
 
         $khachHang = $this->DonHang->getDonHangAndKhachHangById($id);

@@ -146,16 +146,16 @@ class NhanVienController extends Controller
         $nv = $this->nhanvien->find($id);
         $jsonimg = json_decode($nv->img);
         if (is_array($jsonimg)) {
-            $dataImg = $this->uploadMultipleImg($request->file('photos'));
-            $mergearray = array_merge($dataImg->getData('data'), $jsonimg);
+            $dataImg = $this->uploadMultipleImg($this::PATH_UPLOADS_KHACHHANG,$request->file('photos'));
+            $mergearray = array_merge($dataImg, $jsonimg);
             $nhanvien = [
                 'img' => $mergearray
             ];
             $this->nhanvien->update($id, $nhanvien);
         } else {
-            $dataImg = $this->uploadMultipleImg($request->file('photos'));
+            $dataImg = $this->uploadMultipleImg($this::PATH_UPLOADS_KHACHHANG,$request->file('photos'));
             $nhanvien = [
-                'img' => $dataImg->getData('data')
+                'img' => $dataImg
             ];
             $this->nhanvien->update($id, $nhanvien);
         }

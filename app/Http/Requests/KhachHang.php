@@ -25,7 +25,6 @@ class KhachHang extends FormRequest
     {
         return [
             'sdt' => ['required','regex:/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/'],
-            // 'img'=>['required']
         ];
     }
 
@@ -34,7 +33,6 @@ class KhachHang extends FormRequest
         return [
             'sdt.required' => 'Bạn chưa nhập số điện thoại',
             'sdt.regex' => 'Số điện thoại không đúng định dạng',
-            // 'img.required' => 'Bạn chưa cập nhật img ',
         ];
     }
 
@@ -42,7 +40,6 @@ class KhachHang extends FormRequest
     {
         return [
             'sdt' => 'Số điện thoại',
-            // 'img'=>'img khách hàng'
         ];
     }
 }

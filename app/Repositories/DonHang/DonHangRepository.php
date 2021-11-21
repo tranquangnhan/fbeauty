@@ -18,6 +18,9 @@ class DonHangRepository extends BaseRepository implements DonHangRepositoryInter
     public function getKhachHangChiTietByIdDonHang($id){
         return $this->model->where('idkhachhang','=',$id)->get();
     }
+    public function getDonHangIdGiamGia($id){
+        return $this->model->where('idgiamgia',"=",$id)->get();
+    }
 
     public function getDonHangAndKhachHangById($id) {
         return $this->model->select('khachhang.name','khachhang.sdt','khachhang.email')
