@@ -199,8 +199,8 @@ function ShowSanPham(data) {
             '</div>\n' +
             '<div class="mt-1 product-action">\n' +
             '<div class="d-flex gap-2">\n' +
-            ' <button class="btn-sanpham btn-5 mr-2" onclick="ThemGioHang('+data.sanpham[i].idspct+')"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>\n' +
-            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].id + '"><button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
+            ' <button class="w-100 btn-sanpham btn-5 " style="margin-bottom: 5px!important;" onclick="ThemGioHang('+data.sanpham[i].idspct+')"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button></br>\n' +
+            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].id + '"><button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
             '</div></div></div></div></div></div></div></div>';
 
     }
