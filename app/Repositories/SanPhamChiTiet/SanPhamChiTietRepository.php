@@ -27,6 +27,9 @@ class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietR
     public function getSanPhamChiTietByID($id){
         return $this->model->where("idsanpham","=",$id)->get();
     }
+    public function CheckSanPhamChiTietByID($id){
+        return $this->model->select("*")->where("idsanpham","=",$id)->doesntExist();
+    }
 
     public function getSanPhamChiTietByIDLimit($id){
         return $this->model->where("idsanpham","=",$id)->limit(1)->get();

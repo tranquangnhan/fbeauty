@@ -493,150 +493,79 @@
             </div>
 
             <div class="box-product-1">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 m-0">
-                    <div class="col pl-0">
-                        <div class="card rounded-0 product-card child-item-sanpham zbar">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                    <div class="box-cicrle">
-                                        <i class="fas fa-heart heart-full"></i>
-                                        <i class="far fa-heart heart-line"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                            <div class="card-body text-center">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <div class="mb-1 product-price">
-                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
+                <div class="row">
+                    <?php $spkhac=\Illuminate\Support\Facades\DB::table('sanpham')->select('sanpham.*', 'danhmuc.name AS tendm')
+                        ->orderBy("sanpham.id","DESC")
+                        ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")->where('sanpham.trangthai', "=", 0)->limit(4)->get();?>
+                    @foreach($spkhac as $i => $spk)
+                        <?php $anhk=json_decode($spk->img);
+                        $splienquanctkhac=\Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("*")->where('idsanpham', $spk->id)->limit(1)->get();
+                            error_reporting(0);
+                        ?>
+                        <div class="col-3">
+                            <div class="card rounded-0 product-card child-item-sanpham zbar">
+                                <div class="card-header bg-transparent border-bottom-0">
+                                    @if(session()->has('khachHang') && session('khachHang') != '')
+                                        <?php $checkyeuthich1= \Illuminate\Support\Facades\DB::table('yeuthich')->where('idkhachhang', session('khachHang')->id)->where('idsanphamchitiet', $spk->id)->doesntExist()?>
+                                        <?php if ($checkyeuthich1 == false) {?>
+                                        <div class="btn-add-wishlist btn-sticky hover-scale-1 active" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
+                                            <div class="box-cicrle">
+                                                <i class="fas fa-heart heart-full"></i>
+                                                <i class="far fa-heart heart-line"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <button class="w-100 btn-sanpham btn-5" style="opacity: 0;"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                            <button class="w-100 btn-sanpham btn-5 mt-2" style="opacity: 0;"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                        <?php } else{?>
+                                        <div class="btn-add-wishlist btn-sticky hover-scale-1" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
+                                            <div class="box-cicrle">
+                                                <i class="fas fa-heart heart-full"></i>
+                                                <i class="far fa-heart heart-line"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card rounded-0 product-card child-item-sanpham zbar">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                    <div class="box-cicrle">
-                                        <i class="fas fa-heart heart-full"></i>
-                                        <i class="far fa-heart heart-line"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                            <div class="card-body text-center">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <div class="mb-1 product-price">
-                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
+                                        <?php }?>
+                                    @else
+                                        <div class="btn-add-wishlist btn-sticky hover-scale-1" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
+                                            <div class="box-cicrle">
+                                                <i class="fas fa-heart heart-full"></i>
+                                                <i class="far fa-heart heart-line"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <button class="w-100 btn-sanpham btn-5" style="opacity: 0;"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                            <button class="w-100 btn-sanpham btn-5 mt-2" style="opacity: 0;"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                    @endif
+                                    @if($spk->giamgia !="")
+                                        <div class="btn-add-discout btn-sticky hover-scale-1">
+                                            <div class="box-cicrle-giamgia p-2 rounded text-white">
+                                                <span style="font-size: 10pt;">{{$spk->giamgia}}%</span>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card rounded-0 product-card child-item-sanpham zbar">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                    <div class="box-cicrle">
-                                        <i class="fas fa-heart heart-full"></i>
-                                        <i class="far fa-heart heart-line"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                            <div class="card-body text-center">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <div class="mb-1 product-price">
-                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
+                                <img src="{{ asset('/uploads')}}/{{$anhk[0]}}" class="card-img-top img-sanpham-zbar" alt="...">
+                                <div class="card-body text-center">
+                                    <div class="product-info">
+                                        <a href="javascript:;">
+                                            <p class="product-catergory font-13 mb-1">{{$spk->tendm}}</p>
+                                        </a>
+                                        <a href="{{URL::to("san-pham/chi-tiet", $spk->id)}}">
+                                            <h6 class="product-name mb-2" style="height: 40px;"><?php if (strlen($spk->name)<= 45){echo $spk->name;}else  { echo substr($spk->name, 0, 45).'...';}?></h6>
+                                        </a>
+                                        <div class="d-flex align-items-center justify-content-center" style="height: 50px;">
+                                            <div class="mb-1 product-price">
+                                                <span class="me-1 text-decoration-line-through">{{number_format($splienquanctkhac[0]->dongia), ""}} đ</span> / <span>{{$splienquanctkhac[0]->ml}}ml</span>
+                                                @if($spk->giamgia !="")
+                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{number_format($splienquanctkhac[0]->dongia-(($splienquanctkhac[0]->dongia * $spk->giamgia)/100)), ""}}đ</span>
+                                                @endif
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <button class="w-100 btn-sanpham btn-5" style="opacity: 0;"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                            <button class="w-100 btn-sanpham btn-5 mt-2" style="opacity: 0;"><i class="fas fa-search"></i> Xem chi tiết</button>
+                                        <div class="product-action mt-2">
+                                            <div class="d-grid gap-2">
+                                                <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splienquanctkhac[0]->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                <a href="{{URL::to("san-pham/chi-tiet", $spk->id)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col pr-0">
-                        <div class="card rounded-0 product-card child-item-sanpham zbar">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="btn-add-wishlist btn-sticky hover-scale-1">
-                                    <div class="box-cicrle">
-                                        <i class="fas fa-heart heart-full"></i>
-                                        <i class="far fa-heart heart-line"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="card-img-top img-sanpham-zbar" alt="...">
-                            <div class="card-body text-center">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <div class="mb-1 product-price">
-                                            <span class="me-1 text-decoration-line-through">300.999 đ</span> / <span>30ml</span>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <button class="w-100 btn-sanpham btn-5" style="opacity: 0;"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                            <button class="w-100 btn-sanpham btn-5 mt-2" style="opacity: 0;"><i class="fas fa-search"></i> Xem chi tiết</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             {{-- <div class="w-100 text-center mt-3">
