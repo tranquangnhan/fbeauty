@@ -3,6 +3,7 @@
 namespace App\Repositories\DonHang;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\Controller;
 
 class DonHangRepository extends BaseRepository implements DonHangRepositoryInterface
 {
@@ -34,4 +35,19 @@ class DonHangRepository extends BaseRepository implements DonHangRepositoryInter
     public function findDonHangByIdGiamGia($idDonHang){
         return $this->model->select("*")->where('id', '=', $idDonHang)->get();
     }
+
+    public function getNumDonHang($dauNgay, $cuoiNgay) {
+        return $this->model
+        ->whereBetween('created_at', [$dauNgay, $cuoiNgay])
+        ->count();
+    }
+
+    public function getDoanhThuDonHangHoanThanh($dauNgay, $cuoiNgay) {
+        return $this->model
+        ->whereBetween('created_at', [$dauNgay, $cuoiNgay])
+        ->where('trangthai', '=', Controller::TRANGTHAI_DONHANG_DA_NHAN)
+        ->sum('tongtiensaugiamgia');
+    }
+
+
 }

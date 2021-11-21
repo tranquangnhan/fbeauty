@@ -28,6 +28,7 @@
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
                                 </label>
+                                <input type="hidden" name="idcoso" value="1">
                             </div>
                         </div>
                         <div class="row">

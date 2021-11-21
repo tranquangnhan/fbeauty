@@ -18,7 +18,9 @@
                         <form action="{{route('khachhang.store')}}"  enctype="multipart/form-data"
                            method="post">
                            {{ csrf_field()}}
-                           
+
+                        <x-admin.common.CaseErrorInput />
+                       
                         <div class="row">
                             <div class="col-md-4">
                                 <label class="w-100" for="files">Tải ảnh khách hàng:
@@ -42,6 +44,7 @@
                                     @error('name')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
+                                    <input type="hidden" name="idcoso" value="1">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Số điện thoại </label><span style="color:red;"> (*)</span>

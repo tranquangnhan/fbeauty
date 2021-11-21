@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LieuTrinhChiTiet;
 use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\HoaDon\HoaDonRepository;
+use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
@@ -24,6 +25,7 @@ class LieuTrinhController extends Controller
         NhanVienRepository $NhanVien,
         DichVuRepository $DichVu,
         HoaDonRepository $HoaDon,
+        HoaDonChiTietRepository $HoaDonChiTiet
     )
     {
         $this->KhachHang = $KhachHang;
@@ -32,6 +34,7 @@ class LieuTrinhController extends Controller
         $this->NhanVien = $NhanVien;
         $this->DichVu = $DichVu;
         $this->HoaDon = $HoaDon;
+        $this->HoaDonChiTiet = $HoaDonChiTiet;
     }
 
     /**
@@ -68,7 +71,7 @@ class LieuTrinhController extends Controller
     {
     
         if($request->imgkhachhang){
-            $imgkhachhang = $this->uploadSingle('imgKH', $request->imgkhachhang);
+            $imgkhachhang = $this->uploadSingle($this::PATH_UPLOADS_KHACHHANG, $request->imgkhachhang);
         }else{
             $imgkhachhang = 'default-avatar-kh.jpg';
         }
@@ -85,9 +88,10 @@ class LieuTrinhController extends Controller
 
         $res = $this->LieuTrinhChiTiet->create($data);
         if($res){
-            return redirect('quantri/lieutrinh/'.$request->id.'/edit');
+            return redirect()->back();
         }else{
             // print_r($validate);
+            return $this->handleError('Thêm liệu trình chi tiết lỗi!');
         }
     }
 
@@ -123,11 +127,13 @@ class LieuTrinhController extends Controller
         $NhanVien =  $this->NhanVien->getAll();
         $DichVu =  $this->DichVu->getAll();
         $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($id);
-   
         $hasHoaDon = count($findHoaDon);
-        $countLieuTrinhChiTiet = count($this->LieuTrinhChiTiet->findLieuTrinhChiTietByIdLieuTrinh($id));
+        
+        $LieuTrinh = $this->LieuTrinh->find($id);
+
         view()->share('id',$id);
-        return view("Admin.LieuTrinhChiTiet.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu','hasHoaDon','countLieuTrinhChiTiet'));
+
+        return view("Admin.LieuTrinhChiTiet.edit",compact('LieuTrinhChiTiet','NhanVien','DichVu','hasHoaDon','LieuTrinh'));
     }
 
 
@@ -168,7 +174,7 @@ class LieuTrinhController extends Controller
 
     function editImgLieuTrinh(Request $request){
   
-        $img = $this->uploadSingle('imgKH',$request->file('file'));
+        $img = $this->uploadSingle($this::PATH_UPLOADS_KHACHHANG,$request->file('file'));
         
         $data= [
             'imgkhachhang'=> $img
@@ -225,10 +231,17 @@ class LieuTrinhController extends Controller
      */
     public function destroy($id)
     {
-        $res =  $this->LieuTrinhChiTiet->delete($id);
+     
+        $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($this->LieuTrinhChiTiet->find($id)->idlieutrinh);
+        if(count($findHoaDon) > 0){
+            return $this->handleError('Xoá lỗi, liệu trình đã được thanh toán!');
+        }else{
+            $res =  $this->LieuTrinhChiTiet->delete($id);
       
-        if($res){
-            return  redirect()->back();
+            if($res){
+                return  redirect()->back();
+            }
         }
+       
     }
 }

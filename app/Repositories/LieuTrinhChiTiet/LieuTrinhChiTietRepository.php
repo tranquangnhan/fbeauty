@@ -34,6 +34,7 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
         "nhanvien.name as tennv",
         "nhanvien.avatar as imgnv",
         "dichvu.motangan as motadv",
+        "dichvu.giamgia",
         "dichvu.dongia",
         "lieutrinhchitiet.ngay",
         "lieutrinhchitiet.mota",

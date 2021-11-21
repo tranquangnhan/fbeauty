@@ -29,13 +29,13 @@
                         </div>
 
                         <h4 class="header-title mt-0 mb-4">Thêm Sản Phẩm</h4>
-
+                        <x-admin.common.CaseErrorInput/>
                         <form  action="{{route('sanpham.store')}}"  method="post" enctype="multipart/form-data">
                             @csrf
                            
                             <div class="form-group">
                                 <label for="">Hình ảnh</label>
-                               <input type="file" name="img" onchange="previewImg(event)" required > <br>
+                               <input type="file" name="imgs[]"  multiple > <br>
                                @if ($errors->has('img'))
                                     <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('img')[0]}}</li></ul>
                                 @endif
@@ -44,7 +44,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Tên Sản Phẩm</label>
-                                        <input type="text" name="name"  parsley-trigger="change" required
+                                        <input type="text" name="name" value="{{old('name')}}"  required
                                             placeholder="Nhập tên của sản phẩm" class="form-control  @error('name') border-error @enderror" id="userName">
                                             @if ($errors->has('name'))
                                                 <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('name')[0]}}</li></ul>
@@ -54,7 +54,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Danh Mục</label>
-                                        <select class="form-control select2 @error('iddanhmuc') border-error @enderror" name="iddanhmuc">
+                                        <select class="form-control select2 @error('iddanhmuc') border-error @enderror" value="{{old('iddanhmuc')}}" name="iddanhmuc">
                                             <option value="">Chọn</option>
                                             @foreach ($cate as $item)
                                                 <option value="{{$item->id}}">{{$item->name}}</option>
@@ -70,7 +70,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="">Mô Tả</label>
-                                        <textarea class="form-control @error('mota') border-error @enderror"  style="height: 100px;width:100%; border:1px solid #ccc" name="mota" ></textarea>   
+                                        <textarea class="form-control @error('mota') border-error @enderror" value="{{old('mota')}}"  style="height: 100px;width:100%; border:1px solid #ccc" name="mota" ></textarea>   
                                         @if ($errors->has('mota'))
                                             <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('mota')[0]}}</li></ul>
                                         @endif
@@ -79,6 +79,7 @@
                             </div>
                            
                             <textarea class="@error('noidung') border-error @enderror" id="summernote"  name="noidung" >
+                                {{old('noidung')}}
                             </textarea>
                             @if ($errors->has('noidung'))
                                 <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('noidung')[0]}}</li></ul>
@@ -87,7 +88,7 @@
                                 <div class="col-lg-3">
                                     <div class="form-group">
                                         <div class="checkbox">
-                                            <input id="remember-1" type="checkbox" name="trangthai" value="1" data-parsley-multiple="remember-1">
+                                            <input id="remember-1" type="checkbox" {{old('trangthai') ? 'checked' : '' }} name="trangthai" value="1" data-parsley-multiple="remember-1">
                                             <label for="remember-1">Trạng Thái ? </label>
                                             @if ($errors->has('trangthai'))
                                                 <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('trangthai')[0]}}</li></ul>

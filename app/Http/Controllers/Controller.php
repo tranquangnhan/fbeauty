@@ -17,14 +17,15 @@ class Controller extends BaseController
     const URL_IMG = 'uploads/';
     const BASE_URL_UPLOAD_STAFF = 'uploads/imgusers/';
     const BASE_URL_UPLOAD_CUSTOMER = 'uploads/khachhang/';
+    
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
     const LOAI_DANHMUC_BLOG = 3;
     const KHACHHANG_CHUA_ACTIVE = 0;
     const KHACHHANG_DA_ACTIVE = 1;
     const TRANGTHAI_LICH_OPEN = 0;
-
-
+    const TRANGTHAI_HOADON_DA_THANH_TOAN = 1;
+    const TRANGTHAI_DONHANG_DA_NHAN = 4;
     /**
      * ID_LIENQUAN_SP=1 LÀ SẢN PHẨM
      * ID_LIENQUAN_DV=0 LÀ DỊCH VỤ
@@ -40,6 +41,10 @@ class Controller extends BaseController
      */
     const LOAIGIAM=1;
 
+    // path upload using for uploadSingle and uploadMultipleImg
+    const PATH_UPLOADS = 'public';
+    const PATH_UPLOADS_KHACHHANG = 'imgKH';
+
 
     function uploadSingle($path,$file){
         if($file == null) return null;
@@ -48,6 +53,17 @@ class Controller extends BaseController
         Storage::disk($path)->put($filename, file_get_contents($file));
 
         return $filename;
+    }
+
+    public function uploadMultipleImg($path,$photos){
+        $paths  = [];
+        foreach ($photos as $index=> $photo) {
+            $extension = $photo->getClientOriginalExtension();
+            $filename  = 'photo-' . time(). $index . '.' . $extension;
+            $paths[]   =  $filename;
+            Storage::disk($path)->put($filename, file_get_contents($photo));
+        }
+        return json_encode($paths);
     }
 
     /**
@@ -65,20 +81,20 @@ class Controller extends BaseController
         }
     }
 
-    public function uploadMultipleImg($photos){
-        $paths  = [];
-        foreach ($photos as $index=> $photo) {
-            $extension = $photo->getClientOriginalExtension();
-            $filename  = 'photouser' . time(). $index . '.' . $extension;
-            $paths[]   =  $filename;
-            Storage::disk('imgKH')->put($filename, file_get_contents($photo));
-        }
-        return response()->json($paths);
-    }
+    
 
     public function handleError($error){
         return Redirect::back()->withErrors($error);
     }
 
+    public function handleErrorInput($error){
+        return back()->withError($error)->withInput();
+    }
+
+    public static function caculateGia($donGia,$giamGia){
+        $tinh =  $donGia - ($donGia/100 * $giamGia);
+        $num = round($tinh, 0);
+        return number_format($num, 0, ',', '.') . ' VNĐ';
+    }
 
 }

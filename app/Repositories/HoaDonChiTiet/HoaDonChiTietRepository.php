@@ -55,5 +55,17 @@ class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRep
             ->get();
     }
 
+    public function findDichVuByIdKhachHang($id){
+        return $this->model->select("dichvu.name",'dichvu.img',
+        'dichvu.motangan',
+        'dichvu.dongia',
+        'dichvu.giamgia')
+        ->join('dichvu','hoadonchitiet.idlienquan','=','dichvu.id')
+        ->join('hoadon','hoadon.id','=','hoadonchitiet.idhoadon')
+        ->where('hoadonchitiet.type','=','0')
+        ->where('hoadon.idkhachhang','=',$id)
+        ->get();
+    }
+
 
 }

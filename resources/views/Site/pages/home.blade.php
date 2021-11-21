@@ -22,7 +22,7 @@
             {{-- <div class="big-title about-title-custom title-font">About us</div> --}}
         </div>
         <div class="container">
-            <div class="row flex-row-reverse">
+        <div class="row flex-row-reverse">
                 <div class="col-xl-6" style="margin-top: 100px">
                     <div class="about-content">
                         <div class="title-small line-before">
@@ -256,7 +256,7 @@
             </div>
 
             <div class="list-tabs mt-5">
-                <div class="tab-content" id="myTabContent-1">
+                <div class="tab-content" id="">
                     <div class="tab-pane fade show active" id="allservice" role="tabpanel"
                         aria-labelledby="allservice-tab">
                         <div class="w-100">
@@ -492,9 +492,9 @@
                 {{-- <div class="line-2"></div> --}}
             </div>
 
-            <div class="box-pro">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-                    <div class="col">
+            <div class="box-product-1">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 m-0">
+                    <div class="col pl-0">
                         <div class="card rounded-0 product-card child-item-sanpham zbar">
                             <div class="card-header bg-transparent border-bottom-0">
                                 <div class="btn-add-wishlist btn-sticky hover-scale-1">
@@ -602,7 +602,7 @@
                         </div>
                     </div>
 
-                    <div class="col">
+                    <div class="col pr-0">
                         <div class="card rounded-0 product-card child-item-sanpham zbar">
                             <div class="card-header bg-transparent border-bottom-0">
                                 <div class="btn-add-wishlist btn-sticky hover-scale-1">
@@ -682,7 +682,7 @@
                 </div>
             </div>
             <div class="list-tabs">
-                <div class="tab-content" id="myTabContent">
+                <div class="tab-content" id="">
                     <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
                         <div class="row">
                             <div class="col-xl-7 pr-0">
