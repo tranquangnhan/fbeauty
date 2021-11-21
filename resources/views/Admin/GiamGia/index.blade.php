@@ -19,6 +19,20 @@
                         <div>
                              <button class="btn btn-primary waves-effect waves-light mb-3" data-toggle="modal" data-target="#myModal">Thêm Giảm Giá</button>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
+                                 @endif
+                            </div>
+                        </div>
                         <div class="container">
                             @if(session('thanhcong'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -145,10 +159,10 @@
                                             <td class="d-flex">
                                                 <a href="{{route("giamgia.edit",$row->id)}}" class="btn btn-primary mr-2" data-toggle="tooltip" data-placement="right" title="Sửa" ><i
                                                     class="fa fa-edit"  style="color: white;"></i></a>
-                                                <form action="{{route('giamgia.destroy',$row->id)}}"  method="post" title="Xóa">
+                                                <form action="{{route('giamgia.destroy',$row->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash" ></i></button>
+                                                    <button  onclick="return iconfirm()" type="submit"  class="btn btn-danger"><i class=" dripicons-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

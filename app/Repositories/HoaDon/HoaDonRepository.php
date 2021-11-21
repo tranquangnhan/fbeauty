@@ -39,4 +39,7 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
         ->where('idcoso', '=', $idCoSo)
         ->sum('tongtiensaugiamgia');
     }
+    public function getHoaDonIdCoSo($id){
+        return $this->model->where('idcoso',"=",$id)->get();
+    }
 }
