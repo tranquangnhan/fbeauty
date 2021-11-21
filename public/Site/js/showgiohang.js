@@ -134,6 +134,8 @@ function showGioHang() {
                     document.getElementById("payproduct").innerHTML="<p>Không có sản phẩm nào</p>";
                     $("#tongtienhang").html("0");
                     $("#tongthanhtoan").html("0");
+                    $("#tienship").html("0");
+                    $('#amount').val("0");
                 }
             }
             else {
@@ -334,7 +336,8 @@ function ShowPayProduct(data) {
     }
     document.getElementById("payproduct").innerHTML=span;
     $("#tongtienhang").html(total.toLocaleString());
-    $("#tongthanhtoan").html(total.toLocaleString());
+    $("#tongthanhtoan").html((total+30000).toLocaleString());
+    $('#amount').val(total+30000);
 }
 
 function XoaSanPham(id) {
