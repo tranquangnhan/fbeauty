@@ -18,6 +18,23 @@
                         <form action="{{route('khachhang.store')}}"  enctype="multipart/form-data"
                            method="post">
                            {{ csrf_field()}}
+
+                        <x-admin.common.CaseErrorInput />
+                       
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="w-100" for="files">Tải ảnh khách hàng:
+                                    <div class="form-group">
+                                        <input type="file" class="mt-2"  name="urlHinh"
+                                        value="{{old('img')}}" onchange="previewImg(event)" >
+                                    </div>   
+                                    @error('img')
+                                    <span class="badge badge-danger">{{$message}}</span>
+                                    @enderror
+                                </label>
+                            </div>
+                           
+                        </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -57,27 +74,7 @@
                                 </div>
 
                             </div>
-                            <div class="form-group ml-0 mt-2 col-12">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label class="w-100" for="files">Tải ảnh khách hàng:<span style="color:red;"> (*)</span>
-                                            <div class="wrapper"> <br>
-                                                <div class="file-upload mt-1">
-                                                    <input type="file" id="files" name="urlHinh"
-                                                        value="{{old('img')}}">
-                                                    <i class="fa fa-download " style="font-size:52px;color:blue"></i>
-                                                </div>
-                                            </div>
-                                            @error('img')
-                                            <span class="badge badge-danger">{{$message}}</span>
-                                            @enderror
-                                        </label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div id="imageA" style="width:250px;" class="mt-2"></div>
-                                    </div>
-                                </div>
-                            </div>
+                         
                             <div class="form-group ml-2 mt-3">
                                 <div class="form-group">
                                     <div class="checkbox">

@@ -13,6 +13,7 @@ class KhachHangModel extends Model
     protected $fillable = [
         'name',
         'sdt',
+        'idcoso',
         'email',
         'password',
         'idgoogle',

@@ -413,16 +413,6 @@
                             </ul>
 
                         </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="mdi mdi-calendar-month"></i>
-                                <span> Lịch </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("lich.index")}}">Danh sách</a></li>
-                            </ul>
-                        </li>
                         <!--- Giảm Giá -->
                         <li>
                             <a href="javascript: void(0);">
@@ -597,6 +587,24 @@
 <div class="rightbar-overlay"></div>
 
 
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                   2021 &copy; Website được tạo bởi <a href="">Fbeauty</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-right footer-links d-none d-sm-block">
+                        <a href="javascript:void(0);">Về chúng tôi</a>
+                        <a href="javascript:void(0);">Hỗ trợ</a>
+                        <a href="javascript:void(0);">Liên hệ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end Footer -->
 
 <!-- Vendor js -->
 <script src="{{ asset('Admin/assets') }}/js/vendor.min.js"></script>
@@ -640,7 +648,7 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/lieutrinh.nhan.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 <script src="{{ asset('Admin/assets') }}/js/pages/form-wizard.init.js"></script>
-{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
