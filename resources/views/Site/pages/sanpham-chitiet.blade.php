@@ -53,6 +53,7 @@
                         <h6 class="product-name mb-2">{{$sanpham[0]->name}}</h6>
                         <p class="card-text product-motangan">{{$sanpham[0]->mota}}</p>
                         <div class="d-flex align-items-center">
+                            @if($sanphamchitietlimit[0]!=null)
                             <div class="w-100 mb-1 product-price d-flex">
                                 <span class="me-1 text-decoration-line-through font-weight-normal giasanpham">{{number_format($sanphamchitietlimit[0]->dongia), ""}} đ </span>
                                 <div class="d-flex mt-auto mb-auto">
@@ -61,6 +62,7 @@
                                     <div class="list-info-sanpham"><span class="tonkho">{{$sanphamchitietlimit[0]->tonkho}}</span> <small>Sản phẩm có sẵn</small></div>
                                 </div>
                             </div>
+                                @endif
                         </div>
                         @if($sanpham[0]->giamgia!=null)
                             <div class="dungtich mt-2">
@@ -70,7 +72,9 @@
                                     </div>
 
                                     <div class="col-9">
+                                        @if($sanphamchitietlimit[0]!=null)
                                             <h3><span class="text-bold giamgiasanpham">{{number_format(($sanphamchitietlimit[0]->dongia - (($sanphamchitietlimit[0]->dongia *$sanpham[0]->giamgia)/100))), ""}}</span>đ</h3>
+                                            @endif
                                     </div>
 
                                 </div>
@@ -82,12 +86,13 @@
                                 <div class="col-3">
                                     <span class="text-bold">Dung tích </span>
                                 </div>
-
+                                @if($sanphamchitietlimit[0]!=null)
                                 <div class="col-9">
                                     @foreach($sanphamchitiet as $index =>$spct)
                                     <div class="basic-btn-gray btn-dungtich  <?php echo($index==0)?'active':'';?>" data-id="{{$spct->id}}" data-soluotmua="{{$spct->soluotmua}}" data-giamgia="{{$sanpham[0]->giamgia}}" data-ml="{{$spct->ml}}" data-kho="{{$spct->tonkho}}" data-gia="{{$spct->dongia}}">{{$spct->ml}} ml</div>
                                     @endforeach
                                 </div>
+                                    @endif
 
                             </div>
                         </div>
@@ -116,8 +121,10 @@
                         </div>
                         <div class="mt-4">
                             <div class="d-flex justify-content-start">
+                                @if($sanphamchitietlimit[0]!=null)
                                 <input type="hidden" id="tonkho" value="{{$sanphamchitietlimit[0]->tonkho}}">
                                 <input type="hidden" id="idsanpham" value="{{$sanphamchitietlimit[0]->id}}">
+                                @endif
                                 <button class="btn-5 ml-0 mr-2  bg-white idspct" onclick="ThemGioHangChiTiet(null)"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
                                 <button class="btn-6 ml-0" onclick="ThemGioHangChiTiet('muamgay')">Mua ngay</button>
                             </div>
@@ -214,7 +221,9 @@
             <div class="row">
                 <?php $spkhac=\Illuminate\Support\Facades\DB::table('sanpham')->select('sanpham.*', 'danhmuc.name AS tendm')
                     ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
-                    ->where('iddanhmuc', '!=',$sanpham[0]->iddanhmuc)->limit(4)->get();?>
+                    ->where('iddanhmuc', '!=',$sanpham[0]->iddanhmuc)
+                    ->where('sanpham.trangthai', 0)
+                    ->limit(4)->get();?>
                 @foreach($spkhac as $i => $spk)
                         <?php $anhk=json_decode($spk->img);
                         $splienquanctkhac=\Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("*")->where('idsanpham', $spk->id)->limit(1)->get();

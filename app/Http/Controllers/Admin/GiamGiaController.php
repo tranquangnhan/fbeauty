@@ -68,8 +68,6 @@ class GiamGiaController extends Controller
         return redirect('quantri/giamgia')->with('Vui lòng kiểm tra ngày tạo phải nhỏ hơn ngày hết hạn');
     }
 
-
-
        $data= $this->GiamGia->create($data);
         return redirect('quantri/giamgia')->with('success', 'Thêm thành công');
     }
@@ -150,4 +148,23 @@ class GiamGiaController extends Controller
     //     $data=$this->DonHang->getDichVuByID($idDonHang);
     //     return $data;
     // }
+
+    public function CheckGiamGia($name, $gia){
+        $checkCode = $this->GiamGia->CheckCODE($name);
+        if ($checkCode == false) {
+            $giamgia = $this->GiamGia->GetGiamGiaByCODE($name);
+            if ($gia >= $giamgia[0]["max"]) {
+                $today = date('Y-m-d');
+                if (strtotime($today) < $giamgia[0]["ngayhethan"]) {
+                    return $giamgia;
+                } else {
+                    return 0;
+                }
+            } else {
+                return 0;
+            }
+        } else {
+            return 0;
+        }
+    }
 }
