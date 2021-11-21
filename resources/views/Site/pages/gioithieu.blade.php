@@ -65,10 +65,10 @@
             </div>
             <h1 style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Chuyên gia và các bác sĩ</h1>
             <p class="mt-4">
-                100% các bác sĩ tại FBeauty Spa được đào tạo bài bản từ các trường Đại học danh tiếng trong và ngoài nước.<br>
+                100% các bác sĩ tại FBeauty Spa được đào tạo bài bản từ các trường Đại học danh tiếng trong và ngoài nước.
                  Ngoài kiến thức và kỹ năng trong nghề,
 
-                mỗi Bác sĩ và Trưởng bộ phận phải trải qua quá trình trị liệu tối thiểu 10,000 ca lâm sàng để có hiểu biết chuyên sâu về làn da cũng như cơ địa người Châu Á.
+                mỗi Bác  sĩ và Trưởng <br> bộ phận phải trải qua quá trình trị liệu tối thiểu 10,000 ca lâm sàng để có hiểu biết chuyên sâu về làn da cũng như cơ địa người Châu Á.
                 
                 Luôn học hỏi, nỗ lực và cập nhật những kiến thức y khoa – xu hướng thẩm mỹ mới nhất để bắt kịp với xu hướng y học hiện đại cam kết mang đến cho khách hàng kết quả thẩm mỹ tốt nhất.
             </p>
@@ -202,8 +202,8 @@
             </div>
         </div>
     </div>
-    <div class="divcoso mb-5 mt-5">
-        <div class="card ">
+    <div class="divcoso mb-5 mt-5 ">
+        <div class="card container">
             <div class="card-body">
                 <div class="title-small line-before text-center mt-4">
                     Trải nghiệm cơ sở vật chất 
@@ -211,13 +211,13 @@
                 <div class="text-center">
                     <h5 class="card-title mb-3" style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Cơ sở vật chất đẳng cấp</h5>
                 </div>
-              <ul class="mt-4">
-                <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn bật lên sự ấm cúng, thân thiện cùng nội thất đẳng cấp, tiện nghi FBeauty Spa  là một trong những Spa thẩm mỹ có cơ sở vật chất đạt tiêu chuẩn quốc tế.</li>
-                <li>Đồng thời, tất cả các giường thẩm mỹ được thiết kế độc lập, kín đáo mang đến không gian riêng tư, sự thoải mái nhất cho khách hàng khi trải nghiệm các dịch vụ tại FBeauty Spa</li>
-                <li>Máy Móc Trang Thiết Bị </li>
-                <li>Hệ thống công nghệ được trang bị đầy đủ từ cơ bản đến nâng cao. Đồng thời luôn cập nhật và ứng dụng các công nghệ, thiết bị thẩm mỹ được đánh giá tốt nhất, hiện đại hàng đầu thế giới vào các dịch vụ tại Spa. </li>
-                <li>Chuỗi phòng chờ, phòng hậu phẫu rộng rãi, tiện nghi tại FBeauty Spa chắc chắn sẽ làm khách hàng hài lòng.</li>
-            </ul>
+                <ul class="mt-4">
+                    <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn bật lên sự ấm cúng, thân thiện cùng nội thất đẳng cấp, tiện nghi FBeauty Spa  là một trong những Spa thẩm mỹ có cơ sở vật chất đạt tiêu chuẩn quốc tế.</li>
+                    <li>Đồng thời, tất cả các giường thẩm mỹ được thiết kế độc lập, kín đáo mang đến không gian riêng tư, sự thoải mái nhất cho khách hàng khi trải nghiệm các dịch vụ tại FBeauty Spa</li>
+                    <li>Máy Móc Trang Thiết Bị </li>
+                    <li>Hệ thống công nghệ được trang bị đầy đủ từ cơ bản đến nâng cao. Đồng thời luôn cập nhật và ứng dụng các công nghệ, thiết bị thẩm mỹ được đánh giá tốt nhất, hiện đại hàng đầu thế giới vào các dịch vụ tại Spa. </li>
+                    <li>Chuỗi phòng chờ, phòng hậu phẫu rộng rãi, tiện nghi tại FBeauty Spa chắc chắn sẽ làm khách hàng hài lòng.</li>
+                </ul>
               <div class="d-flex justify-content-start mt-5">      
                 <div class="col-3"><img height="230px" class=""
                     src="{{ asset('uploads') }}/coso1.jpg" alt=""></div>

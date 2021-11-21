@@ -103,7 +103,7 @@
                     @include('Site.components.danhmuc-baiviet')
 
                 </div>
-                <div class="row">
+                <div class="row mt-5">
                     <div class="danhmuc-listblog">
                         <div class="head-blog-item blog-title">
                             <div class="w-100 text-left d-flex align-items-center">
@@ -122,7 +122,7 @@
                                 <div class="col-xl-3">
                                     <div class="tin-item-1 box-tin-hv">
                                         <div class="image-tin-1" style="height: 220px">
-                                            <img class="img-fluid"
+                                            <img class="img-fluid" 
                                                 src="{{ asset('uploads') }}/{{$data->img}}"
                                                 alt="">
                                         </div>
@@ -137,10 +137,10 @@
                                                     <span>{{$data->created_at}}</span>
                                                 </div>
                                             </div>
-                                            <div class="text-bl-1 limit-text-row-2 mb-1 mt-3">
-                                                <a href="" class="hover-pink">{{$data->name}}</a>
+                                            <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
+                                                <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
                                             </div>
-                                            <p class="blog-mota mb-0">
+                                            <p class="blog-mota mb-0 limit-text-row-3">
                                                 {{$data->motangan}}
                                             </p>
                                         </div>
