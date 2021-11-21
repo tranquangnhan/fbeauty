@@ -37,7 +37,7 @@
                                                 {{$item->danhmuc}}
                                             </td> 
                                             <td>
-                                                {{$item->motangan}}
+                                                <p style="width: 100%!important;">{{$item->motangan}}</p> 
                                             </td> 
                                             <td class="d-flex">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('blog.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   

@@ -24,7 +24,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
             ->join('danhmuc', 'dichvu.iddm', '=', 'danhmuc.id')
             ->where('dichvu.id', $id)->limit(10)
             ->get();
-            
+
     }
 
     public function getDichVuTheoDanhMuc($iddanhmuc)
@@ -42,4 +42,25 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     public function getDichVuByID($iddv){
         return $this->model->select("*")->where('id', '=', $iddv)->get();
     }
+    public function getDichVu2(){
+        return $this->model->select('dichvu.*','danhmuc.name as namedm')->join('danhmuc','dichvu.iddm','=','danhmuc.id')->where('dichvu.trangthai', '=', 1)->get();
+    }
+    public function getDichVu1(){
+        return $this->model->select('dichvu.*','danhmuc.name as namedm')
+        ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+        ->offset(1)->limit(3)
+        ->where('dichvu.trangthai', '=', 1)
+        ->orderBy('created_at', 'DESC')
+        ->get();
+    }
+    public function getDichVu3(){
+        return $this->model->select('dichvu.*','danhmuc.name as namedm')
+        ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+        ->offset(1)->limit(3)
+        ->where('dichvu.giamgia', '>=', 1 )
+        ->where('dichvu.trangthai', '=', 1)
+        ->orderBy('created_at', 'DESC')
+        ->get();
+    }
+
 }

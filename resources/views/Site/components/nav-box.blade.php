@@ -1,7 +1,7 @@
 <div class="nav-box">
     <nav class="navbar navbar-expand-lg navbar-light background-color-none p-0">
-        <div class="box-logo">
-            <a class="navbar-brand text-center logo-custom color-white" href="#">Fbeauty</a>
+        <div class="pl-0 flex-grow-1">
+            <a class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -21,35 +21,26 @@
                 <li class="nav-item {{ ($pathActive == 'san-pham') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/san-pham">Sản Phẩm</a>
                     <ul class="dropdown-custom-1">
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+
                     </ul>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'dich-vu') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/dich-vu">Dịch Vụ</a>
                     <ul class="dropdown-custom-1">
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+
                     </ul>
                 </li>
 
-                <li class="nav-item {{ ($pathActive == 've-chung-toi') ? 'active' : '' }}">
-                    <a class="nav-link" href="#">Về Chúng Tôi</a>
+                <li class="nav-item {{ ($pathActive == 'gioi-thieu') ? 'active' : '' }}">
+                    <a class="nav-link" href="/gioi-thieu">Về Chúng Tôi</a>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'lien-he') ? 'active' : '' }}">
-                    <a class="nav-link" href="#">Liên Hệ</a>
+                    <a class="nav-link" href="/lien-he">Liên Hệ</a>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'bai-viet') ? 'active' : '' }} fa-dropdown-custom-1">
-                    <a class="nav-link" href="/bai-viet">Blog</a>
+                    <a class="nav-link" href="/bai-viet">Bài viết</a>
                     <ul class="dropdown-custom-1">
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
-                        <li class="dropdown-custom-item"><a href="">Danh mục</a></li>
+
                     </ul>
                 </li>
             </ul>

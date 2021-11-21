@@ -5,7 +5,8 @@
     --black-1: #000000;
     --black-2: #474747;
     --black-3: #555;
-    --main-color: #e87c7b;
+    /* --main-color: #e87c7b; */
+    --main-color: #fa8685;
     --main-color-2: #FFF5F2;
     --main-color-3-bg: #FCC3C3;
     --main-color-4-bg: #ffd0c0;
@@ -71,12 +72,9 @@ body {
 }
 
 .logo-custom {
-    background: var(--main-color);
-    padding: .2em 1.2em;
-    font-weight: bold;
-    font-size: 1em;
-    color: white;
-    font-size: 2em;
+    /* background: var(--main-color); */
+    /* padding: .2em 1.2em; */
+
 }
 
 .header-img {
@@ -117,7 +115,7 @@ body {
 }
 
 .box-logo {
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 
 /* header css */
@@ -953,6 +951,7 @@ img.im-small {
     position: relative;
     height: 60%;
     z-index: 20;
+    max-height: 400px;
 }
 
 .blog-bigsize .box-danhmuc {
@@ -2738,11 +2737,11 @@ span.box-soluong {
     margin: 1em 0em;
     transition: 0.4s;
     position: relative;
-    border-radius: 10px !important;
+    /* border-radius: 10px !important; */
 }
 
 .child-item-sanpham:hover {
-    box-shadow: 0px 2px 20px rgb(255, 165, 172);
+    box-shadow: 0 0.3rem 0.8rem rgb(0 0 0 / 12%);
 }
 
 .child-item-sanpham:hover .btn-sanpham {
@@ -3554,6 +3553,10 @@ div#custom-dots-1 {
     border-radius: 10px;
 }
 
+.border-radius-3px {
+    border-radius: 3px !important;
+}
+
 .blog-mota {
     color: var(--gray-7);
     font-size: .86em;
@@ -3905,6 +3908,7 @@ input[type=number] {
     backface-visibility: hidden;
     padding: 1.5em 2em;
     transition: .5s;
+    border-radius: 3px;
     text-align: left;
 }
 
@@ -4226,6 +4230,189 @@ input[type=number] {
     border-bottom-color: #EEEEEE;
     background-color: #FAFAFA;
 }
+
+.border-radius-modal {
+    border-radius: 0.3rem;
+}
+
+.uk-timeline .uk-timeline-item .uk-card {
+    max-height: 300px;
+}
+
+.uk-timeline .uk-timeline-item {
+    display: flex;
+    position: relative;
+}
+
+.uk-timeline .uk-timeline-item::before {
+    background: #dadee4;
+    content: "";
+    height: 100%;
+    left: 19px;
+    position: absolute;
+    top: 20px;
+    width: 2px;
+    z-index: 0;
+}
+
+.uk-timeline .uk-timeline-item .uk-timeline-icon .uk-badge {
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.uk-timeline .uk-timeline-item .uk-timeline-content {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0 0 0 1rem;
+}
+
+.uk-timeline-icon {
+    position: relative;
+    z-index: 2;
+}
+
+.circular-progress {
+    position: relative;
+    height: 140px;
+    width: 140px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.circular-progress:before {
+    content: "";
+    position: absolute;
+    height: 84%;
+    width: 84%;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.value-container {
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    color: #231c3d;
+}
+
+.thongtinlieutrinh {
+    padding: 15px 10px;
+}
+
+.thongtinlieutrinh .date-lieutrinh {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.thongtinlieutrinh .line-date {
+    width: 100%;
+    height: 3px;
+}
+
+.list-group {
+    border-radius: 0px;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.list-group label{
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.list-group .item {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.list-image-group .item {
+    display: inline-block;
+    width: 25%;
+    height: 100px;
+    margin-right: 1em;
+}
+
+.list-image-group {
+    display: flex;
+}
+
+span.uk-label {
+    font-size: .7em;
+    font-weight: 400;
+    padding: 2px 10px;
+}
+
+.uk-label-secondary {
+    background-color: #6c757d!important;
+    color: white;
+}
+
+.uk-badge.done {
+    background-color: #32d296;
+}
+
+.uk-badge.in-propress {
+    background-color: #6c757d!important;
+}
+
+.box-mota-level {
+    box-shadow: 0px 0px 1px rgb(0 0 0 / 44%);
+    padding: 0.7em 1em;
+}
+
+.money-progress .current-money {
+    color: var(--main-color);
+}
+
+.box-label-custom {
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    font-size: .7em;
+    padding: 0.2em 0.8em;
+    cursor: pointer;
+}
+
+.money-progress {
+    font-size: .9em;
+    margin: 0.2em 0em;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.noidung-uu-dai .fa-link-tabs {
+    border-bottom: 1px solid rgb(184 184 184 / 44%);
+    padding-bottom: 0.5em;
+}
+
+.uudai-content-item {
+    display: flex;
+    margin-top: 1em;
+    align-items: center;
+}
+
+.uudai-content-item .icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 0.8em;
+}
+
+.progress-bar {
+    /* background: #1e87f0!important; */
+    background: var(--main-color);
+}
+
+
+
+
+
+
+
 
 
 

@@ -63,28 +63,7 @@
             </div>
 
         </div>
-        <div class="phuongthuc shadow-1">
-            <div class="row">
-                <div class="col-xl-6 d-flex  justify-content-between">
-                    <label for="" class="title-9">Phương thức giao hàng: </label>
-                    <div class="ml-2">
-                        <button class="btn-pttt" id-pttt="1" data-toggle="modal" data-target="#phuongthucthanhtoan">
-                            Thanh toán khi nhận hàng
-                        </button>
-                    </div>
-                </div>
 
-                <div class="col-xl-6 d-flex  justify-content-between">
-                    <label for="" class="title-9">Đơn vị vận chuyển: </label>
-                    <div class="ml-2">
-                        <button class="btn-ptgh" id-ptgh="1" data-toggle="modal" data-target="#phuongthucgiaohang">
-                            Nhanh
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
         <div class="thanhtoan shadow-1">
             <div class="thongtintongtien mt-2">
                 <div class="row flex-row-reverse">
@@ -150,8 +129,90 @@
                 </div>
             </div>
         </div>
+        <div class="collapse mb-4" id="collapseExample123">
+            <div class="card card-body">
+                <div class="form-group">
+                    <label for="language">Loại thanh toán </label>
+                    <select name="order_type" id="order_type" class="form-control">
+                        <option value="billpayment">Thanh toán hóa đơn</option>
+                    </select>
+                </div>
+                {{--                <div class="form-group">--}}
+                {{--                    <label for="order_id">Mã hóa đơn</label>--}}
+                {{--                    <input class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>"/>--}}
+                {{--                </div>--}}
+                <div class="form-group">
+                    <label for="amount">Số tiền</label>
+                    <input class="form-control" id="amount"
+                           name="amount" type="number"/>
+                </div>
+                <div class="form-group">
+                    <label for="order_desc">Nội dung thanh toán</label>
+                    <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2">Noi dung thanh toan</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="bank_code">Ngân hàng</label>
+                    <select name="bank_code" id="bank_code" class="form-control">
+                        <option value="">Không chọn</option>
+                        <option value="NCB"> Ngan hang NCB</option>
+                        <option value="AGRIBANK"> Ngan hang Agribank</option>
+                        <option value="SCB"> Ngan hang SCB</option>
+                        <option value="SACOMBANK">Ngan hang SacomBank</option>
+                        <option value="EXIMBANK"> Ngan hang EximBank</option>
+                        <option value="MSBANK"> Ngan hang MSBANK</option>
+                        <option value="NAMABANK"> Ngan hang NamABank</option>
+                        <option value="VNMART"> Vi dien tu VnMart</option>
+                        <option value="VIETINBANK">Ngan hang Vietinbank</option>
+                        <option value="VIETCOMBANK"> Ngan hang VCB</option>
+                        <option value="HDBANK">Ngan hang HDBank</option>
+                        <option value="DONGABANK"> Ngan hang Dong A</option>
+                        <option value="TPBANK"> Ngân hàng TPBank</option>
+                        <option value="OJB"> Ngân hàng OceanBank</option>
+                        <option value="BIDV"> Ngân hàng BIDV</option>
+                        <option value="TECHCOMBANK"> Ngân hàng Techcombank</option>
+                        <option value="VPBANK"> Ngan hang VPBank</option>
+                        <option value="MBBANK"> Ngan hang MBBank</option>
+                        <option value="ACB"> Ngan hang ACB</option>
+                        <option value="OCB"> Ngan hang OCB</option>
+                        <option value="IVB"> Ngan hang IVB</option>
+                        <option value="VISA"> Thanh toan qua VISA/MASTER</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="language">Ngôn ngữ</label>
+                    <select name="language" id="language" class="form-control">
+                        <option value="vn">Tiếng Việt</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="phuongthuc shadow-1">
+            <div class="row">
+                <div class="col-xl-6 d-flex  justify-content-between">
+                    <label for="" class="title-9">Phương thức giao hàng: </label>
+                    <div class="ml-2">
+                        <button class="btn-pttt" id-pttt="1" data-toggle="modal" data-target="#phuongthucthanhtoan">
+                            Thanh toán khi nhận hàng
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 d-flex  justify-content-between">
+                    <label for="" class="title-9">Đơn vị vận chuyển: </label>
+                    <div class="ml-2">
+                        <button class="btn-ptgh" id-ptgh="1" data-toggle="modal" data-target="#phuongthucgiaohang">
+                            Nhanh
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
+
 <div class="modal fade" id="phuongthucgiaohang" tabindex="-1" aria-labelledby="phuongthucgiaohangLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content modal-content-custom">
@@ -169,20 +230,33 @@
 <div class="modal fade" id="phuongthucthanhtoan" tabindex="-1" aria-labelledby="phuongthucthanhtoanLabel" aria-hidden="true">
     <div class="modal-dialog d-flex align-items-center">
         <div class="modal-content modal-content-custom">
-            <div class="custom-option active pttt" data-pttt="1">
+            <div class="custom-option active pttt" data-pttt="1" onclick="thanhtoanVNPAY(null)">
                 Thanh toán khi nhận hàng
             </div>
-
-            <div class="custom-option pttt" data-pttt="2">
-                Thẻ tín dụng
+            <div class="custom-option pttt" onclick="thanhtoanVNPAY('vnpay')" data-pttt="2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample123" aria-expanded="false" aria-controls="collapseExample123">
+                VNPAY
             </div>
         </div>
     </div>
 </div>
 
 
+
+
 @endsection
 
 @section('javascript')
     <script src="{{ asset('Site/js') }}/thanhtoan.js"></script>
+    <script>
+        function thanhtoanVNPAY(bien) {
+            if(bien =='vnpay'){
+                $('#collapseExample123').addClass('show');
+               var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split(',').join('');
+               $('#amount').val(tongthanhtoan)
+            }
+            else {
+                $('#collapseExample123').removeClass('show');
+            }
+        }
+    </script>
 @endsection

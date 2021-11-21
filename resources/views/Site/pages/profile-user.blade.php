@@ -87,7 +87,151 @@
                                                             </div>
 
                                                             <div class="form-group form-control-custom">
-                                                                <div class="left">  </div>
+                                                                <div class="left">Mức độ thân thiết</div>
+                                                                <div class="right">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-6">
+                                                                            <div class="progress" style="height: 7px">
+                                                                                <div class="progress-bar progress-level" role="progressbar" price-value="10000" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <span>LV 1</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group form-control-custom">
+                                                                <div class="left"></div>
+                                                                <div class="right">
+                                                                    <div class="row">
+                                                                        <div class="col-6">
+                                                                            <div class="box-mota-level">
+                                                                                <div class="d-flex">
+                                                                                    <div class="fw-500">Chi tiêu</div>
+                                                                                    <div class="box-label-custom ml-auto" data-toggle="modal" data-target="#uudai-khachhang">Xem ưu đãi</div>
+                                                                                    <div class="modal fade" id="uudai-khachhang" tabindex="-1" aria-labelledby="uudai-khachhangLabel" aria-hidden="true">
+                                                                                        <div class="modal-dialog ">
+                                                                                          <div class="modal-content border-radius-3px">
+                                                                                            <div class="modal-header">
+                                                                                              <h5 class="modal-title" id="uudai-khachhangLabel">Ưu đãi - khách hàng thân thiết</h5>
+                                                                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                                <span aria-hidden="true">&times;</span>
+                                                                                              </button>
+                                                                                            </div>
+                                                                                            <div class="modal-body noidung-uu-dai">
+                                                                                                <nav class="fa-link-tabs">
+                                                                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                                                                        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Level 1 | 1.000.000 đ</a>
+                                                                                                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Level 2 | 5.000.000 đ</a>
+                                                                                                        <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Level 3 | 10.000.000 đ</a>
+                                                                                                    </div>
+                                                                                                  </nav>
+                                                                                                <div class="tab-content" id="nav-tabContent">
+                                                                                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/massage-1.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Giảm giá dịch vụ</div>
+                                                                                                                <div class="text-gray">Giảm 5% tổng hóa đơn khi sử dụng dịch vụ spa</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/confetti.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sinh nhật</div>
+                                                                                                                <div class="text-gray">1 x Vocher mua hàng 100k vào sinh nhật</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/massage-1.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Giảm giá dịch vụ</div>
+                                                                                                                <div class="text-gray">Giảm 8% tổng hóa đơn khi sử dụng dịch vụ spa</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/confetti.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sinh nhật</div>
+                                                                                                                <div class="text-gray">2 x Vocher 500k vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/vip.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Ngày hội thành viên</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, vocher hạng 2</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/massage-1.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Giảm giá dịch vụ</div>
+                                                                                                                <div class="text-gray">Giảm 10% tổng hóa đơn khi sử dụng dịch vụ spa</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/confetti.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sinh nhật</div>
+                                                                                                                <div class="text-gray">3 x Vocher 500k vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/vip.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Ngày hội thành viên</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, vocher hạng 3</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="modal-footer">
+                                                                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                </div>
+                                                                                <div class="money-progress"><span class="current-money">1.255.000 đ</span> / 5tr đ</div>
+                                                                                <small>Mua thêm <b>3.745.000 đ </b>để đạt LV 2</small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group form-control-custom">
+                                                                <div class="left"></div>
                                                                 <div class="right">
                                                                     <a href="">
                                                                         <button class="btn-6 ml-0">
@@ -208,8 +352,8 @@
                                                             </div>
 
                                                             <div class="item">
-                                                                <i class="fas fa-truck-moving text-success"></i>
-                                                                <span class="ml-1 text-success">Giao hàng thành công</span>
+                                                                <i class="fas fa-truck-moving uk-text-success"></i>
+                                                                <span class="ml-1 uk-text-success">Giao hàng thành công</span>
                                                             </div>
 
                                                         </div>
@@ -547,36 +691,366 @@
                                                     <div class="profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
+                                                                <button type="button" class="button-none show-progress-lieutrinh" data-toggle="modal" data-target="#lieutrinh-id" data-id="lieutrinh-id">
                                                                     <span class="mr-1">Thông tin chi tiết</span>
                                                                     <i class="far fa-question-circle"></i>
                                                                 </button>
+
+                                                                <div class="modal fade" id="lieutrinh-id" tabindex="-1" aria-labelledby="lieutrinh-id-Label" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-lg">
+                                                                      <div class="modal-content border-radius-modal">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="lieutrinh-id-Label">BS. Ngọc - Tên liệu trình</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="thongtinlieutrinh">
+                                                                                <div class="row align-items-center">
+                                                                                    <div class="col-4 date-lieutrinh start">
+                                                                                        <label for="">Ngày bắt đầu</label>
+                                                                                        <span>15 - 7 - 2021</span>
+                                                                                    </div>
+                                                                                    <div class="col-4 line-date bg-primary
+                                                                                    ">
+
+                                                                                    </div>
+                                                                                    <div class="col-4 date-lieutrinh end">
+                                                                                        <label for="">Dự kiến kết thúc</label>
+                                                                                        <span>15 - 10 - 2021</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="progress-circle" progress-lieutrinh-id="lieutrinh-id">
+                                                                                <div class="circular-progress" circular-progress-id="lieutrinh-id">
+                                                                                    <div class="value-container value-progress-circle" value-container-id="lieutrinh-id" data-progress="75">0%</div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="uk-container" style="padding: 40px 10px;">
+                                                                                <div class="uk-timeline">
+                                                                                    <div class="uk-timeline-item">
+                                                                                        <div class="uk-timeline-icon">
+                                                                                            <span class="uk-badge in-propress"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
+                                                                                        </div>
+                                                                                        <div class="uk-timeline-content">
+                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                                                                                <div class="uk-card-header">
+                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8</time></h3>
+                                                                                                        <span class="uk-label uk-label-secondary uk-margin-auto-left">Chưa đến </span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="uk-card-body">
+                                                                                                    <div class="list-group">
+                                                                                                        <label class="">Dịch vụ sử dụng</label>
+                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Chuyên viên thực hiện</label>
+                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Ghi chú của tiến độ</label>
+                                                                                                        <div class="ghichu"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="uk-timeline-item">
+                                                                                        <div class="uk-timeline-icon">
+                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
+                                                                                        </div>
+                                                                                        <div class="uk-timeline-content">
+                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                                                                                <div class="uk-card-header">
+                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
+                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="uk-card-body">
+                                                                                                    <div class="list-image-group">
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item mr-0">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Dịch vụ sử dụng</label>
+                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Chuyên viên thực hiện</label>
+                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Ghi chú của tiến độ</label>
+                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
+                                                                                                    </div>
+                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="uk-timeline-item">
+                                                                                        <div class="uk-timeline-icon">
+                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
+                                                                                        </div>
+                                                                                        <div class="uk-timeline-content">
+                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                                                                                <div class="uk-card-header">
+                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
+                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="uk-card-body">
+                                                                                                    <div class="list-image-group">
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item mr-0">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Dịch vụ sử dụng</label>
+                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Chuyên viên thực hiện</label>
+                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Ghi chú của tiến độ</label>
+                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
+                                                                                                    </div>
+                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="uk-timeline-item">
+                                                                                        <div class="uk-timeline-icon">
+                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
+                                                                                        </div>
+                                                                                        <div class="uk-timeline-content">
+                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                                                                                <div class="uk-card-header">
+                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
+                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="uk-card-body">
+                                                                                                    <div class="list-image-group">
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item mr-0">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Dịch vụ sử dụng</label>
+                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Chuyên viên thực hiện</label>
+                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Ghi chú của tiến độ</label>
+                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
+                                                                                                    </div>
+                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="uk-timeline-item">
+                                                                                        <div class="uk-timeline-icon">
+                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
+                                                                                        </div>
+                                                                                        <div class="uk-timeline-content">
+                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
+                                                                                                <div class="uk-card-header">
+                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
+                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="uk-card-body">
+                                                                                                    <div class="list-image-group">
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item mr-0">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Dịch vụ sử dụng</label>
+                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Chuyên viên thực hiện</label>
+                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Ghi chú của tiến độ</label>
+                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
+                                                                                                    </div>
+                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="uk-timeline-item">
+                                                                                        <div class="uk-timeline-icon">
+                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
+                                                                                        </div>
+                                                                                        <div class="uk-timeline-content">
+                                                                                            <div class="uk-card uk-card-default uk-overflow-auto">
+                                                                                                <div class="uk-card-header">
+                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
+                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
+                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="uk-card-body">
+                                                                                                    <div class="list-image-group">
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+
+                                                                                                        <div class="item mr-0">
+                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Dịch vụ sử dụng</label>
+                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Chuyên viên thực hiện</label>
+                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-group mt-4">
+                                                                                                        <label class="">Ghi chú của tiến độ</label>
+                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
+                                                                                                    </div>
+                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
                                                             </div>
 
                                                             <div class="item">
-                                                                <i class="fas fa-calendar-week text-primary"></i>
-                                                                <span class="ml-1 text-primary">Đang điều trị</span>
+                                                                <i class="fas fa-calendar-week uk-text-primary"></i>
+                                                                <span class="ml-1 uk-text-primary">Đang điều trị</span>
                                                             </div>
                                                         </div>
                                                         <div class="body">
                                                             <div class="box-datlich-history mt-0">
                                                                 <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
                                                                     <div class="date">21 Tháng 12</div>
                                                                 </div>
 
                                                                 <div class="right">
                                                                     <div class="row d-flex justify-content-between">
                                                                         <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
+                                                                            <div class="list-group">
+                                                                                <label class="">Dịch vụ sử dụng</label>
+                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                                <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
+                                                                            </div>
                                                                         </div>
-
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-primary"></i>
-                                                                                <span class="ml-1 text-primary">12 ngày tới</span>
+                                                                                <i class="far fa-check-circle uk-text-primary"></i>
+                                                                                <span class="ml-1 uk-text-primary">12 ngày tới</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -590,9 +1064,11 @@
                                                                         </div>
 
                                                                         <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
+                                                                            <label for="" class="text-gray">
+                                                                                <i class="far fa-clipboard"></i>
+                                                                            </label>
                                                                             <div class="ml-2 limit-text-row-1">
-                                                                                Dưỡng mụn lần 1
+                                                                                Không dùng sản phẩm có tinh chất bạc hà
                                                                             </div>
                                                                         </div>
 
@@ -610,13 +1086,15 @@
                                                                 <div class="right">
                                                                     <div class="row d-flex justify-content-between">
                                                                         <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
+                                                                            <div class="list-group">
+                                                                                <label class="">Dịch vụ sử dụng</label>
+                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                            </div>
                                                                         </div>
-
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -630,50 +1108,11 @@
                                                                         </div>
 
                                                                         <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
+                                                                            <label for="" class="text-gray">
+                                                                                <i class="far fa-clipboard"></i>
+                                                                            </label>
                                                                             <div class="ml-2 limit-text-row-1">
-                                                                                Dưỡng mụn lần 1
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
-
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Dưỡng mụn lần 1
+                                                                                Không dùng sản phẩm có tinh chất bạc hà
                                                                             </div>
                                                                         </div>
 
@@ -692,13 +1131,15 @@
                                                                 <div class="right">
                                                                     <div class="row d-flex justify-content-between">
                                                                         <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
+                                                                            <div class="list-group">
+                                                                                <label class="">Dịch vụ sử dụng</label>
+                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                            </div>
                                                                         </div>
-
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -712,9 +1153,101 @@
                                                                         </div>
 
                                                                         <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
+                                                                            <label for="" class="text-gray">
+                                                                                <i class="far fa-clipboard"></i>
+                                                                            </label>
                                                                             <div class="ml-2 limit-text-row-1">
-                                                                                Dưỡng mụn lần 1
+                                                                                Không dùng sản phẩm có tinh chất bạc hà
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="box-datlich-history">
+                                                                <div class="left">
+                                                                    <div class="time">
+                                                                        15h00
+                                                                    </div>
+                                                                    <div class="date">21 Tháng 12</div>
+                                                                </div>
+
+                                                                <div class="right">
+                                                                    <div class="row d-flex justify-content-between">
+                                                                        <div class="col-8">
+                                                                            <div class="list-group">
+                                                                                <label class="">Dịch vụ sử dụng</label>
+                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 justify-content-end">
+                                                                            <div class="item ml-4 text-right">
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row mt-3 justify-content-start">
+                                                                        <div class="col-xl-4 d-flex">
+                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                            <div class="ml-2 limit-text-row-1">
+                                                                                BS. Ngọc
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-xl-4 d-flex text-center">
+                                                                            <label for="" class="text-gray">
+                                                                                <i class="far fa-clipboard"></i>
+                                                                            </label>
+                                                                            <div class="ml-2 limit-text-row-1">
+                                                                                Không dùng sản phẩm có tinh chất bạc hà
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="box-datlich-history">
+                                                                <div class="left">
+                                                                    <div class="time">
+                                                                        15h00
+                                                                    </div>
+                                                                    <div class="date">21 Tháng 12</div>
+                                                                </div>
+
+                                                                <div class="right">
+                                                                    <div class="row d-flex justify-content-between">
+                                                                        <div class="col-8">
+                                                                            <div class="list-group">
+                                                                                <label class="">Dịch vụ sử dụng</label>
+                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 justify-content-end">
+                                                                            <div class="item ml-4 text-right">
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row mt-3 justify-content-start">
+                                                                        <div class="col-xl-4 d-flex">
+                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                            <div class="ml-2 limit-text-row-1">
+                                                                                BS. Ngọc
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-xl-4 d-flex text-center">
+                                                                            <label for="" class="text-gray">
+                                                                                <i class="far fa-clipboard"></i>
+                                                                            </label>
+                                                                            <div class="ml-2 limit-text-row-1">
+                                                                                Không dùng sản phẩm có tinh chất bạc hà
                                                                             </div>
                                                                         </div>
 
@@ -725,9 +1258,7 @@
 
 
                                                         </div>
-
                                                     </div>
-
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-hoanthanh" role="tabpanel" aria-labelledby="lieutrinh-hoanthanh-tab">
 
@@ -743,8 +1274,8 @@
                                                             </div>
 
                                                             <div class="item">
-                                                                <i class="fas fa-calendar-week text-primary"></i>
-                                                                <span class="ml-1 text-primary">Đang điều trị</span>
+                                                                <i class="fas fa-calendar-week uk-text-primary"></i>
+                                                                <span class="ml-1 uk-text-primary">Đang điều trị</span>
                                                             </div>
                                                         </div>
                                                         <div class="body">
@@ -764,8 +1295,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-primary"></i>
-                                                                                <span class="ml-1 text-primary">12 ngày tới</span>
+                                                                                <i class="far fa-check-circle uk-text-primary"></i>
+                                                                                <span class="ml-1 uk-text-primary">12 ngày tới</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -804,49 +1335,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Dưỡng mụn lần 1
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
-
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -886,8 +1376,49 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row mt-3 justify-content-start">
+                                                                        <div class="col-xl-4 d-flex">
+                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                            <div class="ml-2 limit-text-row-1">
+                                                                                BS. Ngọc
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-xl-4 d-flex text-center">
+                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
+                                                                            <div class="ml-2 limit-text-row-1">
+                                                                                Dưỡng mụn lần 1
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="box-datlich-history">
+                                                                <div class="left">
+                                                                    <div class="time">
+                                                                        15h00
+                                                                    </div>
+                                                                    <div class="date">21 Tháng 12</div>
+                                                                </div>
+
+                                                                <div class="right">
+                                                                    <div class="row d-flex justify-content-between">
+                                                                        <div class="col-8">
+                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
+                                                                        </div>
+
+                                                                        <div class="col-4 justify-content-end">
+                                                                            <div class="item ml-4 text-right">
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -948,7 +1479,7 @@
                                                     <div class="profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
+                                                                <button type="button" class="button-none">
                                                                     <i class="far fa-calendar-alt"></i>
                                                                     <span class="ml-1">2021 (7)</span>
                                                                 </button>
@@ -972,8 +1503,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-calendar text-primary"></i>
-                                                                                <span class="ml-1 text-primary">7 ngày tới</span>
+                                                                                <i class="far fa-calendar uk-text-primary"></i>
+                                                                                <span class="ml-1 uk-text-primary">7 ngày tới</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1020,8 +1551,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1065,7 +1596,7 @@
                                                     <div class="profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
+                                                                <button type="button" class="button-none" >
                                                                     <i class="far fa-calendar-alt"></i>
                                                                     <span class="ml-1">2020 (7)</span>
                                                                 </button>
@@ -1089,8 +1620,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1137,8 +1668,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1183,7 +1714,7 @@
                                                     <div class="profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
+                                                                <button type="button" class="button-none" >
                                                                     <i class="far fa-calendar-alt"></i>
                                                                     <span class="ml-1">2021 (7)</span>
                                                                 </button>
@@ -1207,8 +1738,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1252,7 +1783,7 @@
                                                     <div class="profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
+                                                                <button type="button" class="button-none">
                                                                     <i class="far fa-calendar-alt"></i>
                                                                     <span class="ml-1">2020 (7)</span>
                                                                 </button>
@@ -1276,8 +1807,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1324,8 +1855,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle text-success"></i>
-                                                                                <span class="ml-1 text-success">Hoàn thành</span>
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1370,7 +1901,7 @@
                                                     <div class="profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
+                                                                <button type="button" class="button-none">
                                                                     <i class="far fa-calendar-alt"></i>
                                                                     <span class="ml-1">2021 (7)</span>
                                                                 </button>
@@ -1394,8 +1925,8 @@
 
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-calendar text-primary"></i>
-                                                                                <span class="ml-1 text-primary">7 ngày tới</span>
+                                                                                <i class="far fa-calendar uk-text-primary"></i>
+                                                                                <span class="ml-1 uk-text-primary">7 ngày tới</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1432,7 +1963,7 @@
                                                     <div class="profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
+                                                                <button type="button" class="button-none">
                                                                     <i class="far fa-calendar-alt"></i>
                                                                     <span class="ml-1">2021 (7)</span>
                                                                 </button>
@@ -1515,5 +2046,10 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('Site/js') }}/sanpham.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.9.2/js/uikit.min.js"></script>
+    <script src="{{ asset('Site/js') }}/profile-user.js"></script>
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.9.2/css/uikit.min.css">
 @endsection

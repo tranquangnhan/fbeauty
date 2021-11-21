@@ -303,7 +303,7 @@ function ShowPayProduct(data) {
         else {
             ten+=data[i].name
         }
-        total+=tongtien
+        total+=tongtien;
 
         span+='<div class="row align-items-center giohang-item">\n' +
             '                <div class="col-xl-1 d-flex  align-items-center">\n' +

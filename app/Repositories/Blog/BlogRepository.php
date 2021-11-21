@@ -78,8 +78,31 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
-        ->where('blog.iddm', '=',$id) 
+        ->where('blog.iddm', '=',$id)
         ->get();
         
+    }
+    public function getblogbyiddm2($id)
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->where('blog.iddm', '=',$id)->limit(3)->orderBy('id', 'DESC')
+        ->get();
+        
+    }
+    public function getblogbyiddm3($id)
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->where('blog.iddm', '=',$id)->limit(3)
+        ->get();   
+    }
+
+    public function getBlogByIdDanhmuc($iddanhmuc, $skip, $take) 
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->where('blog.iddm', '=',$iddanhmuc)->skip($skip)->take($take)->orderBy('id', 'DESC')
+        ->get();   
     }
 }

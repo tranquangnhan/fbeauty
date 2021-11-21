@@ -12,6 +12,7 @@ $('.checkPhoneNumber').click(function (e) {
     phoneNumberAuthen = $('#phone-number').val();
     let error = phoneNumberCheck(phoneNumberAuthen);
     if (error == false) {
+        spinnerTurnOn();
         checkIssetUser(phoneNumberAuthen);
     }
 
@@ -35,6 +36,7 @@ function checkIssetUser(phoneNumber) {
         url: checkIssetUserUrl,
         data: data,
         success: function (respon) {
+            spinnerTurnOff();
             if (respon.checkIssetUser) {
                 movePageAuthen(pageAuthenPass);
                 $('.comfirm-sdt').html(phoneNumber);
@@ -43,6 +45,7 @@ function checkIssetUser(phoneNumber) {
             }
         },
         error: function () {
+            spinnerTurnOff();
             alert('Lỗi khi check isset user');
         }
     });
@@ -88,11 +91,12 @@ $('.login-button').click(function (e) {
         password += ''+$(inputsPassword[i]).val()+'';
     }
 
-    // let typePassword = 'old';
-    // let error = passwordCheck(password, typePassword);
-    // if (error == false) {
+    let typePassword = 'old';
+    let error = passwordCheck(password, typePassword);
+    if (error == false) {
+        spinnerTurnOn();
         callLogin(password);
-    // }
+    }
 });
 
 function callLogin(password) {
@@ -109,6 +113,7 @@ function callLogin(password) {
         url: siteLoginUrl,
         data: data,
         success: function (respon) {
+            spinnerTurnOff();
             if (respon.success) {
                 location.reload();
                 InsertGioHangData();
@@ -122,6 +127,7 @@ function callLogin(password) {
             }
         },
         error: function () {
+            spinnerTurnOff();
             swal.fire({
                 icon: 'error',
                 title: 'Đã xảy ra lỗi !',
@@ -217,6 +223,7 @@ function removeOTP() {
 }
 
 function sendOTPSMS() {
+    spinnerTurnOn();
     let _token = $('meta[name="csrf-token"]').attr('content');
     let data = {
         sdt: phoneNumberAuthen,
@@ -229,6 +236,7 @@ function sendOTPSMS() {
         url: sendOTPSMSUrl,
         data: data,
         success: function (respon) {
+            spinnerTurnOff();
             if (respon.success) {
                 timeOTPNotValid = respon.timeOTPNotValid;
                 countDownOTPTimeIsValid();
@@ -243,6 +251,7 @@ function sendOTPSMS() {
             }
         },
         error: function () {
+            spinnerTurnOff();
             swal.fire({
                 icon: 'error',
                 title: 'Đã xảy ra lỗi !',
@@ -269,6 +278,7 @@ $('.check-OTP').click(function (e) {
     let typePassword = 'OTP';
     let error = passwordCheck(OTP, typePassword);
     if (error == false) {
+        spinnerTurnOn();
         checkOTP(OTP);
     }
 });
@@ -286,6 +296,7 @@ function checkOTP(OTP) {
         url: checkOTPUrl,
         data: data,
         success: function (respon) {
+            spinnerTurnOff();
             if (respon.success) {
                 movePageAuthen(pageAuthenNewPassword);
             } else {
@@ -298,6 +309,7 @@ function checkOTP(OTP) {
             }
         },
         error: function () {
+            spinnerTurnOff();
             swal.fire({
                 icon: 'error',
                 title: 'Đã xảy ra lỗi !',
@@ -319,6 +331,7 @@ $('.newPasswordButton').click(function (e) {
     let typePassword = 'new';
     let error = passwordCheck(password, typePassword);
     if (error == false) {
+        spinnerTurnOn();
         createNewPassword(password, phoneNumberAuthen);
     }
 });
@@ -337,6 +350,7 @@ function createNewPassword(password, phoneNumber) {
         url: newPasswordUrl,
         data: data,
         success: function (respon) {
+            spinnerTurnOff();
             if (respon.success) {
                 location.reload();
             } else {
@@ -349,6 +363,7 @@ function createNewPassword(password, phoneNumber) {
             }
         },
         error: function () {
+            spinnerTurnOff();
             swal.fire({
                 icon: 'error',
                 title: 'Đã xảy ra lỗi !',
@@ -361,6 +376,7 @@ function createNewPassword(password, phoneNumber) {
 
 $('.skip-password').click(function (e) {
     e.preventDefault();
+    spinnerTurnOn();
     skipCreatePassword(phoneNumberAuthen);
 });
 
@@ -375,6 +391,7 @@ function skipCreatePassword(phoneNumber) {
         url: skipCreatePasswordUrl,
         data: data,
         success: function (respon) {
+            spinnerTurnOff();
             if (respon.success) {
                 location.reload();
             } else {
@@ -387,6 +404,7 @@ function skipCreatePassword(phoneNumber) {
             }
         },
         error: function () {
+            spinnerTurnOff();
             swal.fire({
                 icon: 'error',
                 title: 'Đã xảy ra lỗi !',

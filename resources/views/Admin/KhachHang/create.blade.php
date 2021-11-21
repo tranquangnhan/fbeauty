@@ -27,6 +27,7 @@
                                     @error('name')
                                     <span class="badge badge-danger">{{$message}}</span>
                                     @enderror
+                                    <input type="hidden" name="idcoso" value="1">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Số điện thoại </label><span style="color:red;"> (*)</span>

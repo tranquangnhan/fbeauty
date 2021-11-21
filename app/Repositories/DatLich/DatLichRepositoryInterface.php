@@ -11,4 +11,6 @@ interface DatLichRepositoryInterface extends RepositoryInterface
     public function getdv();
     public function findDatLichCuaNhanVienTheoThoiGian($thoiGianDat, $idNhanVien);
     public function getSoLanKhachDatByTimeStamp($thoiGianDat);
+    public function getDatLichCungCoSo($idCoSo);
+    public function getNumDatLichByTime($timeStampDauNgay, $timeStampCuoiNgay, $idCoSo);
 }
