@@ -20,8 +20,8 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
 
     public function getBlog()
     {
-        return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' ) 
-            ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id') 
+        return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' )
+            ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
             ->get();
     }
 
@@ -32,7 +32,7 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' )
         ->whereDate('blog.created_at','>=', $date->toDateString())
         ->whereDate('blog.created_at','<', $datenow->toDateString())
-        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id') 
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->limit(1)
         ->get();
     }
@@ -43,29 +43,36 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' )
         ->whereDate('blog.created_at','>=', $date->toDateString())
         ->whereDate('blog.created_at','<', $datenow->toDateString())
-        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id') 
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->offset(1)->limit(4)
+        ->get();
+    }
+    public function getBlogmenu()
+    {
+        return $this->model->limit(3)->orderBy('created_at', 'DESC')
+        ->where('blog.trangthai', '=', 1)
+        ->orderBy('created_at', 'DESC')
         ->get();
     }
     public function getBlog1()
     {
-        return $this->model->select('blog.*','danhmuc.name AS danhmuc') 
-        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id') 
-        ->limit(1)->orderBy('created_at', 'DESC')->get(); 
+        return $this->model->select('blog.*','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->limit(1)->orderBy('created_at', 'DESC')->get();
     }
     public function getBlog2()
     {
         return $this->model->select('blog.*','danhmuc.name AS danhmuc')
-        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id') 
-        ->offset(1)->limit(4)->orderBy('created_at', 'DESC')->get(); 
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->offset(1)->limit(4)->orderBy('created_at', 'DESC')->get();
     }
     public function getBlognew()
     {
-        return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' ) 
+        return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' )
             ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
             ->offset(1)->limit(2)
             ->orderBy('created_at', 'DESC')
-            ->get(); 
+            ->get();
     }
     public function editBlog($slug)
     {
@@ -78,8 +85,8 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
-        ->where('blog.iddm', '=',$id) 
+        ->where('blog.iddm', '=',$id)
         ->get();
-        
+
     }
 }

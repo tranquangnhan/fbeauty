@@ -64,12 +64,18 @@ class HomeController extends Controller
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet=$SanPhamChiTiet;
         $listCoSo = $this->Coso->getAll();
+        $dichvu = $this->Dichvu->getDichVu2();
+        $sanpham = $this->SanPham->getsanpham();
+        $blog = $this->Blog->getBlogmenu();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
 
         $this->data = array(
             'listCoSo' => $listCoSo,
             'listDanhMucDichVu' => $listDanhMucDichVu,
             'pathActive' => '',
+            'dichvu'=>$dichvu,
+            'sanpham'=>$sanpham,
+            'blog'=>$blog,
         );
     }
 
@@ -103,6 +109,7 @@ class HomeController extends Controller
 
     public function getSanPham($soluong)
     {
+
         $sanpham = $this->SanPham->getSanPhamJoinDanhMuc($soluong);
         $sl = $this->SanPham->DemSanPham();
         $data = ['sanpham' => $sanpham];
@@ -111,7 +118,6 @@ class HomeController extends Controller
 
     public function viewSanPhamChiTiet($id)
     {
-
         $this->data['pathActive'] = 'san-pham';
         $this->data['namePage'] = 'Sản phẩm chi tiết';
         $this->data['breadcrumbArray'] = [
@@ -175,6 +181,7 @@ class HomeController extends Controller
         $blog3     = $this->Blog->getLastWeek1();
         $blog4     = $this->Blog->getLastWeek2();
         $blognew   = $this->Blog->getBlognew();
+
         // $getblogbyiddm = $this->Blog->getblogbyiddm($id);
 
         $this->data['blog']     = $blog;
@@ -195,6 +202,8 @@ class HomeController extends Controller
     }
 
     public function viewBaiVietChiTiet($id) {
+
+
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAll();
         $viewdetail = $this->Blog->editBlog($id);
@@ -227,9 +236,9 @@ class HomeController extends Controller
         $this->data['dichvu2'] = $dichvu2;
         $this->data['danhmuc'] = $danhmuc;
         $this->data['breadcrumbArray'] = [
-            ['link' => '', 'name' => 'Dịch Vụ'],
+            ['link' => '/id', 'name' => 'Dịch Vụ'],
         ];
-        //dd($dichvu);
+
 
         return view("Site.pages.dichvu", $this->data);
     }
