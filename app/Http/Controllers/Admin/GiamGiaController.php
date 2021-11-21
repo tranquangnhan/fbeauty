@@ -140,14 +140,24 @@ class GiamGiaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $this->GiamGia->delete($id);
+    // public function destroy($id)
+    // {
+    //     $this->GiamGia->delete($id);
 
-        return redirect('quantri/giamgia')->with('success', 'Xoá thành công');
-    }
-    // public function findDonHangByIdGiamGia($id, $idDonHang){
-    //     $data=$this->DonHang->getDichVuByID($idDonHang);
-    //     return $data;
+    //     return redirect('quantri/giamgia')->with('success', 'Xoá thành công');
     // }
+    // // public function findDonHangByIdGiamGia($id, $idDonHang){
+    // //     $data=$this->DonHang->getDichVuByID($idDonHang);
+    // //     return $data;
+    // // }
+     public function destroy($id)
+    {
+        $hasChiTiet = $this->DonHang->getDonHangIdGiamGia($id);
+        if(count($hasChiTiet)>0){
+            return redirect('quantri/giamgia')->withErrors('Xoá không thành công, giảm giá tồn tại trong đơn hàng và hóa đơn!');
+        }else{
+             $this->GiamGia->delete($id);
+             return redirect('quantri/giamgia')->with('success','Xoá thành công!');
+        }
+    }
 }
