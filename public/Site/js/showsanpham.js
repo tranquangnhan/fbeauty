@@ -158,6 +158,8 @@ function ShowSanPham(data) {
         } else {
             thetich = 0
         }
+        var giasaugiam='';
+        var showgiasaugiam='';
         var yeuthich = GetYeuThich(data.sanpham[i].id);
         var anhsp = data.sanpham[i].img.split('"').join('').slice(1, -1).split(',');
         var boxgiamgia = '';
@@ -166,6 +168,11 @@ function ShowSanPham(data) {
                 '<div class="box-cicrle-giamgia p-2 rounded text-white">\n' +
                 '<span style="font-size: 10pt;">' + data.sanpham[i].giamgia + '%</span>\n' +
                 '</div></div>';
+            giasaugiam = (data.sanpham[i].dongia - ((data.sanpham[i].dongia * data.sanpham[i].giamgia)/100))
+            if (giasaugiam <0){
+                giasaugiam=0
+            }
+            showgiasaugiam='<br><span>Giảm còn: </span><span class="font-weight-bold">'+giasaugiam.toLocaleString()+'đ</span>';
         }
         sp += '<div class="col-xl-4 fa-sanpham-item" id="AnHienSP' + (i + 1) + '">\n' +
             ' <div class="item-sanpham w-100">\n' +
@@ -174,7 +181,7 @@ function ShowSanPham(data) {
             '<div class="box-cicrle" id="yt" style="z-index: 9999;">' +
             '<i class="fas fa-heart heart-full"></i><i class="far fa-heart heart-line" ></i>\n' +
             '</div></div>' + boxgiamgia + ' <div class="col-xl-12 fa-image-sanpham ">\n' +
-            '<img src="' + document.URL.replace('san-pham', '') + 'uploads/' + anhsp[0] + '" class="img-fluid" alt="...">\n' +
+            '<img src="' + document.location.hash + 'uploads/' + anhsp[0] + '" class="img-fluid" alt="...">\n' +
             '</div>\n' +
             '<div class="col-xl-12 fa-content-sanpham pl-0 position-relative"> <div class="card-body pl-0">\n' +
             '<div class="product-info">\n' +
@@ -182,17 +189,17 @@ function ShowSanPham(data) {
             '<p class="product-catergory font-13 mb-1">' + data.sanpham[i].tendm + '</p>\n' +
             '</a>\n' +
             ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].id + '">\n' +
-            ' <h6 class="product-name mb-2">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
+            ' <h6 class="product-name mb-2" style="height: 50px;">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
             '  </a>\n' +
             ' <p class="card-text product-motangan">' + data.sanpham[i].mota + '</p>\n' +
-            '<div class="d-flex align-items-center fa-product-price">\n' +
-            '<div class="mb-1 product-price">\n' +
-            ' <span class="me-1 text-decoration-line-through">' + Number(data.sanpham[i].dongia).toLocaleString() + '</span>đ / <span>' + thetich + '</span>ml  \n' +
+            '<div class="d-flex align-items-center fa-product-price" style="height: 40px;">\n' +
+            '<div class="mb-2 product-price">\n' +
+            ' <span class="text-decoration-line-through" >' + Number(data.sanpham[i].dongia).toLocaleString() + '</span>đ / <span>' + thetich + '</span>ml  \n' +
+            ''+showgiasaugiam+'</div>\n' +
             '</div>\n' +
-            '</div>\n' +
-            '<div class="product-action mt-2">\n' +
+            '<div class="mt-1 product-action">\n' +
             '<div class="d-flex gap-2">\n' +
-            ' <button class="btn-sanpham btn-5 mr-2"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>\n' +
+            ' <button class="btn-sanpham btn-5 mr-2" onclick="ThemGioHang('+data.sanpham[i].idspct+')"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>\n' +
             ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].id + '"><button class="btn-sanpham btn-5 m-0"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
             '</div></div></div></div></div></div></div></div>';
 

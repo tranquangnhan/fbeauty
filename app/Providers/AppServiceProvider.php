@@ -4,6 +4,10 @@ namespace App\Providers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\CoSoController;
 use App\Models\Admin\CosoModel;
+use App\Repositories\GioHang\GioHangRepository;
+use App\Repositories\GioHang\GioHangRepositoryInterface;
+use App\Repositories\GioHangChiTiet\GioHangChiTietRepository;
+use App\Repositories\GioHangChiTiet\GioHangChiTietRepositoryInterface;
 use App\Repositories\YeuThich\YeuThichRepository;
 use App\Repositories\YeuThich\YeuThichRepositoryInterface;
 use Illuminate\Support\Facades\View;
@@ -56,6 +60,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(LieuTrinhRepositoryInterface::class,LieuTrinhRepository::class);
         $this->app->singleton(LieuTrinhChiTietRepositoryInterface::class, LieuTrinhRepository::class);
         $this->app->singleton(YeuThichRepositoryInterface::class, YeuThichRepository::class);
+        $this->app->singleton(GioHangChiTietRepositoryInterface::class, GioHangChiTietRepository::class);
+        $this->app->singleton(GioHangRepositoryInterface::class, GioHangRepository::class);
 
     }
 
