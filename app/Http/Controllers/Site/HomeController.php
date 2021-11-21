@@ -236,7 +236,7 @@ class HomeController extends Controller
         $this->data['dichvu2'] = $dichvu2;
         $this->data['danhmuc'] = $danhmuc;
         $this->data['breadcrumbArray'] = [
-            ['link' => '/id', 'name' => 'Dịch Vụ'],
+            ['link' => '', 'name' => 'Dịch Vụ'],
         ];
 
 
