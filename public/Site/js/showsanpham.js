@@ -3,8 +3,8 @@ var soluongshowtiep = 3;
 var ArrayDanhMuc = [];
 let Arrayphu = [];
 let ArrayFlow = [];
-
 function SanPham(soluong) {
+
     var bienkhac = '';
     Arrayphu = $.ajax({
         url: document.URL + '/soluong/' + soluong,
@@ -13,7 +13,8 @@ function SanPham(soluong) {
         dataType: 'json',
         data: {soluong: soluong},
         success: function (data) {
-            BeFore(data, bienkhac)
+            BeFore(data, bienkhac);
+
         }
     });
 }
@@ -205,7 +206,7 @@ function ShowSanPham(data) {
 
     }
     document.getElementById("showSP").innerHTML = sp;
-    ShowPhanTrang(sanphambandau)
+    ShowPhanTrang(sanphambandau);
 }
 
 SanPham(sanphambandau)
@@ -225,6 +226,7 @@ function GetYeuThich(id) {
                 yeuthich = '';
             }
         }
+
     });
     return yeuthich;
 }

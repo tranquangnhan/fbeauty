@@ -62,7 +62,7 @@
     {{-- end code nhúng của Nhân --}}
     @yield('css')
 <body>
-
+<input type="hidden" id="LinkURL" value="{{URL::to("/quantri/")}}">
 <!-- Begin page -->
 <div id="wrapper">
     <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">

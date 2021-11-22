@@ -483,9 +483,3 @@ $('.custom-error').hover(function () {
     }
 );
 
-
-// $('.show-giohang-fixed').click(function (e) {
-//     e.preventDefault();
-//     let id = $(this).attr('data-target');
-//     $(id).addClass('in');
-// });

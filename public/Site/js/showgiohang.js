@@ -136,6 +136,7 @@ function showGioHang() {
                     $("#tongthanhtoan").html("0");
                     $("#tienship").html("0");
                     $('#amount').val("0");
+                    $("#dathang").prop('disabled', true);
                 }
             }
             else {
@@ -147,6 +148,7 @@ function showGioHang() {
                 }
             else if (window.location == domain+'/thanh-toan'){
                     ShowPayProduct(data);
+                    $("#dathang").prop('disabled', false);
                 }
             }
         }
