@@ -36,6 +36,7 @@
                             <div class="alert alert-light " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
                                  role="alert">
                                 <div class="container">
+                                    
                                     <img src="{{asset('uploads')}}/{{$customer->img}}" class="img-thumbnail"
                                          style="width: 10%">
                                     <span class="text-primary font-weight-bold">{{$customer->name}}</span>
