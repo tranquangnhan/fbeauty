@@ -46,6 +46,8 @@ Route::get('/quantri/login', [DangNhapAdminController::class, 'index']);
 Route::post('/quantri/login', [DangNhapAdminController::class, 'checkin']);
 Route::get('/quantri/logout', [DangNhapAdminController::class, 'logout']);
 Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
+    Route::get('/getDoanhThuByDay/{day}', [ThongkeController::class, "getHoaDonByDayAjax"]);
+    Route::get('/getDoanhThuHoaDon/{type}/{numData}', [ThongkeController::class, "getDoanhThuHoaDonAjax"]);
     Route::get('/', [ThongkeController::class, "index"]);
     Route::resource('danhmuc', DanhMucController::class);
     Route::resource('sanpham', SanPhamController::class);

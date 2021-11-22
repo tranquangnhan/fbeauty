@@ -12,5 +12,6 @@ interface HoaDonRepositoryInterface extends RepositoryInterface
 
     public function findHoaDonByIdLieuTrinh($id);
 
-    public function getTongDoanhThuHoaDon($dauNgay, $cuoiNgay, $idCoSo);
+    public function getTongDoanhThuHoaDon($dau, $cuoi, $idCoSo);
+    public function getHoaDonByDate($dau, $cuoi, $idCoSo);
 }

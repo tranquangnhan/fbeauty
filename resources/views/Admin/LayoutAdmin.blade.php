@@ -64,6 +64,7 @@
 
 <!-- Begin page -->
 <div id="wrapper">
+    <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
 
     <!-- Topbar Start -->
     <div class="navbar-custom">
@@ -640,7 +641,7 @@
 <script src="{{ asset('Admin/assets') }}/js/pages/lieutrinh.nhan.js"></script>
 <script src="{{ asset('Admin/assets') }}/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 <script src="{{ asset('Admin/assets') }}/js/pages/form-wizard.init.js"></script>
-{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script src="{{ asset('Admin/assets') }}/js/pages/custom.js"></script>
