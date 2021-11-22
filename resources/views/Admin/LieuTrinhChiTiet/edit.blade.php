@@ -1,13 +1,16 @@
 @extends('Admin.LayoutAdmin')
 
 @section('content')
-
+<?php
+    use app\Http\Controllers\Controller;
+?>
 <div class="content-page">
+
     <div class="content">
 
         <!-- Start Content-->
-        <div class="container-fluid">
 
+        <div class="container-fluid">
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
@@ -24,20 +27,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                     @endif
-                </div>
-            </div>
+            @if ($LieuTrinh !== null)
+                <a name="" id="" class="btn btn-primary" href="{{URL::to('quantri/khachhang/detail/'.$LieuTrinh->idkhachhang.'')}}" role="button"><i class="mdi mdi-keyboard-backspace"></i></a>
+            @endif
+            
+            <x-admin.common.CaseError />
             <!-- end page title -->
 
             <div class="row d-flex justify-content-center">
@@ -81,15 +75,6 @@
                                                     </select>
                                                 </div>
 
-                                                {{-- <div class="form-group">
-                                                    <label for="">Chọn dịch vụ</label>
-                                                    <select class="form-control select2" name="iddichvu">
-                                                        @foreach ($DichVu as $item)
-                                                            <option value="{{$item['id']}}">{{$item['name']}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div> --}}
-
                                                 <div class="form-group row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -123,6 +108,11 @@
                             </div>
 
                         </article>
+                        @if (count($LieuTrinhChiTiet) === 0)
+                            <x-admin.lieu-trinh-chi-tiet.CaseEmpty/>
+                        @else
+                       
+
                         @foreach ($LieuTrinhChiTiet as $item)
                             <article class="timeline-item @if($loop->index % 2 == 0) alt @endif">
                                 <div class="timeline-desk">
@@ -156,11 +146,11 @@
                                                     <h4 class="timeline-date text-primary date" title="Click để sửa" id="date" data-value="{{date('d-m-Y',$item->ngay)}}" data-format="DD-MM-YYYY" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="{{$item->idlieutrinhchitiet}}" >{{date('d-m-Y',$item->ngay)}}</h4>
                                                     <p class="timeline-date text-muted mt-1"><strong>Chuyên viên điều trị: {{$item->tennv}}</strong></p>
                                                     <div class="row d-flex justify-content-end mt-1">
-                                                        <div class="col-5">
+                                                        <div class="col-12">
                                                             <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
                                                         </div>
-                                                        <div class="col-5">
-                                                            <p class=" text-danger">{{number_format($item->dongia)," "}} VNĐ</p>
+                                                        <div class="col-12">
+                                                            <p class=" text-danger">{{Controller::caculateGia($item->dongia,$item->giamgia)}}</p>
                                                         </div>
 
                                                     </div>
@@ -186,10 +176,14 @@
                             </article>
                         @endforeach
 
+                             
+                        @endif
+                        
                     </div>
                 </div>
             </div>
             <!-- end row -->
+            @if (count($LieuTrinhChiTiet) !== 0)
             <div class="row d-flex justify-content-end mb-3">
                 <div class="col-lg-3">
                     @php
@@ -197,17 +191,18 @@
                     @endphp
                     @foreach ($LieuTrinhChiTiet as $item)
                        @php
-                             $tongtien += $item->dongia;
+                             $tongtien +=  $item->dongia - ($item->dongia/100 * $item->giamgia);
                        @endphp
                     @endforeach
-                    Tổng tiền: <strong class="text-danger">{{number_format($tongtien),""}}</strong> VNĐ <br>
+                    Tổng tiền: <strong class="text-danger">{{number_format($tongtien, 0, ',', '.')}}</strong> VNĐ <br>
                     @if ($hasHoaDon === 0)
                         <a class="btn btn-primary mt-3" onclick="return checkConfirm()" href="quantri/hoadon/addhoadonbylieutrinh/{{$id}}/store" role="button">Tiến Hành Thanh Toán</a>
                     @else
-                        <button class="btn btn-danger mt-2">Hoá đơn đã thanh toán</button>
+                        <button class="btn btn-danger mt-2">Liệu trình đã thanh toán</button>
                     @endif
                 </div>
             </div>
+            @endif
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->

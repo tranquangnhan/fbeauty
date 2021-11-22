@@ -57,4 +57,6 @@
 </div>
 
 @endsection
-<link rel="stylesheet" href="{{ asset('Site/css') }}/contact.css">
+@section('css')
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/contact.css">
+@endsection

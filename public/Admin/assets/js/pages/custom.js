@@ -21,8 +21,10 @@ $(document).ready(function () {
                     "next": "Trang Sau",
                     "previous": "Trang Trước"
                 },
-            }
-        }
+            },
+            "order": [[ 1, "desc" ]]
+        },
+        
     );
 });
 

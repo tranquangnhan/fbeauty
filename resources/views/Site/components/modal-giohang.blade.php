@@ -1,17 +1,33 @@
+<style>
+    .modal-footer:hover a{
+        background-color: black!important;
+        color: white!important;
+    }
+</style>
+<input type="hidden" name="" id="asset" value="{{asset("/uploads/")}}">
 <div class="modal right fade" id="giohang-fixed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-    <div class="modal-dialog" role="document"  style="width: 460px;">
+    <div class="modal-dialog w-75" role="document">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel2">Right Sidebar</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel2">Giỏ hàng (<span id="soluonghang">0</span>)</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
-            <div class="modal-body">
-                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </p>
-            </div>
+            <div class="modal-body" style="overflow: scroll;">
+                <table class="table">
+                    <tbody id="modalgiohang">
 
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <a id="nutcheckout"  href="" class="w-100 btn nutcheckout text-white font-weight-bold rounded-pill" style="background-color: #ff9298; ">
+                    Thanh toán: <span id="tongtien">0</span> (VND)
+                </a>
+            </div>
         </div><!-- modal-content -->
     </div><!-- modal-dialog -->
 </div><!-- modal -->
+

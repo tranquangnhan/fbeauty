@@ -9,6 +9,7 @@ use App\Models\Admin\Wards;
 use App\Models\Admin\CosoModel;
 use App\Repositories\City\CityRepository;
 use App\Repositories\Coso\CosoRepository;
+use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\Lich\LichRepository;
 use App\Repositories\Province\ProvinceRepository;
 use App\Repositories\Wards\WardsRepository;
@@ -21,17 +22,19 @@ class CoSoController extends Controller
     private $City;
     private $wards;
     private $Lich;
+    private $HoaDon;
 
     /**
      * CosoController constructor.
      */
-    public function __construct(CosoRepository $Coso, CityRepository $City, ProvinceRepository $Province, WardsRepository $wards, LichRepository $Lich)
+    public function __construct(CosoRepository $Coso, CityRepository $City, ProvinceRepository $Province, WardsRepository $wards, LichRepository $Lich, HoaDonRepository $HoaDon)
     {
         $this->Coso = $Coso;
         $this->Province = $Province;
         $this->City = $City;
         $this->wards = $wards;
         $this->Lich = $Lich;
+        $this->HoaDon = $HoaDon;
         // ProvinceRepository $Province , WardsRepository $wards
     }
 
@@ -167,17 +170,13 @@ class CoSoController extends Controller
      */
     public function destroy($id)
     {
-        $this->Lich->deleteLichByIdCoSo($id);
-        $this->Coso->delete($id);
-        return redirect('quantri/coso')->with('success', 'Xoá thành công');
-        // if ($id > 0){
-        //     $this->Coso->delete($id);
-        // }
-        //  return response()->json([
-        //    'title' => 'Đã xóa!',
-        //    'text' => 'Cơ sở id' . $id . 'đã xóa thành công',
-        //    'status' => 'success!',
-        //  ]);
-
+        $hasHoaDon = $this->HoaDon->getHoaDonIdCoSo($id);
+        if(count($hasHoaDon)>0){
+            return redirect('quantri/coso')->withErrors('Xoá không thành công, cơ sở tồn tại trong hóa đơn và nhân viên!');
+        }else{
+            $this->Lich->deleteLichByIdCoSo($id);
+            $this->Coso->delete($id);
+             return redirect('quantri/coso')->with('success','Xoá thành công!');
+        }
     }
 }

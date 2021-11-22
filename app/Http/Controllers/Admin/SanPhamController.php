@@ -54,8 +54,11 @@ class SanPhamController extends Controller
      */
     public function store(SanPham $request)
     {
-        
-        $img = $this->uploadSingle('public',$request->file('img'));
+        if($request->imgs === null){
+            return $this->handleErrorInput('Vui lòng chọn hình ảnh');
+        }
+
+        $imgs = $this->uploadMultipleImg($this::PATH_UPLOADS,$request->file('imgs'));
         
         if($request->session()->get('idSanPham')){
            
@@ -65,7 +68,7 @@ class SanPhamController extends Controller
                 'iddanhmuc'=>$request->iddanhmuc,
                 'name'=> $request->name,
                 'slug'=>Str::slug($request->name),
-                "img"=>$img,
+                "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
                 "trangthai"=>$request->trangthai
@@ -80,7 +83,7 @@ class SanPhamController extends Controller
                 'iddanhmuc'=>$request->iddanhmuc,
                 'name'=> $request->name,
                 'slug'=>Str::slug($request->name),
-                "img"=>$img,
+                "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
                 "trangthai"=>$request->trangthai
@@ -92,8 +95,7 @@ class SanPhamController extends Controller
                 return redirect('/quantri/sanpham/detail/'.$data->id.'/create')->with('idDetail',$data->id);
             }
         }
-        
-
+    
     }
 
    
@@ -140,9 +142,9 @@ class SanPhamController extends Controller
             "trangthai"=>$request->trangthai,
         ];
 
-        if($request->img !== null){
-            $img = $this->uploadSingle('public',$request->file('img'));
-            $data['img'] = $img;
+        if($request->imgs !== null){
+            $imgs = $this->uploadMultipleImg($this::PATH_UPLOADS,$request->file('imgs'));
+            $data['img'] = $imgs;
         }
 
         $this->SanPham->update($id,$data);

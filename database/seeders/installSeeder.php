@@ -461,6 +461,62 @@ class installSeeder extends Seeder
             Kem mắt với công nghệ Retinol Tri-Active giúp làm tan bọng mắt và xóa nhòa những nếp nhăn quanh mắt.
             Bộ sản phẩm cho bạn trải nghiệm gần như đầy đủ các bước dưỡng da trong phác đồ điều trị lão hóa theo chuẩn của Bác sĩ Howard Murad. Set này là set mới nhất và cũng chính là set mà mình mong đợi nhất từ Murad bởi những feedbacks, reviews cực kì tích cực của những sản phẩm lẻ trong set, ngoài ra khi ghép set như vậy giá thành sản phẩm cũng rẻ đi đáng kể nửa…thực sự rất hấp dẫn phải không ạ? ^^', 'trangthai' => '1'],
 
+            ['id'=>4,'iddm' => '6', 'img' => 'blog1.jpg', 'name' => 'Cách làm kem trộn trị mụn trắng da an toàn tại nhà đơn giản', 'slug' => Str::slug('Cách làm kem trộn trị mụn trắng da an toàn tại nhà đơn giản', '-'),'motangan'=>'Để sở hữu làn da mịn màng, trắng sáng và không có nốt mụn, da luôn căng mọng, nhiều chị em đã lựa chọn sử dụng kem trộn.',
+            'noidung'=>'Để biết được cách làm kem trộn trị mụn trắng da, bạn cần biết được kem trộn trị mụn trắng da là gì và thành phần của nó.
+            Để có thể sở hữu làn da trắng sáng mịn màng và khiến cho da sạch mụn, các chị em thường áp dụng các phương pháp, bí quyết làm đẹp khác nhau. Trong số các phương pháp trị mụn, làm trắng da thì việc sử dụng kem trộn là cách làm đẹp được nhiều chị em truyền tai nhau thực hiện nhiều nhất.
+
+            Kem trộn trị mụn trắng da là dạng kem bôi lên trên da mặt và cả da toàn thân tại các vị trí da không đều màu và có mụn xuất hiện. Thường các loại kem này được rao bán nhiều trên các trang mạng xã hội. Thế nhưng vì có quá nhiều tin đồn không tốt về các sản phẩm kem trộn trên thị trường, nên để đảm bảo an toàn nhiều chị em đã lựa chọn tự làm tại nhà, với những nguyên liệu vô cùng đơn giản và dễ tìm.
+
+            Theo như những nghiên cứu, thì các loại kem trộn thường được điều chế có cấu tạo gồm các thành phần chính như: BHA, AHA, Benzoyl Peroxide,.. Đây là những thành phần luôn có mặt trong các thành phần cấu tạo nên các loại kem trị mụn cũng như nuôi dưỡng làn da trắng mịn.
+
+            Benzoyl Peroxide có thể nói là một trong những nguyên liệu, thành phần quen thuộc có trong nhiều sản phẩm làm đẹp. Theo như các nghiên cứu da liễu đã chứng minh, chất này có khả năng mang đến công dụng cực kỳ cao và hiệu quả trong việc loại bỏ cũng nhưng làm lành vết thương do mụn gây ra.
+
+            Không chỉ có vậy, hàm lượng thành phần Benzoyl Peroxide còn có công dụng tác động đến cấu trúc của da, khi bạn bôi nó lên cơ thể hoặc lên da mặt. Việc tác động đến cấu trúc của da này, giúp cho quá trình oxy hóa diễn ra chậm hơn và phát vỡ cấu trúc cùng dưỡng chất gây nên mụn.
+
+            Do đó, kem trộn trị mụn trắng da có thể giúp bạn loại bỏ các lớp tế bào chết trên da, hạn chế tình trạng vi khuẩn, bụi bẩn và bã nhờn tích tụ gây nên mụn. Chính vì vậy, hàm thành phần Benzoyl Peroxide không thể thiếu trong công thức làm kem trộn trị mụn trắng da được.
+            Thành phần AHA, BHA
+            Ngoài công dụng hiệu quả của Benzoyl Peroxide, thì BHA và AHA cũng mang đến công dụng tuyệt vời không kém. Chúng có công dụng khá đặc biệt, giúp loại bỏ các nốt mụn trên da và khiến da điều màu.
+
+            AHA có khả năng loại bỏ các lớp sừng bám trên da một cách hiệu quả và nhanh chóng. Nhờ đó, da trở nên sạch sẽ hơn và các lỗ chân lông cũng được thông thoáng, giúp ngăn ngừa mụn phát triển cũng như xuất hiện.
+            Ngoài ra, khi hàm lượng thành phần AHA kết hợp cùng với BHA chúng sẽ mang đến cho bạn, những công dụng hiệu quả, ấn tượng và mạnh mẽ. Có lợi cho làn da ở phần trung bì và thượng bì, giúp vùng da trắng sáng hơn.
+
+            Cách làm kem trộn trị mụn trắng da ngay tại nhà
+            Bên cạnh việc lựa chọn kem trộn trắng da trị mụn, bạn có thể tự thực hiện cách làm kem trộn trị mụn trắng da tại nhà, với các nguyên liệu y dược kết hợp cùng nguyên liệu thiên nhiên. Dưới đây là một số cách mà bạn có thể tham khảo.
+
+            Aspirin làm nên kem trộn cùng mật ong và chanh
+            Thành phần Aspirin tuy được ít chị em biết đến nhưng lại mang đến công dụng hiệu quả. Khi kết hợp Aspirin cùng với mật ong và nước cốt chanh sẽ tạo nên hỗn hợp kem trị mụn và giúp trắng da tuyệt vời.
+
+            Mật ong có chứa hàm lượng các chất có tính kháng viêm, kháng khuẩn cao, mang đến tác dụng tẩy tế bào chết và giúp các bụi bẩn bên trong lỗ chân lông được làm sạch. Từ đó, kết hợp với tính axit có trong chanh tươi, giúp sát trùng cho da và hỗ trợ giảm viêm mụn.
+
+            Trộn cùng với Aspirin, ta sẽ có được loại hỗn hợp cũng như cách làm kem trộn trị mụn trắng da hiệu quả và đơn giản ngay tại nhà. Tuy nhiên, cách trộn này không phải ai cũng có thể thực hiện được, nếu thực hiện không đúng cách sẽ dễ gây tổn thương cho da. Bạn nên áp dụng đúng công thức như sau:
+
+            Nguyên liệu bạn cần
+
+            ½ muỗng bột Aspirin.
+            1 muỗng mật ong nguyên chất.
+            ½ muỗng nước cốt chanh.
+
+            Bạn cần trộn các nguyên liệu lại cùng với nhau, để có được hỗn hợp trị mụn và làm trắng da dạng sánh mịn.
+            Nhớ dùng sữa rửa mặt hoặc bằng cách xông hơi, để giúp lỗ chân lông trên mặt sạch sẽ và thông thoáng.
+            Bôi hỗn hợp lên trên da mặt, nhất là vùng da có mụn và không đều màu.
+            Chờ đợi và thư giãn cùng mặt nạ trong vòng 20 phút, rồi bằng lấy nước sạch mát để vệ sinh và rửa sạch lại da.
+
+            Kem trộn trắng da trị mụn cùng Benzoyl Peroxide
+            Với công dụng của Benzoyl Peroxyd được nhắc đến ở nội dung trên thì bạn có thể sử dụng nó trong công thức làm trắng da, giảm mụn này. Hãy kết hợp Benzoyl Peroxide cùng với đó là Sulfur, nguyên liệu có công dụng giảm viêm sưng và giúp da hạn chế mụn hình thành. Bạn có thể mua 2 nguyên liệu này tại các tiệm thuốc tây.
+
+            Chuẩn bị nguyên liệu
+
+            2 viên Benzoyl Peroxyd.
+            2 viên Sulfur.
+            Cách làm kem trộn trị mụn trắng da
+
+            Bạn cần giã nhuyễn chúng ra thành bột rồi cho vào trong chén sạch, trộn đều chúng lại với nhau và cho ít nước vào để có hỗn hợp sền sệt.
+            Thực hiện công việc làm sạch toàn bộ da mặt, bằng cách sử dụng sữa rửa mặt hoặc phương pháp xông hơi. Giúp lỗ chân lông trở nên sạch sẽ và thông thoáng, dễ dàng hấp thụ chất dinh dưỡng trên da.
+            Tiếp đến, bạn thoa hỗn hợp thuốc lên trên da mặt đặt biệt là những vùng da cần làm trắng và cần đánh bay mụn.
+            Thư giãn với mặt nạ trong thời gian từ 25 – 30 phút, bạn dùng nước sạch ấm và nước mát để rửa lại, rồi mới dùng khăn bồn thâm khô.
+            Thực hiện áp dụng bôi kem trộn này, giúp các nốt mụn cám, mụn đầu đen có trên da khô lại và tự động bong tróc. Da cũng trở nên trắng mịn, sáng đều màu.
+            ','trangthai' => '1'],
+
         ]);
         DB::table('donhang')->insert([
             ['id'=>1,'idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],

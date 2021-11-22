@@ -26,4 +26,5 @@ class GiamGiaRepository extends BaseRepository implements GiamGiaRepositoryInter
             ->where('ma','=', $code)
             ->get();
     }
+
 }

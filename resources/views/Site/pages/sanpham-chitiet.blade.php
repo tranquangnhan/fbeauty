@@ -53,27 +53,46 @@
                         <h6 class="product-name mb-2">{{$sanpham[0]->name}}</h6>
                         <p class="card-text product-motangan">{{$sanpham[0]->mota}}</p>
                         <div class="d-flex align-items-center">
+                            @if($sanphamchitietlimit[0]!=null)
                             <div class="w-100 mb-1 product-price d-flex">
-                                <span class="me-1 text-decoration-line-through giasanpham">{{number_format($sanphamchitietlimit[0]->dongia), ""}} đ </span>
+                                <span class="me-1 text-decoration-line-through font-weight-normal giasanpham">{{number_format($sanphamchitietlimit[0]->dongia), ""}} đ </span>
                                 <div class="d-flex mt-auto mb-auto">
                                     <div class="list-info-sanpham"><span class="dungtich-ml"> {{$sanphamchitietlimit[0]->ml}}ml</span></div>
                                     <div class="list-info-sanpham"><span class="soluotmua">{{$sanphamchitietlimit[0]->soluotmua}}</span> <small>Đã bán</small></div>
                                     <div class="list-info-sanpham"><span class="tonkho">{{$sanphamchitietlimit[0]->tonkho}}</span> <small>Sản phẩm có sẵn</small></div>
                                 </div>
                             </div>
+                                @endif
                         </div>
+                        @if($sanpham[0]->giamgia!=null)
+                            <div class="dungtich mt-2">
+                                <div class="row align-items-center">
+                                    <div class="col-3">
+                                        <span class="text-bold">Giảm còn: </span>
+                                    </div>
+
+                                    <div class="col-9">
+                                        @if($sanphamchitietlimit[0]!=null)
+                                            <h3><span class="text-bold giamgiasanpham">{{number_format(($sanphamchitietlimit[0]->dongia - (($sanphamchitietlimit[0]->dongia *$sanpham[0]->giamgia)/100))), ""}}</span>đ</h3>
+                                            @endif
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="dungtich mt-2">
                             <div class="row align-items-center">
                                 <div class="col-3">
                                     <span class="text-bold">Dung tích </span>
                                 </div>
-
+                                @if($sanphamchitietlimit[0]!=null)
                                 <div class="col-9">
                                     @foreach($sanphamchitiet as $index =>$spct)
-
-                                    <div class="basic-btn-gray btn-dungtich  <?php echo($index==0)?'active':'';?>" data-soluotmua="{{$spct->soluotmua}}" data-ml="{{$spct->ml}}" data-kho="{{$spct->tonkho}}" data-gia="{{$spct->dongia}}">{{$spct->ml}} ml</div>
+                                    <div class="basic-btn-gray btn-dungtich  <?php echo($index==0)?'active':'';?>" data-id="{{$spct->id}}" data-soluotmua="{{$spct->soluotmua}}" data-giamgia="{{$sanpham[0]->giamgia}}" data-ml="{{$spct->ml}}" data-kho="{{$spct->tonkho}}" data-gia="{{$spct->dongia}}">{{$spct->ml}} ml</div>
                                     @endforeach
                                 </div>
+                                    @endif
 
                             </div>
                         </div>
@@ -90,7 +109,7 @@
                                             <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input class="form-control text-center quantity" min="1" name="quantity" value="1" type="number" disabled>
+                                        <input class="form-control text-center quantity maxsl" min="1" id="nhapsoluong" name="quantity" value="1" type="number">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary btn-plus btn-cal">
                                             <i class="fa fa-plus"></i>
@@ -102,8 +121,12 @@
                         </div>
                         <div class="mt-4">
                             <div class="d-flex justify-content-start">
-                                <button class="btn-5 ml-0 mr-2  bg-white"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                <button class="btn-6 ml-0">Mua ngay</button>
+                                @if($sanphamchitietlimit[0]!=null)
+                                <input type="hidden" id="tonkho" value="{{$sanphamchitietlimit[0]->tonkho}}">
+                                <input type="hidden" id="idsanpham" value="{{$sanphamchitietlimit[0]->id}}">
+                                @endif
+                                <button class="btn-5 ml-0 mr-2  bg-white idspct" onclick="ThemGioHangChiTiet(null)"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                <button class="btn-6 ml-0" onclick="ThemGioHangChiTiet('muamgay')">Mua ngay</button>
                             </div>
                         </div>
 
@@ -151,10 +174,10 @@
                                     </div>
                                 </div>
                                 @endif
-                            @if($sanpham[0]->giamgia !="")
+                            @if($splq->giamgia !="")
                             <div class="btn-add-discout btn-sticky hover-scale-1">
                                 <div class="box-cicrle-giamgia p-2 rounded text-white">
-                                    <span style="font-size: 10pt;">{{$sanpham[0]->giamgia}}%</span>
+                                    <span style="font-size: 10pt;">{{$splq->giamgia}}%</span>
                                 </div>
                             </div>
                                 @endif
@@ -165,17 +188,20 @@
                                 <a href="javascript:;">
                                     <p class="product-catergory font-13 mb-1">{{$sanpham[0]->tendm}}</p>
                                 </a>
-                                <a href="{{URL::to("san-pham/chi-tiet", $splq->id)}}">
-                                    <h6 class="product-name mb-2"><?php if (strlen($splq->name)<= 47){echo $splq->name;}else  { echo substr($splq->name, 0, 47).'...';}?></h6>
+                                <a href="{{URL::to("san-pham/chi-tiet", $splq->id)}}" >
+                                    <h6 class="product-name mb-2" style="height: 40px;"><?php if (strlen($splq->name)<= 47){echo $splq->name;}else  { echo substr($splq->name, 0, 40).'...';}?></h6>
                                 </a>
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="mt-2 d-flex align-items-center justify-content-center" style="height: 50px;">
                                     <div class="mb-1 product-price">
                                         <span class="me-1 text-decoration-line-through">{{number_format($splienquanct[0]->dongia), ""}} đ</span> / <span>{{$splienquanct[0]->ml}} ml</span>
+                                        @if($splq->giamgia !="")
+                                            <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{number_format($splienquanct[0]->dongia-(($splienquanct[0]->dongia * $splq->giamgia)/100)), ""}}đ</span>
+                                            @endif
                                     </div>
                                 </div>
-                                <div class="product-action mt-2">
+                                <div class="product-action mt-1">
                                     <div class="d-grid gap-2">
-                                        <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                        <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splienquanct[0]->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
                                         <a href="{{URL::to("san-pham/chi-tiet", $splq->id)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
                                     </div>
                                 </div>
@@ -195,7 +221,9 @@
             <div class="row">
                 <?php $spkhac=\Illuminate\Support\Facades\DB::table('sanpham')->select('sanpham.*', 'danhmuc.name AS tendm')
                     ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
-                    ->where('iddanhmuc', '!=',$sanpham[0]->iddanhmuc)->limit(4)->get();?>
+                    ->where('iddanhmuc', '!=',$sanpham[0]->iddanhmuc)
+                    ->where('sanpham.trangthai', 0)
+                    ->limit(4)->get();?>
                 @foreach($spkhac as $i => $spk)
                         <?php $anhk=json_decode($spk->img);
                         $splienquanctkhac=\Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("*")->where('idsanpham', $spk->id)->limit(1)->get();
@@ -243,17 +271,20 @@
                                         <p class="product-catergory font-13 mb-1">{{$spk->tendm}}</p>
                                     </a>
                                     <a href="{{URL::to("san-pham/chi-tiet", $spk->id)}}">
-                                        <h6 class="product-name mb-2"><?php if (strlen($spk->name)<= 45){echo $spk->name;}else  { echo substr($spk->name, 0, 45).'...';}?></h6>
+                                        <h6 class="product-name mb-2" style="height: 40px;"><?php if (strlen($spk->name)<= 45){echo $spk->name;}else  { echo substr($spk->name, 0, 45).'...';}?></h6>
                                     </a>
-                                    <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center" style="height: 50px;">
                                         <div class="mb-1 product-price">
                                             <span class="me-1 text-decoration-line-through">{{number_format($splienquanctkhac[0]->dongia), ""}} đ</span> / <span>{{$splienquanctkhac[0]->ml}}ml</span>
-
+                                            @if($spk->giamgia !="")
+                                                <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{number_format($splienquanctkhac[0]->dongia-(($splienquanctkhac[0]->dongia * $spk->giamgia)/100)), ""}}đ</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="product-action mt-2">
                                         <div class="d-grid gap-2">
-                                            <button class="w-100 btn-sanpham btn-5"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+
+                                            <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splienquanctkhac[0]->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
                                             <a href="{{URL::to("san-pham/chi-tiet", $spk->id)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
                                         </div>
                                     </div>
@@ -273,3 +304,4 @@
 @section('javascript')
     <script src="{{ asset('Site/js') }}/sanpham.js"></script>
 @endsection
+

@@ -62,7 +62,7 @@
                 </li>
                 @endif
                 <li class="icon-item d-inline-block hover-scale-1 position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">
-                    <span class="badge badge-pill badge-primary number-cart">0</span>
+                    <span class="badge badge-pill badge-primary number-cart" id="soluonghang1">0</span>
                     <a href="javascript:void(0)"><i class="fas fa-shopping-cart color-black-2"></i></a>
                 </li>
             </div>
