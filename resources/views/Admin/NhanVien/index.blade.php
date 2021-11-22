@@ -85,10 +85,7 @@
                                                 <div class="col-md-5 font-weight-bold">Cơ sở:</div>
                                                 <div class="col-md-7 ">{{$item->coso}}</div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-5 font-weight-bold">Dịch vụ:</div>
-                                                <div class="col-md-7 ">{{$item->dichvu}}</div>
-                                            </div>
+                                          
                                         </td>
                                         <td>
                                             <img class="w-100 m-auto"
