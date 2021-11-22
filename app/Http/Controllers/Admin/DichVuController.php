@@ -131,7 +131,7 @@ class DichVuController extends Controller
                 'trangthai' => $request->trangthai
             ];
             if($request->urlHinh !== null){
-                $img = $this->uploadSingle('public',$request->file('urlHinh'));
+                $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
                  if($img == null){
                     $img = 'defaul.jpg';
                 }

@@ -53,7 +53,7 @@ class BlogController extends Controller
     public function store(Blog $request)
     {
 
-        $img = $this->uploadSingle('public',$request->file('urlHinh'));
+        $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
 
             $Blog = [
                 'name' => $request->name,
@@ -113,7 +113,7 @@ class BlogController extends Controller
             ];
 
             if($request->urlHinh !== null){
-                $img = $this->uploadSingle('public',$request->file('urlHinh'));
+                $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
                 $Blog['img'] = $img;
             }
         

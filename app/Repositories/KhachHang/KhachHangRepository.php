@@ -19,7 +19,7 @@ class KhachHangRepository extends BaseRepository implements KhachHangRepositoryI
     public function getAllCungCoSo($idCoSo)
     {
         return $this->model->select('khachhang.*', 'khachhang.id')
-        ->where('khachhang.idcoso', $idCoSo)->limit(10)
+        ->where('khachhang.idcoso', $idCoSo)
         ->get();
     }
     public function CheckEmail($email) {

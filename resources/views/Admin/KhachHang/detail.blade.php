@@ -2,6 +2,7 @@
 @section('content')
 <?php
     use app\Http\Controllers\Admin\KhachHangController;
+    use app\Http\Controllers\Controller;
 ?>
 <div class="content-page">
     <div class="content">
@@ -52,13 +53,13 @@
                                 <li class="nav-item">
                                     <a href="#basictab2" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
                                         <i class="mdi mdi-face-profile mr-1"></i>
-                                        <span class="d-none d-sm-inline">Dịch Vụ</span>
+                                        <span class="d-none d-sm-inline">Dịch Vụ Đã Sử Dụng</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#basictab3" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
                                         <i class="mdi mdi-checkbox-marked-circle-outline mr-1"></i>
-                                        <span class="d-none d-sm-inline">Finish</span>
+                                        <span class="d-none d-sm-inline">Lịch Hẹn</span>
                                     </a>
                                 </li>
                             </ul>
@@ -82,6 +83,7 @@
                                                      @endif
                                                 </div>
                                             </div>
+                                           
                                             <table class="table table-centered mb-0" id="btn-editable">
                                                 <thead>
                                                     <tr>
@@ -95,7 +97,7 @@
                                                         <th>Hành Động</th>
                                                     </tr>
                                                 </thead>
-                                            
+
                                                 <tbody>
                                                     @foreach ($LieuTrinh as $item)
                                                         
@@ -104,13 +106,13 @@
                                                             <td>
                                                                 <img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($BASE_URL_UPLOAD_STAFF.$item->imgnv) }}"><br>
                                                             </td>
-                                                            <td>{{date('d-m-Y',$item->ngaybatdau) }}</td>
+                                                            <td>{{date('d-m-Y',$item->ngaybatdau)}} </td>
                                                             <td> {{date('d-m-Y',$item->dukienketthuc) }}</td>
                                                             <td>{{substr($item->ghichu,0,90)}} ..</td>
-                                                          
+                                                           
                                                             <td>
                                                                 @if ($item->trangthai === 0)
-                                                                    <span class="badge badge-primary badge-pill float-left ">Đang Tiến hành<i class="mdi mdi-trending-up"></i> </span>
+                                                                         <span class="badge badge-primary badge-pill float-left ">Đang Tiến hành<i class="mdi mdi-trending-up"></i> </span>
                                                                 @else
                                                                     <span class="badge badge-success badge-pill float-left">Hoàn Thành<i class="mdi mdi-check"></i> </span>
                                                                 @endif
@@ -143,29 +145,32 @@
                                 </div>
 
                                 <div class="tab-pane" id="basictab2">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group row mb-3">
-                                                <label class="col-md-3 col-form-label" for="name"> First name</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="name" name="name" class="form-control" value="Francis">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row mb-3">
-                                                <label class="col-md-3 col-form-label" for="surname"> Last name</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="surname" name="surname" class="form-control" value="Brinkman">
-                                                </div>
-                                            </div>
-                    
-                                            <div class="form-group row mb-3">
-                                                <label class="col-md-3 col-form-label" for="email">Email</label>
-                                                <div class="col-md-9">
-                                                    <input type="email" id="email" name="email" class="form-control" value="cory1979@hotmail.com">
-                                                </div>
-                                            </div>
-                                        </div> <!-- end col -->
-                                    </div> <!-- end row -->
+                                    <table class="table table-centered mb-0" id="btn-editable">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Ảnh</th>
+                                                <th>Tên dịch vụ</th>
+                                                <th>Giá</th>
+                                                <th>Mô Tả</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach ($DichVuDaSuDung as $item)
+                                                <tr>
+                                                    <td>{{++$loop->index}}</td>
+                                                    <td><img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($URL_IMG.$item->img) }}"><br></td>
+                                                    <td>{{$item->name}}</td>
+                                                    <td> {{Controller::caculateGia($item->dongia,$item->giamgia)}}</td>
+                                                    <td>{{substr($item->motangan,0,300)}} ...</td>
+                                                </tr>
+                                            @endforeach
+                                          
+                                        </tbody>
+                                    </table>
+
+
                                 </div>
 
                                 <div class="tab-pane" id="basictab3">

@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\SanPhamChiTietController;
 use App\Http\Controllers\Admin\ThongkeController;
 use App\Http\Controllers\Admin\DatLichController;
 
+use App\Http\Controllers\Site\GioHangController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\YeuThichController;
 use Illuminate\Support\Facades\Route;
@@ -167,6 +168,18 @@ Route::group(['prefix' => '/'], function (){
     Route::post('skipCreatePassword', [HomeController::class, "skipCreatePassword"]);
     Route::post('newPassword', [HomeController::class, "newPassword"]);
     Route::post('checkIssetUser', [HomeController::class, "checkIssetUser"]);
-
+    /**
+    *Gio hang
+     */
+    Route::get('showdonhangandgiohang', [GioHangController::class, "ShowGioHang"]);
+    Route::get('themsanphamgiohang/{id}', [GioHangController::class, "ThemGioHang"]);
+    Route::get('xoasanphamgiohang/{id}', [GioHangController::class, "XoaSanPhamGioHang"]);
+    Route::get('tangsoluong/{id}', [GioHangController::class, 'TangSoLuong']);
+    Route::get('giamsoluong/{id}', [GioHangController::class, 'GiamSoLuong']);
+    Route::get('idsanphamchitiet/{id}/soluong/{soluong}', [GioHangController::class, 'CapNhatSoLuong']);
+    Route::get('/themsanphamgiohangchitiet/{idsanpham}/soluongsanpham/{nhapsoluong}',[GioHangController::class, 'ThemGioHangChiTiet']);
+    Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
+    Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
+    Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
 });
 

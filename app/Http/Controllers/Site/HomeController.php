@@ -18,6 +18,7 @@ use App\Repositories\NhanVien\NhanVienRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Carbon\Carbon;
+use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -111,17 +112,28 @@ class HomeController extends Controller
 
     public function viewSanPhamChiTiet($id)
     {
-
-        $this->data['pathActive'] = 'san-pham';
-        $this->data['namePage'] = 'Sản phẩm chi tiết';
-        $this->data['breadcrumbArray'] = [
-            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
-            ['link' => '', 'name' => 'Tên sản phẩm'],
-        ];
-        $sanpham=$this->SanPham->getSanPhamJoinDanhMucID($id);
-        $sanphamchitiet=$this->SanPhamChiTiet->getSanPhamChiTietByID($id);
-        $sanphamchitietlimit=$this->SanPhamChiTiet->getSanPhamChiTietByIDLimit($id);
-        return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitiet'=>$sanphamchitiet, 'sanphamchitietlimit'=>$sanphamchitietlimit]);
+        error_reporting(0);
+        try{
+            $this->data['pathActive'] = 'san-pham';
+            $this->data['namePage'] = 'Sản phẩm chi tiết';
+            $this->data['breadcrumbArray'] = [
+                ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+                ['link' => '', 'name' => 'Tên sản phẩm'],
+            ];
+            $sanpham=$this->SanPham->getSanPhamJoinDanhMucID($id);
+            $checkspct=$this->SanPhamChiTiet->CheckSanPhamChiTietByID($id);
+            if ($checkspct==false){
+                $sanphamchitiet=$this->SanPhamChiTiet->getSanPhamChiTietByID($id);
+                $sanphamchitietlimit=$this->SanPhamChiTiet->getSanPhamChiTietByIDLimit($id);
+                return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitiet'=>$sanphamchitiet, 'sanphamchitietlimit'=>$sanphamchitietlimit]);
+            }
+            else{
+                return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitietlimit'=>null]);
+            }
+        }
+        catch (Exception $e){
+            return redirect('/san-pham');
+        }
     }
 
 
@@ -697,6 +709,7 @@ class HomeController extends Controller
     public function logoutSite()
     {
         session()->forget('khachHang');
+        session()->forget('giohang');
         return redirect()->back();
     }
 

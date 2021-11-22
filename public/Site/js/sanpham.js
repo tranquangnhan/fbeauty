@@ -55,9 +55,11 @@ $('.btn-dungtich').click(function (e) {
 });
 
 function xuLiReplaceDataSanPham(thisz) {
+    let id = thisz.attr('data-id');
     let ml = thisz.attr('data-ml');
     let kho = thisz.attr('data-kho');
     let gia = thisz.attr('data-gia');
+    let giamgia=thisz.attr('data-giamgia');
     let soluotmua = thisz.attr('data-soluotmua');
     let formatGia = new Intl.NumberFormat('en-US', { style: 'decimal' }).format(gia) + ' đ';
     $('.giasanpham').html(formatGia);
@@ -65,6 +67,11 @@ function xuLiReplaceDataSanPham(thisz) {
     $('.soluotmua').html(soluotmua);
     $('.dungtich-ml').html(ml + 'ml');
     $('.btn-dungtich').removeClass('active');
+    $('#tonkho').val(kho);
+    $('#idsanpham').val(id);
+    if (giamgia !=null){
+        $('.giamgiasanpham').html((Number(gia) - ((Number(gia)*(Number(giamgia)))/100)).toLocaleString())
+    }
     thisz.addClass('active');
 }
 
@@ -107,7 +114,7 @@ $('.change-column-control').click(function (e) {
 
 function AddYeuThich(id) {
     $.ajax({
-        url: window.location.hash + '/addyeuthichsp/' + id,
+        url: domain + '/addyeuthichsp/' + id,
         type: 'GET',
         async: false,
         dataType: 'json',

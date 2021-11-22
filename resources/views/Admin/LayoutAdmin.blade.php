@@ -410,19 +410,9 @@
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("hoadon.show", session()->get('coso'))}}">Danh sách</a></li>
+                                <li><a href="{{route("hoadon.index")}}">Danh sách</a></li>
                             </ul>
 
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="mdi mdi-calendar-month"></i>
-                                <span> Lịch </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("lich.index")}}">Danh sách</a></li>
-                            </ul>
                         </li>
                         <!--- Giảm Giá -->
                         <li>
@@ -598,6 +588,24 @@
 <div class="rightbar-overlay"></div>
 
 
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                   2021 &copy; Website được tạo bởi <a href="">Fbeauty</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-right footer-links d-none d-sm-block">
+                        <a href="javascript:void(0);">Về chúng tôi</a>
+                        <a href="javascript:void(0);">Hỗ trợ</a>
+                        <a href="javascript:void(0);">Liên hệ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end Footer -->
 
 <!-- Vendor js -->
 <script src="{{ asset('Admin/assets') }}/js/vendor.min.js"></script>

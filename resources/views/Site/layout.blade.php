@@ -27,6 +27,11 @@
     {{-- Owl carousel --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+    
+    {{--Quốc nhúng--}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
 
     @yield('css')
 
@@ -37,6 +42,7 @@
 
 <body>
     <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
+
     @if ($pathActive != 'trang-chu')
         @include('Site.components.header-2')
     @else
@@ -53,6 +59,7 @@
     @include('Site.components.modal-user')
 
     @include('Site.components.modal-giohang')
+    <input type="hidden" name="" id="domain" value="{{URL::to('/')}}">
 </body>
 
 </html>
@@ -76,5 +83,10 @@
 
 {{-- Sweetalert 2 --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{{--Quốc nhúng --}}
+<script src="{{ asset('Site/js') }}/showgiohang.js"></script>
+<script src="{{ asset('Site/js') }}/insertgiohangdatawherelogin.js"></script>
+{{--Hết phần Quốc nhúng--}}
 
 @yield('javascript')

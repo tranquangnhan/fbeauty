@@ -31,11 +31,11 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <input type="file" name="img"  onchange="previewImg(event)" parsley-trigger="change" required
-                                                placeholder="Nhập tên nhà sản xuất" class="form-control" id="img">
+                                                 class="form-control" id="img">
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" name="name"  parsley-trigger="change" required
-                                                placeholder="Nhập tên nhà sản xuất" class="form-control" id="userName">
+                                                placeholder="Nhập tên danh mục" class="form-control" id="userName">
                                             </div>
 
                                             <div class="form-group">
@@ -64,7 +64,7 @@
                             </div><!-- /.modal-dialog -->
                         </div>
                       
-                        <table class="table table-striped table-bordered dt-responsive nowrap">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="10%">STT</th>

@@ -7,6 +7,7 @@ use App\Http\Requests\KhachHang;
 use App\Http\Requests\LieuTrinh;
 use App\Models\Admin\HoaDonModel;
 use App\Repositories\HoaDon\HoaDonRepository;
+use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
@@ -17,13 +18,14 @@ class KhachHangController extends Controller
 
     private $KhachHang;
     private $LieuTrinh;
-    private $idCoSo = 1;
+    private $HoaDonChiTiet;
     public function __construct(
         KhachHangRepository $KhachHang,
         LieuTrinhRepository $LieuTrinh,
         NhanVienRepository $NhanVien,
         LieuTrinhChiTietRepository $LieuTrinhChiTiet,
-        HoaDonRepository $HoaDon
+        HoaDonRepository $HoaDon,
+        HoaDonChiTietRepository $HoaDonChiTiet
         )
     {
         $this->KhachHang = $KhachHang;
@@ -31,7 +33,7 @@ class KhachHangController extends Controller
         $this->NhanVien = $NhanVien;
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
         $this->HoaDon = $HoaDon;
-        $this->HoaDon = $HoaDon;
+        $this->HoaDonChiTiet = $HoaDonChiTiet;
     }
     /**
      * Display a listing of the resource.
@@ -40,7 +42,7 @@ class KhachHangController extends Controller
      */
     public function index()
     {
-        $data = $this->KhachHang->getAllCungCoSo($this->idCoSo);
+        $data = $this->KhachHang->getAllCungCoSo(session()->get('coso'));
         return view("Admin.khachhang.index", ['data' => $data]);
     }
 
@@ -60,39 +62,35 @@ class KhachHangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(KhachHang $request)
-    {
-            $img = $this->uploadSingle('public',$request->file('urlHinh'));
-            if($img == null){
-                $img = 'defaul.jpg';
-            }
-            $KhachHang = [
-                'name' => $request->name,
-                'email' => $request->email,
-                'idcoso' => $request->idcoso,
-                'password' => bcrypt($request->password),
-                'sdt' => $request->sdt,
-                'img' => $img,
-                'active' => ($request->active)
-            ];
-            $this->KhachHang->create($KhachHang);
+    {   
+        $idCoSo = $request->session()->get('coso');
+        if($this->KhachHang->CheckEmail($request->email) === false){
+            return $this->handleErrorInput('Email đã tồn tại!');
+        }
+        
+        if($this->KhachHang->CheckSdt($request->sdt) === false){
+            return $this->handleErrorInput('Số điện thoại đã tồn tại!');
+        }
+       
+        $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
+        if($img == null){
+            $img = 'defaul.jpg';
+        }
+        $KhachHang = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'idcoso' =>$idCoSo,
+            'password' => bcrypt($request->password),
+            'sdt' => $request->sdt,
+            'img' => $img,
+            'active' => ($request->active) ? 1 : 0
+        ];
+        $res = $this->KhachHang->create($KhachHang);
+        if($res){
             return redirect('quantri/khachhang')->with('thanhcong', 'Thêm nhân viên thành công');
         }
-
-
-    public function CheckEmailTonTai($email)
-    {
-        if ($this->KhachHang->CheckEmail($email) == false) {
-            echo "<span class='badge badge-danger'> Email đã được dùng </span>";
-        }
-
     }
 
-    public function CheckSdtTonTai($sdt)
-    {
-        if ($this->KhachHang->CheckSdt($sdt) == false) {
-            echo "<span class='badge badge-danger'> Số điện thoại đã được dùng </span>";
-        }
-    }
 
     /**
      * Display the specified resource.
@@ -141,13 +139,13 @@ class KhachHangController extends Controller
         $KhachHang = [
             'name' => $request->name,
             'email' => $request->email,
-            'idcoso' => $request->idcoso,
+            'idcoso' => session()->get('coso'),
             'password' => $passnew,
             'sdt' => $request->sdt,
-            'active' => $request->active,
+            'active' => ($request->active) ? 1 : 0,
         ];
         if($request->urlHinh !== null){
-            $img = $this->uploadSingle('public',$request->file('urlHinh'));
+            $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
              if($img == null){
                 $img = 'defaul.jpg';
             }
@@ -165,10 +163,15 @@ class KhachHangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $this->KhachHang->delete($id);
-
-        return redirect('quantri/khachhang')->with('success', 'Xoá thành công');
+    {   
+        $idKhachHang = $this->HoaDon->findHoaDonByIdKhachHang($id);
+        
+        if(count($idKhachHang)){
+            return $this->handleError('Xoá thất bại, khách hàng đã tồn tại trong hoá đơn');
+        }else{
+            $this->KhachHang->delete($id);
+            return redirect('quantri/khachhang')->with('success', 'Xoá thành công');
+        }
     }
 
 
@@ -176,7 +179,9 @@ class KhachHangController extends Controller
         $KhachHang = $this->KhachHang->find($id);
         $LieuTrinh =  $this->LieuTrinh->findLieuTrinhByIdKh($KhachHang->id);
         $NhanVien = $this->NhanVien->getAll();
-        return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh','NhanVien'));
+        $countLieuTrinhChiTiet = count($LieuTrinh);
+        $DichVuDaSuDung = $this->HoaDonChiTiet->findDichVuByIdKhachHang($id);
+        return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh','NhanVien','countLieuTrinhChiTiet','DichVuDaSuDung'));
     } 
 
     public function storeLieuTrinh(LieuTrinh $request){
