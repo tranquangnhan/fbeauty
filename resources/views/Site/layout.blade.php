@@ -42,7 +42,16 @@
 
 <body>
     <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
+    <div id="loading" class="modal-container show">
+        <div class="modal-background">
+            <div class="justify-content-center" id="imgload">
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
 
+        </div>
+    </div>
     @if ($pathActive != 'trang-chu')
         @include('Site.components.header-2')
     @else
@@ -87,5 +96,11 @@
 {{--Quốc nhúng --}}
 <script src="{{ asset('Site/js') }}/showgiohang.js"></script>
 {{--Hết phần Quốc nhúng--}}
-
+<script>
+    $(window).on('load', function(event) {
+        $('#loading').removeClass('show');
+        // $('.load').delay(1000).fadeOut('fast');
+        $('#imgload').delay(2000).fadeOut('fast');
+    });
+</script>
 @yield('javascript')
