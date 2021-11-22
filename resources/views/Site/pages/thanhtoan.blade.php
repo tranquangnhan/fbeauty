@@ -5,6 +5,7 @@
 @endsection
 
 @section('main')
+    <form id="ktform">
 <div class="fa-giohang mt-4 my-5">
     <div class="container">
         <div class="thongtinkhachhang shadow-1">
@@ -15,19 +16,19 @@
                 <div class="col-xl-6">
                     <div class="form-group">
                         <label for="">Tên người nhận <span class="color-red">(*)</span></label>
-                        <input type="Text" class="form-control form-custom" id="">
+                        <input type="text" name="username" class="form-control form-custom" id="username">
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="form-group">
                         <label for="">Số điện thoại <span class="color-red">(*)</span></label>
-                        <input type="number" class="form-control form-custom" id="">
+                        <input type="number" name="phonenumber"  class="form-control form-custom"  id="phonenumber">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Địa chỉ giao hàng <span class="color-red">(*)</span></label>
-                        <input type="Text" class="form-control form-custom" id="">
+                        <input type="text" name="diachi" class="form-control form-custom" id="diachi">
                     </div>
                     <div class="form-group">
                         <label for="">Lời nhắn: </label>
@@ -91,7 +92,6 @@
                 <div class="form-group">
                     <label for="bank_code">Ngân hàng</label>
                     <select name="bank_code" id="bank_code" class="form-control">
-{{--                        <option value="">Không chọn</option>--}}
                         <option value="NCB" selected> Ngân hàng NCB</option>
                         <option value="AGRIBANK"> Ngân hàng Agribank</option>
                         <option value="SCB"> Ngân hàng SCB</option>
@@ -131,7 +131,7 @@
                 <div class="col-xl-6 d-flex  justify-content-between">
                     <label for="" class="title-9">Phương thức giao hàng: </label>
                     <div class="ml-2">
-                        <button class="btn-pttt" id-pttt="1" data-toggle="modal" data-target="#phuongthucthanhtoan">
+                        <button type="button" class="btn-pttt" id-pttt="1" data-toggle="modal" data-target="#phuongthucthanhtoan">
                             Thanh toán khi nhận hàng
                         </button>
                     </div>
@@ -140,7 +140,7 @@
                 <div class="col-xl-6 d-flex  justify-content-between">
                     <label for="" class="title-9">Đơn vị vận chuyển: </label>
                     <div class="ml-2">
-                        <button class="btn-ptgh" id-ptgh="1" data-toggle="modal" data-target="#phuongthucgiaohang">
+                        <button type="button" class="btn-ptgh" id-ptgh="1" data-toggle="modal" data-target="#phuongthucgiaohang">
                             Nhanh
                         </button>
                     </div>
@@ -158,7 +158,7 @@
                                 <div class="d-flex w-100 h-100 align-items-center">
                                     <input type="text" id="magiamgia" class="form-control form-custom ip-gray-1 text-dark" placeholder="Mã giảm giá" style="box-shadow: none;padding: 1.3em 1.43m;">
                                     <input type="hidden" id="idgiam" value="">
-                                    <button class="btn-9" onclick="ApplyGiamGia()">Sử dụng</button>
+                                    <button class="btn-9" type="button" onclick="ApplyGiamGia()">Sử dụng</button>
                                 </div>
                             </div>
 
@@ -209,15 +209,15 @@
 
             <div class="giohang-footer mt-5">
                 <div class="d-flex d-flex justify-content-between">
-                    <a href="">
-                        <button class="btn-6 ml-0">
+                    <a href="{{URL::to('/san-pham')}}">
+                        <button class="btn-6 ml-0" type="button">
                             Tiếp tục mua hàng
                         </button>
                     </a>
 
-                    <a href="">
-                        <button class="btn-8">
-                            <span>Thanh toán </span>
+                    <a href="javascript:void(0)" >
+                        <button class="btn-8" type="submit" id="dathang">
+                            <span>Đặt hàng </span>
                         </button>
                     </a>
 
@@ -227,118 +227,44 @@
 
     </div>
 </div>
-<input type="hidden" id="valgiaohang" value="0">
+<input type="hidden" id="valgiaohang" value="GHTK">
 <div class="modal fade" id="phuongthucgiaohang" tabindex="-1" aria-labelledby="phuongthucgiaohangLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content modal-content-custom">
-            <div class="custom-option active ptgh active" data-ptgh="1" onclick="phuongthucgiaohang(0)">
-                Giao hàng nhanh
-            </div>
-            <div class="custom-option ptgh" data-ptgh="2">
-                Viettel Post
-            </div>
-
-            <div class="custom-option ptgh" data-ptgh="3">
-                GRAP
-            </div>
-
-            <div class="custom-option ptgh" data-ptgh="4">
+            <div class="custom-option active ptgh active" data-ptgh="1" onclick="phuongthucgiaohang('GHTK')">
                 Giao hàng tiết kiệm
+            </div>
+            <div class="custom-option ptgh" data-ptgh="2" onclick="phuongthucgiaohang('EMS')">
+                Chuyển phát nhanh bưu điẹn
+            </div>
+
+            <div class="custom-option ptgh" data-ptgh="3" onclick="phuongthucgiaohang('Sship')">
+                Công nghệ vận chuyển Sship
+            </div>
+
+            <div class="custom-option ptgh" data-ptgh="4" onclick="phuongthucgiaohang('GRAP')">
+                GRAP giao hàng nhanh
             </div>
         </div>
     </div>
 </div>
-<input type="hidden" id="valthanhtoan" value="0">
+<input type="hidden" id="valthanhtoan" value="VNPAY">
 <div class="modal fade" id="phuongthucthanhtoan" tabindex="-1" aria-labelledby="phuongthucthanhtoanLabel" aria-hidden="true">
     <div class="modal-dialog d-flex align-items-center">
         <div class="modal-content modal-content-custom">
             <div class="custom-option active pttt" data-pttt="1" onclick="thanhtoanVNPAY(null)">
                 Thanh toán khi nhận hàng
             </div>
-            <div class="custom-option pttt" onclick="thanhtoanVNPAY('vnpay')" data-pttt="2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample123" aria-expanded="false" aria-controls="collapseExample123">
+            <div class="custom-option pttt" onclick="thanhtoanVNPAY('VNPAY')" data-pttt="2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample123" aria-expanded="false" aria-controls="collapseExample123">
                 VNPAY
             </div>
         </div>
     </div>
 </div>
-
-
-
-
+    </form>
 @endsection
 
 @section('javascript')
     <script src="{{ asset('Site/js') }}/thanhtoan.js"></script>
-    <script>
-        function thanhtoanVNPAY(bien) {
-            if(bien =='vnpay'){
-                $('#collapseExample123').addClass('show');
-               var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split(',').join('');
-               $('#amount').val(tongthanhtoan);
-            }
-            else {
-                $('#collapseExample123').removeClass('show');
-            }
-        }
-
-        function ApplyGiamGia() {
-            var magiamgia=$("#magiamgia").val();
-            var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split(',').join('');
-            if(magiamgia!=""){
-                $.ajax({
-                    url: domain + '/CheckGiamGia/' + magiamgia +'/tongthangtoan/'+tongthanhtoan,
-                    type: 'GET',
-                    async: false,
-                    dataType: 'json',
-                    data: {},
-                    success: function (data) {
-                        if (data==0){
-                            iziToast.warning({
-                                title: 'Mã giảm giá không hợp lệ!!!',
-                                message: '',
-                                position: 'bottomRight',
-                                backgroundColor: 'oranged',
-                                titleColor: 'black',
-                                messageColor: 'black',
-                                iconColor: 'black',
-                            });
-                        }
-                        else {
-                            //loại 1 là %
-                            //loại 2 là tiền
-                            iziToast.success({
-                                title: 'Áp dụng thành công !!!',
-                                message: '',
-                                position: 'bottomRight',
-                                backgroundColor: 'green',
-                                titleColor: 'white',
-                                messageColor: 'white',
-                                iconColor: 'white',
-                            });
-                            if (data[0].loai == 1){
-                                var tiensaugiam = (Number(tongthanhtoan) - ((Number(tongthanhtoan)*Number(data[0].number))/100));
-                                $('#amount').val(tiensaugiam);
-                                $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString()+'% <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
-                                $('#tongthanhtoan').html(tiensaugiam.toLocaleString());
-                            }
-                            else {
-                                var tiensaugiam = Number(tongthanhtoan) - Number(data[0].number)
-                                $('#amount').val(tiensaugiam);
-                                $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString()+'đ <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
-                                $('#tongthanhtoan').html(tiensaugiam.toLocaleString());
-                            }
-                            $("#idgiam").val(data[0].id)
-                        }
-                    }
-                });
-            }
-        }
-
-        function HuyGiamGia() {
-            $('#tongtiensaugiam').html(0);
-            $("#idgiam").val("");
-            $("#magiamgia").val("");
-            showGioHang();
-        }
-    </script>
+    <script src="{{ asset('Site/js') }}/xacnhanthanhtoan.js"></script>
 @endsection

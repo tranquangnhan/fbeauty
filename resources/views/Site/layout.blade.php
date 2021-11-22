@@ -27,7 +27,7 @@
     {{-- Owl carousel --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
-    
+
     {{--Quốc nhúng--}}
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css">
@@ -86,7 +86,6 @@
 
 {{--Quốc nhúng --}}
 <script src="{{ asset('Site/js') }}/showgiohang.js"></script>
-<script src="{{ asset('Site/js') }}/insertgiohangdatawherelogin.js"></script>
 {{--Hết phần Quốc nhúng--}}
 
 @yield('javascript')

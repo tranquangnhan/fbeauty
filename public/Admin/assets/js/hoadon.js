@@ -1,3 +1,4 @@
+var LinkURL=$("#LinkURL").val();
 function HoaDon() {
     $.ajax({
         url: document.URL + '/getHoaDonChiTiet',
@@ -84,7 +85,7 @@ function ShowHoaDon(res) {
 
 function GetGiamGia(id) {
     var giamgia = $.ajax({
-        url: document.URL + '/getgiamgia/' + id,
+        url: LinkURL + '/getgiamgia/' + id,
         type: 'GET',
         data: {id: id},
         async: false,
@@ -98,7 +99,7 @@ function GetGiamGia(id) {
 
 function DichVu() {
     $.ajax({
-        url: document.URL + '/getDichVu',
+        url: LinkURL + '/getDichVu',
         type: 'GET',
         data: {},
         success: function (response) {
@@ -109,11 +110,12 @@ function DichVu() {
 
 function SanPham() {
     $.ajax({
-        url: document.URL + '/getSanPham',
+        url: LinkURL + '/getSanPham',
         type: 'GET',
         data: {},
         success: function (response) {
             ShowSanPham(response);
+
         }
     });
 }

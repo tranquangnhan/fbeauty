@@ -61,7 +61,7 @@
     <link href="{{ asset('Admin/assets') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     {{-- end code nhúng của Nhân --}}
 <body>
-
+<input type="hidden" id="LinkURL" value="{{URL::to("/quantri/")}}">
 <!-- Begin page -->
 <div id="wrapper">
 

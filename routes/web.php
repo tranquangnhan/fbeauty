@@ -118,12 +118,12 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
      * 11:Thêm dịch vụ vào hóa đơn chi tiết
      * 12: Cập nhật số lượng
      */
-    Route::get('hoadon/{id}/edit/getDichVu',[DichVuController::class, 'getDichVuToHoaDon']);
-    Route::get('hoadon/{id}/edit/getSanPham',[SanPhamChiTietController::class, 'getSanPhamToHoaDon']);
+    Route::get('/getDichVu',[DichVuController::class, 'getDichVuToHoaDon']);
+    Route::get('/getSanPham',[SanPhamChiTietController::class, 'getSanPhamToHoaDon']);
     Route::get('hoadon/{id}/edit/getHoaDonChiTiet',[HoaDonChiTietController::class, 'getHoaDonChiTiet']);
     Route::get('hoadon/{id}/edit/sanphamchitiet/{idsp}',[SanPhamChiTietController::class, 'getSanPhamChiTietToHoaDon']);
     Route::get('hoadon/{id}/edit/dichvu/{idsp}',[DichVuController::class, 'getDichVuByIdToHoaDon']);
-    Route::get('hoadon/{id}/edit/getgiamgia/{idgiamgia}',[HoaDonController::class, 'getGiamGiaToHoaDon']);
+    Route::get('/getgiamgia/{idgiamgia}',[HoaDonController::class, 'getGiamGiaToHoaDon']);
     Route::get('hoadon/{id}/edit/discount/{name}/thanhtien/{tien}',[HoaDonController::class, 'ApDungGiamGia']);
     Route::get('hoadon/{id}/edit/capnhatgia/{tien}/tongtien/{tongtien}',[HoaDonController::class, 'CapNhatGia']);
     Route::get('hoadon/{id}/edit/xoahoadonchitiet/{idhdct}',[HoaDonController::class, 'XoaHoaDonChiTiet']);
@@ -179,5 +179,10 @@ Route::group(['prefix' => '/'], function (){
     Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
     Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
     Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
+
+    /**
+    *Thanh toán
+     */
+    Route::post('/thanhtoandonhang', [GioHangController::class, 'thanhtoandonhang']);
 });
 

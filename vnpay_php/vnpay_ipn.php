@@ -2,7 +2,7 @@
 /* Payment Notify
  * IPN URL: Ghi nhận kết quả thanh toán từ VNPAY
  * Các bước thực hiện:
- * Kiểm tra checksum 
+ * Kiểm tra checksum
  * Tìm giao dịch trong database
  * Kiểm tra số tiền giữa hai hệ thống
  * Kiểm tra tình trạng của giao dịch trước khi cập nhật
@@ -36,18 +36,18 @@ foreach ($inputData as $key => $value) {
 $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
 $vnpTranId = $inputData['vnp_TransactionNo']; //Mã giao dịch tại VNPAY
 $vnp_BankCode = $inputData['vnp_BankCode']; //Ngân hàng thanh toán
-$vnp_Amount = $inputData['vnp_Amount']/100; // Số tiền thanh toán VNPAY phản hồi
+$vnp_Amount = $inputData['vnp_Amount']; // Số tiền thanh toán VNPAY phản hồi
 
 $Status = 0; // Là trạng thái thanh toán của giao dịch chưa có IPN lưu tại hệ thống của merchant chiều khởi tạo URL thanh toán.
 $orderId = $inputData['vnp_TxnRef'];
 
 try {
-    //Check Orderid    
+    //Check Orderid
     //Kiểm tra checksum của dữ liệu
     if ($secureHash == $vnp_SecureHash) {
-        //Lấy thông tin đơn hàng lưu trong Database và kiểm tra trạng thái của đơn hàng, mã đơn hàng là: $orderId            
+        //Lấy thông tin đơn hàng lưu trong Database và kiểm tra trạng thái của đơn hàng, mã đơn hàng là: $orderId
         //Việc kiểm tra trạng thái của đơn hàng giúp hệ thống không xử lý trùng lặp, xử lý nhiều lần một giao dịch
-        //Giả sử: $order = mysqli_fetch_assoc($result);   
+        //Giả sử: $order = mysqli_fetch_assoc($result);
 
         $order = NULL;
         if ($order != NULL) {
@@ -63,7 +63,7 @@ try {
                     //
                     //
                     //
-                    //Trả kết quả về cho VNPAY: Website/APP TMĐT ghi nhận yêu cầu thành công                
+                    //Trả kết quả về cho VNPAY: Website/APP TMĐT ghi nhận yêu cầu thành công
                     $returnData['RspCode'] = '00';
                     $returnData['Message'] = 'Confirm Success';
                 } else {

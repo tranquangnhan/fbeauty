@@ -35,7 +35,7 @@ class DichVuController extends Controller
     }
 
     public function getDichVuToHoaDon(){
-        $data=$this->DichVu->getAll();
+        $data=$this->DichVu->getAllDichVu();
         return $data;
     }
 
