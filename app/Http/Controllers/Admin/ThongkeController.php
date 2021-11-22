@@ -52,7 +52,7 @@ class ThongkeController extends Controller
         $this->data['doanhThuHoaDonSauThangGanNhat'] = $this->getDoanhThuHoaDonSauThangGanNhat();
         $this->data['toDay'] = $toDay->toDateString();
 
-        
+
         return view("Admin.Thongke.index", $this->data);
     }
 
@@ -182,7 +182,7 @@ class ThongkeController extends Controller
         try {
             if ($request->ajax()) {
                 $day =  new Carbon($day);
-                $hoaDon = $this->getHoaDonByDate($day, session('coso'));
+                $hoaDon = $this->getHoaDonByDay($day, session('coso'));
                 $response = Array(
                     'success' => true,
                     'day' => $day,
