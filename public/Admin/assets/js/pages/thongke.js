@@ -2,9 +2,9 @@ const serverNameUrl = $('#server-name').val();
 const getDoanhThuByDayUrl = serverNameUrl + 'quantri/getDoanhThuByDay/';
 const getDoanhThuHoaDonVaDonHangUrl = serverNameUrl + 'quantri/getDoanhThuHoaDonVaDonHang/';
 var arrDoanhThuHoaDon;
+
 function getDoanhThuByDay(e) {
     var day = e.target.value;
-    console.log(day);
     getDoanhThuByDayAjax(day, appendToListHoaDon);
 }
 
