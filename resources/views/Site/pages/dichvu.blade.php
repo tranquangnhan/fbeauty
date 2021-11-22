@@ -52,7 +52,9 @@
                                         </div>
 
                                         <div class="img-1 mt-4">
-                                            <img href="{{$dichvuitem->id}}" class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
+                                            <a href="abc/{{($dichvuitem->id)}}">
+                                                <img class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
+                                            </a>
                                         </div>
 
                                         <div class="text-1 limit-text-row-1 mt-4">

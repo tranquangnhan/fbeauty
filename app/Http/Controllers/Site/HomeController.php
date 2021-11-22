@@ -243,8 +243,11 @@ class HomeController extends Controller
         return view("Site.pages.dichvu", $this->data);
     }
 
-    public function viewDichVuChiTiet()
+    public function viewDichVuChiTiet($id)
     {
+        $detaildichvu = $this->Dichvu->dichvudetail($id);
+
+        $this->data['detaildichvu']= $detaildichvu;
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
         $this->data['breadcrumbArray'] = [

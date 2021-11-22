@@ -62,5 +62,11 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->orderBy('created_at', 'DESC')
         ->get();
     }
+    public function dichvudetail($id){
+        return $this->model->select('dichvu.*', 'dichvu.id','danhmuc.name AS danhmuc')
+            ->join('danhmuc', 'dichvu.iddm', '=', 'danhmuc.id')
+            ->where('dichvu.slug', $id)
+            ->get();
+    }
 
 }
