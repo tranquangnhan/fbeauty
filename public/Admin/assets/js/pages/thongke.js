@@ -1,6 +1,6 @@
 const serverNameUrl = $('#server-name').val();
 const getDoanhThuByDayUrl = serverNameUrl + 'quantri/getDoanhThuByDay/';
-const getDoanhThuHoaDonUrl = serverNameUrl + 'quantri/getDoanhThuHoaDon/';
+const getDoanhThuHoaDonVaDonHangUrl = serverNameUrl + 'quantri/getDoanhThuHoaDonVaDonHang/';
 var arrDoanhThuHoaDon;
 function getDoanhThuByDay(e) {
     var day = e.target.value;
@@ -33,14 +33,17 @@ function getDoanhThuByDayAjax(day, callback) {
     });
 }
 
-function getDoanhThuHoaDon(type, numData, callback) {
+function getDoanhThuHoaDon(type, numData, date, callback) {
     $.ajax({
         type: "GET",
-        url: getDoanhThuHoaDonUrl + type + '/' + numData,
+        url: getDoanhThuHoaDonVaDonHangUrl + type + '/' + numData + '/' + date,
         success: function (respon) {
             if (respon.success == true) {
                 console.log(respon);
-                callback('bar', respon.arrLabel, respon.arrDoanhThuHoaDon);
+                arrLabel = respon.arrLabel.reverse();
+                arrDoanhThuHoaDon = respon.arrDoanhThuHoaDon.reverse();
+                arrDoanhThuDonHang = respon.arrDoanhThuDonHang.reverse();
+                callback('bar', arrLabel, arrDoanhThuHoaDon, arrDoanhThuDonHang);
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -141,20 +144,64 @@ loadChartMainDoanhThu();
 function loadChartMainDoanhThu() {
     var typeTime = $('select[id=select-type-time]').val();
     var numData = getNumData(typeTime);
-    getDoanhThuHoaDon(typeTime, numData, loadMainChart);
+    var date = 0;
+    getDoanhThuHoaDon(typeTime, numData, date, loadMainChart);
 }
 
 $('.reload-chart').click(function (e) {
     e.preventDefault();
+    var faTypeTime = $('select[id=select-type-fa-time]').val();
     var typeTime = $('select[id=select-type-time]').val();
-    var numData = getNumData(typeTime);
-    console.log(typeTime);
-    console.log(numData);
-    getDoanhThuHoaDon(typeTime, numData, updateMainChart);
+    if (faTypeTime == 'recent') {
+        var numData = getNumData(typeTime) - 1;
+        var date = 0;
+    } else {
+        if (typeTime == 'day') {
+            var ipDateRangePicker = $('#ip-specific-day').data('daterangepicker');
+            var startDate = ipDateRangePicker.startDate._d;
+            var endDate = ipDateRangePicker.endDate._d;
+            var numData = getNumberOfDays(startDate, endDate) - 1;
+            var date = ipDateRangePicker.endDate.format('YYYY-MM-DD');
+        } else if (typeTime == 'month') {
+            typeTime = 'day';
+            var yearMonth = $('#ip-specific-month').val();
+            var yearMonthArr = yearMonth.split("-");
+            var numData = daysInMonth(yearMonthArr[1], yearMonthArr[0]) - 1;
+            var date = moment(yearMonth).endOf('month').format('YYYY-MM-DD');
+            console.log(numData);
+        } else if (typeTime == 'year') {
+            typeTime = 'month';
+            var year = $('#ip-specific-year').val();
+            var numData = 11;
+            var date = moment(year).endOf('year').format('YYYY-MM-DD');
+        }
+    }
+    getDoanhThuHoaDon(typeTime, numData, date, updateMainChart);
 });
 
-function updateMainChart(typeChart, arrLabel, arrDoanhThuHoaDon) {
+function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+
+function getNumberOfDays(start, end) {
+    var date1 = new Date(start);
+    var date2 = new Date(end);
+
+    // One day in milliseconds
+    var oneDay = 1000 * 60 * 60 * 24;
+
+    // Calculating the time difference between two dates
+    var diffInTime = date2.getTime() - date1.getTime();
+
+    // Calculating the no. of days between two dates
+    var diffInDays = Math.round(diffInTime / oneDay);
+
+    return diffInDays;
+}
+
+function updateMainChart(typeChart, arrLabel, arrDoanhThuHoaDon, arrDoanhThuDonHang) {
     mainDoanhThu.data.datasets[0].data = arrDoanhThuHoaDon;
+    mainDoanhThu.data.datasets[1].data = arrDoanhThuDonHang;
     mainDoanhThu.data.labels = arrLabel;
     mainDoanhThu.update();
 }
@@ -162,10 +209,8 @@ function updateMainChart(typeChart, arrLabel, arrDoanhThuHoaDon) {
 function getNumData(typeTime) {
     if (typeTime == 'day') {
         var numData = $('select[id=select-day]').val();
-
     } else if (typeTime == 'month') {
         var numData = $('select[id=select-month]').val();
-
     } else if (typeTime == 'year') {
         var numData = $('select[id=select-year]').val();
     }
@@ -174,19 +219,30 @@ function getNumData(typeTime) {
 }
 
 var mainDoanhThu;
-function loadMainChart (typeChart, labels, arrData) {
+function loadMainChart (typeChart, labels, arrDataHoaDon, arrDataDonHang) {
     mainDoanhThu = new Chart($('#main-chart-thongke'), {
         type: typeChart,
         data: {
             labels: labels,
             datasets: [{
-                label: '# of Votes',
-                data: arrData,
+                label: 'Doanh thu hóa đơn',
+                data: arrDataHoaDon,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
                 ],
                 borderColor: [
                     'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'Doanh thu đơn hàng',
+                data: arrDataDonHang,
+                backgroundColor: [
+                    'rgba(255, 206, 86, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 206, 86, 1)',
                 ],
                 borderWidth: 1
             }]
@@ -204,12 +260,59 @@ function loadMainChart (typeChart, labels, arrData) {
 $('#select-type-time').on('change', function (e) {
     // var optionSelected = $("option:selected", this);
     var typeTime = this.value;
-    $('.select-time').hide();
-    if (typeTime == 'day') {
-        $('#select-day').show();
-    } else if (typeTime == 'month') {
-        $('#select-month').show();
-    } else if (typeTime == 'year') {
-        $('#select-year').show();
+    checkAndShowSelectTimeCuaMainChart(typeTime);
+});
+
+$('#select-type-fa-time').on('change', function (e) {
+    var faTypeTime = this.value;
+    $('.fa-select-time').hide();
+    $('.fa-select-time').removeClass('show');
+    if (faTypeTime == 'specific') {
+        $('.specific-time-option').show();
+        $('.specific-time-option').addClass('show');
+    } else if (faTypeTime == 'recent') {
+        $('.recent-times').show();
+        $('.recent-times').addClass('show');
     }
+    var typeTime = $('#select-type-time').find(":selected").val();
+    checkAndShowSelectTimeCuaMainChart(typeTime);
+});
+
+function checkAndShowSelectTimeCuaMainChart(typeTime) {
+    var checkShowRecentTimes = $('.recent-times').hasClass('show');
+    $('.select-time').hide();
+    if (checkShowRecentTimes) {
+        if (typeTime == 'day') {
+            $('#select-day').show();
+        } else if (typeTime == 'month') {
+            $('#select-month').show();
+        } else if (typeTime == 'year') {
+            $('#select-year').show();
+        }
+    } else {
+        if (typeTime == 'day') {
+            $('#specific-day').show();
+        } else if (typeTime == 'month') {
+            $('#specific-month').show();
+        } else if (typeTime == 'year') {
+            $('#specific-year').show();
+        }
+    }
+}
+
+$("#ip-specific-year").datepicker({
+    format: "yyyy",
+    viewMode: "years",
+    minViewMode: "years"
+});
+
+$('#ip-specific-day').daterangepicker({
+    ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+     }
 });

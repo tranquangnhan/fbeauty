@@ -5,7 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
-
+use Illuminate\Support\Arr;
+use Str;
 class HoaDonSeeder extends Seeder
 {
     /**
@@ -105,6 +106,43 @@ class HoaDonSeeder extends Seeder
                     ['idkhachhang' => 4, 'idcoso'=> 1, 'idnhanvien'=> 4, 'idthungan' => 4,'idlieutrinh'=> 3,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '16000000','tongtiensaugiamgia'=>'15000000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng ', 'created_at'=>$date],
                 ]);
             }
+        }
+
+        $ho  = array("Nguyễn", "Lê", "Phan", "Đỗ", "Hồ", "Võ", "Bùi", "Hậu", "Trần");
+        $lot = array("Thị", "Văn", "Đức", "Ngọc", "Hoàng", "Minh", "Kim", "Vũ", "Duy");
+        $ten = array("Tâm", "Thảo", "Hải", "Hòa", "Hảo", "Thanh", "Tú", "Hậu", "Phương", "Long");
+
+        for ($i = 0; $i < 10000; $i++) {
+            $ho_ = Arr::random($ho);
+            $randomDay = Carbon::today()->subDays(rand(0, 365 * 4))->toDateTimeString();
+            $tongTienSauGiam = rand(100000, 50000000);
+            $tongTienTruocGiam = $tongTienSauGiam + rand(100000, 1000000);
+            do
+            {
+                $lot_ = Arr::random($lot);
+                $ten_ = Arr::random($ten);
+            } while ($this->checkHoTen($lot_, $ten_));
+
+            $hoTenRandom = $ho_ . ' ' . $lot_ . ' ' . $ten_;
+            DB::table('hoadon')->insert([
+                ['idkhachhang' => rand(1, 6), 'idcoso'=> 1, 'idnhanvien'=> rand(1, 6), 'idthungan' => rand(1, 6), 'idlieutrinh'=> 1, 'idgiamgia'=> 1, 'tongtientruocgiamgia' => $tongTienTruocGiam, 'tongtiensaugiamgia' => $tongTienSauGiam, 'trangthai' => 1, 'created_at'=>$randomDay],
+
+                // ['idkhachhang' => rand(0, 6), 'idgiamgia '=> '1', 'tennguoinhan' => $hoTenRandom, 'diachikhachhang'=> 'Công viên phần mềm Quang Trung, TP.HCM','sdtnguoinhan'=>'0845737036', 'tongtientruocgiamgia' => $tongTienTruocGiam, 'tongtiensaugiamgia' => $tongTienSauGiam, 'phuongthucthanhtoan' => 'VNPAY', 'phuongthucgiaohang' => 'GRAP', 'trangthai' => 4, 'created_at' => $randomDay],
+            ]);
+        }
+    }
+
+    public function checkHoTen($lot_, $ten_) {
+        $arrLot_ = array("Thị", "Ngọc", "Kim");
+        $arrTen_ = array("Long");
+        if (in_array($lot_, $arrLot_)) {
+            if (in_array($ten_, $arrTen_)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 }

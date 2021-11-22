@@ -60,6 +60,7 @@
     <link href="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('Admin/assets') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     {{-- end code nhúng của Nhân --}}
+    @yield('css')
 <body>
 
 <!-- Begin page -->

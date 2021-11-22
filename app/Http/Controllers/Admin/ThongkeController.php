@@ -52,8 +52,7 @@ class ThongkeController extends Controller
         $this->data['doanhThuHoaDonSauThangGanNhat'] = $this->getDoanhThuHoaDonSauThangGanNhat();
         $this->data['toDay'] = $toDay->toDateString();
 
-
-
+        
         return view("Admin.Thongke.index", $this->data);
     }
 
@@ -138,9 +137,9 @@ class ThongkeController extends Controller
 
     public function getDoanhThuDonHangHoanThanh($ngay) {
         $thoigian = $this->getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
-        $numDonHang = $this->DonHang->getDoanhThuDonHangHoanThanh($thoigian['dau'], $thoigian['cuoi']);
+        $tongDoanhThu = $this->DonHang->getDoanhThuDonHangHoanThanh($thoigian['dau'], $thoigian['cuoi']);
 
-        return $numDonHang;
+        return $tongDoanhThu;
     }
 
     public function getDoanhThuHoaDon($ngay, $idCoSo) {
@@ -213,35 +212,57 @@ class ThongkeController extends Controller
         return $arrDoanhThu;
     }
 
-    public function getDoanhThuHoaDonAjax(Request $request, $type, $numData)
+    public function getDoanhThuHoaDonVaDonHangAjax(Request $request, $type, $numData, $date)
     {
         try {
             if ($request->ajax()) {
                 $arrDoanhThuHoaDon = array();
+                $arrDoanhThuDonHang = array();
                 $arrThoiGian = array();
                 $arrLabel = array();
-                for ($i = 1; $i <= $numData; $i++) {
-                    if ($type == 'day') {
-                        $time = Carbon::now()->subDay($i);
+                for ($i = 0; $i <= $numData; $i++) {
+                    if ($type == 'day')
+                    {
+                        if ($date == 0) {
+                            $time = Carbon::now()->subDay($i);
+                        } else {
+                            $time = new Carbon($date);
+                            $time = $time->subDay($i);
+                        }
                         $arrLabel[] = 'Ngày ' . $time->format('d');
-                    } else if ($type == 'month') {
-                        $time = Carbon::now()->subMonth($i);
+                    } else if ($type == 'month')
+                    {
+                        if ($date == 0) {
+                            $time = Carbon::now()->subMonthNoOverflow($i);
+                        } else {
+                            $time = new Carbon($date);
+                            $time = $time->subMonthNoOverflow($i);
+                        }
                         $arrLabel[] = 'Tháng ' . $time->format('m');
-                    } else if ($type == 'year') {
-                        $time = Carbon::now()->subYear($i);
+                    } else if ($type == 'year')
+                    {
+                        if ($date == 0) {
+                            $time = Carbon::now()->subYear($i);
+                        } else {
+                            $time = new Carbon($date);
+                            $time = $time->subYear($i);
+                        }
                         $arrLabel[] = 'Năm ' . $time->format('Y');
                     }
 
                     $thoigian = $this->getTime($type, $time);
-                    $tongDoanhThu = $this->HoaDon->getTongDoanhThuHoaDon($thoigian['dau'], $thoigian['cuoi'], session('coso'));
+                    $tongDoanhThuHoaDon = $this->HoaDon->getTongDoanhThuHoaDon($thoigian['dau'], $thoigian['cuoi'], session('coso'));
+                    $tongDoanhThuDonHang = $this->DonHang->getDoanhThuDonHangHoanThanh($thoigian['dau'], $thoigian['cuoi']);
                     $arrThoiGian[] = $thoigian;
-                    $arrDoanhThuHoaDon[] = $tongDoanhThu;
+                    $arrDoanhThuHoaDon[] = $tongDoanhThuHoaDon;
+                    $arrDoanhThuDonHang[] = $tongDoanhThuDonHang;
                 }
 
                 $response = Array(
                     'success' => true,
                     'arrThoiGian' => $arrThoiGian,
                     'arrDoanhThuHoaDon' => $arrDoanhThuHoaDon,
+                    'arrDoanhThuDonHang' => $arrDoanhThuDonHang,
                     'arrLabel' => $arrLabel
                 );
             }

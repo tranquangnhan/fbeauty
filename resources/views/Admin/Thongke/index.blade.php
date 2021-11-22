@@ -326,40 +326,56 @@
                                     <div class="card-head d-flex align-items-center">
                                         <h4 class="header-title mt-0 mb-0 mr-auto">Bar chart</h4>
                                         <div class="form-group mb-0 mr-2" style="width: 15%;">
-                                            <select class="form-control" id="">
-                                                <option value="gan-nhat">Thời gian gần nhất</option>
-                                                <option value="cu-the">Thời gian cụ thể</option>
+                                            <select class="form-control" id="select-type-fa-time">
+                                                <option value="recent">Thời gian gần nhất</option>
+                                                <option value="specific">Thời gian cụ thể</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group mb-0 mr-2" style="width: 15%;">
                                             <select class="form-control" id="select-type-time">
-                                                <option value="day">Theo Ngày</option>
-                                                <option value="month">Từng Tháng</option>
-                                                <option value="year">Theo Năm</option>
+                                                <option value="day">Ngày</option>
+                                                <option value="month">Tháng</option>
+                                                <option value="year">Năm</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group mb-0" style="width: 15%;">
-                                            <select class="form-control select-time" id="select-day">
-                                                <option value="7">7 Ngày</option>
-                                                <option value="15">15 Ngày</option>
-                                                <option value="30">30 Ngày</option>
-                                                <option value="90">90 Ngày</option>
-                                            </select>
+                                            <div class="fa-select-time specific-time-option" style="display: none;">
+                                                <div class="select-time" id="specific-day">
+                                                    <input type="text" class="form-control"id="ip-specific-day">
+                                                </div>
 
-                                            <select class="form-control select-time" id="select-month" style="display: none;">
-                                                <option value="3">3 Tháng</option>
-                                                <option value="6">6 Tháng</option>
-                                                <option value="12">12 Tháng</option>
-                                            </select>
+                                                <div class="select-time" id="specific-month">
+                                                    <input type="month" class="form-control" id="ip-specific-month" name="" min="2018-01" value="2021-05">
+                                                </div>
 
-                                            <select class="form-control select-time" id="select-year" style="display: none;">
-                                                <option value="1">1 Năm</option>
-                                                <option value="3">3 Năm</option>
-                                                <option value="5">5 Năm</option>
-                                                <option value="10">10 Năm</option>
-                                            </select>
+                                                <div class="select-time" id="specific-year">
+                                                    <input class="form-control" type="text" id="ip-specific-year" placeholder="Chọn năm">
+                                                </div>
+                                            </div>
+
+                                            <div class="fa-select-time recent-times show">
+                                                <select class="form-control select-time" id="select-day">
+                                                    <option value="7">7 Ngày</option>
+                                                    <option value="15">15 Ngày</option>
+                                                    <option value="30">30 Ngày</option>
+                                                    <option value="90">90 Ngày</option>
+                                                </select>
+
+                                                <select class="form-control select-time" id="select-month" style="display: none;">
+                                                    <option value="3">3 Tháng</option>
+                                                    <option value="6">6 Tháng</option>
+                                                    <option value="12">12 Tháng</option>
+                                                </select>
+
+                                                <select class="form-control select-time" id="select-year" style="display: none;">
+                                                    <option value="1">1 Năm</option>
+                                                    <option value="3">3 Năm</option>
+                                                    <option value="5">5 Năm</option>
+                                                    <option value="10">10 Năm</option>
+                                                </select>
+                                            </div>
                                         </div>
 
                                         <button href="" class="btn btn-primary waves-effect waves-light ml-2 reload-chart">Tải chart</button>
@@ -398,12 +414,33 @@
     </div>
 
 @endsection
+@section('css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <style>
+        .datepicker-years {
+            display: block !important;
+        }
+
+        .right {
+            width: 242px !important;
+        }
+
+        .cancelBtn.btn.btn-sm.btn-default {
+            background: #ebebeb;
+            color: #414141;
+        }
+    </style>
+@endsection
 @section('custom-javascript')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         var arrDataHoaDonSixMonth = <?php echo json_encode($doanhThuHoaDonSauThangGanNhat); ?>;
     </script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="{{ asset('Admin/assets') }}/js/pages/thongke.js"></script>
+
 
 @endsection
