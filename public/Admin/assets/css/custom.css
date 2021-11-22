@@ -233,3 +233,25 @@ a.editable-click:hover {
     bottom: 3%;
     right: 0;
 } */
+
+.custom-table-body-2 {
+    display: block;
+    max-height: 440px;
+    overflow: auto;
+}
+.custom-table-2 thead, .custom-table-body-2 tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;/* even columns width , fix width of table too*/
+}
+
+.custom-table-2 thead th:first-child, .custom-table-body-2 tr td:first-child {
+    width: 5%;
+}
+
+.text-gray {
+    font-size: .9em;
+    font-weight: 400;
+    color: #999999;
+}
+

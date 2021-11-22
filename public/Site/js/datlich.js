@@ -393,9 +393,6 @@ function datLich() {
             });
         }
     });
-
-
-
 }
 
 $('.dat-lich').click(function (e) {
