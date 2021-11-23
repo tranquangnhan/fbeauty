@@ -181,10 +181,13 @@ Route::group(['prefix' => '/'], function (){
     Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
     Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
     Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
-
+    Route::get('/capnhatgiasession/{gia}', [GioHangController::class, 'capnhatgiasession']);
+    Route::get('/capnhatgiamgiasession/{gia}', [GiamGiaController::class, 'capnhatgiamgiasession']);
     /**
     *Thanh toán
      */
-    Route::post('/thanhtoandonhang', [GioHangController::class, 'thanhtoandonhang']);
+//    Route::post('/thanhtoandonhang', [GioHangController::class, 'thanhtoandonhang']);
+    Route::post("/vnpay_php/vnpay_create_payment", [GioHangController::class, 'vnpayments']);
+    Route::post('/thanh-toan-don-hang', [GioHangController::class, "thanhtoandonhang"]);
 });
 

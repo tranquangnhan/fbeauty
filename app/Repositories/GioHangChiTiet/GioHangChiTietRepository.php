@@ -32,6 +32,12 @@ class GioHangChiTietRepository extends BaseRepository implements GioHangChiTietR
             ->get();
     }
 
+//    public function GetGioHangChiTiet($idgiohang){
+//        return $this->model->select("*")
+//            ->where('idgiohang', $idgiohang)
+//            ->get();
+//    }
+
     public function XoaSanPhamGioHang($idgiohang, $idsanphamct){
         return $this->model->select("*")
             ->where('idgiohang', $idgiohang)

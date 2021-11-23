@@ -32,10 +32,12 @@ function thanhtoanVNPAY(bien) {
         var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split(',').join('');
         $('#amount').val(tongthanhtoan);
         $('#valthanhtoan').val('VNPAY');
+        $('#create_form').attr('action', domain+'/vnpay_php/vnpay_create_payment');
     }
     else {
         $('#collapseExample123').removeClass('show');
         $('#valthanhtoan').val('KNH');
+        $('#create_form').attr('action', domain+'/thanh-toan-don-hang');
     }
 }
 
@@ -75,12 +77,14 @@ function ApplyGiamGia() {
                     });
                     if (data[0].loai == 1){
                         var tiensaugiam = (Number(tongthanhtoan) - ((Number(tongthanhtoan)*Number(data[0].number))/100));
+                        LuuSessionGiamGia(((Number(tongthanhtoan)*Number(data[0].number))/100));
                         $('#amount').val(tiensaugiam);
                         $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString()+'% <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
                         $('#tongthanhtoan').html(tiensaugiam.toLocaleString());
                     }
                     else {
-                        var tiensaugiam = Number(tongthanhtoan) - Number(data[0].number)
+                        var tiensaugiam = Number(tongthanhtoan) - Number(data[0].number);
+                        LuuSessionGiamGia(Number(data[0].number));
                         $('#amount').val(tiensaugiam);
                         $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString()+'đ <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
                         $('#tongthanhtoan').html(tiensaugiam.toLocaleString());
@@ -97,8 +101,26 @@ function HuyGiamGia() {
     $("#idgiam").val("");
     $("#magiamgia").val("");
     showGioHang();
+    LuuSessionGiamGia(0)
 }
 
 function phuongthucgiaohang(bien) {
     $("#valgiaohang").val(bien);
 }
+
+function LuuSessionGiamGia(giam) {
+    $.ajax({
+        url: domain + '/capnhatgiamgiasession/'+giam,
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: {id: giam},
+        success: function (data) {
+            console.log(data)
+        }
+    });
+}
+
+LuuSessionGiamGia(0);
+
+
