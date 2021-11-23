@@ -2,9 +2,19 @@ const serverNameUrl = $('#server-name').val();
 const getDoanhThuByDayUrl = serverNameUrl + 'quantri/getDoanhThuByDay/';
 const getDoanhThuHoaDonVaDonHangUrl = serverNameUrl + 'quantri/getDoanhThuHoaDonVaDonHang/';
 var arrDoanhThuHoaDon;
+var nameImageMain = 'Image';
+var arrLabel;
+var arrDoanhThuDonHang;
+var arrLabelSixMonth = [];
+makeArrLabelsSixMonth();
+
+const hoaDonSixMonthChart = $('#chartHoaDonSixMonth');
+const donHangSixMonthChart = $('#chartDonHangSixMonth');
+loadChartMainDoanhThu();
+loadChartSixMonth();
+
 function getDoanhThuByDay(e) {
     var day = e.target.value;
-    console.log(day);
     getDoanhThuByDayAjax(day, appendToListHoaDon);
 }
 
@@ -39,7 +49,7 @@ function getDoanhThuHoaDon(type, numData, date, callback) {
         url: getDoanhThuHoaDonVaDonHangUrl + type + '/' + numData + '/' + date,
         success: function (respon) {
             if (respon.success == true) {
-                console.log(respon);
+                getNameImageMainChart();
                 arrLabel = respon.arrLabel.reverse();
                 arrDoanhThuHoaDon = respon.arrDoanhThuHoaDon.reverse();
                 arrDoanhThuDonHang = respon.arrDoanhThuDonHang.reverse();
@@ -107,51 +117,85 @@ function rowInBodyDoanhThu(hoaDon, index) {
     return html;
 }
 
-var arrLabels = [];
-for (let i = 1; i <= 6; i++) {
-    const month = moment().subtract(i, 'months').format('MM');
-    var thang = 'Tháng ' + month;
-    arrLabels.push(thang);
+function makeArrLabelsSixMonth() {
+    for (let i = 1; i <= 6; i++) {
+        const month = moment().subtract(i, 'months').format('MM');
+        var thang = 'Tháng ' + month;
+        arrLabelSixMonth.push(thang);
+    }
 }
 
-const ctx = $('#chart-sau-thang-gan-nhat');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: arrLabels.reverse(),
-        datasets: [{
-            label: '# of Votes',
-            data: arrDataHoaDonSixMonth.reverse(),
-            backgroundColor: [
-                'rgba(54, 162, 235, 0.2)',
-            ],
-            borderColor: [
-                'rgba(54, 162, 235, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+function loadChartSixMonth() {
+    var label = arrLabelSixMonth.reverse();
+    var chartHoaDonSixMonth = new Chart(hoaDonSixMonthChart, {
+        type: 'bar',
+        data: {
+            labels: label,
+            datasets: [{
+                label: 'Doanh Thu Tại Spa',
+                data: arrDataHoaDonSixMonth.reverse(),
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
-});
+    });
 
-loadChartMainDoanhThu();
+    var chartDonHangSixMonth = new Chart(donHangSixMonthChart, {
+        type: 'line',
+        data: {
+            labels: label,
+            datasets: [{
+                label: 'Doanh Thu Online',
+                data: arrDataDonHangSixMonth.reverse(),
+                backgroundColor: [
+                    'rgba(255, 206, 86, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 206, 86, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+
 function loadChartMainDoanhThu() {
     var typeTime = $('select[id=select-type-time]').val();
-    var numData = getNumData(typeTime);
+    var numData = getNumData(typeTime) - 1;
     var date = 0;
     getDoanhThuHoaDon(typeTime, numData, date, loadMainChart);
 }
 
 $('.reload-chart').click(function (e) {
     e.preventDefault();
+    var requestParam = getRequestParamDeLayDoanhThu();
+    getDoanhThuHoaDon(requestParam.typeTime, requestParam.numData, requestParam.date, updateMainChart);
+});
+
+function getRequestParamDeLayDoanhThu() {
     var faTypeTime = $('select[id=select-type-fa-time]').val();
     var typeTime = $('select[id=select-type-time]').val();
+
     if (faTypeTime == 'recent') {
         var numData = getNumData(typeTime) - 1;
         var date = 0;
@@ -168,7 +212,6 @@ $('.reload-chart').click(function (e) {
             var yearMonthArr = yearMonth.split("-");
             var numData = daysInMonth(yearMonthArr[1], yearMonthArr[0]) - 1;
             var date = moment(yearMonth).endOf('month').format('YYYY-MM-DD');
-            console.log(numData);
         } else if (typeTime == 'year') {
             typeTime = 'month';
             var year = $('#ip-specific-year').val();
@@ -176,8 +219,13 @@ $('.reload-chart').click(function (e) {
             var date = moment(year).endOf('year').format('YYYY-MM-DD');
         }
     }
-    getDoanhThuHoaDon(typeTime, numData, date, updateMainChart);
-});
+
+    return {
+        'numData' : numData,
+        'date' : date,
+        'typeTime' : typeTime
+    }
+}
 
 function daysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
@@ -219,7 +267,7 @@ function getNumData(typeTime) {
 }
 
 var mainDoanhThu;
-function loadMainChart (typeChart, labels, arrDataHoaDon, arrDataDonHang) {
+function loadMainChart(typeChart, labels, arrDataHoaDon, arrDataDonHang) {
     mainDoanhThu = new Chart($('#main-chart-thongke'), {
         type: typeChart,
         data: {
@@ -308,11 +356,129 @@ $("#ip-specific-year").datepicker({
 
 $('#ip-specific-day').daterangepicker({
     ranges: {
-        'Today': [moment(), moment()],
-        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-        'This Month': [moment().startOf('month'), moment().endOf('month')],
-        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        'Hôm nay': [moment(), moment()],
+        'Hôm qua': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        '7 ngày trước': [moment().subtract(6, 'days'), moment()],
+        '30 ngày trước': [moment().subtract(29, 'days'), moment()],
+        'Tháng này': [moment().startOf('month'), moment().endOf('month')],
+        'Tháng trước': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
      }
 });
+
+$('.download-to-png').click(function (e) {
+    e.preventDefault();
+    var idDownload = $(this).attr('id-canvas');
+    downloadToPNG(idDownload);
+});
+
+function downloadToPNG(id) {
+    $('#'+id).get(0).toBlob(function(blob) {
+        saveAs(blob, nameImageMain);
+    });
+}
+
+function getNameImageMainChart() {
+    var typeFaTime = $('#select-type-fa-time').find(":selected").val();
+    var typeTime = $('#select-type-time').find(":selected").val();
+    var untilName = 'Doanh thu hóa đơn - đơn hàng - ';
+
+    if (typeFaTime == 'recent') {
+        var duoi = ' gần nhất';
+
+        if (typeTime == 'day') {
+            var giua = ' ngày';
+            var dau = $('#select-day').find(":selected").val();
+        } else if (typeTime == 'month') {
+            var giua = ' tháng';
+            var dau = $('#select-month').find(":selected").val();
+        } else if (typeTime == 'year') {
+            var giua = ' năm';
+            var dau = $('#select-year').find(":selected").val();
+        }
+
+        var nameImage = untilName + dau + giua + duoi;
+    } else if (typeFaTime == 'specific') {
+        if (typeTime == 'day') {
+            var dau = 'từ ';
+            var ipDateRangePicker = $('#ip-specific-day').data('daterangepicker');
+            var endDate = ipDateRangePicker.endDate.format('DD-MM-YYYY');
+            var startDate = ipDateRangePicker.startDate.format('DD-MM-YYYY');
+            var giua = startDate + ' - ' + endDate;
+
+        } else if (typeTime == 'month') {
+            var dau = 'tháng ';
+            var yearMonth = $('#ip-specific-month').val();
+            var giua = moment(yearMonth).endOf('month').format('MM-YYYY');
+        } else if (typeTime == 'year') {
+            var dau = 'trong năm ';
+            var giua = $('#ip-specific-year').val();
+        }
+        var nameImage = untilName + dau + giua;
+    }
+
+    nameImageMain = nameImage;
+}
+
+$('#select-type-chart').on('change', function (e) {
+    var typeChart = this.value;
+    mainDoanhThu.destroy();
+    loadMainChart(typeChart, arrLabel, arrDoanhThuHoaDon, arrDoanhThuDonHang);
+});
+
+$('.exportExcelButton').click(function (e) {
+    e.preventDefault();
+    var id = $(this).attr('id-table-download');
+    exportExcel(id, '', 'Doanh Thu Hóa Đơn Trong Ngày');
+});
+
+function exportExcel(tableNames, headerbdColor, filename) {
+    if (tableNames.trim() === "") {
+        alert(' Không có bảng được cung cấp');
+        return;
+    }
+
+    if (headerbdColor.trim() === "") {
+        headerbdColor = "#87AFC6";
+    }
+
+    if (filename.trim() === "") {
+        filename = "ExportData";
+    }
+
+    var export_data = "";
+    var arrTableNames = tableNames.split("|");
+    if (arrTableNames.length > 0) {
+        //duyệt từng bảng
+        for (var i = 0; i < arrTableNames.length; i++) {
+            export_data += "<table border='2px'><tr bgcolor='" + headerbdColor + "'>";
+            var objectTable = document.getElementById(arrTableNames[i]);//Lấy id bảng thứ i
+
+            if (objectTable === undefined) {
+                alert('Bảng không tìm thấy');
+                return;
+            }
+
+            for (var j = 0; j < objectTable.rows.length; j++) {
+                export_data += objectTable.rows[j].innerHTML + "</tr>";
+            }
+
+            var tongtien = $('.tong-truoc-giam').html();
+            var tongtienthanhtoan = $('.tong-sau-giam').html();
+            export_data += `<td colspan="6"><b>Tổng tiền: ${tongtien} </b></td> </tr>`;
+            export_data += `<td colspan="6"><b>Tổng tiền thanh toán: ${tongtienthanhtoan} </b></td> </tr>`;
+
+            export_data += "</table>";
+        }
+
+        // kiểm tra trình duyệt Là IE thì
+        if (window.navigator.userAgent.indexOf("MSIE") > 0 || !!window.navigator.userAgent.match(/Trient.*rv\:11\./)) {
+            exportIF.document.open("txt/html", "replace");
+            exportIF.document.write(export_data);
+            exportIF.document.close();
+            exportIF.focus();
+            sa = exportIF.document.execCommand("SaveAs", true, filename + ".xsl");
+        } else { //các trình duyệt khác
+            sa = window.open("data:application/vnd.ms-excel," + encodeURIComponent(export_data))
+        }
+    }
+}
