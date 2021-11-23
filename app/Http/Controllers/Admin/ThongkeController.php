@@ -50,6 +50,7 @@ class ThongkeController extends Controller
         $this->getDuLieuDonHangHoanThanhFirst($toDay, $yesterday);
         $this->data['doanhThuHoaDonToday'] = $this->getHoaDonByDay($toDay, session('coso'));
         $this->data['doanhThuHoaDonSauThangGanNhat'] = $this->getDoanhThuHoaDonSauThangGanNhat();
+        $this->data['doanhThuDonHangSauThangGanNhat'] = $this->getDoanhThuHonHangSauThangGanNhat();
         $this->data['toDay'] = $toDay->toDateString();
 
 
@@ -212,6 +213,18 @@ class ThongkeController extends Controller
         return $arrDoanhThu;
     }
 
+    public function getDoanhThuHonHangSauThangGanNhat() {
+        $arrDoanhThu = Array();
+        for ($i = 1; $i <= 6; $i++) {
+            $date = Carbon::now()->subMonth($i);
+            $thoigian = $this->getTime('month', $date);
+            $tongDoanhThu = $this->DonHang->getDoanhThuDonHangHoanThanh($thoigian['dau'], $thoigian['cuoi']);
+            $arrDoanhThu[] = $tongDoanhThu;
+        }
+
+        return $arrDoanhThu;
+    }
+
     public function getDoanhThuHoaDonVaDonHangAjax(Request $request, $type, $numData, $date)
     {
         try {
@@ -229,7 +242,12 @@ class ThongkeController extends Controller
                             $time = new Carbon($date);
                             $time = $time->subDay($i);
                         }
-                        $arrLabel[] = 'Ngày ' . $time->format('d');
+
+                        if ($numData > 30) {
+                            $arrLabel[] = $time->format('d-m');
+                        } else {
+                            $arrLabel[] = 'Ngày ' . $time->format('d');
+                        }
                     } else if ($type == 'month')
                     {
                         if ($date == 0) {
