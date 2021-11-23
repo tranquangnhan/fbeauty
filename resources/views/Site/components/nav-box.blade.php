@@ -1,5 +1,5 @@
-<div class="nav-box">
-    <nav class="navbar navbar-expand-lg navbar-light background-color-none p-0">
+<div class="nav-box container">
+    <nav class="navbar container navbar-expand-lg navbar-light background-color-none p-0">
         <div class="pl-0 flex-grow-1">
             <a class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>

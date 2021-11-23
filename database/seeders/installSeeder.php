@@ -517,6 +517,111 @@ class installSeeder extends Seeder
             Thực hiện áp dụng bôi kem trộn này, giúp các nốt mụn cám, mụn đầu đen có trên da khô lại và tự động bong tróc. Da cũng trở nên trắng mịn, sáng đều màu.
             ','trangthai' => '1'],
 
+            ['id'=>5,'iddm' => '5', 'img' => 'matxa1.jpg', 'name' => 'CHUẨN BỊ GÌ KHI THỰC HIỆN BODY MASSAGE TẠI NHÀ', 'slug' => Str::slug('CHUẨN BỊ GÌ KHI THỰC HIỆN BODY MASSAGE TẠI NHÀ', '-'),'motangan'=>'Trong mùa giãn cách chúng ta không thể đến spa thì bạn hoàn toàn có thể tự thư giãn bản thân bằng cách thực hiện body massage tại nhà.',
+            'noidung'=>'1. Chế độ ăn uống & trang phục khi thực hiện body massage
+            Đầu tiên, uống thật nhiều nước, tránh các thức uống chứa cồn & cafein. Bởi rượu sẽ làm cơ thể bạn mất nước dẫn đến tình trạng căng thẳng. Uống nước trước & sau khi massage sẽ giúp giảm đau cho các cơ bắp vì khi đó cơ thể loại bỏ các chất thải, độc tố ra ngoài liên tục trong suốt quá trình body massage.
+            
+            Bên cạnh đó, hãy ăn nhẹ trước khi massage để chắc chắn rằng bạn không quá đói bụng nhưng hãy nhớ là đừng nên ăn quá nhiều. Một số món ăn mà AN’s Spa gợi ý cho bạn như: sữa chua, trái cây như bưởi, sầu riêng ri 6, bánh dinh dưỡng, bánh biscotti,...
+            Bạn nên chọn lựa quần áo rộng rãi & thoải mái. Ngoài ra, mặc trang phục tập thể dục hoặc yoga khi body massage cũng là một ý hay. Trang phục thoải mái giúp bạn có thể di chuyển cơ thể của mình một cách tự do, không bị gò bó. Do đó, hãy lựa chọn trang phục phù hợp để quá trình body massage tại nhà diễn ra suôn sẻ.
+
+            2. Dụng cụ thực hiện liệu trình massage body
+            Trước hết, bạn cần chuẩn bị một chiếc khăn to để trải lên giường hoặc bàn massage. Khăn sẽ bảo vệ phần da tiếp xúc tránh khỏi cọ xát gây tổn thương khi thực hiện các động tác massage.
+
+            Ngoài ra, khăn còn giúp thấm mồ hôi & tinh dầu massage để không rơi ra ngoài gây trơn trượt cản trở quá trình body massage tại nhà.
+
+            Lưu ý, bạn nên sử dụng thêm dầu dưỡng hoặc tinh dầu massage vừa để bôi trơn da vừa giúp da dẻ mịn màng, căng bóng hơn.
+            3. Một số kỹ thuật cần có khi thực hiện body massage
+            Kỹ thuật xoa: xoa tinh dầu đều khắp vùng được massage rồi thực hiện kỹ thuật xoa bằng lòng bàn tay hoặc ngón tay. Bạn có thể thay đổi tốc độ & lực khác nhau của kỹ thuật xoa để tạo ra nhiều cảm giác. Tuy nhiên, theo khuyến cáo thì chỉ nên dùng lực mạnh cho vùng trung tâm của cơ thể.
+
+            Kỹ thuật xoa bóp: là sự kết hợp lực tay và cách sử dụng tay khi massage. Ở kỹ thuật body massage này thì phần ngón tay & các khớp tay sẽ được sử dụng nhiều hơn. Kỹ thuật xoa bóp được thực hiện tương tự như động tác vuốt ve nhưng sử dụng với lực mạnh hơn.
+            Kỹ thuật vuốt: là kỹ thuật đòi hỏi có sự tiếp sức trực tiếp & liên tục giữa lòng bàn tay hoặc đầu các ngón tay lên da của cơ thể. Cần lưu ý luôn vuốt hướng lên trên để tránh tình trạng da bị chảy xệ.
+
+            Kỹ thuật bấm: là việc chủ yếu sử dụng ngón cái để tiếp xúc trực tiếp trên một vùng cơ thể. Kỹ thuật này đòi hỏi xác định chính xác về các huyệt đạo cũng như điểm bấm. Nếu xác định không đúng nó còn gây đến những tác hại nghiêm trọng. Khi sử dụng kỹ thuật body massage này là không bao giờ dùng lực mạnh tại các vùng có mạch máu lớn, khớp xương & cột sống.
+            ','trangthai' => '1'],
+
+            ['id'=>6,'iddm' => '5', 'img' => 'matxa2.jpg', 'name' => 'MASSAGE TRỊ LIỆU GIẢI ĐỘC TỐ RA KHỎI CƠ THỂ', 'slug' => Str::slug('MASSAGE TRỊ LIỆU GIẢI ĐỘC TỐ RA KHỎI CƠ THỂ', '-'),'motangan'=>'Massage trị liệu & ăn uống lành mạnh giúp làm sạch độc tố ở tim, gan, phổi, thận, lá lách. Bởi có rất nhiều độc tố trong cơ thể chúng ta như tích tụ thức ăn, ứ máu, đờm, gây nên cảm lạnh, trầm cảm, dễ tức giận…',
+            'noidung'=>'
+            1. Massage trị liệu thải độc tố ở tim
+            Những biểu hiện cho thấy độc tố đang tích tụ ở tim như:
+
+            Dễ bị loét lưỡi.
+
+            Có rất nhiều mụn nổi trên trán.
+
+            Dễ bị mất ngủ và chất lượng giấc ngủ cực kỳ kém, đánh trống ngực.
+
+            Nghiêm trọng nhất là tình trạng xuất hiện ứ máu trong tim, những người bị nhẹ có thể gây ra tức ngực, đánh trống ngực & nghiêm trọng có thể dẫn đến đau ngực dữ dội.
+            Cách massage trị liệu giải độc tim:
+
+            - Huyệt Thiếu phủ: Huyệt nằm trong lòng bàn tay, vị trí ở giữa khe xương ngón thứ 4, thứ 5. Xác định bằng cách nắm tay lại, bờ trong của đầu ngón út chạm vào lòng bàn tay ở đâu thì đó là vị trí huyệt. Khi bấm huyệt này dùng lực mạnh một chút, làm lần lượt với tay trái và tay phải.
+
+            massage trị liệu
+
+            - Ăn súp đậu xanh: Đậu xanh có thể hòa tan và trục xuất độc tố ra khỏi tim bằng phương pháp lợi tiểu & giải nhiệt. Lưu ý khi ăn đậu xanh, nên sử dụng ở dạng lỏng như chè đậu xanh hoặc súp đậu xanh. Ăn súp đậu xanh thường xuyên để độc tố được giải ra bên ngoài.
+            
+            2. Massage trị liệu giải độc tố ở gan
+            Những biểu hiện cho thấy độc tố đang tích tụ ở gan như:
+
+            Trên bề mặt móng tay nổi lên những đường vân, hoặc móng tay bị lõm xuống.
+
+            Tăng sản của tuyến vú, cơn đau tuyến vú tiền kinh nguyệt tăng đáng kể.
+
+            Dễ bị trầm cảm.
+
+            Xuất hiện mụn trứng cá ở trán & mặt, còn xuất hiện đau bụng kinh.
+
+            Cách massage trị liệu giải độc gan:
+
+            - Huyệt Thái xung: Huyệt này nằm trên mu bàn chân. Massage huyệt vị này có giúp giải độc gan rất tốt. Bên cạnh đó giúp đẩy hỏa khí ra bên ngoài. Hỏa khí làm cơ thể bốc hỏa, nóng trong & hạ huyết áp. Những người có tính khí nóng nảy nên thường xuyên bấm huyệt này. Dùng ngón tay cái day bấm huyệt tầm 3 – 5’ với một lực vừa đủ, đến khi cảm thấy hơi tê tê thì dừng. Không nên day huyệt quá mạnh, lần lượt day hai bên chân.
+            3. Massage trị liệu giải độc tố ở lá lách
+            Những biểu hiện cho thấy độc tố đang tích tụ ở lá lách như:
+
+            Mặt bắt đầu xuất hiện nám. Ngoài ra, phụ nữ bắt đầu xuất hiện nám, tàn nhang trên mặt thông thường có hệ tiêu hóa kém.
+
+            Lá lách chịu trách nhiệm bài tiết trong cơ thể, khí hư quá nhiều là biểu hiện của độ ẩm quá mức trong cơ thể. 
+
+            Hơi thở có mùi hôi.
+
+            Xuất hiện mụn trứng cá hoặc loét quanh môi.
+
+            Cách massage trị liệu giải độc lá lách:
+
+            - Huyệt Thương khâu: Huyệt nằm ở chỗ lõm phía dưới mắt cá chân trong. Huyệt có tác dụng: Kiện Tỳ Vị, tiêu thấp trệ, chuyên trụ chỉ các chứng cước khí,  tiêu hóa kém, ruột viêm, chân đau, dạ dày viêm. Dùng ngón tay day vào huyệt Thương khâu cho đến khi thấy cảm giác tê tê là được. Thực hiện mỗi lần khoảng 3’, lần lượt làm với 2 chân.
+            ','trangthai' => '1'],
+
+            ['id'=>7,'iddm' => '5', 'img' => 'matxa3.jpg', 'name' => 'THỰC HIỆN HEAD MASSAGE ĐỂ GIẢM ĐAU ĐẦU TẠI NHÀ', 'slug' => Str::slug('THỰC HIỆN HEAD MASSAGE ĐỂ GIẢM ĐAU ĐẦU TẠI NHÀ', '-'),'motangan'=>'Đau đầu hay nhức mỏi cổ vai gáy gây ra không ít phiền toán cho con người. Tuy nhiên, nếu biết cách head massage sẽ giúp tình trạng trên sẽ được cải thiện đáng kể.',
+            'noidung'=>'
+            1. Head massage giảm đau đầu hiệu quả ngay tại nhà
+            Head massage là phương pháp giúp giải tỏa căng thẳng, thư giãn & giảm đau đầu hiệu quả được áp dụng từ ngàn đời nay. Nó không chỉ mang lại lợi ích xua tan mệt mỏi, giảm đau nhức đầu mà còn giúp các cơ tại vùng cổ, vai và gáy được thư giãn.
+
+            Hiện tại chúng ta đang trong mùa giãn cách xã hội nên không thể đến Spa trị liệu để được thực hiện các bài massage trị đau đầu thì bạn có thể áp dụng cách xoa bóp đầu này tại nhà. Chỉ thực hiện vài động tác đơn giản, các bạn hoàn toàn có thể giảm nhanh cơn đau mà không cần phải phụ thuộc vào thuốc giảm đau.
+            2. Head massage, xoa bóp đầu
+            Động tác thứ nhất: Khép 2 bàn tay & các đầu ngón tay lại sao cho hơi khum rồi day nhẹ lên thái dương. Sau đó miết nhẹ nhàng từ thái dương vòng qua tai đến sau gáy. Thực hiện động tác này từ 3 đến 5 lần. Đây là cách bóp đầu thư giãn rất phổ biến & khá dễ thực hiện tại nhà.
+            Động tác thứ hai: Đặt 2 bàn tay lên trán sao cho lòng bàn tay úp vào trong. Sau đó dùng các ngón tay miết nhẹ từ lông mày sang 2 bên rồi dừng tại huyệt thái dương. Lặp lại động tác này khoảng 6 lần.
+            
+            Động tác thứ 3: Đặt 2 bàn tay lên trán rồi miết theo đường chéo. Vị trí xuất phát tại 2 hàng lông mày rồi di chuyển lên trán rồi đến đỉnh đầu. Sau đó lấy tay ấn nhẹ lên huyệt bách hội ở đỉnh đầu rồi theo rìa tóc đi đến thái dương, dừng tại đây và day ấn nhẹ.
+            3.Head massage bằng cách ấn vào các huyệt trên đỉnh đầu
+            Bạn lấy hai ngón tay cái chồng lên nhau, các ngón còn lại thì giữ 2 bên thái dương sau đó ấn ngắt quãng 2,5cm về phía đỉnh đầu. Sau đó tiếp tục thực hiện các động tác tiếp theo. Cách bóp đau đầu này không khó, chỉ cần nghiên cứu tìm hiểu trước sẽ thực hiện được.
+            
+            Động tác thứ 1: 4 ngón tay khép lại rồi massage  theo hình xoắn ốc từ vị trí xương chẩm về phía sau đầu. Tiếp tục thực hiện xoa bóp toàn bộ da đầu rồi dừng lại. Các bạn có thể lặp lại động tác này nhiều lần.
+            
+            Động tác 2: Luồn tay và kéo tóc - cách xoa bóp đầu này giảm đau rất hiệu quả. Dùng các ngón tay luồn từ chân tóc trên trán rồi massage toàn bộ da đầu. Sau đó nắm vài lọn tóc & kéo thật nhẹ nhàng. Thực hiện như vậy tình trạng đau đầu sẽ hết.
+            
+            Động tác thứ 3: Các bạn dùng ngón cái & ngón trỏ xoa bóp từ phần dái tai cho đến đỉnh tai. Thực hiện 2 lần sẽ thấy cơn đau được thuyên giảm.
+
+            Động tác thứ 4: Dùng 2 bàn tay áp vào tai sao cho các ngón tay hướng về phía sau gáy. Dùng 4 ngón tác động vào gáy nhẹ nhàng giống như động tác đánh đàn piano. Chỉ cần thực hiện động tác này 36 lần là hết đau đầu.
+            
+            4. Head massage & xoa bóp cổ vai
+            Trong các cách xoa bóp đau đầu đây là cách đem lại hiệu quả không kém. Các bạn chỉ cần thực hiện theo các động tác sau đây:
+            
+            Động tác 1: Dùng 1 tay hoặc 2 tay xoa bóp từ phần sau cổ. Lưu ý, lòng bàn tay áp sát vào cổ và di chuyển từ phần chân tóc ở gáy xuống đến lưng và sang khớp vai.
+            
+            Động tác 2: Sử dụng ngón cái và cạnh lòng bàn tay bóp mạnh từ khớp vai ra đầu vai.
+            
+            Động tác 3: Lấy mu bàn tay day nhẹ phần gáy đến cổ. Động tác này thực hiện từ 1 đến 2 phút.
+            
+            Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.            
+            ','trangthai' => '1'], 
         ]);
         DB::table('donhang')->insert([
             ['id'=>1,'idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],

@@ -172,28 +172,28 @@
             <p class="card-text">Cùng với hàng ngàn nhân viên chuyên ngành Spa họ đã tạo nên một FBeauty hoàn thiện như hiện nay.</p>
         </div>
         <div class="card-deck mt-4 mb-5">
-            <div class="card container text-center border-none">
+            <div class="card container text-center border-0">
                 <img src="{{ asset('uploads') }}/ceo1.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">
                     <div class="text ">Mrs.Jiyeon</div>
                 </div>
                <i><span class="span-lienhe  card-title">Giám đốc điều hành </span></i>
             </div>
-            <div class="card container">
+            <div class="card container border-0">
                 <img src="{{ asset('uploads') }}/ceo4.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">
                     <div class="text ">Mr.Nhật Vượng</div>
                 </div>
                 <i><span class="span-lienhe text-center main-title">Phó giám đốc  </span></i>
             </div>
-            <div class="card container">
+            <div class="card container border-0">
                 <img src="{{ asset('uploads') }}/ceo2.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">
                     <div class="text ">Mrs.Ngọc Lan</div>
                 </div>
                 <i><span class="span-lienhe text-center main-title">Quản lý nhân sự </span></i>
             </div>
-            <div class="card container">
+            <div class="card container border-0">
                 <img src="{{ asset('uploads') }}/ceo3.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">
                     <div class="text ">Mrs.Soyeon</div>
@@ -202,8 +202,8 @@
             </div>
         </div>
     </div>
-    <div class="divcoso mb-5 mt-5 ">
-        <div class="card container">
+    <div class="divcoso container mb-5 mt-5 ">
+        <div class="">
             <div class="card-body">
                 <div class="title-small line-before text-center mt-4">
                     Trải nghiệm cơ sở vật chất
@@ -227,6 +227,16 @@
                     src="{{ asset('uploads') }}/cs3.jpg" alt=""></div>
                 <div class="col-3"><img height="230px" class=""
                     src="{{ asset('uploads') }}/cs4.jpg" alt=""></div>
+              </div>
+              <div class="d-flex justify-content-start mt-5">      
+                <div class="col-3"><img height="230px" class=""
+                    src="{{ asset('uploads') }}/cs5.jpg" alt=""></div>
+                <div class="col-3"><img height="230px" class=""
+                    src="{{ asset('uploads') }}/cs6.jpg" alt=""></div>
+                <div class="col-3"><img height="230px" class=""
+                    src="{{ asset('uploads') }}/cs7.jpg" alt=""></div>
+                <div class="col-3"><img height="230px" class=""
+                    src="{{ asset('uploads') }}/cs8.jpg" alt=""></div>
               </div>
             </div>
         </div>
