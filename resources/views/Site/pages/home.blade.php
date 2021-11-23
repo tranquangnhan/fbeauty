@@ -246,7 +246,9 @@
                                 </li>
 
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link btn-3 black-1" id="nhieuquantam-tab" href="#">Xem tất cả</a>
+                                    <a class="nav-link btn-3 black-1" id="xemtatca-tab" data-toggle="tab"
+                                    href="#xemtatca" role="tab" aria-controls="xemtatca"
+                                    aria-selected="false">Xem tất cả</a>
                                 </li>
                             </ul>
                         </div>
@@ -262,106 +264,39 @@
                         <div class="w-100">
                             <div class="box-dichvu">
                                 <div class="box-sev">
-                                    <div class="dichvu-item">
+                                    @foreach ($dichvu as $itemdichvu)
+                                        <div class="dichvu-item">
 
-                                        <div class="content-1">
-                                            <div class="text-7 color-main-1">
-                                                Da Mặt
+                                            <div class="content-1">
+                                                <div class="text-7 color-main-1">
+                                                    {{$itemdichvu->namedm}}
+                                                </div>
+
+                                                <div class="text-8 mt-1">
+                                                    {{number_format($itemdichvu->dongia)}}đ
+                                                </div>
+
+                                                <div class="img-1 mt-4">
+                                                    <img class="" src="{{ asset('uploads/'.$itemdichvu->img) }}" alt="">
+                                                </div>
+
+                                                <div class="text-1 limit-text-row-1 mt-4">
+                                                    {{$itemdichvu->name}}
+                                                </div>
+
+                                                <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                                    {{$itemdichvu->motangan}}
+
+                                                </p>
                                             </div>
+                                            <div class="w-100 text-center mb-4">
+                                                <button data-show="one" class="button btn-4 btn-datlich">Đặt
+                                                    lịch</button>
 
-                                            <div class="text-8 mt-1">
-                                                300.000đ
                                             </div>
-
-                                            <div class="img-1 mt-4">
-                                                <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                            </div>
-
-                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                Lăn Kim Công Nghệ Cao
-                                            </div>
-
-                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                                do eiusmod tempor incididunt.
-
-                                            </p>
                                         </div>
-                                        <div class="w-100 text-center mb-4">
-                                            <button data-show="one" class="button btn-4 btn-datlich">Đặt
-                                                lịch</button>
-
-                                        </div>
-                                    </div>
-
-
-                                    <div class="dichvu-item">
-
-                                        <div class="content-1">
-                                            <div class="text-7 color-main-1">
-                                                Da Mặt
-                                            </div>
-
-                                            <div class="text-8 mt-1">
-                                                300.000đ
-                                            </div>
-
-                                            <div class="img-1 mt-4">
-                                                <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                            </div>
-
-                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                Lăn Kim Công Nghệ Cao
-                                            </div>
-
-                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                                do eiusmod tempor incididunt.
-
-                                            </p>
-                                        </div>
-                                        <div class="w-100 text-center mb-4">
-                                            <button data-show="one" class="button btn-4 btn-datlich">Đặt
-                                                lịch</button>
-
-                                        </div>
-                                    </div>
-
-
-                                    <div class="dichvu-item">
-
-                                        <div class="content-1">
-                                            <div class="text-7 color-main-1">
-                                                Da Mặt
-                                            </div>
-
-                                            <div class="text-8 mt-1">
-                                                300.000đ
-                                            </div>
-
-                                            <div class="img-1 mt-4">
-                                                <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                            </div>
-
-                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                Lăn Kim Công Nghệ Cao
-                                            </div>
-
-                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                                do eiusmod tempor incididunt.
-
-                                            </p>
-                                        </div>
-                                        <div class="w-100 text-center mb-4">
-
-                                            <button data-show="one" class="button btn-4 btn-datlich">Đặt
-                                                lịch</button>
-
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -382,7 +317,7 @@
                                             </div>
 
                                             <div class="img-1 mt-4">
-                                                <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
+                                                <img class="" src="{{ asset('uploads/') }}" alt="">
                                             </div>
 
                                             <div class="text-1 limit-text-row-1 mt-4">
@@ -401,76 +336,56 @@
                                             </a>
                                         </div>
                                     </div>
-
-                                    <div class="dichvu-item">
-
-                                        <div class="content-1">
-                                            <div class="text-7 color-main-1">
-                                                Da Mặt
-                                            </div>
-
-                                            <div class="text-8 mt-1">
-                                                300.000đ
-                                            </div>
-
-                                            <div class="img-1 mt-4">
-                                                <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                            </div>
-
-                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                Lăn Kim Công Nghệ Cao
-                                            </div>
-
-                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                                do eiusmod tempor incididunt.
-
-                                            </p>
-                                        </div>
-                                        <div class="w-100 text-center mb-4">
-                                            <button data-show="one" class="button btn-4 btn-datlich">Đặt
-                                                lịch</button>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="dichvu-item ">
-
-                                        <div class="content-1">
-                                            <div class="text-7 color-main-1">
-                                                Da Mặt
-                                            </div>
-
-                                            <div class="text-8 mt-1">
-                                                300.000đ
-                                            </div>
-
-                                            <div class="img-1 mt-4">
-                                                <img class="" src="{{ asset('Site/images') }}/image8.png" alt="">
-                                            </div>
-
-                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                Lăn Kim Công Nghệ Cao
-                                            </div>
-
-                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                                do eiusmod tempor incididunt.
-
-                                            </p>
-                                        </div>
-                                        <div class="w-100 text-center mb-4">
-                                            <button data-show="one" class="button btn-4 btn-datlich">Đặt
-                                                lịch</button>
-
-                                        </div>
-                                    </div>
                                 </div>
 
 
                             </div>
                         </div>
                     </div>
+
+                    <div class="tab-pane fade" id="xemtatca" role="tabpanel"
+                    aria-labelledby="xemtatca-tab">
+                        <div class="w-100">
+                            <div class="box-dichvu">
+                                <div class="box-sev">
+
+                                    @foreach ($alldichvu as $itemalldv)
+                                    <div class="dichvu-item">
+
+                                        <div class="content-1">
+                                            <div class="text-7 color-main-1">
+                                                {{$itemalldv->namedm}}
+                                            </div>
+
+                                            <div class="text-8 mt-1">
+                                                {{number_format($itemalldv->dongia)}}đ
+                                            </div>
+
+                                            <div class="img-1 mt-4">
+                                                <img class="" src="{{ asset('uploads/'.$itemalldv->img) }}" alt="">
+                                            </div>
+
+                                            <div class="text-1 limit-text-row-1 mt-4">
+                                                {{$itemalldv->name}}
+                                            </div>
+
+                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                                {{$itemalldv->motangan}}
+
+                                            </p>
+                                        </div>
+                                        <div class="w-100 text-center mb-4">
+                                            <a href="">
+                                                <button class="btn-4">Đặt lịch</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

@@ -32,5 +32,5 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
         return $this->model->where("loai","=",$idLoai)->get();
     }
 
-   
+
 }

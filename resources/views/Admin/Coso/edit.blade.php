@@ -113,3 +113,6 @@
         </div>
     </div>
 @endsection
+@section('custom-javascript')
+    <script src="{{ asset('Admin/assets') }}/js/pages/coso.js"></script>
+@endsection

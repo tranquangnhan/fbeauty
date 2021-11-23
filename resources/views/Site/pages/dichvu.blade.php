@@ -52,7 +52,7 @@
                                         </div>
 
                                         <div class="img-1 mt-4">
-                                            <a href="abc/{{($dichvuitem->id)}}">
+                                            <a href="{{ asset('dich-vu') }}/{{$dichvuitem->slug}}">
                                                 <img class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
                                             </a>
                                         </div>

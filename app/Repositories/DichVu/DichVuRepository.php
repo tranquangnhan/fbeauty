@@ -62,11 +62,29 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->orderBy('created_at', 'DESC')
         ->get();
     }
+    public function getDichVusite(){
+        return $this->model->select('dichvu.*','danhmuc.name as namedm')
+        ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+        ->offset(1)->limit(3)
+        ->where('dichvu.trangthai', '=', 1)
+        ->where('dichvu.iddm', '=', 1)
+        ->orderBy('created_at', 'DESC')
+        ->get();
+    }
+    public function getDichVuall(){
+        return $this->model->select('dichvu.*','danhmuc.name as namedm')
+        ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+        ->where('dichvu.trangthai', '=', 1)
+        ->orderBy('created_at', 'DESC')
+        ->get();
+    }
     public function dichvudetail($id){
         return $this->model->select('dichvu.*', 'dichvu.id','danhmuc.name AS danhmuc')
             ->join('danhmuc', 'dichvu.iddm', '=', 'danhmuc.id')
-            ->where('dichvu.slug', $id)
+            ->where('dichvu.trangthai', '=', 1)
+            ->groupBy('iddm')
             ->get();
     }
+
 
 }
