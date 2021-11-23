@@ -237,6 +237,7 @@ function sendOTPSMS() {
         data: data,
         success: function (respon) {
             spinnerTurnOff();
+            console.log(respon);
             if (respon.success) {
                 timeOTPNotValid = respon.timeOTPNotValid;
                 countDownOTPTimeIsValid();
