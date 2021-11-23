@@ -9,16 +9,13 @@
     <div class="container">
         <div class="giohang-header shadow-2">
             <div class="row ">
-                <div class="col-xl-2 d-flex">
-                    <div class="custom-select-all mr-2">
-                        <input type="checkbox" class="select-all-product" name="" id="">
-                    </div>
+                <div class="col-xl-1 d-flex">
                     <div class="header-text text-center w-100">Ảnh</div>
                 </div>
                 <div class="col-xl-3">
                     <div class="header-text text-left">Tên sản phẩm</div>
                 </div>
-                <div class="col-xl-3">
+                <div class="col-xl-4">
                     <div class="header-text">Giá sản phẩm</div>
                 </div>
                 <div class="col-xl-2">
@@ -31,160 +28,26 @@
             </div>
         </div>
 
-        <div class="giohang-body">
-            <div class="row shadow-2 align-items-center giohang-item">
-                <div class="col-xl-2 d-flex  align-items-center">
-                    <div class="custom-select-all mr-2">
-                        <input type="checkbox" class="select-all-product" name="" id="">
-                    </div>
-                    <div class="body-text d-flex">
-                        <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-sanpham img-fluid" alt="...">
-                    </div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="body-text text-left">Tên sản phẩm</div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="body-text">
-                        <div class="box-gia">
-                            <span class="giagiam">500,999 đ </span>
-                            <span class="gia left-bar">300,999 đ </span>
-                            <span class="left-bar dungtich"> 30ml</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="body-text">
-                        <div class="input-group inline-group">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-minus btn-cal">
-                                <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                            <input class="form-control text-center quantity" min="1" name="quantity" value="1" type="number">
-                            <div class="input-group-append">
-                                <button class="btn btn-plus btn-cal">
-                                <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-1">
-                    <div class="body-text">
-                        <span class="tongtien">300,999 đ</span>
-                    </div>
-                </div>
-                <div class="col-xl-1 text-center">Xóa</div>
-            </div>
-
-            <div class="row shadow-2 align-items-center giohang-item">
-                <div class="col-xl-2 d-flex  align-items-center">
-                    <div class="custom-select-all mr-2">
-                        <input type="checkbox" class="select-all-product" name="" id="">
-                    </div>
-                    <div class="body-text d-flex">
-                        <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-sanpham img-fluid" alt="...">
-                    </div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="body-text text-left">Tên sản phẩm</div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="body-text">
-                        <div class="box-gia">
-                            <span class="giagiam">500,999 đ </span>
-                            <span class="gia left-bar">300,999 đ </span>
-                            <span class="left-bar dungtich"> 30ml</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="body-text">
-                        <div class="input-group inline-group">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-minus btn-cal">
-                                <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                            <input class="form-control text-center quantity" min="1" name="quantity" value="1" type="number">
-                            <div class="input-group-append">
-                                <button class="btn btn-plus btn-cal">
-                                <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-1">
-                    <div class="body-text">
-                        <span class="tongtien">300,999 đ</span>
-                    </div>
-                </div>
-                <div class="col-xl-1 text-center">Xóa</div>
-            </div>
-
-            <div class="row shadow-2 align-items-center giohang-item">
-                <div class="col-xl-2 d-flex  align-items-center">
-                    <div class="custom-select-all mr-2">
-                        <input type="checkbox" class="select-all-product" name="" id="">
-                    </div>
-                    <div class="body-text d-flex">
-                        <img src="{{ asset('uploads/hyarunic-removebg-preview.png') }}" class="img-sanpham img-fluid" alt="...">
-                    </div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="body-text text-left">Tên sản phẩm</div>
-                </div>
-                <div class="col-xl-3">
-                    <div class="body-text">
-                        <div class="box-gia">
-                            <span class="giagiam">500,999 đ </span>
-                            <span class="gia left-bar">300,999 đ </span>
-                            <span class="left-bar dungtich"> 30ml</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-2">
-                    <div class="body-text">
-                        <div class="input-group inline-group">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-minus btn-cal">
-                                <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                            <input class="form-control text-center quantity" min="1" name="quantity" value="1" type="number">
-                            <div class="input-group-append">
-                                <button class="btn btn-plus btn-cal">
-                                <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-1">
-                    <div class="body-text">
-                        <span class="tongtien">300,999 đ</span>
-                    </div>
-                </div>
-                <div class="col-xl-1 text-center">Xóa</div>
-            </div>
+        <div class="giohang-body" id="giohang-body">
         </div>
-
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6 float-right "><h3 class="float-right mr-5">Tổng: <span class="font-weight-bold" id="tongtiengiohang">0</span>đ</h3></div>
+        </div>
         <div class="giohang-footer mb-5">
             <div class="d-flex d-flex justify-content-between">
-                <a href="">
+                <a href="{{URL::to("/san-pham")}}">
                     <button class="btn-6 ml-0">
                         Tiếp tục mua hàng
                     </button>
                 </a>
-                <a href="">
-                    <button class="btn-7 ml-0">
+                <a href="javascript:void(0)" >
+                    <button class="btn-7 ml-0" onclick="XoaTatCa()" id="xoatatca">
                         Xóa tất cả
                     </button>
                 </a>
 
-                <a href="">
+                <a href="{{URL::to("/thanh-toan")}}" id="nextthanhtoan">
                     <button class="btn-8">
                         <span>Thanh toán</span>
                     </button>

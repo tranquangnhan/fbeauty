@@ -54,8 +54,9 @@ class HoaDonController extends Controller
      */
     public function index()
     {
-        //        $coso=$this->coso->getAll();
-        //        return view("Admin.HoaDon.index", ['coso'=>$coso]);
+        $hoadon = $this->hoadon->ShowHoaDonByIdCoso(session()->get('coso'));
+        $coso = $this->coso->find(session()->get('coso'));
+        return view("Admin.HoaDon.index", ['hoadon' => $hoadon, 'coso' => $coso]);
     }
 
     /**
@@ -87,9 +88,7 @@ class HoaDonController extends Controller
      */
     public function show($id)
     {
-        $hoadon = $this->hoadon->ShowHoaDonByIdCoso($id);
-        $coso = $this->coso->find($id);
-        return view("Admin.HoaDon.index", ['hoadon' => $hoadon, 'coso' => $coso]);
+
     }
 
     /**
@@ -136,7 +135,7 @@ class HoaDonController extends Controller
     /**
      *Giảm giá
      */
-    public function getGiamGiaToHoaDon($id, $idgiamgia)
+    public function getGiamGiaToHoaDon($idgiamgia)
     {
         $data = $this->giamgia->find($idgiamgia);
         return $data;
@@ -201,7 +200,7 @@ class HoaDonController extends Controller
         $findHoaDon = $this->hoadon->findHoaDonByIdLieuTrinh($id);
 
         if(count($findHoaDon) === 0){
-       
+
             $tongtien = 0;
             for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
                 $tongtien += $lieuTrinhChiTiet[$i]->dongia;
@@ -217,9 +216,9 @@ class HoaDonController extends Controller
                 'trangthai' => 1,
                 'ghichu' => $lieuTrinh->ghichu
             ];
-        
+
             $hoaDon = $this->hoadon->create($dataHoaDon);
-                
+
             if ($hoaDon) {
                 for ($i = 0; $i < count($lieuTrinhChiTiet); $i++) {
                     $dataHoaDonChiTiet = [
@@ -234,7 +233,7 @@ class HoaDonController extends Controller
                 }
                 return redirect('/quantri/hoadonchitiet/' . $hoaDon->id);
             }
-            
+
         }else{
             return $this->handleError('Liệu trình đã tồn tại trong hoá đơn');
         }

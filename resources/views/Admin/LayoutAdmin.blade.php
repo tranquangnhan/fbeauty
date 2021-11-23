@@ -60,10 +60,12 @@
     <link href="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('Admin/assets') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     {{-- end code nhúng của Nhân --}}
+    @yield('css')
 <body>
-
+<input type="hidden" id="LinkURL" value="{{URL::to("/quantri/")}}">
 <!-- Begin page -->
 <div id="wrapper">
+    <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
 
     <!-- Topbar Start -->
     <div class="navbar-custom">
@@ -409,7 +411,7 @@
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("hoadon.show", session()->get('coso'))}}">Danh sách</a></li>
+                                <li><a href="{{route("hoadon.index")}}">Danh sách</a></li>
                             </ul>
 
                         </li>

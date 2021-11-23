@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\SanPhamChiTietController;
 use App\Http\Controllers\Admin\ThongkeController;
 use App\Http\Controllers\Admin\DatLichController;
 
+use App\Http\Controllers\Site\GioHangController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\YeuThichController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,8 @@ Route::get('/quantri/login', [DangNhapAdminController::class, 'index']);
 Route::post('/quantri/login', [DangNhapAdminController::class, 'checkin']);
 Route::get('/quantri/logout', [DangNhapAdminController::class, 'logout']);
 Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
+    Route::get('/getDoanhThuByDay/{day}', [ThongkeController::class, "getHoaDonByDayAjax"]);
+    Route::get('/getDoanhThuHoaDonVaDonHang/{type}/{numData}/{date}', [ThongkeController::class, "getDoanhThuHoaDonVaDonHangAjax"]);
     Route::get('/', [ThongkeController::class, "index"]);
     Route::resource('danhmuc', DanhMucController::class);
     Route::resource('sanpham', SanPhamController::class);
@@ -117,12 +120,12 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
      * 11:Thêm dịch vụ vào hóa đơn chi tiết
      * 12: Cập nhật số lượng
      */
-    Route::get('hoadon/{id}/edit/getDichVu',[DichVuController::class, 'getDichVuToHoaDon']);
-    Route::get('hoadon/{id}/edit/getSanPham',[SanPhamChiTietController::class, 'getSanPhamToHoaDon']);
+    Route::get('/getDichVu',[DichVuController::class, 'getDichVuToHoaDon']);
+    Route::get('/getSanPham',[SanPhamChiTietController::class, 'getSanPhamToHoaDon']);
     Route::get('hoadon/{id}/edit/getHoaDonChiTiet',[HoaDonChiTietController::class, 'getHoaDonChiTiet']);
     Route::get('hoadon/{id}/edit/sanphamchitiet/{idsp}',[SanPhamChiTietController::class, 'getSanPhamChiTietToHoaDon']);
     Route::get('hoadon/{id}/edit/dichvu/{idsp}',[DichVuController::class, 'getDichVuByIdToHoaDon']);
-    Route::get('hoadon/{id}/edit/getgiamgia/{idgiamgia}',[HoaDonController::class, 'getGiamGiaToHoaDon']);
+    Route::get('/getgiamgia/{idgiamgia}',[HoaDonController::class, 'getGiamGiaToHoaDon']);
     Route::get('hoadon/{id}/edit/discount/{name}/thanhtien/{tien}',[HoaDonController::class, 'ApDungGiamGia']);
     Route::get('hoadon/{id}/edit/capnhatgia/{tien}/tongtien/{tongtien}',[HoaDonController::class, 'CapNhatGia']);
     Route::get('hoadon/{id}/edit/xoahoadonchitiet/{idhdct}',[HoaDonController::class, 'XoaHoaDonChiTiet']);
@@ -165,6 +168,23 @@ Route::group(['prefix' => '/'], function (){
     Route::post('skipCreatePassword', [HomeController::class, "skipCreatePassword"]);
     Route::post('newPassword', [HomeController::class, "newPassword"]);
     Route::post('checkIssetUser', [HomeController::class, "checkIssetUser"]);
+    /**
+    *Gio hang
+     */
+    Route::get('showdonhangandgiohang', [GioHangController::class, "ShowGioHang"]);
+    Route::get('themsanphamgiohang/{id}', [GioHangController::class, "ThemGioHang"]);
+    Route::get('xoasanphamgiohang/{id}', [GioHangController::class, "XoaSanPhamGioHang"]);
+    Route::get('tangsoluong/{id}', [GioHangController::class, 'TangSoLuong']);
+    Route::get('giamsoluong/{id}', [GioHangController::class, 'GiamSoLuong']);
+    Route::get('idsanphamchitiet/{id}/soluong/{soluong}', [GioHangController::class, 'CapNhatSoLuong']);
+    Route::get('/themsanphamgiohangchitiet/{idsanpham}/soluongsanpham/{nhapsoluong}',[GioHangController::class, 'ThemGioHangChiTiet']);
+    Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
+    Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
+    Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
 
+    /**
+    *Thanh toán
+     */
+    Route::post('/thanhtoandonhang', [GioHangController::class, 'thanhtoandonhang']);
 });
 
