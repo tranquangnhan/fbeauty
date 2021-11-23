@@ -69,7 +69,7 @@
                                                     </div>
 
                                                     <div class="mt-3">
-                                                        <a href=""
+                                                        <a href="{{ asset('bai-viet') }}/{{$blog[0]->slug}}"
                                                             class="">
                                                             <button class="
                                                             btn-line px-0 color-gray-2">
@@ -354,10 +354,10 @@
                                                         <span>{{$data->created_at}}"</span>
                                                     </div>
                                                 </div>
-                                                <div class="text-bl-1 limit-text-row-2 mb-1 mt-3">
+                                                <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
                                                     <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
                                                 </div>
-                                                <p class="blog-mota mb-0">
+                                                <p class="blog-mota limit-text-row-3 mb-0">
                                                     {{$data->motangan}}
                                                 </p>
                                             </div>
@@ -518,13 +518,13 @@
                                                                     <a href="" class="box-danhmuc-1">
                                                                         {{$item->name}}</a>
                                                                 </div>
-                                                                <span>{{$data->created_at}}</span>
+                                                                <span>{{$data->created_at->format('Y.m.d H:i:s')}}</span>
                                                             </div>
                                                         </div>
-                                                        <div class="text-bl-1 limit-text-row-2 mb-1 mt-3">
+                                                        <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
                                                             <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
                                                         </div>
-                                                        <p class="blog-mota mb-0">
+                                                        <p class="blog-mota limit-text-row-3 mb-0">
                                                             {{$data->motangan}}
                                                         </p>
                                                     </div>

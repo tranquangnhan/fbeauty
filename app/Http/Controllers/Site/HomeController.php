@@ -160,7 +160,6 @@ class HomeController extends Controller
         $blog      = $this->Blog->getBlog1();
         $listdanhmuc   = $this->DanhMuc->getAll();
         $listdanhmuc2   = $this->DanhMuc->getall2danhmuc();
-
         foreach($listdanhmuc as $dm) {
             $skip = 0;
             $take = 6;
@@ -175,7 +174,7 @@ class HomeController extends Controller
         }
 
         // dd($listdanhmuc);
-        $danhmuc   = $this->DanhMuc->getAll();
+        $danhmuc   = $this->DanhMuc->getAllDanhMuc();
         $getBlog2     = $this->Blog->getBlog2();
         $blog3     = $this->Blog->getLastWeek1();
         $blog4     = $this->Blog->getLastWeek2();
@@ -201,7 +200,7 @@ class HomeController extends Controller
 
     public function viewBaiVietChiTiet($id) {
         $getBlog2 = $this->Blog->getBlog2();
-        $danhmuc   = $this->DanhMuc->getAll();
+        $danhmuc   = $this->DanhMuc->getAllDanhMuc();
         $viewdetail = $this->Blog->editBlog($id);
         $viewdetail2 = $this->Blog->editBlog($id);
          foreach($viewdetail2 as $detail) {

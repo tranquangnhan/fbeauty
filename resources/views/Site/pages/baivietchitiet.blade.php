@@ -104,7 +104,7 @@
 
                 </div>
                 <div class="row mt-5">
-                    <div class="danhmuc-listblog">
+                    <div class="danhmuc-listblog container">
                         <div class="head-blog-item blog-title">
                             <div class="w-100 text-left d-flex align-items-center">
                                 <div class="title-3 mr-4">
@@ -115,13 +115,12 @@
                         </div>
 
                         <div class="list-blog-1 mt-4">
-                            <div class="row mb-30px">
-                                @foreach ($viewdetail2 as $data1)
+                            <div class="row  mb-30px">
+                            @foreach ($viewdetail2 as $data1)
                                 @foreach ($data1->viewdt as $data)
-
                                 <div class="col-xl-3">
                                     <div class="tin-item-1 box-tin-hv">
-                                        <div class="image-tin-1" style="height: 220px">
+                                        <div class="image-tin-1" style="height: 220px;">
                                             <img class="img-fluid" 
                                                 src="{{ asset('uploads') }}/{{$data->img}}"
                                                 alt="">
@@ -147,7 +146,7 @@
                                     </div>
                                 </div>
                                 @endforeach
-                                @endforeach
+                            @endforeach
                             </div>
                         </div>
                     </div>
