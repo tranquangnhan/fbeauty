@@ -18,7 +18,6 @@ use App\Repositories\NhanVien\NhanVienRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Carbon\Carbon;
-use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -118,7 +117,6 @@ class HomeController extends Controller
     public function viewSanPhamChiTiet($id)
     {
         error_reporting(0);
-        try{
             $this->data['pathActive'] = 'san-pham';
             $this->data['namePage'] = 'Sản phẩm chi tiết';
             $this->data['breadcrumbArray'] = [
@@ -135,10 +133,6 @@ class HomeController extends Controller
             else{
                 return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitietlimit'=>null]);
             }
-        }
-        catch (Exception $e){
-            return redirect('/san-pham');
-        }
     }
 
 

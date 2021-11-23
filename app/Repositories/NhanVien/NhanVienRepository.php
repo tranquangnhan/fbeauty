@@ -49,4 +49,10 @@ class NhanVienRepository extends BaseRepository implements NhanVienRepositoryInt
             ['idcoso', $coSo],
         ])->first();
     }
+
+    public function getNameNhanVien($idNhanVien) {
+        $nhanVien = $this->model->select('name')->find($idNhanVien);
+
+        return $nhanVien['name'];
+    }
 }

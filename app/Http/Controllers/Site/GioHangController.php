@@ -16,6 +16,10 @@ class GioHangController extends Controller
     private $SanPhamChiTiet;
     private $GioHang;
     private $GioHangChiTiet;
+    private $vnp_TmnCode = "8EZMZPIJ";
+    private $vnp_HashSecret = "OKBCLDCSTLJIAUGMZKPJCRITTTBJAITY";
+    private $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+    private $vnp_Returnurl = "http://local.fbeauty.vn/vnpay_php/vnpay_return.php";
 
     public function __construct(
         GioHangRepository $GioHang,

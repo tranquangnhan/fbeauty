@@ -87,4 +87,8 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     }
 
 
+    public function getAllDichVu(){
+        return $this->model->select("*")->where("trangthai",1)->get();
+    }
+
 }
