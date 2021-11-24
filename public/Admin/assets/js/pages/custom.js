@@ -97,11 +97,11 @@ $(document).ready(function () {
         },
     });
 
-    $('.mota').editable({
+    $('#ghichu').editable({
         type: 'text',
         pk: 1,
         url: 'quantri/editnamedv',
-        title: 'Enter username',
+        title: 'Nhập ghi chu',
         success: function (response) {
             if (response.status == 'error') return response.msg;
         },

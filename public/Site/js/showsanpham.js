@@ -219,7 +219,8 @@ function GetYeuThich(id) {
         success: function (datayeuthich) {
             if (datayeuthich == 0) {
                 yeuthich = 'active';
-            } else {
+            }
+            else {
                 yeuthich = '';
             }
         }

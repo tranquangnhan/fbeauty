@@ -58,6 +58,7 @@ class NhanVienController extends Controller
      */
     public function store(NhanVien $request)
     {
+        
         $coSo = session()->get('coso');
 
         $img = $request->file('urlHinh');
@@ -243,11 +244,10 @@ class NhanVienController extends Controller
                 'gioitinh' => $request->gioitinh,
                 'avatar' => $newpicture,
                 'idcoso' => $coSo,
-                'iddichvu' => $request->dichvu,
                 'role' => $request->role,
-                'active' => $request->active,
+                'active' => ($request->active) ? 1 : 0,
                 'namsinh' => $request->namsinh,
-                'trangthai' => $request->trangthai
+                'trangthai' => ($request->trangthai) ? 1 : 0
             ];
             $this->nhanvien->update($id, $nhanvien);
             return redirect('quantri/nhanvien')->with('thanhcong', 'Sửa nhân viên thành công');

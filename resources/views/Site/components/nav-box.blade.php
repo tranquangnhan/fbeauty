@@ -58,7 +58,7 @@
                 </li>
                 @else
                 <li class="icon-item d-inline-block">
-                    <a class="btn-modal-main" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
+                    <a class="btn-modal-main" id="btn-modal-dangnhaps" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
                 </li>
                 @endif
                 <li class="icon-item d-inline-block hover-scale-1 position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">
