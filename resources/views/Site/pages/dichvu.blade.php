@@ -89,7 +89,9 @@
                                         </div>
 
                                         <div class="img-1 mt-4">
-                                            <img class="" src="{{ asset('uploads/'.$danhmucitem->img) }}" alt="">
+                                            <a href="{{ asset('dich-vu') }}/{{$danhmucitem->slug}}">
+                                                <img class="" src="{{ asset('uploads/'.$danhmucitem->img) }}" alt="">
+                                            </a>
                                         </div>
 
                                         <div class="text-1 limit-text-row-1 mt-4">
@@ -137,7 +139,7 @@
                                             class="img-fluid" alt="">
                                         </div>
                                         <div class="img-dichvu">
-                                            <a href="">
+                                            <a href="{{ asset('dich-vu') }}/{{$dichvu1item->slug}}">
                                                 <img src="{{ asset('uploads/'.$dichvu1item->img) }}" alt="">
                                             </a>
 
@@ -149,7 +151,7 @@
                                             <span class="gia">{{number_format($dichvu1item->dongia)}} đ </span>
                                         </div>
                                         <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                            <a href=""> {{$dichvu1item->name}}</a>
+                                            <a href="{{ asset('dich-vu') }}/{{$dichvu1item->slug}}"> {{$dichvu1item->name}}</a>
                                         </div>
 
                                         <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
@@ -187,7 +189,7 @@
                                                 class="img-fluid" alt="">
                                             </div>
                                             <div class="img-dichvu">
-                                                <a href="">
+                                                <a href="{{ asset('dich-vu') }}/{{$dichvu2item->slug}}">
                                                     <img src="{{ asset('uploads/'.$dichvu2item->img) }}" alt="">
                                                 </a>
 
@@ -200,7 +202,7 @@
                                                 <span class="gia left-bar">300,999 đ </span>
                                             </div>
                                             <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                                <a href="{{$dichvu2item->id}}">{{$dichvu2item->name}}</a>
+                                                <a href="{{ asset('dich-vu') }}/{{$dichvu2item->slug}}">{{$dichvu2item->name}}</a>
                                             </div>
 
                                             <p class="mota text-2 limit-text-row-3 mt-1 mt-2">

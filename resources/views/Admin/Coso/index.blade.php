@@ -122,7 +122,7 @@
                                                 <form action="{{route('coso.destroy',$row->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-danger" title="Xóa" ><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

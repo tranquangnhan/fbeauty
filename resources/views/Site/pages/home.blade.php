@@ -305,23 +305,25 @@
                         <div class="w-100">
                             <div class="box-dichvu">
                                 <div class="box-sev">
+                                    @foreach ($danhmuc as $temdanhmuc)
+
                                     <div class="dichvu-item">
 
                                         <div class="content-1">
                                             <div class="text-7 color-main-1">
-                                                Da Mặt Danh Mục
+                                                {{$temdanhmuc->name}}
                                             </div>
 
                                             <div class="text-8 mt-1">
-                                                300.000đ
+                                                {{number_format($temdanhmuc->dongiadm)}}đ
                                             </div>
 
                                             <div class="img-1 mt-4">
-                                                <img class="" src="{{ asset('uploads/') }}" alt="">
+                                                <img class="" src="{{ asset('uploads/'.$temdanhmuc->img) }}" alt="">
                                             </div>
 
                                             <div class="text-1 limit-text-row-1 mt-4">
-                                                Lăn Kim Công Nghệ Cao
+                                                {{$temdanhmuc->namedm}}
                                             </div>
 
                                             <p class="text-2 limit-text-row-3 mt-1 mt-3">
@@ -336,8 +338,8 @@
                                             </a>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
-
 
                             </div>
                         </div>
