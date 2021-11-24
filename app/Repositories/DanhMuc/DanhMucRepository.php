@@ -15,7 +15,7 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
     public function getModel(){
         return \App\Models\Admin\DanhMuc::class;
     }
-    public function getalldanhmuc(){
+    public function getAllDanhMuc(){
         return $this->model->select('danhmuc.*')->limit(6)->get();
     }
     public function getall2danhmuc(){

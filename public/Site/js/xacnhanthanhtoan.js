@@ -1,13 +1,13 @@
 
-$("#ktform").validate({
+$("#create_form").validate({
     rules: {
-        username: {required: true, maxlength: 25, minlength: 3},
-        phonenumber: {required: true, number: true, valid_phone: true, maxlength: 25},
+        username: {required: true, maxlength: 45, minlength: 3},
+        phonenumber: {required: true, number: true, valid_phone: true, maxlength: 11},
         diachi: {required: true, minlength: 5}
     },
     messages: {
         username: {
-            required: "<span class='badge badge-danger'>Mời bạn nhập email</span>",
+            required: "<span class='badge badge-danger'>Mời bạn nhập tên</span>",
             maxlength: "<span class='badge badge-danger'>Tên dài quá, phải <25 ký tự </span>",
             minlength: "<span class='badge badge-danger'>Tên ngắn quá, phải >3 ký tự </span>"
         },
@@ -29,12 +29,12 @@ jQuery.validator.addMethod('valid_phone', function (value) {
     return value.trim().match(regex);
 });
 
-$(document).ready(function () {
-    $("#ktform").submit(function (event) {
-
-        console.log($("#username").val());
-
-        event.preventDefault();
-    });
-});
+// $(document).ready(function () {
+//     $("#ktform").submit(function (event) {
+//
+//         console.log($("#username").val());
+//
+//         event.preventDefault();
+//     });
+// });
 

@@ -177,4 +177,14 @@ class GiamGiaController extends Controller
             return 0;
         }
     }
+
+    public function capnhatgiamgiasession($giam){
+        session()->get("tiengiam");
+        if ($giam <=0){
+            session()->forget("tiengiam");
+        }else{
+            session()->put("tiengiam", $giam);
+        }
+        return session()->get("tiengiam");
+    }
 }

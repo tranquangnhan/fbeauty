@@ -43,13 +43,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                            <a href="javascript:void(0);" class="dropdown-item">Đang phát triển</a>
                                         </div>
                                     </div>
 
@@ -84,13 +78,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                            <a href="javascript:void(0);" class="dropdown-item">Đang phát triển</a>
                                         </div>
                                     </div>
 
@@ -125,13 +113,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                            <a href="javascript:void(0);" class="dropdown-item">Đang phát triển</a>
                                         </div>
                                     </div>
 
@@ -166,13 +148,7 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                            <a href="javascript:void(0);" class="dropdown-item">Đang phát triển</a>
                                         </div>
                                     </div>
 
@@ -204,7 +180,7 @@
                         <!-- end row -->
 
                         <div class="row">
-                            <div class="col-xl-7">
+                            <div class="col-lg-12 col-xl-7">
                                 <div class="card-box">
                                     <div class="d-flex align-items-center mb-2">
                                         <h4 class="header-title mt-0 mb-0 flex-grow-1">Doanh Thu Ngày</h4>
@@ -213,7 +189,7 @@
                                         </div>
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table table-hover mb-0 custom-table-2">
+                                        <table class="table table-hover mb-0 custom-table-2" id="doanhthu-ngay" style="min-width: 600px;">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
@@ -224,7 +200,7 @@
                                                 <th>Trạng Thái</th>
                                             </tr>
                                             </thead>
-                                            <tbody class="custom-table-body-2 body-doanhthu-hoadon-ngay">
+                                            <tbody class="custom-table-body-2 body-doanhthu-hoadon-ngay" style="min-height: 448.5px;">
                                                 @php
                                                     $tongTienTruocGiam = 0;
                                                     $tongTienSauGiam = 0;
@@ -263,7 +239,7 @@
                                                     {{ number_format($tongTienSauGiam, 0) }} đ
                                                 </h4>
                                             </div>
-                                            <a href="" class="btn btn-dark waves-effect waves-light ml-auto"><i class="fa fa-print"></i></a>
+                                            <button class="btn btn-dark waves-effect waves-light ml-auto exportExcelButton" id-table-download="doanhthu-ngay"><i class="fa fa-print"></i></button>
 
                                         </div>
                                     </div>
@@ -278,18 +254,12 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                            <a href="javascript:void(0);" class="dropdown-item">Đang phát triển</a>
                                         </div>
                                     </div>
                                     <div>
                                         <h4 class="header-title mt-0">6 Tháng Gần Nhất</h4>
-                                        <canvas id="chart-sau-thang-gan-nhat"></canvas>
+                                        <canvas id="chartHoaDonSixMonth"></canvas>
 
                                     </div>
 
@@ -303,17 +273,13 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                            <a href="javascript:void(0);" class="dropdown-item">Đang phát triển</a>
                                         </div>
                                     </div>
-                                    <h4 class="header-title mt-0">Statistics</h4>
-                                    <div id="morris-bar-example" dir="ltr" style="height: 280px;" class="morris-chart"></div>
+                                    <div>
+                                        <h4 class="header-title mt-0">Doanh Thu Online 6 Tháng Gần Nhất</h4>
+                                        <canvas id="chartDonHangSixMonth"></canvas>
+                                    </div>
                                 </div>
                             </div><!-- end col -->
 
@@ -387,19 +353,26 @@
 
                                             <div class="dropdown-menu dropdown-menu-right" style="">
                                                 <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                                <!-- item-->
-                                                <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                                <a href="javascript:void(0);" class="dropdown-item">Đang phát triển</a>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="card-body">
+                                    <div class="card-body" style="min-height: 685px;">
                                         <canvas id="main-chart-thongke"></canvas>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-group mb-0 mr-2" style="width: 15%;">
+                                                <select class="form-control" id="select-type-chart">
+                                                    <option value="bar">Bar</option>
+                                                    <option value="line">Line</option>
+                                                    <option value="radar">Radar</option>
+                                                </select>
+                                            </div>
+                                            <button class="btn btn-success waves-effect waves-light ml-2 download-to-png" id-canvas="main-chart-thongke">PNG</button>
+                                        </div>
                                     </div>
                                     {{-- <div id="ordered-bars-chart" style="height: 320px; padding: 0px; position: relative;"><canvas class="flot-base" width="1592" height="400" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1273.68px; height: 320px;"></canvas><div class="flot-text" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px;"><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 50px; text-align: center;">0.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 167px; text-align: center;">1.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 283px; text-align: center;">2.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 400px; text-align: center;">3.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 516px; text-align: center;">4.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 633px; text-align: center;">5.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 749px; text-align: center;">6.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 865px; text-align: center;">7.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 982px; text-align: center;">8.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 1098px; text-align: center;">9.0</div><div style="position: absolute; max-width: 97px; top: 305px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 1211px; text-align: center;">10.0</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px;"><div style="position: absolute; top: 293px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 8px; text-align: right;">0</div><div style="position: absolute; top: 244px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 8px; text-align: right;">5</div><div style="position: absolute; top: 195px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 1px; text-align: right;">10</div><div style="position: absolute; top: 147px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 1px; text-align: right;">15</div><div style="position: absolute; top: 98px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 1px; text-align: right;">20</div><div style="position: absolute; top: 49px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 1px; text-align: right;">25</div><div style="position: absolute; top: 0px; font: 400 12px / 14px Roboto, sans-serif; color: rgb(152, 166, 173); left: 1px; text-align: right;">30</div></div></div><canvas class="flot-overlay" width="1592" height="400" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1273.68px; height: 320px;"></canvas><div class="legend"><div style="position: absolute; width: 332.675px; height: 30px; top: -17px; right: 12px; background-color: transparent; opacity: 0.85;"> </div><table style="position:absolute;top:-17px;right:12px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(24,138,226);overflow:hidden"></div></div></td><td class="legendLabel">Series One&nbsp;&nbsp;</td><td class="legendColorBox"><div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(16,196,105);overflow:hidden"></div></div></td><td class="legendLabel">Series Two&nbsp;&nbsp;</td><td class="legendColorBox"><div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(235,239,242);overflow:hidden"></div></div></td><td class="legendLabel">Series Three&nbsp;&nbsp;</td></tr></tbody></table></div></div> --}}
                                 </div>
@@ -429,13 +402,19 @@
             background: #ebebeb;
             color: #414141;
         }
+
+        td {
+            font-size: 1em;
+        }
     </style>
 @endsection
 @section('custom-javascript')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         var arrDataHoaDonSixMonth = <?php echo json_encode($doanhThuHoaDonSauThangGanNhat); ?>;
+        var arrDataDonHangSixMonth = <?php echo json_encode($doanhThuDonHangSauThangGanNhat); ?>;
     </script>
 
 
