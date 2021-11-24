@@ -98,12 +98,19 @@ class LichController extends Controller
 
     public function UpLich(Request $request, $id)
     {
-        $lich = [
-            'soluongkhach' => $request->soluong,
-            'trangthai' => $request->trangthai
-        ];
-        $this->Lich->update($id, $lich);
-        return true;
+        if ($request->soluong <=1000000){
+            $lich = [
+                'soluongkhach' => $request->soluong,
+                'trangthai' => $request->trangthai
+            ];
+            $this->Lich->update($id, $lich);
+            return 1;
+        }
+        else{
+            return 0;
+        }
+
+
     }
 
     public function uplichAll(Request $request, $id)
@@ -120,38 +127,42 @@ class LichController extends Controller
 
     public function updateTime(Request $request, $id)
     {
-        $this->Lich->deleteLichByIdCoSo($id);
-        $khachhang = $request->soluongkh;
-        $gio = $request->giobatdau;
-        $phut = 0;
-        $gioketthuc = $request->gioketthuc;
-        for ($j = 0; $j <= 6; $j++) {
-            for ($i = 1; $i < 300; $i++) {
-                $khoanGiuaKhungGio = $request->khoangiua;
-                $toTime = sprintf('%02d:%02d', $gio, $phut);
-                //isert chổ này
-                $lich = [
-                    'idcoso' => $id,
-                    'thutrongtuan' => $j,
-                    'soluongkhach' => $khachhang,
-                    'gio' => $toTime,
-                    'trangthai' => 0
-                ];
-                $this->Lich->create($lich);
-                $phut += $khoanGiuaKhungGio;
-                if ($phut >= 60) {
-                    $gio += 1;
-                    $phut = 0;
-                }
-                if ($gio == $gioketthuc and $phut > 0) {
-                    $gio = $request->giobatdau;
-                    $gioketthuc = $request->gioketthuc;
-                    $phut = 0;
-                    break;
+        if ($request->soluongkh <=1000000){
+            $this->Lich->deleteLichByIdCoSo($id);
+            $khachhang = $request->soluongkh;
+            $gio = $request->giobatdau;
+            $phut = 0;
+            $gioketthuc = $request->gioketthuc;
+            for ($j = 0; $j <= 6; $j++) {
+                for ($i = 1; $i < 300; $i++) {
+                    $khoanGiuaKhungGio = $request->khoangiua;
+                    $toTime = sprintf('%02d:%02d', $gio, $phut);
+                    //isert chổ này
+                    $lich = [
+                        'idcoso' => $id,
+                        'thutrongtuan' => $j,
+                        'soluongkhach' => $khachhang,
+                        'gio' => $toTime,
+                        'trangthai' => 0
+                    ];
+                    $this->Lich->create($lich);
+                    $phut += $khoanGiuaKhungGio;
+                    if ($phut >= 60) {
+                        $gio += 1;
+                        $phut = 0;
+                    }
+                    if ($gio == $gioketthuc and $phut > 0) {
+                        $gio = $request->giobatdau;
+                        $gioketthuc = $request->gioketthuc;
+                        $phut = 0;
+                        break;
+                    }
                 }
             }
+            return redirect(route('lich.index'))->with('thanhcong', 'Cập nhật lịch thành công');
         }
-        return redirect(route('lich.index'))->with('thanhcong', 'Cập nhật lịch thành công');
+        return redirect(route('lich.index'))->with('thatbai', 'Số lượng khách không được quá 1000000');
+
     }
 
 

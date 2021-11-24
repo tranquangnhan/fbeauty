@@ -99,6 +99,7 @@ class HoaDonController extends Controller
      */
     public function edit($id)
     {
+
         $hd = $this->hoadon->find($id);
         $coso = $this->coso->find($hd->idcoso);
         $customer = $this->khachhang->find($hd->idkhachhang);

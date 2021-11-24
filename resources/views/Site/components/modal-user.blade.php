@@ -4,7 +4,7 @@
         <div class="modal modal-main fa-content-user">
             <div class="noidung-modal">
                 <div class="fa-modal-user">
-                    <div class="modal-user-item h-100 active" data-authen="0">
+                    <div class="modal-user-item h-100 active" id="modalDangNhap" data-authen="0">
                         <div class="box-spinner">
                             <div class="child-spinner">
                                 <div class="spinner-border" role="status">
