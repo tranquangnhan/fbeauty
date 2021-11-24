@@ -210,7 +210,7 @@
                     <div class="form-group">
                         <label >Điện thoại</label>
                         <input class="form-control" id="txt_inv_mobile"
-                               name="txt_inv_mobile" type="text" value="02437764668"/>
+                               name="txt_inv_mobile" type="hidden" value="02437764668"/>
                     </div>
                     <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán Post</button>
                     <button type="submit" name="redirect" id="redirect" class="btn btn-default">Thanh toán Redirect</button>

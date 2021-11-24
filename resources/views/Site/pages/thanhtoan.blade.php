@@ -5,7 +5,8 @@
 @endsection
 
 @section('main')
-    <form id="ktform">
+    <form action="{{URL::to("/thanh-toan-don-hang")}}" id="create_form" method="post">
+@csrf
 <div class="fa-giohang mt-4 my-5">
     <div class="container">
         <div class="thongtinkhachhang shadow-1">
@@ -17,22 +18,31 @@
                     <div class="form-group">
                         <label for="">Tên người nhận <span class="color-red">(*)</span></label>
                         <input type="text" name="username" class="form-control form-custom" id="username">
+                        @error('username')
+                        <span class='badge badge-danger'>{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="form-group">
                         <label for="">Số điện thoại <span class="color-red">(*)</span></label>
-                        <input type="number" name="phonenumber"  class="form-control form-custom"  id="phonenumber">
+                        <input type="number" name="phonenumber" value="<?php echo(session()->has('khachHang') && session('khachHang') != '')?session('khachHang')->sdt:"";?>"  class="form-control form-custom"  id="phonenumber">
+                        @error('phonenumber')
+                        <span class='badge badge-danger'>{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Địa chỉ giao hàng <span class="color-red">(*)</span></label>
                         <input type="text" name="diachi" class="form-control form-custom" id="diachi">
+                        @error('diachi')
+                        <span class='badge badge-danger'>{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Lời nhắn: </label>
-                        <textarea class="form-control form-custom" cols="10" rows="8" id="" placeholder="Lưu ý cho cửa hàng..."></textarea>
+                        <textarea class="form-control form-custom" name="note" cols="10" rows="8" id="" placeholder="Lưu ý cho cửa hàng..."> </textarea>
                         <small id="" class="form-text text-muted">.</small>
                     </div>
                 </div>
@@ -87,7 +97,7 @@
                        name="txtexpire" type="hidden" value="<?php echo $expire; ?>"/>
                 <div class="form-group">
                     <label for="order_desc">Nội dung thanh toán</label>
-                    <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2" placeholder="Noi dung thanh toan"></textarea>
+                    <textarea class="form-control" cols="20" id="note" name="vnpay_note" rows="2" placeholder="Noi dung thanh toan">Thanh toán</textarea>
                 </div>
                 <div class="form-group">
                     <label for="bank_code">Ngân hàng</label>
@@ -157,7 +167,7 @@
                             <div class="col-12 p-0">
                                 <div class="d-flex w-100 h-100 align-items-center">
                                     <input type="text" id="magiamgia" class="form-control form-custom ip-gray-1 text-dark" placeholder="Mã giảm giá" style="box-shadow: none;padding: 1.3em 1.43m;">
-                                    <input type="hidden" id="idgiam" value="">
+                                    <input type="hidden" name="giamgia" id="idgiam" value="">
                                     <button class="btn-9" type="button" onclick="ApplyGiamGia()">Sử dụng</button>
                                 </div>
                             </div>
@@ -227,7 +237,7 @@
 
     </div>
 </div>
-<input type="hidden" id="valgiaohang" value="GHTK">
+<input type="hidden" name="ptgh" id="valgiaohang" value="GHTK">
 <div class="modal fade" id="phuongthucgiaohang" tabindex="-1" aria-labelledby="phuongthucgiaohangLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content modal-content-custom">
@@ -248,7 +258,7 @@
         </div>
     </div>
 </div>
-<input type="hidden" id="valthanhtoan" value="VNPAY">
+<input type="hidden" name="ptth" id="valthanhtoan" value="KNH">
 <div class="modal fade" id="phuongthucthanhtoan" tabindex="-1" aria-labelledby="phuongthucthanhtoanLabel" aria-hidden="true">
     <div class="modal-dialog d-flex align-items-center">
         <div class="modal-content modal-content-custom">
@@ -261,10 +271,38 @@
         </div>
     </div>
 </div>
+{{--        <input name="__RequestVerificationToken" type="hidden" value="jchyu2h1E3gmmvKY8z54LOi37WR8jsqDfmxXYUfDwamuOOox7mdZQEwKS4Z5AY_wtqGW0zJyl6PxejmbrdAAMpiRZnEvS5DQ1mCpMnYD51o1" />--}}
     </form>
 @endsection
 
 @section('javascript')
     <script src="{{ asset('Site/js') }}/thanhtoan.js"></script>
     <script src="{{ asset('Site/js') }}/xacnhanthanhtoan.js"></script>
+    <link href="https://sandbox.vnpayment.vn/paymentv2/lib/vnpay/vnpay.css" rel="stylesheet"/>
+    <script src="https://sandbox.vnpayment.vn/paymentv2/lib/vnpay/vnpay.js"></script>
+    <script type="text/javascript">
+        // $("#btnPopup").click(function () {
+        //     var postData = $("#create_form").serialize();
+        //     var submitUrl = $("#create_form").attr("action");
+        //     $.ajax({
+        //         type: "POST",
+        //         url: submitUrl,
+        //         data: postData,
+        //         dataType: 'JSON',
+        //         success: function (x) {
+        //             if (x.code === '00') {
+        //                 if (window.vnpay) {
+        //                     vnpay.open({width: 768, height: 600, url: x.data});
+        //                 } else {
+        //                     location.href = x.data;
+        //                 }
+        //                 return false;
+        //             } else {
+        //                 alert(x.Message);
+        //             }
+        //         }
+        //     });
+        //     return false;
+        // });
+    </script>
 @endsection

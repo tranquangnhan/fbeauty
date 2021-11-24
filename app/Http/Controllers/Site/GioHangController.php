@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ThanhToan;
 use App\Models\Admin\SanPhamChiTiet;
+use App\Repositories\DonHang\DonHangRepository;
+use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\GioHang\GioHangRepository;
 use App\Repositories\GioHangChiTiet\GioHangChiTietRepository;
+use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
+use Faker\Core\Number;
 use Illuminate\Http\Request;
 
 class GioHangController extends Controller
@@ -16,22 +21,31 @@ class GioHangController extends Controller
     private $SanPhamChiTiet;
     private $GioHang;
     private $GioHangChiTiet;
+    private $KhachHang;
+    private $DonHang;
+    private $DonHangChiTiet;
     private $vnp_TmnCode = "8EZMZPIJ";
     private $vnp_HashSecret = "OKBCLDCSTLJIAUGMZKPJCRITTTBJAITY";
     private $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    private $vnp_Returnurl = "http://local.fbeauty.vn/vnpay_php/vnpay_return.php";
+    private $vnp_Returnurl = "http://127.0.0.1:8000/thanh-toan-hoa-don";
 
     public function __construct(
         GioHangRepository $GioHang,
         GioHangChiTietRepository $GioHangChiTiet,
         SanPhamRepository $SanPham,
-        SanPhamChiTietRepository $SanPhamChiTiet
+        SanPhamChiTietRepository $SanPhamChiTiet,
+        KhachHangRepository $KhachHang,
+        DonHangRepository $DonHang,
+        DonHangChiTietRepository $DonHangChiTiet
     )
     {
         $this->GioHang = $GioHang;
         $this->GioHangChiTiet = $GioHangChiTiet;
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet = $SanPhamChiTiet;
+        $this->KhachHang = $KhachHang;
+        $this->DonHang = $DonHang;
+        $this->DonHangChiTiet = $DonHangChiTiet;
     }
 
     public function ShowGioHang()
@@ -391,50 +405,341 @@ class GioHangController extends Controller
                 if ($checkgiohangByidKH == false) {
                     $giohangDB = $this->GioHang->GioHangDB(session('khachHang')->id);
                     $giohang = session()->get('giohang');
-                    for ($i=0; $i<count($giohang); $i++) {
+                    for ($i = 0; $i < count($giohang); $i++) {
                         $checkgiohangCt = $this->GioHangChiTiet->CheckGioHangCt($giohangDB[0]->id, $giohang[$i]["id"]);
-                        if ($checkgiohangCt == false){
-                            $idchitiet=$this->GioHangChiTiet->GetGioHangCt($giohangDB[0]->id, $giohang[$i]["id"]);
-                            $sl=[
-                                'soluong'=>$giohang[$i]["soluong"]
+                        if ($checkgiohangCt == false) {
+                            $idchitiet = $this->GioHangChiTiet->GetGioHangCt($giohangDB[0]->id, $giohang[$i]["id"]);
+                            $sl = [
+                                'soluong' => $giohang[$i]["soluong"]
                             ];
                             $this->GioHangChiTiet->update($idchitiet[0]->id, $sl);
-                        }
-                        else{
-                            $giohangnew=[
-                              'idgiohang'=> $giohangDB[0]->id,
-                                'idsanphamchitiet'=>$giohang[$i]["id"],
-                                'soluong'=>$giohang[$i]["soluong"]
+                        } else {
+                            $giohangnew = [
+                                'idgiohang' => $giohangDB[0]->id,
+                                'idsanphamchitiet' => $giohang[$i]["id"],
+                                'soluong' => $giohang[$i]["soluong"]
                             ];
                             $this->GioHangChiTiet->create($giohangnew);
                         }
                     }
                     return 1;
-                }
-                else{
-                    $kh=[
-                      'idkhachhang'=>session('khachHang')->id
+                } else {
+                    $kh = [
+                        'idkhachhang' => session('khachHang')->id
                     ];
                     $this->GioHang->create($kh);
                     $giohangDB = $this->GioHang->GioHangDB(session('khachHang')->id);
                     $giohang = session()->get('giohang');
-                    for ($i=0; $i<count($giohang); $i++) {
-                            $giohangnew=[
-                                'idgiohang'=> $giohangDB[0]->id,
-                                'idsanphamchitiet'=>$giohang[$i]["id"],
-                                'soluong'=>$giohang[$i]["soluong"]
-                            ];
-                            $this->GioHangChiTiet->create($giohangnew);
+                    for ($i = 0; $i < count($giohang); $i++) {
+                        $giohangnew = [
+                            'idgiohang' => $giohangDB[0]->id,
+                            'idsanphamchitiet' => $giohang[$i]["id"],
+                            'soluong' => $giohang[$i]["soluong"]
+                        ];
+                        $this->GioHangChiTiet->create($giohangnew);
                     }
                     return 1;
                 }
-            }
-            else{
+            } else {
                 return 0;
             }
-        }
-        else{
+        } else {
             return 0;
         }
     }
+
+    public function capnhatgiasession($gia)
+    {
+        session()->get("tongdonhang");
+        if ($gia < 0) {
+            session()->forget("tongdonhang");
+        } else {
+            session()->put("tongdonhang", $gia);
+        }
+        return session()->get("tongdonhang");
+    }
+
+    public function CheckSoDienThoaiTonTai($sdt)
+    {
+        return $this->KhachHang->CheckSdt($sdt);
+    }
+
+    public function thanhtoandonhang(ThanhToan $request)
+    {
+        $sdt = $request->phonenumber;
+//        dd($request->all());
+        if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
+            $idkhach = $this->KhachHang->getBySdt($sdt);
+        } else {
+            $customernew = [
+                'sdt' => $sdt,
+                'password' => bcrypt("123456"),
+                'active' => 1
+            ];
+            $idkhach = $this->KhachHang->create($customernew);
+        }
+        if (session()->has("tiengiam") && session()->get("tiengiam") != 0) {
+            $tongtiensaugiam = session()->get("tongdonhang") - session()->get("tiengiam");
+        } else {
+            $tongtiensaugiam = session()->get("tongdonhang");
+        }
+        if (session()->has('khachHang') && session('khachHang') != '') {
+            $checkgiohangByidKH = $this->GioHang->CheckKhachHangInGioHang($idkhach->id);
+            if ($checkgiohangByidKH == false) {
+                $giohangDB = $this->GioHang->GioHangDB($idkhach->id);
+                $donhang = [
+                    'idkhachhang' => $idkhach->id,
+                    'idgiamgia' => $request->giamgia,
+                    'tennguoinhan' => $request->username,
+                    'diachikhachhang' => $request->diachi,
+                    'sdtnguoinhan' => $sdt,
+                    'tongtientruocgiamgia' => session()->get("tongdonhang"),
+                    'tongtiensaugiamgia' => $tongtiensaugiam,
+                    'ghichucuakhachhang' => $request->note,
+                    'phuongthucthanhtoan' => $request->ptth,
+                    'phuongthucgiaohang' => $request->ptgh,
+                    'trangthai' => 0,
+                    'trangthaithanhtoan' => 0
+                ];
+                $donhangnew = $this->DonHang->create($donhang);
+                if ($donhangnew){
+                    $giohangchitiet = $this->GioHangChiTiet->GioHangChiTiet($giohangDB[0]->id);
+                    for ($i = 0; $i < count($giohangchitiet); $i++) {
+                        $anh = json_decode($giohangchitiet[$i]->img)[0];
+                        if ($giohangchitiet[$i]->giamgia != null) {
+                            $dongiasaugiam = ($giohangchitiet[$i]->dongia - ((($giohangchitiet[$i]->dongia * $giohangchitiet[$i]->giamgia)) / 100));
+                        } else {
+                            $dongiasaugiam = $giohangchitiet[$i]->dongia;
+                        }
+                        $donhangchitiet = [
+                            'iddonhang' => $donhangnew->id,
+                            'idsanphamchitiet' => $giohangchitiet[$i]->idsanphamchitiet,
+                            'img' => $anh,
+                            'soluong' => $giohangchitiet[$i]->soluong,
+                            'dongiatruocgiamgia' => $giohangchitiet[$i]->dongia,
+                            'dongiasaugiamgia' => $dongiasaugiam
+                        ];
+                        $this->DonHangChiTiet->create($donhangchitiet);
+                    }
+                }
+                $this->GioHangChiTiet->XoaAllSanPhamGioHang($giohangDB[0]->id);
+            }
+        } else if (session()->has('giohang') && count(session()->get('giohang')) != 0) {
+            $donhang = [
+                'idkhachhang' => $idkhach->id,
+                'idgiamgia' => $request->giamgia,
+                'tennguoinhan' => $request->username,
+                'diachikhachhang' => $request->diachi,
+                'sdtnguoinhan' => $sdt,
+                'tongtientruocgiamgia' => session()->get("tongdonhang"),
+                'tongtiensaugiamgia' => $tongtiensaugiam,
+                'ghichucuakhachhang' => $request->note,
+                'phuongthucthanhtoan' => $request->ptth,
+                'phuongthucgiaohang' => $request->ptgh,
+                'trangthai' => 0,
+                'trangthaithanhtoan' => 0
+            ];
+            $donhangnew = $this->DonHang->create($donhang);
+//            dd($donhangnew);
+            if ($donhangnew) {
+                $iddonhang = $donhangnew->id;
+                $giohangSession = session()->get('giohang');
+                for ($i = 0; $i < count($giohangSession); $i++) {
+                    $anh = json_decode($giohangSession[$i]["img"])[0];
+                    if ($giohangSession[$i]["giamgia"] != null) {
+                        $dongiasaugiam = ($giohangSession[$i]["dongia"] - ((($giohangSession[$i]["dongia"] * $giohangSession[$i]["giamgia"])) / 100));
+                    } else {
+                        $dongiasaugiam = $giohangSession[$i]["dongia"];
+                    }
+                    $donhangchitietnew = [
+                        'iddonhang' => $iddonhang,
+                        'idsanphamchitiet' => (int)$giohangSession[$i]["id"],
+                        'img' => $anh,
+                        'soluong' => $giohangSession[$i]["soluong"],
+                        'dongiatruocgiamgia' => $giohangSession[$i]["dongia"],
+                        'dongiasaugiamgia' => $dongiasaugiam
+                    ];
+                    $this->DonHangChiTiet->create($donhangchitietnew);
+//                    dd($donhangchitietnew);
+                }
+            }
+            session()->forget('giohang');
+        }
+        session()->forget("tongdonhang");
+        if (session()->has("tiengiam") && session()->get("tiengiam") != 0){
+            session()->forget("tiengiam");
+        }
+        return redirect('/')->with('thanhtoanthanhcong', "Đặt hàng thành công");
+    }
+
+    public function vnpayments(ThanhToan $request)
+    {
+
+        session()->get("requestAll", []);
+        session()->put("requestAll", $request->all());
+        $vnp_TxnRef = date('YmdHis'); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        if (session()->has("tiengiam") && session()->get("tiengiam") != 0) {
+            $vnp_Amount = session()->get("tongdonhang") - session()->get("tiengiam");
+        } else {
+            $vnp_Amount = session()->get("tongdonhang");
+        }
+
+        error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+        $inputData = array(
+            "vnp_Amount" => $vnp_Amount * 100,
+            "vnp_BankCode" => $request->bank_code,
+            "vnp_Command" => "pay",
+            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CurrCode" => "VND",
+            "vnp_IpAddr" => $_SERVER["REMOTE_ADDR"],
+            "vnp_Locale" => "vn",//ngon ngu
+            "vnp_OrderInfo" => $request->vnpay_note,//noidungthanhtoan
+            "vnp_OrderType" => $request->order_type,//loaithanhtoan
+            "vnp_Version" => "2.1.0",
+            "vnp_TmnCode" => $this->vnp_TmnCode,
+            "vnp_ReturnUrl" => $this->vnp_Returnurl,//link trả về
+            "vnp_TxnRef" => $vnp_TxnRef//mã đơn hàng
+        );
+
+//        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+//            $inputData['vnp_BankCode'] = $request->bank_code;
+//        }
+        ksort($inputData);
+        $query = "";
+        $i = 0;
+        $hashdata = "";
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+            } else {
+                $hashdata .= urlencode($key) . "=" . urlencode($value);
+                $i = 1;
+            }
+            $query .= urlencode($key) . "=" . urlencode($value) . '&';
+        }
+
+        $vnp_Url1 = $this->vnp_Url . "?" . $query;
+        if (isset($this->vnp_HashSecret)) {
+            $vnpSecureHash = hash_hmac('sha512', $hashdata, $this->vnp_HashSecret);//
+            $vnp_Url1 .= 'vnp_SecureHash=' . $vnpSecureHash;
+        }
+//        dd($vnp_Url1);
+        $returnData = array(
+            'code' => '00'
+        , 'message' => 'success'
+        , 'data' => $vnp_Url1);
+
+        return redirect()->to($returnData["data"]);
+    }
+
+    public function returnPay(){
+        if ($_GET["vnp_TransactionStatus"]==00){
+            $sdt = session("requestAll")["phonenumber"];
+//        dd($request->all());
+            if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
+                $idkhach = $this->KhachHang->getBySdt($sdt);
+            } else {
+                $customernew = [
+                    'sdt' => $sdt,
+                    'password' => bcrypt("123456"),
+                    'active' => 1
+                ];
+                $idkhach = $this->KhachHang->create($customernew);
+            }
+            if (session()->has("tiengiam") && session()->get("tiengiam") != 0) {
+                $tongtiensaugiam = session()->get("tongdonhang") - session()->get("tiengiam");
+            } else {
+                $tongtiensaugiam = session()->get("tongdonhang");
+            }
+            if (session()->has('khachHang') && session('khachHang') != '') {
+                $checkgiohangByidKH = $this->GioHang->CheckKhachHangInGioHang($idkhach->id);
+                if ($checkgiohangByidKH == false) {
+                    $giohangDB = $this->GioHang->GioHangDB($idkhach->id);
+                    $donhang = [
+                        'idkhachhang' => $idkhach->id,
+                        'idgiamgia' => session("requestAll")["giamgia"],
+                        'tennguoinhan' => session("requestAll")["username"],
+                        'diachikhachhang' => session("requestAll")["diachi"],
+                        'sdtnguoinhan' => $sdt,
+                        'tongtientruocgiamgia' => session()->get("tongdonhang"),
+                        'tongtiensaugiamgia' => $tongtiensaugiam,
+                        'ghichucuakhachhang' => session("requestAll")["note"],
+                        'phuongthucthanhtoan' => session("requestAll")["ptth"],
+                        'phuongthucgiaohang' => session("requestAll")["ptgh"],
+                        'trangthai' => 0,
+                        'trangthaithanhtoan' => 1
+                    ];
+                    $donhangnew = $this->DonHang->create($donhang);
+                    if ($donhangnew){
+                        $giohangchitiet = $this->GioHangChiTiet->GioHangChiTiet($giohangDB[0]->id);
+                        for ($i = 0; $i < count($giohangchitiet); $i++) {
+                            $anh = json_decode($giohangchitiet[$i]->img)[0];
+                            if ($giohangchitiet[$i]->giamgia != null) {
+                                $dongiasaugiam = ($giohangchitiet[$i]->dongia - ((($giohangchitiet[$i]->dongia * $giohangchitiet[$i]->giamgia)) / 100));
+                            } else {
+                                $dongiasaugiam = $giohangchitiet[$i]->dongia;
+                            }
+                            $donhangchitiet = [
+                                'iddonhang' => $donhangnew->id,
+                                'idsanphamchitiet' => $giohangchitiet[$i]->idsanphamchitiet,
+                                'img' => $anh,
+                                'soluong' => $giohangchitiet[$i]->soluong,
+                                'dongiatruocgiamgia' => $giohangchitiet[$i]->dongia,
+                                'dongiasaugiamgia' => $dongiasaugiam
+                            ];
+                            $this->DonHangChiTiet->create($donhangchitiet);
+                        }
+                    }
+                    $this->GioHangChiTiet->XoaAllSanPhamGioHang($giohangDB[0]->id);
+                }
+            } else if (session()->has('giohang') && count(session()->get('giohang')) != 0) {
+                $donhang = [
+                    'idkhachhang' => $idkhach->id,
+                    'idgiamgia' => session("requestAll")["giamgia"],
+                    'tennguoinhan' => session("requestAll")["username"],
+                    'diachikhachhang' => session("requestAll")["diachi"],
+                    'sdtnguoinhan' => $sdt,
+                    'tongtientruocgiamgia' => session()->get("tongdonhang"),
+                    'tongtiensaugiamgia' => $tongtiensaugiam,
+                    'ghichucuakhachhang' => session("requestAll")["note"],
+                    'phuongthucthanhtoan' => session("requestAll")["ptth"],
+                    'phuongthucgiaohang' => session("requestAll")["ptgh"],
+                    'trangthai' => 0,
+                    'trangthaithanhtoan' => 1
+                ];
+                $donhangnew = $this->DonHang->create($donhang);
+                if ($donhangnew) {
+                    $iddonhang = $donhangnew->id;
+                    $giohangSession = session()->get('giohang');
+                    for ($i = 0; $i < count($giohangSession); $i++) {
+                        $anh = json_decode($giohangSession[$i]["img"])[0];
+                        if ($giohangSession[$i]["giamgia"] != null) {
+                            $dongiasaugiam = ($giohangSession[$i]["dongia"] - ((($giohangSession[$i]["dongia"] * $giohangSession[$i]["giamgia"])) / 100));
+                        } else {
+                            $dongiasaugiam = $giohangSession[$i]["dongia"];
+                        }
+                        $donhangchitietnew = [
+                            'iddonhang' => $iddonhang,
+                            'idsanphamchitiet' => (int)$giohangSession[$i]["id"],
+                            'img' => $anh,
+                            'soluong' => $giohangSession[$i]["soluong"],
+                            'dongiatruocgiamgia' => $giohangSession[$i]["dongia"],
+                            'dongiasaugiamgia' => $dongiasaugiam
+                        ];
+                        $this->DonHangChiTiet->create($donhangchitietnew);
+                    }
+                }
+                session()->forget('giohang');
+            }
+            session()->forget("tongdonhang");
+            if (session()->has("tiengiam") && session()->get("tiengiam") != 0){
+                session()->forget("tiengiam");
+            }
+            session()->forget("requestAll");
+            return redirect('/')->with('thanhtoanvnpaythanhcong', "Thanh toán đơn hàng thành công !");
+        }else{
+            return redirect('/thanh-toan')->with('thanhtoanthatbai', "Đặt hàng thất bại");
+        }
+    }
+
 }
