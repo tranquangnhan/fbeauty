@@ -296,10 +296,10 @@ function ShowPhanTrang(dem) {
         if ((soSp.length - dem) != 0) {
             xemsp.innerHTML = '<button class="w-25 border border-dark p-2" style="background-color: #e87c7b; " onclick="ShowPhanTrang(' + (dem + soluongshowtiep) + ')">Xem thêm (' + (soSp.length - dem) + ' sản phẩm )<i class="fa fa-angle-down"></i></button>'
         } else {
-            xemsp.innerHTML = '<button class="w-25 border border-dark p-2" style="background-color: black; color: #e87c7b;" ><< Hết sản phẩm >></button>'
+            xemsp.innerHTML = '<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;" ><< Không có sản phẩm nào >></button>'
         }
     } else {
-        xemsp.innerHTML = '<button class="w-25 border border-dark p-2" style="background-color: black; color: #e87c7b;" ><< Hết sản phẩm >></button>'
+        xemsp.innerHTML = '<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;" ><< Không có sản phẩm nào >></button>'
     }
 
 }

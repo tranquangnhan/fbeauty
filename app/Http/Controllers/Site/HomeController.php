@@ -104,8 +104,9 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
-        $danhmuc = $this->DanhMuc->getAll();
-        return view("Site.pages.sanpham", $this->data, ['danhmuc' => $danhmuc, 'danhmuc1' => $danhmuc, 'danhmuc2' => $danhmuc, 'danhmuc3' => $danhmuc]);
+        $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(1);
+        $danhmucsp2 = $this->DanhMuc->findDanhMucByIdLoai(2);
+        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp, 'danhmucsp1' => $danhmucsp2]);
     }
 
     public function getSanPham($soluong)
