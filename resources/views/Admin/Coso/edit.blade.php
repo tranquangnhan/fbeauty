@@ -101,7 +101,7 @@
                                 </div>
 
                                 <div class="form-group text-right mb-0 mt-5">
-                                    <a href="/quantri/coso" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
+                                    <a href="/quantri/coso" clas="btn btn-secondary waves-effect waves-light" title="Hủy" >Hủy</a>
                                     <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product' value="sửa cơ sở">
                                 </div>
 
@@ -112,4 +112,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('custom-javascript')
+    <script src="{{ asset('Admin/assets') }}/js/pages/coso1.js"></script>
 @endsection
