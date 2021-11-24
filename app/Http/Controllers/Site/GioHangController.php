@@ -593,7 +593,9 @@ class GioHangController extends Controller
         } else {
             $vnp_Amount = session()->get("tongdonhang");
         }
-
+        if ($request->vnpay_note == ""){
+            $request->vnpay_note="Thanh toán đơn hàng";
+        }
         error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
         $inputData = array(
             "vnp_Amount" => $vnp_Amount * 100,
