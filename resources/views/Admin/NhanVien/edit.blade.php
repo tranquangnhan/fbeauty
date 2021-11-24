@@ -130,18 +130,6 @@
 
                                         </div>
                                         <div class="col-md-6">
-                                           
-                                            <div class="form-group">
-                                                <label class="w-100" for="dichvu">Chọn dịch vụ:(<span
-                                                        class="text-danger">*</span>)
-                                                    <select class="form-control select2" name="dichvu">
-                                                        @foreach ($dichvu as $item)
-                                                            <option
-                                                                value="{{$item['id']}}" <?php echo ($nhanvien->iddichvu == $item['id']) ? 'selected' : '';?>>{{$item['name']}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </label>
-                                            </div>
                                             <div class="form-group">
                                                 <label class="w-100" for="role">Role:(<span
                                                         class="text-danger">*</span>)

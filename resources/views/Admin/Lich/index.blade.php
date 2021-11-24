@@ -19,6 +19,11 @@
                                         {{session('thanhcong')}}
                                     </div>
                                 @endif
+                                    @if(session('thatbai'))
+                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                            {{session('thatbai')}}
+                                        </div>
+                                    @endif
                             </div>
 
                             <table class="table table-striped table-bordered dt-responsive nowrap">
@@ -30,7 +35,6 @@
                                 </thead>
                                 <tbody>
                                 @foreach($coso as $index => $cs)
-
                                     <tr>
                                         <td>{{$index+=1}}</td>
                                         <td>
@@ -105,7 +109,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nhập số lượng khách</label>
-                            <input type="number" min="1" name="soluongkh" class="form-control" required>
+                            <input type="number" min="1" max="1000000" name="soluongkh" class="form-control" required>
                         </div>
 
                         <div class="row">
@@ -129,7 +133,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <label for="exampleInputEmail1">Khoản giữa (? Phút)</label>
+                                <label for="exampleInputEmail1">Khoảng giữa (? Phút)</label>
                                 <select class="form-control" name="khoangiua" id="khoangiua">
                                     <?php
                                     for ($i = 1; $i <= 6; $i++)

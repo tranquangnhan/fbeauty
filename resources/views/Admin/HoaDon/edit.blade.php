@@ -36,11 +36,19 @@
                             <div class="alert alert-light " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
                                  role="alert">
                                 <div class="container">
+                                    @if(isset($customer->img)&&$customer->img!="")
                                     <img src="{{asset('uploads')}}/{{$customer->img}}" class="img-thumbnail"
                                          style="width: 10%">
+                                    @else
+                                        <img src="{{asset('uploads')}}/khachhang/default-avatar-kh.jpg" class="img-thumbnail"
+                                             style="width: 10%">
+                                        @endif
+                                        @if(isset($customer->name)&&$customer->name!="")
                                     <span class="text-primary font-weight-bold">{{$customer->name}}</span>
+
                                     <span class="ml-3"><i class="fa fa-phone"> <span
                                                 class="text-primary">{{$customer->sdt}}</span></i></span>
+                                        @endif
                                 </div>
                             </div>
                             <hr>
