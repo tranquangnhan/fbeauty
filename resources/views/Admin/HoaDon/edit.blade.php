@@ -33,14 +33,14 @@
                     <div class="col-md-8">
 
                         <div class="card-box">
-                            <div class="alert alert-light " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+                            <div class="alert-light " style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
                                  role="alert">
                                 <div class="container">
-                                    <img src="{{asset('uploads')}}/{{$customer->img}}" class="img-thumbnail"
-                                         style="width: 10%">
+                                    <img class="avthoadon" src="{{$URL_IMG.$customer->img}}"
+                                         >
                                     <span class="text-primary font-weight-bold">{{$customer->name}}</span>
                                     <span class="ml-3"><i class="fa fa-phone"> <span
-                                                class="text-primary">{{$customer->sdt}}</span></i></span>
+                                                class="text-primary"><a href="tel:{{$customer->sdt}}">{{$customer->sdt}}</a></span></i></span>
                                 </div>
                             </div>
                             <hr>
@@ -95,7 +95,7 @@
                                 <div class="d-print-none">
                                     <div class="float-right">
                                         <a href="{{route('hoadonchitiet.show', $hoadon->id)}}"
-                                           class="btn btn-dark waves-effect waves-light">In hóa đơn<i class="fa fa-print"></i></a>
+                                           class="btn btn-dark waves-effect waves-light">In hóa đơn <i class="fa fa-print"></i></a>
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>

@@ -25,8 +25,7 @@ class NhanVienRepository extends BaseRepository implements NhanVienRepositoryInt
     public function getNhanVien()
     {
         $coSo = session()->get('coso');
-        return $this->model->select('nhanvien.*', 'dichvu.name AS dichvu', 'coso.name AS coso')
-            ->join('dichvu', 'nhanvien.iddichvu', '=', 'dichvu.id')
+        return $this->model->select('nhanvien.*', 'coso.name AS coso')
             ->join('coso', 'nhanvien.idcoso', '=', 'coso.id')->where("nhanvien.idcoso","=",$coSo)
             ->get();
     }

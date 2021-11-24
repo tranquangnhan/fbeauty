@@ -45,7 +45,7 @@
                                 <tr>
                                     <th scope="">STT</th>
                                     <th width="37%">Thông tin nhân viên</th>
-                                    <th width="20%">Cơ sở & dịch vụ</th>
+                                    <th width="20%">Cơ sở </th>
                                     <th width="10%">Avatar</th>
                                     <th width="22%">Phân quyền</th>
                                     <th width="">Sửa</th>
@@ -85,13 +85,10 @@
                                                 <div class="col-md-5 font-weight-bold">Cơ sở:</div>
                                                 <div class="col-md-7 ">{{$item->coso}}</div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-5 font-weight-bold">Dịch vụ:</div>
-                                                <div class="col-md-7 ">{{$item->dichvu}}</div>
-                                            </div>
+                                          
                                         </td>
                                         <td>
-                                            <img class="w-100 m-auto"
+                                            <img class="w-100 m-auto" style="border-radius:3px"
                                                  src="{{asset($BASE_URL_UPLOAD_STAFF.$item->avatar)}}">
                                         </td>
                                         <td>

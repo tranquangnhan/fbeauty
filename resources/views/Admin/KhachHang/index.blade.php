@@ -33,6 +33,7 @@
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
                                             </td>
                                             <td> 
+                                                
                                                 <img  class="img-common"  src="{{ asset('uploads/'.$item->img) }}">
                                             </td> 
                                             <td> 

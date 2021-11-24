@@ -150,12 +150,12 @@
                                                             <h4 class="@if($item->trangthai === 0) text-danger @else text-success  @endif">{{$item->tendv}}</h4>
                                                         </div>
                                                         <div class="col-12">
-                                                            <p class=" text-danger">{{Controller::caculateGia($item->dongia,$item->giamgia)}}</p>
+                                                            <p class=" text-danger">{{Controller::caculateGia($item->dongia,$item->giamgia)}} VNĐ</p>
                                                         </div>
 
                                                     </div>
 
-                                                    <p class="mota" style="margin-top: 5px !important;" id="mota" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->mota}} </p>
+                                                    <p class="mota" style="margin-top: 5px !important;" id="ghichu" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->ghichu}} </p>
 
                                                     <div>
 
@@ -168,7 +168,15 @@
 
                                             <div class="col-lg-12 d-flex justify-content-end @if($loop->index % 2 == 0) order-1 @else order-2 @endif">
                                                 <input type="hidden" value="{{$item->idlieutrinhchitiet}}" id="idlieutrinhgan" class="idlieutrinhchitiet">
-                                                <img onclick="showFullImage(event)" class="imglieutrinh" src="{{asset($BASE_URL_UPLOAD_CUSTOMER.$item->imgkhachhang) }}" alt="">
+                                           
+                                                @if (is_file($BASE_URL_UPLOAD_CUSTOMER.$item->imgkhachhang))
+                                                    <img onclick="showFullImage(event)" class="imglieutrinh" src="{{asset($BASE_URL_UPLOAD_CUSTOMER.$item->imgkhachhang ) }}" alt="">
+                                                    
+                                                @else
+                                                    <img onclick="showFullImage(event)" class="imglieutrinh" src="{{asset($BASE_URL_UPLOAD_CUSTOMER.'default-avatar-kh.jpg') }}" alt="">
+                                                    
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>
