@@ -52,8 +52,8 @@
                                             <div class="form-group col-md-4">
                                                 <label for="">Loại Giảm Giá </label><span style="color:red;"> (*)</span>
                                                 <select name="loai" id="inputState" onchange="select()" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('loai') border-error @enderror loai" value="{{$data->loai}}" parsley-trigger="change">
-                                                    <option {{$data->loai == '0'? 'selected':''}} value="0">Giảm Theo Giá</option>
-                                                    <option {{$data->loai == '1'? 'selected':''}} value="1">Giảm Theo %</option>
+                                                    <option value="0">Giảm Theo Giá</option>
+                                                    <option value="1">Giảm Theo %</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-4">

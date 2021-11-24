@@ -48,7 +48,7 @@ function ShowHoaDon(res) {
         }
         sp += '<tr class="bg-light pb-5" style=" box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">\n' +
             '<th scope="row">' + namesp.responseJSON[0].name.substring(0, 40) + ' ' + mota + '</th>\n' +
-            '<td class="w-15"><input type="number" id="soluong' + res[i].id + '" onkeyup="UPdateSL(' + res[i].id + ')" min="0" class="w-75" value="' + res[i].soluong + '"></td>\n' +
+            '<td class="w-15"><input type="number" class="form-control" id="soluong' + res[i].id + '" onkeyup="UPdateSL(' + res[i].id + ')" min="0" class="w-75" value="' + res[i].soluong + '"></td>\n' +
             '<td>' + res[i].dongiasaugiamgia.toLocaleString() + '</td>\n' +
             '<td>' + (res[i].dongiasaugiamgia * res[i].soluong).toLocaleString() + '</td>\n' +
             '<td><button onclick="XoaHDCT(' + res[i].id + ')" class="bg-primary p-1 border-radius-1" style="border-radius: 5px; outline: none; border: none;" data-toggle="tooltip" data-placement="right" title="Xóa"><i class="fa fa-trash" style="color: #ffffff"></i></button></td>\n' +
@@ -65,7 +65,7 @@ function ShowHoaDon(res) {
             } else {
                 tiengiam = giamgia.responseJSON["number"];
             }
-            tenmagiam = giamgia.responseJSON["name"] + ' <button onclick="HuyCode()" class="bg-primary p-1 border-radius-1" style="border-radius: 5px; outline: none; border: none;" data-toggle="tooltip" data-placement="right" title="Hủy mã">Hủy</button>';
+            tenmagiam = giamgia.responseJSON["name"] + ' <button onclick="HuyCode()" class="bg-primary p-1 border-radius-1 text-light" style="border-radius: 5px; outline: none; border: none;" data-toggle="tooltip" data-placement="right" title="Hủy mã">Hủy</button>';
         } else {
             tiengiam = 0;
             tenmagiam = 'Hóa đơn của bạn không đủ ' + responseJSON["max"].toLocaleString() + 'để áp dụng mã';

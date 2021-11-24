@@ -4,7 +4,6 @@ var ArrayDanhMuc = [];
 let Arrayphu = [];
 let ArrayFlow = [];
 function SanPham(soluong) {
-
     var bienkhac = '';
     Arrayphu = $.ajax({
         url: document.URL + '/soluong/' + soluong,
@@ -14,7 +13,6 @@ function SanPham(soluong) {
         data: {soluong: soluong},
         success: function (data) {
             BeFore(data, bienkhac);
-
         }
     });
 }
@@ -203,7 +201,6 @@ function ShowSanPham(data) {
             ' <button class="w-100 btn-sanpham btn-5 " style="margin-bottom: 5px!important;" onclick="ThemGioHang('+data.sanpham[i].idspct+')"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button></br>\n' +
             ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].id + '"><button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
             '</div></div></div></div></div></div></div></div>';
-
     }
     document.getElementById("showSP").innerHTML = sp;
     ShowPhanTrang(sanphambandau);

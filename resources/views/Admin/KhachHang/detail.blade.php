@@ -162,7 +162,7 @@
                                                     <td>{{++$loop->index}}</td>
                                                     <td><img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($URL_IMG.$item->img) }}"><br></td>
                                                     <td>{{$item->name}}</td>
-                                                    <td> {{Controller::caculateGia($item->dongia,$item->giamgia)}}</td>
+                                                    <td> {{Controller::caculateGia($item->dongia,$item->giamgia)}} VNĐ</td>
                                                     <td>{{substr($item->motangan,0,300)}} ...</td>
                                                 </tr>
                                             @endforeach

@@ -137,6 +137,7 @@ function showGioHang() {
                     $("#tienship").html("0");
                     $('#amount').val("0");
                     $("#dathang").prop('disabled', true);
+                    CapNhatGiaSession(0)
                 }
             }
             else {
@@ -340,6 +341,7 @@ function ShowPayProduct(data) {
     $("#tongtienhang").html(total.toLocaleString());
     $("#tongthanhtoan").html((total+30000).toLocaleString());
     $('#amount').val(total+30000);
+    CapNhatGiaSession(total+30000);
 }
 
 function XoaSanPham(id) {
@@ -484,5 +486,18 @@ function XoaTatCa() {
         }
     });
 
+}
+
+function CapNhatGiaSession(gia) {
+    $.ajax({
+        url: domain + '/capnhatgiasession/'+gia,
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: {id: gia},
+        success: function (data) {
+            // console.log(data)
+        }
+    });
 }
 

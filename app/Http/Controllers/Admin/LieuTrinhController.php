@@ -140,11 +140,9 @@ class LieuTrinhController extends Controller
     public function editNameDv(Request $request){
        
         switch ($request->name) {
-            case 'mota':
-                $data= [
-                    'mota'=> $request->value
-                ];
-                $res = $this->LieuTrinhChiTiet->update($request->pk,$data);
+            case 'ghichu':
+                $res = $this->LieuTrinhChiTiet->update($request->pk,['ghichu'=> $request->value]);
+                dd(['ghichu'=> $request->value]);
                 break;
             case 'date':
                 // validate
