@@ -84,8 +84,14 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::post('lich/updateTime/{id}', [LichController::class, 'updateTime']);
     // quản lý cơ sở
     Route::resource('coso', CoSoController::class);
+<<<<<<< HEAD
+    Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
+    Route::post('coso/{id}/edit/select-delivery', [CoSoController::class,'select_delivery1']);
+    Route::get('coso/changecoso/{id}', [CoSoController::class,'changeCoSo']);
+=======
     Route::post('coso/select-delivery', [CoSoController::class, 'select_delivery']);
     Route::get('coso/changecoso/{id}', [CoSoController::class, 'changeCoSo']);
+>>>>>>> e51fe0d1a5dbfdff4adaa421b0d97495ef29f98c
 
     Route::resource('donhang', DonHangController::class);
     Route::resource('donhangchitiet', DonHangController::class);
@@ -155,7 +161,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('gioi-thieu', [HomeController::class, "viewGioiThieu"]);
     Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
 
-    Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
+    Route::get('dich-vu/{slug}', [HomeController::class, "viewDichVuChiTiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
