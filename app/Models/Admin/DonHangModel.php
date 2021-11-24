@@ -20,7 +20,7 @@ class DonHangModel extends Model
         'ghichucuakhachhang',
         'phuongthucthanhtoan',
         'phuongthucgiaohang',
-        'trangthai'
-
+        'trangthai',
+        'trangthaithanhtoan'
     ];
 }

@@ -135,9 +135,9 @@ class installSeeder extends Seeder
             ['id'=>6,'idcoso'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('giamgia')->insert([
-            ['id'=>1,'name'=>'MAXSALE150','ma'=>'FB01', 'number'=>25000,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'1635699600' ,'ngayhethan'=>'1637341200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'name'=>'MAXSALE150','ma'=>'FB01', 'number'=>5,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'1635699600' ,'ngayhethan'=>'1637341200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
             ['id'=>2,'name'=>'MAXSALE250','ma'=>'FB02', 'number'=>250000,'max'=> 950000,'loai'=>0 ,'ngaytao'=>'1637686800' ,'ngayhethan'=>'1640883600','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>3,'name'=>'MAXSALE200','ma'=>'FB03', 'number'=>150000,'max'=> 200000,'loai'=>1 ,'ngaytao'=>'1635958800' ,'ngayhethan'=>'1638205200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'name'=>'MAXSALE200','ma'=>'FB03', 'number'=>10,'max'=> 200000,'loai'=>1 ,'ngaytao'=>'1635958800' ,'ngayhethan'=>'1638205200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('khachhang')->insert([
             ['id'=>1,'name' => 'Long','idcoso' => 1, 'sdt'=> '0965286055','email'=>'long@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'a2c0894d9a3e77602e2f.jpg'],
@@ -621,7 +621,7 @@ class installSeeder extends Seeder
             Động tác 3: Lấy mu bàn tay day nhẹ phần gáy đến cổ. Động tác này thực hiện từ 1 đến 2 phút.
             
             Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.            
-            ','trangthai' => '1'], 
+            ','trangthai' => '1'],
         ]);
         DB::table('donhang')->insert([
             ['id'=>1,'idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
