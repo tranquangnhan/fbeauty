@@ -27,7 +27,7 @@ class GioHangController extends Controller
     private $vnp_TmnCode = "8EZMZPIJ";
     private $vnp_HashSecret = "OKBCLDCSTLJIAUGMZKPJCRITTTBJAITY";
     private $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    private $vnp_Returnurl = "http://127.0.0.1:8000/thanh-toan-hoa-don";
+    private $vnp_Returnurl = "/thanh-toan-hoa-don";
 
     public function __construct(
         GioHangRepository $GioHang,
@@ -464,6 +464,16 @@ class GioHangController extends Controller
         return $this->KhachHang->CheckSdt($sdt);
     }
 
+    function urlSERVER(){
+        if(isset($_SERVER['HTTPS'])){
+            $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+        }
+        else{
+            $protocol = 'http';
+        }
+        return $protocol . "://" . $_SERVER['HTTP_HOST'];
+    }
+
     public function thanhtoandonhang(ThanhToan $request)
     {
         $sdt = $request->phonenumber;
@@ -574,7 +584,7 @@ class GioHangController extends Controller
 
     public function vnpayments(ThanhToan $request)
     {
-
+        $sever=$this->urlSERVER().$this->vnp_Returnurl;
         session()->get("requestAll", []);
         session()->put("requestAll", $request->all());
         $vnp_TxnRef = date('YmdHis'); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
@@ -597,7 +607,7 @@ class GioHangController extends Controller
             "vnp_OrderType" => $request->order_type,//loaithanhtoan
             "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $this->vnp_TmnCode,
-            "vnp_ReturnUrl" => $this->vnp_Returnurl,//link trả về
+            "vnp_ReturnUrl" => $sever,//link trả về
             "vnp_TxnRef" => $vnp_TxnRef//mã đơn hàng
         );
 

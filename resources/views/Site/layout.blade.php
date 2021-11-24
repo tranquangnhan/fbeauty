@@ -52,6 +52,7 @@
 
         </div>
     </div>
+
     @if ($pathActive != 'trang-chu')
         @include('Site.components.header-2')
     @else
@@ -69,8 +70,6 @@
 
     @include('Site.components.modal-giohang')
     <input type="hidden" name="" id="domain" value="{{URL::to('/')}}">
-
-
 </body>
 
 </html>
