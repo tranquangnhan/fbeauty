@@ -19,11 +19,13 @@ use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\SanPhamChiTietController;
 use App\Http\Controllers\Admin\ThongkeController;
 use App\Http\Controllers\Admin\DatLichController;
+use App\Http\Controllers\Admin\DatLichRemakeController;
 use App\Http\Controllers\Admin\LienHeController;
 
 use App\Http\Controllers\Site\GioHangController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\YeuThichController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -98,15 +100,10 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
 
     Route::resource('lieutrinh', LieuTrinhController::class);
 
-<<<<<<< HEAD
     Route::resource('lienhe', LienHeController::class);
 
     Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
     Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
-=======
-    Route::put('editnamedv', [LieuTrinhController::class, 'editNameDv']);
-    Route::post('editimglieutrinh', [LieuTrinhController::class, 'editImgLieuTrinh']);
->>>>>>> 51bd45d968ec6ff48c50054448210209150926b6
 
     Route::get('khachhang/detail/{id}', [KhachHangController::class, 'detailKhachHang']);
     Route::post('khachhang/themlieutrinh/{id}/store', [KhachHangController::class, 'storeLieuTrinh']);
@@ -114,6 +111,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
 
     Route::get('khachhang/lieutrinh/{id}/edit', [LieuTrinhController::class, 'editLieuTrinhChiTiet']);
     Route::patch('khachhang/lieutrinh/{id}/update', [KhachHangController::class, 'updateLieuTrinh']);
+
+    Route::resource('datlichremake', DatLichRemakeController::class);
 
     /**
      *1: Lấy DỊch vụ đến Hóa đơn
@@ -190,13 +189,10 @@ Route::group(['prefix' => '/'], function () {
     Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
     Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
     Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
-<<<<<<< HEAD
-    
+
     Route::post('storeLienHe', 'App\Http\Controllers\Site\HomeController@storeLienHe');
-=======
     Route::get('/capnhatgiasession/{gia}', [GioHangController::class, 'capnhatgiasession']);
     Route::get('/capnhatgiamgiasession/{gia}', [GiamGiaController::class, 'capnhatgiamgiasession']);
->>>>>>> 51bd45d968ec6ff48c50054448210209150926b6
     /**
      *Thanh toán
      */

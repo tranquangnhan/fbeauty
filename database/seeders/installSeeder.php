@@ -619,10 +619,9 @@ class installSeeder extends Seeder
             Động tác 2: Sử dụng ngón cái và cạnh lòng bàn tay bóp mạnh từ khớp vai ra đầu vai.
 
             Động tác 3: Lấy mu bàn tay day nhẹ phần gáy đến cổ. Động tác này thực hiện từ 1 đến 2 phút.
-<<<<<<< HEAD
-            
-            Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.            
-            ','trangthai' => '1'], 
+
+            Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.
+            ','trangthai' => '1'],
 
             ['id'=>8,'iddm' => '1', 'img' => 'chamsocdamat.jpg', 'name' => 'Chăm sóc da mặt bằng tế bào gốc an toàn tại nhà', 'slug' => Str::slug('Chăm sóc da mặt bằng tế bào gốc an toàn tại nhà', '-'),'motangan'=>'Việc chăm sóc da mặt thường xuyên, là việc mà các chị em hiện nay luôn thực hiện. Nhằm giữ cho da mặt luôn trẻ khỏe, mịn màng và giúp các bạn thêm tươi trẻ hơn.',
             'noidung'=>'
@@ -685,7 +684,7 @@ class installSeeder extends Seeder
             Sau khi đã thực hiện vệ sinh da với sữa rửa mặt, bạn bắt đầu thực hiện việc loại  bỏ lớp sừng và tế bào chết bám trên da, bằng sản phẩm tẩy tế bào chết. Việc tẩy tế bào chết giúp da mặt được thông thoáng, trở nên mềm mịn hơn và hấp thụ các chất dinh dưỡng từ các bước sau tốt hơn.
 
             Ngoài ra, việc tẩy tế bào chết còn mang đến công dụng, ngăn ngừa tiết dầu nhiều và hạn chế được tình trạng lỗ chân lông bị tắc nghẽn gây nên mụn.
-            ','trangthai' => '1'], 
+            ','trangthai' => '1'],
 
             ['id'=>9,'iddm' => '1', 'img' => 'csdm2.jpg', 'name' => 'Các bước chăm sóc da mặt hằng ngày giúp da sáng mịn, sạch mụn', 'slug' => Str::slug('Các bước chăm sóc da mặt hằng ngày giúp da sáng mịn, sạch mụn', '-'),'motangan'=>'Không phải tự nhiên mà chúng ta sở hữu được một làn da tươi sáng, mịn màng và khỏe đẹp. Vậy phải làm thế nào để có được làn da tươi sáng, khỏe và rạng rỡ?',
             'noidung'=>'
@@ -745,16 +744,16 @@ class installSeeder extends Seeder
             Cũng tương tự như Toner, tùy vào sở thích cũng như loại da của bạn để chọn mua dưỡng ẩm. Những sản phẩm dưỡng ẩm có chứa Hyaluronic acid là một trong những lựa chọn thích hợp dành cho bạn đấy!
 
             Bước 7: Bảo vệ da với kem chống nắng
-            Nếu thiếu kem chống nắng thì những bước chăm sóc da mặt của bạn cũng trở nên không còn hữu ích. Hãy đảm bảo rằng da bạn được bảo vệ an toàn khi đi ra ngoài. Đừng quên bôi kem chống nắng kể cả những ngày trời có nhiều mây bởi tia UV có khả năng len lỏi qua những đám mây và tiếp xúc với da của bạn. Bạn có thể bỏ qua bước này vào ban đêm. 
-            ','trangthai' => '1'], 
+            Nếu thiếu kem chống nắng thì những bước chăm sóc da mặt của bạn cũng trở nên không còn hữu ích. Hãy đảm bảo rằng da bạn được bảo vệ an toàn khi đi ra ngoài. Đừng quên bôi kem chống nắng kể cả những ngày trời có nhiều mây bởi tia UV có khả năng len lỏi qua những đám mây và tiếp xúc với da của bạn. Bạn có thể bỏ qua bước này vào ban đêm.
+            ','trangthai' => '1'],
 
             ['id'=>10,'iddm' => '1', 'img' => 'csdm3.jpg', 'name' => 'Hướng dẫn chăm sóc da mặt mùa hè', 'slug' => Str::slug('Hướng dẫn chăm sóc da mặt mùa hè', '-'),'motangan'=>'Thời tiết nóng bức, gay gắt đã gây ra vấn đề về da như mụn bọc, cháy nắng, đen sạm,...Để bảo vệ làn da phụ nữ cần biết cách chăm sóc làn da một cách khoa học và hợp lý.',
             'noidung'=>'
             1. Rửa mặt bằng sữa rửa mặt thích hợp
             Rửa mặt bằng nước không thể làm sạch hết các chất nhờn và bụi bẩn trên mặt. Do đó, sữa rửa mặt sẽ giúp loại bỏ mồ hôi, lớp dầu trên da, làm sạch sâu những bụi bẩn, cặn bã và những lớp tế bào da lão hóa từ sâu bên trong. Nhờ đó, giúp ngăn chặn các vấn đề về da đặc biệt là mụn.
-            
+
             Ngoài ra, sửa rửa mặt còn có tác dụng làm sáng da, tạo điều kiện thuận lợi để các dưỡng chất có trong kem dưỡng trắng, kem dưỡng ẩm,... có thể dễ dàng thấm sâu vào bên trong làn da.
-            
+
             Tuy nhiên việc chọn loại sữa rửa mặt phù hợp cũng vô cùng quan trọng. Các bạn gái có làn da nhạy cảm nên chọn các loại sữa rửa mặt dịu nhẹ. Còn nếu sở hữu làn da thiên dầu, dễ nổi mụn, hãy lựa chọn các loại sữa rửa chuyên biệt, với các thành phần có khả năng làm sạch sâu lớp dầu nhờn và những bẩn trên da.
 
             Thời tiết nóng bức, gay gắt đã gây ra vấn đề về da như mụn bọc, cháy nắng, đen sạm,...Để bảo vệ làn da phụ nữ cần biết cách chăm sóc làn da một cách khoa học và hợp lý.
@@ -787,7 +786,7 @@ class installSeeder extends Seeder
             5. Đắp mặt nạ đều đặn
             Đắp mặt nạ dưỡng da nhằm cung cấp dưỡng chất cho làn da, tạo điều kiện cho làn da phục hồi khỏe mạnh và sáng đẹp. Không nhất thiết phải sử dụng đến các loại mặt nạ đắt tiền mà có thể tận dụng các loại trái cây và rau củ quen thuộc, có rất nhiều trong mùa hè như dưa leo, dưa hấu, bơ, cà chua, khoai tây... kết hợp cùng sữa tươi hoặc sữa chua không đường. Các loại mặt nạ dưỡng da từ thiên nhiên không chỉ đem lại hiệu quả trong việc ngăn ngừa mụn và cải thiện làn da cháy nắng trong mùa hè mà còn không gây kích ứng nào làn da, thích hợp cho cả da thường lẫn da dầu nhờn hoặc nhạy cảm.
 
-            ','trangthai' => '1'], 
+            ','trangthai' => '1'],
 
             ['id'=>11,'iddm' => '1', 'img' => 'cmdm4.jpg', 'name' => 'Bí quyết chăm sóc da theo từng độ tuổi', 'slug' => Str::slug('Bí quyết chăm sóc da theo từng độ tuổi', '-'),'motangan'=>'Ở mỗi giai đoạn, độ tuổi khác nhau thì cấu tạo làn da sẽ thay đổi, sự thay đổi này đòi hỏi lộ trình chăm sóc da cũng cần phải thay đổi để có thể phù hợp với nhu cầu của da.',
             'noidung'=>'
@@ -838,21 +837,16 @@ class installSeeder extends Seeder
             Vệ sinh tay sạch sẽ
 
             Vệ sinh tay là cách tốt nhất để chống lại vi khuẩn sinh sôi vào mùa đông, vì chúng có tác dụng làm khô da. Khi làn da bị khô, vi khuẩn sẽ thâm nhập bằng các vết nứt cực nhỏ ở bàn tay.
-            
+
             Nếu bạn thường vệ sinh tay thì hãy chắc rằng bạn sử dụng nước rửa tay ngay khi chúng dần khô để giữ bàn tay bạn mềm mại và sạch vi khuẩn.
-            
+
             Chọn lựa kem dưỡng
-            
+
             Chọn lựa kem dưỡng da phù hợp là yếu tố quan trọng để có làn da đẹp.
             Nếu bạn có hàng tá kem dưỡng thể thì hãy sử dụng chúng thật hiệu quả. Kem dưỡng tốt hơn nước dưỡng thể trong mùa đông bởi vì chúng dày hơn, vì thế dưỡng ẩm tốt hơn.
 
-            ','trangthai' => '1'], 
-
-=======
-
-            Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.
             ','trangthai' => '1'],
->>>>>>> 51bd45d968ec6ff48c50054448210209150926b6
+
         ]);
         DB::table('donhang')->insert([
             ['id'=>1,'idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
