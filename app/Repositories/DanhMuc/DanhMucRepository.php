@@ -29,7 +29,7 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
     }
 
     public function findDanhMucByIdLoai($idLoai){
-        return $this->model->where("loai","=",$idLoai)->get();
+        return $this->model->select("*")->where("loai","=",$idLoai)->get();
     }
     public function dichvugetiddanhmuc(){
         return $this->model->select('danhmuc.*','dichvu.name as namedv','dichvu.dongia as dongiadm','dichvu.id as iddv')
