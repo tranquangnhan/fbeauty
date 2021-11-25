@@ -10,7 +10,6 @@ const removeOTPUrl = serverNameUrl + 'removeOTP';
 const checkOTPUrl = serverNameUrl + 'checkOTP';
 const newPasswordUrl = serverNameUrl + 'newPassword';
 const getBlogsPagiUrl = serverNameUrl + 'getBlogsPagi';
-console.log(getBlogsPagiUrl);
 const skipCreatePasswordUrl = serverNameUrl + 'skipCreatePassword';
 
 const timeMoving = 100;

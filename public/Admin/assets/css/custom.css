@@ -255,3 +255,63 @@ a.editable-click:hover {
     color: #999999;
 }
 
+.ip-color-placeholder-white::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+
+.ip-color-placeholder-white:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: white;
+}
+
+.ip-color-placeholder-white::-ms-input-placeholder { /* Microsoft Edge */
+color: white;
+}
+
+.lich-item {
+    background: #ffffff;
+    padding: 0em 1em;
+    border-bottom: 1.5px dotted gainsboro;
+    transition: .3s;
+}
+
+.time-item {
+    font-size: 1.1em;
+    font-weight: 500;
+    padding-left: 1em;
+    width: 255px;
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+}
+
+.datlich-item {
+    height: 100px;
+    width: 140px;
+    margin: 0em 0em;
+    border-left: 1.5px solid gainsboro;
+    background: none;
+}
+
+.lich-item:hover {
+    color: #6c757d;
+    background-color: #f8f9fa;
+}
+
+.btn-select-lich {
+    opacity: 0;
+    transition: .3s;
+}
+
+.lich-item:hover .btn-select-lich{
+    opacity: 1;
+}
+
+.btn-custom-success {
+    background: #10c469!important;
+    border: none;
+    color: white;
+    padding: 0.5em 1.2em;
+    font-weight: 500;
+    font-size: .9em;
+}

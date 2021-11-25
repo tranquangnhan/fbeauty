@@ -19,10 +19,12 @@ use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\SanPhamChiTietController;
 use App\Http\Controllers\Admin\ThongkeController;
 use App\Http\Controllers\Admin\DatLichController;
+use App\Http\Controllers\Admin\DatLichRemakeController;
 
 use App\Http\Controllers\Site\GioHangController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\YeuThichController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -105,6 +107,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
 
     Route::get('khachhang/lieutrinh/{id}/edit', [LieuTrinhController::class, 'editLieuTrinhChiTiet']);
     Route::patch('khachhang/lieutrinh/{id}/update', [KhachHangController::class, 'updateLieuTrinh']);
+
+    Route::resource('datlichremake', DatLichRemakeController::class);
 
     /**
      *1: Lấy DỊch vụ đến Hóa đơn
