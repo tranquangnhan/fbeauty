@@ -17,7 +17,9 @@
                 <div class="col-xl-6">
                     <div class="form-group">
                         <label for="">Tên người nhận <span class="color-red">(*)</span></label>
-                        <input type="text" name="username" class="form-control form-custom" id="username">
+                        <input type="text" name="username" class="form-control form-custom" id="username"
+                               value="<?php echo(session()->has('khachHang') && session('khachHang') != '')?session()->get('khachHang')->name:"";?>"
+                               placeholder="Tên người nhận hàng.">
                         @error('username')
                         <span class='badge badge-danger'>{{ $message }}</span>
                         @enderror
@@ -26,7 +28,8 @@
                 <div class="col-xl-6">
                     <div class="form-group">
                         <label for="">Số điện thoại <span class="color-red">(*)</span></label>
-                        <input type="number" name="phonenumber" value="<?php echo(session()->has('khachHang') && session('khachHang') != '')?session('khachHang')->sdt:"";?>"  class="form-control form-custom"  id="phonenumber">
+                        <input type="number" name="phonenumber" value="<?php echo(session()->has('khachHang') && session('khachHang') != '')?session('khachHang')->sdt:"";?>"
+                               class="form-control form-custom"  id="phonenumber" placeholder="Số điện thoại của bạn.">
                         @error('phonenumber')
                         <span class='badge badge-danger'>{{ $message }}</span>
                         @enderror
@@ -35,7 +38,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Địa chỉ giao hàng <span class="color-red">(*)</span></label>
-                        <input type="text" name="diachi" class="form-control form-custom" id="diachi">
+                        <input type="text" name="diachi" class="form-control form-custom" id="diachi" placeholder="Nhập địa chỉ nơi ở của bạn.">
                         @error('diachi')
                         <span class='badge badge-danger'>{{ $message }}</span>
                         @enderror
@@ -97,7 +100,7 @@
                        name="txtexpire" type="hidden" value="<?php echo $expire; ?>"/>
                 <div class="form-group">
                     <label for="order_desc">Nội dung thanh toán</label>
-                    <textarea class="form-control" cols="20" id="note" name="vnpay_note" rows="2" placeholder="Noi dung thanh toan">Thanh toán</textarea>
+                    <textarea class="form-control" cols="20" id="note" name="vnpay_note" rows="2" placeholder="Noi dung thanh toan">Thanh toán đơn hàng</textarea>
                 </div>
                 <div class="form-group">
                     <label for="bank_code">Ngân hàng</label>

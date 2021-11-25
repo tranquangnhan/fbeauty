@@ -15,6 +15,7 @@ class BlogModel extends Model
         'img',
         'slug',
         'iddm',
+        'luotxem',
         'motangan',
         'noidung',
         'trangthai'

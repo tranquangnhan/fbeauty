@@ -1,7 +1,7 @@
 <div class="nav-box container">
     <nav class="navbar container navbar-expand-lg navbar-light background-color-none p-0">
         <div class="pl-0 flex-grow-1">
-            <a class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
+            <a href="/trang-chu" class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -20,20 +20,9 @@
                 </li>
                 <li class="nav-item {{ ($pathActive == 'san-pham') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/san-pham">Sản Phẩm</a>
-                    <ul class="dropdown-custom-1">
-{{--                        @foreach ($sanpham as $sanphamitem)--}}
-{{--                        <li class="dropdown-custom-item"><a href="">{{$sanphamitem->name}}</a></li>--}}
-{{--                        @endforeach--}}
-                    </ul>
                 </li>
                 <li class="nav-item {{ ($pathActive == 'dich-vu') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/dich-vu">Dịch Vụ</a>
-                    <ul class="dropdown-custom-1">
-{{--                        @foreach ($dichvu as $dichvuitem)--}}
-{{--                        <li class="dropdown-custom-item"><a href="">{{$dichvuitem->name}}</a></li>--}}
-{{--                        @endforeach--}}
-
-                    </ul>
                 </li>
 
                 <li class="nav-item {{ ($pathActive == 'gioi-thieu') ? 'active' : '' }}">
@@ -44,11 +33,6 @@
                 </li>
                 <li class="nav-item {{ ($pathActive == 'bai-viet') ? 'active' : '' }} fa-dropdown-custom-1">
                     <a class="nav-link" href="/bai-viet">Bài viết</a>
-                    <ul class="dropdown-custom-1">
-{{--                        @foreach ($blog as $blogitem)--}}
-{{--                        <li class="dropdown-custom-item"><a href="">{{$blogitem->name}}</a></li>--}}
-{{--                        @endforeach--}}
-                    </ul>
                 </li>
             </ul>
             <div class="box-icon">
@@ -74,7 +58,7 @@
                 </li>
                 @else
                 <li class="icon-item d-inline-block">
-                    <a class="btn-modal-main" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
+                    <a class="btn-modal-main" id="btn-modal-dangnhaps" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
                 </li>
                 @endif
                 <li class="icon-item d-inline-block hover-scale-1 position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">

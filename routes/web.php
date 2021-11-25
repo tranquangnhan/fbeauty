@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\SanPhamChiTietController;
 use App\Http\Controllers\Admin\ThongkeController;
 use App\Http\Controllers\Admin\DatLichController;
 use App\Http\Controllers\Admin\DatLichRemakeController;
+use App\Http\Controllers\Admin\LienHeController;
 
 use App\Http\Controllers\Site\GioHangController;
 use App\Http\Controllers\Site\HomeController;
@@ -86,8 +87,9 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::post('lich/updateTime/{id}', [LichController::class, 'updateTime']);
     // quản lý cơ sở
     Route::resource('coso', CoSoController::class);
-    Route::post('coso/select-delivery', [CoSoController::class, 'select_delivery']);
-    Route::get('coso/changecoso/{id}', [CoSoController::class, 'changeCoSo']);
+    Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
+    Route::post('coso/{id}/edit/select-delivery', [CoSoController::class,'select_delivery1']);
+    Route::get('coso/changecoso/{id}', [CoSoController::class,'changeCoSo']);
 
     Route::resource('donhang', DonHangController::class);
     Route::resource('donhangchitiet', DonHangController::class);
@@ -98,8 +100,10 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
 
     Route::resource('lieutrinh', LieuTrinhController::class);
 
-    Route::put('editnamedv', [LieuTrinhController::class, 'editNameDv']);
-    Route::post('editimglieutrinh', [LieuTrinhController::class, 'editImgLieuTrinh']);
+    Route::resource('lienhe', LienHeController::class);
+
+    Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
+    Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
 
     Route::get('khachhang/detail/{id}', [KhachHangController::class, 'detailKhachHang']);
     Route::post('khachhang/themlieutrinh/{id}/store', [KhachHangController::class, 'storeLieuTrinh']);
@@ -159,7 +163,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('gioi-thieu', [HomeController::class, "viewGioiThieu"]);
     Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
 
-    Route::get('dich-vu/ten-dich-vu', [HomeController::class, "viewDichVuChiTiet"]);
+    Route::get('dich-vu/{slug}', [HomeController::class, "viewDichVuChiTiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
@@ -185,6 +189,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
     Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
     Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
+
+    Route::post('storeLienHe', 'App\Http\Controllers\Site\HomeController@storeLienHe');
     Route::get('/capnhatgiasession/{gia}', [GioHangController::class, 'capnhatgiasession']);
     Route::get('/capnhatgiamgiasession/{gia}', [GiamGiaController::class, 'capnhatgiamgiasession']);
     /**

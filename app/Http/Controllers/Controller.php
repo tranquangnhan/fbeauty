@@ -94,7 +94,7 @@ class Controller extends BaseController
     public static function caculateGia($donGia,$giamGia){
         $tinh =  $donGia - ($donGia/100 * $giamGia);
         $num = round($tinh, 0);
-        return number_format($num, 0, ',', '.') . ' VNĐ';
+        return number_format($num, 0, ',', ',');
     }
 
     public function getThoiGianDauVaCuoiCuaNgay($ngay) {
