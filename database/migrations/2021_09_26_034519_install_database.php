@@ -36,6 +36,7 @@ class InstallDatabase extends Migration
         Schema::dropIfExists('theodoi');
         Schema::dropIfExists('giohang');
         Schema::dropIfExists('giohangchitiet');
+        Schema::dropIfExists('lienhe');
 
         Schema::create('danhmuc', function (Blueprint $table) {
             $table->increments('id');
@@ -70,6 +71,7 @@ class InstallDatabase extends Migration
             $table->string('motangan',255);
             $table->longText('noidung');
             $table->boolean('trangthai')->default(0)->nullable();
+            $table->integer('luotxem')->default(0);
             $table->foreign('iddm')->references('id')->on('danhmuc');
             $table->timestamps();
         });
@@ -305,6 +307,15 @@ class InstallDatabase extends Migration
             $table->timestamps();
             $table->foreign('idgiohang')->references('id')->on('giohang');
             $table->foreign('idsanphamchitiet')->references('id')->on('sanphamchitiet');
+        });
+
+        Schema::create('lienhe', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('namekh',255);
+            $table->string('email',255);
+            $table->string('sdt',10);
+            $table->string('noidung',255);
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

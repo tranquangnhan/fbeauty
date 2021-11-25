@@ -5,19 +5,15 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogModel extends Model
+class LienHeModel extends Model
 {
     use HasFactory;
-    protected $table = 'blog';
+    protected $table = 'lienhe';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'name',
-        'img',
-        'slug',
-        'iddm',
-        'luotxem',
-        'motangan',
+        'namekh',
+        'email',
+        'sdt',
         'noidung',
-        'trangthai'
     ];
 }

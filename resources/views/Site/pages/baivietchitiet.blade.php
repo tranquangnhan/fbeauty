@@ -116,6 +116,7 @@
 
                         <div class="list-blog-1 mt-4">
                             <div class="row  mb-30px">
+                           
                             @foreach ($viewdetail2 as $data1)
                                 @foreach ($data1->viewdt as $data)
                                 <div class="col-xl-3">

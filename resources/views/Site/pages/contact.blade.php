@@ -13,22 +13,36 @@
                 <i><span class="span-lienhe main-title" style="color:black;font-family: 'Roboto', sans-serif;">Liên hệ </span></i> 
                     <h3 class="h3-title mt-0">Nhân viên tư vấn</h3>
                 </div>
-                <form class="col-11  container-fluid">
+                <form action="/storeLienHe" class="col-11  container-fluid"  enctype="multipart/form-data"
+                    method="post">
+                    {{ csrf_field()}}
                     <div class="form-row">
                     <div class="form-group col-md-6  ">
-                        <input type="text" class="form-control pt-4 pb-4" placeholder="Nhập tên của bạn" id="inputEmail4">
+                        <input type="text" class="form-control pt-4 pb-4" placeholder="Nhập tên của bạn" name="namekh" id="inputname">
+                        @error('namekh')
+                        <span class="badge badge-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="email" placeholder="Nhập email của bạn" class="form-control pt-4 pb-4" id="inputPassword4">
+                        <input type="email" placeholder="Nhập email của bạn" class="form-control pt-4 pb-4" name="email" id="inputemail">
+                        @error('email')
+                            <span class="badge badge-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     </div>
                     <div class="form-group">
-                    <input type="text" class="form-control pt-4 pb-4" id="inputAddress" placeholder="Địa chỉ của bạn">
+                        <input type="number" class="form-control pt-4 pb-4" id="inputphone" name="sdt" placeholder="Số điện thoại ">
+                        @error('sdt')
+                            <span class="badge badge-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" placeholder="Nội dung" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" placeholder="Nội dung" id="inputnoidung" name="noidung" rows="3"></textarea>
+                        @error('noidung')
+                            <span class="badge badge-danger">{{$message}}</span>
+                        @enderror                    
                     </div>
-                    <button type="submit" class="btn text-white button-lienhe mb-5 mt-4 px-5">Liên hệ</button>
+                    <input type="submit"  id="them" onclick="myFunction()"  class="btn text-white button-lienhe mb-5 mt-4 px-5" value="Liên hệ">
                 </form>
             </div>
             <div class="col-6 div2">
@@ -46,7 +60,6 @@
         <div class="coso-lh text-center">
             @foreach ($coso as $item)
             <p><b>{{$item->name}}:</b> {{$item->diachi}}</p>
-            {{-- <p><b>Cơ sở 2:</b> 398 Nguyễn Văn Nghi, Phường 7, Quận Gò Vấp</p> --}}
             @endforeach
         </div>
     </div>
@@ -57,6 +70,12 @@
 </div>
 
 @endsection
+
+
 @section('css')
     <link rel="stylesheet" href="{{ asset('Site/css') }}/contact.css">
+    <script src="{{ asset('Site/js') }}/contact.js"></script>
+<link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'>
+</script>
 @endsection

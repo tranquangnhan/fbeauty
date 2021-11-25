@@ -182,14 +182,14 @@
             <div class="card container border-0">
                 <img src="{{ asset('uploads') }}/ceo4.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">
-                    <div class="text ">Mr.Nhật Vượng</div>
+                    <div class="text ">Mr.Kyungsoo</div>
                 </div>
                 <i><span class="span-lienhe text-center main-title">Phó giám đốc  </span></i>
             </div>
             <div class="card container border-0">
                 <img src="{{ asset('uploads') }}/ceo2.jpg" alt="Avatar" class="image mb-2" style="width:100%">
                 <div class="middle">
-                    <div class="text ">Mrs.Ngọc Lan</div>
+                    <div class="text ">Mrs.Lee Qri</div>
                 </div>
                 <i><span class="span-lienhe text-center main-title">Quản lý nhân sự </span></i>
             </div>
@@ -206,13 +206,13 @@
         <div class="">
             <div class="card-body">
                 <div class="title-small line-before text-center mt-4">
-                    Trải nghiệm cơ sở vật chất
+                    Trải nghiệm cơ sở chất lượng 
                 </div>
                 <div class="text-center">
-                    <h5 class="card-title mb-3" style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Cơ sở vật chất đẳng cấp</h5>
+                    <h5 class="card-title mb-3" style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Cơ sở vật chất hàng đầu</h5>
                 </div>
                 <ul class="mt-4">
-                    <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn bật lên sự ấm cúng, thân thiện cùng nội thất đẳng cấp, tiện nghi FBeauty Spa  là một trong những Spa thẩm mỹ có cơ sở vật chất đạt tiêu chuẩn quốc tế.</li>
+                    <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn bật lên sự ấm cúng, thân thiện cùng nội thất hàng đầu, tiện nghi FBeauty Spa  là một trong những Spa thẩm mỹ có cơ sở vật chất đạt tiêu chuẩn quốc tế.</li>
                     <li>Đồng thời, tất cả các giường thẩm mỹ được thiết kế độc lập, kín đáo mang đến không gian riêng tư, sự thoải mái nhất cho khách hàng khi trải nghiệm các dịch vụ tại FBeauty Spa</li>
                     <li>Máy Móc Trang Thiết Bị </li>
                     <li>Hệ thống công nghệ được trang bị đầy đủ từ cơ bản đến nâng cao. Đồng thời luôn cập nhật và ứng dụng các công nghệ, thiết bị thẩm mỹ được đánh giá tốt nhất, hiện đại hàng đầu thế giới vào các dịch vụ tại Spa. </li>

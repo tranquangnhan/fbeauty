@@ -351,7 +351,7 @@
                                                             <a href="" class="box-danhmuc-1">
                                                             {{$item->name}}</a>
                                                         </div>
-                                                        <span>{{$data->created_at}}"</span>
+                                                        <span>{{$data->created_at}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
@@ -365,7 +365,7 @@
                                     </div>
                                 @endforeach
                                 </div>
-                                <button data-iddm="{{$item->id}}" type="button" class="xemthemblog btn mb-5 mt-3" data-take="0" data-skip="3">Xem thêm</button>
+                                {{-- <button data-iddm="{{$item->id}}" type="button" class="xemthemblog btn mb-5 mt-3" data-take="0" data-skip="3">Xem thêm</button> --}}
 
                             </div>
                         </div>
@@ -493,6 +493,8 @@
                 <div class="row">
                     <div class="col-xl-9">
                         @foreach ($listdanhmuc as $item)
+
+                        @if (count($item->blogbyid) > 0 )
                             <div class="danhmuc-listblog">
                                 <div class="head-blog-item blog-title">
                                     <div class="w-100 text-left d-flex align-items-center">
@@ -518,7 +520,9 @@
                                                                     <a href="" class="box-danhmuc-1">
                                                                         {{$item->name}}</a>
                                                                 </div>
-                                                                <span>{{$data->created_at->format('Y.m.d H:i:s')}}</span>
+                                                                <span>@if ($data->created_at != null)
+                                                                    {{$data->created_at->format('Y.m.d H:i:s')}}</span>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
@@ -535,10 +539,9 @@
                                     </div>
                                 </div>
                             </div>
-
                             <button data-iddm="{{$item->id}}" type="button" class="xemthemblog btn mb-5 mt-3" data-take="3" data-skip="6">Xem thêm</button>
+                    @endif
                         @endforeach
-
                     </div>
                     <div class="col-xl-3">
                         @include('Site.components.box-lienhe')

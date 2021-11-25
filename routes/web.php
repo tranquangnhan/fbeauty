@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\SanPhamChiTietController;
 use App\Http\Controllers\Admin\ThongkeController;
 use App\Http\Controllers\Admin\DatLichController;
+use App\Http\Controllers\Admin\LienHeController;
 
 use App\Http\Controllers\Site\GioHangController;
 use App\Http\Controllers\Site\HomeController;
@@ -95,6 +96,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function (){
     Route::resource('giamgia', GiamGiaController::class);
 
     Route::resource('lieutrinh', LieuTrinhController::class);
+
+    Route::resource('lienhe', LienHeController::class);
 
     Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
     Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
@@ -181,7 +184,8 @@ Route::group(['prefix' => '/'], function (){
     Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
     Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
     Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
-
+    
+    Route::post('storeLienHe', 'App\Http\Controllers\Site\HomeController@storeLienHe');
     /**
     *Thanh toán
      */
