@@ -10,3 +10,8 @@ https://froala.com/
 - 4. php artisan serve
 
 
+- 4. tài khoản thanh toán
+9704198526191432198
+07/15
+NGUYEN VAN A
+123456

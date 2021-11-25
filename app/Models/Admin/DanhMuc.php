@@ -15,4 +15,8 @@ class DanhMuc extends Model
         'slug',
         'loai'
     ];
+    public function danhmuc()
+    {
+       return $this->hasOne(DichVu::class,'iddm','id');
+    }
 }

@@ -112,7 +112,7 @@ class HoaDonSeeder extends Seeder
         $lot = array("Thị", "Văn", "Đức", "Ngọc", "Hoàng", "Minh", "Kim", "Vũ", "Duy");
         $ten = array("Tâm", "Thảo", "Hải", "Hòa", "Hảo", "Thanh", "Tú", "Hậu", "Phương", "Long");
 
-        for ($i = 0; $i < 10000; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $ho_ = Arr::random($ho);
             $randomDay = Carbon::today()->subDays(rand(0, 365 * 4))->toDateTimeString();
             $tongTienSauGiam = rand(100000, 50000000);

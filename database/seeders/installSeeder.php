@@ -135,9 +135,9 @@ class installSeeder extends Seeder
             ['id'=>6,'idcoso'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('giamgia')->insert([
-            ['id'=>1,'name'=>'MAXSALE150','ma'=>'FB01', 'number'=>25000,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'1635699600' ,'ngayhethan'=>'1637341200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'name'=>'MAXSALE150','ma'=>'FB01', 'number'=>5,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'1635699600' ,'ngayhethan'=>'1637341200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
             ['id'=>2,'name'=>'MAXSALE250','ma'=>'FB02', 'number'=>250000,'max'=> 950000,'loai'=>0 ,'ngaytao'=>'1637686800' ,'ngayhethan'=>'1640883600','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>3,'name'=>'MAXSALE200','ma'=>'FB03', 'number'=>150000,'max'=> 200000,'loai'=>1 ,'ngaytao'=>'1635958800' ,'ngayhethan'=>'1638205200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'name'=>'MAXSALE200','ma'=>'FB03', 'number'=>10,'max'=> 200000,'loai'=>1 ,'ngaytao'=>'1635958800' ,'ngayhethan'=>'1638205200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('khachhang')->insert([
             ['id'=>1,'name' => 'Long','idcoso' => 1, 'sdt'=> '0965286055','email'=>'long@gmail.com','password' => bcrypt('123123'), 'active' => 1, 'img' => 'a2c0894d9a3e77602e2f.jpg'],
@@ -520,7 +520,7 @@ class installSeeder extends Seeder
             ['id'=>5,'iddm' => '5', 'img' => 'matxa1.jpg', 'name' => 'CHUẨN BỊ GÌ KHI THỰC HIỆN BODY MASSAGE TẠI NHÀ', 'slug' => Str::slug('CHUẨN BỊ GÌ KHI THỰC HIỆN BODY MASSAGE TẠI NHÀ', '-'),'motangan'=>'Trong mùa giãn cách chúng ta không thể đến spa thì bạn hoàn toàn có thể tự thư giãn bản thân bằng cách thực hiện body massage tại nhà.',
             'noidung'=>'1. Chế độ ăn uống & trang phục khi thực hiện body massage
             Đầu tiên, uống thật nhiều nước, tránh các thức uống chứa cồn & cafein. Bởi rượu sẽ làm cơ thể bạn mất nước dẫn đến tình trạng căng thẳng. Uống nước trước & sau khi massage sẽ giúp giảm đau cho các cơ bắp vì khi đó cơ thể loại bỏ các chất thải, độc tố ra ngoài liên tục trong suốt quá trình body massage.
-            
+
             Bên cạnh đó, hãy ăn nhẹ trước khi massage để chắc chắn rằng bạn không quá đói bụng nhưng hãy nhớ là đừng nên ăn quá nhiều. Một số món ăn mà AN’s Spa gợi ý cho bạn như: sữa chua, trái cây như bưởi, sầu riêng ri 6, bánh dinh dưỡng, bánh biscotti,...
             Bạn nên chọn lựa quần áo rộng rãi & thoải mái. Ngoài ra, mặc trang phục tập thể dục hoặc yoga khi body massage cũng là một ý hay. Trang phục thoải mái giúp bạn có thể di chuyển cơ thể của mình một cách tự do, không bị gò bó. Do đó, hãy lựa chọn trang phục phù hợp để quá trình body massage tại nhà diễn ra suôn sẻ.
 
@@ -558,7 +558,7 @@ class installSeeder extends Seeder
             massage trị liệu
 
             - Ăn súp đậu xanh: Đậu xanh có thể hòa tan và trục xuất độc tố ra khỏi tim bằng phương pháp lợi tiểu & giải nhiệt. Lưu ý khi ăn đậu xanh, nên sử dụng ở dạng lỏng như chè đậu xanh hoặc súp đậu xanh. Ăn súp đậu xanh thường xuyên để độc tố được giải ra bên ngoài.
-            
+
             2. Massage trị liệu giải độc tố ở gan
             Những biểu hiện cho thấy độc tố đang tích tụ ở gan như:
 
@@ -578,7 +578,7 @@ class installSeeder extends Seeder
 
             Mặt bắt đầu xuất hiện nám. Ngoài ra, phụ nữ bắt đầu xuất hiện nám, tàn nhang trên mặt thông thường có hệ tiêu hóa kém.
 
-            Lá lách chịu trách nhiệm bài tiết trong cơ thể, khí hư quá nhiều là biểu hiện của độ ẩm quá mức trong cơ thể. 
+            Lá lách chịu trách nhiệm bài tiết trong cơ thể, khí hư quá nhiều là biểu hiện của độ ẩm quá mức trong cơ thể.
 
             Hơi thở có mùi hôi.
 
@@ -598,27 +598,28 @@ class installSeeder extends Seeder
             2. Head massage, xoa bóp đầu
             Động tác thứ nhất: Khép 2 bàn tay & các đầu ngón tay lại sao cho hơi khum rồi day nhẹ lên thái dương. Sau đó miết nhẹ nhàng từ thái dương vòng qua tai đến sau gáy. Thực hiện động tác này từ 3 đến 5 lần. Đây là cách bóp đầu thư giãn rất phổ biến & khá dễ thực hiện tại nhà.
             Động tác thứ hai: Đặt 2 bàn tay lên trán sao cho lòng bàn tay úp vào trong. Sau đó dùng các ngón tay miết nhẹ từ lông mày sang 2 bên rồi dừng tại huyệt thái dương. Lặp lại động tác này khoảng 6 lần.
-            
+
             Động tác thứ 3: Đặt 2 bàn tay lên trán rồi miết theo đường chéo. Vị trí xuất phát tại 2 hàng lông mày rồi di chuyển lên trán rồi đến đỉnh đầu. Sau đó lấy tay ấn nhẹ lên huyệt bách hội ở đỉnh đầu rồi theo rìa tóc đi đến thái dương, dừng tại đây và day ấn nhẹ.
             3.Head massage bằng cách ấn vào các huyệt trên đỉnh đầu
             Bạn lấy hai ngón tay cái chồng lên nhau, các ngón còn lại thì giữ 2 bên thái dương sau đó ấn ngắt quãng 2,5cm về phía đỉnh đầu. Sau đó tiếp tục thực hiện các động tác tiếp theo. Cách bóp đau đầu này không khó, chỉ cần nghiên cứu tìm hiểu trước sẽ thực hiện được.
-            
+
             Động tác thứ 1: 4 ngón tay khép lại rồi massage  theo hình xoắn ốc từ vị trí xương chẩm về phía sau đầu. Tiếp tục thực hiện xoa bóp toàn bộ da đầu rồi dừng lại. Các bạn có thể lặp lại động tác này nhiều lần.
-            
+
             Động tác 2: Luồn tay và kéo tóc - cách xoa bóp đầu này giảm đau rất hiệu quả. Dùng các ngón tay luồn từ chân tóc trên trán rồi massage toàn bộ da đầu. Sau đó nắm vài lọn tóc & kéo thật nhẹ nhàng. Thực hiện như vậy tình trạng đau đầu sẽ hết.
-            
+
             Động tác thứ 3: Các bạn dùng ngón cái & ngón trỏ xoa bóp từ phần dái tai cho đến đỉnh tai. Thực hiện 2 lần sẽ thấy cơn đau được thuyên giảm.
 
             Động tác thứ 4: Dùng 2 bàn tay áp vào tai sao cho các ngón tay hướng về phía sau gáy. Dùng 4 ngón tác động vào gáy nhẹ nhàng giống như động tác đánh đàn piano. Chỉ cần thực hiện động tác này 36 lần là hết đau đầu.
-            
+
             4. Head massage & xoa bóp cổ vai
             Trong các cách xoa bóp đau đầu đây là cách đem lại hiệu quả không kém. Các bạn chỉ cần thực hiện theo các động tác sau đây:
-            
+
             Động tác 1: Dùng 1 tay hoặc 2 tay xoa bóp từ phần sau cổ. Lưu ý, lòng bàn tay áp sát vào cổ và di chuyển từ phần chân tóc ở gáy xuống đến lưng và sang khớp vai.
-            
+
             Động tác 2: Sử dụng ngón cái và cạnh lòng bàn tay bóp mạnh từ khớp vai ra đầu vai.
-            
+
             Động tác 3: Lấy mu bàn tay day nhẹ phần gáy đến cổ. Động tác này thực hiện từ 1 đến 2 phút.
+<<<<<<< HEAD
             
             Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.            
             ','trangthai' => '1'], 
@@ -847,13 +848,18 @@ class installSeeder extends Seeder
 
             ','trangthai' => '1'], 
 
+=======
+
+            Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.
+            ','trangthai' => '1'],
+>>>>>>> 51bd45d968ec6ff48c50054448210209150926b6
         ]);
         DB::table('donhang')->insert([
-            ['id'=>1,'idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>2,'idkhachhang'=>'2','idgiamgia'=>'2', 'tennguoinhan'=>'Hùng','diachikhachhang'=> '345/3 Tổ 29 , Khu phố 2 , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737032' ,'tongtientruocgiamgia'=>'21000000' ,'tongtiensaugiamgia'=>'20000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'BE','trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>3,'idkhachhang'=>'3','idgiamgia'=>'3', 'tennguoinhan'=>'Ly Ly','diachikhachhang'=> '186 , Phường Thái Hà , Q.Đống Đa , Hà Nội','sdtnguoinhan'=>'0845737033' ,'tongtientruocgiamgia'=>'5000000' ,'tongtiensaugiamgia'=>'5500000','ghichucuakhachhang'=> 'Em sẽ nhận được đơn hàng full tuần nha ạ','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'DHL','trangthai'=>2,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>4,'idkhachhang'=>'4','idgiamgia'=>'2', 'tennguoinhan'=>'Thảo','diachikhachhang'=> '415 Nguyễn Trãi , Phường 7 , Q.5 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'30000000' ,'tongtiensaugiamgia'=>'28000000','ghichucuakhachhang'=> '','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>4,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>5,'idkhachhang'=>'5','idgiamgia'=>'1', 'tennguoinhan'=>'Thảo Mai','diachikhachhang'=> 'Tầng 1, 28 Seongam-ro 13-gil, Mapo-gu, Seoul','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'35000000' ,'tongtiensaugiamgia'=>'30000000','ghichucuakhachhang'=> '주문은 이번주말에 받아볼께요 감사합니다','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'FEDEX','trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>2,'idkhachhang'=>'2','idgiamgia'=>'2', 'tennguoinhan'=>'Hùng','diachikhachhang'=> '345/3 Tổ 29 , Khu phố 2 , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737032' ,'tongtientruocgiamgia'=>'21000000' ,'tongtiensaugiamgia'=>'20000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'BE','trangthai'=>1,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'idkhachhang'=>'3','idgiamgia'=>'3', 'tennguoinhan'=>'Ly Ly','diachikhachhang'=> '186 , Phường Thái Hà , Q.Đống Đa , Hà Nội','sdtnguoinhan'=>'0845737033' ,'tongtientruocgiamgia'=>'5000000' ,'tongtiensaugiamgia'=>'5500000','ghichucuakhachhang'=> 'Em sẽ nhận được đơn hàng full tuần nha ạ','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'DHL','trangthai'=>2,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>4,'idkhachhang'=>'4','idgiamgia'=>'2', 'tennguoinhan'=>'Thảo','diachikhachhang'=> '415 Nguyễn Trãi , Phường 7 , Q.5 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'30000000' ,'tongtiensaugiamgia'=>'28000000','ghichucuakhachhang'=> '','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>4,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>5,'idkhachhang'=>'5','idgiamgia'=>'1', 'tennguoinhan'=>'Thảo Mai','diachikhachhang'=> 'Tầng 1, 28 Seongam-ro 13-gil, Mapo-gu, Seoul','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'35000000' ,'tongtiensaugiamgia'=>'30000000','ghichucuakhachhang'=> '주문은 이번주말에 받아볼께요 감사합니다','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'FEDEX','trangthai'=>0,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('sanpham')->insert([
             ['id'=>1,'iddanhmuc'=>1,'name'=>'LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', 'slug'=> Str::slug('LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', '-'),'img'=>'["profile-photo-1635519235.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Mặt nạ “siêu dưỡng da” được ngâm trong 30ml The Treatment Lotion ngay lập tức mang đến sự tăng cường hydrat hoá giúp chữa lành,','noidung'=>'Mặt nạ tấm với công nghệ ôm sát của Nhật Bản và hàng triệu sợi vi mô tinh khiết độc đáo tăng cường sự tập trung của quá trình hydrat hóa chữa lành, làm rạng rỡ, đầy đặn và truyền vào da một nguồn năng lượng mạnh mẽ có tác dụng hồi sinh làn da chỉ trong tíc tắc.

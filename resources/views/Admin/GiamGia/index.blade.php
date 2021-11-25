@@ -159,10 +159,10 @@
                                             <td class="d-flex">
                                                 <a href="{{route("giamgia.edit",$row->id)}}" class="btn btn-primary mr-2" data-toggle="tooltip" data-placement="right" title="Sửa" ><i
                                                     class="fa fa-edit"  style="color: white;"></i></a>
-                                                <form action="{{route('giamgia.destroy',$row->id)}}"  method="post">
+                                                <form action="{{route('giamgia.destroy',$row->id)}}"  method="post"  >
                                                     @csrf
                                                     {!!method_field('delete')!!}
-                                                    <button  onclick="return iconfirm()" type="submit"  class="btn btn-danger"><i class=" dripicons-trash"></i></button>
+                                                    <button  onclick="return iconfirm()" type="submit"  class="btn btn-danger" title="Xóa" ><i class=" dripicons-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

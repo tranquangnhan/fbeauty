@@ -12,7 +12,6 @@ class NhanVien extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'idcoso',
-        'iddichvu',
         'email',
         'password',
         'role',

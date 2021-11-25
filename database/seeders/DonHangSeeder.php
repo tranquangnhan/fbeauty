@@ -51,7 +51,7 @@ class DonHangSeeder extends Seeder
         $lot = array("Thị", "Văn", "Đức", "Ngọc", "Hoàng", "Minh", "Kim", "Vũ", "Duy");
         $ten = array("Tâm", "Thảo", "Hải", "Hòa", "Hảo", "Thanh", "Tú", "Hậu", "Phương", "Long");
 
-        for ($i = 0; $i < 10000; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $ho_ = Arr::random($ho);
             $randomDay = Carbon::today()->subDays(rand(0, 365 * 4))->toDateTimeString();
             $tongTienSauGiam = rand(100000, 50000000);
@@ -64,7 +64,7 @@ class DonHangSeeder extends Seeder
 
             $hoTenRandom = $ho_ . ' ' . $lot_ . ' ' . $ten_;
             DB::table('donhang')->insert([
-                ['idkhachhang' => rand(1, 6), 'idgiamgia'=> '1', 'tennguoinhan' => $hoTenRandom, 'diachikhachhang'=> 'Công viên phần mềm Quang Trung, TP.HCM','sdtnguoinhan'=>'0845737036', 'tongtientruocgiamgia' => $tongTienTruocGiam, 'tongtiensaugiamgia' => $tongTienSauGiam, 'phuongthucthanhtoan' => 'VNPAY', 'phuongthucgiaohang' => 'GRAP', 'trangthai' => 4, 'created_at' => $randomDay],
+                ['idkhachhang' => rand(1, 6), 'idgiamgia'=> '1', 'tennguoinhan' => $hoTenRandom, 'diachikhachhang'=> 'Công viên phần mềm Quang Trung, TP.HCM','sdtnguoinhan'=>'0845737036', 'tongtientruocgiamgia' => $tongTienTruocGiam, 'tongtiensaugiamgia' => $tongTienSauGiam, 'phuongthucthanhtoan' => 'VNPAY', 'phuongthucgiaohang' => 'GRAP', 'trangthai' => 4, 'trangthaithanhtoan'=>0,'created_at' => $randomDay],
             ]);
         }
     }

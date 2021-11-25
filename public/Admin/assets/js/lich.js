@@ -30,7 +30,7 @@ function showgio(id, res) {
         '<table class="table table-bordered mt-1">\n' +
         '<thead>\n' +
         '<tr class="text-center">\n' +
-        '<th scope="col">Số lượng khách</th>\n' +
+        '<th scope="col">Số lượng khách (max=1000000)</th>\n' +
         '<th scope="col">Giờ \n' +
         '</th>\n' +
         '<th scope="col">Chọn tất cả ( nghỉ )' +
@@ -47,7 +47,7 @@ function showgio(id, res) {
             var check = "";
         }
         span += '<tr class="text-center">\n' +
-            ' <td><input type="number" class="form-control border border-secondary" min="0" name="soluongkhach" value="' + res[i].soluongkhach + '" id="soluongkhach' + res[i].id + '"></td>\n' +
+            ' <td><input type="number" class="form-control border border-secondary" min="0" max="1000000" name="soluongkhach" value="' + res[i].soluongkhach + '" id="soluongkhach' + res[i].id + '"></td>\n' +
             ' <td><input type="text" class="form-control" value="' + res[i].gio + '" disabled></td>\n' +
             ' <td><input type="checkbox" name="trangthai" class="trangthai' + res[i].idcoso + '" value="' + res[i].trangthai + '" id="trangthai' + res[i].id + '" ' + check + '></td>\n' +
             ' <td><button class="btn btn-warning" onclick="submitForm(' + res[i].id + ')" id="capnhat">Cập nhật</button></td>\n' +
@@ -94,7 +94,7 @@ function checkAll(checkbox) {
             iziToast.success({
                 title: 'Cập nhật thành công !!!',
                 message: '',
-                position: 'topRight',
+                position: 'bottomRight',
                 backgroundColor: 'green',
                 titleColor: 'white',
                 messageColor: 'white',
@@ -107,35 +107,60 @@ function checkAll(checkbox) {
 
 
 function submitForm(id1) {
-
     var soluong = document.getElementById("soluongkhach" + id1).value;
-    var tt = document.getElementById("trangthai" + id1);
-    if (tt.checked === true) {
-        var trangthai = 1;
-    } else {
-        var trangthai = 0;
-    }
-    $.ajax({
-        url: document.URL + '/uplich/' + id1,
-        type: "GET",
-        data:
-            {
-                id: id1,
-                soluong: soluong,
-                trangthai: trangthai,
-            },
-        success: function (response) {
-            iziToast.success({
-                title: 'Cập nhật thành công !!!',
-                message: '',
-                position: 'topRight',
-                backgroundColor: 'green',
-                titleColor: 'white',
-                messageColor: 'white',
-                iconColor: 'white',
-            });
+    if (Number(soluong)!="" && Number(soluong)!=0 &&Number(soluong) <= 1000000){
+        var tt = document.getElementById("trangthai" + id1);
+        if (tt.checked === true) {
+            var trangthai = 1;
+        } else {
+            var trangthai = 0;
         }
-    });
+        $.ajax({
+            url: document.URL + '/uplich/' + id1,
+            type: "GET",
+            data:
+                {
+                    id: id1,
+                    soluong: soluong,
+                    trangthai: trangthai,
+                },
+            success: function (response) {
+                if (response==1){
+                    iziToast.success({
+                        title: 'Cập nhật thành công !!!',
+                        message: '',
+                        position: 'bottomRight',
+                        backgroundColor: 'green',
+                        titleColor: 'white',
+                        messageColor: 'white',
+                        iconColor: 'white',
+                    });
+                }
+                else {
+                    iziToast.warning({
+                        title: 'Cập nhật thất bại !!!',
+                        message: '',
+                        position: 'bottomRight',
+                        backgroundColor: 'oranged',
+                        titleColor: 'black',
+                        messageColor: 'black',
+                        iconColor: 'black',
+                    });
+                }
+            }
+        });
+    }
+    else {
+        iziToast.warning({
+            title: 'Cập nhật thất bại !!!',
+            message: '',
+            position: 'bottomRight',
+            backgroundColor: 'oranged',
+            titleColor: 'black',
+            messageColor: 'black',
+            iconColor: 'black',
+        });
+    }
 }
 
 

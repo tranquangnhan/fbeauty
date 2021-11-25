@@ -55,33 +55,33 @@
                                                 <div class="form-group">
                                                     <label for="">  Chọn Tỉnh/Thành Phố</label><span style="color:red;"> (*)</span>
                                                     <div>
-                                                    <select class="form-control input-sm m-bot15 choose city" name="city" id="city"  >
-                                                        <option value="">-----{{__('Chọn Thành Phố')}}-----</option>
-                                                        @foreach($city as $key => $ci)
-                                                        <option value="{{$ci->matp}}">{{$ci->name_city}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                </div>
-                                                <div class="form-group">
-                                                <div class="">
-                                                <label class="">{{__('Chọn Quận/Huyện')}} <span style="color:red;"> (*)</span></label>
-                                                    <div>
-                                                    <select  name="province" id="province" class="form-control input-sm m-bot15 choose province"  >
-                                                        <option value="">-----{{__('Chọn Quận/Huyện')}}-----</option>
-                                                    </select>
-                                                </div>
-                                                 </div>
+                                                        <select class="form-control input-sm m-bot15 choose city" name="city" id="city"  >
+                                                            <option value="">-----{{__('Chọn Thành Phố')}}-----</option>
+                                                            @foreach($city as $key => $ci)
+                                                            <option value="{{$ci->matp}}">{{$ci->name_city}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
-                                                <div class="">
-                                                <label class="">{{__('Chọn Xã/Phường')}} <span style="color:red;"> (*)</span></label>
-                                                    <div>
-                                                    <select name="wards" id="wards" class=" form-control input-sm m-bot15 wards" >
-                                                        <option value="">-----{{__('Chọn Xã/Phường')}}-----</option>
-                                                    </select>
+                                                    <div class="">
+                                                        <label class="">{{__('Chọn Quận/Huyện')}} <span style="color:red;"> (*)</span></label>
+                                                        <div>
+                                                            <select  name="province" id="province" class="form-control input-sm m-bot15 choose province"  >
+                                                                <option value="">-----{{__('Chọn Quận/Huyện')}}-----</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div class="form-group">
+                                                    <div class="">
+                                                        <label class="">{{__('Chọn Xã/Phường')}} <span style="color:red;"> (*)</span></label>
+                                                        <div>
+                                                            <select name="wards" id="wards" class=" form-control input-sm m-bot15 wards" >
+                                                                <option value="">-----{{__('Chọn Xã/Phường')}}-----</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                         </div>
                                         <div class="modal-footer">
@@ -122,7 +122,7 @@
                                                 <form action="{{route('coso.destroy',$row->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-danger" title="Xóa" ><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

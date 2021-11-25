@@ -122,9 +122,17 @@ function AddYeuThich(id) {
         success: function (datayeuthich) {
             if (datayeuthich == 0) {
                 $("#tym"+id).removeClass('active');
-            } else {
+            }
+            else if (datayeuthich == 2) {
+                $("#tym"+id).addClass('active');
+                // document.getElementById("myCheck").click();
+                $('#btn-modal-dangnhaps').click();
+                // $('#myCheck').trigger('click');
+            }
+            else {
                 $("#tym"+id).addClass('active');
             }
+            // console.log(datayeuthich)
         }
     });
 

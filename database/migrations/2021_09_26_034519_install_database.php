@@ -240,6 +240,7 @@ class InstallDatabase extends Migration
             $table->char('phuongthucthanhtoan',5);
             $table->char('phuongthucgiaohang',5);
             $table->boolean('trangthai');
+            $table->boolean('trangthaithanhtoan')->default(0);
             $table->foreign('idkhachhang')->references('id')->on('khachhang');
             $table->foreign('idgiamgia')->references('id')->on('giamgia');
             $table->timestamps();

@@ -7,7 +7,16 @@
 
             <!-- Start Content-->
             <div class="container-fluid">
-
+                @if(session('thanhcong'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{session('thanhcong')}}
+                    </div>
+                @endif
+                @if(session('thatbai'))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{session('thatbai')}}
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-sm-9 bg-white">
                         <p class="header-title mt-1">Ảnh khách hàng</p>
@@ -23,8 +32,7 @@
                                     <div class="dropzone">
                                         <img src="{{asset("Admin/assets/images/iconupload.png")}}"
                                              class="upload-icon w-75"/>
-                                        <input type="file" id="files" name="photos[]" class="upload-input" multiple
-                                               required/>
+                                        <input type="file" id="files" name="photos[]" class="upload-input" multiple required/>
                                     </div>
                                 </div>
                             </div>
@@ -47,21 +55,22 @@
                                     </div>
                                 </div>
 
-                                <div class="profile-info-detail overflow-hidde text-center">
+                                <div class="profile-info-detail  overflow-hidden">
+                                    <div class="text-center">
                                     <h4 class="m-0">{{auth()->user()->name}}</h4>
                                     <p class="text-muted">
                                         <i class="mdi mdi-circle text-success"></i>
                                         <?php echo (auth()->user()->avatar == 1) ? 'Admin' : 'Nhân viên';?></p>
-
-                                    <div class="row float-left">
+                                    </div>
+                                    <br>
+                                    <div class="row ">
                                         <div class="col-md-3">Email:</div>
                                         <div class="col-md-9">{{auth()->user()->email}}</div>
                                     </div>
-                                    <div class="row float-left">
-                                        <div class="col-md-4">SDT:</div>
-                                        <div class="col-md-8"> {{auth()->user()->sdt}}</div>
+                                    <div class="row">
+                                        <div class="col-md-3">SDT:</div>
+                                        <div class="col-md-9">{{auth()->user()->sdt}}</div>
                                     </div>
-
 
                                 </div>
 
@@ -75,7 +84,7 @@
                         <p class="mt-2 text-success">Ảnh của khách hàng đã tải lên ---></p>
 
                         <div class="port mb-2">
-                            <div class="portfolioContainer" style="overflow: scroll">
+                            <div class="portfolioContainer" style="overflow-y: scroll; overflow-x: hidden;">
                                 <?php $nv = json_decode($nhanvien->img); ?>
                                 @if(is_array($nv))
 
@@ -85,7 +94,7 @@
                                             <div class="gal-detail thumb position-relative showdel">
                                                 <a href="{{asset('uploads/khachhang')}}/{{ $ns}}" class="image-popup" title="Screenshot-1">
                                                     <img src="{{asset('uploads/khachhang')}}/{{ $ns}}"
-                                                         style="height: 250px; object-fit: cover"
+                                                         style="height: 250px; object-fit: cover;"
                                                          class="thumb-img img-fluid overflow-hidden w-100 hoverbg"
                                                          alt="work-thumbnail">
                                                     <a href="{{URL::to("quantri/nhanvien/xoaImgKH", auth()->user()->id)}}/phantu/{{$id}}" class="p-1 bg-primary rounded position-absolute btnxoa" style="right: 7%; top: 7%;"  data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash text-white"></i></a>
@@ -105,6 +114,17 @@
         </div> <!-- content -->
 
         <script>
+            $("#ktform").validate({
+                rules: {
+                    files: {required: true,}
+                },
+                messages: {
+                    files: {
+                        required: "<span class='badge badge-danger'>Bạn chưa chọn ảnh</span>"
+                    },
+                }
+            });
+
             document.getElementById("files").onchange = function () {
                 var ListImages = document.getElementById("files").files;
                 if (ListImages.length > 0) {
@@ -124,16 +144,7 @@
                 }
             };
 
-            $("#ktform").validate({
-                rules: {
-                    files: {required: true,}
-                },
-                messages: {
-                    files: {
-                        required: "<small class='badge badge-danger'>Bạn chưa chọn ảnh</small>"
-                    },
-                }
-            });
+
         </script>
 
 

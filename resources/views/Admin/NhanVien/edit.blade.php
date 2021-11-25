@@ -85,22 +85,33 @@
                                                 </label>
                                             </div>
 
+                                           
                                             <div class="form-group">
-                                                <label class="w-100" for="gioitinh">Giới tính:(<span
-                                                        class="text-danger">*</span>)
-                                                    <select class="form-control select2" name="gioitinh">
-                                                        <option
-                                                            value="1" <?php echo ($nhanvien->gioitinh == 1) ? 'selected' : '';?>>
-                                                            Nam
-                                                        </option>
-                                                        <option
-                                                            value="0" <?php echo ($nhanvien->gioitinh == 0) ? 'selected' : '';?>>
-                                                            Nữ
-                                                        </option>
-                                                    </select>
-                                                </label>
-                                            </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                       <div class="checkbox">
+                                                            <input id="remember-1" type="checkbox" {{$nhanvien->active === 1 ? 'checked' : '' }} name="active" value="1" data-parsley-multiple="remember-1">
+                                                            <label for="remember-1"> Kích Hoạt ? </label>
+                                                            @if ($errors->has('kichhoat'))
+                                                                <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('active')[0]}}</li></ul>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-md-6">
+                                                            <div class="checkbox">
+                                                                <input id="remember-2" type="checkbox" {{$nhanvien->trangthai === 1 ? 'checked' : '' }} name="trangthai" value="1" data-parsley-multiple="remember-2">
+                                                                <label for="remember-2">  Hoạt Động ? </label>
+                                                                @if ($errors->has('trangthai'))
+                                                                    <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('trangthai')[0]}}</li></ul>
+                                                                @endif
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                            </div>   
+                                           
+                                           
                                             <div class="form-group">
+                                
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <label class="w-100" for="files">Avatar nhân
@@ -130,20 +141,8 @@
 
                                         </div>
                                         <div class="col-md-6">
-                                           
                                             <div class="form-group">
-                                                <label class="w-100" for="dichvu">Chọn dịch vụ:(<span
-                                                        class="text-danger">*</span>)
-                                                    <select class="form-control select2" name="dichvu">
-                                                        @foreach ($dichvu as $item)
-                                                            <option
-                                                                value="{{$item['id']}}" <?php echo ($nhanvien->iddichvu == $item['id']) ? 'selected' : '';?>>{{$item['name']}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="w-100" for="role">Role:(<span
+                                                <label class="w-100" for="role">Chức vụ:(<span
                                                         class="text-danger">*</span>)
                                                     <select class="form-control select2" name="role">
                                                         <option
@@ -158,16 +157,16 @@
                                                 </label>
                                             </div>
                                             <div class="form-group">
-                                                <label class="w-100" for="active">Active:(<span
+                                                <label class="w-100" for="gioitinh">Giới tính:(<span
                                                         class="text-danger">*</span>)
-                                                    <select class="form-control select2" name="active">
+                                                    <select class="form-control select2" name="gioitinh">
                                                         <option
-                                                            value="1" <?php echo ($nhanvien->active == 1) ? 'selected' : '';?>>
-                                                            Kích hoạt
+                                                            value="1" <?php echo ($nhanvien->gioitinh == 1) ? 'selected' : '';?>>
+                                                            Nam
                                                         </option>
                                                         <option
-                                                            value="0" <?php echo ($nhanvien->active == 0) ? 'selected' : '';?>>
-                                                            Chưa kích hoạt
+                                                            value="0" <?php echo ($nhanvien->gioitinh == 0) ? 'selected' : '';?>>
+                                                            Nữ
                                                         </option>
                                                     </select>
                                                 </label>
@@ -191,24 +190,10 @@
                                                     </select>
                                                 </label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="w-100" for="trangthai">Trạng thái:(<span
-                                                        class="text-danger">*</span>)
-                                                    <select class="form-control select2" name="trangthai">
-                                                        <option
-                                                            value="1" <?php echo ($nhanvien->trangthai == 1) ? 'selected' : '';?>>
-                                                            Hoạt động
-                                                        </option>
-                                                        <option
-                                                            value="0" <?php echo ($nhanvien->trangthai == 0) ? 'selected' : '';?>>
-                                                            Không hoạt động
-                                                        </option>
-                                                    </select>
-                                                </label>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                  
                                 <div class="modal-footer">
                                     <a href="{{route("nhanvien.index")}}" type="button"
                                        class="btn btn-light waves-effect"
