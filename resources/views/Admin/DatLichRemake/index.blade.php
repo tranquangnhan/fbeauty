@@ -88,10 +88,31 @@
                                                             </div>
 
                                                             <div class="list-datlich d-flex">
+
                                                                 @for ($i = 0; $i < $item->soluongkhach; $i++)
                                                                     <div class="datlich-item">
+                                                                        @if (isset($item->listDatLich))
+                                                                            @if (isset($item->listDatLich[$i]))
+                                                                                <div class="header-item">
+                                                                                    <b>{{ $item->listDatLich[$i]->idkhachhang }}</b>
+                                                                                </div>
 
+                                                                                <div class="body-item">
+                                                                                    <div class="name-nhanvien">{{ $item->listDatLich[$i]->idnhanvien }}</div>
+                                                                                    <li class="limit-text-row-1 ">
+                                                                                        <a href="" class="cl-black">{{ $item->listDatLich[$i]->iddichvu }}</a>
+                                                                                    </li>
+                                                                                </div>
+
+                                                                                <div class="footer-item">
+                                                                                    <div class="cirle-button">
+                                                                                        <i class="fas fa-plus-circle"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                        @endif
                                                                     </div>
+
                                                                 @endfor
                                                             </div>
                                                         </div>
