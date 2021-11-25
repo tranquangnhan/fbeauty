@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DichVu;
 use App\Http\Requests\KhachHang;
 use App\Http\Requests\LieuTrinh;
+use App\Models\Admin\DichVuModel;
 use App\Models\Admin\HoaDonModel;
+use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
@@ -25,7 +28,8 @@ class KhachHangController extends Controller
         NhanVienRepository $NhanVien,
         LieuTrinhChiTietRepository $LieuTrinhChiTiet,
         HoaDonRepository $HoaDon,
-        HoaDonChiTietRepository $HoaDonChiTiet
+        HoaDonChiTietRepository $HoaDonChiTiet,
+        DatLichRepository $DatLich
         )
     {
         $this->KhachHang = $KhachHang;
@@ -34,6 +38,7 @@ class KhachHangController extends Controller
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
         $this->HoaDon = $HoaDon;
         $this->HoaDonChiTiet = $HoaDonChiTiet;
+        $this->DatLich = $DatLich;
     }
     /**
      * Display a listing of the resource.
@@ -181,7 +186,9 @@ class KhachHangController extends Controller
         $NhanVien = $this->NhanVien->getAll();
         $countLieuTrinhChiTiet = count($LieuTrinh);
         $DichVuDaSuDung = $this->HoaDonChiTiet->findDichVuByIdKhachHang($id);
-        return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh','NhanVien','countLieuTrinhChiTiet','DichVuDaSuDung'));
+        $DatLich = $this->DatLich->findDatLichByIdKhachHangInnerJoin($KhachHang->id);
+
+        return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh','NhanVien','countLieuTrinhChiTiet','DichVuDaSuDung','DatLich'));
     } 
 
     public function storeLieuTrinh(LieuTrinh $request){
@@ -243,4 +250,14 @@ class KhachHangController extends Controller
             return false;
         }
     }
+
+    public static function findDichVuByIds($ids){
+        $ids = json_decode($ids);
+        $array = [];
+        for ($i=0; $i < count($ids); $i++) { 
+            array_push($array,DichVuModel::find($ids[$i])->name);
+        }
+        return implode(", ",$array);
+    }
+
 }

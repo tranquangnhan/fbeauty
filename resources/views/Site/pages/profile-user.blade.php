@@ -744,7 +744,7 @@
                                                                                                 <div class="uk-card-body">
                                                                                                     <div class="list-group">
                                                                                                         <label class="">Dịch vụ sử dụng</label>
-                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
+                                                                                                        <div class="item">1.test Quang Nhân</div>
                                                                                                         <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
                                                                                                     </div>
 
@@ -807,7 +807,7 @@
                                                                                                         <label class="">Ghi chú của tiến độ</label>
                                                                                                         <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
                                                                                                     </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
+                                                                                                   
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -858,7 +858,6 @@
                                                                                                         <label class="">Ghi chú của tiến độ</label>
                                                                                                         <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
                                                                                                     </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -909,7 +908,7 @@
                                                                                                         <label class="">Ghi chú của tiến độ</label>
                                                                                                         <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
                                                                                                     </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
+                                                                                                    
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -960,7 +959,7 @@
                                                                                                         <label class="">Ghi chú của tiến độ</label>
                                                                                                         <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
                                                                                                     </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
+                                                                                                    
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -1011,7 +1010,7 @@
                                                                                                         <label class="">Ghi chú của tiến độ</label>
                                                                                                         <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
                                                                                                     </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
+                                                                                                   
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -1260,8 +1259,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="lieutrinh-hoanthanh" role="tabpanel" aria-labelledby="lieutrinh-hoanthanh-tab">
-
+                                                {{-- <div class="tab-pane fade" id="lieutrinh-hoanthanh" role="tabpanel" aria-labelledby="lieutrinh-hoanthanh-tab">
+                                                    
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dangdieutri" role="tabpanel" aria-labelledby="lieutrinh-dangdieutri-tab">
                                                     <div class="profile-minibox mt-4">
@@ -1448,7 +1447,7 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="lieutrinh-dahuy" role="tabpanel" aria-labelledby="lieutrinh-dahuy-tab">
+                                                <div class="tab-pane fade" id="lieutrinh-dahuy" role="tabpanel" aria-labelledby="lieutrinh-dahuy-tab"> --}}
 
                                                 </div>
                                             </div>

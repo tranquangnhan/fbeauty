@@ -14,6 +14,7 @@ use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\Lich\LichRepository;
+use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
@@ -49,7 +50,8 @@ class HomeController extends Controller
         KhachHangRepository $KhachHang,
         BlogRepository $Blog,
         SanPhamRepository $SanPham,
-        SanPhamChiTietRepository $SanPhamChiTiet
+        SanPhamChiTietRepository $SanPhamChiTiet,
+        LieuTrinhRepository $LieuTrinh
 )
     {
         $this->freeSMSController = new freeSMSController;
@@ -63,6 +65,7 @@ class HomeController extends Controller
         $this->Blog = $Blog;
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet=$SanPhamChiTiet;
+        $this->LieuTrinh = $LieuTrinh;
         $dichvu = $this->Dichvu->getDichVusite();
         $danhmuc = $this->DanhMuc->dichvugetiddanhmuc();
         $alldichvu = $this->Dichvu->getDichVuall();
@@ -287,13 +290,16 @@ class HomeController extends Controller
     }
 
     public function viewProfileUser() {
+
         $this->data['pathActive']          = 'thong-tin-tai-khoan';
-        $this->data['namePage']            = 'Thông tin tài khoảng';
+        $this->data['namePage']            = 'Thông tin tài khoản';
         $this->data['breadcrumbArray']     = [
-            ['link' => '', 'name' => 'Thông tin tài khoảng'],
-
+            ['link' => '', 'name' => 'Thông tin tài khoản'],
         ];
-
+      
+        $khachHang = session()->get('khachHang');
+        $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
+        $this->data['dataLieuTrinh'] = $dataLieuTrinh;
         return view("Site.pages.profile-user", $this->data);
     }
 
