@@ -42,8 +42,8 @@
                                     <div class="border-z border-right-z"></div>
                                 </div>
 
-                                <div class="noidung">
-                                    {{$viewdetail[0]->noidung}}.
+                                <div class="noidung" ><br>
+                                    {!! $viewdetail[0]->noidung !!}.
                                 </div>
                             </div>
                         </div>

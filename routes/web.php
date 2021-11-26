@@ -189,6 +189,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
     Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
     Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
+    
 
     Route::post('storeLienHe', 'App\Http\Controllers\Site\HomeController@storeLienHe');
     Route::get('/capnhatgiasession/{gia}', [GioHangController::class, 'capnhatgiasession']);
