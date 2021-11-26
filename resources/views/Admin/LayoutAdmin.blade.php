@@ -340,6 +340,15 @@
                                     <span> Thống kê </span>
                                 </a>
                             </li>
+
+                            <li>
+                                <a href="/quantri/datlichremake">
+                                    <i class="far fa-calendar-check"></i>
+
+
+                                    <span> Đặt Lịch </span>
+                                </a>
+                            </li>
                           <li>
                             <a href="javascript: void(0);">
                             <i class="mdi mdi-home"></i>

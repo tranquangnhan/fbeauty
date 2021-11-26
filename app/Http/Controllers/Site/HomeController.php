@@ -110,8 +110,7 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
         $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(1);
-        $danhmucsp2 = $this->DanhMuc->findDanhMucByIdLoai(2);
-        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp, 'danhmucsp1' => $danhmucsp2]);
+        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp]);
     }
 
     public function getSanPham($soluong)
@@ -226,7 +225,7 @@ class HomeController extends Controller
 
         // $this->Blog->update($id, $Blog['luotxem']);
         // dd($Blog['luotxem']);
-        
+
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
         $this->data['viewdetail']    = $viewdetail;
@@ -283,7 +282,7 @@ class HomeController extends Controller
         $this->LienHe->create($LienHe);
         return redirect('lien-he')->with('success', 'Gửi thành công liên hệ');
     }
-    
+
     public function viewGioiThieu() {
         $this->data['pathActive']          = 'gioi-thieu';
         $this->data['namePage']            = 'Giới thiệu';

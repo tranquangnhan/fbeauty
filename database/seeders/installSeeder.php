@@ -127,12 +127,12 @@ class installSeeder extends Seeder
         ]);
 
         DB::table('nhanvien')->insert([
-            ['id'=>1,'idcoso'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> '$2y$10$iimuFe7voEEthMTFQvRBX.hk1XrL3O1W7lXTZPCxktAIWkuEmY692','role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'idcoso'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
             ['id'=>2,'idcoso'=>1, 'email'=>'longnh.2401@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Long', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>3,'idcoso'=>1, 'email'=>'tuong2712@gmail.com','password'=> '$2y$10$nlRY7DRJfQQLSbI0aV7h9usw0waQxL9uGbNFQChi.06.YIigQCC3q','role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'idcoso'=>1, 'email'=>'tuong2712@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
             ['id'=>4,'idcoso'=>1, 'email'=>'nhanvien@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'nhân viên', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>5,'idcoso'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>6,'idcoso'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
+            ['id'=>5,'idcoso'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>6,'idcoso'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('giamgia')->insert([
             ['id'=>1,'name'=>'MAXSALE150','ma'=>'FB01', 'number'=>5,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'1635699600' ,'ngayhethan'=>'1637341200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
@@ -619,10 +619,9 @@ class installSeeder extends Seeder
             Động tác 2: Sử dụng ngón cái và cạnh lòng bàn tay bóp mạnh từ khớp vai ra đầu vai.
 
             Động tác 3: Lấy mu bàn tay day nhẹ phần gáy đến cổ. Động tác này thực hiện từ 1 đến 2 phút.
-<<<<<<< HEAD
-            
-            Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.            
-            ','trangthai' => '1'], 
+
+            Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.
+            ','trangthai' => '1'],
 
             ['id'=>8,'iddm' => '1', 'img' => 'chamsocdamat.jpg', 'name' => 'Chăm sóc da mặt bằng tế bào gốc an toàn tại nhà', 'slug' => Str::slug('Chăm sóc da mặt bằng tế bào gốc an toàn tại nhà', '-'),'motangan'=>'Việc chăm sóc da mặt thường xuyên, là việc mà các chị em hiện nay luôn thực hiện. Nhằm giữ cho da mặt luôn trẻ khỏe, mịn màng và giúp các bạn thêm tươi trẻ hơn.',
             'noidung'=>'
@@ -685,7 +684,7 @@ class installSeeder extends Seeder
             Sau khi đã thực hiện vệ sinh da với sữa rửa mặt, bạn bắt đầu thực hiện việc loại  bỏ lớp sừng và tế bào chết bám trên da, bằng sản phẩm tẩy tế bào chết. Việc tẩy tế bào chết giúp da mặt được thông thoáng, trở nên mềm mịn hơn và hấp thụ các chất dinh dưỡng từ các bước sau tốt hơn.
 
             Ngoài ra, việc tẩy tế bào chết còn mang đến công dụng, ngăn ngừa tiết dầu nhiều và hạn chế được tình trạng lỗ chân lông bị tắc nghẽn gây nên mụn.
-            ','trangthai' => '1'], 
+            ','trangthai' => '1'],
 
             ['id'=>9,'iddm' => '1', 'img' => 'csdm2.jpg', 'name' => 'Các bước chăm sóc da mặt hằng ngày giúp da sáng mịn, sạch mụn', 'slug' => Str::slug('Các bước chăm sóc da mặt hằng ngày giúp da sáng mịn, sạch mụn', '-'),'motangan'=>'Không phải tự nhiên mà chúng ta sở hữu được một làn da tươi sáng, mịn màng và khỏe đẹp. Vậy phải làm thế nào để có được làn da tươi sáng, khỏe và rạng rỡ?',
             'noidung'=>'
@@ -745,16 +744,16 @@ class installSeeder extends Seeder
             Cũng tương tự như Toner, tùy vào sở thích cũng như loại da của bạn để chọn mua dưỡng ẩm. Những sản phẩm dưỡng ẩm có chứa Hyaluronic acid là một trong những lựa chọn thích hợp dành cho bạn đấy!
 
             Bước 7: Bảo vệ da với kem chống nắng
-            Nếu thiếu kem chống nắng thì những bước chăm sóc da mặt của bạn cũng trở nên không còn hữu ích. Hãy đảm bảo rằng da bạn được bảo vệ an toàn khi đi ra ngoài. Đừng quên bôi kem chống nắng kể cả những ngày trời có nhiều mây bởi tia UV có khả năng len lỏi qua những đám mây và tiếp xúc với da của bạn. Bạn có thể bỏ qua bước này vào ban đêm. 
-            ','trangthai' => '1'], 
+            Nếu thiếu kem chống nắng thì những bước chăm sóc da mặt của bạn cũng trở nên không còn hữu ích. Hãy đảm bảo rằng da bạn được bảo vệ an toàn khi đi ra ngoài. Đừng quên bôi kem chống nắng kể cả những ngày trời có nhiều mây bởi tia UV có khả năng len lỏi qua những đám mây và tiếp xúc với da của bạn. Bạn có thể bỏ qua bước này vào ban đêm.
+            ','trangthai' => '1'],
 
             ['id'=>10,'iddm' => '1', 'img' => 'csdm3.jpg', 'name' => 'Hướng dẫn chăm sóc da mặt mùa hè', 'slug' => Str::slug('Hướng dẫn chăm sóc da mặt mùa hè', '-'),'motangan'=>'Thời tiết nóng bức, gay gắt đã gây ra vấn đề về da như mụn bọc, cháy nắng, đen sạm,...Để bảo vệ làn da phụ nữ cần biết cách chăm sóc làn da một cách khoa học và hợp lý.',
             'noidung'=>'
             1. Rửa mặt bằng sữa rửa mặt thích hợp
             Rửa mặt bằng nước không thể làm sạch hết các chất nhờn và bụi bẩn trên mặt. Do đó, sữa rửa mặt sẽ giúp loại bỏ mồ hôi, lớp dầu trên da, làm sạch sâu những bụi bẩn, cặn bã và những lớp tế bào da lão hóa từ sâu bên trong. Nhờ đó, giúp ngăn chặn các vấn đề về da đặc biệt là mụn.
-            
+
             Ngoài ra, sửa rửa mặt còn có tác dụng làm sáng da, tạo điều kiện thuận lợi để các dưỡng chất có trong kem dưỡng trắng, kem dưỡng ẩm,... có thể dễ dàng thấm sâu vào bên trong làn da.
-            
+
             Tuy nhiên việc chọn loại sữa rửa mặt phù hợp cũng vô cùng quan trọng. Các bạn gái có làn da nhạy cảm nên chọn các loại sữa rửa mặt dịu nhẹ. Còn nếu sở hữu làn da thiên dầu, dễ nổi mụn, hãy lựa chọn các loại sữa rửa chuyên biệt, với các thành phần có khả năng làm sạch sâu lớp dầu nhờn và những bẩn trên da.
 
             Thời tiết nóng bức, gay gắt đã gây ra vấn đề về da như mụn bọc, cháy nắng, đen sạm,...Để bảo vệ làn da phụ nữ cần biết cách chăm sóc làn da một cách khoa học và hợp lý.
@@ -787,7 +786,7 @@ class installSeeder extends Seeder
             5. Đắp mặt nạ đều đặn
             Đắp mặt nạ dưỡng da nhằm cung cấp dưỡng chất cho làn da, tạo điều kiện cho làn da phục hồi khỏe mạnh và sáng đẹp. Không nhất thiết phải sử dụng đến các loại mặt nạ đắt tiền mà có thể tận dụng các loại trái cây và rau củ quen thuộc, có rất nhiều trong mùa hè như dưa leo, dưa hấu, bơ, cà chua, khoai tây... kết hợp cùng sữa tươi hoặc sữa chua không đường. Các loại mặt nạ dưỡng da từ thiên nhiên không chỉ đem lại hiệu quả trong việc ngăn ngừa mụn và cải thiện làn da cháy nắng trong mùa hè mà còn không gây kích ứng nào làn da, thích hợp cho cả da thường lẫn da dầu nhờn hoặc nhạy cảm.
 
-            ','trangthai' => '1'], 
+            ','trangthai' => '1'],
 
             ['id'=>11,'iddm' => '1', 'img' => 'cmdm4.jpg', 'name' => 'Bí quyết chăm sóc da theo từng độ tuổi', 'slug' => Str::slug('Bí quyết chăm sóc da theo từng độ tuổi', '-'),'motangan'=>'Ở mỗi giai đoạn, độ tuổi khác nhau thì cấu tạo làn da sẽ thay đổi, sự thay đổi này đòi hỏi lộ trình chăm sóc da cũng cần phải thay đổi để có thể phù hợp với nhu cầu của da.',
             'noidung'=>'
@@ -838,21 +837,16 @@ class installSeeder extends Seeder
             Vệ sinh tay sạch sẽ
 
             Vệ sinh tay là cách tốt nhất để chống lại vi khuẩn sinh sôi vào mùa đông, vì chúng có tác dụng làm khô da. Khi làn da bị khô, vi khuẩn sẽ thâm nhập bằng các vết nứt cực nhỏ ở bàn tay.
-            
+
             Nếu bạn thường vệ sinh tay thì hãy chắc rằng bạn sử dụng nước rửa tay ngay khi chúng dần khô để giữ bàn tay bạn mềm mại và sạch vi khuẩn.
-            
+
             Chọn lựa kem dưỡng
-            
+
             Chọn lựa kem dưỡng da phù hợp là yếu tố quan trọng để có làn da đẹp.
             Nếu bạn có hàng tá kem dưỡng thể thì hãy sử dụng chúng thật hiệu quả. Kem dưỡng tốt hơn nước dưỡng thể trong mùa đông bởi vì chúng dày hơn, vì thế dưỡng ẩm tốt hơn.
 
-            ','trangthai' => '1'], 
-
-=======
-
-            Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.
             ','trangthai' => '1'],
->>>>>>> 51bd45d968ec6ff48c50054448210209150926b6
+
         ]);
         DB::table('donhang')->insert([
             ['id'=>1,'idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
@@ -878,7 +872,7 @@ class installSeeder extends Seeder
 
             Phù hợp với mọi loại da, kể cả da nhạy cảm, kích ứng.
 
-            Sản xuất tại Nhật Bản' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            Sản xuất tại Nhật Bản' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
             ['id'=>2,'iddanhmuc'=>2,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
 
@@ -892,7 +886,7 @@ class installSeeder extends Seeder
 
              Phù hợp cho mọi loại da, đặc biệt là các loại da khô, siêu khô, da tổn thương do kem trộn hay da nhạy cảm sau điều trị.
 
-             Không chứa Paraben, Phthalates, Sulfates, Sulfites.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+             Không chứa Paraben, Phthalates, Sulfates, Sulfites.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
             ['id'=>3,'iddanhmuc'=>3,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
 
@@ -908,7 +902,7 @@ class installSeeder extends Seeder
 
             - Phức hợp tái tạo làm đầy: công thức với các thành phần biển và khoáng chất giàu dinh dưỡng, phức hợp có nguồn gốc biển mạnh này hỗ trợ Collagen tự nhiên và mang lại vẻ trẻ trung đầy đặn.
 
-            *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
             ['id'=>4,'iddanhmuc'=>4,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
 
@@ -920,7 +914,7 @@ class installSeeder extends Seeder
 
             - Hương bạc hà thơm mát.
 
-            *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
             ['id'=>5,'iddanhmuc'=>5,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
 
@@ -943,14 +937,14 @@ class installSeeder extends Seeder
             Nếp nhăn và chân chim
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.
 
-            ' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
             ['id'=>6,'iddanhmuc'=>6,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
 
             Khi dùng độc lập, công thức Soft Focus Complex sẽ làm mờ lỗ chân lông, nếp nhăn và các khuyết điểm khác trên da. Khi sử dụng như kem lót, công thức này sẽ giúp kem nền đạt được hiệu ứng hoàn hảo nhất, và giữ cho lớp trang điểm bền bỉ suốt 12 tiếng*. Invisiblur Perfecting Shield Broad Spectrum SPF 30 PA +++ còn không hề chứa Parabens, Sulfates, Phthalates, Gluten và các thành phần có chiết xuất từ động vật.
 
             Invisiblur Perfecting Shield Broad Spectrum SPF 30 PA +++ còn là kem chống nắng quang phổ rộng cùng co giúp bạn chống được tất cả ảnh hưởng từ tia UVA và UVB. Hơn cả thế, với dạng thức trong suốt tựa như vô hình trên da, giúp bạn tránh được các vệt trắng mà kem chống nắng thông thường hay mắc phải.
 
-            Thành phần nổi bật:' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL]
+            Thành phần nổi bật:' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL]
         ]);
         DB::table('sanphamchitiet')->insert([
             ['id'=>1,'idsanpham' => 1, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '590000'],

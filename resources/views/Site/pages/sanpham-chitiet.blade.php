@@ -222,7 +222,7 @@
                 <?php $spkhac=\Illuminate\Support\Facades\DB::table('sanpham')->select('sanpham.*', 'danhmuc.name AS tendm')
                     ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
                     ->where('iddanhmuc', '!=',$sanpham[0]->iddanhmuc)
-                    ->where('sanpham.trangthai', 0)
+                    ->where('sanpham.trangthai', 1)
                     ->limit(4)->get();?>
                 @foreach($spkhac as $i => $spk)
                         <?php $anhk=json_decode($spk->img);
