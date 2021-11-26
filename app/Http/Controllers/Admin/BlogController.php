@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog;
+use App\Http\Requests\BlogEdit;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\Blog\BlogRepository;
 use Illuminate\Http\Request;
@@ -101,7 +102,7 @@ class BlogController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Blog $request, $id)
+    public function update(BlogEdit $request, $id)
     {
             $Blog = [
                 'name' => $request->name,
@@ -114,6 +115,9 @@ class BlogController extends Controller
 
             if($request->urlHinh !== null){
                 $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
+                 if($img == null){
+                    $img = 'defaul.jpg';
+                }
                 $Blog['img'] = $img;
             }
         
