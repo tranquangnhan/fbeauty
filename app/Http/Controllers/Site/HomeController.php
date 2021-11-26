@@ -67,13 +67,10 @@ class HomeController extends Controller
         $this->Blog = $Blog;
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet=$SanPhamChiTiet;
-<<<<<<< HEAD
         $this->LienHe = $LienHe;
-=======
         $dichvu = $this->Dichvu->getDichVusite();
         $danhmuc = $this->DanhMuc->dichvugetiddanhmuc();
         $alldichvu = $this->Dichvu->getDichVuall();
->>>>>>> 51bd45d968ec6ff48c50054448210209150926b6
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
 
