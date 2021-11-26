@@ -29,7 +29,7 @@ class DatLichRemakeController extends Controller
         DichVuRepository $DichVu,
         KhachHangRepository $KhachHang,
         NhanVienRepository $NhanVien,
-        LichRepository $Lich,
+        LichRepository $Lich
         )
     {
         $this->CoSo = $CoSo;
@@ -54,7 +54,7 @@ class DatLichRemakeController extends Controller
         ];
         $toDay = Carbon::today();
         $this->data['duLieuCalendar'] = $this->getDuLieuChoCalendar($toDay);
-        
+
         return view('Admin.DatLichRemake.index', $this->data);
     }
 
