@@ -71,7 +71,7 @@ class SanPhamController extends Controller
                 "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
-                "trangthai"=>$request->trangthai
+                "trangthai"=>($request->trangthai ) ? 1 : 0
             ];
     
             $data = $this->SanPham->update($idUpdate,$data);
@@ -86,7 +86,7 @@ class SanPhamController extends Controller
                 "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
-                "trangthai"=>$request->trangthai
+                "trangthai"=>($request->trangthai ) ? 1 : 0
             ];
     
             $data = $this->SanPham->create($data);
