@@ -110,8 +110,7 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
         $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(1);
-        $danhmucsp2 = $this->DanhMuc->findDanhMucByIdLoai(2);
-        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp, 'danhmucsp1' => $danhmucsp2]);
+        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp]);
     }
 
     public function getSanPham($soluong)
