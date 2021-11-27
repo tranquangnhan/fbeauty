@@ -240,4 +240,21 @@ class HoaDonController extends Controller
             return $this->handleError('Liệu trình đã tồn tại trong hoá đơn');
         }
     }
+
+    public function trangthaithanhtoan($id){
+        $hoadon=$this->hoadon->find($id);
+        if ($hoadon->trangthai == 0){
+            $tt=[
+                "trangthai"=>1
+            ];
+            $this->hoadon->update($id, $tt);
+        }
+        else{
+            $tt=[
+                "trangthai"=>0
+            ];
+            $this->hoadon->update($id, $tt);
+        }
+        return redirect(route("hoadon.index"));
+    }
 }

@@ -79,7 +79,6 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
 
     Route::resource('datlich', DatLichController::class);
-
     Route::resource('lich', LichController::class);
     Route::get('lich/{id}/thungay/{idthu}', [LichController::class, 'showlich']);
     Route::get('lich/uplich/{id}', [LichController::class, 'UpLich']);
@@ -190,7 +189,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
     Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
     Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
-    
+
 
     Route::post('storeLienHe', 'App\Http\Controllers\Site\HomeController@storeLienHe');
     Route::get('/capnhatgiasession/{gia}', [GioHangController::class, 'capnhatgiasession']);

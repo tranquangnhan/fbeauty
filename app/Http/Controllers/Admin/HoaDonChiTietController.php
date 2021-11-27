@@ -123,21 +123,31 @@ class HoaDonChiTietController extends Controller
         $checkSpTonTai = $this->hoadonchitiet->CheckSpTonTai($id, $idsp);
         if ($checkSpTonTai == false) {
             $hdct = $this->hoadonchitiet->getHDCT($id, $idsp);
-            $soluong = ['soluong' => ($hdct[0]->soluong + 1)];
+            $soluong = [
+                'soluong' => ($hdct[0]->soluong + 1)
+
+            ];
             $this->hoadonchitiet->update($hdct[0]->id, $soluong);
             $thongbao = [
                 "thongbao" => 'Thêm thành công'
             ];
             return $thongbao;
         } else {
-            $sanphamct = $this->sanphamchitiet->find($idsp);
+            $sanphamct = $this->sanphamchitiet->getSanPhamChiTiet($idsp);
+            if ($sanphamct[0]->giamgia!=""){
+                $dongiasaugiam=($sanphamct[0]->dongia - (($sanphamct[0]->dongia * $sanphamct[0]->giamgia)/100));
+            }
+            else{
+                $dongiasaugiam=$sanphamct[0]->dongia;
+            }
+
             $hoadon = [
                 'idhoadon' => $id,
-                'idlienquan' => $sanphamct->id,
+                'idlienquan' => $sanphamct[0]->id,
                 'type' => 1,
                 'soluong' => 1,
-                'dongiatruocgiamgia' => $sanphamct->dongia,
-                'dongiasaugiamgia' => $sanphamct->dongia
+                'dongiatruocgiamgia' => $sanphamct[0]->dongia,
+                'dongiasaugiamgia' => $dongiasaugiam
             ];
             $this->hoadonchitiet->create($hoadon);
             $thongbao = [
