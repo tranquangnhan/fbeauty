@@ -99,7 +99,7 @@ class HoaDonController extends Controller
      */
     public function edit($id)
     {
-
+        error_reporting(0);
         $hd = $this->hoadon->find($id);
         $coso = $this->coso->find($hd->idcoso);
         $customer = $this->khachhang->find($hd->idkhachhang);
@@ -107,6 +107,7 @@ class HoaDonController extends Controller
         $idlieutrinh = $hd->idlieutrinh;
         $TenNhanVien = $this->nhanvien->find($hd->idnhanvien);
         $hdct = $this->hoadonchitiet->getHoaDonCTByIdHoaDon($id);
+
         return view("Admin.HoaDon.edit", ['customer' => $customer, 'hoadon' => $hd, 'coso' => $coso, 'hdct' => $hdct, 'thungan' => $ThuNgan, 'TenNhanVien' => $TenNhanVien, 'idlieutrinh' => $idlieutrinh]);
     }
 
