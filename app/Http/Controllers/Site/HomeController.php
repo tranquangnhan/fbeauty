@@ -170,6 +170,8 @@ class HomeController extends Controller
 
     public function viewBaiViet() {
         $blog      = $this->Blog->getBlog1();
+        $xuhuong      = $this->Blog->getblogbyxuhuong();
+        $luotxem      = $this->Blog->getblogbyView();
         $listdanhmuc   = $this->DanhMuc->getAll();
         $listdanhmuc2   = $this->DanhMuc->getall2danhmuc();
         foreach($listdanhmuc as $dm) {
@@ -200,6 +202,8 @@ class HomeController extends Controller
         $this->data['getBlog2']     = $getBlog2;
         $this->data['listdanhmuc'] = $listdanhmuc;
         $this->data['listdanhmuc2'] = $listdanhmuc2;
+        $this->data['luotxem'] = $luotxem;
+        $this->data['xuhuong'] = $xuhuong;
 
         $this->data['pathActive']          = 'bai-viet';
         $this->data['namePage']            = 'Bài viết';
@@ -210,21 +214,23 @@ class HomeController extends Controller
     }
 
     public function viewBaiVietChiTiet($id) {
+        $this->Blog->updateView($id);
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAllDanhMuc();
         $viewdetail = $this->Blog->editBlog($id);
         $viewdetail2 = $this->Blog->editBlog($id);
          foreach($viewdetail2 as $detail) {
-            $viewdt = $this->Blog->getblogbyiddm3($detail->id);
+            $viewdt = $this->Blog->getblogbyiddm3($detail->iddmm);
             $detail['viewdt'] = $viewdt;
+
         }
+        // $updateView = $this->Blog-> updateView($id);
+        
+        // $this->data['updateView']= $updateView;
+        // $Blog = [
+        //     'luotxem' =>$request-> luotxem,
+        // ];
 
-        //     $view = 0 ;
-        //     $view += $view + 1;
-        //     $Blog['luotxem'] = $view;
-
-        // $this->Blog->update($id, $Blog['luotxem']);
-        // dd($Blog['luotxem']);
 
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
