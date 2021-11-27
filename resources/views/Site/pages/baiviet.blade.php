@@ -109,7 +109,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
+                                                                    <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink">{{$item->name}}</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -136,7 +136,7 @@
 
                                                 <div class="blog-content-bigsize">
                                                     <div class="blog-text-1 limit-text-row-2">
-                                                        <a href="{{ asset('bai-viet') }}/{{$item->slug}}">{{$item1->name}}</a>
+                                                        <a href="{{ asset('bai-viet') }}/{{$item->id}}">{{$item1->name}}</a>
                                                     </div>
                                                     <div class="blog-text-2 mt-2">
                                                         <?php
@@ -189,7 +189,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
+                                                                    <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink">{{$item->name}}</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -240,7 +240,7 @@
                                             </div>
                                         </div>
                                         <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
+                                            <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink">
                                                 {{$blog[0]->name}}</a>
                                         </div>
                                     </div>
@@ -258,11 +258,13 @@
                                                         <a href="" class="box-danhmuc-1 maincolor">
                                                         {{$item->danhmuc}}</a>
                                                     </div>
-                                                    <span class="color-gray-5 fz-1em2">{{$item->created_at}}</span>
+                                                    <span class="color-gray-5 fz-1em2">@if ($item->created_at != null)
+                                                        {{$item->created_at->format('Y.m.d')}}
+                                                    @endif</span>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                                <a href="{{ asset('bai-viet') }}/{{$item->slug}}"  class="color-white hover-pink fz-1em2 font-weight-600">
+                                                <a href="{{ asset('bai-viet') }}/{{$item->id}}"  class="color-white hover-pink fz-1em2 font-weight-600">
                                                     {{$item->name}}</a>
                                             </div>
                                         </div>
@@ -351,11 +353,12 @@
                                                             <a href="" class="box-danhmuc-1">
                                                             {{$item->name}}</a>
                                                         </div>
-                                                        <span>{{$data->created_at}}"</span>
+                                                        <span>@if ($data->created_at != null)
+                                                            {{$data->created_at->format('Y.m.d')}} @endif</span>
                                                     </div>
                                                 </div>
                                                 <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
-                                                    <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
+                                                    <a href="{{ asset('bai-viet') }}/{{$data->id}}" class="hover-pink">{{$data->name}}</a>
                                                 </div>
                                                 <p class="blog-mota limit-text-row-3 mb-0">
                                                     {{$data->motangan}}
@@ -365,7 +368,7 @@
                                     </div>
                                 @endforeach
                                 </div>
-                                <button data-iddm="{{$item->id}}" type="button" class="xemthemblog btn mb-5 mt-3" data-take="0" data-skip="3">Xem thêm</button>
+                                {{-- <button data-iddm="{{$item->id}}" type="button" class="xemthemblog btn mb-5 mt-3" data-take="0" data-skip="3">Xem thêm</button> --}}
 
                             </div>
                         </div>
@@ -392,93 +395,31 @@
                         </div>
                         <div class="body mt-4">
                             <div class="row">
+                                @foreach ($xuhuong as $item)
+                                    
                                 <div class="col-xl-3">
                                     <div class="tin-item-1">
                                         <div class="image-tin-1 " style="height: 180px;">
-                                            <img class="img-fluid " src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
+                                            <img class="img-fluid " src="{{ asset('uploads') }}/{{$item->img}}" alt="">
                                         </div>
                                         <div class="content-tin background-none pt-4 p-0">
                                             <div class="row">
                                                 <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
                                                         <a href="" class="box-danhmuc-1 maincolor">
-                                                        Sức khỏe</a>
+                                                        {{$item->danhmuc}}</a>
                                                     </div>
-                                                    <span class="color-gray-6">Thứ ba, 26/10/2021, 21:00</span>
+                                                    <span class="color-gray-6">@if ($item->created_at != null)
+                                                        {{$item->created_at->format('Y.m.d')}}@endif</span>
                                                 </div>
                                             </div>
-                                            <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                                <a href="" class="hover-pink color-white fz-1em font-weight-600">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                            <div class="text-bl-1 limit-text-row-1 mb-2 mt-3">
+                                                <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink color-white fz-1em font-weight-600">{{$item->name}}</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-xl-3">
-                                    <div class="tin-item-1">
-                                        <div class="image-tin-1 " style="height: 180px;">
-                                            <img class="img-fluid " src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
-                                        </div>
-                                        <div class="content-tin background-none pt-4 p-0">
-                                            <div class="row">
-                                                <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                    <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1 maincolor">
-                                                        Sức khỏe</a>
-                                                    </div>
-                                                    <span class="color-gray-6">Thứ ba, 26/10/2021, 21:00</span>
-                                                </div>
-                                            </div>
-                                            <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                                <a href="" class="hover-pink color-white fz-1em font-weight-600">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-3">
-                                    <div class="tin-item-1">
-                                        <div class="image-tin-1 " style="height: 180px;">
-                                            <img class="img-fluid " src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
-                                        </div>
-                                        <div class="content-tin background-none pt-4 p-0">
-                                            <div class="row">
-                                                <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                    <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1 maincolor">
-                                                        Sức khỏe</a>
-                                                    </div>
-                                                    <span class="color-gray-6">Thứ ba, 26/10/2021, 21:00</span>
-                                                </div>
-                                            </div>
-                                            <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                                <a href="" class="hover-pink color-white fz-1em font-weight-600">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-3">
-                                    <div class="tin-item-1">
-                                        <div class="image-tin-1 " style="height: 180px;">
-                                            <img class="img-fluid " src="http://127.0.0.1:8000/Site/images/toa-heftiba-a9pFSC8dTlo-unsplash.jpg" alt="">
-                                        </div>
-                                        <div class="content-tin background-none pt-4 p-0">
-                                            <div class="row">
-                                                <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                    <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1 maincolor">
-                                                        Sức khỏe</a>
-                                                    </div>
-                                                    <span class="color-gray-6">Thứ ba, 26/10/2021, 21:00</span>
-                                                </div>
-                                            </div>
-                                            <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                                <a href="" class="hover-pink color-white fz-1em font-weight-600">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
 
                             </div>
 
@@ -493,6 +434,8 @@
                 <div class="row">
                     <div class="col-xl-9">
                         @foreach ($listdanhmuc as $item)
+
+                        @if (count($item->blogbyid) > 0 )
                             <div class="danhmuc-listblog">
                                 <div class="head-blog-item blog-title">
                                     <div class="w-100 text-left d-flex align-items-center">
@@ -518,11 +461,13 @@
                                                                     <a href="" class="box-danhmuc-1">
                                                                         {{$item->name}}</a>
                                                                 </div>
-                                                                <span>{{$data->created_at->format('Y.m.d H:i:s')}}</span>
+                                                                <span>@if ($item->created_at != null)
+                                                                    {{$item->created_at->format('Y.m.d')}}</span>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
-                                                            <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
+                                                            <a href="{{ asset('bai-viet') }}/{{$data->id}}" class="hover-pink">{{$data->name}}</a>
                                                         </div>
                                                         <p class="blog-mota limit-text-row-3 mb-0">
                                                             {{$data->motangan}}
@@ -535,10 +480,9 @@
                                     </div>
                                 </div>
                             </div>
-
                             <button data-iddm="{{$item->id}}" type="button" class="xemthemblog btn mb-5 mt-3" data-take="3" data-skip="6">Xem thêm</button>
+                    @endif
                         @endforeach
-
                     </div>
                     <div class="col-xl-3">
                         @include('Site.components.box-lienhe')
@@ -547,72 +491,32 @@
                             <div class="title-box-1">
                                 <span>Top lượt xem</span>
                             </div>
-
+                            @foreach ($luotxem as $item)
                             <div class="small-blog-item box-tin-hv">
                                 <div class="row">
                                     <div class="col-xl-5">
                                         <div class="img-1">
                                             <img class="img-fluid "
-                                                src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg"
+                                                src="{{ asset('uploads/') }}/{{$item->img}}"
                                                 alt="">
                                         </div>
                                     </div>
                                     <div class="col-xl-7 pl-0 align-self-center">
                                         <div class="row">
                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                <span>Thứ ba, 26/10/2021, 21:00</span>
+                                                <span>@if ($item->created_at != null)
+                                                    {{$item->created_at->format('Y.m.d')}}
+                                                    @endif</span>
                                             </div>
                                         </div>
                                         <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                            <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink">{{$item->name}}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
 
-                            <div class="small-blog-item box-tin-hv">
-                                <div class="row">
-                                    <div class="col-xl-5">
-                                        <div class="img-1">
-                                            <img class="img-fluid "
-                                                src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg"
-                                                alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-7 pl-0 align-self-center">
-                                        <div class="row">
-                                            <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                <span>Thứ ba, 26/10/2021, 21:00</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="small-blog-item box-tin-hv">
-                                <div class="row">
-                                    <div class="col-xl-5">
-                                        <div class="img-1">
-                                            <img class="img-fluid "
-                                                src="{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg"
-                                                alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-7 pl-0 align-self-center">
-                                        <div class="row">
-                                            <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                <span>Thứ ba, 26/10/2021, 21:00</span>
-                                            </div>
-                                        </div>
-                                        <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                            <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

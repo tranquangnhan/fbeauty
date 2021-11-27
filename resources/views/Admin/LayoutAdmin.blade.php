@@ -243,18 +243,18 @@
         <div class="logo-box">
             <a href="index.html" class="logo logo-dark text-center">
                         <span class="logo-lg">
-                            <img src="{{ asset('Admin/assets') }}/images/logo-dark.png" alt="" height="16">
+                            <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>
                 <span class="logo-sm">
-                            <img src="{{ asset('Admin/assets') }}/images/logo-sm.png" alt="" height="24">
+                            <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>
             </a>
             <a href="index.html" class="logo logo-light text-center">
                         <span class="logo-lg">
-                            <img src="{{ asset('Admin/assets') }}/images/logo-light.png" alt="" height="16">
+                            <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>
                 <span class="logo-sm">
-                            <img src="{{ asset('Admin/assets') }}/images/logo-sm.png" alt="" height="24">
+                            <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>
             </a>
         </div>
@@ -338,6 +338,15 @@
                                 <a href="/quantri">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Thống kê </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/quantri/datlichremake">
+                                    <i class="far fa-calendar-check"></i>
+
+
+                                    <span> Đặt Lịch </span>
                                 </a>
                             </li>
                           <li>

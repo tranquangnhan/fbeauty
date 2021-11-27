@@ -1,10 +1,6 @@
 @extends('Admin.LayoutAdmin')
 @section('content')
-<style>
-    /* img{
-        width: 100px !important;
-    } */
-</style>
+
 <div class="content-page">
     <div class="content">
 
@@ -46,7 +42,7 @@
                                             <div class="wrapper"> <br>
                                                 <div class="file-upload mt-1">
                                                     <input type="file" id="files" name="urlHinh"
-                                                        value="{{old('img')}}">
+                                                        value="{{old('urlHinh')}}">
                                                     <i class="fa fa-download " style="font-size:52px;color:blue"></i>
                                                 </div>
                                             </div>
@@ -55,15 +51,15 @@
                                             @enderror
                                         </label>
                                     </div>
-                                    <div class="col-md-8">
-                                        <div id="imageA" style="width:350px;" class="mt-2"></div>
+                                    <div class="col-md-8" id="chuaimg">
+                                        <div id="imageA" style="width:550px;border-radius:5px;" class="mt-2"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 mt-3">
                                 <label class="form-label">Mô tả ngắn</label> <span style="color:red;"> (*)</span>
                                 <textarea name="motangan" class="form-control" id="" cols="25" rows="3"
-                                    placeholder="Mô tả"></textarea>
+                                    placeholder="Mô tả" >{{old('motangan')}}</textarea>
                                 @error('motangan')
                                 <span class="badge bg-danger text-white">{{ $message }}</span>
                                 @enderror
@@ -71,10 +67,10 @@
                             <div class="col-lg-12 mt-3">
                                 <label class="form-label">Nội dung</label> <span style="color:red;"> (*)</span>
                                 <textarea name="noidung" class="form-control" id="summernote" cols="25" rows="3"
-                                    placeholder="Nội dung"></textarea>
-                                @error('noidung')
-                                <span class="badge bg-danger text-white">{{ $message }}</span>
-                                @enderror
+                                    placeholder="Nội dung">{{old('noidung')}}</textarea>
+                                    @error('noidung')
+                                    <span class="badge bg-danger text-white">{{ $message }}</span>
+                                    @enderror
                             </div>
                             <div class="form-group ml-2 mt-3">
                                 <div class="form-group">

@@ -21,13 +21,13 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             DB::raw('(select id from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as idspct')
             )
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id" )
-            ->where('sanpham.trangthai', '=', 0)
+            ->where('sanpham.trangthai', '=', 1)
             ->orderBy('id', 'DESC')
             ->get();
     }
 
     public function DemSanPham(){
-        return DB::table('sanpham')->where('sanpham.trangthai', '=', 0)->count();
+        return DB::table('sanpham')->where('sanpham.trangthai', '=', 1)->count();
     }
 
     public function  getSanPhamJoinDanhMucID($id){
@@ -38,7 +38,7 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
     }
     public function getsanpham(){
         return $this->model->offset(1)->limit(4)
-        ->where('sanpham.trangthai', '=', 0)
+        ->where('sanpham.trangthai', '=', 1)
         ->orderBy('created_at', 'DESC')
         ->get();
     }

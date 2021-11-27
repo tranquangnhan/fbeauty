@@ -1,7 +1,7 @@
 <div class="nav-box container">
     <nav class="navbar container navbar-expand-lg navbar-light background-color-none p-0">
         <div class="pl-0 flex-grow-1">
-            <a class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
+            <a href="/trang-chu" class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -58,7 +58,7 @@
                 </li>
                 @else
                 <li class="icon-item d-inline-block">
-                    <a class="btn-modal-main" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
+                    <a class="btn-modal-main" id="btn-modal-dangnhaps" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
                 </li>
                 @endif
                 <li class="icon-item d-inline-block hover-scale-1 position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">

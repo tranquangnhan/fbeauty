@@ -14,7 +14,7 @@ class LieuTrinhChiTietModel extends Model
         'idlieutrinh',
         'iddichvu',
         'idnhanvien',
-        'mota',
+        'ghichu',
         'ngay',
         'trangthai',
         'imgkhachhang'

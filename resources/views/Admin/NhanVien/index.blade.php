@@ -19,7 +19,7 @@
                                     </p>
                                 </div>
                             </div>
-                           
+
 
                             <div>
                                 <a href="{{route("nhanvien.create")}}"
@@ -43,11 +43,11 @@
                             <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th scope="">STT</th>
-                                    <th width="37%">Thông tin nhân viên</th>
-                                    <th width="20%">Cơ sở & dịch vụ</th>
+                                    <th width="3%">STT</th>
+                                    <th width="30%">Thông tin nhân viên</th>
+                                    <th width="20%">Cơ sở</th>
                                     <th width="10%">Avatar</th>
-                                    <th width="22%">Phân quyền</th>
+                                    <th width="25%">Phân quyền</th>
                                     <th width="">Sửa</th>
                                 </tr>
                                 </thead>
@@ -85,13 +85,9 @@
                                                 <div class="col-md-5 font-weight-bold">Cơ sở:</div>
                                                 <div class="col-md-7 ">{{$item->coso}}</div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-5 font-weight-bold">Dịch vụ:</div>
-                                                <div class="col-md-7 ">{{$item->dichvu}}</div>
-                                            </div>
                                         </td>
                                         <td>
-                                            <img class="w-100 m-auto"
+                                            <img class="w-100 m-auto" style="border-radius:3px"
                                                  src="{{asset($BASE_URL_UPLOAD_STAFF.$item->avatar)}}">
                                         </td>
                                         <td>
@@ -108,7 +104,7 @@
                                             <div class="row">
                                                 <div class="col-md-6 font-weight-bold">Trạng thái:</div>
                                                 <div
-                                                    class="col-md-6"><?php echo ($item->active == 1) ? " <i class='fa fa-circle text-success' style='font-size:7px'></i> Hoạt động" : "<i class='fa fa-circle text-danger' style='font-size:7px'></i> Không hoạt động";?></div>
+                                                    class="col-md-6"><?php echo ($item->trangthai == 1) ?"<i class='fa fa-circle text-success' style='font-size:7px'></i> Hoạt động" : "<i class='fa fa-circle text-danger' style='font-size:7px'></i> Không hoạt động";?></div>
                                             </div>
                                         </td>
                                         <td>

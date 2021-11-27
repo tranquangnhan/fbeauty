@@ -25,9 +25,9 @@
                                 <h6 class="title-loc">Danh mục</h6>
                                 <ul class="body-loc">
                                     <h6 class="title-loc">Sản phẩm</h6>
-                                    @foreach($danhmuc as $dm)
-                                        <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 0)->count('iddanhmuc');?>
-                                        @if($dm->loai == 1)
+
+                                    @foreach($danhmucsp as $dm)
+                                        <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 1)->count();?>
                                             <li>
                                                 <a href="javascript:;" class="text-decoration-none hover-pink hov">
                                                     <label for="danhmuc{{$dm->id}}">
@@ -37,55 +37,6 @@
                                                         class="badge badge-pill badge-primary background-color-main float-right">{{$soluong}}</span>
                                                 </a>
                                             </li>
-                                        @endif
-                                    @endforeach
-                                    <hr>
-                                    <h6 class="title-loc">Dịch vụ</h6>
-                                    @foreach($danhmuc1 as $dm)
-                                        <?php  $soluong1 = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 0)->count('iddanhmuc');?>
-                                        @if($dm->loai == 2)
-                                            <li>
-                                                <a href="javascript:;" class="text-decoration-none hover-pink hov">
-                                                    <label for="danhmuc{{$dm->id}}">
-                                                        <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
-                                                               name="danhmuc" id="danhmuc{{$dm->id}}"> {{$dm->name}}
-                                                    </label><span
-                                                        class="badge badge-pill badge-primary background-color-main float-right">{{$soluong1}}</span>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                    <hr>
-                                    <h6 class="title-loc">Bài viết</h6>
-                                    @foreach($danhmuc2 as $dm)
-                                        <?php  $soluong2 = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 0)->count('iddanhmuc');?>
-                                        @if($dm->loai == 3)
-                                            <li>
-                                                <a href="javascript:;" class="text-decoration-none hover-pink hov">
-                                                    <label for="danhmuc{{$dm->id}}">
-                                                        <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
-                                                               name="danhmuc" id="danhmuc{{$dm->id}}"> {{$dm->name}}
-                                                    </label><span
-                                                        class="badge badge-pill badge-primary background-color-main float-right">{{$soluong2}}</span>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                    <hr>
-                                    <h6 class="title-loc">Thương hiệu</h6>
-                                    @foreach($danhmuc3 as $dm)
-                                        <?php  $soluong3 = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 0)->count('iddanhmuc');?>
-                                        @if($dm->loai == 4)
-                                            <li>
-                                                <a href="javascript:;" class="text-decoration-none hover-pink hov">
-                                                    <label for="danhmuc{{$dm->id}}">
-                                                        <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
-                                                               name="danhmuc" id="danhmuc{{$dm->id}}"> {{$dm->name}}
-                                                    </label><span
-                                                        class="badge badge-pill badge-primary background-color-main float-right">{{$soluong3}}</span>
-                                                </a>
-                                            </li>
-                                        @endif
                                     @endforeach
                                 </ul>
                             </div>

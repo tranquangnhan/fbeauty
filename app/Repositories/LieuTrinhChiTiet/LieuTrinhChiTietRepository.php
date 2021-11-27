@@ -37,7 +37,7 @@ class LieuTrinhChiTietRepository extends BaseRepository implements LieuTrinhChiT
         "dichvu.giamgia",
         "dichvu.dongia",
         "lieutrinhchitiet.ngay",
-        "lieutrinhchitiet.mota",
+        "lieutrinhchitiet.ghichu",
         "lieutrinhchitiet.trangthai",
         "lieutrinhchitiet.imgkhachhang",
         "lieutrinhchitiet.id as idlieutrinhchitiet",

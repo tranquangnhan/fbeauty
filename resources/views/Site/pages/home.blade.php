@@ -414,7 +414,7 @@
                     MỚI NHẤT
                 </div>
                 <div class="text-4">
-                    Sản Phẩm Thịnh Hành
+                    Sản Phẩm Mới Nhất
                 </div>
                 {{-- <div class="line-2"></div> --}}
             </div>
@@ -423,7 +423,7 @@
                 <div class="row">
                     <?php $spkhac=\Illuminate\Support\Facades\DB::table('sanpham')->select('sanpham.*', 'danhmuc.name AS tendm')
                         ->orderBy("sanpham.id","DESC")
-                        ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")->where('sanpham.trangthai', "=", 0)->limit(4)->get();?>
+                        ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")->where('sanpham.trangthai', "=", 1)->limit(4)->get();?>
                     @foreach($spkhac as $i => $spk)
                         <?php $anhk=json_decode($spk->img);
                         $splienquanctkhac=\Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("*")->where('idsanpham', $spk->id)->limit(1)->get();

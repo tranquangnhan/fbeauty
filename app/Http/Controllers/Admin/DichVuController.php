@@ -64,14 +64,12 @@ class DichVuController extends Controller
         $this->validate($request, [
             'urlHinh' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        if ($request->hasFile('urlHinh')) {
-            $image = $request->file('urlHinh');
-            $name = rand() . '.' . $image->getClientOriginalName();
-            $image->move(public_path('img'), $name);
+        $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
+
             $DichVu = [
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
-                'img' => $name,
+                'img' => $img,
                 'giamgia' => $request->giamgia,
                 'iddm' => $request->danhmuc,
                 'motangan' => $request->motangan,
@@ -81,9 +79,7 @@ class DichVuController extends Controller
             ];
             $this->DichVu->create($DichVu);
             return redirect('quantri/dichvu')->with('success', 'Thêm dịch vụ thành công');
-        } else {
-            return redirect('quantri/dichvu')->with('error', 'Thêm dịch vụ thất bại');
-        }
+         
     }
 
     /**

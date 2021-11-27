@@ -1,8 +1,10 @@
 #imageA img{
-    width: 70px;
+    width: 150px;
     margin-left: 5px;
-    height: 70px;
+    height: 100px;
     margin-bottom: 5px;
+    border-radius: 5px;
+    object-fit: cover;
 }
 
 #imageKH img{

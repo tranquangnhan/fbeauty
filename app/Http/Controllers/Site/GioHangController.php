@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ThanhToan;
 use App\Models\Admin\SanPhamChiTiet;
+use App\Repositories\Coso\CosoRepository;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\GioHang\GioHangRepository;
@@ -24,6 +25,7 @@ class GioHangController extends Controller
     private $KhachHang;
     private $DonHang;
     private $DonHangChiTiet;
+    private $CoSo;
     private $vnp_TmnCode = "8EZMZPIJ";
     private $vnp_HashSecret = "OKBCLDCSTLJIAUGMZKPJCRITTTBJAITY";
     private $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
@@ -36,7 +38,8 @@ class GioHangController extends Controller
         SanPhamChiTietRepository $SanPhamChiTiet,
         KhachHangRepository $KhachHang,
         DonHangRepository $DonHang,
-        DonHangChiTietRepository $DonHangChiTiet
+        DonHangChiTietRepository $DonHangChiTiet,
+        CosoRepository $CoSo
     )
     {
         $this->GioHang = $GioHang;
@@ -46,6 +49,7 @@ class GioHangController extends Controller
         $this->KhachHang = $KhachHang;
         $this->DonHang = $DonHang;
         $this->DonHangChiTiet = $DonHangChiTiet;
+        $this->CoSo=$CoSo;
     }
 
     public function ShowGioHang()
@@ -481,7 +485,9 @@ class GioHangController extends Controller
         if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
             $idkhach = $this->KhachHang->getBySdt($sdt);
         } else {
+            $cosokh=$this->CoSo->getCosoDESCSLimit(1);
             $customernew = [
+                'idcoso'=>$cosokh[0]->id,
                 'sdt' => $sdt,
                 'password' => bcrypt("123456"),
                 'active' => 1
@@ -651,7 +657,9 @@ class GioHangController extends Controller
             if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
                 $idkhach = $this->KhachHang->getBySdt($sdt);
             } else {
+                $cosokh=$this->CoSo->getCosoDESCSLimit(1);
                 $customernew = [
+                    'idcoso'=>$cosokh[0]->id,
                     'sdt' => $sdt,
                     'password' => bcrypt("123456"),
                     'active' => 1

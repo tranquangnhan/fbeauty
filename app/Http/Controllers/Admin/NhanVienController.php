@@ -29,6 +29,7 @@ class NhanVienController extends Controller
     public function index()
     {
         $data = $this->nhanvien->getNhanVien();
+
         return view("Admin.NhanVien.index", ['data' => $data]);
     }
 
@@ -45,8 +46,7 @@ class NhanVienController extends Controller
     public function create()
     {
         $coso = $this->coso->getAll();
-        $dichvu = $this->dichvu->getAll();
-        return view("Admin.NhanVien.create", ['coso' => $coso, 'dichvu' => $dichvu]);
+        return view("Admin.NhanVien.create", ['coso' => $coso]);
         //
     }
 
@@ -58,6 +58,7 @@ class NhanVienController extends Controller
      */
     public function store(NhanVien $request)
     {
+        
         $coSo = session()->get('coso');
 
         $img = $request->file('urlHinh');
@@ -94,7 +95,6 @@ class NhanVienController extends Controller
                 'gioitinh' => $request->gioitinh,
                 'avatar' => $_FILES["urlHinh"]["name"],
                 'idcoso' => $coSo,
-                'iddichvu' => $request->dichvu,
                 'role' => $request->role,
                 'active' => $request->active,
                 'namsinh' => $request->namsinh,
@@ -143,6 +143,7 @@ class NhanVienController extends Controller
 
     public function upImgKhachHang(Request $request, $id)
     {
+        if ($request->file('photos')!=""){
         $nv = $this->nhanvien->find($id);
         $jsonimg = json_decode($nv->img);
         if (is_array($jsonimg)) {
@@ -161,7 +162,11 @@ class NhanVienController extends Controller
         }
 
         $dataNV = $this->nhanvien->find($id);
-        return redirect(route("nhanvien.show", $id));
+        return redirect(route("nhanvien.show", $id))->with('thanhcong', 'Tải ảnh lên thành công');
+        }
+        else{
+            return redirect(route("nhanvien.show", $id))->with('thatbai', 'bạn chưa tải ảnh lên.');
+        }
     }
 
     public function XoaImgKH($id, $idImg)
@@ -180,7 +185,7 @@ class NhanVienController extends Controller
             'img' => $jsonimg
         ];
         $this->nhanvien->update($id, $nhanvien);
-        return redirect(route("nhanvien.show", $id));
+        return redirect(route("nhanvien.show", $id))->with('thanhcong', 'Xóa ảnh thành công');
     }
 
     /**
@@ -192,9 +197,8 @@ class NhanVienController extends Controller
     public function edit($id)
     {
         $coso = $this->coso->getAll();
-        $dichvu = $this->dichvu->getAll();
         $nhanvien = $this->nhanvien->find($id);
-        return view("Admin.NhanVien.edit", ['coso' => $coso, 'dichvu' => $dichvu, 'nhanvien' => $nhanvien]);
+        return view("Admin.NhanVien.edit", ['coso' => $coso, 'nhanvien' => $nhanvien]);
     }
 
     /**
@@ -240,11 +244,10 @@ class NhanVienController extends Controller
                 'gioitinh' => $request->gioitinh,
                 'avatar' => $newpicture,
                 'idcoso' => $coSo,
-                'iddichvu' => $request->dichvu,
                 'role' => $request->role,
-                'active' => $request->active,
+                'active' => ($request->active) ? 1 : 0,
                 'namsinh' => $request->namsinh,
-                'trangthai' => $request->trangthai
+                'trangthai' => ($request->trangthai) ? 1 : 0
             ];
             $this->nhanvien->update($id, $nhanvien);
             return redirect('quantri/nhanvien')->with('thanhcong', 'Sửa nhân viên thành công');

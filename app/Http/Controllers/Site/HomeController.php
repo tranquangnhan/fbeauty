@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Events\SendDatLich;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\freeSMSController;
+use App\Http\Requests\LienHe;
 use App\Models\Admin\DatLichModel;
 use App\Models\Admin\KhachHangModel;
 use App\Repositories\Blog\BlogRepository;
@@ -16,6 +17,7 @@ use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\Lich\LichRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
 use App\Repositories\SanPham\SanPhamRepository;
+use App\Repositories\LienHe\LienHeRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -35,6 +37,7 @@ class HomeController extends Controller
     private $limitTimeNum = 10;
     private $freeSMSController;
     private $SanPhamChiTiet;
+    private $LienHe;
 
     /**
      * CosoController constructor.
@@ -49,7 +52,8 @@ class HomeController extends Controller
         KhachHangRepository $KhachHang,
         BlogRepository $Blog,
         SanPhamRepository $SanPham,
-        SanPhamChiTietRepository $SanPhamChiTiet
+        SanPhamChiTietRepository $SanPhamChiTiet,
+        LienHeRepository $LienHe
 )
     {
         $this->freeSMSController = new freeSMSController;
@@ -63,7 +67,7 @@ class HomeController extends Controller
         $this->Blog = $Blog;
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet=$SanPhamChiTiet;
-
+        $this->LienHe = $LienHe;
         $dichvu = $this->Dichvu->getDichVusite();
         $danhmuc = $this->DanhMuc->getdanhmucshow();
         $alldichvu = $this->Dichvu->getDichVuall();
@@ -105,8 +109,8 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
-        $danhmuc = $this->DanhMuc->getAll();
-        return view("Site.pages.sanpham", $this->data, ['danhmuc' => $danhmuc, 'danhmuc1' => $danhmuc, 'danhmuc2' => $danhmuc, 'danhmuc3' => $danhmuc]);
+        $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(1);
+        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp]);
     }
 
     public function getSanPham($soluong)
@@ -166,6 +170,8 @@ class HomeController extends Controller
 
     public function viewBaiViet() {
         $blog      = $this->Blog->getBlog1();
+        $xuhuong      = $this->Blog->getblogbyxuhuong();
+        $luotxem      = $this->Blog->getblogbyView();
         $listdanhmuc   = $this->DanhMuc->getAll();
         $listdanhmuc2   = $this->DanhMuc->getall2danhmuc();
         foreach($listdanhmuc as $dm) {
@@ -181,7 +187,6 @@ class HomeController extends Controller
             $dm['blogbyid2'] = $blogbyid2;
         }
 
-        // dd($listdanhmuc);
         $danhmuc   = $this->DanhMuc->getAllDanhMuc();
         $getBlog2     = $this->Blog->getBlog2();
         $blog3     = $this->Blog->getLastWeek1();
@@ -197,6 +202,8 @@ class HomeController extends Controller
         $this->data['getBlog2']     = $getBlog2;
         $this->data['listdanhmuc'] = $listdanhmuc;
         $this->data['listdanhmuc2'] = $listdanhmuc2;
+        $this->data['luotxem'] = $luotxem;
+        $this->data['xuhuong'] = $xuhuong;
 
         $this->data['pathActive']          = 'bai-viet';
         $this->data['namePage']            = 'Bài viết';
@@ -207,24 +214,34 @@ class HomeController extends Controller
     }
 
     public function viewBaiVietChiTiet($id) {
+        $this->Blog->updateView($id);
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAllDanhMuc();
         $viewdetail = $this->Blog->editBlog($id);
         $viewdetail2 = $this->Blog->editBlog($id);
          foreach($viewdetail2 as $detail) {
-            $viewdt = $this->Blog->getblogbyiddm3($detail->id);
+            $viewdt = $this->Blog->getblogbyiddm3($detail->iddmm);
             $detail['viewdt'] = $viewdt;
+
         }
+        // $updateView = $this->Blog-> updateView($id);
+
+        // $this->data['updateView']= $updateView;
+        // $Blog = [
+        //     'luotxem' =>$request-> luotxem,
+        // ];
+
+
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
         $this->data['viewdetail']    = $viewdetail;
         $this->data['viewdetail2']    = $viewdetail2;
 
         $this->data['pathActive']          = 'bai-viet';
-        $this->data['namePage']            = 'Tên Bài viết';
+        $this->data['namePage']            = $viewdetail[0]->name;
         $this->data['breadcrumbArray']     = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
-            ['link' => '', 'name' => 'Tên Bài viết'],
+            ['link' => '', 'name' => $viewdetail[0]->name],
         ];
 
         return view("Site.pages.baivietchitiet", $this->data);
@@ -264,9 +281,19 @@ class HomeController extends Controller
         $this->data['breadcrumbArray']     = [
             ['link' => '', 'name' => 'Liên Hệ'],
         ];
-
         return view("Site.pages.contact", $this->data);
     }
+    public function storeLienHe(LienHe $request) {
+        $LienHe = [
+            'namekh' => $request->namekh,
+            'email' => $request->email,
+            'sdt' => $request->sdt,
+            'noidung' => $request->noidung,
+        ];
+        $this->LienHe->create($LienHe);
+        return redirect('lien-he')->with('success', 'Gửi thành công liên hệ');
+    }
+
     public function viewGioiThieu() {
         $this->data['pathActive']          = 'gioi-thieu';
         $this->data['namePage']            = 'Giới thiệu';
@@ -461,7 +488,7 @@ class HomeController extends Controller
                 if ($error == false) {
                     $sdt = '+84' . substr($request->soDienThoai, 1, strlen($request->soDienThoai));
                     $message = $this->makeMessageCamOnDatLich($request->idCoSo, $request->ngay, $request->gio);
-                    // $this->freeSMSController->sendSingleMessage($sdt, $message);
+                    $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                     $response = Array(
                         'success' => true,
@@ -470,7 +497,6 @@ class HomeController extends Controller
                         'ngay' => $request->ngay,
                         'gio' => $request->gio,
                         'request' => $request,
-                        'message' => $message,
                         'sdt' => $sdt
                     );
                 } else {
@@ -711,7 +737,7 @@ class HomeController extends Controller
                 // Ví dụ sdt: 0868970582 => +84868970582
                 $sdt = '+84' . substr($request->sdt, 1, strlen($request->sdt));
                 $message = '[Fbeauty]: ' . $OTP . ' la ma OTP cua ban. Ma se het han trong vong 60s. Vui long khong chia se ma nay trong bat ki truong hop nao!';
-                // $this->freeSMSController->sendSingleMessage($sdt, $message);
+                $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                 $timeOTPNotValid = $this->makeTimeOTPNotValid();
                 $response = Array(
@@ -719,7 +745,6 @@ class HomeController extends Controller
                     'sdt' => $request->sdt,
                     'timeOTPNotValid' => $timeOTPNotValid,
                     'phoneNumber' => $sdt,
-                    'message' => $message
                 );
             }
 

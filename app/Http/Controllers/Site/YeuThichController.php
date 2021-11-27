@@ -50,7 +50,7 @@ class YeuThichController extends Controller
             }
         }
         else{
-            return 1;
+            return 2;
         }
     }
 }

@@ -42,7 +42,8 @@
                                 @foreach($hoadon as $index => $hd)
                                     <tr>
                                         <td>{{$index+=1}}</td>
-                                        <td><strong>Tên: </strong>{{$hd->tenKh}}
+                                        <td> <strong>Mã hóa đơn: </strong> {{date_format(date_create($hd->created_at), 'YmdHis')}}<br>
+                                            <strong>Tên: </strong>{{$hd->tenKh}}
                                             <br>
                                             <strong>SĐT: </strong> {{$hd->sodienthoai}}
                                             <br>
@@ -71,7 +72,7 @@
                                             <br>
                                             <strong>Giờ: </strong> {{date_format(date_create($hd->created_at), "H:i:s")}}
                                             <br>
-                                            <strong>Mã hóa đơn: </strong> {{date_format(date_create($hd->created_at), 'YmdHis')}}
+                                           
                                         </td>
                                         <td><a href="{{route("hoadonchitiet.show",$hd->id)}}" class="btn btn-primary mb-2" data-toggle="tooltip" data-placement="right" title="Xem hóa đơn" ><i
                                                     class="fa fa-eye"  style="color: white;"></i></a> <br>

@@ -53,12 +53,11 @@ class ThongkeController extends Controller
         $this->data['doanhThuDonHangSauThangGanNhat'] = $this->getDoanhThuHonHangSauThangGanNhat();
         $this->data['toDay'] = $toDay->toDateString();
 
-
         return view("Admin.Thongke.index", $this->data);
     }
 
     public function getHoaDonByDay($ngay, $idCoSo) {
-        $thoigian = $this->getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
+        $thoigian = Controller::getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
         $hoaDonByDay = $this->HoaDon->getHoaDonByDate($thoigian['dau'], $thoigian['cuoi'], $idCoSo);
         $hoaDonByDay = $this->getNameThuNganToArrHoaDon($hoaDonByDay);
         $hoaDonByDay = $this->getNameTrangThaiHoaDon($hoaDonByDay);
@@ -130,53 +129,30 @@ class ThongkeController extends Controller
     }
 
     public function getNumDonHang($ngay) {
-        $thoigian = $this->getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
+        $thoigian = Controller::getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
         $numDonHang = $this->DonHang->getNumDonHang($thoigian['dau'], $thoigian['cuoi']);
 
         return $numDonHang;
     }
 
     public function getDoanhThuDonHangHoanThanh($ngay) {
-        $thoigian = $this->getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
+        $thoigian = Controller::getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
         $tongDoanhThu = $this->DonHang->getDoanhThuDonHangHoanThanh($thoigian['dau'], $thoigian['cuoi']);
 
         return $tongDoanhThu;
     }
 
     public function getDoanhThuHoaDon($ngay, $idCoSo) {
-        $thoigian = $this->getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
+        $thoigian = Controller::getThoiGianDauVaCuoiCuaNgay($ngay->toDateString());
         $tongDoanhThu = $this->HoaDon->getTongDoanhThuHoaDon($thoigian['dau'], $thoigian['cuoi'], $idCoSo);
 
         return $tongDoanhThu;
     }
 
     public function getSoDatLich($ngay, $idCoSo) {
-        $thoigian = $this->getThoiGianTimestampDauVaCuoiCuaNgay($ngay->toDateString());
+        $thoigian = Controller::getThoiGianTimestampDauVaCuoiCuaNgay($ngay->toDateString());
         $soDatLich = $this->DatLich->getNumDatLichByTime($thoigian['dauNgayTimestamp'], $thoigian['cuoiNgayTimestamp'], $idCoSo);
         return $soDatLich;
-    }
-
-    public function getThoiGianDauVaCuoiCuaNgay($ngay) {
-        $dauNgay = $ngay . ' 00:00:00';
-        $cuoiNgay = $ngay . ' 23:59:59';
-
-        return array (
-            'dau' => $dauNgay,
-            'cuoi' => $cuoiNgay
-        );
-    }
-
-    public function getThoiGianTimestampDauVaCuoiCuaNgay($ngay) {
-        $dauNgay = $ngay . ' 00:00:00';
-        $cuoiNgay = $ngay . ' 23:59:59';
-        $dauNgayTimestamp = Carbon::parse($dauNgay)->timestamp;
-
-        $cuoiNgayTimestamp = Carbon::parse($cuoiNgay)->timestamp;
-        // $taoFormatCarbon = Carbon::createFromTimestamp($dauNgayTT);
-        return array (
-            'dauNgayTimestamp' => $dauNgayTimestamp,
-            'cuoiNgayTimestamp' => $cuoiNgayTimestamp
-        );
     }
 
     public function getHoaDonByDayAjax(Request $request, $day) {
@@ -298,7 +274,7 @@ class ThongkeController extends Controller
     public function getTime($type, $date) {
         if ($type == 'day') {
             $day = new Carbon($date);
-            $thoigian = $this->getThoiGianDauVaCuoiCuaNgay($day->toDateString());
+            $thoigian = Controller::getThoiGianDauVaCuoiCuaNgay($day->toDateString());
         } else if ($type == 'month') {
             $thoigian = $this->getThoiGiangDauVaCuoiCuaThang($date);
         } else if ($type == 'year') {

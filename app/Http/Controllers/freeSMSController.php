@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 define("SERVER", "https://admin.freesms.vn");
-define("API_KEY", "3a77d29f144d4888d0d0aaee834fc3faf3435b9e");
+define("API_KEY", "c0a3bb01b315a6039fb7276d106d808213fa870a");
 
 define("USE_SPECIFIED", 0);
 define("USE_ALL_DEVICES", 1);
