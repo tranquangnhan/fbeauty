@@ -39,6 +39,7 @@
 
                             <p class="text-success"> Xem trước ảnh</p>
                             <div id="imageKH" class="mb-2"></div>
+                            <input type="hidden" id="saveimg" name="saveimg" value="">
                             <button type="submit" class="btn btn-primary mb-1" name="uploadbutton">Tải lên</button>
                         </form>
                         <!--/ meta -->
@@ -124,7 +125,7 @@
                     },
                 }
             });
-
+var ArrayAnh= new Array();
             document.getElementById("files").onchange = function () {
                 var ListImages = document.getElementById("files").files;
                 if (ListImages.length > 0) {
@@ -140,7 +141,13 @@
                         //
                         // // read the image file as a data URL.
                         reader.readAsDataURL(filetoload);
+                        ArrayAnh.push(URL.createObjectURL(ListImages[i]))
                     }
+                    console.log(ArrayAnh);
+
+                    // document.getElementById("files").files=ArrayAnh;
+                    console.log(JSON.stringify(ArrayAnh));
+                    // document.getElementById("saveimg").value=ArrayAnh.toString();
                 }
             };
 
