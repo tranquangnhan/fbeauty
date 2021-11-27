@@ -18,18 +18,18 @@ $('#logo-slide').owlCarousel({
     nav: false,
     pagination: false,
     dots: false,
-    autoplay:true,
+    autoplay: true,
     autoplayTimeout: 2000,
-    autoplayHoverPause:true,
-    responsive:{
-        0:{
-            items:1
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1
         },
-        600:{
-            items:3
+        600: {
+            items: 3
         },
-        1000:{
-            items:5
+        1000: {
+            items: 5
         }
     }
 });
@@ -41,18 +41,18 @@ $(productSlide).owlCarousel({
     nav: true,
     pagination: false,
     dots: false,
-    autoplay:true,
+    autoplay: true,
     autoplayTimeout: 10000,
-    autoplayHoverPause:true,
-    responsive:{
-        0:{
-            items:1
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1
         },
-        600:{
-            items:3
+        600: {
+            items: 3
         },
-        1000:{
-            items:4
+        1000: {
+            items: 4
         }
     }
 });
@@ -63,13 +63,13 @@ $('#header-slide').owlCarousel({
     animateOut: 'fadeOut',
     animateIn: 'flipInX',
     loop: true,
-    items:1,
+    items: 1,
     smartSpeed: 450,
     dots: true,
 
     autoplay: true,
     autoplayTimeout: 4000,
-    autoplayHoverPause:false,
+    autoplayHoverPause: false,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
@@ -91,7 +91,7 @@ headerSlide.on('changed.owl.carousel', function(event) {
 
 
 // modal
-$('.btn-modal-main').click(function(){
+$('.btn-modal-main').click(function() {
     let typeModal = $(this).attr('type-modal');
     let modalAction = $('#' + typeModal);
     modalAction.removeAttr('class');
@@ -99,7 +99,7 @@ $('.btn-modal-main').click(function(){
     $('body').addClass('modal-active');
 });
 
-$('.close-modal').click(function(){
+$('.close-modal').click(function() {
     let typeModal = $(this).attr('type-modal');
     let modalAction = $('#' + typeModal);
     modalAction.addClass('out');
@@ -114,27 +114,27 @@ $(modalDatLichSlide).owlCarousel({
     pagination: false,
     dots: false,
     autoplay: false,
-    responsive:{
-        0:{
-            items:1
+    responsive: {
+        0: {
+            items: 1
         },
-        600:{
-            items:1
+        600: {
+            items: 1
         },
-        1000:{
-            items:1
+        1000: {
+            items: 1
         }
     }
 });
 
 
 // slide dat lich
-$('.next-step').click(function (e) {
+$('.next-step').click(function(e) {
     e.preventDefault();
     nextStepFc();
 });
 
-$('.prev-step').click(function (e) {
+$('.prev-step').click(function(e) {
     e.preventDefault();
     activeStep = getActiveStep();
     nextStep = parseInt(activeStep) - 1;
@@ -156,11 +156,11 @@ function getActiveStep() {
 
 function actionMoveSlide(activeStep, nextStep, tranlateRange) {
     var movingBox = $('.modal-content-1');
-    $(movingBox).css('transform', 'translateX(-'+tranlateRange+'%)');
+    $(movingBox).css('transform', 'translateX(-' + tranlateRange + '%)');
 
 
-    var activeElement = $("[data-step='"+ activeStep +"']");
-    var nextElement = $("[data-step='"+ nextStep +"']");
+    var activeElement = $("[data-step='" + activeStep + "']");
+    var nextElement = $("[data-step='" + nextStep + "']");
     activeElement.removeClass('active');
     nextElement.addClass('active');
 }
@@ -187,7 +187,7 @@ function checkStepAndCallAction() {
     }
 
     if (activeStep == step_2) {
-        if(checkBoxTuVan.prop('checked')){
+        if (checkBoxTuVan.prop('checked')) {
             let idNhanVienKhiKhachChonTuVan = 0;
             nhanVienSelected = idNhanVienKhiKhachChonTuVan;
             $('.select-nhanvien').hide();
@@ -260,7 +260,7 @@ function lastPageModalCheck(idCoSo, phoneNumber, timeSelected, dichVuChecked) {
         $('.select-coso').addClass(classError);
     }
 
-    if(!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0){
+    if (!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0) {
         $('.select-dichvu').addClass(classError);
         error = true;
     }
@@ -278,7 +278,7 @@ function pageModalCheckThree() {
     $('.select-time').removeClass(classError);
     $('.time-datlich-error').html('');
 
-    if(!timeSelected > 0){
+    if (!timeSelected > 0) {
         $('.time-datlich-error').html('Bạn chưa chọn khung giờ đến !');
         $('.select-time').addClass(classError);
         error = true;
@@ -288,7 +288,7 @@ function pageModalCheckThree() {
 }
 
 function moveStep() {
-    if (nextStep < maxStep + 1 && nextStep > - 1) {
+    if (nextStep < maxStep + 1 && nextStep > -1) {
         var tranlatexRangeZ = nextStep * tranlatexRange;
         actionMoveSlide(activeStep, nextStep, tranlatexRangeZ);
     }
@@ -312,7 +312,7 @@ function seccondPageModalCheck() {
     $('.select-dichvu').removeClass(classError);
     $('.dichvu-datlich-error').html('');
 
-    if(!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0){
+    if (!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0) {
         $('.select-dichvu').addClass(classError);
         $('.dichvu-datlich-error').html('Bạn chưa chọn dịch vụ !');
         error = true;
@@ -336,14 +336,14 @@ function firstPageModalValidCheck(phone, coSo, nameKhachHang) {
         error = true;
         $('.name-datlich-error').html('Tên của bạn không được để trống !');
         $('.form-name-khachhang').addClass(classError);
-    } else if (nameKhachHang.length < 4 ||nameKhachHang.length > 55) {
+    } else if (nameKhachHang.length < 4 || nameKhachHang.length > 55) {
         error = true;
         $('.name-datlich-error').html('Tên phải từ 4 - 55 ký tự');
         $('.form-name-khachhang').addClass(classError);
     }
 
     var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-    if(phone !== ''){
+    if (phone !== '') {
         if (vnf_regex.test(phone) == false) {
             error = true;
             $('.phone-datlich-error').html('Số điện thoại của bạn không đúng định dạng !');
@@ -366,8 +366,9 @@ function firstPageModalValidCheck(phone, coSo, nameKhachHang) {
 
 var dichVuChecked = [];
 var arrIdDichVu = [];
+
 function calTotal() {
-    if(!checkBoxTuVan.prop('checked')){
+    if (!checkBoxTuVan.prop('checked')) {
         tinhTongVaPushArrayIdDichVu();
     } else {
         checkBoxDichVu.prop('checked', false);
@@ -380,7 +381,7 @@ function tinhTongVaPushArrayIdDichVu() {
     totalPriceDichVu = 0;
     $('input[name="dichvu"]').each(function() {
         var idDichVu = $(this).attr('data-id');
-            idDichVu = parseInt(idDichVu);
+        idDichVu = parseInt(idDichVu);
         var gia = $(this).val();
         var name = $(this).attr('data-name');
         if (this.checked) {
@@ -405,7 +406,7 @@ function inTotalToBrowser(totalPriceDichVu) {
     $('.tongtiendichvu').html(totalFormat);
 }
 
-$('.name-select').click(function (e) {
+$('.name-select').click(function(e) {
     e.preventDefault();
 
     var dataMove = $(this).attr('data-mov');
@@ -420,7 +421,7 @@ $('.name-select').click(function (e) {
     }
 });
 
-elementPickCoSo.click(function (e) {
+elementPickCoSo.click(function(e) {
     e.preventDefault();
     var text = $(this).children().text();
     var idCoSo = $(this).children().attr(attrOptionCoSo);
@@ -433,7 +434,7 @@ elementPickCoSo.click(function (e) {
 
 });
 
-$('.check-next-step').click(function (e) {
+$('.check-next-step').click(function(e) {
     e.preventDefault();
     // $('.box-spinner').fadeIn(timeMoving, function() {
     //     setTimeout(() => {
@@ -447,7 +448,7 @@ $('.check-next-step').click(function (e) {
     nextStepFc();
 });
 
-$('.control-item').click(function (e) {
+$('.control-item').click(function(e) {
     e.preventDefault();
     nextStep = $(this).attr('data-step');
     activeStep = getActiveStep();
@@ -467,19 +468,10 @@ function spinnerTurnOff() {
 var oldDichVuChecked;
 var checkBoxTuVan = $('.checkbox-tuvan');
 var checkBoxDichVu = $('.checkbox-dichvu');
+
 function uncheckDichVu() {
-    if(checkBoxTuVan.prop('checked')){
+    if (checkBoxTuVan.prop('checked')) {
         checkBoxDichVu.prop('checked', false);
         tinhTongVaPushArrayIdDichVu();
     }
 }
-
-var dataShowError;
-$('.custom-error').hover(function () {
-        dataShowError = $(this).attr('icon-error-of');
-        $("[error-of='"+dataShowError+"']").fadeIn(150);
-    }, function () {
-        $("[error-of='"+dataShowError+"']").fadeOut(150);
-    }
-);
-

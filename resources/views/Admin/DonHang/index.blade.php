@@ -17,7 +17,7 @@
                         </p>
 
 
-                        <table class="table table-striped table-bordered dt-responsive nowrap">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr class="text-center">
                                         <th width="10.5%"> Mã đơn hàng </th>
@@ -77,7 +77,7 @@
                                             </td>
                                             <td class="d-flex align-center">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('donhang.edit',$item->id)}}" role="button"><i class="fa fa-edit" title="Sửa Đơn Hàng"></i></a>
-                                               
+
                                                 <a name="" id="" class="btn btn-primary " href="{{url('quantri/donhangchitiet/detail/'.$item->id.'/edit')}}" role="button"><i class="fas fa-search-dollar"></i></a>
                                             </td>
                                         </tr>

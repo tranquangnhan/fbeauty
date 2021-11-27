@@ -3,6 +3,8 @@
 
 namespace App\Repositories\Blog;
 
+use App\Http\Requests\Blog;
+use App\Http\Requests\BlogEdit;
 use Carbon\Carbon;
 use App\Models\Admin\BlogModel;
 use App\Models\Admin\DanhMucModel;
@@ -74,11 +76,11 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
             ->orderBy('created_at', 'DESC')
             ->get();
     }
-    public function editBlog($slug)
+    public function editBlog($id)
     {
-        return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
+        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddmm','danhmuc.name AS danhmuc')
             ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
-            ->where('blog.slug', $slug)
+            ->where('blog.id','=', $id)
             ->get();
     }
     public function getblogbyiddm($id)
@@ -95,21 +97,48 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->where('blog.iddm', '=',$id)->limit(3)->orderBy('id', 'DESC')
         ->get();
-        
+
     }
     public function getblogbyiddm3($id)
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
-        ->where('blog.iddm', '=',$id)->limit(3)
-        ->get();   
+        ->where('blog.iddm','=', $id)->limit(4)
+        ->get();
+    }
+    public function updateView($id)
+    {
+        $flight = BlogModel::find($id);
+
+        $flight->luotxem += 1;
+
+        $flight->save();
     }
 
-    public function getBlogByIdDanhmuc($iddanhmuc, $skip, $take) 
+    public function getblogbyView()
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->limit(3)->orderBy('luotxem', 'DESC')
+        ->get();
+
+    }
+    public function getblogbyxuhuong()
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->limit(4)->orderBy('luotxem', 'DESC')
+        ->get();
+
+    }
+    public function getBlogByIdDanhmuc($iddanhmuc, $skip, $take)
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->where('blog.iddm', '=',$iddanhmuc)->skip($skip)->take($take)->orderBy('id', 'DESC')
-        ->get();   
+        ->get();
+    }
+    public function searchblog($valueSearch){
+        return $this->model->where('name','LIKE','%'.$valueSearch.'%')->get();
     }
 }
