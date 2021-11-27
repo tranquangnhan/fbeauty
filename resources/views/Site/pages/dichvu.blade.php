@@ -206,7 +206,7 @@
                                         <div class="content mt-5">
                                             <div class="box-gia">
                                                 <span class="giagiam">{{number_format($dichvu2item->dongia)}} đ </span>
-                                                <span class="gia left-bar">300,999 đ </span>
+                                                <span class="gia left-bar">{{number_format($dichvu2item->dongia)}} đ </span>
                                             </div>
                                             <div class="name text-1 limit-text-row-1 px-5 mt-2">
                                                 <a href="{{ asset('dich-vu') }}/{{$dichvu2item->slug}}">{{$dichvu2item->name}}</a>
