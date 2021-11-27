@@ -466,7 +466,7 @@ class HomeController extends Controller
                 if ($error == false) {
                     $sdt = '+84' . substr($request->soDienThoai, 1, strlen($request->soDienThoai));
                     $message = $this->makeMessageCamOnDatLich($request->idCoSo, $request->ngay, $request->gio);
-                    // $this->freeSMSController->sendSingleMessage($sdt, $message);
+                    $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                     $response = Array(
                         'success' => true,
@@ -475,7 +475,6 @@ class HomeController extends Controller
                         'ngay' => $request->ngay,
                         'gio' => $request->gio,
                         'request' => $request,
-                        'message' => $message,
                         'sdt' => $sdt
                     );
                 } else {
@@ -716,7 +715,7 @@ class HomeController extends Controller
                 // Ví dụ sdt: 0868970582 => +84868970582
                 $sdt = '+84' . substr($request->sdt, 1, strlen($request->sdt));
                 $message = '[Fbeauty]: ' . $OTP . ' la ma OTP cua ban. Ma se het han trong vong 60s. Vui long khong chia se ma nay trong bat ki truong hop nao!';
-                // $this->freeSMSController->sendSingleMessage($sdt, $message);
+                $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                 $timeOTPNotValid = $this->makeTimeOTPNotValid();
                 $response = Array(
@@ -724,7 +723,6 @@ class HomeController extends Controller
                     'sdt' => $request->sdt,
                     'timeOTPNotValid' => $timeOTPNotValid,
                     'phoneNumber' => $sdt,
-                    'message' => $message
                 );
             }
 
