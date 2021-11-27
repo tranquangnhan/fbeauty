@@ -69,7 +69,7 @@ class HomeController extends Controller
         $this->SanPhamChiTiet=$SanPhamChiTiet;
         $this->LienHe = $LienHe;
         $dichvu = $this->Dichvu->getDichVusite();
-        $danhmuc = $this->DanhMuc->dichvugetiddanhmuc();
+        $danhmuc = $this->DanhMuc->getdanhmucshow();
         $alldichvu = $this->Dichvu->getDichVuall();
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
@@ -225,7 +225,7 @@ class HomeController extends Controller
 
         }
         // $updateView = $this->Blog-> updateView($id);
-        
+
         // $this->data['updateView']= $updateView;
         // $Blog = [
         //     'luotxem' =>$request-> luotxem,
@@ -263,7 +263,12 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
-        //dd($dichvu);
+//         dd($dichvu);
+        if($valueSearch = request()->key){
+            $dichvu = $this->Dichvu->search($valueSearch);
+            $this->data['dichvu'] = $dichvu;
+        }
+
 
         return view("Site.pages.dichvu", $this->data);
     }
@@ -310,6 +315,23 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Tên Dịch Vụ'],
 
         ];
+
+        return view("Site.pages.dichvuchitiet", $this->data);
+    }
+
+    public function viewDanhMucgetDichvu($slug)
+    {
+        $danhmucgetdichvu = $this->DanhMuc->idDanhMucgetDichvu($slug);
+
+        $this->data['detaildichvu']= $danhmucgetdichvu;
+        $this->data['pathActive'] = 'danh-muc';
+        $this->data['namePage'] = 'Danh mục';
+        $this->data['breadcrumbArray'] = [
+            ['link' => '/danh-muc', 'name' => 'Danh Mục'],
+            ['link' => '', 'name' => 'Tên Danh Mục'],
+
+        ];
+        dd($danhmucgetdichvu);
 
         return view("Site.pages.dichvuchitiet", $this->data);
     }

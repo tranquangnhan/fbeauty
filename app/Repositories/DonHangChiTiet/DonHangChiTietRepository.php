@@ -45,6 +45,6 @@ class DonHangChiTietRepository extends BaseRepository implements DonHangChiTietR
         return $this->model->where('idsanphamchitiet','=',$idDonHang)->get();
     }
 
-  
+
 
 }
