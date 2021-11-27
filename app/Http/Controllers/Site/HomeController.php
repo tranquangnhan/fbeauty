@@ -263,7 +263,7 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
-        dd($dichvu);
+//         dd($dichvu);
         if($valueSearch = request()->key){
             $dichvu = $this->Dichvu->search($valueSearch);
             $this->data['dichvu'] = $dichvu;
