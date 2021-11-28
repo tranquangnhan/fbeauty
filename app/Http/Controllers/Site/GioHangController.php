@@ -481,7 +481,6 @@ class GioHangController extends Controller
     public function thanhtoandonhang(ThanhToan $request)
     {
         $sdt = $request->phonenumber;
-//        dd($request->all());
         if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
             $idkhach = $this->KhachHang->getBySdt($sdt);
         } else {
@@ -556,7 +555,6 @@ class GioHangController extends Controller
                 'trangthaithanhtoan' => 0
             ];
             $donhangnew = $this->DonHang->create($donhang);
-//            dd($donhangnew);
             if ($donhangnew) {
                 $iddonhang = $donhangnew->id;
                 $giohangSession = session()->get('giohang');
@@ -576,7 +574,6 @@ class GioHangController extends Controller
                         'dongiasaugiamgia' => $dongiasaugiam
                     ];
                     $this->DonHangChiTiet->create($donhangchitietnew);
-//                    dd($donhangchitietnew);
                 }
             }
             session()->forget('giohang');
@@ -641,7 +638,6 @@ class GioHangController extends Controller
             $vnpSecureHash = hash_hmac('sha512', $hashdata, $this->vnp_HashSecret);//
             $vnp_Url1 .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
-//        dd($vnp_Url1);
         $returnData = array(
             'code' => '00'
         , 'message' => 'success'
@@ -653,7 +649,6 @@ class GioHangController extends Controller
     public function returnPay(){
         if ($_GET["vnp_TransactionStatus"]==00){
             $sdt = session("requestAll")["phonenumber"];
-//        dd($request->all());
             if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
                 $idkhach = $this->KhachHang->getBySdt($sdt);
             } else {

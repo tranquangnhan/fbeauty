@@ -5,17 +5,21 @@ namespace App\Http\Controllers\Site;
 use App\Events\SendDatLich;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\freeSMSController;
+use App\Http\Requests\LienHe;
 use App\Models\Admin\DatLichModel;
 use App\Models\Admin\KhachHangModel;
 use App\Repositories\Blog\BlogRepository;
-use App\Repositories\CoSo\CoSoRepository;
+use App\Repositories\Coso\CosoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\DichVu\DichVuRepository;
+use App\Repositories\HoaDon\HoaDonRepository;
+use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\Lich\LichRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
 use App\Repositories\SanPham\SanPhamRepository;
+use App\Repositories\LienHe\LienHeRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -35,6 +39,10 @@ class HomeController extends Controller
     private $limitTimeNum = 10;
     private $freeSMSController;
     private $SanPhamChiTiet;
+    private $LienHe;
+    private $HoaDon;
+    private $HoaDonChiTiet;
+    private $Blog;
 
     /**
      * CosoController constructor.
@@ -49,7 +57,10 @@ class HomeController extends Controller
         KhachHangRepository $KhachHang,
         BlogRepository $Blog,
         SanPhamRepository $SanPham,
-        SanPhamChiTietRepository $SanPhamChiTiet
+        SanPhamChiTietRepository $SanPhamChiTiet,
+        LienHeRepository $LienHe,
+        HoaDonRepository $HoaDon,
+        HoaDonChiTietRepository $HoaDonChiTiet
 )
     {
         $this->freeSMSController = new freeSMSController;
@@ -63,15 +74,20 @@ class HomeController extends Controller
         $this->Blog = $Blog;
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet=$SanPhamChiTiet;
-        $dichvu = $this->Dichvu->getDichVu1();
+        $this->LienHe = $LienHe;
+        $dichvu = $this->Dichvu->getDichVusite();
         $danhmuc = $this->DanhMuc->getdanhmucshow();
+        $alldichvu = $this->Dichvu->getDichVuall();
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
+        $this->HoaDon=$HoaDon;
+        $this->HoaDonChiTiet=$HoaDonChiTiet;
 
         $this->data = array(
+            'danhmuc'=>$danhmuc,
             'listCoSo' => $listCoSo,
             'dichvu' => $dichvu,
-            'danhmuc' => $danhmuc,
+            'alldichvu' => $alldichvu,
             'listDanhMucDichVu' => $listDanhMucDichVu,
             'pathActive' => '',
         );
@@ -82,6 +98,7 @@ class HomeController extends Controller
         $sanPham = $this->SanPham->getAll();
         $blog = $this->Blog->getBlog1();
         $blog2 = $this->Blog->getBlog2();
+
 
         $this->data['sanPham'] = $sanPham;
         $this->data['blog'] = $blog;
@@ -101,8 +118,8 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
-        $danhmuc = $this->DanhMuc->getAll();
-        return view("Site.pages.sanpham", $this->data, ['danhmuc' => $danhmuc, 'danhmuc1' => $danhmuc, 'danhmuc2' => $danhmuc, 'danhmuc3' => $danhmuc]);
+        $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(1);
+        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp]);
     }
 
     public function getSanPham($soluong)
@@ -115,17 +132,23 @@ class HomeController extends Controller
 
     public function viewSanPhamChiTiet($id)
     {
-
-        $this->data['pathActive'] = 'san-pham';
-        $this->data['namePage'] = 'Sản phẩm chi tiết';
-        $this->data['breadcrumbArray'] = [
-            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
-            ['link' => '', 'name' => 'Tên sản phẩm'],
-        ];
-        $sanpham=$this->SanPham->getSanPhamJoinDanhMucID($id);
-        $sanphamchitiet=$this->SanPhamChiTiet->getSanPhamChiTietByID($id);
-        $sanphamchitietlimit=$this->SanPhamChiTiet->getSanPhamChiTietByIDLimit($id);
-        return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitiet'=>$sanphamchitiet, 'sanphamchitietlimit'=>$sanphamchitietlimit]);
+        error_reporting(0);
+            $this->data['pathActive'] = 'san-pham';
+            $this->data['namePage'] = 'Sản phẩm chi tiết';
+            $this->data['breadcrumbArray'] = [
+                ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+                ['link' => '', 'name' => 'Tên sản phẩm'],
+            ];
+            $sanpham=$this->SanPham->getSanPhamJoinDanhMucID($id);
+            $checkspct=$this->SanPhamChiTiet->CheckSanPhamChiTietByID($id);
+            if ($checkspct==false){
+                $sanphamchitiet=$this->SanPhamChiTiet->getSanPhamChiTietByID($id);
+                $sanphamchitietlimit=$this->SanPhamChiTiet->getSanPhamChiTietByIDLimit($id);
+                return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitiet'=>$sanphamchitiet, 'sanphamchitietlimit'=>$sanphamchitietlimit]);
+            }
+            else{
+                return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitietlimit'=>null]);
+            }
     }
 
 
@@ -156,9 +179,10 @@ class HomeController extends Controller
 
     public function viewBaiViet() {
         $blog      = $this->Blog->getBlog1();
+        $xuhuong      = $this->Blog->getblogbyxuhuong();
+        $luotxem      = $this->Blog->getblogbyView();
         $listdanhmuc   = $this->DanhMuc->getAll();
         $listdanhmuc2   = $this->DanhMuc->getall2danhmuc();
-
         foreach($listdanhmuc as $dm) {
             $skip = 0;
             $take = 6;
@@ -171,14 +195,8 @@ class HomeController extends Controller
             $blogbyid2 = $this->Blog->getBlogByIdDanhmuc($dm->id, $skip_0, $take_3);
             $dm['blogbyid2'] = $blogbyid2;
         }
-        if($valueSearch = request()->key){
-            $blog = $this->Blog->searchblog($valueSearch);
 
-            $this->data['blog'] = $blog;
-        }
-
-        // dd($listdanhmuc);
-        $danhmuc   = $this->DanhMuc->getAll();
+        $danhmuc   = $this->DanhMuc->getAllDanhMuc();
         $getBlog2     = $this->Blog->getBlog2();
         $blog3     = $this->Blog->getLastWeek1();
         $blog4     = $this->Blog->getLastWeek2();
@@ -193,6 +211,8 @@ class HomeController extends Controller
         $this->data['getBlog2']     = $getBlog2;
         $this->data['listdanhmuc'] = $listdanhmuc;
         $this->data['listdanhmuc2'] = $listdanhmuc2;
+        $this->data['luotxem'] = $luotxem;
+        $this->data['xuhuong'] = $xuhuong;
 
         $this->data['pathActive']          = 'bai-viet';
         $this->data['namePage']            = 'Bài viết';
@@ -203,24 +223,34 @@ class HomeController extends Controller
     }
 
     public function viewBaiVietChiTiet($id) {
+        $this->Blog->updateView($id);
         $getBlog2 = $this->Blog->getBlog2();
-        $danhmuc   = $this->DanhMuc->getAll();
+        $danhmuc   = $this->DanhMuc->getAllDanhMuc();
         $viewdetail = $this->Blog->editBlog($id);
         $viewdetail2 = $this->Blog->editBlog($id);
          foreach($viewdetail2 as $detail) {
-            $viewdt = $this->Blog->getblogbyiddm3($detail->id);
+            $viewdt = $this->Blog->getblogbyiddm3($detail->iddmm);
             $detail['viewdt'] = $viewdt;
+
         }
+        // $updateView = $this->Blog-> updateView($id);
+
+        // $this->data['updateView']= $updateView;
+        // $Blog = [
+        //     'luotxem' =>$request-> luotxem,
+        // ];
+
+
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
         $this->data['viewdetail']    = $viewdetail;
         $this->data['viewdetail2']    = $viewdetail2;
 
         $this->data['pathActive']          = 'bai-viet';
-        $this->data['namePage']            = 'Tên Bài viết';
+        $this->data['namePage']            = $viewdetail[0]->name;
         $this->data['breadcrumbArray']     = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
-            ['link' => '', 'name' => 'Tên Bài viết'],
+            ['link' => '', 'name' => $viewdetail[0]->name],
         ];
 
         return view("Site.pages.baivietchitiet", $this->data);
@@ -242,39 +272,11 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
-        // dd($dichvu);
         if($valueSearch = request()->key){
             $dichvu = $this->Dichvu->search($valueSearch);
-
             $this->data['dichvu'] = $dichvu;
         }
-
-
         return view("Site.pages.dichvu", $this->data);
-    }
-    public function viewTimKiem()
-    {
-        $dichvu = $this->Dichvu->getDichVu2();
-
-        $this->data['pathActive'] = 'tim-kiem';
-        $this->data['namePage'] = 'Tìm Kiếm';
-        $this->data['breadcrumbArray'] = [
-            ['link' => '', 'name' => 'Tìm Kiếm'],
-        ];
-        // dd($dichvu);
-        if($valueSearch = request()->key){
-            $dichvu = $this->Dichvu->search($valueSearch);
-            $sanpham = $this->SanPham->searchsanpham($valueSearch);
-            $blog = $this->Blog->searchblog($valueSearch);
-
-            $this->data['dichvu'] = $dichvu;
-            $this->data['sanpham'] = $sanpham;
-            $this->data['blog'] = $blog;
-
-        }
-
-
-        return view("Site.pages.timkiem", $this->data);
     }
 
     public function viewLienHe() {
@@ -285,9 +287,19 @@ class HomeController extends Controller
         $this->data['breadcrumbArray']     = [
             ['link' => '', 'name' => 'Liên Hệ'],
         ];
-
         return view("Site.pages.contact", $this->data);
     }
+    public function storeLienHe(LienHe $request) {
+        $LienHe = [
+            'namekh' => $request->namekh,
+            'email' => $request->email,
+            'sdt' => $request->sdt,
+            'noidung' => $request->noidung,
+        ];
+        $this->LienHe->create($LienHe);
+        return redirect('lien-he')->with('success', 'Gửi thành công liên hệ');
+    }
+
     public function viewGioiThieu() {
         $this->data['pathActive']          = 'gioi-thieu';
         $this->data['namePage']            = 'Giới thiệu';
@@ -299,9 +311,9 @@ class HomeController extends Controller
 
     public function viewDichVuChiTiet($slug)
     {
-        $detaildichvu  = $this->Dichvu->dichvudetail($slug);
+        $detaildichvu = $this->Dichvu->dichvudetail($slug);
 
-        $this->data['detaildichvu'] = $detaildichvu;
+        $this->data['detaildichvu']= $detaildichvu;
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
         $this->data['breadcrumbArray'] = [
@@ -313,6 +325,21 @@ class HomeController extends Controller
         return view("Site.pages.dichvuchitiet", $this->data);
     }
 
+    public function viewDanhMucgetDichvu($slug)
+    {
+        $danhmucgetdichvu = $this->DanhMuc->idDanhMucgetDichvu($slug);
+
+        $this->data['detaildichvu']= $danhmucgetdichvu;
+        $this->data['pathActive'] = 'danh-muc';
+        $this->data['namePage'] = 'Danh mục';
+        $this->data['breadcrumbArray'] = [
+            ['link' => '/danh-muc', 'name' => 'Danh Mục'],
+            ['link' => '', 'name' => 'Tên Danh Mục'],
+
+        ];
+        return view("Site.pages.dichvuchitiet", $this->data);
+    }
+
     public function viewProfileUser() {
         $this->data['pathActive']          = 'thong-tin-tai-khoan';
         $this->data['namePage']            = 'Thông tin tài khoảng';
@@ -321,7 +348,15 @@ class HomeController extends Controller
 
         ];
 
-        return view("Site.pages.profile-user", $this->data);
+        if (session()->has('khachHang') && session('khachHang') != '') {
+            if ($this->HoaDon->CheckHoaDonByIdKhachHang(session('khachHang')->id) == false){
+                $hoadon=$this->HoaDon->findHoaDonByIdKhachHang(session('khachHang')->id);
+            }
+            return view("Site.pages.profile-user", $this->data, ["inhoadon"=>$hoadon]);
+        }
+        else{
+            return view("Site.pages.profile-user", $this->data);
+        }
     }
 
     public function getNhanVienByIdCoSo(Request $request, $id) {
@@ -474,7 +509,6 @@ class HomeController extends Controller
                         'ngay' => $request->ngay,
                         'gio' => $request->gio,
                         'request' => $request,
-                        'message' => $message,
                         'sdt' => $sdt
                     );
                 } else {
