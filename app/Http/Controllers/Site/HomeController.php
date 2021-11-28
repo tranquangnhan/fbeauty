@@ -697,7 +697,17 @@ class HomeController extends Controller
     public function logoutSite()
     {
         session()->forget('khachHang');
-s['type'] == false) {
+        session()->forget('giohang');
+        return redirect()->back();
+    }
+
+    public function login(Request $request)
+    {
+        try {
+            if ($request->ajax()) {
+                $errors = $this->checkLoginSiteValid($request);
+
+                if ($errors['type'] == false) {
                     $khachHang = $this->KhachHang->checkLoginSite($request->sdt);
 
                     if ($khachHang) {
