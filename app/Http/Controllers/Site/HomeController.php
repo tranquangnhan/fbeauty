@@ -63,11 +63,15 @@ class HomeController extends Controller
         $this->Blog = $Blog;
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet=$SanPhamChiTiet;
+        $dichvu = $this->Dichvu->getDichVu1();
+        $danhmuc = $this->DanhMuc->getdanhmucshow();
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
 
         $this->data = array(
             'listCoSo' => $listCoSo,
+            'dichvu' => $dichvu,
+            'danhmuc' => $danhmuc,
             'listDanhMucDichVu' => $listDanhMucDichVu,
             'pathActive' => '',
         );
@@ -293,8 +297,11 @@ class HomeController extends Controller
         return view("Site.pages.gioithieu", $this->data);
     }
 
-    public function viewDichVuChiTiet()
+    public function viewDichVuChiTiet($slug)
     {
+        $detaildichvu  = $this->Dichvu->dichvudetail($slug);
+
+        $this->data['detaildichvu'] = $detaildichvu;
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
         $this->data['breadcrumbArray'] = [
