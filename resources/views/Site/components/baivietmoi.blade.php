@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                        <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
+                        <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink">
                             {{$item->name}}</a>
                     </div>
                 </div>

@@ -1,7 +1,6 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
-        {{$viewdetail[0]->name}}
 @endsection
 
 @section('main')
@@ -42,7 +41,7 @@
                                     <div class="border-z border-right-z"></div>
                                 </div>
 
-                                <div class="noidung" ><br>
+                                <div class="noidung"><br>
                                     {!! $viewdetail[0]->noidung !!}.
                                 </div>
                             </div>
@@ -116,13 +115,13 @@
 
                         <div class="list-blog-1 mt-4">
                             <div class="row  mb-30px">
-                           
+
                             @foreach ($viewdetail2 as $data1)
                                 @foreach ($data1->viewdt as $data)
                                 <div class="col-xl-3">
                                     <div class="tin-item-1 box-tin-hv">
                                         <div class="image-tin-1" style="height: 220px;">
-                                            <img class="img-fluid" 
+                                            <img class="img-fluid"
                                                 src="{{ asset('uploads') }}/{{$data->img}}"
                                                 alt="">
                                         </div>
@@ -131,14 +130,14 @@
                                                 <div
                                                     class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1">
+                                                        <a  class="box-danhmuc-1">
                                                             {{$data->danhmuc}}</a>
                                                     </div>
                                                     <span>{{$data->created_at}}</span>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
-                                                <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
+                                                <a href="{{ asset('bai-viet') }}/{{$data->id}}" class="hover-pink">{{$data->name}}</a>
                                             </div>
                                             <p class="blog-mota mb-0 limit-text-row-3">
                                                 {{$data->motangan}}

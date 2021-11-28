@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\Repositories\Coso;
+namespace App\Repositories\CoSo;
 use App\Repositories\BaseRepository;
-class CosoRepository extends BaseRepository implements CosoRepositoryInterface
+class CoSoRepository extends BaseRepository implements CoSoRepositoryInterface
 {
     protected $model;
     public function getModel(){

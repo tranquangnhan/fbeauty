@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\DatLich\DatLichRepository;
@@ -24,7 +24,7 @@ class DatLichRemakeController extends Controller
     private $NhanVien;
 
     public function __construct(
-        CosoRepository $CoSo,
+        CoSoRepository $CoSo,
         DatLichRepository $DatLich,
         DichVuRepository $DichVu,
         KhachHangRepository $KhachHang,

@@ -25,7 +25,7 @@ class Blog extends FormRequest
     {
         return [
             'name' => ['required', 'min:6', 'max:120'],
-            'noidung' => ['required', 'min:3'],
+            'noidung' => ['required', 'min:11'],
             // 'img' => ['required'],
             'motangan' => ['required', 'min:3','max:255'],
             'urlHinh'=>['required']

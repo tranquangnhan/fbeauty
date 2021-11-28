@@ -115,7 +115,7 @@ class BlogController extends Controller
 
             if($request->urlHinh !== null){
                 $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
-                 if($img == null){
+                if($img == null){
                     $img = 'defaul.jpg';
                 }
                 $Blog['img'] = $img;

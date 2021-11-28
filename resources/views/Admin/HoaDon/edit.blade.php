@@ -41,11 +41,12 @@
                                     @else
                                         <img src="{{asset('uploads')}}/khachhang/default-avatar-kh.jpg" class="avthoadon">
                                         @endif
-                                        @if(isset($customer->name)&&$customer->name!="")
+                                        @if(isset($customer->name) && $customer->sdt!="")
                                     <span class="text-primary font-weight-bold">{{$customer->name}}</span>
 
                                     <span class="ml-3"><i class="fa fa-phone"> <span
                                                 class="text-primary"><a href="tel:{{$customer->sdt}}">{{$customer->sdt}}</a></span></i></span>
+                                        @endif
                                 </div>
                             </div>
                             <hr>
