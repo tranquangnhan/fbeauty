@@ -1,4 +1,4 @@
-@extends('Site.layout')
+@extends('site.layout')
 
 @section('title')
     Dịch Vụ
@@ -12,7 +12,7 @@
                 <div class="head-service-item service-title">
                     <div class="w-100 text-left">
                         <div class="title-small color-black-main">
-                            LỰA CHỌN DỊCH VỤ
+                            LỰA CHỌN Tìm Kiếm
                         </div>
                         <div class="title-3">
                             Bí Quyết Khỏe Và Đẹp
@@ -21,28 +21,143 @@
                 </div>
                 <div class="head-service-item">`
                     <div class="d-flex">
-                        <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">
-                            <form class="form-inline" action="">
-                                <div class="form-group">
-                                  <input class="form-control" name="key" placeholder="Tìm Kiếm Dịch Vụ ....">
-                                </div>
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search color-black-2"></i></button>
-                            </form>
-                        </div>
+                        <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">Tìm kiếm theo </div>
                         <ul class="nav nav-tabs" id="myTab-1" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link btn-3 active black-1" id="damat-tab" data-toggle="tab" href="#damat" role="tab" aria-controls="damat" aria-selected="true">Da mặt</a>
+                                <a class="nav-link btn-3 active black-1" id="tatca-tab" data-toggle="tab" href="#tatca" role="tab" aria-controls="tatca" aria-selected="true">Tất Cả</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link btn-3 black-1" id="giammo-tab" data-toggle="tab" href="#giammo" role="tab" aria-controls="giammo" aria-selected="false">Danh mục</a>
+                                <a class="nav-link btn-3 black-1" id="damat-tab" data-toggle="tab" href="#damat" role="tab" aria-controls="damat" aria-selected="false">Dịch Vụ</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link btn-3 black-1" id="giammo-tab" data-toggle="tab" href="#giammo" role="tab" aria-controls="giammo" aria-selected="false">Sản Phẩm</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link btn-3 black-1" id="blog-tab" data-toggle="tab" href="#blog" role="tab" aria-controls="blog" aria-selected="false">Blog</a>
                             </li>
                         </ul>
                     </div>
 
                 </div>
             </div>
-            <div class="list-tabs">
+            <hr>
+             <div class="list-tabs">
                 <div class="tab-content" id="myTabContent-1">
+                    <div class="tab-pane fade show active" id="tatca" role="tabpanel">
+
+                        <h2 class="mt-3">Dịch Vụ</h2>
+                        <div class="w-100">
+                            <div class="fa-list-dichvu mt-1">
+
+                            @foreach ($dichvu as $dichvuitem)
+                                <div class="dichvu-item ml-0 w-100">
+                                    <div class="content-1">
+                                        <div class="text-7 color-main-1">
+                                            {{$dichvuitem->namedm}}
+                                        </div>
+
+                                        <div class="text-8 mt-1">
+                                            {{number_format($dichvuitem->dongia)}} đ
+                                        </div>
+
+                                        <div class="img-1 mt-4">
+                                            <a href="{{ asset('dich-vu') }}/{{$dichvuitem->slug}}">
+                                                <img class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
+                                            </a>
+                                        </div>
+
+                                        <div class="text-1 limit-text-row-1 mt-4">
+                                            {{$dichvuitem->name}}
+                                        </div>
+
+                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                            {{$dichvuitem->motangan}}
+
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            </div>
+                        </div>
+                        <hr>
+
+                        <h2>Sản phẩm</h2>
+                        <div class="w-100">
+                            <div class="fa-list-dichvu mt-1">
+
+                            @foreach ($dichvu as $dichvuitem)
+                                <div class="dichvu-item ml-0 w-100">
+                                    <div class="content-1">
+                                        <div class="text-7 color-main-1">
+                                            {{$dichvuitem->namedm}}
+                                        </div>
+
+                                        <div class="text-8 mt-1">
+                                            {{number_format($dichvuitem->dongia)}} đ
+                                        </div>
+
+                                        <div class="img-1 mt-4">
+                                            <a href="{{ asset('dich-vu') }}/{{$dichvuitem->slug}}">
+                                                <img class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
+                                            </a>
+                                        </div>
+
+                                        <div class="text-1 limit-text-row-1 mt-4">
+                                            {{$dichvuitem->name}}
+                                        </div>
+
+                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                            {{$dichvuitem->motangan}}
+
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            </div>
+                        </div>
+                        <hr>
+
+                        <h2>Blog</h2>
+                        <div class="w-100">
+                            <div class="fa-list-dichvu mt-1">
+
+                            @foreach ($dichvu as $dichvuitem)
+                                <div class="dichvu-item ml-0 w-100">
+                                    <div class="content-1">
+                                        <div class="text-7 color-main-1">
+                                            {{$dichvuitem->namedm}}
+                                        </div>
+
+                                        <div class="text-8 mt-1">
+                                            {{number_format($dichvuitem->dongia)}} đ
+                                        </div>
+
+                                        <div class="img-1 mt-4">
+                                            <a href="{{ asset('dich-vu') }}/{{$dichvuitem->slug}}">
+                                                <img class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
+                                            </a>
+                                        </div>
+
+                                        <div class="text-1 limit-text-row-1 mt-4">
+                                            {{$dichvuitem->name}}
+                                        </div>
+
+                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
+                                            {{$dichvuitem->motangan}}
+
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
                     <div class="tab-pane fade show active" id="damat" role="tabpanel">
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
@@ -80,7 +195,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="giammo" role="tabpanel">
+                    {{-- <div class="tab-pane fade" id="giammo" role="tabpanel">
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
                                 @foreach ($danhmuc as $danhmucitem)
@@ -337,7 +452,7 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>
