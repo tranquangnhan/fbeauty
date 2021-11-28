@@ -29,7 +29,7 @@ $('.ptgh').click(function (e) {
 function thanhtoanVNPAY(bien) {
     if(bien =='VNPAY'){
         $('#collapseExample123').addClass('show');
-        var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split(',').join('');
+        var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split('.').join('');
         $('#amount').val(tongthanhtoan);
         $('#valthanhtoan').val('VNPAY');
         $('#create_form').attr('action', domain+'/vnpay_php/vnpay_create_payment');
@@ -43,7 +43,7 @@ function thanhtoanVNPAY(bien) {
 
 function ApplyGiamGia() {
     var magiamgia=$("#magiamgia").val();
-    var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split(',').join('');
+    var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split('.').join('');
     if(magiamgia!=""){
         $.ajax({
             url: domain + '/CheckGiamGia/' + magiamgia +'/tongthangtoan/'+tongthanhtoan,
@@ -79,15 +79,15 @@ function ApplyGiamGia() {
                         var tiensaugiam = (Number(tongthanhtoan) - ((Number(tongthanhtoan)*Number(data[0].number))/100));
                         LuuSessionGiamGia(((Number(tongthanhtoan)*Number(data[0].number))/100));
                         $('#amount').val(tiensaugiam);
-                        $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString()+'% <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
-                        $('#tongthanhtoan').html(tiensaugiam.toLocaleString());
+                        $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString().replaceAll(",", ".")+'% <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
+                        $('#tongthanhtoan').html(tiensaugiam.toLocaleString().replaceAll(",", "."));
                     }
                     else {
                         var tiensaugiam = Number(tongthanhtoan) - Number(data[0].number);
                         LuuSessionGiamGia(Number(data[0].number));
                         $('#amount').val(tiensaugiam);
-                        $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString()+'đ <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
-                        $('#tongthanhtoan').html(tiensaugiam.toLocaleString());
+                        $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString().replaceAll(",", ".")+'đ <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
+                        $('#tongthanhtoan').html(tiensaugiam.toLocaleString().replaceAll(",", "."));
                     }
                     $("#idgiam").val(data[0].id)
                 }
