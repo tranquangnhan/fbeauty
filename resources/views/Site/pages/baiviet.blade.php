@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
     Bài viết
@@ -396,7 +396,7 @@
                         <div class="body mt-4">
                             <div class="row">
                                 @foreach ($xuhuong as $item)
-                                    
+
                                 <div class="col-xl-3">
                                     <div class="tin-item-1">
                                         <div class="image-tin-1 " style="height: 180px;">
