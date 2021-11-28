@@ -36,8 +36,8 @@
                 </li>
             </ul>
             <div class="box-icon">
-                <li class="icon-item d-inline-block hover-scale-1">
-                    <a class="btn-modal-sreach" type-modal="modal-sreach" href="javascript:void(0)" data-show="one"><i class="fas fa-search color-black-2"></i></a>
+                <li class="icon-item d-inline-block hover-scale-1  {{ ($pathActive == 'tim-kiem') ? 'active' : '' }} ">
+                    <a class="btn-modal-sreach" href="/tim-kiem"><i class="fas fa-search color-black-2"></i></a>
                 </li>
                 @if (session()->has('khachHang') && session('khachHang') != '')
                 <li class="icon-item d-inline-block fa-dropdown-custom-1">

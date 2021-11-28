@@ -159,6 +159,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
     Route::get('bai-viet/{id}', [HomeController::class, "viewBaiVietChiTiet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+    Route::get('tim-kiem', [HomeController::class, "viewTimKiem"]);
     Route::get('lien-he', [HomeController::class, "viewLienHe"]);
     Route::get('gioi-thieu', [HomeController::class, "viewGioiThieu"]);
     Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
@@ -190,7 +191,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('xoatatcasanpham', [GioHangController::class, 'xoatatcasanpham']);
     Route::get('insergiohangdatawherelogin', [GioHangController::class, 'InserGioHangDataSession']);
     Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
-    
+
 
     Route::post('storeLienHe', 'App\Http\Controllers\Site\HomeController@storeLienHe');
     Route::get('/capnhatgiasession/{gia}', [GioHangController::class, 'capnhatgiasession']);
