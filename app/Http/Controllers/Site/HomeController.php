@@ -13,6 +13,8 @@ use App\Repositories\Coso\CosoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\DichVu\DichVuRepository;
+use App\Repositories\HoaDon\HoaDonRepository;
+use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\Lich\LichRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
@@ -38,6 +40,9 @@ class HomeController extends Controller
     private $freeSMSController;
     private $SanPhamChiTiet;
     private $LienHe;
+    private $HoaDon;
+    private $HoaDonChiTiet;
+    private $Blog;
 
     /**
      * CosoController constructor.
@@ -53,7 +58,9 @@ class HomeController extends Controller
         BlogRepository $Blog,
         SanPhamRepository $SanPham,
         SanPhamChiTietRepository $SanPhamChiTiet,
-        LienHeRepository $LienHe
+        LienHeRepository $LienHe,
+        HoaDonRepository $HoaDon,
+        HoaDonChiTietRepository $HoaDonChiTiet
 )
     {
         $this->freeSMSController = new freeSMSController;
@@ -73,6 +80,8 @@ class HomeController extends Controller
         $alldichvu = $this->Dichvu->getDichVuall();
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
+        $this->HoaDon=$HoaDon;
+        $this->HoaDonChiTiet=$HoaDonChiTiet;
 
         $this->data = array(
             'danhmuc'=>$danhmuc,
@@ -263,7 +272,6 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
-//         dd($dichvu);
         if($valueSearch = request()->key){
             $dichvu = $this->Dichvu->search($valueSearch);
             $this->data['dichvu'] = $dichvu;
@@ -331,8 +339,6 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Tên Danh Mục'],
 
         ];
-        dd($danhmucgetdichvu);
-
         return view("Site.pages.dichvuchitiet", $this->data);
     }
 
@@ -344,7 +350,15 @@ class HomeController extends Controller
 
         ];
 
-        return view("Site.pages.profile-user", $this->data);
+        if (session()->has('khachHang') && session('khachHang') != '') {
+            if ($this->HoaDon->CheckHoaDonByIdKhachHang(session('khachHang')->id) == false){
+                $hoadon=$this->HoaDon->findHoaDonByIdKhachHang(session('khachHang')->id);
+            }
+            return view("Site.pages.profile-user", $this->data, ["inhoadon"=>$hoadon]);
+        }
+        else{
+            return view("Site.pages.profile-user", $this->data);
+        }
     }
 
     public function getNhanVienByIdCoSo(Request $request, $id) {
