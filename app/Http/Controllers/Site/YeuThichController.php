@@ -53,4 +53,13 @@ class YeuThichController extends Controller
             return 2;
         }
     }
+
+    public function getAllSPYeuThich(){
+        if (session()->has('khachHang') && session('khachHang') != ''){
+            return $this->YeuThich->getAllYeuThich(session('khachHang')->id);
+        }
+        else{
+            return $this->YeuThich->getAllYeuThich(00);
+        }
+    }
 }

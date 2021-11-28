@@ -130,7 +130,7 @@ class HomeController extends Controller
         return $data;
     }
 
-    public function viewSanPhamChiTiet($id)
+    public function viewSanPhamChiTiet($slug)
     {
         error_reporting(0);
             $this->data['pathActive'] = 'san-pham';
@@ -139,11 +139,11 @@ class HomeController extends Controller
                 ['link' => '/san-pham', 'name' => 'Sản phẩm'],
                 ['link' => '', 'name' => 'Tên sản phẩm'],
             ];
-            $sanpham=$this->SanPham->getSanPhamJoinDanhMucID($id);
-            $checkspct=$this->SanPhamChiTiet->CheckSanPhamChiTietByID($id);
+            $sanpham=$this->SanPham->getSanPhamJoinDanhMucSlug($slug);
+            $checkspct=$this->SanPhamChiTiet->CheckSanPhamChiTietByID($sanpham[0]->id);
             if ($checkspct==false){
-                $sanphamchitiet=$this->SanPhamChiTiet->getSanPhamChiTietByID($id);
-                $sanphamchitietlimit=$this->SanPhamChiTiet->getSanPhamChiTietByIDLimit($id);
+                $sanphamchitiet=$this->SanPhamChiTiet->getSanPhamChiTietByID($sanpham[0]->id);
+                $sanphamchitietlimit=$this->SanPhamChiTiet->getSanPhamChiTietByIDLimit($sanpham[0]->id);
                 return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitiet'=>$sanphamchitiet, 'sanphamchitietlimit'=>$sanphamchitietlimit]);
             }
             else{
