@@ -237,7 +237,7 @@
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link btn-3 active black-1" id="allservice-tab"
                                         data-toggle="tab" href="#allservice" role="tab"
-                                        aria-controls="allservice" aria-selected="true">Da mặt</a>
+                                        aria-controls="allservice" aria-selected="true">Mới Nhất</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link btn-3 black-1" id="nhieuquantam-tab" data-toggle="tab"
@@ -277,11 +277,15 @@
                                                 </div>
 
                                                 <div class="img-1 mt-4">
+                                                <a href="{{ asset('dich-vu') }}/{{$itemdichvu->slug}}">
                                                     <img class="" src="{{ asset('uploads/'.$itemdichvu->img) }}" alt="">
+                                                </a>
                                                 </div>
 
                                                 <div class="text-1 limit-text-row-1 mt-4">
-                                                    {{$itemdichvu->name}}
+                                                    <a href="{{ asset('dich-vu') }}/{{$itemdichvu->slug}}">
+                                                        {{$itemdichvu->name}}
+                                                    </a>
                                                 </div>
 
                                                 <p class="text-2 limit-text-row-3 mt-1 mt-3">
@@ -315,15 +319,17 @@
                                             </div>
 
                                             <div class="text-8 mt-1">
-                                                {{number_format($temdanhmuc->dongiadm)}}đ
                                             </div>
 
                                             <div class="img-1 mt-4">
-                                                <img class="" src="{{ asset('uploads/'.$temdanhmuc->img) }}" alt="">
+                                                <a href="{{ asset('danh-muc') }}/{{$temdanhmuc->slug}}">
+                                                    <img class="" src="{{ asset('uploads/'.$temdanhmuc->img) }}" alt="">
+                                                </a>
                                             </div>
 
                                             <div class="text-1 limit-text-row-1 mt-4">
-                                                {{$temdanhmuc->namedm}}
+                                                <a href="{{ asset('danh-muc') }}/{{$temdanhmuc->slug}}">
+                                                </a>
                                             </div>
 
                                             <p class="text-2 limit-text-row-3 mt-1 mt-3">
@@ -364,11 +370,15 @@
                                             </div>
 
                                             <div class="img-1 mt-4">
-                                                <img class="" src="{{ asset('uploads/'.$itemalldv->img) }}" alt="">
+                                                <a href="{{ asset('dich-vu') }}/{{$itemalldv->slug}}">
+                                                    <img class="" src="{{ asset('uploads/'.$itemalldv->img) }}" alt="">
+                                                </a>
                                             </div>
 
                                             <div class="text-1 limit-text-row-1 mt-4">
+                                                <a href="{{ asset('dich-vu') }}/{{$itemalldv->slug}}">
                                                 {{$itemalldv->name}}
+                                                </a>
                                             </div>
 
                                             <p class="text-2 limit-text-row-3 mt-1 mt-3">

@@ -1593,7 +1593,18 @@
 
                 @include('Site.components.list-social')
             </div> --}}
-
+            <script>
+                var msg = {{Session::get("alert")}};
+                var exist = {{Session::has("alert")}};
+                if(exist){
+                  alert(msg);
+                }
+            </script>
+            @if (session('alert'))
+                <div class="alert alert-success">
+                    {{ session('alert') }}
+                </div>
+            @endif
 
         </div>
     </div>

@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div id="imageA" class="mt-2">
-                                            <img style=" border-radius:10px" class="img-admin"  height="130"
+                                            <img style=" border-radius:5px" class="img-admin" width="500px"  height="150"
                                                 src="{{ asset('uploads/'.$Blog->img) }}">
                                         </div>
                                     </div>

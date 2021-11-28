@@ -44,8 +44,8 @@ class BlogEdit extends FormRequest
     public function attributes(){
         return [
             'name' => 'Tên bài viết',
-            'noidung' => 'Nội dung',
             'motangan' => 'Mô tả ngắn',
+            'noidung' => 'Nội dung'
         ];
     }
 }

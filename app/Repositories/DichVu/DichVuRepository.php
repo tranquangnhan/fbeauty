@@ -70,18 +70,12 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->orderBy('created_at', 'DESC')
         ->get();
     }
-    public function dichvugetiddanhmuc(){
-        return $this->model->select('dichvu.*','danhmuc.name as namedm','danhmuc.img as imgdm')
-        ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
-        ->where('dichvu.iddm', '=', 1)
-        ->orderBy('created_at', 'DESC')
-        ->get();
-    }
     public function getDichVuall(){
         return $this->model->select('dichvu.*','danhmuc.name as namedm')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+        ->offset(1)->limit(3)
         ->where('dichvu.trangthai', '=', 1)
-        ->orderBy('created_at', 'DESC')
+        ->orderBy('id', 'DESC')
         ->get();
     }
     public function dichvudetail($slug){
@@ -91,7 +85,6 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->where('dichvu.slug', '=', $slug)
         ->first();
     }
-
 
     public function getAllDichVu(){
         return $this->model->select("*")->where("trangthai",1)->get();

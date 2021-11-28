@@ -32,14 +32,14 @@
                                 <div class="row">
                                     <div class="col-md-9">
 
-                                        <div class="float-left mt-3">
+                                        <div class="row mt-3">
                                             <address>
                                                 <strong>Cơ sở: </strong>
                                                 {{$coso->name}} <br>
                                                 <strong title="Phone">ĐC: </strong> {{$coso->diachi}}
                                             </address>
                                         </div>
-                                        <div class="float-left mt-1">
+                                        <div class="row mt-1">
                                             <address>
                                                 <strong>Liệu trình</strong><br>
                                                 <?php $infolieutrinh = \Illuminate\Support\Facades\DB::table('lieutrinh')->select("*")->where('id', '=', $idlieutrinh)->get();?>
@@ -92,7 +92,7 @@
                                                     <th>Tên dịch vụ / Sản phẩm</th>
                                                     <th>Mô tả</th>
                                                     <th>Số lượng</th>
-                                                    <th>Giá (VND)</th>
+                                                    <th>Giá</th>
                                                     <th>Tổng tiền (VND)</th>
                                                 </tr>
                                                 </thead>
