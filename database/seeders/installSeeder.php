@@ -127,12 +127,12 @@ class installSeeder extends Seeder
         ]);
 
         DB::table('nhanvien')->insert([
-            ['id'=>1,'idcoso'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> '$2y$10$iimuFe7voEEthMTFQvRBX.hk1XrL3O1W7lXTZPCxktAIWkuEmY692','role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>1,'idcoso'=>1, 'email'=>'ngoanhquoc@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Ngô Anh Quốc', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
             ['id'=>2,'idcoso'=>1, 'email'=>'longnh.2401@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Long', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>3,'idcoso'=>1, 'email'=>'tuong2712@gmail.com','password'=> '$2y$10$nlRY7DRJfQQLSbI0aV7h9usw0waQxL9uGbNFQChi.06.YIigQCC3q','role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>3,'idcoso'=>1, 'email'=>'tuong2712@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Tưởng', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
             ['id'=>4,'idcoso'=>1, 'email'=>'nhanvien@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'nhân viên', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>5,'idcoso'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>6,'idcoso'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> '$2y$10$Pmr.7sQX/HnGhwq8ZzlOPuZ9P.yBZ1XSxoRINN4arsLVGR6.6lxf6','role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
+            ['id'=>5,'idcoso'=>1, 'email'=>'tranquangnhan1606@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Nhân', 'img'=>'', 'namsinh'=> 2000,'gioitinh'=> 1, 'sdt'=> '012345678', 'avatar'=>'quoc.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ['id'=>6,'idcoso'=>1, 'email'=>'thuhuyendev01@gmail.com','password'=> bcrypt('123123123'),'role'=>1 ,'active'=>1 ,'name'=>'Thu Huyền', 'img'=>'', 'namsinh'=> 2001,'gioitinh'=> 0, 'sdt'=> '012345678', 'avatar'=>'huyen.jpg','trangthai'=> 1,'remember_token'=> 'hJ5bPBxgp9UsxQhEyS0BNTSmUTkaEz40lZ2evGmzsa6ZIQSYTSRxto1RejYq','created_at'=> '2021-10-03 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('giamgia')->insert([
             ['id'=>1,'name'=>'MAXSALE150','ma'=>'FB01', 'number'=>5,'max'=> 150000,'loai'=>1 ,'ngaytao'=>'1635699600' ,'ngayhethan'=>'1637341200','created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
@@ -622,6 +622,231 @@ class installSeeder extends Seeder
 
             Một cách khác là các bạn dùng tay tìm đến đốt sống cổ số 7 (đốt này to nhất) và day xung quanh đó. Đây cũng là cách bóp đầu đỡ đau được nhiều người áp dụng hiện nay.
             ','trangthai' => '1'],
+
+            ['id'=>8,'iddm' => '1', 'img' => 'chamsocdamat.jpg', 'name' => 'Chăm sóc da mặt bằng tế bào gốc an toàn tại nhà', 'slug' => Str::slug('Chăm sóc da mặt bằng tế bào gốc an toàn tại nhà', '-'),'motangan'=>'Việc chăm sóc da mặt thường xuyên, là việc mà các chị em hiện nay luôn thực hiện. Nhằm giữ cho da mặt luôn trẻ khỏe, mịn màng và giúp các bạn thêm tươi trẻ hơn.',
+            'noidung'=>'
+            Lý do nên chăm sóc da bằng tế bào gốc?
+            Cuộc sống ngày nay khiến da tiếp xúc với nhiều chất hóa học, bụi bẩn cũng như môi trường bị ô nhiễm. Khí cho làn da trở nên kém sắc, da bắt đầu trở nên tệ hơn và xuất hiện các nếp nhăn, vết thâm, các nốt mụn và khiến da trở nên lão hóa nhanh hơn,… Từ đó, nhu cầu làm đẹp và chăm sóc da cũng được các chị em chú trọng và chúng ngày càng phát triển hơn.
+
+            Nguyên nhân cần thực hiện chăm sóc da tế bào gốc
+            Nguyên nhân cần thực hiện chăm sóc da tế bào gốc
+            Vì một khi da trở nên tệ, kém sắc sẽ khiến cho chị em mất tự tin và lo lắng. Nếu da của bạn không được chăm sóc kịp thời, đúng cách sẽ làm cho da ngày một nghiêm trọng và hư tổn nhiều hơn.
+
+            Trong các loại hình cũng như các phương pháp chăm sóc da, thì liệu trình chăm sóc da mặt bằng tế bào gốc là phương pháp mang đến hiệu quả nhất. Tế bào gốc là liệu trình làm đẹp và chăm sóc da hiện đại, tiên tiến nhất hiện nay, được nhiều chị em lựa chọn.
+
+            Nhờ vào liệu trình thực hiện chăm sóc da đơn giản, mang đến hiệu quả cao và vô cùng an toàn. Giúp da mặt của bạn trở nên mịn màng, trẻ hóa, căng mọng và rạng ngời, làm chạm quá trình lão hóa trên da.
+
+            Tế bào gốc là gì?
+            Tế bào gốc là một loại tế bào có công dụng phân bào và biệt hóa, có tác dụng thúc đẩy tăng hàm lượng collagen cho da, giúp da duy trì cấu trúc da, làm da săn chắc, đàn hồi. Tế bào gốc càng phát hoạt động mạnh mẽ sẽ càng giúp cho da lão hóa lâu hơn, làm tăng sức đề kháng giúp da mạnh khỏe hơn.
+
+            Tế bào gốc đóng vai trò rất quan trọng với làn da
+            Tế bào gốc đóng vai trò rất quan trọng với làn da
+            Phân bào: Là quá trình các tế bào trong da nguyên phân, cùng với giảm phân giúp tạo nên các tế bào mới cho da.
+            Biệt hóa: Là quá trình cơ thể thực hiện quá trình biến đổi, chuyển hóa thành tế bào mới.
+            Hiện nay, các loại tế bào gốc có rất nhiều loại khác nhau, trong đó sử dụng tế bào gốc tự thân và tế bào gốc chế phẩm là 2 loại được sử dụng nhiều nhất trong ngành thẩm mỹ.
+
+            Tham khảo thêm về tế bào gốc trị mụn để bỏ túi nhiều kinh nghiệm hơn cho mình nhé.
+
+            Công dụng của tế bào gốc đối với làn da
+            Giúp làm chậm quá trình lão hóa ở da
+            Chăm sóc da mặt bằng tế bào gốc, mang đến công dụng làm chậm đi quá trình lão hóa của da mặt. Hỗ trợ làm mờ cũng như xóa đi các nốt nám, nếp nhăn trên da và giúp cho da trở nên ngày một trẻ hóa hơn. Làn da cũng một ngày trở nên căng mịn, tràn đầy sức sống và trắng sáng, hồng hào hơn.
+
+            Có thể nói, so với các phương pháp làm đẹp và chăm sóc da khác, việc chăm sóc da mặt bằng tế bào gốc là phương pháp làm đẹp da hiệu quả nhất với thời gian thực hiện ngắn nhất. Sau khi thực hiện liệu trình đầu tiên, bạn sẽ cảm nhận được làn da có sự thay đổi rõ rệt.
+
+            Tế bào gốc có công dụng chống lão hóa diễn ra trên da mặt
+            Tế bào gốc có công dụng chống lão hóa diễn ra trên da mặt
+            Kích thích sản sinh collagen
+            Liệu trình chăm sóc da mặt bằng tế bào gốc mang đến công dụng, thúc đẩy và kích thích cơ thể sản sinh thêm hàm lượng collagen. Giúp da tình trạng da trở nên ổn định và đàn hồi hơi. Không chỉ có vậy, liệu trình tế bào gốc còn hỗ trợ da loại bỏ một số vấn đề trên da như: trị sẹo lõm, trị sẹo lâu năm, trị sẹo lồi,…
+
+            Từ đó, mang đến khả năng nuôi dưỡng da chuyên sâu và hỗ trợ da được tái tạo, cải thiện làn da từ sâu bên trong.
+
+            Khả năng trị nám da
+            Không chỉ giúp chăm sóc da tốt hơn, liệu trình tế bào gốc còn mang khả năng điều trị các vết nám da, tàn nhang hiệu quả. Chúng được xem như một loại sản phẩm làm đẹp, giúp cân bằng sắc tố trên da giúp làm trắng da và giúp da trở nên trắng mịn, đều màu hơn.
+
+            Tế bào gốc giúp loại bỏ các vùng da bị nám, da đều màu hơn
+            Tế bào gốc giúp loại bỏ các vùng da bị nám, da đều màu hơn
+            Loại bỏ các loại mụn
+            Cùng với công dụng thúc đẩy sản sinh collagen trong cơ thể, chăm sóc da mặt tế bào gốc còn có tác dụng điều trị mụn và ngăn ngừa tình trạng mụn xuất hiện hiệu quả. Phương pháp này mang đến công dụng loại bỏ hoàn toàn các nốt mụn có trên da mặt như: mụn ẩn, mụn đầu đen, mụn cám,… Đây là một trong những công dụng tuyệt vời của liệu trình chăm sóc da này.
+
+            Chăm sóc da mặt bằng tế bào gốc mang đến cho bạn nhiều công dụng tối ưu, giúp da trở nên trẻ mạnh hơn. Phương pháp này bạn có thể đến các cơ sở thẩm mỹ để thực hiện, hoặc thực hiện tại nhà.
+
+            Quy trình chăm sóc da mặt bằng tế bào gốc tại nhà
+            Với cách thực hiện làm đẹp, chăm sóc cùng tế bào gốc tại nhà, bạn cần tuân thủ các bước sau:
+
+            Làm sạch da mặt với sữa rửa mặt
+            Cần làm sạch da mặt đầu tiên
+            Cần làm sạch da mặt đầu tiên
+            Việc đầu tiên trước khi bắt đầu thực hiện chăm sóc da, bạn cần thực hiện công tác làm sạch bề mặt da và giúp lỗ chân lông thông thoáng. Nhằm loại bỏ các bã nhờn, vi khuẩn nằm sâu trong lỗ chân lông, giúp lỗ chân lông sạch và hấp thụ các chất dinh dưỡng từ tế bào gốc tốt nhất, giúp tăng hiệu quả, cải thiện da.
+
+            Bạn nên sử dụng phương pháp tẩy trang rồi đến sữa rửa mặt, để giúp làn da sạch sâu. Sữa rửa mặt sẽ đánh bay các lớp cặn bẩn còn thường của bước tẩy trang, giúp làm sạch da hiệu quả. Bạn nên sử dụng nước sạch ấm để sử dụng cùng sữa rửa mặt, vì nước ấm sẽ giúp lỗ chân lông giãn nở, giúp việc loại bỏ bã nhờn tốt hơn. Nên thực hiện vệ sinh với sữa rửa mặt 2 lần sáng và tối mỗi ngày.
+
+            Loại bỏ lớp sừng trên da với tẩy tế bào chết
+            Sau khi đã thực hiện vệ sinh da với sữa rửa mặt, bạn bắt đầu thực hiện việc loại  bỏ lớp sừng và tế bào chết bám trên da, bằng sản phẩm tẩy tế bào chết. Việc tẩy tế bào chết giúp da mặt được thông thoáng, trở nên mềm mịn hơn và hấp thụ các chất dinh dưỡng từ các bước sau tốt hơn.
+
+            Ngoài ra, việc tẩy tế bào chết còn mang đến công dụng, ngăn ngừa tiết dầu nhiều và hạn chế được tình trạng lỗ chân lông bị tắc nghẽn gây nên mụn.
+            ','trangthai' => '1'],
+
+            ['id'=>9,'iddm' => '1', 'img' => 'csdm2.jpg', 'name' => 'Các bước chăm sóc da mặt hằng ngày giúp da sáng mịn, sạch mụn', 'slug' => Str::slug('Các bước chăm sóc da mặt hằng ngày giúp da sáng mịn, sạch mụn', '-'),'motangan'=>'Không phải tự nhiên mà chúng ta sở hữu được một làn da tươi sáng, mịn màng và khỏe đẹp. Vậy phải làm thế nào để có được làn da tươi sáng, khỏe và rạng rỡ?',
+            'noidung'=>'
+            1. Tại sao cần phải chăm sóc da hằng ngày
+            Hằng ngày, da mặt chúng ta tiếp xúc với các tác nhân gây hại như: tia UV, khói bụi, nhiệt độ... Bên cạnh đó, da mặt còn chịu tác động từ nhiều yếu tố bên trong như: stress, sắc tố cơ thể, thiếu hụt các chất dinh dưỡng,... Những điều này khiến da bị tổn thương.
+
+            Chính vì những lí do trên, việc vệ sinh và chăm sóc da mặt là điều vô cùng cần thiết. Vệ sinh và chăm sóc da hằng ngày sẽ giúp làn da khỏe mạnh, căng bóng, mịn màng và rạng rỡ. Việc chăm sóc hằng ngày còn giúp chúng ta đẩy lùi khả năng gây mụn, đồng thời giúp làm chậm quá trình lão hóa da.
+
+            Lão hóa da
+
+            Tuy nhiên, không hẳn ai cũng biết cách chăm sóc và vệ sinh da mặt đúng cách. Nếu các bước vệ sinh và chăm sóc da mặt không đúng sẽ làm tác dụng ngược lại gây mụn ẩn và nhiều vấn đề khác.
+
+            2. Các bước chăm sóc da mặt hằng ngày giúp da sáng mịn, sạch mụn
+            Bước 1: Tẩy trang
+                Các chị em thường có suy nghĩ bước tẩy trang này chỉ dùng cho những chị em make up. Tuy nhiên suy nghĩ đó hoàn toàn sai bởi vì hằng ngày làn da chúng ta tiếp xúc với khói bụi bên ngoài môi trường. Những bụi bẩn này sẽ bám sâu vào da bạn, lúc này bước tẩy trang sẽ giúp bạn lấy đi những bụi bẩn trên da mặt mà không khiến da bạn bị khô.
+
+                Tẩy trang
+
+                Hãy lưu ý khi chọn mua tẩy trang, hạn chế mua những loại nước tẩy trang chứa cồn và có chứa chất tẩy rửa mạnh. Nước tẩy trang dạng dầu là lựa chọn phù hợp dành cho bạn.
+
+                Làm sạch da mặt bằng cách lấy một lượng tẩy trang vừa đủ sau đó massage nhẹ nhàng. Đừng quên sử dụng một ít nước để làm sạch da sau khi massage bằng dầu tẩy trang để tránh lượng dầu tẩy trang còn vương trên da mặt.
+
+            Bước 2: Dùng sữa rửa mặt
+                Một số loại nước tẩy trang không có khả năng làm sạch các bụi bẩn trên da mặt. Do đó để đảm bảo da mặt bạn được làm sạch hoàn toàn thì đừng nên bỏ qua bước này.
+
+                Sữa rửa mặt
+
+                Đối với một số bạn sở hữu làn da khô thì đừng nên chọn loại sữa rửa mặt dạng bọt bởi sữa rửa mặt tạo bọt sẽ làm sạch các tuyến dầu khiến cho da bị khô và mất cân bằng ẩm. Thay vì vậy, sữa rửa mặt dạng kem, dạng sữa hoặc dạng gel không tạo bọt là phương án phù hợp cho những bạn có làn da khô.
+
+            Bước 3: Tẩy da chết
+                Cơ thể chúng ta luôn luôn sản sinh ra các tế bào mới, chính vì vậy bạn cần làm sạch và tẩy đi tế bào chết trên da mặt. Việc tẩy tế bào chết sẽ giúp bạn lấy đi lớp sừng và tế bào chết còn bám chặt trên da, giúp thông thoáng lỗ chân lông, làm đều màu da.
+
+                Tẩy tế bào chết
+
+                Bước tẩy da chết khá đơn giản, bạn chỉ cần lấy một lượng sản phẩm tẩy tế bào chết sau đó massage nhẹ nhàng bằng tay. Sau đó làm sạch da mặt bằng nước.
+
+                Lưu ý: Bạn chỉ nên tẩy da chết 2 - 3 lần/ tuần để tránh làm tổn thương da mặt.
+                Bước 4: Toner
+                Sau khi làm sạch da, thì bước này sẽ giúp cung cấp các dưỡng chất cần thiết dành cho da. Cụ thể Toner sẽ giúp tăng độ đàn hồi, cân bằng lại độ pH tự nhiên. Từ đó giúp làn da của bạn trở nên mịn màng và mềm mại. Bên cạnh đó, Toner còn giúp làm sạch sâu lớp bụi bẩn “cứng đầu” còn bám lại sau khi rửa mặt.
+
+            Sử dụng Toner
+
+            Tùy vào sở thích và loại da mà mỗi người có thể chọn cho mình một loại toner khác nhau. Tuy nhiên bạn cần lưu ý rằng da của bạn thuộc loại da nào trước khi chọn mua Toner cho mình nhé!
+
+            Bước 5: Đặc trị
+            Đối với một số bạn có làn da gặp những vấn đề như mụn, nám, sạm,... thì sau bước toner bạn cần sử dụng các sản phẩm đặc trị để cải thiện làn da của mình.
+
+            Những sản phẩm chứa các hoạt chất BHA, AHA hay Retinol bạn nên thoa và để yên trên da từ 20 đến 30 phút để các hoạt chất hoạt động trước khi tiếp tục bước serum hay dưỡng ẩm.
+
+            Nám, tàn nhang
+
+            Bước 6: Dưỡng ẩm
+            Với bất kì các cô gái nào muốn có làn da bóng mịn khỏe và rạng rỡ thì không thể bỏ qua bước này. Bước dưỡng ẩm này giúp cung cấp độ ẩm cho da khiến da bạn căng mịn và có độ đàn hồi cao.
+
+            Dưỡng ẩm
+
+            Cũng tương tự như Toner, tùy vào sở thích cũng như loại da của bạn để chọn mua dưỡng ẩm. Những sản phẩm dưỡng ẩm có chứa Hyaluronic acid là một trong những lựa chọn thích hợp dành cho bạn đấy!
+
+            Bước 7: Bảo vệ da với kem chống nắng
+            Nếu thiếu kem chống nắng thì những bước chăm sóc da mặt của bạn cũng trở nên không còn hữu ích. Hãy đảm bảo rằng da bạn được bảo vệ an toàn khi đi ra ngoài. Đừng quên bôi kem chống nắng kể cả những ngày trời có nhiều mây bởi tia UV có khả năng len lỏi qua những đám mây và tiếp xúc với da của bạn. Bạn có thể bỏ qua bước này vào ban đêm.
+            ','trangthai' => '1'],
+
+            ['id'=>10,'iddm' => '1', 'img' => 'csdm3.jpg', 'name' => 'Hướng dẫn chăm sóc da mặt mùa hè', 'slug' => Str::slug('Hướng dẫn chăm sóc da mặt mùa hè', '-'),'motangan'=>'Thời tiết nóng bức, gay gắt đã gây ra vấn đề về da như mụn bọc, cháy nắng, đen sạm,...Để bảo vệ làn da phụ nữ cần biết cách chăm sóc làn da một cách khoa học và hợp lý.',
+            'noidung'=>'
+            1. Rửa mặt bằng sữa rửa mặt thích hợp
+            Rửa mặt bằng nước không thể làm sạch hết các chất nhờn và bụi bẩn trên mặt. Do đó, sữa rửa mặt sẽ giúp loại bỏ mồ hôi, lớp dầu trên da, làm sạch sâu những bụi bẩn, cặn bã và những lớp tế bào da lão hóa từ sâu bên trong. Nhờ đó, giúp ngăn chặn các vấn đề về da đặc biệt là mụn.
+
+            Ngoài ra, sửa rửa mặt còn có tác dụng làm sáng da, tạo điều kiện thuận lợi để các dưỡng chất có trong kem dưỡng trắng, kem dưỡng ẩm,... có thể dễ dàng thấm sâu vào bên trong làn da.
+
+            Tuy nhiên việc chọn loại sữa rửa mặt phù hợp cũng vô cùng quan trọng. Các bạn gái có làn da nhạy cảm nên chọn các loại sữa rửa mặt dịu nhẹ. Còn nếu sở hữu làn da thiên dầu, dễ nổi mụn, hãy lựa chọn các loại sữa rửa chuyên biệt, với các thành phần có khả năng làm sạch sâu lớp dầu nhờn và những bẩn trên da.
+
+            Thời tiết nóng bức, gay gắt đã gây ra vấn đề về da như mụn bọc, cháy nắng, đen sạm,...Để bảo vệ làn da phụ nữ cần biết cách chăm sóc làn da một cách khoa học và hợp lý.
+
+            1. Rửa mặt bằng sữa rửa mặt thích hợp
+            Rửa mặt bằng nước không thể làm sạch hết các chất nhờn và bụi bẩn trên mặt. Do đó, sữa rửa mặt sẽ giúp loại bỏ mồ hôi, lớp dầu trên da, làm sạch sâu những bụi bẩn, cặn bã và những lớp tế bào da lão hóa từ sâu bên trong. Nhờ đó, giúp ngăn chặn các vấn đề về da đặc biệt là mụn.
+
+            Ngoài ra, sửa rửa mặt còn có tác dụng làm sáng da, tạo điều kiện thuận lợi để các dưỡng chất có trong kem dưỡng trắng, kem dưỡng ẩm,... có thể dễ dàng thấm sâu vào bên trong làn da.
+
+            Tuy nhiên việc chọn loại sữa rửa mặt phù hợp cũng vô cùng quan trọng. Các bạn gái có làn da nhạy cảm nên chọn các loại sữa rửa mặt dịu nhẹ. Còn nếu sở hữu làn da thiên dầu, dễ nổi mụn, hãy lựa chọn các loại sữa rửa chuyên biệt, với các thành phần có khả năng làm sạch sâu lớp dầu nhờn và những bẩn trên da.
+
+            Thử sức cùng Trắc nghiệm: Bận rộn có ảnh hưởng đến sức khỏe của bạn không?
+            Cuộc sống hiện đại khiến chúng ta vì quá bận rộn mà quên chăm sóc sức khỏe cho chính mình. Ai cũng biết rằng lịch trình làm việc cả ngày có thể khiến bạn kiệt sức, nhưng cụ thể bận rộn ảnh hưởng thế nào tới sức khỏe? Hãy cùng làm thử bài trắc nghiệm dưới đây.
+
+            Nội dung được tham vấn chuyên môn cùng Bác sĩ Cao cấp, Bác sĩ chuyên khoa II Đoàn Dư Đạt - Khoa khám bệnh & Nội khoa - Bệnh viện Đa khoa Quốc tế Vinmec Hạ Long.
+
+            2. Tẩy tế bào chết đều đặn
+            Các tế bào chết nằm trên trên bề mặt da, dễ khiến da bị xỉn màu, kém sức sống và ngăn chặn các dưỡng chất từ những sản phẩm chăm sóc da thấm sâu vào bên trong da. Các chuyên gia làm đẹp khuyên nên tẩy tế bào chết đều đặn, khoảng 2-3 lần/tuần để loại bỏ lớp tế bào đã lão hóa, tạo điều kiện cho các tế bào da mới sinh sôi.
+
+            3. Thoa kem chống nắng hằng ngày
+            Hướng dẫn chăm sóc da mặt mùa hè
+            Thoa kem chống nắng hằng ngày
+            Mùa hè là thời điểm tăng cường bảo vệ làn da khỏi tia UV. Các vật dụng che chắn thông thường như khẩu trang, váy chống nắng,...không thể bảo vệ làn da một cách toàn diện. Do đó, việc thoa kem chống nắng hằng ngày là vô cùng quan trọng, kể cả khi trời râm mát hay khi đang ở trong nhà vì tia UV vẫn luôn hiện diện.
+
+            Trên thị trường hiện nay có nhiều loại kem chống nắng phù hợp với nhu cầu đa dạng của khách hàng. Nếu sở hữu làn da dầu nhờn, hãy chọn các loại kem chống nắng có kết cấu mỏng nhẹ và khả năng kiềm dầu tốt.
+
+            4. Dưỡng ẩm cho da
+            Nhiều sở hữu làn da dầu, đặc biệt trong mùa hè dầu và bã nhờn càng tiết ra nhiều hơn khiến da “bóng lưỡng” nên nghĩ rằng việc dưỡng ẩm là không cần thiết. Đây là một quan niệm hoàn toàn sai. Nguyên nhân khiến da tiết ra nhiều bã nhờn là do bề mặt da thiếu nước và độ ẩm nên cơ thể mới bài tiết ra các chất nhờn nhằm giúp cân bằng độ ẩm cho da. Việc dùng kem dưỡng ẩm hay toner cấp ẩm cho da sẽ giúp hạn chế được lượng dầu nhờn tiết ra và cải thiện da tốt hơn.
+
+            5. Đắp mặt nạ đều đặn
+            Đắp mặt nạ dưỡng da nhằm cung cấp dưỡng chất cho làn da, tạo điều kiện cho làn da phục hồi khỏe mạnh và sáng đẹp. Không nhất thiết phải sử dụng đến các loại mặt nạ đắt tiền mà có thể tận dụng các loại trái cây và rau củ quen thuộc, có rất nhiều trong mùa hè như dưa leo, dưa hấu, bơ, cà chua, khoai tây... kết hợp cùng sữa tươi hoặc sữa chua không đường. Các loại mặt nạ dưỡng da từ thiên nhiên không chỉ đem lại hiệu quả trong việc ngăn ngừa mụn và cải thiện làn da cháy nắng trong mùa hè mà còn không gây kích ứng nào làn da, thích hợp cho cả da thường lẫn da dầu nhờn hoặc nhạy cảm.
+
+            ','trangthai' => '1'],
+
+            ['id'=>11,'iddm' => '1', 'img' => 'cmdm4.jpg', 'name' => 'Bí quyết chăm sóc da theo từng độ tuổi', 'slug' => Str::slug('Bí quyết chăm sóc da theo từng độ tuổi', '-'),'motangan'=>'Ở mỗi giai đoạn, độ tuổi khác nhau thì cấu tạo làn da sẽ thay đổi, sự thay đổi này đòi hỏi lộ trình chăm sóc da cũng cần phải thay đổi để có thể phù hợp với nhu cầu của da.',
+            'noidung'=>'
+            Nếu như chỉ dùng một loại sản phẩm chăm sóc da từ lúc dậy thì cho đến độ tuổi ngoài 50 sẽ không mang lại hiệu quả cao. Vì vậy, để duy trì nhan sắc cũng như ngăn chặn mọi dấu hiệu lão hóa bạn nên lựa chọn từng loại sản phẩm dành riêng cho mình cùng chế độ chăm sóc da hợp lý.
+            Mỹ phẩm dành cho mọi độ tuổi
+            Kem chống nắng
+            Dù bạn ở độ tuổi nào thì kem chống nắng chính là sản phẩm làm đẹp “bất ly thân”, theo như nghiên cứu, để bảo vệ làn da khỏi tia bức xạ mặt trời thì bạn cần phải thoa kem chống nắng mỗi ngày, kể cả trong những ngày nhiều mây.
+
+            Nhiều người thường cho rằng việc sử dụng kem chống nắng có chỉ số SPF càng cao thì khả năng ngăn ngừa ung thư da càng cao. Tuy nhiên, trên thực tế những người sử dụng kem chống nắng có SPF từ 50 trở lên có xu hướng sẽ có trong nắng nhiều hơn mà không thoa lại kem.
+            Từ đây sẽ làm gia tăng nguy cơ tiếp xúc với bức xạ tia cực tím cao hơn. Vì vậy, các chuyên gia cho rằng lựa chọn kem chống nắng “phổ rộng” có ít nhất chỉ số SPF 30 là an toàn và tối ưu hơn cả.
+
+            Ở mỗi độ tuổi khác nhau, sẽ có cách chăm sóc da mặt khác nhau
+            Cấu trúc da mặt mỗi người không giống nhau, thay đổi theo từng độ tuổi, đặc biệt ở những mốc quan trọng như tuổi 20, 30, 40. Do đó nếu vẫn giữ thói quen sử dụng những loại sản phẩm như trước kia sẽ giảm bớt phần nào hiệu quả mà chúng đem lại.
+            Hãy tìm hiểu kỹ lưỡng, tự lập cho mình một kế hoạch chăm sóc da phù hợp. Điều quan trọng nhất cần sự kiên trì, không nóng vội chờ đợi sự cải thiện tích cực trên gương mặt.
+
+            Chăm sóc da mặt ở độ tuổi 20
+            Độ tuổi này là lúc làn da sản sinh collagen, elastin mạnh nhất – hai nguyên tố quan trọng quyết định tới sự đàn hồi trong cấu trúc, căng da mặt. Việc chăm sóc da trở nên dễ dàng hơn và chỉ cần đảm bảo ba yếu tố: làm sạch, dưỡng ẩm, bảo vệ khỏi những tác nhân gây hại, đủ trở thành tiền đề cho một làn da đẹp sau này.
+
+            Nên lựa chọn những sản phẩm phù hợp, lành tính với cơ thể. Chẳng hạn chỉ dùng sữa rửa mặt có độ pH từ 4.5-5.5, kem dưỡng ẩm có kết cấu lỏng, dễ thấm, kem chống nắng hàng ngày có chỉ số SPF dao động 30-50.
+            Chăm sóc da mặt ở độ tuổi 30
+            Giai đoạn này, các nếp nhăn, sạm da xuất hiện “ồ ạt” hơn và bạn phải thật sự nghiêm túc trong hành trình “đánh đuổi lão hóa”.  Để đạt được điều này, ngoài áp dụng các sản phẩm chuyên sâu còn nên bổ sung những thực phẩm có chứa dầu omega-3, mầm đậu nành, vitamin…để trẻ hóa từ bên trong.
+
+            Bí quyết làm căng da mặt này nên được thực hiện mỗi ngày để đạt được hiệu quả tốt nhất. Bên cạnh những dòng mỹ phẩm cơ bản, hãy kết hợp với một số những loại kem dưỡng mắt, chăm đắp mặt nạ đồng thời tẩy da chết thường xuyên.
+
+            Chăm sóc da mặt ở độ tuổi 40
+            Mức độ lão hóa đã gia tăng ở mức cao, cấu trúc da trở nên lỏng lẻo, kém đàn hồi, thiếu hụt trầm trọng collagen và nếu không kiểm soát kịp thời, gương mặt sẽ trở nên thiếu sức sống, già nua hơn trông thấy. Vì vậy, cần phải nỗ lực hơn nữa trong công cuộc chăm sóc sắc đẹp.
+
+            Một số những sản phẩm không thể thiếu được chính là serum chống nhăn, dầu dưỡng có chứa thành phần thiên nhiên, áp dụng những động tác massage mỗi ngày hỗ trợ phần nào sự chảy xệ trên gương mặt. Trong trường hợp đã quá muộn để cứu vãn, bạn nên nhờ cậy tới các dịch vụ thẩm mỹ mới mong đạt được kì tích.
+
+            Tránh tẩy da chết quá thường xuyên
+            Ngay cả khi bạn tránh được nguy cơ bị khô hoặc bong da thì bạn vẫn phải hạn chế việc tẩy da chết thường xuyên. Bạn sẽ phạm sai lầm nghiêm trọng nếu loại bỏ các chất dầu tự nhiên ra khỏi làn da. Hãy áp dụng phương pháp dưỡng ẩm để tẩy da chỉ mỗi tháng một lần.
+
+            Chống lại ảnh hưởng của gió nóng
+
+            Ngay thời điểm bạn bước ra ngoài trong một ngày trời gió dữ dội, bạn phải chiến đấu để chống lại nó. Cách tốt nhất để tránh một làn da nứt nẻ là phải che chắn cho thật kín.
+
+            >>> Có thể bạn muốn biết: Tìm hiểu các bệnh về Da.
+            Đầu tiên là hãy bôi một loại dưỡng ẩm mạnh hơn bình thường có nguồn gốc từ dầu để dưỡng da, cũng như chống lại ảnh hưởng của gió nóng. Sau đó bạn cần đeo khẩu trang để chen chắn cho da. Nếu gió nóng xuất hiện, hãy sử dụng chất dưỡng làm êm dịu vào ban đêm, đến sáng hôm sau, bạn sẽ thấy khá hơn nhiều.
+
+            Đừng bỏ qua kem chống nắng
+
+            Mặc dù bạn liều lĩnh ra ngoài mà không có kem chống nắng nhưng nó cần thiết vào mùa đông cũng như mùa hè để giữ cho làn da đẹp.
+            Chỉ đi bộ khoảng hai đến 3 phút cũng đủ làm tổn hại đến làn da dù vào mùa đông tia UVB không nhiều lắm, thậm chí chúng không còn mạnh nhưng vẫn đủ sức làm tổn hại đến làn da.
+
+            Sức nóng tăng
+
+            Sức nóng của thời tiết sẽ làm da bạn khô vào ban đêm, đó là lý do tại sao bạn thức dậy với một làn da khô hơn khi lúc đi ngủ. Cố gắng dưỡng ẩm gấp đôi trước khi đi ngủ sẽ cải thiện phần nào tình trạng khô da vào ban đêm.
+            Vệ sinh tay sạch sẽ
+
+            Vệ sinh tay là cách tốt nhất để chống lại vi khuẩn sinh sôi vào mùa đông, vì chúng có tác dụng làm khô da. Khi làn da bị khô, vi khuẩn sẽ thâm nhập bằng các vết nứt cực nhỏ ở bàn tay.
+
+            Nếu bạn thường vệ sinh tay thì hãy chắc rằng bạn sử dụng nước rửa tay ngay khi chúng dần khô để giữ bàn tay bạn mềm mại và sạch vi khuẩn.
+
+            Chọn lựa kem dưỡng
+
+            Chọn lựa kem dưỡng da phù hợp là yếu tố quan trọng để có làn da đẹp.
+            Nếu bạn có hàng tá kem dưỡng thể thì hãy sử dụng chúng thật hiệu quả. Kem dưỡng tốt hơn nước dưỡng thể trong mùa đông bởi vì chúng dày hơn, vì thế dưỡng ẩm tốt hơn.
+
+            ','trangthai' => '1'],
+
         ]);
         DB::table('donhang')->insert([
             ['id'=>1,'idkhachhang'=>'1','idgiamgia'=>'1', 'tennguoinhan'=>'Hương','diachikhachhang'=> 'Công viên phần mềm Quang Trung , Phường Trung Mỹ Tây , Q.12 , TP.HCM','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'15000000' ,'tongtiensaugiamgia'=>'15000000','ghichucuakhachhang'=> 'Sản phẩm vận chuyển tới gọi em nha ạ em cảm ơn ^^','phuongthucthanhtoan'=>'VNPAY' ,'phuongthucgiaohang'=>'GRAP','trangthai'=>0,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
@@ -647,7 +872,7 @@ class installSeeder extends Seeder
 
             Phù hợp với mọi loại da, kể cả da nhạy cảm, kích ứng.
 
-            Sản xuất tại Nhật Bản' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            Sản xuất tại Nhật Bản' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
             ['id'=>2,'iddanhmuc'=>2,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
 
@@ -661,7 +886,7 @@ class installSeeder extends Seeder
 
              Phù hợp cho mọi loại da, đặc biệt là các loại da khô, siêu khô, da tổn thương do kem trộn hay da nhạy cảm sau điều trị.
 
-             Không chứa Paraben, Phthalates, Sulfates, Sulfites.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+             Không chứa Paraben, Phthalates, Sulfates, Sulfites.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
             ['id'=>3,'iddanhmuc'=>3,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
 
@@ -677,7 +902,7 @@ class installSeeder extends Seeder
 
             - Phức hợp tái tạo làm đầy: công thức với các thành phần biển và khoáng chất giàu dinh dưỡng, phức hợp có nguồn gốc biển mạnh này hỗ trợ Collagen tự nhiên và mang lại vẻ trẻ trung đầy đặn.
 
-            *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
             ['id'=>4,'iddanhmuc'=>4,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
 
@@ -689,7 +914,7 @@ class installSeeder extends Seeder
 
             - Hương bạc hà thơm mát.
 
-            *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
             ['id'=>5,'iddanhmuc'=>5,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
 
@@ -712,14 +937,14 @@ class installSeeder extends Seeder
             Nếp nhăn và chân chim
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.
 
-            ' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
+            ' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
             ['id'=>6,'iddanhmuc'=>6,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
 
             Khi dùng độc lập, công thức Soft Focus Complex sẽ làm mờ lỗ chân lông, nếp nhăn và các khuyết điểm khác trên da. Khi sử dụng như kem lót, công thức này sẽ giúp kem nền đạt được hiệu ứng hoàn hảo nhất, và giữ cho lớp trang điểm bền bỉ suốt 12 tiếng*. Invisiblur Perfecting Shield Broad Spectrum SPF 30 PA +++ còn không hề chứa Parabens, Sulfates, Phthalates, Gluten và các thành phần có chiết xuất từ động vật.
 
             Invisiblur Perfecting Shield Broad Spectrum SPF 30 PA +++ còn là kem chống nắng quang phổ rộng cùng co giúp bạn chống được tất cả ảnh hưởng từ tia UVA và UVB. Hơn cả thế, với dạng thức trong suốt tựa như vô hình trên da, giúp bạn tránh được các vệt trắng mà kem chống nắng thông thường hay mắc phải.
 
-            Thành phần nổi bật:' ,'trangthai'=>0,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL]
+            Thành phần nổi bật:' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL]
         ]);
         DB::table('sanphamchitiet')->insert([
             ['id'=>1,'idsanpham' => 1, 'ml'=> '250', 'soluotmua' => '150', 'tonkho' => '300', 'dongia' => '590000'],

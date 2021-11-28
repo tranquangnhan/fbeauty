@@ -74,8 +74,11 @@
 
 </html>
 
+
 {{-- Boostrap --}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+
 {{-- Sweetalert --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -97,6 +100,10 @@
 {{--Quốc nhúng --}}
 <script src="{{ asset('Site/js') }}/showgiohang.js"></script>
 {{--Hết phần Quốc nhúng--}}
+{{-- Quang Nhân --}}
+<script src="{{ asset('Site/js') }}/lieutrinh.nhan.js"></script>
+{{-- Quang Nhân --}}
+
 <script>
     $(window).on('load', function(event) {
         $('#loading').removeClass('show');

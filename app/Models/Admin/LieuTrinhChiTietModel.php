@@ -19,4 +19,10 @@ class LieuTrinhChiTietModel extends Model
         'trangthai',
         'imgkhachhang'
     ];
+    public static function findNameDichVuByIdLieuTrinh($id){
+       return LieuTrinhChiTietModel::select('dichvu.name')
+       ->join('dichvu','dichvu.id','=','lieutrinhchitiet.iddichvu')
+       ->where('lieutrinhchitiet.idlieutrinh','=',$id)
+       ->get();
+    }
 }

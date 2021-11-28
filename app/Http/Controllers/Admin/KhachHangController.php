@@ -183,6 +183,7 @@ class KhachHangController extends Controller
     public function detailKhachHang($id){
         $KhachHang = $this->KhachHang->find($id);
         $LieuTrinh =  $this->LieuTrinh->findLieuTrinhByIdKh($KhachHang->id);
+        
         $NhanVien = $this->NhanVien->getAll();
         $countLieuTrinhChiTiet = count($LieuTrinh);
         $DichVuDaSuDung = $this->HoaDonChiTiet->findDichVuByIdKhachHang($id);
@@ -192,7 +193,7 @@ class KhachHangController extends Controller
     } 
 
     public function storeLieuTrinh(LieuTrinh $request){
-        
+       
         $data = [
             'idnhanvien' => $request->idnhanvien,
             'idkhachhang' => $request->id,
@@ -203,6 +204,7 @@ class KhachHangController extends Controller
         ];
 
         $res = $this->LieuTrinh->create($data);
+        // dd($res);
         if($res){
            return redirect()->back();
         }else{

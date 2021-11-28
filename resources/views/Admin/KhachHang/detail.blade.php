@@ -258,7 +258,7 @@
                 @csrf
 
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Thêm Liệu Trình Chi Tiết</h4>
+                    <h4 class="modal-title" id="myModalLabel">Thêm Liệu Trình</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">

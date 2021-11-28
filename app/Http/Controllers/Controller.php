@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
-
+use Carbon\Carbon;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -17,7 +17,7 @@ class Controller extends BaseController
     const URL_IMG = 'uploads/';
     const BASE_URL_UPLOAD_STAFF = 'uploads/imgusers/';
     const BASE_URL_UPLOAD_CUSTOMER = 'uploads/khachhang/';
-    
+
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
     const LOAI_DANHMUC_BLOG = 3;
@@ -83,8 +83,6 @@ class Controller extends BaseController
         }
     }
 
-    
-
     public function handleError($error){
         return Redirect::back()->withErrors($error);
     }
@@ -97,6 +95,29 @@ class Controller extends BaseController
         $tinh =  $donGia - ($donGia/100 * $giamGia);
         $num = round($tinh, 0);
         return number_format($num, 0, ',', ',');
+    }
+
+    public function getThoiGianDauVaCuoiCuaNgay($ngay) {
+        $dauNgay = $ngay . ' 00:00:00';
+        $cuoiNgay = $ngay . ' 23:59:59';
+
+        return array (
+            'dau' => $dauNgay,
+            'cuoi' => $cuoiNgay
+        );
+    }
+
+    public function getThoiGianTimestampDauVaCuoiCuaNgay($ngay) {
+        $dauNgay = $ngay . ' 00:00:00';
+        $cuoiNgay = $ngay . ' 23:59:59';
+        $dauNgayTimestamp = Carbon::parse($dauNgay)->timestamp;
+
+        $cuoiNgayTimestamp = Carbon::parse($cuoiNgay)->timestamp;
+        // $taoFormatCarbon = Carbon::createFromTimestamp($dauNgayTT);
+        return array (
+            'dauNgayTimestamp' => $dauNgayTimestamp,
+            'cuoiNgayTimestamp' => $cuoiNgayTimestamp
+        );
     }
 
 }

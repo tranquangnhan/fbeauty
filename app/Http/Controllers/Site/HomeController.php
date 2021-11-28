@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Site;
 use App\Events\SendDatLich;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\freeSMSController;
+use App\Http\Requests\LienHe;
 use App\Models\Admin\DatLichModel;
 use App\Models\Admin\KhachHangModel;
+use App\Models\Admin\LieuTrinhChiTietModel;
 use App\Repositories\Blog\BlogRepository;
 use App\Repositories\Coso\CosoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
@@ -17,6 +19,8 @@ use App\Repositories\Lich\LichRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
 use App\Repositories\SanPham\SanPhamRepository;
+use App\Repositories\LienHe\LienHeRepository;
+use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -36,7 +40,8 @@ class HomeController extends Controller
     private $limitTimeNum = 10;
     private $freeSMSController;
     private $SanPhamChiTiet;
-
+    private $LienHe;
+    private $LieuTrinhChiTiet;
     /**
      * CosoController constructor.
      */
@@ -51,8 +56,10 @@ class HomeController extends Controller
         BlogRepository $Blog,
         SanPhamRepository $SanPham,
         SanPhamChiTietRepository $SanPhamChiTiet,
-        LieuTrinhRepository $LieuTrinh
-)
+        LieuTrinhRepository $LieuTrinh,
+        LienHeRepository $LienHe,
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet
+    )
     {
         $this->freeSMSController = new freeSMSController;
         $this->Coso = $Coso;
@@ -66,6 +73,8 @@ class HomeController extends Controller
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet=$SanPhamChiTiet;
         $this->LieuTrinh = $LieuTrinh;
+        $this->LienHe = $LienHe;
+        $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
         $dichvu = $this->Dichvu->getDichVusite();
         $danhmuc = $this->DanhMuc->dichvugetiddanhmuc();
         $alldichvu = $this->Dichvu->getDichVuall();
@@ -108,8 +117,7 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
         $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(1);
-        $danhmucsp2 = $this->DanhMuc->findDanhMucByIdLoai(2);
-        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp, 'danhmucsp1' => $danhmucsp2]);
+        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp]);
     }
 
     public function getSanPham($soluong)
@@ -184,7 +192,6 @@ class HomeController extends Controller
             $dm['blogbyid2'] = $blogbyid2;
         }
 
-        // dd($listdanhmuc);
         $danhmuc   = $this->DanhMuc->getAllDanhMuc();
         $getBlog2     = $this->Blog->getBlog2();
         $blog3     = $this->Blog->getLastWeek1();
@@ -218,16 +225,24 @@ class HomeController extends Controller
             $viewdt = $this->Blog->getblogbyiddm3($detail->id);
             $detail['viewdt'] = $viewdt;
         }
+
+        //     $view = 0 ;
+        //     $view += $view + 1;
+        //     $Blog['luotxem'] = $view;
+
+        // $this->Blog->update($id, $Blog['luotxem']);
+        // dd($Blog['luotxem']);
+
         $this->data['getBlog2']     = $getBlog2;
         $this->data['danhmuc']     = $danhmuc;
         $this->data['viewdetail']    = $viewdetail;
         $this->data['viewdetail2']    = $viewdetail2;
 
         $this->data['pathActive']          = 'bai-viet';
-        $this->data['namePage']            = 'Tên Bài viết';
+        $this->data['namePage']            = $viewdetail[0]->name;
         $this->data['breadcrumbArray']     = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
-            ['link' => '', 'name' => 'Tên Bài viết'],
+            ['link' => '', 'name' => $viewdetail[0]->name],
         ];
 
         return view("Site.pages.baivietchitiet", $this->data);
@@ -262,9 +277,19 @@ class HomeController extends Controller
         $this->data['breadcrumbArray']     = [
             ['link' => '', 'name' => 'Liên Hệ'],
         ];
-
         return view("Site.pages.contact", $this->data);
     }
+    public function storeLienHe(LienHe $request) {
+        $LienHe = [
+            'namekh' => $request->namekh,
+            'email' => $request->email,
+            'sdt' => $request->sdt,
+            'noidung' => $request->noidung,
+        ];
+        $this->LienHe->create($LienHe);
+        return redirect('lien-he')->with('success', 'Gửi thành công liên hệ');
+    }
+
     public function viewGioiThieu() {
         $this->data['pathActive']          = 'gioi-thieu';
         $this->data['namePage']            = 'Giới thiệu';
@@ -299,10 +324,35 @@ class HomeController extends Controller
         ];
       
         $khachHang = session()->get('khachHang');
-        $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
-        $this->data['dataLieuTrinh'] = $dataLieuTrinh;
+        if($khachHang){
+            $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
+            $this->data['dataLieuTrinh'] = $dataLieuTrinh;
+        }else{
+            $this->data['dataLieuTrinh'] = [];
+        }
+      
         return view("Site.pages.profile-user", $this->data);
     }
+
+    public function getLieuTrinhDetailByIdLieuTrinh($id){
+        $dataLieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
+        $data['dataLieuTrinhChiTiet'] = $dataLieuTrinhChiTiet;
+        if($dataLieuTrinhChiTiet !== null){
+            $data['dataLieuTrinh'] = $this->LieuTrinh->find($dataLieuTrinhChiTiet[0]->idlieutrinh);
+        }
+        return response()->json($data);
+    }
+
+    public static function findNameDichVuByIdLieuTrinh($id){
+        $LieuTrinhResult = LieuTrinhChiTietModel::findNameDichVuByIdLieuTrinh($id);
+      
+        $arrName = [];
+        for ($i=0; $i < count($LieuTrinhResult); $i++) { 
+            array_push($arrName,$LieuTrinhResult[$i]->name);
+        }
+        return implode(", ",$arrName);
+    }
+
 
     public function getNhanVienByIdCoSo(Request $request, $id) {
         try {

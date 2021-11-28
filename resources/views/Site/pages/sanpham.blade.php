@@ -27,7 +27,7 @@
                                     <h6 class="title-loc">Sản phẩm</h6>
 
                                     @foreach($danhmucsp as $dm)
-                                        <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 0)->count();?>
+                                        <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 1)->count();?>
                                             <li>
                                                 <a href="javascript:;" class="text-decoration-none hover-pink hov">
                                                     <label for="danhmuc{{$dm->id}}">
@@ -35,20 +35,6 @@
                                                                name="danhmuc" id="danhmuc{{$dm->id}}"> {{$dm->name}}
                                                     </label><span
                                                         class="badge badge-pill badge-primary background-color-main float-right">{{$soluong}}</span>
-                                                </a>
-                                            </li>
-                                    @endforeach
-                                    <hr>
-                                    <h6 class="title-loc">Dịch vụ</h6>
-                                    @foreach($danhmucsp1 as $dm1)
-                                        <?php  $soluong1 = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm1->id)->where('trangthai', 0)->count();?>
-                                            <li>
-                                                <a href="javascript:;" class="text-decoration-none hover-pink hov">
-                                                    <label for="danhmuc{{$dm1->id}}">
-                                                        <input type="checkbox" onclick="FilterDanhMuc({{$dm1->id}})"
-                                                               name="danhmuc" id="danhmuc{{$dm1->id}}"> {{$dm1->name}}
-                                                    </label><span
-                                                        class="badge badge-pill badge-primary background-color-main float-right">{{$soluong1}}</span>
                                                 </a>
                                             </li>
                                     @endforeach

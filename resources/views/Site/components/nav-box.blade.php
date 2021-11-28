@@ -1,7 +1,7 @@
 <div class="nav-box container">
     <nav class="navbar container navbar-expand-lg navbar-light background-color-none p-0">
         <div class="pl-0 flex-grow-1">
-            <a class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
+            <a href="/trang-chu" class=""><img style="width: 20%" src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

@@ -453,3 +453,6 @@ function checkVaCloseLich(idLich) {
         elementLich.removeClass('option-time');
     }
 }
+
+
+
