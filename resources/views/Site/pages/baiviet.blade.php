@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
     Bài viết

@@ -45,7 +45,7 @@ class SanPhamChiTietRepository extends BaseRepository implements SanPhamChiTietR
     }
 
     public function getSanPhamChiTietToHoaDon(){
-        return $this->model->select('sanphamchitiet.*', 'sanpham.name')
+        return $this->model->select('sanphamchitiet.*', 'sanpham.name', 'sanpham.giamgia')
             ->join('sanpham', 'sanphamchitiet.idsanpham', '=', 'sanpham.id')
             ->orderBy('sanphamchitiet.idsanpham', 'desc')
             ->get();

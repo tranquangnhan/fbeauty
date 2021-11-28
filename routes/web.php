@@ -79,7 +79,6 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
 
     Route::resource('datlich', DatLichController::class);
-
     Route::resource('lich', LichController::class);
     Route::get('lich/{id}/thungay/{idthu}', [LichController::class, 'showlich']);
     Route::get('lich/uplich/{id}', [LichController::class, 'UpLich']);

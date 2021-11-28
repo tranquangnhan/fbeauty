@@ -55,7 +55,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(SanPhamRepositoryInterface::class,SanPhamRepository::class);
         $this->app->singleton(SanPhamChiTietRepositoryInterface::class,SanPhamChiTietRepository::class);
         $this->app->singleton(CoSoRepositoryInterface::class,CoSoRepository::class);
-        $this->app->singleton(CoSoRepositoryInterface::class,CoSoRepository::class);
         $this->app->singleton(NhanVienRepositoryInterface::class,NhanVienRepository::class);
         $this->app->singleton(DichVuRepositoryInterface::class,DichVuRepository::class);
         $this->app->singleton(GiamGiaRepositoryInterface::class, GiamGiaRepository::class);
