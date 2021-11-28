@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ThanhToan;
 use App\Models\Admin\SanPhamChiTiet;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\GioHang\GioHangRepository;
@@ -39,7 +39,7 @@ class GioHangController extends Controller
         KhachHangRepository $KhachHang,
         DonHangRepository $DonHang,
         DonHangChiTietRepository $DonHangChiTiet,
-        CosoRepository $CoSo
+        CoSoRepository $CoSo
     )
     {
         $this->GioHang = $GioHang;

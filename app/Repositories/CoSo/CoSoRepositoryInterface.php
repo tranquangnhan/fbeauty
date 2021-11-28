@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Repositories\Coso;
+namespace App\Repositories\CoSo;
 
 
-interface CosoRepositoryInterface
+interface CoSoRepositoryInterface
 {
     public function getCosoByIdSessionCoso();
 

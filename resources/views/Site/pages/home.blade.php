@@ -244,12 +244,6 @@
                                         href="#nhieuquantam" role="tab" aria-controls="nhieuquantam"
                                         aria-selected="false">Danh mục</a>
                                 </li>
-
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link btn-3 black-1" id="xemtatca-tab" data-toggle="tab"
-                                    href="#xemtatca" role="tab" aria-controls="xemtatca"
-                                    aria-selected="false">Xem tất cả</a>
-                                </li>
                             </ul>
                         </div>
 
@@ -347,53 +341,6 @@
                                     @endforeach
                                 </div>
 
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="xemtatca" role="tabpanel"
-                    aria-labelledby="xemtatca-tab">
-                        <div class="w-100">
-                            <div class="box-dichvu">
-                                <div class="box-sev">
-
-                                    @foreach ($alldichvu as $itemalldv)
-                                    <div class="dichvu-item">
-
-                                        <div class="content-1">
-                                            <div class="text-7 color-main-1">
-                                                {{$itemalldv->namedm}}
-                                            </div>
-
-                                            <div class="text-8 mt-1">
-                                                {{number_format($itemalldv->dongia)}}đ
-                                            </div>
-
-                                            <div class="img-1 mt-4">
-                                                <a href="{{ asset('dich-vu') }}/{{$itemalldv->slug}}">
-                                                    <img class="" src="{{ asset('uploads/'.$itemalldv->img) }}" alt="">
-                                                </a>
-                                            </div>
-
-                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                <a href="{{ asset('dich-vu') }}/{{$itemalldv->slug}}">
-                                                {{$itemalldv->name}}
-                                                </a>
-                                            </div>
-
-                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                {{$itemalldv->motangan}}
-
-                                            </p>
-                                        </div>
-                                        <div class="w-100 text-center mb-4">
-                                            <a href="">
-                                                <button class="btn-4">Đặt lịch</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
                             </div>
                         </div>
                     </div>

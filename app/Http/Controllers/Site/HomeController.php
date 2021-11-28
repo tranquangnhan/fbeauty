@@ -276,8 +276,6 @@ class HomeController extends Controller
             $dichvu = $this->Dichvu->search($valueSearch);
             $this->data['dichvu'] = $dichvu;
         }
-
-
         return view("Site.pages.dichvu", $this->data);
     }
 
