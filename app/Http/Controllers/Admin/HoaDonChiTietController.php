@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
 use App\Repositories\HoaDon\HoaDonRepositoryInterface;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepositoryInterface;
@@ -20,7 +20,7 @@ class HoaDonChiTietController extends Controller
     private $coso;
     private $sanphamchitiet;
 
-    public function __construct(SanPhamChiTietRepository $sanphamchitiet, CosoRepository $coso, HoaDonRepositoryInterface $hoadon, HoaDonChiTietRepositoryInterface $hoadonchitiet, NhanVienRepositoryInterface $nhanvien, DichVuRepositoryInterface $dichvu)
+    public function __construct(SanPhamChiTietRepository $sanphamchitiet, CoSoRepository $coso, HoaDonRepositoryInterface $hoadon, HoaDonChiTietRepositoryInterface $hoadonchitiet, NhanVienRepositoryInterface $nhanvien, DichVuRepositoryInterface $dichvu)
     {
         $this->nhanvien = $nhanvien;
         $this->dichvu = $dichvu;

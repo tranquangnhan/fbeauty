@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
 use App\Repositories\GiamGia\GiamGiaRepository;
@@ -31,7 +31,7 @@ class HoaDonController extends Controller
         HoaDonRepositoryInterface $hoadon,
         HoaDonChiTietRepositoryInterface $hoadonchitiet,
         NhanVienRepositoryInterface $nhanvien,
-        CosoRepository $coso,
+        CoSoRepository $coso,
         DichVuRepositoryInterface $dichvu,
         LieuTrinhRepository $LieuTrinh,
         LieuTrinhChiTietRepository $LieuTrinhChiTiet
