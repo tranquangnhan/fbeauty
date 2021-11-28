@@ -176,7 +176,6 @@ function ShowSanPham(data) {
         var showgiasaugiam='';
 
         var yeuthich = SoSanhYeuThich(data.sanpham[i].id);
-        console.log(yeuthich);
 
         var anhsp = data.sanpham[i].img.split('"').join('').slice(1, -1).split(',');
         var boxgiamgia = '';
