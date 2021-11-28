@@ -286,11 +286,13 @@
                                             </div>
                                             <div class="tab-content" id="">
                                                 <div class="tab-pane fade show active" id="alldonhang" role="tabpanel" aria-labelledby="alldonhang-tab">
+                                                    @if(session()->has('khachHang') && session('khachHang') != '')
+                                                        @foreach($inhoadon as $index =>$hoadonF)
                                                     <div class="box-donhang profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
                                                                 <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
-                                                                    <span class="mr-1">Thông tin người nhận</span>
+                                                                    <span class="mr-1">Thông tin đơn hàng</span>
                                                                     <i class="far fa-question-circle"></i>
                                                                 </button>
 
@@ -471,193 +473,11 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
+                                                        @endforeach
+                                                    @endif
 
-                                                    <div class="box-donhang profile-minibox mt-4">
-                                                        <div class="header">
-                                                            <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-2">
-                                                                    <span class="mr-1">Thông tin người nhận</span>
-                                                                    <i class="far fa-question-circle"></i>
-                                                                </button>
-
-                                                                <div class="modal fade" id="infonguoinhan-2" tabindex="-1" aria-labelledby="infonguoinhan-2Label" aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="infonguoinhan-2Label">Thông tin người nhận</h5>
-                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form action="" class="">
-                                                                                    <div class="form-group form-control-custom mt-0 align-items-start">
-                                                                                        <div class="left">Tên người nhận</div>
-                                                                                        <div class="right">
-                                                                                            <span>Nguyễn Hoàng Long</span>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="form-group form-control-custom align-items-start">
-                                                                                        <div class="left">Số điện thoại</div>
-                                                                                        <div class="right">
-                                                                                            <span>0965286066</span>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="form-group form-control-custom align-items-start">
-                                                                                        <div class="left">Địa chỉ giao hàng</div>
-                                                                                        <div class="right">
-                                                                                            <span>485, Công Hòa, P 15, Q Tân Bình, TP Hồ Chí Minh</span>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="form-group form-control-custom align-items-start">
-                                                                                        <div class="left">Ghi chú khách hàng</div>
-                                                                                        <div class="right">
-                                                                                            <textarea disabled class="form-control form-custom" cols="10" rows="8">
-                                                                                                Nếu khách hàng đưa ra yêu cầu đặc biệt cho một đơn hàng cụ thể và bạn
-                                                                                                 cũng như nhân viên cửa hàng cần ghi nhớ để thực hiện cho đúng yêu cầu,
-                                                                                                  bạn có thể thêm ghi chú cho đơn hàng.
-                                                                                            </textarea>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                  </div>
-                                                            </div>
-
-                                                            <div class="item">
-                                                                <span class="ml-1 text-danger">Đã hủy</span>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="giohang-body">
-                                                            <div class="row shadow-2 align-items-center giohang-item">
-                                                                <div class="col-xl-2 d-flex  align-items-center">
-                                                                    <div class="body-text d-flex">
-                                                                        <img src="http://127.0.0.1:3300/uploads/hyarunic-removebg-preview.png" class="img-sanpham img-fluid m-0" alt="...">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-3">
-                                                                    <div class="body-text text-left">Tên sản phẩm</div>
-                                                                </div>
-                                                                <div class="col-xl-4">
-                                                                    <div class="body-text">
-                                                                        <div class="box-gia">
-                                                                            <span class="giagiam">500,999 đ </span>
-                                                                            <span class="gia left-bar">300,999 đ </span>
-                                                                            <span class="left-bar dungtich"> 30ml</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-1">
-                                                                    <div class="body-text">
-                                                                        <div class="input-group inline-group">
-                                                                            <input class="form-control form-custom text-center quantity"     min="1" name="quantity" value="1" disabled type="number">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-2">
-                                                                    <div class="body-text text-right">
-                                                                        <span class="tongtien">300,999 đ</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row shadow-2 align-items-center giohang-item">
-                                                                <div class="col-xl-2 d-flex  align-items-center">
-                                                                    <div class="body-text d-flex">
-                                                                        <img src="http://127.0.0.1:3300/uploads/hyarunic-removebg-preview.png" class="img-sanpham img-fluid m-0" alt="...">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-3">
-                                                                    <div class="body-text text-left">Tên sản phẩm</div>
-                                                                </div>
-                                                                <div class="col-xl-4">
-                                                                    <div class="body-text">
-                                                                        <div class="box-gia">
-                                                                            <span class="giagiam">500,999 đ </span>
-                                                                            <span class="gia left-bar">300,999 đ </span>
-                                                                            <span class="left-bar dungtich"> 30ml</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-1">
-                                                                    <div class="body-text">
-                                                                        <div class="input-group inline-group">
-                                                                            <input class="form-control form-custom text-center quantity"     min="1" name="quantity" value="1" disabled type="number">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-2">
-                                                                    <div class="body-text text-right">
-                                                                        <span class="tongtien">300,999 đ</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                        <div class="foot">
-                                                            <div class="row">
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Phương thức giao hàng: </label>
-                                                                    <div class="ml-2">
-                                                                        Thanh toán khi nhận hàng
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
-                                                                    <div class="ml-2">
-                                                                        300,999đ
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row mt-1">
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Đơn vị vận chuyển: </label>
-                                                                    <div class="ml-2">
-                                                                        Nhanh
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Mã giảm giá: </label>
-                                                                    <div class="ml-2">
-                                                                        WMXAA2021
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-1 justify-content-end">
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Tổng tiền sau giảm (0%): </label>
-                                                                    <div class="ml-2">
-                                                                        300,999 đ
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-1 justify-content-end">
-                                                                <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Tổng thanh toán : </label>
-                                                                    <div class="ml-2 color-main price-total">
-                                                                        300,999 đ
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="choxacnhan" role="tabpanel" aria-labelledby="choxacnhan-tab">...2</div>
                                                 <div class="tab-pane fade" id="cholayhang" role="tabpanel" aria-labelledby="cholayhang-tab">..3.</div>

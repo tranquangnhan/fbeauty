@@ -33,9 +33,15 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
     }
 
     public function findHoaDonByIdKhachHang($id){
-        return  $this->model
+        return  $this->model->select("*")
         ->where('idkhachhang', '=', $id)
         ->get();
+    }
+
+    public function CheckHoaDonByIdKhachHang($id){
+        return  $this->model->select("*")
+            ->where('idkhachhang', '=', $id)
+            ->doesntExist();
     }
 
     public function getTongDoanhThuHoaDon($dau, $cuoi, $idCoSo) {
