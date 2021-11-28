@@ -42,6 +42,12 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
         ->orderBy('created_at', 'DESC')
         ->get();
     }
+    public function getsanpham1(){
+        return $this->model->offset(1)->limit(6)
+        ->where('sanpham.trangthai', '=', 1)
+        ->orderBy('created_at', 'DESC')
+        ->get();
+    }
     public function searchsanpham($valueSearch){
         return $this->model->where('name','LIKE','%'.$valueSearch.'%')->get();
     }

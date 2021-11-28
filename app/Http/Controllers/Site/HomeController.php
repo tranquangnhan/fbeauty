@@ -185,7 +185,6 @@ class HomeController extends Controller
         $blognew   = $this->Blog->getBlognew();
 
         $this->data['blog']     = $blog;
-        $this->data['blog']     = $blog;
         $this->data['blog3']    = $blog3;
         $this->data['blog4']    = $blog4;
         $this->data['blognew']    = $blognew;
@@ -255,13 +254,17 @@ class HomeController extends Controller
     public function viewTimKiem()
     {
         $dichvu = $this->Dichvu->getDichVu2();
+        $sanpham = $this->SanPham->getsanpham1();
+        $blog = $this->Blog->getBlog5();
 
+        $this->data['dichvu'] = $dichvu;
+        $this->data['sanpham'] = $sanpham;
+        $this->data['blog'] = $blog;
         $this->data['pathActive'] = 'tim-kiem';
         $this->data['namePage'] = 'Tìm Kiếm';
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Tìm Kiếm'],
         ];
-        // dd($dichvu);
         if($valueSearch = request()->key){
             $dichvu = $this->Dichvu->search($valueSearch);
             $sanpham = $this->SanPham->searchsanpham($valueSearch);
@@ -275,6 +278,17 @@ class HomeController extends Controller
 
 
         return view("Site.pages.timkiem", $this->data);
+    }
+
+    public function viewDanhMucgetDichvu() {
+
+        $this->data['pathActive']          = 'lien-he';
+        $this->data['namePage']            = 'Liên Hệ';
+        $this->data['breadcrumbArray']     = [
+            ['link' => '', 'name' => 'Liên Hệ'],
+        ];
+
+        return view("Site.pages.contact", $this->data);
     }
 
     public function viewLienHe() {

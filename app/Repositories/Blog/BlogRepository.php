@@ -141,4 +141,10 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     public function searchblog($valueSearch){
         return $this->model->where('name','LIKE','%'.$valueSearch.'%')->get();
     }
+    public function getblog5(){
+        return $this->model->limit(6)
+        ->where('blog.trangthai', '=', 1)
+        ->orderBy('created_at', 'DESC')
+        ->get();
+    }
 }
