@@ -56,58 +56,58 @@ function ThemGioHang(id) {
 function ThemGioHangChiTiet(muangay) {
     var idsanpham=$("#idsanpham").val();
     var tonkho=$("#tonkho").val();
-   var nhapsoluong=$("#nhapsoluong").val();
-   if (nhapsoluong!="" && Number(nhapsoluong)<=Number(tonkho) && Number(nhapsoluong)>=1 ){
-       $.ajax({
-           url: domain + '/themsanphamgiohangchitiet/'+idsanpham+'/soluongsanpham/'+nhapsoluong,
-           type: 'GET',
-           async: false,
-           dataType: 'json',
-           data: {id: idsanpham, soluong: nhapsoluong},
-           success: function (data) {
-               if (data==0){
-                   iziToast.warning({
-                       title: 'Thêm giỏ hàng thất bại !!!',
-                       message: '',
-                       position: 'bottomRight',
-                       backgroundColor: 'oranged',
-                       titleColor: 'black',
-                       messageColor: 'black',
-                       iconColor: 'black',
-                   });
-               }
-               else {
-                   iziToast.success({
-                       title: 'Thêm giỏ hàng thành công !!!',
-                       message: '',
-                       position: 'bottomRight',
-                       backgroundColor: 'green',
-                       titleColor: 'white',
-                       messageColor: 'white',
-                       iconColor: 'white',
-                   });
-                   showGioHang()
-                   if (muangay!=null){
-                       var timer = setTimeout(function() {
-                           window.location= domain+'/gio-hang'
-                       }, 2000);
-                   }
-               }
-           }
+    var nhapsoluong=$("#nhapsoluong").val();
+    if (nhapsoluong!="" && Number(nhapsoluong)<=Number(tonkho) && Number(nhapsoluong)>=1 ){
+        $.ajax({
+            url: domain + '/themsanphamgiohangchitiet/'+idsanpham+'/soluongsanpham/'+nhapsoluong,
+            type: 'GET',
+            async: false,
+            dataType: 'json',
+            data: {id: idsanpham, soluong: nhapsoluong},
+            success: function (data) {
+                if (data==0){
+                    iziToast.warning({
+                        title: 'Thêm giỏ hàng thất bại !!!',
+                        message: '',
+                        position: 'bottomRight',
+                        backgroundColor: 'oranged',
+                        titleColor: 'black',
+                        messageColor: 'black',
+                        iconColor: 'black',
+                    });
+                }
+                else {
+                    iziToast.success({
+                        title: 'Thêm giỏ hàng thành công !!!',
+                        message: '',
+                        position: 'bottomRight',
+                        backgroundColor: 'green',
+                        titleColor: 'white',
+                        messageColor: 'white',
+                        iconColor: 'white',
+                    });
+                    showGioHang()
+                    if (muangay!=null){
+                        var timer = setTimeout(function() {
+                            window.location= domain+'/gio-hang'
+                        }, 2000);
+                    }
+                }
+            }
 
-       });
-   }
-   else {
-       iziToast.warning({
-           title: 'Thêm giỏ hàng thất bại !!!',
-           message: '',
-           position: 'bottomRight',
-           backgroundColor: 'oranged',
-           titleColor: 'black',
-           messageColor: 'black',
-           iconColor: 'black',
-       });
-   }
+        });
+    }
+    else {
+        iziToast.warning({
+            title: 'Thêm giỏ hàng thất bại !!!',
+            message: '',
+            position: 'bottomRight',
+            backgroundColor: 'oranged',
+            titleColor: 'black',
+            messageColor: 'black',
+            iconColor: 'black',
+        });
+    }
 }
 
 function showGioHang() {
@@ -147,7 +147,7 @@ function showGioHang() {
                     GioHangBoDy(data);
                     $("#xoatatca").prop('disabled', false);
                 }
-            else if (window.location == domain+'/thanh-toan'){
+                else if (window.location == domain+'/thanh-toan'){
                     ShowPayProduct(data);
                     $("#dathang").prop('disabled', false);
                 }
@@ -187,7 +187,7 @@ function Showmodalgiohang(data) {
             ' <span style="font-size: 11pt;">'+ten+'</span> <br>\n' +
             ' <span class="font-weight-bold" style="font-size: 10pt;"><i class="fa fa-close"></i> '+data[i].ml+'ml</span>\n' +
             ' <br>\n' +
-            ' <span class="font-weight-600 ">'+gia.toLocaleString()+' </span>VND\n' +
+            ' <span class="font-weight-600 ">'+gia.toLocaleString().replaceAll(",", ".")+' </span>VND\n' +
             ' </td>\n' +
             ' <td width="29%">\n' +
             ' <div class="input-group inline-group">\n' +
@@ -208,7 +208,7 @@ function Showmodalgiohang(data) {
             ' </tr>';
     }
     modalgiohang.innerHTML=span;
-    tongtien.innerHTML = total.toLocaleString();
+    tongtien.innerHTML = total.toLocaleString().replaceAll(",", ".");
     soluonghang.innerHTML=stt;
     soluonghang1.innerHTML=stt;
 }
@@ -224,11 +224,11 @@ function GioHangBoDy(data) {
         var ten='';
         var gia='';
         if (data[i].giamgia !=null){
-            gia ='<span class="giagiam">'+data[i].dongia.toLocaleString()+' đ </span><span class="gia left-bar">'+(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)).toLocaleString()+'đ </span>';
+            gia ='<span class="giagiam">'+data[i].dongia.toLocaleString().replaceAll(",", ".")+' đ </span><span class="gia left-bar">'+(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)).toLocaleString()+'đ </span>';
             tongtien=(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)) *data[i].soluong;
         }
         else {
-            gia ='<span class="">'+data[i].dongia.toLocaleString()+'đ </span>';
+            gia ='<span class="">'+data[i].dongia.toLocaleString().replaceAll(",", ".")+'đ </span>';
             tongtien=data[i].dongia *data[i].soluong;
         }
         if (data[i].name.length >30){
@@ -274,14 +274,14 @@ function GioHangBoDy(data) {
             '                </div>\n' +
             '                <div class="col-xl-1">\n' +
             '                    <div class="body-text">\n' +
-            '                        <span class="tongtien">'+tongtien.toLocaleString()+'đ</span>\n' +
+            '                        <span class="tongtien">'+tongtien.toLocaleString().replaceAll(",", ".")+'đ</span>\n' +
             '                    </div>\n' +
             '                </div>\n' +
             '                <div class="col-xl-1 text-center"><button class="btn" onclick="XoaSanPham('+data[i].id+')"><i class=\'fas fa-trash-alt\' style=\'font-size:24px\'></i></button></div>\n' +
             '            </div>';
     }
     document.getElementById("giohang-body").innerHTML=span;
-    document.getElementById("tongtiengiohang").innerHTML=total.toLocaleString();
+    document.getElementById("tongtiengiohang").innerHTML=total.toLocaleString().replaceAll(",", ".");
 }
 
 function ShowPayProduct(data) {
@@ -295,11 +295,11 @@ function ShowPayProduct(data) {
         var ten='';
         var gia='';
         if (data[i].giamgia !=null){
-            gia ='<span class="giagiam">'+data[i].dongia.toLocaleString()+' đ </span><span class="gia left-bar">'+(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)).toLocaleString()+'đ </span>';
+            gia ='<span class="giagiam">'+data[i].dongia.toLocaleString().replaceAll(",", ".")+' đ </span><span class="gia left-bar">'+(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)).toLocaleString().replaceAll(",", ".")+'đ </span>';
             tongtien=(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)) *data[i].soluong;
         }
         else {
-            gia ='<span class="">'+data[i].dongia.toLocaleString()+'đ </span>';
+            gia ='<span class="">'+data[i].dongia.toLocaleString().replaceAll(",", ".")+'đ </span>';
             tongtien=data[i].dongia *data[i].soluong;
         }
         if (data[i].name.length >30){
@@ -332,14 +332,14 @@ function ShowPayProduct(data) {
             '                </div>\n' +
             '                <div class="col-xl-2 text-right">\n' +
             '                    <div class="body-text">\n' +
-            '                        <span class="tongtien">'+tongtien.toLocaleString()+'đ</span>\n' +
+            '                        <span class="tongtien">'+tongtien.toLocaleString().replaceAll(",", ".")+'đ</span>\n' +
             '                    </div>\n' +
             '                </div>\n' +
             '            </div>';
     }
     document.getElementById("payproduct").innerHTML=span;
-    $("#tongtienhang").html(total.toLocaleString());
-    $("#tongthanhtoan").html((total+30000).toLocaleString());
+    $("#tongtienhang").html(total.toLocaleString().replaceAll(",", "."));
+    $("#tongthanhtoan").html((total+30000).toLocaleString().replaceAll(",", "."));
     $('#amount').val(total+30000);
     CapNhatGiaSession(total+30000);
 }

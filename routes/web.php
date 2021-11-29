@@ -151,6 +151,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('san-pham/soluong/{id}', [HomeController::class, "getSanPham"]);
     Route::get('san-pham/chi-tiet/{id}', [HomeController::class, "viewSanPhamChiTiet"]);
     Route::get('san-pham/checkyeuthich/{id}', [YeuThichController::class, "getSanPhamYeuThich"]);
+    Route::get('getyeuthichsps', [YeuThichController::class, "getAllSPYeuThich"]);
     Route::get('addyeuthichsp/{id}', [YeuThichController::class, "AddSanPhamYeuThich"]);
 
     Route::get('gio-hang', [HomeController::class, "viewGioHang"]);
@@ -158,6 +159,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
     Route::get('bai-viet/{id}', [HomeController::class, "viewBaiVietChiTiet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
+    Route::get('tim-kiem', [HomeController::class, "viewTimKiem"]);
     Route::get('lien-he', [HomeController::class, "viewLienHe"]);
     Route::get('gioi-thieu', [HomeController::class, "viewGioiThieu"]);
     Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);

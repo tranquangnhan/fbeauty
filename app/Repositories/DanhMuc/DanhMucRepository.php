@@ -39,7 +39,7 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
     }
     public function idDanhMucgetDichvu($slug){
         return $this->model->select('danhmuc.*','dichvu.name as namedv','dichvu.name as namedv')
-        ->join('dichvu','danhmuc.id','=','dichvu.iddm')
+        ->join('dichvu','dichvu.iddm','=','danhmuc.id')
         ->where('dichvu.trangthai', '=', 1)
         ->where('dichvu.slug', '=', $slug)
         ->first();

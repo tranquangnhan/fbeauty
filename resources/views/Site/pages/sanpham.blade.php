@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
     Sản Phẩm
@@ -144,8 +144,8 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('Site/js') }}/showsanpham.js"></script>
-    <script src="{{ asset('Site/js') }}/sanpham.js"></script>
 
+    <script src="{{ asset('Site/js') }}/sanpham.js" defer></script>
+    <script src="{{ asset('Site/js') }}/showsanpham.js"></script>
 
 @endsection

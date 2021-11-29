@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
     Bài viết
@@ -24,7 +24,14 @@
 
                                     <div class="head-blog-item">
                                         <div class="d-flex">
-                                            <div class="d-flex align-items-center text-2 mr-4">Tìm kiếm theo</div>
+                                            <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">
+                                                <form class="form-inline" action="">
+                                                    <div class="form-group">
+                                                      <input class="form-control" name="key" placeholder="Tìm Kiếm Bài Viết ....">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-default"><i class="fas fa-search color-black-2"></i></button>
+                                                </form>
+                                            </div>
                                             <ul class="nav nav-tabs" id="myTab-1" role="tablist">
                                                 <li class="nav-item" role="presentation">
                                                     <a class="nav-link btn-3 active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">Mới nhất</a>
@@ -396,7 +403,7 @@
                         <div class="body mt-4">
                             <div class="row">
                                 @foreach ($xuhuong as $item)
-                                    
+
                                 <div class="col-xl-3">
                                     <div class="tin-item-1">
                                         <div class="image-tin-1 " style="height: 180px;">
