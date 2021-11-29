@@ -532,32 +532,31 @@
                     <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
                         <div class="row">
                             <div class="col-xl-7 pr-0">
+                            @foreach ($blog as $item)
                                 <div class="blog-bigsize">
                                     <div class="box-danhmuc">
-                                        Sức khỏe
+                                        {{$item->danhmuc}}
                                     </div>
 
                                     <div class="img-1 w-100">
-                                        <img class="img-fluid" src="{{ asset('uploads/beauty-spa.jpg') }}" alt="">
+                                        <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt="">
                                     </div>
 
                                     <div class="blog-content-bigsize">
-                                        <div class="blog-text-1 limit-text-row-2">
-                                            <a href="">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm
-                                                Siêu Độc Ở Sài Gòn</a>
+                                        <div class="blog-text-1 limit-text-row-1">
+                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}">{{$item->name}}</a>
                                         </div>
                                         <div class="blog-text-2 mt-2">
-                                            21/9/2021
+                                            @if ($item->created_at != null)
+                                                {{$item->created_at->format('Y.m.d')}}
+                                            @endif
                                         </div>
                                         <div class="blog-text-3 text-2 mt-2 limit-text-row-3">
-                                            Cuối tuần này, hãy lên kế hoạch chiều chuộng bản thân bằng cách tắm
-                                            thảo dược quý của người Dao Đỏ cùng nhiều dịch vụ hót-hòn-họt khác
-                                            tại Noir. Spa, Sài Gòn. Cuối tuần này, hãy lên kế hoạch chiều. Cuối
-                                            tuần này, hãy lên kế hoạch chiều
+                                            {{$item->motangan}}
                                         </div>
 
                                         <div class="mt-3">
-                                            <a href="" class="">
+                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="">
                                                 <button class="
                                                 btn-line px-0 color-gray-2">
                                                 Đọc ngay
@@ -568,105 +567,39 @@
 
 
                                 </div>
+                            @endforeach
                             </div>
 
                             <div class="col-xl-5 pl-0">
                                 <div class="list-blog-small pl-5">
+                                @foreach ($getBlog2 as $item)
+                                    
                                     <div class="small-blog-item box-tin-hv pt-0">
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/') }}/{{$item->img}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
                                                 <div class="row">
                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                         <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
+                                                            <a class="box-danhmuc-1">
+                                                            {{$item->danhmuc}}</a>
                                                         </div>
-                                                        <span>24 / 1 / 2021</span>
+                                                        @if ($item->created_at != null)
+                                                            {{$item->created_at->format('Y.m.d')}}
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="small-blog-item box-tin-hv">
-                                        <div class="row">
-                                            <div class="col-xl-5">
-                                                <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                        <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
-                                                        </div>
-                                                        <span>24 / 1 / 2021</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="small-blog-item box-tin-hv">
-                                        <div class="row">
-                                            <div class="col-xl-5">
-                                                <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                        <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
-                                                        </div>
-                                                        <span>24 / 1 / 2021</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="small-blog-item box-tin-hv">
-                                        <div class="row">
-                                            <div class="col-xl-5">
-                                                <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                        <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
-                                                        </div>
-                                                        <span>24 / 1 / 2021</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                @endforeach
 
                                 </div>
                             </div>
@@ -674,33 +607,33 @@
                     </div>
                     <div class="tab-pane fade" id="lastweek" role="tabpanel" aria-labelledby="lastweek-tab">
                         <div class="row">
+                        @foreach ($blog3 as $item)
+                            
                             <div class="col-xl-7 pr-0">
                                 <div class="blog-bigsize">
                                     <div class="box-danhmuc">
-                                        Sức khỏe
+                                        {{$item->danhmuc}}
                                     </div>
 
                                     <div class="img-1 w-100">
-                                        <img class="img-fluid" src="{{ asset('uploads/beauty-spa.jpg') }}" alt="">
+                                        <img class="img-fluid" src="{{ asset('uploads/') }}/{{$item->img}}" alt="">
                                     </div>
 
                                     <div class="blog-content-bigsize">
-                                        <div class="blog-text-1 limit-text-row-2">
-                                            <a href="">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm
-                                                Siêu Độc Ở Sài Gòn</a>
+                                        <div class="blog-text-1 limit-text-row-1">
+                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}">{{$item->name}}</a>
                                         </div>
                                         <div class="blog-text-2 mt-2">
-                                            21/9/2021
+                                            @if ($item->created_at != null)
+                                                {{$item->created_at->format('Y.m.d')}}
+                                            @endif
                                         </div>
                                         <div class="blog-text-3 text-2 mt-2 limit-text-row-3">
-                                            Cuối tuần này, hãy lên kế hoạch chiều chuộng bản thân bằng cách tắm
-                                            thảo dược quý của người Dao Đỏ cùng nhiều dịch vụ hót-hòn-họt khác
-                                            tại Noir. Spa, Sài Gòn. Cuối tuần này, hãy lên kế hoạch chiều. Cuối
-                                            tuần này, hãy lên kế hoạch chiều
+                                            {{$item->motangan}}
                                         </div>
 
                                         <div class="mt-3">
-                                            <a href="" class="">
+                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="">
                                                 <button class="
                                                 btn-line px-0 color-gray-2">
                                                 Đọc ngay
@@ -712,104 +645,38 @@
 
                                 </div>
                             </div>
+                        @endforeach
 
                             <div class="col-xl-5 pl-0">
                                 <div class="list-blog-small pl-5">
+                                @foreach ($blog4 as $item)
+                                    
                                     <div class="small-blog-item box-tin-hv pt-0">
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
                                                 <div class="row">
                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                         <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
+                                                            <a class="box-danhmuc-1">
+                                                            {{$item->danhmuc}}</a>
                                                         </div>
-                                                        <span>24 / 1 / 2021</span>
+                                                        @if ($item->created_at != null)
+                                                            {{$item->created_at->format('Y.m.d')}}
+                                                        @endif
                                                     </div>
                                                 </div>
-                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
+                                                <div class="text-bl-1 limit-text-row-1 mb-2 mt-1">
+                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="small-blog-item box-tin-hv">
-                                        <div class="row">
-                                            <div class="col-xl-5">
-                                                <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                        <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
-                                                        </div>
-                                                        <span>24 / 1 / 2021</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="small-blog-item box-tin-hv">
-                                        <div class="row">
-                                            <div class="col-xl-5">
-                                                <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                        <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
-                                                        </div>
-                                                        <span>24 / 1 / 2021</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="small-blog-item box-tin-hv">
-                                        <div class="row">
-                                            <div class="col-xl-5">
-                                                <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/photo-1635609047.jpg') }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-7 pl-0 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                        <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
-                                                            Sức khỏe</a>
-                                                        </div>
-                                                        <span>24 / 1 / 2021</span>
-                                                    </div>
-                                                </div>
-                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                    <a href="" class="hover-pink">Review Noir. Spa, Trải Nghiệm Thư Giãn Trong Bóng Đêm Siêu Độc Ở</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                @endforeach
 
                                 </div>
                             </div>

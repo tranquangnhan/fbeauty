@@ -11,7 +11,7 @@
                         <div>
                              <button class="btn btn-primary waves-effect waves-light mb-3" ><a class="text-white" href="{{route('blog.create')}}">Thêm Bài Viết </a> </button>
                         </div>
-                        <table class="table table-striped table-bordered dt-responsive nowrap">
+                        <table class="table table-striped table-bordered dt-responsive " id="key-table" >
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="3%">STT</th>
@@ -25,10 +25,12 @@
                                 <tbody>
                                     @foreach ($data as $i=> $item)
                                         <tr>
-                                            <td>{{$i+=1}}</td>
-                                            <td>{{$item->name}} <br>
-                                                <?php if($item->trangthai == 0) echo "<div class=\"bg-danger mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";
-                                                else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td> 
+                                                 {{$item->name}} <br>
+                                                    <?php if($item->trangthai == 0) echo "<div class=\"bg-danger mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";
+                                                    else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
+                                               
                                             </td> 
                                             <td>
                                                 <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">

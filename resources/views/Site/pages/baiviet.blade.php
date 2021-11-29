@@ -109,7 +109,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                                    <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink">{{$item->name}}</a>
+                                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -136,7 +136,7 @@
 
                                                 <div class="blog-content-bigsize">
                                                     <div class="blog-text-1 limit-text-row-2">
-                                                        <a href="{{ asset('bai-viet') }}/{{$item->id}}">{{$item1->name}}</a>
+                                                        <a href="{{ asset('bai-viet') }}/{{$item->slug}}">{{$item1->name}}</a>
                                                     </div>
                                                     <div class="blog-text-2 mt-2">
                                                         <?php
@@ -189,7 +189,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                                                    <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink">{{$item->name}}</a>
+                                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -236,11 +236,13 @@
                                                     <a href="" class="box-danhmuc-1">
                                                         {{$blog[0]->danhmuc}}</a>
                                                 </div>
-                                                <span>{{$blog[0]->created_at}}</span>
+                                                <span>@if ($blog[0]->created_at != null)
+                                                        {{$blog[0]->created_at->format('Y.m.d')}}
+                                                    @endif</span>
                                             </div>
                                         </div>
                                         <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                            <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink">
+                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
                                                 {{$blog[0]->name}}</a>
                                         </div>
                                     </div>
@@ -264,7 +266,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                                <a href="{{ asset('bai-viet') }}/{{$item->id}}"  class="color-white hover-pink fz-1em2 font-weight-600">
+                                                <a href="{{ asset('bai-viet') }}/{{$item->slug}}"  class="color-white hover-pink fz-1em2 font-weight-600">
                                                     {{$item->name}}</a>
                                             </div>
                                         </div>
@@ -358,7 +360,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
-                                                    <a href="{{ asset('bai-viet') }}/{{$data->id}}" class="hover-pink">{{$data->name}}</a>
+                                                    <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
                                                 </div>
                                                 <p class="blog-mota limit-text-row-3 mb-0">
                                                     {{$data->motangan}}
@@ -414,7 +416,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-1 mb-2 mt-3">
-                                                <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink color-white fz-1em font-weight-600">{{$item->name}}</a>
+                                                <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink color-white fz-1em font-weight-600">{{$item->name}}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -467,7 +469,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
-                                                            <a href="{{ asset('bai-viet') }}/{{$data->id}}" class="hover-pink">{{$data->name}}</a>
+                                                            <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
                                                         </div>
                                                         <p class="blog-mota limit-text-row-3 mb-0">
                                                             {{$data->motangan}}
@@ -510,7 +512,7 @@
                                             </div>
                                         </div>
                                         <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
-                                            <a href="{{ asset('bai-viet') }}/{{$item->id}}" class="hover-pink">{{$item->name}}</a>
+                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
                                         </div>
                                     </div>
                                 </div>

@@ -11,7 +11,7 @@
                         <div>
                              <button class="btn btn-primary waves-effect waves-light mb-3" ><a class="text-white" href="{{route('dichvu.create')}}">Thêm Dịch Vụ</a> </button>
                         </div>
-                        <table class="table table-striped table-bordered dt-responsive nowrap">
+                        <table class="table table-striped table-bordered dt-responsive " id="key-table">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="3%">STT</th>
@@ -24,9 +24,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $item)
+                                    @foreach ($data as $i=> $item)
                                         <tr>
-                                            <td>{{++$loop->index}}</td>
+                                            <td>{{$i+=1}}</td>
                                             <td>{{$item->name}} <br>
                                                 <?php if($item->trangthai == 0) echo "<div class=\"bg-danger mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
@@ -55,7 +55,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                   
                              
                                 </tbody>
                             </table>

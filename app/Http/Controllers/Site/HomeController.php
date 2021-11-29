@@ -87,13 +87,16 @@ class HomeController extends Controller
     public function index()
     {
         $sanPham = $this->SanPham->getAll();
-        $blog = $this->Blog->getBlog1();
-        $blog2 = $this->Blog->getBlog2();
-
+        $blog    = $this->Blog->getBlog1();
+        $getBlog2     = $this->Blog->getBlog2();
+        $blog3     = $this->Blog->getLastWeek1();
+        $blog4     = $this->Blog->getLastWeek2();
 
         $this->data['sanPham'] = $sanPham;
         $this->data['blog'] = $blog;
-        $this->data['blog2'] = $blog2;
+        $this->data['getBlog2'] = $getBlog2;
+        $this->data['blog3'] = $blog3;
+        $this->data['blog4'] = $blog4;
         $this->data['pathActive'] = 'trang-chu';
 
         return view("Site.pages.home", $this->data);
@@ -213,14 +216,14 @@ class HomeController extends Controller
         return view("Site.pages.baiviet", $this->data);
     }
 
-    public function viewBaiVietChiTiet($id) {
-        $this->Blog->updateView($id);
+    public function viewBaiVietChiTiet($slug) {
+        $this->Blog->updateView($slug);
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAllDanhMuc();
-        $viewdetail = $this->Blog->editBlog($id);
-        $viewdetail2 = $this->Blog->editBlog($id);
+        $viewdetail = $this->Blog->editBlog($slug);
+        $viewdetail2 = $this->Blog->editBlog($slug);
          foreach($viewdetail2 as $detail) {
-            $viewdt = $this->Blog->getblogbyiddm3($detail->iddmm);
+            $viewdt = $this->Blog->getblogbyiddm3($detail->iddm);
             $detail['viewdt'] = $viewdt;
 
         }
