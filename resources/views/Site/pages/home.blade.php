@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="w-100 text-left mt-3">
-                            <a href="">
+                            <a href="{{URL::to("gioi-thieu")}}">
                                 <button class="btn-3 active black-1">Xem chi tiết</button>
                             </a>
                         </div>
@@ -205,7 +205,7 @@
 
                             <div class="w-100 text-left mt-4">
 
-                                <button data-show="one" class="button btn-full btn-datlich">ĐẶT LỊCH
+                                <button data-show="one" class="button btn-full btn-datlich btn-modal-main" type-modal="modal-datlich">ĐẶT LỊCH
                                     NGAY</button>
 
                             </div>
@@ -267,7 +267,7 @@
                                                 </div>
 
                                                 <div class="text-8 mt-1">
-                                                    {{number_format($itemdichvu->dongia)}}đ
+                                                    {{str_replace(',', '.',number_format($itemdichvu->dongia))}}đ
                                                 </div>
 
                                                 <div class="img-1 mt-4">
@@ -288,7 +288,7 @@
                                                 </p>
                                             </div>
                                             <div class="w-100 text-center mb-4">
-                                                <button data-show="one" class="button btn-4 btn-datlich">Đặt
+                                                <button class="button btn-4 btn-datlich btn-modal-main" type-modal="modal-datlich" data-show="one">Đặt
                                                     lịch</button>
 
                                             </div>
@@ -333,8 +333,8 @@
                                             </p>
                                         </div>
                                         <div class="w-100 text-center mb-4">
-                                            <a href="">
-                                                <button class="btn-4">Đặt lịch</button>
+                                            <a href="javascript:void(0)">
+                                                <button  class="btn-4 btn-modal-main" type-modal="modal-datlich" data-show="one">Đặt lịch</button>
                                             </a>
                                         </div>
                                     </div>
@@ -418,21 +418,21 @@
                                         <a href="javascript:;">
                                             <p class="product-catergory font-13 mb-1">{{$spk->tendm}}</p>
                                         </a>
-                                        <a href="{{URL::to("san-pham/chi-tiet", $spk->id)}}">
-                                            <h6 class="product-name mb-2" style="height: 40px;"><?php if (strlen($spk->name)<= 45){echo $spk->name;}else  { echo substr($spk->name, 0, 45).'...';}?></h6>
+                                        <a href="{{URL::to("san-pham/chi-tiet", $spk->slug)}}">
+                                            <h6 class="product-name mb-1" style="height: 40px;"><?php if (strlen($spk->name)<= 45){echo $spk->name;}else  { echo substr($spk->name, 0, 45).'...';}?></h6>
                                         </a>
-                                        <div class="d-flex align-items-center justify-content-center" style="height: 50px;">
+                                        <div class="d-flex align-items-center justify-content-center" style="height: 40px;">
                                             <div class="mb-1 product-price">
-                                                <span class="me-1 text-decoration-line-through">{{number_format($splienquanctkhac[0]->dongia), ""}} đ</span> / <span>{{$splienquanctkhac[0]->ml}}ml</span>
+                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia)), ""}} đ</span> / <span>{{$splienquanctkhac[0]->ml}}ml</span>
                                                 @if($spk->giamgia !="")
-                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{number_format($splienquanctkhac[0]->dongia-(($splienquanctkhac[0]->dongia * $spk->giamgia)/100)), ""}}đ</span>
+                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia-(($splienquanctkhac[0]->dongia * $spk->giamgia)/100))), ""}}đ</span>
                                                 @endif
                                             </div>
                                         </div>
                                         <div class="product-action mt-2">
                                             <div class="d-grid gap-2">
                                                 <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splienquanctkhac[0]->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                <a href="{{URL::to("san-pham/chi-tiet", $spk->id)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
+                                                <a href="{{URL::to("san-pham/chi-tiet", $spk->slug)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -442,11 +442,11 @@
                     @endforeach
                 </div>
             </div>
-            {{-- <div class="w-100 text-center mt-3">
-                <a href="">
-                    <button class="btn-full">Xem tất cả</button>
+             <div class="w-100 text-center mt-3">
+                <a href="{{URL::to("san-pham")}}">
+                    <button class="btn-full pl-5 pr-5">Xem tất cả</button>
                 </a>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>
@@ -530,7 +530,7 @@
                             <div class="col-xl-5 pl-0">
                                 <div class="list-blog-small pl-5">
                                 @foreach ($getBlog2 as $item)
-                                    
+
                                     <div class="small-blog-item box-tin-hv pt-0">
                                         <div class="row">
                                             <div class="col-xl-5">
@@ -565,7 +565,7 @@
                     <div class="tab-pane fade" id="lastweek" role="tabpanel" aria-labelledby="lastweek-tab">
                         <div class="row">
                         @foreach ($blog3 as $item)
-                            
+
                             <div class="col-xl-7 pr-0">
                                 <div class="blog-bigsize">
                                     <div class="box-danhmuc">
@@ -607,7 +607,7 @@
                             <div class="col-xl-5 pl-0">
                                 <div class="list-blog-small pl-5">
                                 @foreach ($blog4 as $item)
-                                    
+
                                     <div class="small-blog-item box-tin-hv pt-0">
                                         <div class="row">
                                             <div class="col-xl-5">

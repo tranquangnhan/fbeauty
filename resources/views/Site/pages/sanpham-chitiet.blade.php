@@ -40,7 +40,7 @@
                         <div class="title-cs-1">Mô Tả Sản Phẩm</div>
                         <hr>
                         <div class="noidung p-3">
-                            {{$sanpham[0]->noidung}}
+                            <?php echo $sanpham[0]->noidung;?>
                         </div>
                     </div>
                 </div>
@@ -188,7 +188,7 @@
                                         <a href="javascript:;">
                                             <p class="product-catergory font-13 mb-1">{{$sanpham[0]->tendm}}</p>
                                         </a>
-                                        <a href="{{URL::to("san-pham/chi-tiet", $splq->id)}}" >
+                                        <a href="{{URL::to("san-pham/chi-tiet", $splq->slug)}}">
                                             <h6 class="product-name mb-2" style="height: 40px;"><?php if (strlen($splq->name)<= 47){echo $splq->name;}else  { echo substr($splq->name, 0, 40).'...';}?></h6>
                                         </a>
                                         <div class="mt-2 d-flex align-items-center justify-content-center" style="height: 50px;">
@@ -270,7 +270,7 @@
                                         <a href="javascript:;">
                                             <p class="product-catergory font-13 mb-1">{{$spk->tendm}}</p>
                                         </a>
-                                        <a href="{{URL::to("san-pham/chi-tiet", $spk->id)}}">
+                                        <a href="{{URL::to("san-pham/chi-tiet", $spk->slug)}}">
                                             <h6 class="product-name mb-2" style="height: 40px;"><?php if (strlen($spk->name)<= 45){echo $spk->name;}else  { echo substr($spk->name, 0, 45).'...';}?></h6>
                                         </a>
                                         <div class="d-flex align-items-center justify-content-center" style="height: 50px;">

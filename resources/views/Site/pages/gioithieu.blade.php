@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="w-100 text-left mt-3">
-                                <a href="">
+                                <a href="{{URL::to("gioi-thieu")}}">
                                     <button class="btn-3 active black-1">Xem chi tiết</button>
                                 </a>
                             </div>
@@ -96,7 +96,7 @@
                             </p>
 
                             <div class="w-100 text-left mb-4">
-                                <button data-show="one" class="button btn-5 btn-datlich">Đặt lịch</button>
+                                <button class="button btn-5 btn-datlich btn-modal-main" type-modal="modal-datlich" data-show="one">Đặt lịch</button>
                             </div>
                         </div>
                     </div>
