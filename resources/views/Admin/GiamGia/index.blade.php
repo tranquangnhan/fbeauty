@@ -115,7 +115,7 @@
                             </div><!-- /.modal-dialog -->
                         </div>
 
-                        <table class="table table-striped table-bordered dt-responsive nowrap">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr class="text-center">
                                         <th width="5%">STT</th>

@@ -17,9 +17,9 @@
                                         <th width="3%">STT</th>
                                         <th width="20%">Tên bài viết</th>
                                         <th width="15%">Hình ảnh</th>
-                                        <th width="15%">Danh mục</th>  
-                                        <th width="35%">Mô tả</th>  
-                                        <th width="15%">Hành Động</th>  
+                                        <th width="15%">Danh mục</th>
+                                        <th width="35%">Mô tả</th>
+                                        <th width="15%">Hành Động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,15 +34,15 @@
                                             </td> 
                                             <td>
                                                 <img style="object-fit:cover; border-radius:10px" class="img-admin" width="120" height="80" src="{{ asset('uploads/'.$item->img) }}">
-                                            </td> 
+                                            </td>
                                             <td>
                                                 {{$item->danhmuc}}
-                                            </td> 
+                                            </td>
                                             <td>
-                                                <p style="width: 100%!important;">{{$item->motangan}}</p> 
-                                            </td> 
+                                                <p style="width: 100%!important;">{{$item->motangan}}</p>
+                                            </td>
                                             <td class="d-flex">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('blog.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
+                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('blog.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
                                                 <form action="{{route('blog.destroy',$item->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
@@ -51,8 +51,8 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                   
-                             
+
+
                                 </tbody>
                             </table>
                     </div>
@@ -65,15 +65,15 @@
                         <ul class="pagination pagination-split">
                             <?php
                             // echo $Pagination;
-                            ?>      
+                            ?>
                         </ul>
-                    </nav>    
-                      
+                    </nav>
+
                 </div>
             </div>
-                 
-         
-            
+
+
+
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->

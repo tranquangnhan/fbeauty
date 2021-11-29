@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
     Giới thiệu
@@ -69,7 +69,7 @@
                  Ngoài kiến thức và kỹ năng trong nghề,
 
                 mỗi Bác  sĩ và Trưởng <br> bộ phận phải trải qua quá trình trị liệu tối thiểu 10,000 ca lâm sàng để có hiểu biết chuyên sâu về làn da cũng như cơ địa người Châu Á.
-                
+
                 Luôn học hỏi, nỗ lực và cập nhật những kiến thức y khoa – xu hướng thẩm mỹ mới nhất để bắt kịp với xu hướng y học hiện đại cam kết mang đến cho khách hàng kết quả thẩm mỹ tốt nhất.
             </p>
         </div>
@@ -206,7 +206,7 @@
         <div class="">
             <div class="card-body">
                 <div class="title-small line-before text-center mt-4">
-                    Trải nghiệm cơ sở chất lượng 
+                    Trải nghiệm cơ sở chất lượng
                 </div>
                 <div class="text-center">
                     <h5 class="card-title mb-3" style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Cơ sở vật chất hàng đầu</h5>
@@ -218,7 +218,7 @@
                     <li>Hệ thống công nghệ được trang bị đầy đủ từ cơ bản đến nâng cao. Đồng thời luôn cập nhật và ứng dụng các công nghệ, thiết bị thẩm mỹ được đánh giá tốt nhất, hiện đại hàng đầu thế giới vào các dịch vụ tại Spa. </li>
                     <li>Chuỗi phòng chờ, phòng hậu phẫu rộng rãi, tiện nghi tại FBeauty Spa chắc chắn sẽ làm khách hàng hài lòng.</li>
                 </ul>
-              <div class="d-flex justify-content-start mt-5">      
+              <div class="d-flex justify-content-start mt-5">
                 <div class="col-3"><img height="230px" class=""
                     src="{{ asset('uploads') }}/coso1.jpg" alt=""></div>
                 <div class="col-3"><img height="230px" class=""
@@ -228,7 +228,7 @@
                 <div class="col-3"><img height="230px" class=""
                     src="{{ asset('uploads') }}/cs4.jpg" alt=""></div>
               </div>
-              <div class="d-flex justify-content-start mt-5">      
+              <div class="d-flex justify-content-start mt-5">
                 <div class="col-3"><img height="230px" class=""
                     src="{{ asset('uploads') }}/cs5.jpg" alt=""></div>
                 <div class="col-3"><img height="230px" class=""

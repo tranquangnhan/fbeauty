@@ -992,12 +992,12 @@ class installSeeder extends Seeder
             ['id'=>8,'idgiohang' => 5, 'idsanphamchitiet'=> 2,'soluong' => 5],
         ]);
         DB::table('lieutrinh')->insert([
-            ['id'=>1,'idnhanvien'=>1,'idkhachhang'=>6,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['id'=>2,'idnhanvien'=>2,'idkhachhang'=>5,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['id'=>3,'idnhanvien'=>3,'idkhachhang'=>4,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['id'=>4,'idnhanvien'=>4,'idkhachhang'=>3,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu' =>'liệu trình đang tiến hành','trangthai'=>0],
-            ['id'=>5,'idnhanvien'=>5,'idkhachhang'=>2,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-            ['id'=>6,'idnhanvien'=>6,'idkhachhang'=>1,'ngaybatdau'=>'29102021','dukienketthuc'=>'29102022','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>1,'idnhanvien'=>1,'idkhachhang'=>6,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>2,'idnhanvien'=>2,'idkhachhang'=>5,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>3,'idnhanvien'=>3,'idkhachhang'=>4,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>4,'idnhanvien'=>4,'idkhachhang'=>3,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu' =>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>5,'idnhanvien'=>5,'idkhachhang'=>2,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>6,'idnhanvien'=>6,'idkhachhang'=>1,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
 
         ]);
         DB::table('lieutrinhchitiet')->insert([

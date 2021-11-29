@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
 @endsection
@@ -115,13 +115,13 @@
 
                         <div class="list-blog-1 mt-4">
                             <div class="row  mb-30px">
-                           
+
                             @foreach ($viewdetail2 as $data1)
                                 @foreach ($data1->viewdt as $data)
                                 <div class="col-xl-3">
                                     <div class="tin-item-1 box-tin-hv">
                                         <div class="image-tin-1" style="height: 220px;">
-                                            <img class="img-fluid" 
+                                            <img class="img-fluid"
                                                 src="{{ asset('uploads') }}/{{$data->img}}"
                                                 alt="">
                                         </div>

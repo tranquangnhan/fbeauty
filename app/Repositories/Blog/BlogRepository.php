@@ -98,14 +98,14 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->where('blog.iddm', '=',$id)->limit(3)->orderBy('id', 'DESC')
         ->get();
-        
+
     }
     public function getblogbyiddm3($id)
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->where('blog.iddm','=', $id)->limit(4)
-        ->get();   
+        ->get();
     }
     public function updateView($slug)
     {
@@ -119,7 +119,7 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->limit(3)->orderBy('luotxem', 'DESC')
         ->get();
-        
+
     }
     public function getblogbyxuhuong()
     {
@@ -127,13 +127,16 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->limit(4)->orderBy('luotxem', 'DESC')
         ->get();
-        
+
     }
-    public function getBlogByIdDanhmuc($iddanhmuc, $skip, $take) 
+    public function getBlogByIdDanhmuc($iddanhmuc, $skip, $take)
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->where('blog.iddm', '=',$iddanhmuc)->skip($skip)->take($take)->orderBy('id', 'DESC')
-        ->get();   
+        ->get();
+    }
+    public function searchblog($valueSearch){
+        return $this->model->where('name','LIKE','%'.$valueSearch.'%')->get();
     }
 }

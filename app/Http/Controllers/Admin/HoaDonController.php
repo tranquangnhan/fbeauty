@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
 use App\Repositories\GiamGia\GiamGiaRepository;
@@ -31,7 +31,7 @@ class HoaDonController extends Controller
         HoaDonRepositoryInterface $hoadon,
         HoaDonChiTietRepositoryInterface $hoadonchitiet,
         NhanVienRepositoryInterface $nhanvien,
-        CosoRepository $coso,
+        CoSoRepository $coso,
         DichVuRepositoryInterface $dichvu,
         LieuTrinhRepository $LieuTrinh,
         LieuTrinhChiTietRepository $LieuTrinhChiTiet
@@ -99,7 +99,7 @@ class HoaDonController extends Controller
      */
     public function edit($id)
     {
-
+        error_reporting(0);
         $hd = $this->hoadon->find($id);
         $coso = $this->coso->find($hd->idcoso);
         $customer = $this->khachhang->find($hd->idkhachhang);
@@ -107,6 +107,7 @@ class HoaDonController extends Controller
         $idlieutrinh = $hd->idlieutrinh;
         $TenNhanVien = $this->nhanvien->find($hd->idnhanvien);
         $hdct = $this->hoadonchitiet->getHoaDonCTByIdHoaDon($id);
+
         return view("Admin.HoaDon.edit", ['customer' => $customer, 'hoadon' => $hd, 'coso' => $coso, 'hdct' => $hdct, 'thungan' => $ThuNgan, 'TenNhanVien' => $TenNhanVien, 'idlieutrinh' => $idlieutrinh]);
     }
 
@@ -238,5 +239,22 @@ class HoaDonController extends Controller
         }else{
             return $this->handleError('Liệu trình đã tồn tại trong hoá đơn');
         }
+    }
+
+    public function trangthaithanhtoan($id){
+        $hoadon=$this->hoadon->find($id);
+        if ($hoadon->trangthai == 0){
+            $tt=[
+                "trangthai"=>1
+            ];
+            $this->hoadon->update($id, $tt);
+        }
+        else{
+            $tt=[
+                "trangthai"=>0
+            ];
+            $this->hoadon->update($id, $tt);
+        }
+        return redirect(route("hoadon.index"));
     }
 }

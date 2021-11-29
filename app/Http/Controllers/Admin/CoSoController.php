@@ -8,7 +8,7 @@ use App\Models\Admin\Province;
 use App\Models\Admin\Wards;
 use App\Models\Admin\CosoModel;
 use App\Repositories\City\CityRepository;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\Lich\LichRepository;
 use App\Repositories\Province\ProvinceRepository;
@@ -27,7 +27,7 @@ class CoSoController extends Controller
     /**
      * CosoController constructor.
      */
-    public function __construct(CosoRepository $Coso, CityRepository $City, ProvinceRepository $Province, WardsRepository $wards, LichRepository $Lich, HoaDonRepository $HoaDon)
+    public function __construct(CoSoRepository $Coso, CityRepository $City, ProvinceRepository $Province, WardsRepository $wards, LichRepository $Lich, HoaDonRepository $HoaDon)
     {
         $this->Coso = $Coso;
         $this->Province = $Province;

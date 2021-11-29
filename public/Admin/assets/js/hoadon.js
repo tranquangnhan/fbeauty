@@ -5,7 +5,17 @@ function HoaDon() {
         type: 'GET',
         data: {},
         success: function (response) {
-            ShowHoaDon(response)
+            if (response.length >0) {
+                ShowHoaDon(response);
+            }
+            else {
+                document.getElementById('ShowHoaDon').innerHTML = "Không có sản phẩm nào";
+                document.getElementById('thanhtien').innerHTML = 0;
+                document.getElementById('magiamgia').innerHTML = 0;
+                document.getElementById('tiengiam').innerHTML = 0;
+                document.getElementById('tongtien').innerHTML = 0;
+                CapNhatGia();
+            }
         }
     });
 
@@ -73,7 +83,6 @@ function ShowHoaDon(res) {
     } else {
         tenmagiam = 'Không có';
     }
-
     document.getElementById('ShowHoaDon').innerHTML = sp;
     document.getElementById('thanhtien').innerHTML = thanhtien.toLocaleString();
     document.getElementById('magiamgia').innerHTML = tenmagiam;
@@ -142,9 +151,16 @@ function ShowSanPham(res) {
     var span = '<ul class="list-group pl-0" id="myUL2">';
     var a = 0;
     for (let i = 0; i < res.length; i++) {
+        var giasp=0;
+        if (res[i].giamgia!=""){
+            giasp=(Number(res[i].dongia)-((Number(res[i].dongia)*Number(res[i].giamgia))/100));
+        }
+        else {
+            giasp=res[i].dongia;
+        }
         span += '<li class="list-group-item row" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">\n' +
             '    <span class="float-left col-10 pl-0">' + res[i].name.substring(0, 40) + '... X <strong>' + res[i].ml + 'ml </strong>' +
-            '<p>Giá: <strong>' + res[i].dongia.toLocaleString() + '</strong> VND</p>' +
+            '<p>Giá: <strong>' + giasp.toLocaleString() + '</strong> VND</p>' +
             '</span>\n' +
             '    <span class=" col-2 float-right" onclick="GetSanPham(' + res[i].id + ')"><i class="fa fa-plus circle-icon" data-toggle="tooltip" data-placement="right" title="Thêm"></i></span>\n' +
             '  </li>';

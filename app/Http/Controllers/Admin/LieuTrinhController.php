@@ -80,7 +80,7 @@ class LieuTrinhController extends Controller
             'idlieutrinh' =>$request->id,
             'iddichvu' => $request->iddichvu,
             'idnhanvien' => $request->idnhanvien,
-            'mota' => $request->mota,
+            'ghichu' => $request->mota,
             'ngay' => strtotime($request->ngay),
             'trangthai' => 0,
             'imgkhachhang' =>$imgkhachhang,
@@ -142,7 +142,6 @@ class LieuTrinhController extends Controller
         switch ($request->name) {
             case 'ghichu':
                 $res = $this->LieuTrinhChiTiet->update($request->pk,['ghichu'=> $request->value]);
-                dd(['ghichu'=> $request->value]);
                 break;
             case 'date':
                 // validate
@@ -242,4 +241,6 @@ class LieuTrinhController extends Controller
         }
        
     }
+
+    
 }

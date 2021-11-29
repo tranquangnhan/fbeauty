@@ -93,7 +93,7 @@
                             </div><!-- /.modal-dialog -->
                         </div>
 
-                        <table class="table table-striped table-bordered dt-responsive nowrap">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="7%">STT</th>
@@ -108,9 +108,9 @@
                                 <tbody>
                                 <?php $i=0; ?>
                                     @foreach ($data as $row)
-                                    <?php $i++; ?>
+
                                         <tr>
-                                            <td>{{$i}}</td>
+                                            <td>{{ $loop->index + 1 }}</td>
                                             <td class="" >{{$row->name}}</td>
                                             <td class="" >{{$row->diachi}}</td>
                                             <td class="" >{{$row->city->name_city}}</td>

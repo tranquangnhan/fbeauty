@@ -1,11 +1,13 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
     Thông tin tài khoản
 @endsection
 
 @section('main')
-
+<?php
+    use app\Http\Controllers\Site\HomeController;
+?>
 <div class="fa-profile-user">
     <div class="container">
         <div class="row">
@@ -286,11 +288,13 @@
                                             </div>
                                             <div class="tab-content" id="">
                                                 <div class="tab-pane fade show active" id="alldonhang" role="tabpanel" aria-labelledby="alldonhang-tab">
+                                                    {{-- @if(session()->has('khachHang') && session('khachHang') != '')
+                                                        @foreach($inhoadon as $index =>$hoadonF) --}}
                                                     <div class="box-donhang profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
                                                                 <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
-                                                                    <span class="mr-1">Thông tin người nhận</span>
+                                                                    <span class="mr-1">Thông tin đơn hàng</span>
                                                                     <i class="far fa-question-circle"></i>
                                                                 </button>
 
@@ -471,193 +475,11 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
+                                                        {{-- @endforeach
+                                                    @endif --}}
 
-                                                    <div class="box-donhang profile-minibox mt-4">
-                                                        <div class="header">
-                                                            <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-2">
-                                                                    <span class="mr-1">Thông tin người nhận</span>
-                                                                    <i class="far fa-question-circle"></i>
-                                                                </button>
-
-                                                                <div class="modal fade" id="infonguoinhan-2" tabindex="-1" aria-labelledby="infonguoinhan-2Label" aria-hidden="true">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="infonguoinhan-2Label">Thông tin người nhận</h5>
-                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form action="" class="">
-                                                                                    <div class="form-group form-control-custom mt-0 align-items-start">
-                                                                                        <div class="left">Tên người nhận</div>
-                                                                                        <div class="right">
-                                                                                            <span>Nguyễn Hoàng Long</span>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="form-group form-control-custom align-items-start">
-                                                                                        <div class="left">Số điện thoại</div>
-                                                                                        <div class="right">
-                                                                                            <span>0965286066</span>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="form-group form-control-custom align-items-start">
-                                                                                        <div class="left">Địa chỉ giao hàng</div>
-                                                                                        <div class="right">
-                                                                                            <span>485, Công Hòa, P 15, Q Tân Bình, TP Hồ Chí Minh</span>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="form-group form-control-custom align-items-start">
-                                                                                        <div class="left">Ghi chú khách hàng</div>
-                                                                                        <div class="right">
-                                                                                            <textarea disabled class="form-control form-custom" cols="10" rows="8">
-                                                                                                Nếu khách hàng đưa ra yêu cầu đặc biệt cho một đơn hàng cụ thể và bạn
-                                                                                                 cũng như nhân viên cửa hàng cần ghi nhớ để thực hiện cho đúng yêu cầu,
-                                                                                                  bạn có thể thêm ghi chú cho đơn hàng.
-                                                                                            </textarea>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                  </div>
-                                                            </div>
-
-                                                            <div class="item">
-                                                                <span class="ml-1 text-danger">Đã hủy</span>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="giohang-body">
-                                                            <div class="row shadow-2 align-items-center giohang-item">
-                                                                <div class="col-xl-2 d-flex  align-items-center">
-                                                                    <div class="body-text d-flex">
-                                                                        <img src="http://127.0.0.1:3300/uploads/hyarunic-removebg-preview.png" class="img-sanpham img-fluid m-0" alt="...">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-3">
-                                                                    <div class="body-text text-left">Tên sản phẩm</div>
-                                                                </div>
-                                                                <div class="col-xl-4">
-                                                                    <div class="body-text">
-                                                                        <div class="box-gia">
-                                                                            <span class="giagiam">500,999 đ </span>
-                                                                            <span class="gia left-bar">300,999 đ </span>
-                                                                            <span class="left-bar dungtich"> 30ml</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-1">
-                                                                    <div class="body-text">
-                                                                        <div class="input-group inline-group">
-                                                                            <input class="form-control form-custom text-center quantity"     min="1" name="quantity" value="1" disabled type="number">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-2">
-                                                                    <div class="body-text text-right">
-                                                                        <span class="tongtien">300,999 đ</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row shadow-2 align-items-center giohang-item">
-                                                                <div class="col-xl-2 d-flex  align-items-center">
-                                                                    <div class="body-text d-flex">
-                                                                        <img src="http://127.0.0.1:3300/uploads/hyarunic-removebg-preview.png" class="img-sanpham img-fluid m-0" alt="...">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-3">
-                                                                    <div class="body-text text-left">Tên sản phẩm</div>
-                                                                </div>
-                                                                <div class="col-xl-4">
-                                                                    <div class="body-text">
-                                                                        <div class="box-gia">
-                                                                            <span class="giagiam">500,999 đ </span>
-                                                                            <span class="gia left-bar">300,999 đ </span>
-                                                                            <span class="left-bar dungtich"> 30ml</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-1">
-                                                                    <div class="body-text">
-                                                                        <div class="input-group inline-group">
-                                                                            <input class="form-control form-custom text-center quantity"     min="1" name="quantity" value="1" disabled type="number">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-2">
-                                                                    <div class="body-text text-right">
-                                                                        <span class="tongtien">300,999 đ</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                        <div class="foot">
-                                                            <div class="row">
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Phương thức giao hàng: </label>
-                                                                    <div class="ml-2">
-                                                                        Thanh toán khi nhận hàng
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
-                                                                    <div class="ml-2">
-                                                                        300,999đ
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row mt-1">
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Đơn vị vận chuyển: </label>
-                                                                    <div class="ml-2">
-                                                                        Nhanh
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Mã giảm giá: </label>
-                                                                    <div class="ml-2">
-                                                                        WMXAA2021
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-1 justify-content-end">
-                                                                <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Tổng tiền sau giảm (0%): </label>
-                                                                    <div class="ml-2">
-                                                                        300,999 đ
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-1 justify-content-end">
-                                                                <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Tổng thanh toán : </label>
-                                                                    <div class="ml-2 color-main price-total">
-                                                                        300,999 đ
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="choxacnhan" role="tabpanel" aria-labelledby="choxacnhan-tab">...2</div>
                                                 <div class="tab-pane fade" id="cholayhang" role="tabpanel" aria-labelledby="cholayhang-tab">..3.</div>
@@ -686,356 +508,70 @@
                                                     </li>
                                                 </ul>
                                             </div>
+                                            
+                                            {{-- modal  --}}
+                                            <div class="header">
+                                                <div class="item">
+                                                    <div class="modal fade" id="lieutrinh-id" tabindex="-1" aria-labelledby="lieutrinh-id-Label" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                          <div class="modal-content border-radius-modal">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="tenbacsi">Liệu Trình Chi Tiết</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="thongtinlieutrinh">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-4 date-lieutrinh start">
+                                                                            <label for="">Ngày bắt đầu</label>
+                                                                            <span id="ngaybatdau">15 - 7 - 2021</span>
+                                                                        </div>
+                                                                        <div class="col-4 line-date bg-primary
+                                                                        ">
+
+                                                                        </div>
+                                                                        <div class="col-4 date-lieutrinh end">
+                                                                            <label for="">Dự kiến kết thúc</label>
+                                                                            <span id="dukienketthuc">15 - 10 - 2021</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="progress-circle" progress-lieutrinh-id="lieutrinh-id">
+                                                                    <div class="circular-progress" id="circular-progress" circular-progress-id="lieutrinh-id">
+                                                                        <div class="value-container value-progress-circle" id="progress" value-container-id="lieutrinh-id" data-progress="75">0%</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="uk-container" style="padding: 40px 10px;">
+                                                                    <div class="uk-timeline" id="bodylieutrinhchitiet">
+                                                                       {{-- body liệu trình --}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                            </div>
+
+
                                             <div class="tab-content" id="">
                                                 <div class="tab-pane fade show active" id="alllieutrinh" role="tabpanel" aria-labelledby="alllieutrinh-tab">
-                                                    <div class="profile-minibox mt-4">
-                                                        <div class="header">
-                                                            <div class="item">
-                                                                <button type="button" class="button-none show-progress-lieutrinh" data-toggle="modal" data-target="#lieutrinh-id" data-id="lieutrinh-id">
+                                                        @foreach ($dataLieuTrinh as $item)
+                                                            <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
+                                                            
+                                                                <div class="body">
+                                                                <button  type="button"  class="button-none show-progress-lieutrinh" >
                                                                     <span class="mr-1">Thông tin chi tiết</span>
-                                                                    <i class="far fa-question-circle"></i>
+                                                                    <i  class="far fa-question-circle"></i>
                                                                 </button>
-
-                                                                <div class="modal fade" id="lieutrinh-id" tabindex="-1" aria-labelledby="lieutrinh-id-Label" aria-hidden="true">
-                                                                    <div class="modal-dialog modal-lg">
-                                                                      <div class="modal-content border-radius-modal">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="lieutrinh-id-Label">BS. Ngọc - Tên liệu trình</h5>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="thongtinlieutrinh">
-                                                                                <div class="row align-items-center">
-                                                                                    <div class="col-4 date-lieutrinh start">
-                                                                                        <label for="">Ngày bắt đầu</label>
-                                                                                        <span>15 - 7 - 2021</span>
-                                                                                    </div>
-                                                                                    <div class="col-4 line-date bg-primary
-                                                                                    ">
-
-                                                                                    </div>
-                                                                                    <div class="col-4 date-lieutrinh end">
-                                                                                        <label for="">Dự kiến kết thúc</label>
-                                                                                        <span>15 - 10 - 2021</span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="progress-circle" progress-lieutrinh-id="lieutrinh-id">
-                                                                                <div class="circular-progress" circular-progress-id="lieutrinh-id">
-                                                                                    <div class="value-container value-progress-circle" value-container-id="lieutrinh-id" data-progress="75">0%</div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="uk-container" style="padding: 40px 10px;">
-                                                                                <div class="uk-timeline">
-                                                                                    <div class="uk-timeline-item">
-                                                                                        <div class="uk-timeline-icon">
-                                                                                            <span class="uk-badge in-propress"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
-                                                                                        </div>
-                                                                                        <div class="uk-timeline-content">
-                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
-                                                                                                <div class="uk-card-header">
-                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8</time></h3>
-                                                                                                        <span class="uk-label uk-label-secondary uk-margin-auto-left">Chưa đến </span>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="uk-card-body">
-                                                                                                    <div class="list-group">
-                                                                                                        <label class="">Dịch vụ sử dụng</label>
-                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Chuyên viên thực hiện</label>
-                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Ghi chú của tiến độ</label>
-                                                                                                        <div class="ghichu"></div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="uk-timeline-item">
-                                                                                        <div class="uk-timeline-icon">
-                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
-                                                                                        </div>
-                                                                                        <div class="uk-timeline-content">
-                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
-                                                                                                <div class="uk-card-header">
-                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
-                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="uk-card-body">
-                                                                                                    <div class="list-image-group">
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item mr-0">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Dịch vụ sử dụng</label>
-                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Chuyên viên thực hiện</label>
-                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Ghi chú của tiến độ</label>
-                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
-                                                                                                    </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="uk-timeline-item">
-                                                                                        <div class="uk-timeline-icon">
-                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
-                                                                                        </div>
-                                                                                        <div class="uk-timeline-content">
-                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
-                                                                                                <div class="uk-card-header">
-                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
-                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="uk-card-body">
-                                                                                                    <div class="list-image-group">
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item mr-0">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Dịch vụ sử dụng</label>
-                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Chuyên viên thực hiện</label>
-                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Ghi chú của tiến độ</label>
-                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
-                                                                                                    </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="uk-timeline-item">
-                                                                                        <div class="uk-timeline-icon">
-                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
-                                                                                        </div>
-                                                                                        <div class="uk-timeline-content">
-                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
-                                                                                                <div class="uk-card-header">
-                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
-                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="uk-card-body">
-                                                                                                    <div class="list-image-group">
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item mr-0">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Dịch vụ sử dụng</label>
-                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Chuyên viên thực hiện</label>
-                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Ghi chú của tiến độ</label>
-                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
-                                                                                                    </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="uk-timeline-item">
-                                                                                        <div class="uk-timeline-icon">
-                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
-                                                                                        </div>
-                                                                                        <div class="uk-timeline-content">
-                                                                                            <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
-                                                                                                <div class="uk-card-header">
-                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
-                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="uk-card-body">
-                                                                                                    <div class="list-image-group">
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item mr-0">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Dịch vụ sử dụng</label>
-                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Chuyên viên thực hiện</label>
-                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Ghi chú của tiến độ</label>
-                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
-                                                                                                    </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="uk-timeline-item">
-                                                                                        <div class="uk-timeline-icon">
-                                                                                            <span class="uk-badge done"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>
-                                                                                        </div>
-                                                                                        <div class="uk-timeline-content">
-                                                                                            <div class="uk-card uk-card-default uk-overflow-auto">
-                                                                                                <div class="uk-card-header">
-                                                                                                    <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
-                                                                                                        <h3 class="uk-card-title uk-first-column"><time datetime="2020-07-08">25 tháng 8 <small>(15h30)</small></time></h3>
-                                                                                                        <span class="uk-label uk-label-success uk-margin-auto-left">Hoàn thành</span>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="uk-card-body">
-                                                                                                    <div class="list-image-group">
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-
-                                                                                                        <div class="item mr-0">
-                                                                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Dịch vụ sử dụng</label>
-                                                                                                        <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                                                        <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Chuyên viên thực hiện</label>
-                                                                                                        <div class="item">CV. Võ Hoài Thương</div>
-                                                                                                    </div>
-
-                                                                                                    <div class="list-group mt-4">
-                                                                                                        <label class="">Ghi chú của tiến độ</label>
-                                                                                                        <div class="ghichu">Không sử dụng sản phẩm hương bạc hà</div>
-                                                                                                    </div>
-                                                                                                    {{-- <p class="uk-text-success">Fully responsive timeline you can add to your UIkit 3 project</p> --}}
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                                        </div>
-                                                                      </div>
-                                                                    </div>
-                                                                  </div>
-                                                            </div>
-
-                                                            <div class="item">
-                                                                <i class="fas fa-calendar-week uk-text-primary"></i>
-                                                                <span class="ml-1 uk-text-primary">Đang điều trị</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="body">
-                                                            <div class="box-datlich-history mt-0">
+                                                                <div class="box-datlich-history mt-2">
                                                                 <div class="left">
-                                                                    <div class="date">21 Tháng 12</div>
+                                                                    <div class="date"> <small>Từ: {{date('d-m-Y',$item->ngaybatdau)}} <br>Đến: {{date('d-m-Y',$item->dukienketthuc)}} </small></div>
                                                                 </div>
 
                                                                 <div class="right">
@@ -1043,58 +579,23 @@
                                                                         <div class="col-8">
                                                                             <div class="list-group">
                                                                                 <label class="">Dịch vụ sử dụng</label>
-                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                                <div class="item">2. Điều trị nám công nghệ PRP 3.0</div>
+                                                                                @if (HomeController::findNameDichVuByIdLieuTrinh($item->idlieutrinh) === null)
+                                                                                    Chưa có liệu trình
+                                                                                @else
+                                                                                {{HomeController::findNameDichVuByIdLieuTrinh($item->idlieutrinh)}}
+                                                                                @endif
+                                                                              
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                <span class="ml-1 uk-text-primary">12 ngày tới</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray">
-                                                                                <i class="far fa-clipboard"></i>
-                                                                            </label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Không dùng sản phẩm có tinh chất bạc hà
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="list-group">
-                                                                                <label class="">Dịch vụ sử dụng</label>
-                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
+                                                                                @if ($item->trangthai === 0)
+                                                                                    <i class="far fa-check-circle uk-text-primary"></i>
+                                                                                    <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
+                                                                                @else
                                                                                 <i class="far fa-check-circle uk-text-success"></i>
                                                                                 <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1103,7 +604,7 @@
                                                                         <div class="col-xl-4 d-flex">
                                                                             <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
                                                                             <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
+                                                                                BS. {{$item->tennv}}
                                                                             </div>
                                                                         </div>
 
@@ -1112,344 +613,219 @@
                                                                                 <i class="far fa-clipboard"></i>
                                                                             </label>
                                                                             <div class="ml-2 limit-text-row-1">
-                                                                                Không dùng sản phẩm có tinh chất bạc hà
+                                                                                {{substr($item->ghichu,0,150)}}
                                                                             </div>
                                                                         </div>
 
                                                                     </div>
                                                                 </div>
-                                                            </div>
-
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="list-group">
-                                                                                <label class="">Dịch vụ sử dụng</label>
-                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray">
-                                                                                <i class="far fa-clipboard"></i>
-                                                                            </label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Không dùng sản phẩm có tinh chất bạc hà
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="list-group">
-                                                                                <label class="">Dịch vụ sử dụng</label>
-                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray">
-                                                                                <i class="far fa-clipboard"></i>
-                                                                            </label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Không dùng sản phẩm có tinh chất bạc hà
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="list-group">
-                                                                                <label class="">Dịch vụ sử dụng</label>
-                                                                                <div class="item">1. Trị mụn bằng Doctor Laser</div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray">
-                                                                                <i class="far fa-clipboard"></i>
-                                                                            </label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Không dùng sản phẩm có tinh chất bạc hà
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-
+                                                            </div>  
                                                         </div>
                                                     </div>
+                                                @endforeach
+                                                           
+                                                      
                                                 </div>
+                                                {{-- end tab tất cả --}}
                                                 <div class="tab-pane fade" id="lieutrinh-hoanthanh" role="tabpanel" aria-labelledby="lieutrinh-hoanthanh-tab">
+                                                  
+                                                            @foreach ($dataLieuTrinh as $item)
+                                                                 @if ($item->trangthai === 1)
+                                                                    <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
+                                                                        <div class="body">
+                                                                            <button  type="button"  class="button-none show-progress-lieutrinh" >
+                                                                                <span class="mr-1">Thông tin chi tiết</span>
+                                                                                <i  class="far fa-question-circle"></i>
+                                                                            </button>
+                                                                            <div class="box-datlich-history mt-2">
+                                                                            <div class="left">
+                                                                                <div class="date"> <small>Từ: {{date('d-m-Y',$item->ngaybatdau)}} <br>Đến: {{date('d-m-Y',$item->dukienketthuc)}} </small></div>
+                                                                            </div>
 
+                                                                            <div class="right">
+                                                                                <div class="row d-flex justify-content-between">
+                                                                                    <div class="col-8">
+                                                                                        <div class="list-group">
+                                                                                            <label class="">Dịch vụ sử dụng</label>
+                                                                                            @if (HomeController::findNameDichVuByIdLieuTrinh($item->idlieutrinh) === null)
+                                                                                                Chưa có liệu trình
+                                                                                            @else
+                                                                                            {{HomeController::findNameDichVuByIdLieuTrinh($item->idlieutrinh)}}
+                                                                                            @endif
+                                                                                        
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-4 justify-content-end">
+                                                                                        <div class="item ml-4 text-right">
+                                                                                            @if ($item->trangthai === 0)
+                                                                                                <i class="far fa-check-circle uk-text-primary"></i>
+                                                                                                <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
+                                                                                            @else
+                                                                                            <i class="far fa-check-circle uk-text-success"></i>
+                                                                                            <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                            @endif
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row mt-3 justify-content-start">
+                                                                                    <div class="col-xl-4 d-flex">
+                                                                                        <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                                        <div class="ml-2 limit-text-row-1">
+                                                                                            BS. {{$item->tennv}}
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-xl-4 d-flex text-center">
+                                                                                        <label for="" class="text-gray">
+                                                                                            <i class="far fa-clipboard"></i>
+                                                                                        </label>
+                                                                                        <div class="ml-2 limit-text-row-1">
+                                                                                            {{substr($item->ghichu,0,150)}}
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                @endif
+                                                            @endforeach
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dangdieutri" role="tabpanel" aria-labelledby="lieutrinh-dangdieutri-tab">
-                                                    <div class="profile-minibox mt-4">
-                                                        <div class="header">
-                                                            <div class="item">
-                                                                <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-1">
-                                                                    <span class="mr-1">Thông tin chi tiết</span>
-                                                                    <i class="far fa-question-circle"></i>
-                                                                </button>
-                                                            </div>
+                                                    @foreach ($dataLieuTrinh as $item)
+                                                                 @if ($item->trangthai === 0)
+                                                                    <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
+                                                                        <div class="body">
+                                                                            <button  type="button"  class="button-none show-progress-lieutrinh" >
+                                                                                <span class="mr-1">Thông tin chi tiết</span>
+                                                                                <i  class="far fa-question-circle"></i>
+                                                                            </button>
+                                                                            <div class="box-datlich-history mt-2">
+                                                                            <div class="left">
+                                                                                <div class="date"> <small>Từ: {{date('d-m-Y',$item->ngaybatdau)}} <br>Đến: {{date('d-m-Y',$item->dukienketthuc)}} </small></div>
+                                                                            </div>
 
-                                                            <div class="item">
-                                                                <i class="fas fa-calendar-week uk-text-primary"></i>
-                                                                <span class="ml-1 uk-text-primary">Đang điều trị</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="body">
-                                                            <div class="box-datlich-history mt-0">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
+                                                                            <div class="right">
+                                                                                <div class="row d-flex justify-content-between">
+                                                                                    <div class="col-8">
+                                                                                        <div class="list-group">
+                                                                                            <label class="">Dịch vụ sử dụng</label>
+                                                                                            @if (HomeController::findNameDichVuByIdLieuTrinh($item->idlieutrinh) === null)
+                                                                                                Chưa có liệu trình
+                                                                                            @else
+                                                                                            {{HomeController::findNameDichVuByIdLieuTrinh($item->idlieutrinh)}}
+                                                                                            @endif
+                                                                                        
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-4 justify-content-end">
+                                                                                        <div class="item ml-4 text-right">
+                                                                                            @if ($item->trangthai === 0)
+                                                                                                <i class="far fa-check-circle uk-text-primary"></i>
+                                                                                                <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
+                                                                                            @else
+                                                                                            <i class="far fa-check-circle uk-text-success"></i>
+                                                                                            <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                            @endif
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
 
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
+                                                                                <div class="row mt-3 justify-content-start">
+                                                                                    <div class="col-xl-4 d-flex">
+                                                                                        <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                                        <div class="ml-2 limit-text-row-1">
+                                                                                            BS. {{$item->tennv}}
+                                                                                        </div>
+                                                                                    </div>
 
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                <span class="ml-1 uk-text-primary">12 ngày tới</span>
+                                                                                    <div class="col-xl-4 d-flex text-center">
+                                                                                        <label for="" class="text-gray">
+                                                                                            <i class="far fa-clipboard"></i>
+                                                                                        </label>
+                                                                                        <div class="ml-2 limit-text-row-1">
+                                                                                            {{substr($item->ghichu,0,150)}}
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Dưỡng mụn lần 1
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
-
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Dưỡng mụn lần 1
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
-
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Dưỡng mụn lần 1
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
-
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-start">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                BS. Ngọc
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Dưỡng mụn lần 1
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-
-                                                        </div>
-
-                                                    </div>
+                                                            @endif
+                                                        @endforeach
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dahuy" role="tabpanel" aria-labelledby="lieutrinh-dahuy-tab">
+                                                    @foreach ($dataLieuTrinh as $item)
+                                                        @if ($item->trangthai === 2)
+                                                        <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
+                                                            <div class="body">
+                                                                <button  type="button"  class="button-none show-progress-lieutrinh" >
+                                                                    <span class="mr-1">Thông tin chi tiết</span>
+                                                                    <i  class="far fa-question-circle"></i>
+                                                                </button>
+                                                                <div class="box-datlich-history mt-2">
+                                                                <div class="left">
+                                                                    <div class="date"> <small>Từ: {{date('d-m-Y',$item->ngaybatdau)}} <br>Đến: {{date('d-m-Y',$item->dukienketthuc)}} </small></div>
+                                                                </div>
 
+                                                                <div class="right">
+                                                                    <div class="row d-flex justify-content-between">
+                                                                        <div class="col-8">
+                                                                            <div class="list-group">
+                                                                                <label class="">Dịch vụ sử dụng</label>
+                                                                                @if (HomeController::findNameDichVuByIdLieuTrinh($item->idlieutrinh) === null)
+                                                                                    Chưa có liệu trình
+                                                                                @else
+                                                                                {{HomeController::findNameDichVuByIdLieuTrinh($item->idlieutrinh)}}
+                                                                                @endif
+                                                                            
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 justify-content-end">
+                                                                            <div class="item ml-4 text-right">
+                                                                                @if ($item->trangthai === 0)
+                                                                                    <i class="far fa-check-circle uk-text-primary"></i>
+                                                                                    <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
+                                                                                @else
+                                                                                <i class="far fa-check-circle uk-text-success"></i>
+                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                @endif
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row mt-3 justify-content-start">
+                                                                        <div class="col-xl-4 d-flex">
+                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                            <div class="ml-2 limit-text-row-1">
+                                                                                BS. {{$item->tennv}}
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-xl-4 d-flex text-center">
+                                                                            <label for="" class="text-gray">
+                                                                                <i class="far fa-clipboard"></i>
+                                                                            </label>
+                                                                            <div class="ml-2 limit-text-row-1">
+                                                                                {{substr($item->ghichu,0,150)}}
+                                                                            </div>
+                                                                        </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    @endif
+                                                @endforeach
+                                                
                                                 </div>
                                             </div>
                                         </div>
@@ -2037,7 +1413,18 @@
 
                 @include('Site.components.list-social')
             </div> --}}
-
+            <script>
+                var msg = {{Session::get("alert")}};
+                var exist = {{Session::has("alert")}};
+                if(exist){
+                  alert(msg);
+                }
+            </script>
+            @if (session('alert'))
+                <div class="alert alert-success">
+                    {{ session('alert') }}
+                </div>
+            @endif
 
         </div>
     </div>

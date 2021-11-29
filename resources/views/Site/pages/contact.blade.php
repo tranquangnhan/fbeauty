@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
     Liên hệ
@@ -10,7 +10,7 @@
         <div class="row div-lienhe mb-5">
             <div class="col">
                 <div class="title text-center mt-5">
-                <i><span class="span-lienhe main-title" style="color:black;font-family: 'Roboto', sans-serif;">Liên hệ </span></i> 
+                <i><span class="span-lienhe main-title" style="color:black;font-family: 'Roboto', sans-serif;">Liên hệ </span></i>
                     <h3 class="h3-title mt-0">Nhân viên tư vấn</h3>
                 </div>
                 <form action="/storeLienHe" class="col-11  container-fluid"  enctype="multipart/form-data"
@@ -40,7 +40,7 @@
                         <textarea class="form-control" placeholder="Nội dung" id="inputnoidung" name="noidung" rows="3"></textarea>
                         @error('noidung')
                             <span class="badge badge-danger">{{$message}}</span>
-                        @enderror                    
+                        @enderror
                     </div>
                     <input type="submit"  id="them" onclick="myFunction()"  class="btn text-white button-lienhe mb-5 mt-4 px-5" value="Liên hệ">
                 </form>
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="div-map mb-5 mt-5">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d62702.15993331947!2d106.62899721916848!3d10.820112183336422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zY8O0bmcgdmnDqm4gcGjhuqduIG3hu4FtIHF1YW5nIHRydW5n!5e0!3m2!1svi!2s!4v1636384106191!5m2!1svi!2s" 
+        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d62702.15993331947!2d106.62899721916848!3d10.820112183336422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zY8O0bmcgdmnDqm4gcGjhuqduIG3hu4FtIHF1YW5nIHRydW5n!5e0!3m2!1svi!2s!4v1636384106191!5m2!1svi!2s"
         width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </div>

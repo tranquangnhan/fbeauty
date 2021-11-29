@@ -22,4 +22,8 @@ class YeuThichRepository extends BaseRepository implements YeuThichRepositoryInt
         return DB::table('yeuthich')->where('idkhachhang', $id)->where('idsanphamchitiet', $idsanpham)->delete();
     }
 
+    public function getAllYeuThich($id){
+        return $this->model->select("idsanphamchitiet")->where('idkhachhang', $id)->get();
+    }
+
 }

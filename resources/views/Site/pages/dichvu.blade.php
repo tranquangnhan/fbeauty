@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('Site.layout')
 
 @section('title')
     Dịch Vụ
@@ -19,9 +19,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="head-service-item">
+                <div class="head-service-item">`
                     <div class="d-flex">
-                        <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">Tìm kiếm theo</div>
+                        <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">
+                            <form class="form-inline" action="">
+                                <div class="form-group">
+                                  <input class="form-control" name="key" placeholder="Tìm Kiếm Dịch Vụ ....">
+                                </div>
+                                <button type="submit" class="btn btn-default"><i class="fas fa-search color-black-2"></i></button>
+                            </form>
+                        </div>
                         <ul class="nav nav-tabs" id="myTab-1" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link btn-3 active black-1" id="damat-tab" data-toggle="tab" href="#damat" role="tab" aria-controls="damat" aria-selected="true">Da mặt</a>
@@ -81,21 +88,13 @@
                                 <div class="dichvu-item ml-0 w-100">
                                     <div class="content-1">
                                         <div class="text-7 color-main-1">
-                                            Da Mặt 1
-                                        </div>
-
-                                        <div class="text-8 mt-1">
-                                            300.000đ
+                                            {{$danhmucitem->name}}
                                         </div>
 
                                         <div class="img-1 mt-4">
-                                            <a href="{{ asset('dich-vu') }}/{{$danhmucitem->slug}}">
+                                            <a href="{{ asset('danh-muc') }}/{{$danhmucitem->slug}}">
                                                 <img class="" src="{{ asset('uploads/'.$danhmucitem->img) }}" alt="">
                                             </a>
-                                        </div>
-
-                                        <div class="text-1 limit-text-row-1 mt-4">
-                                            {{$danhmucitem->name}}
                                         </div>
 
                                         <p class="text-2 limit-text-row-3 mt-1 mt-3">
@@ -199,7 +198,7 @@
                                         <div class="content mt-5">
                                             <div class="box-gia">
                                                 <span class="giagiam">{{number_format($dichvu2item->dongia)}} đ </span>
-                                                <span class="gia left-bar">300,999 đ </span>
+                                                <span class="gia left-bar">{{number_format($dichvu2item->dongia)}} đ </span>
                                             </div>
                                             <div class="name text-1 limit-text-row-1 px-5 mt-2">
                                                 <a href="{{ asset('dich-vu') }}/{{$dichvu2item->slug}}">{{$dichvu2item->name}}</a>
