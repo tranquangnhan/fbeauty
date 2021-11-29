@@ -205,7 +205,7 @@ function ShowSanPham(data) {
             '<p class="product-catergory font-13 mb-1">' + data.sanpham[i].tendm + '</p>\n' +
             '</a>\n' +
             ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].slug + '">\n' +
-            ' <h6 class="product-name mb-1" style="height: 30px;">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
+            ' <h6 class="product-name mb-3" style="height: 35px;">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
             '  </a>\n' +
             ' <p class="card-text product-motangan">' + data.sanpham[i].mota + '</p>\n' +
             '<div class="d-flex align-items-center fa-product-price" style="height: 40px;">\n' +
