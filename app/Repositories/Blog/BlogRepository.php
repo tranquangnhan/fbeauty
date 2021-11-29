@@ -24,6 +24,7 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     {
         return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' )
             ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+            ->orderBy('id', 'DESC')
             ->get();
     }
 
@@ -76,11 +77,11 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
             ->orderBy('created_at', 'DESC')
             ->get();
     }
-    public function editBlog($id)
+    public function editBlog($slug)
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddmm','danhmuc.name AS danhmuc')
             ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
-            ->where('blog.id','=', $id)
+            ->where('blog.slug','=', $slug)
             ->get();
     }
     public function getblogbyiddm($id)
@@ -106,13 +107,10 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         ->where('blog.iddm','=', $id)->limit(4)
         ->get();
     }
-    public function updateView($id)
+    public function updateView($slug)
     {
-        $flight = BlogModel::find($id);
-
-        $flight->luotxem += 1;
-
-        $flight->save();
+        $this->model->where('slug','=',$slug)
+        ->increment('luotxem');
     }
 
     public function getblogbyView()

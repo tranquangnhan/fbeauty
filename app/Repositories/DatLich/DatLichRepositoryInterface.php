@@ -13,4 +13,5 @@ interface DatLichRepositoryInterface extends RepositoryInterface
     public function getSoLanKhachDatByTimeStamp($thoiGianDat);
     public function getDatLichCungCoSo($idCoSo);
     public function getNumDatLichByTime($timeStampDauNgay, $timeStampCuoiNgay, $idCoSo);
+    public function findDatLichByIdKhachHangInnerJoin($id);
 }

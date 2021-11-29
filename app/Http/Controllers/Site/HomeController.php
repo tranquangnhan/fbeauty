@@ -8,6 +8,7 @@ use App\Http\Controllers\freeSMSController;
 use App\Http\Requests\LienHe;
 use App\Models\Admin\DatLichModel;
 use App\Models\Admin\KhachHangModel;
+use App\Models\Admin\LieuTrinhChiTietModel;
 use App\Repositories\Blog\BlogRepository;
 use App\Repositories\Coso\CosoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
@@ -17,9 +18,11 @@ use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\Lich\LichRepository;
+use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\LienHe\LienHeRepository;
+use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -40,6 +43,7 @@ class HomeController extends Controller
     private $freeSMSController;
     private $SanPhamChiTiet;
     private $LienHe;
+    private $LieuTrinhChiTiet;
     private $HoaDon;
     private $HoaDonChiTiet;
     private $Blog;
@@ -58,10 +62,12 @@ class HomeController extends Controller
         BlogRepository $Blog,
         SanPhamRepository $SanPham,
         SanPhamChiTietRepository $SanPhamChiTiet,
+        LieuTrinhRepository $LieuTrinh,
         LienHeRepository $LienHe,
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet,
         HoaDonRepository $HoaDon,
         HoaDonChiTietRepository $HoaDonChiTiet
-)
+    )
     {
         $this->freeSMSController = new freeSMSController;
         $this->Coso = $Coso;
@@ -74,7 +80,9 @@ class HomeController extends Controller
         $this->Blog = $Blog;
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet=$SanPhamChiTiet;
+        $this->LieuTrinh = $LieuTrinh;
         $this->LienHe = $LienHe;
+        $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
         $dichvu = $this->Dichvu->getDichVusite();
         $danhmuc = $this->DanhMuc->getdanhmucshow();
         $alldichvu = $this->Dichvu->getDichVuall();
@@ -96,13 +104,16 @@ class HomeController extends Controller
     public function index()
     {
         $sanPham = $this->SanPham->getAll();
-        $blog = $this->Blog->getBlog1();
-        $blog2 = $this->Blog->getBlog2();
-
+        $blog    = $this->Blog->getBlog1();
+        $getBlog2     = $this->Blog->getBlog2();
+        $blog3     = $this->Blog->getLastWeek1();
+        $blog4     = $this->Blog->getLastWeek2();
 
         $this->data['sanPham'] = $sanPham;
         $this->data['blog'] = $blog;
-        $this->data['blog2'] = $blog2;
+        $this->data['getBlog2'] = $getBlog2;
+        $this->data['blog3'] = $blog3;
+        $this->data['blog4'] = $blog4;
         $this->data['pathActive'] = 'trang-chu';
 
         return view("Site.pages.home", $this->data);
@@ -222,14 +233,14 @@ class HomeController extends Controller
         return view("Site.pages.baiviet", $this->data);
     }
 
-    public function viewBaiVietChiTiet($id) {
-        $this->Blog->updateView($id);
+    public function viewBaiVietChiTiet($slug) {
+        $this->Blog->updateView($slug);
         $getBlog2 = $this->Blog->getBlog2();
         $danhmuc   = $this->DanhMuc->getAllDanhMuc();
-        $viewdetail = $this->Blog->editBlog($id);
-        $viewdetail2 = $this->Blog->editBlog($id);
+        $viewdetail = $this->Blog->editBlog($slug);
+        $viewdetail2 = $this->Blog->editBlog($slug);
          foreach($viewdetail2 as $detail) {
-            $viewdt = $this->Blog->getblogbyiddm3($detail->iddmm);
+            $viewdt = $this->Blog->getblogbyiddm3($detail->iddm);
             $detail['viewdt'] = $viewdt;
 
         }
@@ -341,23 +352,56 @@ class HomeController extends Controller
     }
 
     public function viewProfileUser() {
+        $khachHang = session()->get('khachHang');
+   
+        if($khachHang === null){
+            return redirect('/')->with('alert', 'Deleted!');
+        }
         $this->data['pathActive']          = 'thong-tin-tai-khoan';
-        $this->data['namePage']            = 'Thông tin tài khoảng';
+        $this->data['namePage']            = 'Thông tin tài khoản';
         $this->data['breadcrumbArray']     = [
-            ['link' => '', 'name' => 'Thông tin tài khoảng'],
-
+            ['link' => '', 'name' => 'Thông tin tài khoản'],
         ];
+    
+    
+        if($khachHang){
+            $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
+            $this->data['dataLieuTrinh'] = $dataLieuTrinh;
+        }else{
+            $this->data['dataLieuTrinh'] = [];
+        }
+        return view("Site.pages.profile-user", $this->data);
 
-        if (session()->has('khachHang') && session('khachHang') != '') {
-            if ($this->HoaDon->CheckHoaDonByIdKhachHang(session('khachHang')->id) == false){
-                $hoadon=$this->HoaDon->findHoaDonByIdKhachHang(session('khachHang')->id);
-            }
-            return view("Site.pages.profile-user", $this->data, ["inhoadon"=>$hoadon]);
-        }
-        else{
-            return view("Site.pages.profile-user", $this->data);
-        }
+        // if (session()->has('khachHang') && session('khachHang') != '') {
+        //     if ($this->HoaDon->CheckHoaDonByIdKhachHang(session('khachHang')->id) == false){
+        //         $hoadon=$this->HoaDon->findHoaDonByIdKhachHang(session('khachHang')->id);
+        //     }
+        //     return view("Site.pages.profile-user", $this->data, ["inhoadon"=>$hoadon]);
+        // }
+        // else{
+        //     return view("Site.pages.profile-user", $this->data);
+        // }
     }
+
+    public function getLieuTrinhDetailByIdLieuTrinh($id){
+        $dataLieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
+        $data['dataLieuTrinhChiTiet'] = $dataLieuTrinhChiTiet;
+        if($dataLieuTrinhChiTiet !== null){
+            $data['dataLieuTrinh'] = $this->LieuTrinh->find($dataLieuTrinhChiTiet[0]->idlieutrinh);
+        }
+        return response()->json($data);
+    }
+
+    public static function findNameDichVuByIdLieuTrinh($id){
+        $LieuTrinhResult = LieuTrinhChiTietModel::findNameDichVuByIdLieuTrinh($id);
+      
+        $arrName = [];
+        for ($i=0; $i < count($LieuTrinhResult); $i++) { 
+            array_push($arrName,$LieuTrinhResult[$i]->name);
+        }
+        return implode(", ",$arrName);
+    }
+
 
     public function getNhanVienByIdCoSo(Request $request, $id) {
         try {
