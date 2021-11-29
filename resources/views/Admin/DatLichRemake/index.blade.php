@@ -93,14 +93,23 @@
                                                                     <div class="datlich-item">
                                                                         @if (isset($item->listDatLich))
                                                                             @if (isset($item->listDatLich[$i]))
-                                                                                <div class="header-item">
-                                                                                    <b>{{ $item->listDatLich[$i]->idkhachhang }}</b>
+                                                                                <div class="header-item d-flex align-items-center">
+                                                                                    <b>{{ $item->listDatLich[$i]->name }}</b>
+                                                                                    <button class="btn-none check-in ml-auto" id-dat-lich={{ $item->listDatLich[$i]->id }}><i class="fas fa-user-check"></i></button>
                                                                                 </div>
 
                                                                                 <div class="body-item">
-                                                                                    <div class="name-nhanvien">{{ $item->listDatLich[$i]->idnhanvien }}</div>
+                                                                                    <div class="name-nhanvien">{{ $item->listDatLich[$i]->nameNhanVien }}</div>
                                                                                     <li class="limit-text-row-1 ">
-                                                                                        <a href="" class="cl-black">{{ $item->listDatLich[$i]->iddichvu }}</a>
+                                                                                        @isset($item->listDatLich[$i]->arrayDichVu)
+                                                                                            <a href="" class="cl-black">{{ $item->listDatLich[$i]->arrayDichVu[0]->name }}</a>
+                                                                                            @if (count($item->listDatLich[$i]->arrayDichVu) > 1)
+                                                                                                ...
+                                                                                            @endif
+                                                                                        @else
+                                                                                            <a href="" class="cl-black">Khách muốn tư vấn</a>
+                                                                                        @endisset
+
                                                                                     </li>
                                                                                 </div>
 

@@ -68,6 +68,25 @@ class DatLichRemakeController extends Controller
     public function getDatLichByDay($ngay, $idCoSo) {
         $thoigian = Controller::getThoiGianTimestampDauVaCuoiCuaNgay($ngay->toDateString());
         $datlich = $this->DatLich->getDatLichByDay($thoigian['dauNgayTimestamp'], $thoigian['cuoiNgayTimestamp'], $idCoSo);
+
+        foreach ($datlich as $datLichItem) {
+            if ($datLichItem->idnhanvien == 0) {
+                $datLichItem->nameNhanVien = 'Spa tự chọn';
+            } else {
+                $datLichItem->nameNhanVien = $this->NhanVien->getNameNhanVien($datLichItem->idnhanvien);
+            }
+
+            $arrayDichVu = array();
+            $listIdDichVu = json_decode($datLichItem->iddichvu);
+
+            if (count($listIdDichVu) > 0) {
+                for ($i = 0; $i < count($listIdDichVu); $i++) {
+                    $arrayDichVu[] = $this->DichVu->findDichVuById($listIdDichVu[$i]);
+                }
+
+                $datLichItem->arrayDichVu = $arrayDichVu;
+            }
+        }
         return $datlich;
     }
 
@@ -86,10 +105,13 @@ class DatLichRemakeController extends Controller
             foreach ($listDatLich as $datLichItem) {
                 if ($datLichItem->thoigiandat == $thoigiandat) {
                     $nullArray[] = $datLichItem;
+                } else {
+                    // Tạo data mới cho trường hợp khung giờ thay đổi
                 }
             }
             $lichItem['listDatLich'] = $nullArray;
         }
+
 
         return $listLich;
     }

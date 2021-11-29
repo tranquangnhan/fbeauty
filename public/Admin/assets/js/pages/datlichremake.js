@@ -4,4 +4,8 @@ $.ajaxSetup({
     }
 });
 
-var calendar;
+$('.check-in').click(function (e) {
+    e.preventDefault();
+    var idDatLich = $(this).attr('id-dat-lich');
+    $(this).parents('.datlich-item').addClass('check-in');
+});
