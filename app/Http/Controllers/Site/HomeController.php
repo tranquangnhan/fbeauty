@@ -129,7 +129,7 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
-        $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(1);
+        $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(self::LOAI_DANHMUC_SANPHAM);
         return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp]);
     }
 
