@@ -151,6 +151,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('san-pham/soluong/{id}', [HomeController::class, "getSanPham"]);
     Route::get('san-pham/chi-tiet/{id}', [HomeController::class, "viewSanPhamChiTiet"]);
     Route::get('san-pham/checkyeuthich/{id}', [YeuThichController::class, "getSanPhamYeuThich"]);
+    Route::get('getyeuthichsps', [YeuThichController::class, "getAllSPYeuThich"]);
     Route::get('addyeuthichsp/{id}', [YeuThichController::class, "AddSanPhamYeuThich"]);
 
     Route::get('gio-hang', [HomeController::class, "viewGioHang"]);
@@ -202,5 +203,11 @@ Route::group(['prefix' => '/'], function () {
     Route::post("/vnpay_php/vnpay_create_payment", [GioHangController::class, 'vnpayments']);
     Route::post('/thanh-toan-don-hang', [GioHangController::class, "thanhtoandonhang"]);
     Route::get("/thanh-toan-hoa-don", [GioHangController::class, 'returnPay']);
+
+     /*
+     *Liệu trình
+     */
+    Route::get('lieutrinhchitiet/{id}/get', [HomeController::class, 'getLieuTrinhDetailByIdLieuTrinh']);
+
 });
 

@@ -27,12 +27,12 @@
 
                 <div class="mota mt-4">
                     <p>
-                        {{$detaildichvu->noidung}}
+                        <?php echo $detaildichvu->noidung;?>
                     </p>
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <div data-show="one" class="button btn-8 btn-datlich">
+                    <div class="button btn-8 btn-datlich btn-modal-main" type-modal="modal-datlich" data-show="one">
                         ĐẶT LỊCH NGAY
                     </div>
                 </div>

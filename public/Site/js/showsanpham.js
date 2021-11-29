@@ -3,6 +3,7 @@ var soluongshowtiep = 3;
 var ArrayDanhMuc = [];
 let Arrayphu = [];
 let ArrayFlow = [];
+let YeuThichSPS=[];
 function SanPham(soluong) {
     var bienkhac = '';
     Arrayphu = $.ajax({
@@ -17,6 +18,20 @@ function SanPham(soluong) {
     });
 }
 
+function GetYeuThichSP() {
+    YeuThichSPS=$.ajax({
+        url: domain + '/getyeuthichsps',
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: {},
+        success: function (datayeuthich) {
+            return datayeuthich;
+        }
+
+    });
+}
+GetYeuThichSP();
 function BeFore(data, bienkhac) {
     let mang = data.sanpham;
     var datas = [];
@@ -135,7 +150,7 @@ function FilterName(data, bienkhac) {
     if (bienkhac != "") {
         datas = {
             sanpham: mang.filter(function (e) {
-                return e.name.toUpperCase().indexOf(bienkhac.toUpperCase()) > -1 || e.tendm.toUpperCase().indexOf(bienkhac.toUpperCase()) > -1;
+                return  e.tendm.toUpperCase().indexOf(bienkhac.toUpperCase()) > -1;
             }),
 
         }
@@ -159,7 +174,9 @@ function ShowSanPham(data) {
         }
         var giasaugiam='';
         var showgiasaugiam='';
-        var yeuthich = GetYeuThich(data.sanpham[i].id);
+
+        var yeuthich = SoSanhYeuThich(data.sanpham[i].id);
+
         var anhsp = data.sanpham[i].img.split('"').join('').slice(1, -1).split(',');
         var boxgiamgia = '';
         if (data.sanpham[i].giamgia != null) {
@@ -171,7 +188,7 @@ function ShowSanPham(data) {
             if (giasaugiam <0){
                 giasaugiam=0
             }
-            showgiasaugiam='<br><span>Giảm còn: </span><span class="font-weight-bold">'+giasaugiam.toLocaleString()+'đ</span>';
+            showgiasaugiam='<br><span>Giảm còn: </span><span class="font-weight-bold">'+giasaugiam.toLocaleString().replaceAll(",", ".")+'đ</span>';
         }
         sp += '<div class="col-xl-4 fa-sanpham-item" id="AnHienSP' + (i + 1) + '">\n' +
             ' <div class="item-sanpham w-100">\n' +
@@ -187,19 +204,19 @@ function ShowSanPham(data) {
             ' <a href="javascript:;">\n' +
             '<p class="product-catergory font-13 mb-1">' + data.sanpham[i].tendm + '</p>\n' +
             '</a>\n' +
-            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].id + '">\n' +
-            ' <h6 class="product-name mb-2" style="height: 50px;">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
+            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].slug + '">\n' +
+            ' <h6 class="product-name mb-3" style="height: 35px;">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
             '  </a>\n' +
             ' <p class="card-text product-motangan">' + data.sanpham[i].mota + '</p>\n' +
             '<div class="d-flex align-items-center fa-product-price" style="height: 40px;">\n' +
             '<div class="mb-2 product-price">\n' +
-            ' <span class="text-decoration-line-through" >' + Number(data.sanpham[i].dongia).toLocaleString() + '</span>đ / <span>' + thetich + '</span>ml  \n' +
+            ' <span class="text-decoration-line-through" >' + Number(data.sanpham[i].dongia).toLocaleString().replaceAll(",", ".")+ '</span>đ / <span>' + thetich + '</span>ml  \n' +
             ''+showgiasaugiam+'</div>\n' +
             '</div>\n' +
             '<div class="mt-1 product-action">\n' +
             '<div class="d-flex gap-2">\n' +
             ' <button class="w-100 btn-sanpham btn-5 " style="margin-bottom: 5px!important;" onclick="ThemGioHang('+data.sanpham[i].idspct+')"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button></br>\n' +
-            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].id + '"><button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
+            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].slug + '"><button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
             '</div></div></div></div></div></div></div></div>';
     }
     document.getElementById("showSP").innerHTML = sp;
@@ -208,26 +225,21 @@ function ShowSanPham(data) {
 
 SanPham(sanphambandau)
 
-function GetYeuThich(id) {
-    var yeuthich = '';
-    $.ajax({
-        url: document.URL + '/checkyeuthich/' + id,
-        type: 'GET',
-        async: false,
-        dataType: 'json',
-        data: {idsp: id},
-        success: function (datayeuthich) {
-            if (datayeuthich == 0) {
-                yeuthich = 'active';
-            }
-            else {
-                yeuthich = '';
+function SoSanhYeuThich(id) {
+    var yeuthichs='';
+    if (YeuThichSPS.responseJSON.length!=0) {
+        for (let i = 0; i < YeuThichSPS.responseJSON.length; i++) {
+            if (Number(id) == Number(YeuThichSPS.responseJSON[i].idsanphamchitiet)) {
+                 yeuthichs = 'active';
             }
         }
-
-    });
-    return yeuthich;
+    }
+    else {
+        yeuthichs ='';
+    }
+    return yeuthichs;
 }
+
 
 function SapXep() {
     let x = $("#sapxep").val();

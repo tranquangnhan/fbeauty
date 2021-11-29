@@ -37,13 +37,13 @@
                                  role="alert">
                                 <div class="container">
                                     @if(isset($customer->img)&&$customer->img!="")
-                                    <img class="avthoadon" src="{{$URL_IMG.$customer->img}}">
+                                        <img class="avthoadon" src="{{$URL_IMG.$customer->img}}">
                                     @else
                                         <img src="{{asset('uploads')}}/khachhang/default-avatar-kh.jpg" class="avthoadon">
                                         @endif
                                         @if(isset($customer->name) && $customer->sdt!="")
                                     <span class="text-primary font-weight-bold">{{$customer->name}}</span>
-
+                                    @endif
                                     <span class="ml-3"><i class="fa fa-phone"> <span
                                                 class="text-primary"><a href="tel:{{$customer->sdt}}">{{$customer->sdt}}</a></span></i></span>
                                         @endif

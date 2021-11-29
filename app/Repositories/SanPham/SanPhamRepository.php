@@ -36,6 +36,14 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             ->where('sanpham.id', '=', $id)
             ->get();
     }
+
+    public function  getSanPhamJoinDanhMucSlug($slug){
+        return $this->model->select("sanpham.*", "danhmuc.name AS tendm")
+            ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
+            ->where('sanpham.slug', '=', $slug)
+            ->get();
+    }
+
     public function getsanpham(){
         return $this->model->offset(1)->limit(4)
         ->where('sanpham.trangthai', '=', 1)

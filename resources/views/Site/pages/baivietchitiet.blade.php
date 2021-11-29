@@ -137,7 +137,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
-                                                <a href="{{ asset('bai-viet') }}/{{$data->id}}" class="hover-pink">{{$data->name}}</a>
+                                                <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
                                             </div>
                                             <p class="blog-mota mb-0 limit-text-row-3">
                                                 {{$data->motangan}}

@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="w-100 text-center mt-4">
-                        <button data-show="one" class="button btn-2 btn-datlich">
+                        <button class="button btn-2 btn-datlich btn-modal-main" type-modal="modal-datlich" data-show="one">
                             ĐẶT LỊCH
                         </button>
                     </div>
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="w-100 text-center mt-4">
-                        <button data-show="one" class="button btn-2 btn-datlich">
+                        <button class="button btn-2 btn-datlich btn-modal-main" type-modal="modal-datlich" data-show="one">
                             ĐẶT LỊCH
                         </button>
                     </div>
