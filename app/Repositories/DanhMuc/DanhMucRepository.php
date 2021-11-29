@@ -37,11 +37,16 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
         ->orderBy('id', 'DESC')
         ->get();
     }
-    public function idDanhMucgetDichvu($slug){
-        return $this->model->select('danhmuc.*','dichvu.name as namedv','dichvu.name as namedv')
+    public function idDanhMucgetDichvu($id){
+        return $this->model->select('danhmuc.*','dichvu.name as namedv')
         ->join('dichvu','dichvu.iddm','=','danhmuc.id')
         ->where('dichvu.trangthai', '=', 1)
-        ->where('dichvu.slug', '=', $slug)
-        ->first();
+        ->where('danhmuc.id', '=', $id)
+        ->get();
+    }
+    public function idDanhMucbyslug($slug){
+        return $this->model->select('danhmuc.*')
+        ->where('danhmuc.slug', '=', $slug)
+        ->get();
     }
 }
