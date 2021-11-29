@@ -1023,9 +1023,9 @@
                                                 <div class="tab-pane fade" id="danggiao" role="tabpanel" aria-labelledby="danggiao-tab">
                                                     @if(session()->has('khachHang') && session('khachHang') != '')
                                                         <?php
-                                                        $checkdonhang1=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 2)->doesntExist();
+                                                        $checkdonhang2=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 2)->doesntExist();
                                                         ?>
-                                                        @if($checkdonhang1 == false)
+                                                        @if($checkdonhang2 == false)
                                                             <?php
                                                             $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 2)->orderBy("id", "DESC")->get();
                                                             ?>
@@ -1267,9 +1267,9 @@
                                                 <div class="tab-pane fade" id="dagiao" role="tabpanel" aria-labelledby="dagiao-tab">
                                                     @if(session()->has('khachHang') && session('khachHang') != '')
                                                         <?php
-                                                        $checkdonhang1=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 5)->doesntExist();
+                                                        $checkdonhang5=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 5)->doesntExist();
                                                         ?>
-                                                        @if($checkdonhang1 == false)
+                                                        @if($checkdonhang5 == false)
                                                             <?php
                                                             $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 5)->orderBy("id", "DESC")->get();
                                                             ?>
@@ -1511,9 +1511,9 @@
                                                 <div class="tab-pane fade" id="dahuy" role="tabpanel" aria-labelledby="dahuy-tab">
                                                     @if(session()->has('khachHang') && session('khachHang') != '')
                                                         <?php
-                                                        $checkdonhang1=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 4)->doesntExist();
+                                                        $checkdonhang4=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 4)->doesntExist();
                                                         ?>
-                                                        @if($checkdonhang1 == false)
+                                                        @if($checkdonhang4 == false)
                                                             <?php
                                                             $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 4)->orderBy("id", "DESC")->get();
                                                             ?>
