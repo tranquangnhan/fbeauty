@@ -649,23 +649,29 @@ class GioHangController extends Controller
     public function returnPay(){
         if ($_GET["vnp_TransactionStatus"]==00){
             $sdt = session("requestAll")["phonenumber"];
+            if (session()->has("tiengiam") && session()->get("tiengiam") != 0) {
+                $tongtiensaugiam = session()->get("tongdonhang") - session()->get("tiengiam");
+            } else {
+                $tongtiensaugiam = session()->get("tongdonhang");
+            }
             if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
                 $idkhach = $this->KhachHang->getBySdt($sdt);
+                $plusexp=[
+                    "exp"=>$tongtiensaugiam
+                ];
+                $this->KhachHang->update($idkhach->id, $plusexp);
             } else {
                 $cosokh=$this->CoSo->getCosoDESCSLimit(1);
                 $customernew = [
                     'idcoso'=>$cosokh[0]->id,
                     'sdt' => $sdt,
                     'password' => bcrypt("123456"),
-                    'active' => 1
+                    'active' => 1,
+                    'exp'=>$tongtiensaugiam
                 ];
                 $idkhach = $this->KhachHang->create($customernew);
             }
-            if (session()->has("tiengiam") && session()->get("tiengiam") != 0) {
-                $tongtiensaugiam = session()->get("tongdonhang") - session()->get("tiengiam");
-            } else {
-                $tongtiensaugiam = session()->get("tongdonhang");
-            }
+
             if (session()->has('khachHang') && session('khachHang') != '') {
                 $checkgiohangByidKH = $this->GioHang->CheckKhachHangInGioHang($idkhach->id);
                 if ($checkgiohangByidKH == false) {
