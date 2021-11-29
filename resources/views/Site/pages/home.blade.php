@@ -423,16 +423,16 @@
                                         </a>
                                         <div class="d-flex align-items-center justify-content-center" style="height: 50px;">
                                             <div class="mb-1 product-price">
-                                                <span class="me-1 text-decoration-line-through">{{number_format($splienquanctkhac[0]->dongia), ""}} đ</span> / <span>{{$splienquanctkhac[0]->ml}}ml</span>
+                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia)), ""}} đ</span> / <span>{{$splienquanctkhac[0]->ml}}ml</span>
                                                 @if($spk->giamgia !="")
-                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{number_format($splienquanctkhac[0]->dongia-(($splienquanctkhac[0]->dongia * $spk->giamgia)/100)), ""}}đ</span>
+                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia-(($splienquanctkhac[0]->dongia * $spk->giamgia)/100))), ""}}đ</span>
                                                 @endif
                                             </div>
                                         </div>
                                         <div class="product-action mt-2">
                                             <div class="d-grid gap-2">
                                                 <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splienquanctkhac[0]->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
-                                                <a href="{{URL::to("san-pham/chi-tiet", $spk->id)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
+                                                <a href="{{URL::to("san-pham/chi-tiet", $spk->slug)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
                                             </div>
                                         </div>
                                     </div>
