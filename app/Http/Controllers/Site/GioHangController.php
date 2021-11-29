@@ -757,4 +757,14 @@ class GioHangController extends Controller
         }
     }
 
+    public function HuyDonHang($id){
+        $trangthaidonhang=[
+            "trangthai"=>5
+        ];
+        $update=$this->DonHang->update($id, $trangthaidonhang);
+        if ($update){
+            return 0;
+        }
+    }
+
 }
