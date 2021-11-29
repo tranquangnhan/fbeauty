@@ -199,15 +199,18 @@ Route::group(['prefix' => '/'], function () {
     /**
      *Thanh toán
      */
-//    Route::post('/thanhtoandonhang', [GioHangController::class, 'thanhtoandonhang']);
     Route::post("/vnpay_php/vnpay_create_payment", [GioHangController::class, 'vnpayments']);
     Route::post('/thanh-toan-don-hang', [GioHangController::class, "thanhtoandonhang"]);
     Route::get("/thanh-toan-hoa-don", [GioHangController::class, 'returnPay']);
 
-     /*
+     /**
      *Liệu trình
      */
     Route::get('lieutrinhchitiet/{id}/get', [HomeController::class, 'getLieuTrinhDetailByIdLieuTrinh']);
+    /**
+    *Hủy đơn
+     */
+    Route::get("huydonhang/{id}", [GioHangController::class, "HuyDonHang"]);
 
 });
 
