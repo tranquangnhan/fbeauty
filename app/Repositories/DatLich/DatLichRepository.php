@@ -77,6 +77,19 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->count();
     }
 
+    public function findDatLichByIdKhachHangInnerJoin($id){
+        return $this->model
+        ->select(
+        'khachhang.name as tenkh',
+        'khachhang.img',
+        'datlich.thoigiandat',
+        'datlich.iddichvu',
+        'datlich.id as iddatlich'
+        )
+        ->where('idkhachhang','=',$id)
+        ->join('khachhang','khachhang.id','=','datlich.idkhachhang')
+        ->orderBy('datlich.id','DESC')->get();
+    }
     public function getDatLichByDay($timeStampDauNgay, $timeStampCuoiNgay, $idCoSo) {
         return $this->model
         ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
