@@ -587,6 +587,7 @@ class HomeController extends Controller
         return $message;
     }
 
+
     public function skipCreatePassword(Request $request)
     {
         try {
