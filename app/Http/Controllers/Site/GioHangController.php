@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ThanhToan;
+use App\Http\Controllers\freeSMSController;
 use App\Models\Admin\SanPhamChiTiet;
 use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DonHang\DonHangRepository;
@@ -18,6 +19,7 @@ use Illuminate\Http\Request;
 
 class GioHangController extends Controller
 {
+    private $freeSMSController;
     private $SanPham;
     private $SanPhamChiTiet;
     private $GioHang;
@@ -50,6 +52,7 @@ class GioHangController extends Controller
         $this->DonHang = $DonHang;
         $this->DonHangChiTiet = $DonHangChiTiet;
         $this->CoSo=$CoSo;
+        $this->freeSMSController = new freeSMSController;
     }
 
     public function ShowGioHang()
@@ -426,6 +429,7 @@ class GioHangController extends Controller
                             $this->GioHangChiTiet->create($giohangnew);
                         }
                     }
+                    session()->forget('giohang');
                     return 1;
                 } else {
                     $kh = [
@@ -442,6 +446,7 @@ class GioHangController extends Controller
                         ];
                         $this->GioHangChiTiet->create($giohangnew);
                     }
+                    session()->forget('giohang');
                     return 1;
                 }
             } else {
@@ -536,10 +541,12 @@ class GioHangController extends Controller
                         ];
                         $this->DonHangChiTiet->create($donhangchitiet);
                     }
+                    $this->GioHangChiTiet->XoaAllSanPhamGioHang($giohangDB[0]->id);
                 }
-                $this->GioHangChiTiet->XoaAllSanPhamGioHang($giohangDB[0]->id);
             }
-        } else if (session()->has('giohang') && count(session()->get('giohang')) != 0) {
+        }
+
+        else if (session()->has('giohang') && count(session()->get('giohang')) != 0) {
             $donhang = [
                 'idkhachhang' => $idkhach->id,
                 'idgiamgia' => $request->giamgia,
@@ -578,6 +585,7 @@ class GioHangController extends Controller
             }
             session()->forget('giohang');
         }
+        $this->GuiCamOn($sdt, date("d/m/Y"), date("H:i:s"));
         session()->forget("tongdonhang");
         if (session()->has("tiengiam") && session()->get("tiengiam") != 0){
             session()->forget("tiengiam");
@@ -657,7 +665,7 @@ class GioHangController extends Controller
             if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
                 $idkhach = $this->KhachHang->getBySdt($sdt);
                 $plusexp=[
-                    "exp"=>$tongtiensaugiam
+                    "exp"=> ((int)$idkhach->exp + (int)$tongtiensaugiam)
                 ];
                 $this->KhachHang->update($idkhach->id, $plusexp);
             } else {
@@ -752,6 +760,7 @@ class GioHangController extends Controller
                 }
                 session()->forget('giohang');
             }
+            $this->GuiCamOn($sdt, date("d/m/Y"), date("H:i:s"));
             session()->forget("tongdonhang");
             if (session()->has("tiengiam") && session()->get("tiengiam") != 0){
                 session()->forget("tiengiam");
@@ -768,9 +777,40 @@ class GioHangController extends Controller
             "trangthai"=>5
         ];
         $update=$this->DonHang->update($id, $trangthaidonhang);
+
         if ($update){
+            $idkhachhang=$this->DonHang->find($id);
+            if ($idkhachhang->trangthaithanhtoan == 1){
+                $trangthaitt=[
+                    "trangthaithanhtoan"=>0
+                ];
+                $this->DonHang->update($id, $trangthaitt);
+                $khachhang=$this->KhachHang->find($idkhachhang->idkhachhang);
+                $exp=[
+                    'exp'=>((int)$khachhang->exp - $idkhachhang->tongtiensaugiamgia)
+                ];
+                $this->KhachHang->update($idkhachhang->idkhachhang, $exp);
+            }
             return 0;
         }
+    }
+
+
+
+    public function makeMessageCamOnDatHang( $ngay, $gio)
+    {
+        $dateFormatDMY = $ngay;
+        $indexDauHaiChamFirst = stripos($gio, ':');
+        $gioChenChuH = substr_replace($gio, "h", $indexDauHaiChamFirst, 1);
+        $gioDaFormat = substr($gioChenChuH, 0, strlen($gioChenChuH) - 3);
+        $message = '[Fbeauty]: Dat hang thanh cong. Cam on ban da dat hang tai website Fbeauty. Don hang duoc dat vao ngay ' . $dateFormatDMY . ' luc ' . $gioDaFormat . '. Vui long dung so dien thoai dat hang dang nhap de kiem tra don hang cua ban.';
+        return $message;
+    }
+
+    public function GuiCamOn($sdt, $ngay, $gio){
+        $sdts = '+84' . substr($sdt, 1, strlen($sdt));
+        $message = $this->makeMessageCamOnDatHang($ngay, $gio);
+        $this->freeSMSController->sendSingleMessage($sdts, $message);
     }
 
 }

@@ -360,7 +360,7 @@
                                                                   </div>
                                                             </div>
                                                                      @if($donhangofme->trangthai == 0)
-                                                            <div class="item" id="huydonhang">
+                                                            <div class="item" id="huydonhang{{$donhangofme->id}}">
                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
                                                                 <span onclick="HuyDatHang({{$donhangofme->id}})" class="ml-1 btn btn-danger">Hủy đơn</span>
                                                             </div>
@@ -512,8 +512,16 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="row mt-1 justify-content-end">
-                                                                <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
+                                                            <div class="row mt-1">
+                                                                <div class="col-xl-6 d-flex justify-content-between">
+                                                                    <label for="" class="text-gray">Ngày đặt hàng: </label>
+                                                                    <div class="ml-2">
+                                                                        @if($donhangofme->created_at != "")
+                                                                            <span class="">{{date_format(date_create($donhangofme->created_at), "d/m/Y")}} Lúc {{date_format(date_create($donhangofme->created_at), "H:i:s")}}</span>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-6 mt-2 tongthanhtoan d-flex justify-content-between">
                                                                     <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                     <div class="ml-2 color-main price-total">
                                                                         {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
@@ -605,7 +613,7 @@
                                                                             </div>
                                                                         </div>
                                                                         @if($donhangofme->trangthai == 0)
-                                                                            <div class="item" id="huydonhang">
+                                                                            <div class="item" id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
                                                                                 <span onclick="HuyDatHang({{$donhangofme->id}})" class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
@@ -757,7 +765,15 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="row mt-1 justify-content-end">
+                                                                        <div class="row mt-1">
+                                                                            <div class="col-xl-6 d-flex justify-content-between">
+                                                                                <label for="" class="text-gray">Ngày đặt hàng: </label>
+                                                                                <div class="ml-2">
+                                                                                    @if($donhangofme->created_at != "")
+                                                                                        <span class="">{{date_format(date_create($donhangofme->created_at), "d/m/Y")}} Lúc {{date_format(date_create($donhangofme->created_at), "H:i:s")}}</span>
+                                                                                    @endif
+                                                                                </div>
+                                                                            </div>
                                                                             <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                                 <div class="ml-2 color-main price-total">
@@ -849,7 +865,7 @@
                                                                             </div>
                                                                         </div>
                                                                         @if($donhangofme->trangthai == 0)
-                                                                            <div class="item" id="huydonhang">
+                                                                            <div class="item" id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
                                                                                 <span onclick="HuyDatHang({{$donhangofme->id}})" class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
@@ -1001,7 +1017,15 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="row mt-1 justify-content-end">
+                                                                        <div class="row mt-1">
+                                                                            <div class="col-xl-6 d-flex justify-content-between">
+                                                                                <label for="" class="text-gray">Ngày đặt hàng: </label>
+                                                                                <div class="ml-2">
+                                                                                    @if($donhangofme->created_at != "")
+                                                                                        <span class="">{{date_format(date_create($donhangofme->created_at), "d/m/Y")}} Lúc {{date_format(date_create($donhangofme->created_at), "H:i:s")}}</span>
+                                                                                    @endif
+                                                                                </div>
+                                                                            </div>
                                                                             <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                                 <div class="ml-2 color-main price-total">
@@ -1093,7 +1117,7 @@
                                                                             </div>
                                                                         </div>
                                                                         @if($donhangofme->trangthai == 0)
-                                                                            <div class="item" id="huydonhang">
+                                                                            <div class="item" id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
                                                                                 <span onclick="HuyDatHang({{$donhangofme->id}})" class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
@@ -1245,7 +1269,15 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="row mt-1 justify-content-end">
+                                                                        <div class="row mt-1">
+                                                                            <div class="col-xl-6 d-flex justify-content-between">
+                                                                                <label for="" class="text-gray">Ngày đặt hàng: </label>
+                                                                                <div class="ml-2">
+                                                                                    @if($donhangofme->created_at != "")
+                                                                                        <span class="">{{date_format(date_create($donhangofme->created_at), "d/m/Y")}} Lúc {{date_format(date_create($donhangofme->created_at), "H:i:s")}}</span>
+                                                                                    @endif
+                                                                                </div>
+                                                                            </div>
                                                                             <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                                 <div class="ml-2 color-main price-total">
@@ -1337,7 +1369,7 @@
                                                                             </div>
                                                                         </div>
                                                                         @if($donhangofme->trangthai == 0)
-                                                                            <div class="item" id="huydonhang">
+                                                                            <div class="item" id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
                                                                                 <span onclick="HuyDatHang({{$donhangofme->id}})" class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
@@ -1489,7 +1521,15 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="row mt-1 justify-content-end">
+                                                                        <div class="row mt-1">
+                                                                            <div class="col-xl-6 d-flex justify-content-between">
+                                                                                <label for="" class="text-gray">Ngày đặt hàng: </label>
+                                                                                <div class="ml-2">
+                                                                                    @if($donhangofme->created_at != "")
+                                                                                        <span class="">{{date_format(date_create($donhangofme->created_at), "d/m/Y")}} Lúc {{date_format(date_create($donhangofme->created_at), "H:i:s")}}</span>
+                                                                                    @endif
+                                                                                </div>
+                                                                            </div>
                                                                             <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                                 <div class="ml-2 color-main price-total">
@@ -1581,7 +1621,7 @@
                                                                             </div>
                                                                         </div>
                                                                         @if($donhangofme->trangthai == 0)
-                                                                            <div class="item" id="huydonhang">
+                                                                            <div class="item" id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
                                                                                 <span onclick="HuyDatHang({{$donhangofme->id}})" class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
@@ -1733,7 +1773,15 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="row mt-1 justify-content-end">
+                                                                        <div class="row mt-1">
+                                                                            <div class="col-xl-6 d-flex justify-content-between">
+                                                                                <label for="" class="text-gray">Ngày đặt hàng: </label>
+                                                                                <div class="ml-2">
+                                                                                    @if($donhangofme->created_at != "")
+                                                                                        <span class="">{{date_format(date_create($donhangofme->created_at), "d/m/Y")}} Lúc {{date_format(date_create($donhangofme->created_at), "H:i:s")}}</span>
+                                                                                    @endif
+                                                                                </div>
+                                                                            </div>
                                                                             <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                                 <div class="ml-2 color-main price-total">
@@ -2727,7 +2775,7 @@
                         data: {id: id},
                         success: function (data) {
                             if (data==0){
-                                document.getElementById("huydonhang").innerHTML='<span class="ml-1 btn btn-danger">Đã hủy đơn</span>';
+                                document.getElementById("huydonhang"+id).innerHTML='<span class="ml-1 btn btn-danger">Đã hủy đơn</span>';
                             }
                         }
                     });
