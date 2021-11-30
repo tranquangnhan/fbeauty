@@ -13,7 +13,7 @@ class SanPhamController extends Controller
 {
     private $DanhMuc;
     private $SanPham;
-    private $idloai = 1;
+    private $idloai = Controller::LOAI_DANHMUC_SANPHAM;
 
     public function __construct(DanhMucRepository $DanhMuc,
     SanPhamRepository $SanPham,
