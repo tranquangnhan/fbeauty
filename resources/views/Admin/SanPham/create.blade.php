@@ -7,10 +7,10 @@
     <div class="content">
 
         <!-- Start Content-->
-        <div class="container-fluid">
+        <div class="container">
 
             <div class="row d-flex justify-content-center">
-                <div class="col-xl-10">
+                <div class="col-xl-12">
                     <div class="card-box">
                         <div class="dropdown float-right">
                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
@@ -50,27 +50,46 @@
                                                 <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('name')[0]}}</li></ul>
                                             @endif
                                     </div>
-                                </div>
+                                   </div>
                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Danh Mục</label>
-                                        <select class="form-control select2 @error('iddanhmuc') border-error @enderror" value="{{old('iddanhmuc')}}" name="iddanhmuc">
-                                            <option value="">Chọn</option>
-                                            @foreach ($cate as $item)
-                                                <option value="{{$item->id}}">{{$item->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('iddanhmuc'))
-                                            <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('iddanhmuc')[0]}}</li></ul>
-                                        @endif
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Danh Mục</label>
+                                                <select class="form-control select2 @error('iddanhmuc') border-error @enderror" value="{{old('iddanhmuc')}}" name="iddanhmuc">
+                                                    <option value="">Chọn</option>
+                                                    @foreach ($cate as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('iddanhmuc'))
+                                                    <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('iddanhmuc')[0]}}</li></ul>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Thương Hiệu</label>
+                                                <select class="form-control select2 @error('idthuonghieu') border-error @enderror" value="{{old('idthuonghieu')}}" name="idthuonghieu">
+                                                    <option value="">Chọn</option>
+                                                    @foreach ($thuongHieu as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('idthuonghieu'))
+                                                    <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('idthuonghieu')[0]}}</li></ul>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
+                                 
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="">Mô Tả</label>
-                                        <textarea class="form-control @error('mota') border-error @enderror" value="{{old('mota')}}"  style="height: 100px;width:100%; border:1px solid #ccc" name="mota" ></textarea>   
+                                        <textarea class="form-control @error('mota') border-error @enderror"  style="height: 100px;width:100%; border:1px solid #ccc" name="mota" >{{old('mota')}}</textarea>   
                                         @if ($errors->has('mota'))
                                             <ul class="parsley-errors-list filled" id="parsley-id-7" aria-hidden="false"><li class="parsley-required">{{$errors->get('mota')[0]}}</li></ul>
                                         @endif

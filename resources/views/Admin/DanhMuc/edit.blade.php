@@ -56,12 +56,12 @@
                                 <label for="">Loại</label>
                                 <div class="form-group">
                                     @php
-                                        $array = [
-                                            ['id'=>1,'name'=>"Sản Phẩm"],
-                                            ['id'=>2,'name'=>"Dịch Vụ"],
-                                            ['id'=>3,'name'=>"Bài Viết"],
-                                            ['id'=>4,'name'=>"Thương Hiệu"]
-                                        ];
+                                       $array = [
+                                                    ['id'=>1,'name'=>"Dịch Vụ"],
+                                                    ['id'=>2,'name'=>"Sản Phẩm"],
+                                                    ['id'=>3,'name'=>"Bài Viết"],
+                                                    ['id'=>4,'name'=>"Thương Hiệu"]
+                                                ];
                                     @endphp
                                     <select class="form-control select2" name="loai">
                                         @foreach ($array as $item)

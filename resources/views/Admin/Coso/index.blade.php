@@ -93,7 +93,7 @@
                             </div><!-- /.modal-dialog -->
                         </div>
 
-                        <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="7%">STT</th>
