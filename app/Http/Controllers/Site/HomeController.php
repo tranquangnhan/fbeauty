@@ -10,7 +10,7 @@ use App\Models\Admin\DatLichModel;
 use App\Models\Admin\KhachHangModel;
 use App\Models\Admin\LieuTrinhChiTietModel;
 use App\Repositories\Blog\BlogRepository;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\DichVu\DichVuRepository;
