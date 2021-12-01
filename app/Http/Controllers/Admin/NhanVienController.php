@@ -58,7 +58,7 @@ class NhanVienController extends Controller
      */
     public function store(NhanVien $request)
     {
-        
+
         $coSo = session()->get('coso');
 
         $img = $request->file('urlHinh');
