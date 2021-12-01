@@ -8,10 +8,12 @@ use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
+use App\Models\Admin\DatLichModel;
 use App\Repositories\Lich\LichRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Arr;
 
 class DatLichRemakeController extends Controller
@@ -53,6 +55,8 @@ class DatLichRemakeController extends Controller
             ['link' => '', 'name' => 'Danh sách'],
         ];
         $toDay = Carbon::today();
+        $this->data['toDay'] = $toDay->toDateString();
+
         $this->data['duLieuCalendar'] = $this->getDuLieuChoCalendar($toDay);
 
         return view('Admin.DatLichRemake.index', $this->data);
@@ -114,6 +118,90 @@ class DatLichRemakeController extends Controller
 
 
         return $listLich;
+    }
+
+    public function getDuLieuDatLichChoCalendar(Request $request, $ngay) {
+        try {
+            if ($request->ajax()) {
+                if (DateTime::createFromFormat('Y-m-d', $ngay) !== false) {
+                    $day = new Carbon($ngay);
+                    $duLieuCalendar = $this->getDuLieuChoCalendar($day);
+
+                    $response = Array(
+                        'success' => true,
+                        'duLieuCalendar' => $duLieuCalendar,
+                        'ngay' => $ngay,
+                    );
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Ngày không hợp lệ',
+                        'ngay' => $ngay,
+                    );
+                }
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function changeStatusDatLich(Request $request, $idDatLich, $status) {
+        try {
+            if ($request->ajax()) {
+                $datLich = DatLichModel::find((int)$idDatLich);
+
+                if ($datLich != null) {
+                    $toDay = Carbon::today()->format('d/m/Y');
+                    $ngayDat = Carbon::parse($datLich->thoigiandat)->format('d/m/Y');
+
+                    if ($toDay <= $ngayDat) {
+                        // update trạng thái
+                        $datLich->trangthai = $status;
+                        $datLich->save();
+
+                        $response = Array(
+                            'success' => true,
+                            'idDatLich' => $idDatLich,
+                            'status' => $status,
+                            'toDay' => $toDay,
+                            'ngayDat' => $ngayDat,
+                            '(int)$idDatLich' => (int)$idDatLich,
+                        );
+                    } else {
+                        $response = Array(
+                            'success' => false,
+                            'titleMess' => 'Đã xảy ra lỗi !',
+                            'textMess' => 'Thời gian đặt lịch đã qua, không thể sửa',
+                            'toDay' => $toDay,
+                            'ngayDat' => $ngayDat
+                        );
+                    }
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => 'Không tìm thấy id đặt lịch',
+                        '(int)$idDatLich' => (int)$idDatLich,
+                    );
+                }
+
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'datLich' => $datLich,
+                'textMess' => $e->getMessage(),
+            ]);
+        }
     }
 
 

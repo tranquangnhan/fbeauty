@@ -112,6 +112,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::patch('khachhang/lieutrinh/{id}/update', [KhachHangController::class, 'updateLieuTrinh']);
 
     Route::resource('datlichremake', DatLichRemakeController::class);
+    Route::get('changeStatusDatLich/{id}/{status}', [DatLichRemakeController::class, "changeStatusDatLich"]);
+    Route::get('getDuLieuDatLichChoCalendar/{ngay}', [DatLichRemakeController::class, "getDuLieuDatLichChoCalendar"]);
 
     /**
      *1: Lấy DỊch vụ đến Hóa đơn

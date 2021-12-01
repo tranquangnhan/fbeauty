@@ -65,11 +65,11 @@
 
                                                         <div class="right-box">
                                                             <div class="d-flex">
-                                                                <button class="btn btn-primary waves-effect waves-light mr-2">Trước</button>
+                                                                <button class="btn btn-primary waves-effect waves-light mr-2 pre-day-calendar-datlich">Trước</button>
                                                                 <div class="form-group mb-0">
-                                                                    <input type="date" class="form-control" placeholder="Today">
+                                                                    <input type="date" class="form-control ip-get-datlich" onchange="getDatLichByDay(event);" placeholder="Today" value="{{ $toDay }}">
                                                                 </div>
-                                                                <button class="btn btn-primary waves-effect waves-light ml-2">Sau</button>
+                                                                <button class="btn btn-primary waves-effect waves-light ml-2 next-day-calendar-datlich">Sau</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -79,7 +79,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="card-body" style="overflow: auto;max-height: 600px;">
+                                                <div class="card-body body-day-calendar" style="overflow: auto;max-height: 600px;">
                                                     @foreach ($duLieuCalendar as $item)
                                                         <div class="d-flex lich-item align-items-center">
                                                             <div class="time-item">
@@ -90,12 +90,12 @@
                                                             <div class="list-datlich d-flex">
 
                                                                 @for ($i = 0; $i < $item->soluongkhach; $i++)
-                                                                    <div class="datlich-item">
+                                                                    <div class="datlich-item  @if (isset($item->listDatLich[$i])) @if ($item->listDatLich[$i]->trangthai == 1) check-in @endif @endif">
                                                                         @if (isset($item->listDatLich))
                                                                             @if (isset($item->listDatLich[$i]))
                                                                                 <div class="header-item d-flex align-items-center">
-                                                                                    <b>{{ $item->listDatLich[$i]->name }}</b>
-                                                                                    <button class="btn-none check-in ml-auto" id-dat-lich={{ $item->listDatLich[$i]->id }}><i class="fas fa-user-check"></i></button>
+                                                                                    <b>{{ $item->listDatLich[$i]->namekh }}</b>
+                                                                                    <button class="btn-none check-in ml-auto" id-dat-lich={{ $item->listDatLich[$i]->id }}><i class="icon-status-datlich fas @if ($item->listDatLich[$i]->trangthai == 0) fa-user-minus @else fa-user-check @endif"></i></button>
                                                                                 </div>
 
                                                                                 <div class="body-item">
