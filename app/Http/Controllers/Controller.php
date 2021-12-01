@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -119,5 +120,19 @@ class Controller extends BaseController
             'cuoiNgayTimestamp' => $cuoiNgayTimestamp
         );
     }
+    // function unique slug
+    public function setSlugStore($model,$name){
+        
+        $data = $model->getAll()->sortByDesc('id')->first();
+        $slug = Str::slug($name) . '-' .$data->id + 1;
+
+        return $slug;
+    }
+
+    public function setSlugUpdate($id,$name){
+        $slug = Str::slug($name) . '-' . $id; 
+        return $slug;
+    }
+
 
 }

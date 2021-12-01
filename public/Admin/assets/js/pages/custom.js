@@ -10,6 +10,26 @@ $(document).ready(function () {
         {
             "language": {
                 "lengthMenu": "_MENU_",
+                "zeroRecords": "Không có dữ liệu",
+                "info": "Xem trang _PAGE_ / tổng _PAGES_",
+                "infoEmpty": "Không có dữ liệu",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "search": "Tìm Kiếm",
+                "paginate": {
+                    "first": "Trang Đầu",
+                    "last": "Trang Cuối",
+                    "next": "Trang Sau",
+                    "previous": "Trang Trước"
+                },
+            },
+            "order": [['id', "desc" ]]
+        },
+    );
+
+    $('.lieutrinhtable').DataTable(
+        {
+            "language": {
+                "lengthMenu": "_MENU_",
                 "zeroRecords": "Nothing found - sorry",
                 "info": "Xem trang _PAGE_ / tổng _PAGES_",
                 "infoEmpty": "No records available",
@@ -22,9 +42,10 @@ $(document).ready(function () {
                     "previous": "Trang Trước"
                 },
             },
-            "order": [[ 1, "desc" ]]
+            "order": [[ 0, "desc" ]],
+            searching: false, info: false
         },
-        
+       
     );
 });
 

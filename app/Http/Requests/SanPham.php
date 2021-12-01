@@ -26,7 +26,7 @@ class SanPham extends FormRequest
         return [
             'iddanhmuc' => ['required','integer'],
             'name' => ['required','min:3','max:100'],
-            'mota' => ['required','min:3'],
+            'mota' => ['required','min:3','max:255'],
             'noidung'=>['required'],
             'trangthai'=>['integer'],
         ];
@@ -42,6 +42,7 @@ class SanPham extends FormRequest
             'name.max' => 'Tên sản phẩm phải dướI 100 kí tự',
             'mota.required' => 'Mô tả bắt buộc nhập',
             'mota.min' => 'Mô tả phải trên 3 kí tự',
+            'mota.max' => 'Mô tả giới hạn 255 kí tự',
             'noidung.required' => 'Nội dung bắt buộc nhập',
             'trangthai.integer' => 'Trạng thái phải là số nguyên',
         ];

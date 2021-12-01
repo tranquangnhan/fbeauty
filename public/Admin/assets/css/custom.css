@@ -1,3 +1,6 @@
+img,table{
+    max-width: 100%;
+}
 .border-none {
     border: 0 !important;
 }
@@ -357,3 +360,4 @@ color: white;
 .cl-black {
     color: #343a40;
 }
+

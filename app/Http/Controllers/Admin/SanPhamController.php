@@ -54,6 +54,7 @@ class SanPhamController extends Controller
      */
     public function store(SanPham $request)
     {
+
         if($request->imgs === null){
             return $this->handleErrorInput('Vui lòng chọn hình ảnh');
         }
@@ -67,7 +68,7 @@ class SanPhamController extends Controller
             $data = [
                 'iddanhmuc'=>$request->iddanhmuc,
                 'name'=> $request->name,
-                'slug'=>Str::slug($request->name),
+                'slug'=>$this->setSlugUpdate($idUpdate,$request->name),
                 "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
@@ -82,7 +83,7 @@ class SanPhamController extends Controller
             $data = [
                 'iddanhmuc'=>$request->iddanhmuc,
                 'name'=> $request->name,
-                'slug'=>Str::slug($request->name),
+                'slug'=>$this->setSlugStore($this->SanPham,$request->name),
                 "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
@@ -136,7 +137,7 @@ class SanPhamController extends Controller
         $data = [
             'iddanhmuc'=>$request->iddanhmuc,
             'name'=> $request->name,
-            'slug'=>Str::slug($request->name),
+            'slug'=>$this->setSlugUpdate($id,$request->name),
             'mota'=>$request->mota,
             'noidung'=>$request->noidung,
             "trangthai"=>$request->trangthai,

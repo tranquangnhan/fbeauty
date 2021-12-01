@@ -7,10 +7,10 @@
     <div class="content">
 
         <!-- Start Content-->
-        <div class="container-fluid">
+        <div class="container">
 
             <div class="row d-flex justify-content-center">
-                <div class="col-xl-10">
+                <div class="col-xl-12">
                     <div class="card-box">
                         <div class="dropdown float-right">
                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
