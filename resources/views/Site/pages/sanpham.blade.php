@@ -12,7 +12,7 @@
                 <div class="col-xl-3">
                     <div class="fa-left w-100">
                         <div class="fa-box-search">
-                            <form action="">
+                            <form action="javascript:void(0)">
                                 <input type="text" id="seach" value="" class="input-search-2" onkeyup="SearchFilter()"
                                        placeholder="Tìm kiếm ..." name="">
                                 <button type="submit" class="button-submit-search-2"><i class="fas fa-search"></i>

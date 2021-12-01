@@ -42,57 +42,60 @@ function thanhtoanVNPAY(bien) {
 }
 
 function ApplyGiamGia() {
-    var magiamgia=$("#magiamgia").val();
-    var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split('.').join('');
-    if(magiamgia!=""){
-        $.ajax({
-            url: domain + '/CheckGiamGia/' + magiamgia +'/tongthangtoan/'+tongthanhtoan,
-            type: 'GET',
-            async: false,
-            dataType: 'json',
-            data: {},
-            success: function (data) {
-                if (data==0){
-                    iziToast.warning({
-                        title: 'Mã giảm giá không hợp lệ!!!',
-                        message: '',
-                        position: 'bottomRight',
-                        backgroundColor: 'oranged',
-                        titleColor: 'black',
-                        messageColor: 'black',
-                        iconColor: 'black',
-                    });
-                }
-                else {
-                    //loại 1 là %
-                    //loại 2 là tiền
-                    iziToast.success({
-                        title: 'Áp dụng thành công !!!',
-                        message: '',
-                        position: 'bottomRight',
-                        backgroundColor: 'green',
-                        titleColor: 'white',
-                        messageColor: 'white',
-                        iconColor: 'white',
-                    });
-                    if (data[0].loai == 1){
-                        var tiensaugiam = (Number(tongthanhtoan) - ((Number(tongthanhtoan)*Number(data[0].number))/100));
-                        LuuSessionGiamGia(((Number(tongthanhtoan)*Number(data[0].number))/100));
-                        $('#amount').val(tiensaugiam);
-                        $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString().replaceAll(",", ".")+'% <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
-                        $('#tongthanhtoan').html(tiensaugiam.toLocaleString().replaceAll(",", "."));
+    var idgiamgia=$("#idgiam").val();
+    if (idgiamgia==""){
+        var magiamgia=$("#magiamgia").val();
+        var tongthanhtoan= document.getElementById('tongthanhtoan').innerText.split('.').join('');
+        if(magiamgia!=""){
+            $.ajax({
+                url: domain + '/CheckGiamGia/' + magiamgia +'/tongthangtoan/'+tongthanhtoan,
+                type: 'GET',
+                async: false,
+                dataType: 'json',
+                data: {},
+                success: function (data) {
+                    if (data==0){
+                        iziToast.warning({
+                            title: 'Mã giảm giá không hợp lệ!!!',
+                            message: '',
+                            position: 'bottomRight',
+                            backgroundColor: 'oranged',
+                            titleColor: 'black',
+                            messageColor: 'black',
+                            iconColor: 'black',
+                        });
                     }
                     else {
-                        var tiensaugiam = Number(tongthanhtoan) - Number(data[0].number);
-                        LuuSessionGiamGia(Number(data[0].number));
-                        $('#amount').val(tiensaugiam);
-                        $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString().replaceAll(",", ".")+'đ <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
-                        $('#tongthanhtoan').html(tiensaugiam.toLocaleString().replaceAll(",", "."));
+                        //loại 1 là %
+                        //loại 2 là tiền
+                        iziToast.success({
+                            title: 'Áp dụng thành công !!!',
+                            message: '',
+                            position: 'bottomRight',
+                            backgroundColor: 'green',
+                            titleColor: 'white',
+                            messageColor: 'white',
+                            iconColor: 'white',
+                        });
+                        if (data[0].loai == 1){
+                            var tiensaugiam = (Number(tongthanhtoan) - ((Number(tongthanhtoan)*Number(data[0].number))/100));
+                            LuuSessionGiamGia(((Number(tongthanhtoan)*Number(data[0].number))/100));
+                            $('#amount').val(tiensaugiam);
+                            $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString().replaceAll(",", ".")+'% <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
+                            $('#tongthanhtoan').html(tiensaugiam.toLocaleString().replaceAll(",", "."));
+                        }
+                        else {
+                            var tiensaugiam = Number(tongthanhtoan) - Number(data[0].number);
+                            LuuSessionGiamGia(Number(data[0].number));
+                            $('#amount').val(tiensaugiam);
+                            $('#tongtiensaugiam').html(Number(data[0].number).toLocaleString().replaceAll(",", ".")+'đ <span class="btn btn-dark" onclick="HuyGiamGia()">Hủy</span>');
+                            $('#tongthanhtoan').html(tiensaugiam.toLocaleString().replaceAll(",", "."));
+                        }
+                        $("#idgiam").val(data[0].id)
                     }
-                    $("#idgiam").val(data[0].id)
                 }
-            }
-        });
+            });
+        }
     }
 }
 
@@ -116,7 +119,6 @@ function LuuSessionGiamGia(giam) {
         dataType: 'json',
         data: {id: giam},
         success: function (data) {
-            console.log(data)
         }
     });
 }

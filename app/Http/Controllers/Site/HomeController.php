@@ -129,7 +129,7 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
-        $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(1);
+        $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(self::LOAI_DANHMUC_SANPHAM);
         return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp]);
     }
 
@@ -353,7 +353,7 @@ class HomeController extends Controller
 
     public function viewProfileUser() {
         $khachHang = session()->get('khachHang');
-   
+
         if($khachHang === null){
             return redirect('/')->with('alert', 'Deleted!');
         }
@@ -362,8 +362,8 @@ class HomeController extends Controller
         $this->data['breadcrumbArray']     = [
             ['link' => '', 'name' => 'Thông tin tài khoản'],
         ];
-    
-    
+
+
         if($khachHang){
             $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
             $this->data['dataLieuTrinh'] = $dataLieuTrinh;
@@ -394,9 +394,9 @@ class HomeController extends Controller
 
     public static function findNameDichVuByIdLieuTrinh($id){
         $LieuTrinhResult = LieuTrinhChiTietModel::findNameDichVuByIdLieuTrinh($id);
-      
+
         $arrName = [];
-        for ($i=0; $i < count($LieuTrinhResult); $i++) { 
+        for ($i=0; $i < count($LieuTrinhResult); $i++) {
             array_push($arrName,$LieuTrinhResult[$i]->name);
         }
         return implode(", ",$arrName);
@@ -586,6 +586,7 @@ class HomeController extends Controller
 
         return $message;
     }
+
 
     public function skipCreatePassword(Request $request)
     {
