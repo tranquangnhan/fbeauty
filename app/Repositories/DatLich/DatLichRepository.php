@@ -9,6 +9,8 @@ use App\Repositories\BaseRepository;
 use App\Models\Admin\DatLichModel;
 use App\Models\Admin\DichVuModel;
 use App\Repositories\DatLich\DatLichRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
+
 class DatLichRepository extends BaseRepository implements DatLichRepositoryInterface
 {
     protected $model;
@@ -91,9 +93,11 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->orderBy('datlich.id','DESC')->get();
     }
     public function getDatLichByDay($timeStampDauNgay, $timeStampCuoiNgay, $idCoSo) {
-        return $this->model
-        ->whereBetween('thoigiandat', [$timeStampDauNgay, $timeStampCuoiNgay])
-        ->where('idcoso', '=', $idCoSo)
+        return $this->model->select('datlich.*', 'datlich.id','khachhang.name as namekh')
+        ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
+        ->whereBetween('datlich.thoigiandat', [$timeStampDauNgay, $timeStampCuoiNgay])
+        ->where('datlich.idcoso', '=', $idCoSo)
         ->get();
     }
+
 }

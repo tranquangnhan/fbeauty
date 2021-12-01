@@ -25,6 +25,7 @@ class SanPham extends FormRequest
     {
         return [
             'iddanhmuc' => ['required','integer'],
+            'idthuonghieu' => ['required','integer'],
             'name' => ['required','min:3','max:100'],
             'mota' => ['required','min:3','max:255'],
             'noidung'=>['required'],
@@ -37,6 +38,8 @@ class SanPham extends FormRequest
         return [
             'iddanhmuc.required' => 'Bạn chưa chọn danh mục',
             'iddanhmuc.integer' => 'Danh mục phải là số',
+            'idthuonghieu.required' => 'Bạn chưa chọn thương hiệu',
+            'idthuonghieu.integer' => 'Thương hiệu phải là số',
             'name.required' => 'Bạn phải nhập tên sản phẩm',
             'name.min' => 'Tên sản phẩm phải trên 3 kí tự',
             'name.max' => 'Tên sản phẩm phải dướI 100 kí tự',
@@ -52,6 +55,7 @@ class SanPham extends FormRequest
     {
         return [
             'iddanhmuc' => 'id danh mục',
+            'idthuonghieu'=>'id thương hiệu',
             'name' => 'Tên sản phẩm',
             'mota' => 'Mô tả sản phẩm',
             'noidung'=> 'Nội dung sản phẩm',

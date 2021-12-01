@@ -14,6 +14,7 @@ class SanPhamController extends Controller
     private $DanhMuc;
     private $SanPham;
     private $idloai = Controller::LOAI_DANHMUC_SANPHAM;
+    private $idThuongHieu = Controller::LOAI_DANHMUC_THUONG_HIEU;
 
     public function __construct(DanhMucRepository $DanhMuc,
     SanPhamRepository $SanPham,
@@ -43,7 +44,9 @@ class SanPhamController extends Controller
     public function create()
     {
         $cate = $this->DanhMuc->findDanhMucByIdLoai($this->idloai);
-        return view('Admin.SanPham.create',compact('cate'));
+        $thuongHieu = $this->DanhMuc->findDanhMucByIdLoai($this->idThuongHieu);
+    
+        return view('Admin.SanPham.create',compact('cate','thuongHieu'));
     }
 
     /**
@@ -67,6 +70,7 @@ class SanPhamController extends Controller
       
             $data = [
                 'iddanhmuc'=>$request->iddanhmuc,
+                'idthuonghieu'=> $request->idthuonghieu,
                 'name'=> $request->name,
                 'slug'=>$this->setSlugUpdate($idUpdate,$request->name),
                 "img"=>$imgs,
@@ -82,6 +86,7 @@ class SanPhamController extends Controller
         }else{
             $data = [
                 'iddanhmuc'=>$request->iddanhmuc,
+                'idthuonghieu'=> $request->idthuonghieu,
                 'name'=> $request->name,
                 'slug'=>$this->setSlugStore($this->SanPham,$request->name),
                 "img"=>$imgs,
@@ -122,7 +127,8 @@ class SanPhamController extends Controller
     {
         $data  = $this->SanPham->find($id);
         $cate  = $this->DanhMuc->getAll();
-        return view("Admin.SanPham.edit",compact('data','cate'));
+        $thuongHieu = $this->DanhMuc->findDanhMucByIdLoai($this->idThuongHieu);
+        return view("Admin.SanPham.edit",compact('data','cate','thuongHieu'));
     }
 
     /**
@@ -136,6 +142,7 @@ class SanPhamController extends Controller
     {
         $data = [
             'iddanhmuc'=>$request->iddanhmuc,
+            'idthuonghieu'=> $request->idthuonghieu,
             'name'=> $request->name,
             'slug'=>$this->setSlugUpdate($id,$request->name),
             'mota'=>$request->mota,

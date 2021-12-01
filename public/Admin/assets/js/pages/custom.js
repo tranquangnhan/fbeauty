@@ -1,4 +1,5 @@
 const pathUploadImg = 'http://127.0.0.1:8000/uploads/khachhang/';
+const serverNameUrl = $('#server-name').val();
 
 
 $(document).on("click", ".remove-field", function () {
@@ -80,7 +81,7 @@ function changImg() {
             },
         });
         if(file[0] != undefined){
-        
+
             $.ajax({
                 type: "POST",
                 url: "quantri/editimglieutrinh",
@@ -89,7 +90,7 @@ function changImg() {
                 processData: false,
                 success: function (response) {
                     changeSrcImg(pathUploadImg + response.imgkhachhang);
-                    
+
                     $.each($(".idlieutrinhchitiet"), function (index, val) {
                         console.log(val.value)
                         if (val.value == response.id) {
@@ -99,7 +100,7 @@ function changImg() {
 
                 }
             });
-             
+
          }
 
     });
@@ -177,7 +178,7 @@ async function iconfirm(e) {
     if (r == true) {
 
         return true;
-    }   
+    }
     else {
         return false;
     }
@@ -232,7 +233,7 @@ function checkConfirm(){
     var r = confirm("Xác nhận ? .Hoá đơn đã thanh toán sẽ không thể thay đổi ?");
     if (r == true) {
         return true;
-    }   
+    }
     else {
         return false;
     }
