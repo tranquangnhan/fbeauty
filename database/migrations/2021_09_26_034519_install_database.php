@@ -204,6 +204,7 @@ class InstallDatabase extends Migration
         Schema::create('sanpham', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('iddanhmuc');
+            $table->unsignedInteger('idthuonghieu');
             $table->string('name',255);
             $table->string('slug',255);
             $table->string('img',255);

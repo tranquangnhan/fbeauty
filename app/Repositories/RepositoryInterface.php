@@ -39,6 +39,11 @@ interface RepositoryInterface
      */
     public function delete($id);
 
-
+   /**
+     * whereSlug
+     * @param $id
+     * @return mixed
+     */
+    public function whereSlug($slug);
   
 }

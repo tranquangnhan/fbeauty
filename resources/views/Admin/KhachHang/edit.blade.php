@@ -15,13 +15,14 @@
                 <div class="col-xl-12">
                     <div class="card-box">
                         <h4 class="header-title  mt-0 mb-3 btn btn-primary">SỬA KHÁCH HÀNG</h4>
+                        <x-admin.common.CaseErrorInput />
                         <form action="{{route('khachhang.update',$KhachHang->id)}}"  enctype="multipart/form-data"
                            method="post">
                            @csrf
                            {!! method_field('patch') !!}
                         <div class="row">
                             <div class="col-md-4">
-                                    <label class="w-100" for="files">Tải ảnh khách hàng:<span style="color:red;"> (*)</span> <br>
+                                    <label class="w-100" for="files">Tải ảnh khách hàng:<br>
                                     <img class="imgpreview"  src="{{ asset($URL_IMG.$KhachHang->img) }}" alt=""><br><br>    
                                     <input type="file" class="mt-2" name="urlHinh" onchange="previewImg(event)"  > <br>
                                     @error('img')
@@ -34,7 +35,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Tên khách hàng</label><span style="color:red;"> (*)</span>
+                                    <label for="">Tên khách hàng</label>
                                     <input type="text" name="name" value="{{$KhachHang->name}}"
                                         parsley-trigger="change" placeholder="Tên khách hàng" class="form-control">
                                     @error('name')
@@ -52,7 +53,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Email</label><span style="color:red;"> (*)</span>
+                                    <label for="">Email</label>
                                     <input type="email" name="email" value="{{$KhachHang->email}}"
                                         parsley-trigger="change" id="password" placeholder="Email" class="form-control">
                                     @error('email')
@@ -60,7 +61,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group ">
-                                    <label for="">Mật khẩu</label><span style="color:red;"> (*)</span>
+                                    <label for="">Mật khẩu</label>
                                     <input type="password" name="password" value="{{old('password')}}"
                                         parsley-trigger="change" placeholder="Mật khẩu" class="form-control">
                                     @error('password')

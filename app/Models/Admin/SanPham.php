@@ -13,6 +13,7 @@ class SanPham extends Model
     protected $fillable = [
         'idcoso',
         'iddanhmuc',
+        'idthuonghieu',
         'name',
         'slug',
         'img',

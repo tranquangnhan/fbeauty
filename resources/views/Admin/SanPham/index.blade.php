@@ -33,15 +33,15 @@
                                  @endif
                             </div>
                         </div>
-                        <table id="key-table" class="table table-hover table-bordered dt-responsive nowrap">
+                        <table id="key-table" class="table table-hover table-bordered ">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th width="5%">STT</th>
+                                        <th >STT</th>
                                         <th width="10%">Tên Sản Phẩm</th>
-                                        <th width="10%">Ảnh</th>
-                                        <th width="10%">Mô Tả</th>
-                                        <th width="2%">Chi Tiết</th>
-                                        <th width="10%">Hành Động </th>
+                                        <th width="15%">Ảnh</th>
+                                        <th >Mô Tả</th>
+                                        <th >Chi Tiết</th>
+                                        <th >Hành Động </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,9 +49,9 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td class="">{{$loop->index}}</td>
-                                        <td class="" >{{substr($item->name,0,25)}} ..</td>
+                                        <td class="" >{{substr($item->name,0,100)}} ..</td>
                                         <td><img  class="img-common" src="{{ asset($URL_IMG. json_decode($item->img)[0]) }}"></td>
-                                        <td> {{substr($item->mota,0,50)}}</td>
+                                        <td > {{substr(trim($item->mota),0,150)}}</td>
                                         <td ><a href="{{URL::to('quantri/sanpham/detail/'.$item->id.'/edit')}}" class="d-flex justify-content-center"><div class="btn btn-success"><i class="fa fa-info-circle"></i></div></a></td>
                                         <td class="d-flex justify-content-around">
                                             <a href="{{route('sanpham.edit',$item->id)}}"><div class="btn btn-primary mr-2"> <i class="dripicons-pencil"></i></div></a>
