@@ -27,6 +27,9 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
             ->orderBy('id', 'DESC')
             ->get();
     }
+    public function getAllBlog(){
+        return $this->model->select("*")->where("trangthai",1)->get();
+    }
 
     public function getLastWeek1()
     {

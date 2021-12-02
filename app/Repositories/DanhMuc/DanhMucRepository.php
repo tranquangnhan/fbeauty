@@ -2,7 +2,10 @@
 
 
 namespace App\Repositories\DanhMuc;
+
+use App\Http\Controllers\Controller;
 use App\Repositories\BaseRepository;
+
 class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInterface
 {
     protected $model;
@@ -34,11 +37,13 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
     public function getdanhmucshow(){
         return $this->model
         ->offset(1)->limit(3)
+        ->where('danhmuc.loai', '=', 1)
         ->orderBy('id', 'DESC')
+
         ->get();
     }
     public function idDanhMucgetDichvu($id){
-        return $this->model->select('danhmuc.*','dichvu.name as namedv')
+        return $this->model->select('danhmuc.*','dichvu.name as namedv','dichvu.slug as slugdv','dichvu.motangan as motangandv','dichvu.img as imgdv','dichvu.dongia as dongiadv','dichvu.img as imgdv')
         ->join('dichvu','dichvu.iddm','=','danhmuc.id')
         ->where('dichvu.trangthai', '=', 1)
         ->where('danhmuc.id', '=', $id)
@@ -47,6 +52,13 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
     public function idDanhMucbyslug($slug){
         return $this->model->select('danhmuc.*')
         ->where('danhmuc.slug', '=', $slug)
+        ->get();
+    }
+
+    public function getDanhMucLimit($limit){
+        return $this->model->select('*')
+        ->where('loai', '=', Controller::LOAI_DANHMUC_DICHVU)
+        ->limit($limit)
         ->get();
     }
 }

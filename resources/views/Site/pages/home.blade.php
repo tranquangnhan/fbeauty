@@ -234,16 +234,13 @@
                             <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">Tìm kiếm
                                 theo</div>
                             <ul class="nav nav-tabs" id="myTab-1" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link btn-3 active black-1" id="allservice-tab"
-                                        data-toggle="tab" href="#allservice" role="tab"
-                                        aria-controls="allservice" aria-selected="true">Mới Nhất</a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link btn-3 black-1" id="nhieuquantam-tab" data-toggle="tab"
-                                        href="#nhieuquantam" role="tab" aria-controls="nhieuquantam"
-                                        aria-selected="false">Danh mục</a>
-                                </li>
+                                @foreach ($listDanhMuc as $danhmuc)
+
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link btn-3 @if ($loop->index == 0) active @endif black-1" id="{{$danhmuc->slug}}-tab" data-toggle="tab" href="#{{$danhmuc->slug}}" role="tab" aria-controls="{{$danhmuc->slug}}" aria-selected="true">{{ $danhmuc->name }}</a>
+                                    </li>
+
+                                @endforeach
                             </ul>
                         </div>
 
@@ -253,37 +250,34 @@
 
             <div class="list-tabs mt-5">
                 <div class="tab-content" id="">
-                    <div class="tab-pane fade show active" id="allservice" role="tabpanel"
-                        aria-labelledby="allservice-tab">
-                        <div class="w-100">
-                            <div class="box-dichvu">
-                                <div class="box-sev">
-                                    @foreach ($dichvu as $itemdichvu)
-                                        <div class="dichvu-item">
-
-                                            <div class="content-1">
+                    @foreach ($arrDichVu as $itemdichvu)
+                        <div class="tab-pane @if ($loop->index == 0) show active @endif  fade" id="{{$listDanhMuc[$loop->index]->slug}}" role="tabpanel" aria-labelledby="{{$listDanhMuc[$loop->index]->slug}}-tab">
+                            <div class="w-100">
+                                <div class="box-dichvu">
+                                    <div class="box-sev">
+                                        @foreach ($itemdichvu as $item)
+                                        <div class="dichvu-item d-plex">
+                                            <div class="content-1" onclick="window.location='{{ asset('dich-vu') }}/{{$item->slug}}';" >
                                                 <div class="text-7 color-main-1">
-                                                    {{$itemdichvu->namedm}}
+                                                    {{$item->namedm}}
                                                 </div>
 
                                                 <div class="text-8 mt-1">
-                                                    {{str_replace(',', '.',number_format($itemdichvu->dongia))}}đ
+                                                    {{str_replace(',', '.',number_format($item->dongia))}}đ
                                                 </div>
-
                                                 <div class="img-1 mt-4">
-                                                <a href="{{ asset('dich-vu') }}/{{$itemdichvu->slug}}">
-                                                    <img class="" src="{{ asset('uploads/'.$itemdichvu->img) }}" alt="">
-                                                </a>
-                                                </div>
-
+                                                    <a href="{{ asset('dich-vu') }}/{{$item->slug}}">
+                                                        <img class="" src="{{ asset('uploads/'.$item->img) }}" alt="">
+                                                    </a>
+                                                    </div>
                                                 <div class="text-1 limit-text-row-1 mt-4">
-                                                    <a href="{{ asset('dich-vu') }}/{{$itemdichvu->slug}}">
-                                                        {{$itemdichvu->name}}
+                                                    <a href="{{ asset('dich-vu') }}/{{$item->slug}}">
+                                                        {{$item->name}}
                                                     </a>
                                                 </div>
 
                                                 <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                    {{$itemdichvu->motangan}}
+                                                    {{$item->motangan}}
 
                                                 </p>
                                             </div>
@@ -293,57 +287,15 @@
 
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nhieuquantam" role="tabpanel"
-                        aria-labelledby="nhieuquantam-tab">
-                        <div class="w-100">
-                            <div class="box-dichvu">
-                                <div class="box-sev">
-                                    @foreach ($danhmuc as $temdanhmuc)
+                                        @endforeach
 
-                                    <div class="dichvu-item">
 
-                                        <div class="content-1">
-                                            <div class="text-7 color-main-1">
-                                                {{$temdanhmuc->name}}
-                                            </div>
-
-                                            <div class="text-8 mt-1">
-                                            </div>
-
-                                            <div class="img-1 mt-4">
-                                                <a href="{{ asset('danh-muc') }}/{{$temdanhmuc->slug}}">
-                                                    <img class="" src="{{ asset('uploads/'.$temdanhmuc->img) }}" alt="">
-                                                </a>
-                                            </div>
-
-                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                <a href="{{ asset('danh-muc') }}/{{$temdanhmuc->slug}}">
-                                                </a>
-                                            </div>
-
-                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                                do eiusmod tempor incididunt.
-
-                                            </p>
-                                        </div>
-                                        <div class="w-100 text-center mb-4">
-                                            <a href="javascript:void(0)">
-                                                <button  class="btn-4 btn-modal-main" type-modal="modal-datlich" data-show="one">Đặt lịch</button>
-                                            </a>
-                                        </div>
                                     </div>
-                                    @endforeach
                                 </div>
 
                             </div>
                         </div>
-                    </div>
+                        @endforeach
 
                 </div>
             </div>
