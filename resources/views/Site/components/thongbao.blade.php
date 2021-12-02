@@ -47,7 +47,7 @@
         Swal.fire(
             '{{session('thatbaiprofile')}}',
             '',
-            'success'
+            'error'
         )
     </script>
     @endif

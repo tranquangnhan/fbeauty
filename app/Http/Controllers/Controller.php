@@ -75,7 +75,7 @@ class Controller extends BaseController
      */
     public function checkImg($extension, $img)
     {
-        $allowedfileExtension = ['jpg', 'png', 'gif'];
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
         $check = in_array($extension, $allowedfileExtension);
         if (!$check) {
             return false;
@@ -87,7 +87,7 @@ class Controller extends BaseController
 
     public function checkImgCustomer($extension, $img)
     {
-        $allowedfileExtension = ['jpg', 'png', 'gif'];
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
         $check = in_array($extension, $allowedfileExtension);
         if (!$check) {
             return false;
@@ -135,7 +135,7 @@ class Controller extends BaseController
     }
     // function unique slug
     public function setSlugStore($model,$name){
-        
+
         $data = $model->getAll()->sortByDesc('id')->first();
         $slug = Str::slug($name) . '-' .$data->id + 1;
 
@@ -143,7 +143,7 @@ class Controller extends BaseController
     }
 
     public function setSlugUpdate($id,$name){
-        $slug = Str::slug($name) . '-' . $id; 
+        $slug = Str::slug($name) . '-' . $id;
         return $slug;
     }
 
