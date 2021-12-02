@@ -107,4 +107,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         return $this->model->select("*")->where("trangthai",Controller::TRANGTHAI_DICHVU_HIEN)->get();
     }
 
+    public function findDichVuById($id){
+        return $this->model->find($id);
+    }
 }

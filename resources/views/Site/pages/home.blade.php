@@ -320,19 +320,18 @@
 
             <div class="box-product-1">
                 <div class="row">
-                    <?php $spkhac=\Illuminate\Support\Facades\DB::table('sanpham')->select('sanpham.*', 'danhmuc.name AS tendm')
-                        ->orderBy("sanpham.id","DESC")
-                        ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")->where('sanpham.trangthai', "=", 1)->limit(4)->get();?>
                     @foreach($spkhac as $i => $spk)
-                        <?php $anhk=json_decode($spk->img);
-                        $splienquanctkhac=\Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("*")->where('idsanpham', $spk->id)->limit(1)->get();
-                            error_reporting(0);
+                        <?php
+                        $anhk=json_decode($spk->img);
                         ?>
                         <div class="col-3">
                             <div class="card rounded-0 product-card child-item-sanpham zbar">
                                 <div class="card-header bg-transparent border-bottom-0">
                                     @if(session()->has('khachHang') && session('khachHang') != '')
-                                        <?php $checkyeuthich1= \Illuminate\Support\Facades\DB::table('yeuthich')->where('idkhachhang', session('khachHang')->id)->where('idsanphamchitiet', $spk->id)->doesntExist()?>
+                                        <?php $checkyeuthich1= \Illuminate\Support\Facades\DB::table('yeuthich')
+                                            ->where('idkhachhang', session('khachHang')->id)
+                                            ->where('idsanphamchitiet', $spk->id)
+                                            ->doesntExist()?>
                                         <?php if ($checkyeuthich1 == false) {?>
                                         <div class="btn-add-wishlist btn-sticky hover-scale-1 active" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
                                             <div class="box-cicrle">
@@ -375,15 +374,15 @@
                                         </a>
                                         <div class="d-flex align-items-center justify-content-center" style="height: 40px;">
                                             <div class="mb-1 product-price">
-                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia)), ""}} đ</span> / <span>{{$splienquanctkhac[0]->ml}}ml</span>
+                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($spk->dongia)), ""}} đ</span> / <span>{{$spk->thetich}}ml</span>
                                                 @if($spk->giamgia !="")
-                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia-(($splienquanctkhac[0]->dongia * $spk->giamgia)/100))), ""}}đ</span>
+                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($spk->dongia-(($spk->dongia * $spk->giamgia)/100))), ""}}đ</span>
                                                 @endif
                                             </div>
                                         </div>
                                         <div class="product-action mt-2">
                                             <div class="d-grid gap-2">
-                                                <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splienquanctkhac[0]->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$spk->idspct}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
                                                 <a href="{{URL::to("san-pham/chi-tiet", $spk->slug)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
                                             </div>
                                         </div>

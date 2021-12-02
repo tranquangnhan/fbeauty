@@ -1,3 +1,6 @@
+img,table{
+    max-width: 100%;
+}
 .border-none {
     border: 0 !important;
 }
@@ -316,6 +319,12 @@ color: white;
     font-size: .9em;
 }
 
+.btn-none {
+    border: none;
+    color: white;
+    background: none;
+}
+
 .datlich-item .header-item {
     background: #10c469;
     color: white;
@@ -357,3 +366,26 @@ color: white;
 .cl-black {
     color: #343a40;
 }
+
+.datlich-item.check-in .header-item {
+    background-color: rgb(9, 117, 63);
+}
+
+.datlich-item.check-in .body-item {
+    background-color: rgb(0 128 63);
+    color: #ffffff !important;
+}
+
+.datlich-item.check-in .body-item li a{
+    background-color: rgb(0 128 63);
+    color: #ffffff !important;
+}
+
+.datlich-item.check-in .footer-item {
+    background-color: rgb(0 128 63);
+}
+
+.datlich-item.check-in .footer-item .cirle-button i{
+    color: #dadada;
+}
+

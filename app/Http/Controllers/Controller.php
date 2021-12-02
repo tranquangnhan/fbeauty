@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -21,6 +22,7 @@ class Controller extends BaseController
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
     const LOAI_DANHMUC_BLOG = 3;
+    const LOAI_DANHMUC_THUONG_HIEU = 4;
     const KHACHHANG_CHUA_ACTIVE = 0;
     const KHACHHANG_DA_ACTIVE = 1;
     const TRANGTHAI_LICH_OPEN = 0;
@@ -74,12 +76,24 @@ class Controller extends BaseController
      */
     public function checkImg($extension, $img)
     {
-        $allowedfileExtension = ['jpg', 'png', 'gif'];
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
         $check = in_array($extension, $allowedfileExtension);
         if (!$check) {
             return false;
         } else {
             $img->move(self::BASE_URL_UPLOAD_STAFF, $img->getClientOriginalName());
+            return true;
+        }
+    }
+
+    public function checkImgCustomer($extension, $img)
+    {
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
+        $check = in_array($extension, $allowedfileExtension);
+        if (!$check) {
+            return false;
+        } else {
+            $img->move(self::BASE_URL_UPLOAD_CUSTOMER, $img->getClientOriginalName());
             return true;
         }
     }
@@ -120,5 +134,19 @@ class Controller extends BaseController
             'cuoiNgayTimestamp' => $cuoiNgayTimestamp
         );
     }
+    // function unique slug
+    public function setSlugStore($model,$name){
+
+        $data = $model->getAll()->sortByDesc('id')->first();
+        $slug = Str::slug($name) . '-' .$data->id + 1;
+
+        return $slug;
+    }
+
+    public function setSlugUpdate($id,$name){
+        $slug = Str::slug($name) . '-' . $id;
+        return $slug;
+    }
+
 
 }

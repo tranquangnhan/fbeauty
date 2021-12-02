@@ -63,6 +63,10 @@ abstract class BaseRepository implements RepositoryInterface{
         return false;
     }
 
+    public function whereSlug($slug){
+        return $this->whereSlug($slug);
+    }
+    
 }
 
 

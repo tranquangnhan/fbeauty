@@ -20,6 +20,7 @@ class KhachHangRepository extends BaseRepository implements KhachHangRepositoryI
     {
         return $this->model->select('khachhang.*', 'khachhang.id')
         ->where('khachhang.idcoso', $idCoSo)
+        ->orderBy('id', 'DESC')
         ->get();
     }
     public function CheckEmail($email) {

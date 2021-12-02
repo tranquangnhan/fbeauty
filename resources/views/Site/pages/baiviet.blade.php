@@ -46,7 +46,7 @@
                                         <div class="col-xl-6 pr-0">
                                             <div class="blog-bigsize">
                                                 <div class="box-danhmuc">
-                                                    {{$blog[0]->danhmuc}}"
+                                                    {{$blog[0]->danhmuc}}
                                                 </div>
 
                                                 <div class="img-1 w-100">
@@ -233,7 +233,7 @@
                                         <div class="row">
                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                 <div class="mr-3">
-                                                    <a href="" class="box-danhmuc-1">
+                                                    <a  class="box-danhmuc-1">
                                                         {{$blog[0]->danhmuc}}</a>
                                                 </div>
                                                 <span>@if ($blog[0]->created_at != null)
@@ -257,7 +257,7 @@
                                             <div class="row">
                                                 <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1 maincolor">
+                                                        <a  class="box-danhmuc-1 maincolor">
                                                         {{$item->danhmuc}}</a>
                                                     </div>
                                                     <span class="color-gray-5 fz-1em2">@if ($item->created_at != null)

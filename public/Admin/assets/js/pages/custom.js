@@ -1,4 +1,5 @@
 const pathUploadImg = 'http://127.0.0.1:8000/uploads/khachhang/';
+const serverNameUrl = $('#server-name').val();
 
 
 $(document).on("click", ".remove-field", function () {
@@ -7,6 +8,26 @@ $(document).on("click", ".remove-field", function () {
 
 $(document).ready(function () {
     $('#key-table').DataTable(
+        {
+            "language": {
+                "lengthMenu": "_MENU_",
+                "zeroRecords": "Không có dữ liệu",
+                "info": "Xem trang _PAGE_ / tổng _PAGES_",
+                "infoEmpty": "Không có dữ liệu",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "search": "Tìm Kiếm",
+                "paginate": {
+                    "first": "Trang Đầu",
+                    "last": "Trang Cuối",
+                    "next": "Trang Sau",
+                    "previous": "Trang Trước"
+                },
+            },
+            "order": [['id', "desc" ]]
+        },
+    );
+
+    $('.lieutrinhtable').DataTable(
         {
             "language": {
                 "lengthMenu": "_MENU_",
@@ -22,9 +43,10 @@ $(document).ready(function () {
                     "previous": "Trang Trước"
                 },
             },
-            "order": [[ 1, "desc" ]]
+            "order": [[ 0, "desc" ]],
+            searching: false, info: false
         },
-        
+       
     );
 });
 
@@ -59,7 +81,7 @@ function changImg() {
             },
         });
         if(file[0] != undefined){
-        
+
             $.ajax({
                 type: "POST",
                 url: "quantri/editimglieutrinh",
@@ -68,7 +90,7 @@ function changImg() {
                 processData: false,
                 success: function (response) {
                     changeSrcImg(pathUploadImg + response.imgkhachhang);
-                    
+
                     $.each($(".idlieutrinhchitiet"), function (index, val) {
                         console.log(val.value)
                         if (val.value == response.id) {
@@ -78,7 +100,7 @@ function changImg() {
 
                 }
             });
-             
+
          }
 
     });
@@ -156,7 +178,7 @@ async function iconfirm(e) {
     if (r == true) {
 
         return true;
-    }   
+    }
     else {
         return false;
     }
@@ -211,7 +233,7 @@ function checkConfirm(){
     var r = confirm("Xác nhận ? .Hoá đơn đã thanh toán sẽ không thể thay đổi ?");
     if (r == true) {
         return true;
-    }   
+    }
     else {
         return false;
     }

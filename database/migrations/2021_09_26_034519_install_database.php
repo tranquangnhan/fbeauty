@@ -177,7 +177,6 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
-
         Schema::create('datlich', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idcoso');
@@ -185,6 +184,7 @@ class InstallDatabase extends Migration
             $table->unsignedInteger('idkhachhang');
             $table->unsignedInteger('idnhanvien');
             $table->unsignedInteger('thoigiandat');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('idcoso')->references('id')->on('coso');
             $table->foreign('idkhachhang')->references('id')->on('khachhang');
             $table->timestamps();
@@ -204,6 +204,7 @@ class InstallDatabase extends Migration
         Schema::create('sanpham', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('iddanhmuc');
+            $table->unsignedInteger('idthuonghieu');
             $table->string('name',255);
             $table->string('slug',255);
             $table->string('img',255);
