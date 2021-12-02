@@ -32,6 +32,7 @@ async function showLieuTrinhDetail(id,event){
                         : '<span class="uk-badge in-propress"><span uk-icon="check" class="uk-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="check"><polyline fill="none" stroke="#000" stroke-width="1.1" points="4,10 8,15 17,4"></polyline></svg></span></span>'
                     }
                 </div>
+                <input type="hidden" id="idlieutrinh" value="${val.idlieutrinh}">
                 <div class="uk-timeline-content">
                     <div class="uk-card uk-card-default uk-margin-medium-bottom uk-overflow-auto">
                         <div class="uk-card-header">
@@ -88,6 +89,75 @@ async function showLieuTrinhDetail(id,event){
         }
     });
 
+}
+async function checkConfirm(text) {
+
+    return await Swal.fire({
+        title: text,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Đồng Ý',
+        cancelButtonText: 'Huỷ'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            return true;
+        } else {
+            return false;
+        }
+    })
+}
+
+function showError(text){
+    Swal.fire({
+        title: text,
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+    })
+}
+function showSuccess(text){
+    Swal.fire({
+        title: text,
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+    })
+}
+
+
+
+
+async function huyLieuTrinh(){
+    const confilm = await checkConfirm('Bạn có chắc muốn huỷ liệu trình không ?');
+    if(confilm){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+            },
+        });
+
+        const idlieutrinh = $("#idlieutrinh").val();
+        const formData = new FormData();
+        formData.append('idlieutrinh',idlieutrinh);
+
+        await $.ajax({
+            type: "POST",
+            url: `lieutrinh/cancel`,
+            contentType: false,
+            processData: false,
+            data:formData,
+            success: function (response) {
+                if(response.success == false){
+                    showError(response.textMess);
+                }else{
+                    showSuccess(response.textMess);
+                    window.location.reload();
+                }
+
+            }})
+    }
 }
 
 function showProgressLieuTrinh(percent){

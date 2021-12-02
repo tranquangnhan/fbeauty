@@ -371,16 +371,6 @@ class HomeController extends Controller
             $this->data['dataLieuTrinh'] = [];
         }
         return view("Site.pages.profile-user", $this->data);
-
-        // if (session()->has('khachHang') && session('khachHang') != '') {
-        //     if ($this->HoaDon->CheckHoaDonByIdKhachHang(session('khachHang')->id) == false){
-        //         $hoadon=$this->HoaDon->findHoaDonByIdKhachHang(session('khachHang')->id);
-        //     }
-        //     return view("Site.pages.profile-user", $this->data, ["inhoadon"=>$hoadon]);
-        // }
-        // else{
-        //     return view("Site.pages.profile-user", $this->data);
-        // }
     }
 
     public function getLieuTrinhDetailByIdLieuTrinh($id){
@@ -390,6 +380,31 @@ class HomeController extends Controller
             $data['dataLieuTrinh'] = $this->LieuTrinh->find($dataLieuTrinhChiTiet[0]->idlieutrinh);
         }
         return response()->json($data);
+    }
+
+    public function huyLieuTrinh(Request $request){
+        // check đã hoàn thành 1 dịch vụ sẽ không được huỷ
+        $hasHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($request->idlieutrinh);
+        if(count($hasHoaDon)>0){
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => 'Liệu trình đã thanh toán không thể huỷ!'
+            ]);
+        }else{
+            if( $request->idlieutrinh){
+                $res = $this->LieuTrinh->update($request->idlieutrinh,['trangthai'=>2]);
+                if($res){
+                    return response()->json([
+                        'success' => true,
+                        'titleMess' => 'Thành công!',
+                        'textMess' => 'Đã huỷ liệu trình!'
+                    ]);
+                    
+                }
+            }
+        }
+        
     }
 
     public static function findNameDichVuByIdLieuTrinh($id){
