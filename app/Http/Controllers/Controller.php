@@ -85,6 +85,18 @@ class Controller extends BaseController
         }
     }
 
+    public function checkImgCustomer($extension, $img)
+    {
+        $allowedfileExtension = ['jpg', 'png', 'gif'];
+        $check = in_array($extension, $allowedfileExtension);
+        if (!$check) {
+            return false;
+        } else {
+            $img->move(self::BASE_URL_UPLOAD_CUSTOMER, $img->getClientOriginalName());
+            return true;
+        }
+    }
+
     public function handleError($error){
         return Redirect::back()->withErrors($error);
     }
