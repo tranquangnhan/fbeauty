@@ -100,7 +100,10 @@ function FilterSapXep(data, bienkhac) {
         }
         FilterGia(datas, bien)
     } else if (bienkhac == '') {
-        FilterGia(data, bien)
+        datas = {
+            sanpham: mang.sort((a, b) => (a.name > b.name) ? 1 : -1),
+        }
+        FilterGia(datas, bien)
     }
 
 }
