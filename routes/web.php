@@ -213,6 +213,10 @@ Route::group(['prefix' => '/'], function () {
     *Hủy đơn
      */
     Route::get("huydonhang/{id}", [GioHangController::class, "HuyDonHang"]);
+    /**
+    *Update profile
+     */
+    Route::post("updateprofile", [HomeController::class, "updateprofile"]);
 
 });
 

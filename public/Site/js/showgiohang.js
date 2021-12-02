@@ -182,7 +182,7 @@ function Showmodalgiohang(data) {
         total+=(gia * data[i].soluong)
 
         span+='  <tr>\n' +
-            ' <td width="25%"><img class="w-100" style="width: 100%;" src="' + asset + '/' + img + '"></td>\n' +
+            ' <td width="25%"><img class="w-100" style="width: 100%; height: 80px; object-fit: cover;" src="' + asset + '/' + img + '"></td>\n' +
             ' <td width="30%">\n' +
             ' <span style="font-size: 11pt;">'+ten+'</span> <br>\n' +
             ' <span class="font-weight-bold" style="font-size: 10pt;"><i class="fa fa-close"></i> '+data[i].ml+'ml</span>\n' +
@@ -196,7 +196,7 @@ function Showmodalgiohang(data) {
             ' <i class="fa fa-minus"></i>\n' +
             ' </button>\n' +
             ' </div>\n' +
-            ' <input class="form-control text-center quantity" id="slspn'+data[i].id+'" onkeyup="SoLuong('+data[i].id+')" min="1" max="'+data[i].tonkho+'" name="quantity" value="'+data[i].soluong+'" type="number">\n' +
+            ' <input class="form-control text-center quantity bg-white" id="slspn'+data[i].id+'" onkeyup="SoLuong('+data[i].id+')" min="1" max="'+data[i].tonkho+'" name="quantity" value="'+data[i].soluong+'" type="number" disabled>\n' +
             ' <div class="input-group-append">\n' +
             ' <button class="btn-plus btn-cal rounded-right" onclick="TangSoLuong('+data[i].id+')">\n' +
             ' <i class="fa fa-plus"></i>\n' +
@@ -396,6 +396,7 @@ function SoLuong(id) {
                 // console.log(data)
             }
         });
+        showGioHang();
     }
 
 }
