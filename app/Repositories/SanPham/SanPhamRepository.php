@@ -22,6 +22,7 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             )
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id" )
             ->where('sanpham.trangthai', '=', 1)
+            ->orderBy('sanpham.id', 'DESC')
             ->get();
     }
 

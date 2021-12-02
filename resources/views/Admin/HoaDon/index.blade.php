@@ -48,7 +48,10 @@
                                             <strong>SĐT: </strong> {{$hd->sodienthoai}}
                                             <br>
                                             @if(isset($hd->idgiamgia))
-                                                <?php $giamgia = \Illuminate\Support\Facades\DB::table('giamgia')->select('*')->where('id', '=', $hd->idgiamgia)->get();?>
+                                                <?php $giamgia = \Illuminate\Support\Facades\DB::table('giamgia')
+                                                    ->select('*')
+                                                    ->where('id', '=', $hd->idgiamgia)
+                                                    ->get();?>
                                                 <strong>Mã giảm giá: </strong> {{$giamgia[0]->ma}}
                                                 <br>
                                                 <strong>Mô tả: </strong> {{$giamgia[0]->name}}
@@ -72,7 +75,7 @@
                                             <br>
                                             <strong>Giờ: </strong> {{date_format(date_create($hd->created_at), "H:i:s")}}
                                             <br>
-                                           
+
                                         </td>
                                         <td><a href="{{route("hoadonchitiet.show",$hd->id)}}" class="btn btn-primary mb-2" data-toggle="tooltip" data-placement="right" title="Xem hóa đơn" ><i
                                                     class="fa fa-eye"  style="color: white;"></i></a> <br>
