@@ -15,6 +15,7 @@ use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\DichVu\DichVuRepository;
+use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
@@ -48,6 +49,8 @@ class HomeController extends Controller
     private $HoaDon;
     private $HoaDonChiTiet;
     private $Blog;
+    private $DonHang;
+    private $LieuTrinh;
 
     /**
      * CosoController constructor.
@@ -67,7 +70,8 @@ class HomeController extends Controller
         LienHeRepository $LienHe,
         LieuTrinhChiTietRepository $LieuTrinhChiTiet,
         HoaDonRepository $HoaDon,
-        HoaDonChiTietRepository $HoaDonChiTiet
+        HoaDonChiTietRepository $HoaDonChiTiet,
+        DonHangRepository $DonHang
     )
     {
         $this->freeSMSController = new freeSMSController;
@@ -91,7 +95,7 @@ class HomeController extends Controller
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
         $this->HoaDon = $HoaDon;
         $this->HoaDonChiTiet = $HoaDonChiTiet;
-
+        $this->DonHang=$DonHang;
         $this->data = array(
             'danhmuc' => $danhmuc,
             'listCoSo' => $listCoSo,
@@ -253,13 +257,6 @@ class HomeController extends Controller
             $detail['viewdt'] = $viewdt;
 
         }
-        // $updateView = $this->Blog-> updateView($id);
-
-        // $this->data['updateView']= $updateView;
-        // $Blog = [
-        //     'luotxem' =>$request-> luotxem,
-        // ];
-
 
         $this->data['getBlog2'] = $getBlog2;
         $this->data['danhmuc'] = $danhmuc;
@@ -384,17 +381,14 @@ class HomeController extends Controller
         } else {
             $this->data['dataLieuTrinh'] = [];
         }
+        $this->data['donhangcuatoi']=$this->DonHang->DonHanCuaBanALL();
+        $this->data['donhangcuatoi1']=$this->DonHang->DonHanCuaBan(self::DONHANG_CHOXACNHAN);
+        $this->data['donhangcuatoi2']=$this->DonHang->DonHanCuaBan(self::DONHANG_DANGGIAO);
+        $this->data['donhangcuatoi3']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAGIAO);
+        $this->data['donhangcuatoi4']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAHUY);
+        $this->data['donhangcuatoi5']=$this->DonHang->DonHanCuaBan(self::DONHANG_TRAHANG);
         return view("Site.pages.profile-user", $this->data);
 
-        // if (session()->has('khachHang') && session('khachHang') != '') {
-        //     if ($this->HoaDon->CheckHoaDonByIdKhachHang(session('khachHang')->id) == false){
-        //         $hoadon=$this->HoaDon->findHoaDonByIdKhachHang(session('khachHang')->id);
-        //     }
-        //     return view("Site.pages.profile-user", $this->data, ["inhoadon"=>$hoadon]);
-        // }
-        // else{
-        //     return view("Site.pages.profile-user", $this->data);
-        // }
     }
 
     public function getLieuTrinhDetailByIdLieuTrinh($id)
