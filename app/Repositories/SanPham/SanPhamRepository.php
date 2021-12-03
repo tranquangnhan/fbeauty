@@ -49,8 +49,53 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
         ->orderBy('created_at', 'DESC')
         ->get();
     }
+    public function getsanpham1(){
+        return $this->model
+        ->where('sanpham.trangthai', '=', 1)
+        ->orderBy('id', 'DESC')
+        ->get();
+    }
     public function searchsanpham($valueSearch){
         return $this->model->where('name','LIKE','%'.$valueSearch.'%')->get();
+    }
+
+    public function getSanPhamHome(){
+        return $this->model->select('sanpham.*', 'danhmuc.name AS tendm',
+            DB::raw('(select dongia from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as dongia'),
+            DB::raw('(select ml from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as thetich'),
+            DB::raw('(select id from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as idspct')
+        )
+            ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
+            ->where('sanpham.trangthai', "=", 1)
+            ->orderBy("sanpham.id","DESC")
+            ->limit(4)
+            ->get();
+    }
+
+    public function GetSanPhamLienQuan($id){
+        return $this->model->select('sanpham.*', 'danhmuc.name AS tendm',
+            DB::raw('(select dongia from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as dongia'),
+            DB::raw('(select ml from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as ml'),
+            DB::raw('(select id from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as idspct')
+        )
+            ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
+            ->where('sanpham.iddanhmuc', $id)
+            ->where('sanpham.trangthai', 1)
+            ->limit(4)
+            ->get();
+    }
+
+    public function GetSanPhamLienQuanKhacIDDM($id){
+        return $this->model->select('sanpham.*', 'danhmuc.name AS tendm',
+            DB::raw('(select dongia from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as dongia'),
+            DB::raw('(select ml from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as ml'),
+            DB::raw('(select id from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as idspct')
+        )
+            ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
+            ->where('sanpham.iddanhmuc', '!=', $id)
+            ->where('sanpham.trangthai', 1)
+            ->limit(4)
+            ->get();
     }
 
 

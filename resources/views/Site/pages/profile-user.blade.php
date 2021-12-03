@@ -64,9 +64,11 @@
                                             </div>
 
                                             <div class="body-tab">
+                                                <form action="{{URL::to("/updateprofile")}}" id="form_prof" class="mt-4 thongtintaikhoan" method="post" enctype="multipart/form-data">
                                                 <div class="row">
+
                                                     <div class="col-xl-8">
-                                                        <form action="" class="mt-4 thongtintaikhoan">
+                                                            @csrf
                                                             <div class="form-group form-control-custom">
                                                                 <div class="left">Số điện thoại</div>
                                                                 <div class="right">
@@ -77,14 +79,20 @@
                                                             <div class="form-group form-control-custom mt-0">
                                                                 <div class="left">Họ & tên</div>
                                                                 <div class="right">
-                                                                    <input type="text" class="form-control form-custom" name="" placeholder="Email của bạn" id="" value="Hoàng Thùy Linh">
+                                                                    <input type="text" class="form-control form-custom" name="username" placeholder="Họ và tên" id="username" value="<?php echo(session()->get("khachHang")->name!="")?session()->get("khachHang")->name:"";?>">
+                                                                    @error('username')
+                                                                    <span class='badge badge-danger'>{{ $message }}</span>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group form-control-custom">
                                                                 <div class="left">Email</div>
                                                                 <div class="right">
-                                                                    <input type="text" class="form-control form-custom" name="" placeholder="Email của bạn" id="">
+                                                                    <input type="email" class="form-control form-custom" value="<?php echo(session()->get("khachHang")->email!="")?session()->get("khachHang")->email:"";?>" name="email" placeholder="Email của bạn" id="email">
+                                                                    @error('email')
+                                                                    <span class='badge badge-danger'>{{ $message }}</span>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
 
@@ -92,14 +100,55 @@
                                                                 <div class="left">Mức độ thân thiết</div>
                                                                 <div class="right">
                                                                     <div class="row align-items-center">
+                                                                        @if(session()->has('khachHang') && session('khachHang') != '')
+                                                                            @if((int)session()->get('khachHang')->exp <= 5000000)
                                                                         <div class="col-6">
-                                                                            <div class="progress" style="height: 7px">
-                                                                                <div class="progress-bar progress-level" role="progressbar" price-value="10000" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                            <div class="progress" style="height: 7px;">
+                                                                                <div class="progress-bar progress-level" role="progressbar" price-value="5000000" style="width: <?php echo ((int)session()->get('khachHang')->exp/5000000)*100;?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-6">
                                                                             <span>LV 1</span>
                                                                         </div>
+                                                                                @elseif((int)session()->get('khachHang')->exp <= 10000000)
+                                                                                <div class="col-6">
+                                                                                    <div class="progress" style="height: 7px;">
+                                                                                        <div class="progress-bar progress-level" role="progressbar" price-value="10000000" style="width: <?php echo ((int)session()->get('khachHang')->exp/10000000)*100;?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6">
+                                                                                    <span>LV 2</span>
+                                                                                </div>
+
+                                                                                @elseif((int)session()->get('khachHang')->exp <= 50000000)
+                                                                                <div class="col-6">
+                                                                                    <div class="progress" style="height: 7px;">
+                                                                                        <div class="progress-bar progress-level" role="progressbar" price-value="50000000" style="width: <?php echo ((int)session()->get('khachHang')->exp/50000000)*100;?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6">
+                                                                                    <span>LV 3</span>
+                                                                                </div>
+                                                                            @elseif((int)session()->get('khachHang')->exp <= 100000000)
+                                                                                <div class="col-6">
+                                                                                    <div class="progress" style="height: 7px;">
+                                                                                        <div class="progress-bar progress-level" role="progressbar" price-value="100000" style="width: <?php echo ((int)session()->get('khachHang')->exp/100000000)*100;?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6">
+                                                                                    <span>LV 4</span>
+                                                                                </div>
+                                                                            @elseif((int)session()->get('khachHang')->exp >= 100000000)
+                                                                                <div class="col-6">
+                                                                                    <div class="progress" style="height: 7px;">
+                                                                                        <div class="progress-bar progress-level" role="progressbar" price-value="100000" style="width: 100%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6">
+                                                                                    <span class="text-warning font-weight-bold">VIP <i class='fas fa-crown'></i></span>
+                                                                                </div>
+                                                                                @endif
+                                                                            @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -125,9 +174,11 @@
                                                                                             <div class="modal-body noidung-uu-dai">
                                                                                                 <nav class="fa-link-tabs">
                                                                                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                                                                        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Level 1 | 1.000.000 đ</a>
-                                                                                                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Level 2 | 5.000.000 đ</a>
-                                                                                                        <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Level 3 | 10.000.000 đ</a>
+                                                                                                        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Level 1 | 5.000.000 đ</a>
+                                                                                                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Level 2 | 10.000.000 đ</a>
+                                                                                                        <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Level 3 | 50.000.000 đ</a>
+                                                                                                        <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact1" role="tab" aria-controls="nav-contact1" aria-selected="false">Level 4 | 100.000.000 đ</a>
+                                                                                                        <a class="nav-link text-warning font-weight-bold" id="nav-contact-tab" data-toggle="tab" href="#nav-contact2" role="tab" aria-controls="nav-contact2" aria-selected="false">VIP<i class='fas fa-crown'></i> | (Hơn) 100.000.000 đ</a>
                                                                                                     </div>
                                                                                                   </nav>
                                                                                                 <div class="tab-content" id="nav-tabContent">
@@ -148,7 +199,7 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Quà tặng sinh nhật</div>
-                                                                                                                <div class="text-gray">1 x Vocher mua hàng 100k vào sinh nhật</div>
+                                                                                                                <div class="text-gray">1 x Voucher mua hàng 100k vào sinh nhật</div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -159,7 +210,7 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Giảm giá dịch vụ</div>
-                                                                                                                <div class="text-gray">Giảm 8% tổng hóa đơn khi sử dụng dịch vụ spa</div>
+                                                                                                                <div class="text-gray">Giảm 5% tổng hóa đơn khi sử dụng dịch vụ spa</div>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -168,8 +219,8 @@
                                                                                                                 <img src="{{ asset('Site/images/icon') }}/confetti.png" alt="">
                                                                                                             </div>
                                                                                                             <div class="text">
-                                                                                                                <div class="title">Quà tặng sinh nhật</div>
-                                                                                                                <div class="text-gray">2 x Vocher 500k vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                                <div class="title">Quà tặng sinh nhật khách hàng</div>
+                                                                                                                <div class="text-gray">1 x Voucher 500k vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -179,7 +230,7 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Ngày hội thành viên</div>
-                                                                                                                <div class="text-gray">15 hàng tháng, vocher hạng 2</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, voucher hạng 2</div>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -201,7 +252,7 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Quà tặng sinh nhật</div>
-                                                                                                                <div class="text-gray">3 x Vocher 500k vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                                <div class="text-gray">1 x Voucher 1 triệu đồng vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -211,7 +262,88 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Ngày hội thành viên</div>
-                                                                                                                <div class="text-gray">15 hàng tháng, vocher hạng 3</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, voucher hạng 3</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="tab-pane fade" id="nav-contact1" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/massage-1.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Giảm giá dịch vụ</div>
+                                                                                                                <div class="text-gray">Giảm 25% tổng hóa đơn khi sử dụng dịch vụ spa</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/confetti.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sinh nhật khách hàng</div>
+                                                                                                                <div class="text-gray">1 x Voucher 5 triệu đồng vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/vip.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Ngày hội thành viên</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, voucher hạng 4</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/gifft.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sản phẩm</div>
+                                                                                                                <div class="text-gray">Bộ sản phẩm làm đẹp trị giá 10 triệu đồng</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                    <div class="tab-pane fade" id="nav-contact2" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/massage-1.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Giảm giá dịch vụ</div>
+                                                                                                                <div class="text-gray">Giảm 30% tổng hóa đơn khi sử dụng dịch vụ spa</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/confetti.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sinh nhật</div>
+                                                                                                                <div class="text-gray">1 x Voucher 10 triệu đồng vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/vip.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Ngày hội thành viên</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, voucher hạng VIP</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/gifft.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sản phẩm</div>
+                                                                                                                <div class="text-gray">Bộ sản phẩm làm đẹp trị giá 15 triệu đồng</div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -224,8 +356,25 @@
                                                                                         </div>
                                                                                       </div>
                                                                                 </div>
-                                                                                <div class="money-progress"><span class="current-money">1.255.000 đ</span> / 5tr đ</div>
-                                                                                <small>Mua thêm <b>3.745.000 đ </b>để đạt LV 2</small>
+                                                                                @if(session()->has('khachHang') && session('khachHang') != '')
+                                                                                    @if((int)session()->get('khachHang')->exp <= 5000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / 5tr đ</div>
+                                                                                        <small>Mua thêm <b>{{str_replace(",", ".", number_format(5000000 - (int)session()->get('khachHang')->exp))}} đ </b>để đạt LV 2</small>
+                                                                                    @elseif((int)session()->get('khachHang')->exp <= 10000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / 10tr đ</div>
+                                                                                        <small>Mua thêm <b>{{str_replace(",", ".", number_format(10000000 - (int)session()->get('khachHang')->exp))}} đ </b>để đạt LV 3</small>
+
+                                                                                    @elseif((int)session()->get('khachHang')->exp <= 50000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / 50tr đ</div>
+                                                                                        <small>Mua thêm <b>{{str_replace(",", ".", number_format(50000000 - (int)session()->get('khachHang')->exp))}} đ </b>để đạt LV 4</small>
+                                                                                    @elseif((int)session()->get('khachHang')->exp <= 100000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / 100tr đ</div>
+                                                                                        <small>Mua thêm <b>{{str_replace(",", ".", number_format(100000000 - (int)session()->get('khachHang')->exp))}} đ </b>để đạt VIP</small>
+                                                                                    @elseif((int)session()->get('khachHang')->exp >= 100000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / (Hơn)100tr đ</div>
+                                                                                        <span class="text-warning font-weight-bold">Tài khoản VIP</span>
+                                                                                    @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -235,21 +384,21 @@
                                                             <div class="form-group form-control-custom">
                                                                 <div class="left"></div>
                                                                 <div class="right">
-                                                                    <a href="">
-                                                                        <button class="btn-6 ml-0">
+                                                                    <a href="javascript:void(0)">
+                                                                        <button type="submit" class="btn-6 ml-0">
                                                                             Lưu
                                                                         </button>
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                        </form>
+
                                                     </div>
                                                     <div class="col-xl-4">
                                                         <div class="change-avt-box mt-4">
-                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                            <img style="width: 100%; height: 150px; object-fit: contain;" id="imageA" src="{{ asset('uploads/khachhang') }}/<?php echo(session()->get('khachHang')->img!="")?session()->get('khachHang')->img:"photo-1637427933.jpg";?>" alt="">
                                                             <div class="form-group-image">
                                                                 <label for="ip-avt" class="form-control form-custom">Chọn ảnh</label>
-                                                                <input type="file" name="" id="ip-avt">
+                                                                <input type="file" name="urlHinh" id="ip-avt">
                                                             </div>
                                                             <div class="quydinh d-flex flex-column">
                                                                 <span class="text-gray">Dụng lượng file tối đa 1 MB</span>
@@ -258,6 +407,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -290,11 +440,15 @@
                                                 <div class="tab-pane fade show active" id="alldonhang" role="tabpanel" aria-labelledby="alldonhang-tab">
                                                      @if(session()->has('khachHang') && session('khachHang') != '')
                                                          <?php
-                                                        $checkdonhang=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->doesntExist();
+                                                        $checkdonhang=\Illuminate\Support\Facades\DB::table("donhang")
+                                                            ->where("idkhachhang", session()->get('khachHang')->id)
+                                                            ->doesntExist();
                                                         ?>
                                                         @if($checkdonhang == false)
                                                                  <?php
-                                                                 $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->orderBy("id", "DESC")->get();
+                                                                 $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")
+                                                                     ->where("idkhachhang", session()->get('khachHang')->id)
+                                                                     ->orderBy("id", "DESC")->get();
                                                                  ?>
                                                              @foreach($donhangcuatoi as $indexstt =>$donhangofme)
                                                     <div class="box-donhang profile-minibox mt-4">
@@ -390,7 +544,9 @@
                                                         </div>
                                                         <div class="giohang-body">
                                                             <?php
-                                                            $checkdhct=\Illuminate\Support\Facades\DB::table("donhangchitiet")->where("iddonhang", $donhangofme->id)->doesntExist();
+                                                            $checkdhct=\Illuminate\Support\Facades\DB::table("donhangchitiet")
+                                                                ->where("iddonhang", $donhangofme->id)
+                                                                ->doesntExist();
                                                             ?>
                                                             @if($checkdhct==false)
                                                                 <?php
@@ -2756,6 +2912,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.9.2/js/uikit.min.js"></script>
     <script src="{{ asset('Site/js') }}/profile-user.js"></script>
     <script>
+        $("#form_prof").validate({
+            rules: {
+                username: {required: true, maxlength: 45, minlength: 3},
+                email: {required: true, email: true}
+            },
+            messages: {
+                username: {
+                    required: "<span class='badge badge-danger'>Mời bạn nhập tên</span>",
+                    maxlength: "<span class='badge badge-danger'>Tên dài quá, phải <25 ký tự </span>",
+                    minlength: "<span class='badge badge-danger'>Tên ngắn quá, phải >3 ký tự </span>"
+                },
+                email:{
+                    required: "<span class='badge badge-danger'>Mời bạn nhập email</span>",
+                    email: "<span class='badge badge-danger'>Không đúng định dạng email</span>"
+                }
+            }
+        });
+
+        document.getElementById("ip-avt").onchange = function () {
+
+            var ListImages = document.getElementById("ip-avt").files;
+            if (ListImages.length > 0) {
+
+                var filetoload = ListImages[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var srcData = e.target.result;
+                    var newIMG = document.createElement('img');
+                    newIMG.src = srcData;
+                    document.getElementById("imageA").src = srcData;
+                };
+                //
+                // // read the image file as a data URL.
+                reader.readAsDataURL(filetoload);
+            }
+        };
 
         function HuyDatHang(id) {
             Swal.fire({

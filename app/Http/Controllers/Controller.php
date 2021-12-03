@@ -29,6 +29,7 @@ class Controller extends BaseController
     const TRANGTHAI_HOADON_DA_THANH_TOAN = 1;
     const TRANGTHAI_HOADON_CHUA_THANH_TOAN = 0;
     const TRANGTHAI_DONHANG_DA_NHAN = 4;
+    const TRANGTHAI_DICHVU_HIEN = 1;
 
     /**
      * ID_LIENQUAN_SP=1 LÀ SẢN PHẨM
@@ -75,12 +76,24 @@ class Controller extends BaseController
      */
     public function checkImg($extension, $img)
     {
-        $allowedfileExtension = ['jpg', 'png', 'gif'];
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
         $check = in_array($extension, $allowedfileExtension);
         if (!$check) {
             return false;
         } else {
             $img->move(self::BASE_URL_UPLOAD_STAFF, $img->getClientOriginalName());
+            return true;
+        }
+    }
+
+    public function checkImgCustomer($extension, $img)
+    {
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
+        $check = in_array($extension, $allowedfileExtension);
+        if (!$check) {
+            return false;
+        } else {
+            $img->move(self::BASE_URL_UPLOAD_CUSTOMER, $img->getClientOriginalName());
             return true;
         }
     }
@@ -123,7 +136,7 @@ class Controller extends BaseController
     }
     // function unique slug
     public function setSlugStore($model,$name){
-        
+
         $data = $model->getAll()->sortByDesc('id')->first();
         $slug = Str::slug($name) . '-' .$data->id + 1;
 
@@ -131,7 +144,7 @@ class Controller extends BaseController
     }
 
     public function setSlugUpdate($id,$name){
-        $slug = Str::slug($name) . '-' . $id; 
+        $slug = Str::slug($name) . '-' . $id;
         return $slug;
     }
 
