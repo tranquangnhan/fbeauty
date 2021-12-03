@@ -15,6 +15,11 @@ class installSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('banner')->insert([
+            ['id'=>1,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-01.jpg', 'AnHien'=>0],
+            ['id'=>1,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-01.jpg', 'AnHien'=>0]
+        ]);
+
         DB::table('coso')->insert([
             ['id'=>1,'name'=>'Cơ sở 1','diachi'=> '55A – Đường 3/2 – Phường 11 – Quận 10 – TP. Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
             ['id'=>2,'name'=>'Cơ sở 2','diachi'=> '18A Ngô Văn Năm, Quận 1, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],

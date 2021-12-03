@@ -62,7 +62,7 @@ function xuLiReplaceDataSanPham(thisz) {
     let giamgia=thisz.attr('data-giamgia');
     let soluotmua = thisz.attr('data-soluotmua');
     let formatGia = new Intl.NumberFormat('en-US', { style: 'decimal' }).format(gia) + ' đ';
-    $('.giasanpham').html(formatGia);
+    $('.giasanpham').html(formatGia.replaceAll(',', '.'));
     $('.tonkho').html(kho);
     $('.soluotmua').html(soluotmua);
     $('.dungtich-ml').html(ml + 'ml');
@@ -70,7 +70,7 @@ function xuLiReplaceDataSanPham(thisz) {
     $('#tonkho').val(kho);
     $('#idsanpham').val(id);
     if (giamgia !=null){
-        $('.giamgiasanpham').html((Number(gia) - ((Number(gia)*(Number(giamgia)))/100)).toLocaleString())
+        $('.giamgiasanpham').html((Number(gia) - ((Number(gia)*(Number(giamgia)))/100)).toLocaleString().replaceAll(',', '.'))
     }
     thisz.addClass('active');
 }

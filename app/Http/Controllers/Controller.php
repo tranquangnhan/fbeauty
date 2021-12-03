@@ -30,7 +30,7 @@ class Controller extends BaseController
     const TRANGTHAI_HOADON_CHUA_THANH_TOAN = 0;
     const TRANGTHAI_DONHANG_DA_NHAN = 4;
     const TRANGTHAI_DICHVU_HIEN = 1;
-
+    const TRANGTHAI_SANPHAM = 1;//HIỆN
     /**
      * ID_LIENQUAN_SP=1 LÀ SẢN PHẨM
      * ID_LIENQUAN_DV=0 LÀ DỊCH VỤ
@@ -59,6 +59,14 @@ class Controller extends BaseController
     const DONHANG_TRAHANG=4;
     /**
     End trạng thái đơn hàng
+     */
+    /**
+    Trạng thái hóa đơn
+     */
+    const DONHANG_TYPE_DICHVU=0;
+    const DONHANG_TYPE_SANPHAM=1;
+    /**
+    End trạng thái hóa đơn
      */
 
     function uploadSingle($path,$file){
