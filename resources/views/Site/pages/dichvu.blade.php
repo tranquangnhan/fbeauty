@@ -43,7 +43,7 @@
 
                             @foreach ($itemdichvu as $dichvuitem)
                                 <div class="dichvu-item d-plex w-100">
-                                    <div class="content-1">
+                                    <div class="content-1" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvuitem->slug}}';">
                                         <div class="text-7 color-main-1">
                                             {{$dichvuitem->namedm}}
                                         </div>
@@ -97,7 +97,7 @@
                             @foreach ($dichvu1 as $dichvu1item)
 
                             <div class="col-xl-4">
-                                <div class="item-dichvu-2">
+                                <div class="item-dichvu-2" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvu1item->slug}}';">
                                     <div class="dichvu-header">
                                         <div class="box-danhmuc-small">
                                             <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
@@ -116,7 +116,7 @@
                                             <span class="gia">{{number_format($dichvu1item->dongia)}} đ </span>
                                         </div>
                                         <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                            <a href="{{ asset('dich-vu') }}/{{$dichvu1item->slug}}"> {{$dichvu1item->name}}</a>
+                                            {{$dichvu1item->name}}
                                         </div>
 
                                         <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
@@ -155,7 +155,7 @@
                                  $dongia2 = $dichvu2item->dongia - $dichvu2item->maxgg;
                                 @endphp
                                 <div class="col-xl-4">
-                                    <div class="item-dichvu-2">
+                                    <div class="item-dichvu-2" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvu2item->slug}}';">
                                         <div class="dichvu-header">
                                             <div class="box-danhmuc-small">
                                                 <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
@@ -181,7 +181,7 @@
                                                 </span>
                                             </div>
                                             <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                                <a href="{{ asset('dich-vu') }}/{{$dichvu2item->slug}}">{{$dichvu2item->name}}</a>
+                                                {{$dichvu2item->name}}
                                             </div>
 
                                             <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
