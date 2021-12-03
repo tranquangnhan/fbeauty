@@ -298,7 +298,7 @@ class HomeController extends Controller
     public function viewTimKiem()
     {
         $dichvu = $this->Dichvu->getAllDichVu();
-        $sanpham = $this->SanPham->getsanpham1();
+        $sanpham = $this->SanPham->getsanphamtimkiem();
         $blog = $this->Blog->getAllBlog();
 
         $this->data['dichvu'] = $dichvu;

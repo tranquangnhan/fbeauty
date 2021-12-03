@@ -271,9 +271,7 @@
                                                     </a>
                                                     </div>
                                                 <div class="text-1 limit-text-row-1 mt-4">
-                                                    <a href="{{ asset('dich-vu') }}/{{$item->slug}}">
                                                         {{$item->name}}
-                                                    </a>
                                                 </div>
 
                                                 <p class="text-2 limit-text-row-3 mt-1 mt-3">

@@ -51,9 +51,10 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
         ->orderBy('created_at', 'DESC')
         ->get();
     }
-    public function getsanpham1(){
-        return $this->model
+    public function getsanphamtimkiem(){
+        return $this->model->select('sanpham.*', 'sanphamchitiet.dongia AS dongiasp')
         ->where('sanpham.trangthai', '=', Controller::TRANGTHAI_SANPHAM)
+        ->join("sanphamchitiet", "sanphamchitiet.idsanpham", "=", "sanpham.id")
         ->orderBy('id', 'DESC')
         ->get();
     }
