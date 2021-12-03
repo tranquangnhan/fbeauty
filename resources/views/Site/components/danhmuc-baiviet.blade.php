@@ -6,10 +6,10 @@
 
     </div>
     <div class="list-dm-blog list-danhmuc mt-4">
-        @foreach ($danhmuc as $item)
-            
+        @foreach ($listDanhMucBlog as $item)
+
         <div class="danhmuc-item" style="background: url('{{ asset('uploads/')}}/{{$item->img}}')">
-            <a href="#" class="d-flex justify-content-between">
+            <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="d-flex justify-content-between">
                 <span class="name">{{$item->name}}</span>
             </a>
         </div>

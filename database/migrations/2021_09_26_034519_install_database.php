@@ -38,6 +38,15 @@ class InstallDatabase extends Migration
         Schema::dropIfExists('giohangchitiet');
         Schema::dropIfExists('lienhe');
 
+        Schema::create('banner', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('tieude',50)->nullable();
+            $table->string('noidung',100)->nullable();
+            $table->string('img',255);
+            $table->boolean('AnHien')->default(0);
+            $table->timestamps();
+        });
+
         Schema::create('danhmuc', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',255);

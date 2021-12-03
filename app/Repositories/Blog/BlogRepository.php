@@ -3,6 +3,7 @@
 
 namespace App\Repositories\Blog;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog;
 use App\Http\Requests\BlogEdit;
 use Carbon\Carbon;
@@ -148,4 +149,13 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         ->orderBy('created_at', 'DESC')
         ->get();
     }
+    // public function getBlogByIdDanhMuc($idDanhMuc, $limit){
+    //     return $this->model->select('dichvu.*','danhmuc.name as namedm','danhmuc.id as iddanhmuc','danhmuc.slug as slugdm')
+    //     ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+    //     ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
+    //     ->where('danhmuc.loai', '=', Controller::LOAI_DANHMUC_DICHVU)
+    //     ->where('dichvu.iddm', '=', $idDanhMuc)
+    //     ->limit($limit)
+    //     ->get();
+    // }
 }

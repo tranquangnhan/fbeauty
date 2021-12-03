@@ -17,7 +17,8 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
         return HoaDonModel::class;
     }
     public function ShowHoaDonByIdCoso($id){
-        return  $this->model->select('hoadon.*', 'khachhang.name AS tenKh', 'khachhang.sdt AS sodienthoai', 'coso.name AS tencoso', 'nhanvien.name AS tenNV', 'nhanvien.email AS emailNV')
+        return  $this->model->select('hoadon.*', 'khachhang.name AS tenKh', 'khachhang.sdt AS sodienthoai',
+            'coso.name AS tencoso', 'nhanvien.name AS tenNV', 'nhanvien.email AS emailNV')
             ->join('khachhang', 'hoadon.idkhachhang', '=', 'khachhang.id')
             ->join('coso', 'hoadon.idcoso', '=', 'coso.id')
             ->join('nhanvien', 'hoadon.idnhanvien', '=', 'nhanvien.id')

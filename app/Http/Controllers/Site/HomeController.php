@@ -15,6 +15,7 @@ use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\DichVu\DichVuRepository;
+use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
@@ -48,6 +49,8 @@ class HomeController extends Controller
     private $HoaDon;
     private $HoaDonChiTiet;
     private $Blog;
+    private $DonHang;
+    private $LieuTrinh;
 
     /**
      * CosoController constructor.
@@ -67,7 +70,8 @@ class HomeController extends Controller
         LienHeRepository $LienHe,
         LieuTrinhChiTietRepository $LieuTrinhChiTiet,
         HoaDonRepository $HoaDon,
-        HoaDonChiTietRepository $HoaDonChiTiet
+        HoaDonChiTietRepository $HoaDonChiTiet,
+        DonHangRepository $DonHang
     )
     {
         $this->freeSMSController = new freeSMSController;
@@ -89,7 +93,7 @@ class HomeController extends Controller
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
         $this->HoaDon = $HoaDon;
         $this->HoaDonChiTiet = $HoaDonChiTiet;
-
+        $this->DonHang=$DonHang;
         $this->data = array(
             'danhmuc' => $danhmuc,
             'listCoSo' => $listCoSo,
@@ -199,6 +203,8 @@ class HomeController extends Controller
         $luotxem = $this->Blog->getblogbyView();
         $listdanhmuc = $this->DanhMuc->getAll();
         $listdanhmuc2 = $this->DanhMuc->getall2danhmuc();
+        $this->getDanhMucVaBlog();
+
         foreach ($listdanhmuc as $dm) {
             $skip = 0;
             $take = 6;
@@ -245,18 +251,12 @@ class HomeController extends Controller
         $danhmuc = $this->DanhMuc->getAllDanhMuc();
         $viewdetail = $this->Blog->editBlog($slug);
         $viewdetail2 = $this->Blog->editBlog($slug);
+        $this->getDanhMucVaBlog();
         foreach ($viewdetail2 as $detail) {
             $viewdt = $this->Blog->getblogbyiddm3($detail->iddm);
             $detail['viewdt'] = $viewdt;
 
         }
-        // $updateView = $this->Blog-> updateView($id);
-
-        // $this->data['updateView']= $updateView;
-        // $Blog = [
-        //     'luotxem' =>$request-> luotxem,
-        // ];
-
 
         $this->data['getBlog2'] = $getBlog2;
         $this->data['danhmuc'] = $danhmuc;
@@ -394,6 +394,12 @@ class HomeController extends Controller
         } else {
             $this->data['dataLieuTrinh'] = [];
         }
+        $this->data['donhangcuatoi']=$this->DonHang->DonHanCuaBanALL();
+        $this->data['donhangcuatoi1']=$this->DonHang->DonHanCuaBan(self::DONHANG_CHOXACNHAN);
+        $this->data['donhangcuatoi2']=$this->DonHang->DonHanCuaBan(self::DONHANG_DANGGIAO);
+        $this->data['donhangcuatoi3']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAGIAO);
+        $this->data['donhangcuatoi4']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAHUY);
+        $this->data['donhangcuatoi5']=$this->DonHang->DonHanCuaBan(self::DONHANG_TRAHANG);
         return view("Site.pages.profile-user", $this->data);
     }
 
@@ -410,6 +416,21 @@ class HomeController extends Controller
 
         $this->data['listDanhMuc'] = $listDanhMuc;
         $this->data['arrDichVu'] = $arrDichVu;
+    }
+    public function getDanhMucVaBlog() {
+        $skip = 0;
+        $task = 6;
+        $limit = 6;
+        $listDanhMucBlog = $this->DanhMuc->getDanhMucLimitBlog($limit);
+
+        $arrBlog = array();
+        foreach ($listDanhMucBlog as $item) {
+            $BlogByIdDanhMuc = $this->Blog->getBlogByIdDanhmuc($item->id, $skip, $task);
+            $arrBlog[] = $BlogByIdDanhMuc;
+        }
+// dd($arrBlog);
+        $this->data['listDanhMucBlog'] = $listDanhMucBlog;
+        $this->data['arrBlog'] = $arrBlog;
     }
     public function getDanhMucVaDichVu() {
         $limit = 4;

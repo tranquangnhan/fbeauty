@@ -215,7 +215,7 @@ class HoaDonController extends Controller
                 'idlieutrinh' => $lieuTrinh->id,
                 'tongtientruocgiamgia' => $tongtien,
                 'tongtiensaugiamgia' => $tongtien,
-                'trangthai' => 1,
+                'trangthai' => Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN,
                 'ghichu' => $lieuTrinh->ghichu
             ];
 
@@ -245,13 +245,13 @@ class HoaDonController extends Controller
         $hoadon=$this->hoadon->find($id);
         if ($hoadon->trangthai == 0){
             $tt=[
-                "trangthai"=>1
+                "trangthai"=>Controller::TRANGTHAI_HOADON_DA_THANH_TOAN
             ];
             $this->hoadon->update($id, $tt);
         }
         else{
             $tt=[
-                "trangthai"=>0
+                "trangthai"=>Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN
             ];
             $this->hoadon->update($id, $tt);
         }
