@@ -52,5 +52,22 @@ class DonHangRepository extends BaseRepository implements DonHangRepositoryInter
         ->sum('tongtiensaugiamgia');
     }
 
+    public function DonHanCuaBan($idtrangthai){
+            return $this->model
+                ->select("*")
+                ->where("trangthai",$idtrangthai)
+                ->where("idkhachhang", "=",session()->get('khachHang')->id)
+                ->orderBy("id", "DESC")
+                ->get();
+        }
+    public function DonHanCuaBanALL(){
+        return $this->model
+            ->select("*")
+            ->where("idkhachhang", "=",session()->get('khachHang')->id)
+            ->orderBy("id", "DESC")
+            ->get();
+    }
+
+
 
 }

@@ -49,7 +49,17 @@ class Controller extends BaseController
     // path upload using for uploadSingle and uploadMultipleImg
     const PATH_UPLOADS = 'public';
     const PATH_UPLOADS_KHACHHANG = 'imgKH';
-
+    /**
+    Trạng thái đơn hàng
+     */
+    const DONHANG_CHOXACNHAN=0;
+    const DONHANG_DANGGIAO=1;
+    const DONHANG_DAGIAO=2;
+    const DONHANG_DAHUY=5;
+    const DONHANG_TRAHANG=4;
+    /**
+    End trạng thái đơn hàng
+     */
 
     function uploadSingle($path,$file){
         if($file == null) return null;
