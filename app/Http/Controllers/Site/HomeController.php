@@ -203,6 +203,8 @@ class HomeController extends Controller
         $luotxem = $this->Blog->getblogbyView();
         $listdanhmuc = $this->DanhMuc->getAll();
         $listdanhmuc2 = $this->DanhMuc->getall2danhmuc();
+        $this->getDanhMucVaBlog();
+
         foreach ($listdanhmuc as $dm) {
             $skip = 0;
             $take = 6;
@@ -249,6 +251,7 @@ class HomeController extends Controller
         $danhmuc = $this->DanhMuc->getAllDanhMuc();
         $viewdetail = $this->Blog->editBlog($slug);
         $viewdetail2 = $this->Blog->editBlog($slug);
+        $this->getDanhMucVaBlog();
         foreach ($viewdetail2 as $detail) {
             $viewdt = $this->Blog->getblogbyiddm3($detail->iddm);
             $detail['viewdt'] = $viewdt;
@@ -414,6 +417,21 @@ class HomeController extends Controller
 
         $this->data['listDanhMuc'] = $listDanhMuc;
         $this->data['arrDichVu'] = $arrDichVu;
+    }
+    public function getDanhMucVaBlog() {
+        $skip = 0;
+        $task = 6;
+        $limit = 6;
+        $listDanhMucBlog = $this->DanhMuc->getDanhMucLimitBlog($limit);
+
+        $arrBlog = array();
+        foreach ($listDanhMucBlog as $item) {
+            $BlogByIdDanhMuc = $this->Blog->getBlogByIdDanhmuc($item->id, $skip, $task);
+            $arrBlog[] = $BlogByIdDanhMuc;
+        }
+// dd($arrBlog);
+        $this->data['listDanhMucBlog'] = $listDanhMucBlog;
+        $this->data['arrBlog'] = $arrBlog;
     }
     public function getDanhMucVaDichVu() {
         $limit = 4;
