@@ -26,7 +26,8 @@ class NhanVienRepository extends BaseRepository implements NhanVienRepositoryInt
     {
         $coSo = session()->get('coso');
         return $this->model->select('nhanvien.*', 'coso.name AS coso')
-            ->join('coso', 'nhanvien.idcoso', '=', 'coso.id')->where("nhanvien.idcoso","=",$coSo)
+            ->join('coso', 'nhanvien.idcoso', '=', 'coso.id')
+            ->where("nhanvien.idcoso","=",$coSo)
             ->get();
     }
 
