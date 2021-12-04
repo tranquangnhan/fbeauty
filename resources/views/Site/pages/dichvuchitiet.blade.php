@@ -7,10 +7,8 @@
 @section('main')
 @php
     $dongia1 = 0;
-    $dongia2 = 0;
 
-    $dongia1 = $detaildichvu->dongia - ($detaildichvu->dongia/100 * $detaildichvu->numbergg);
-    $dongia2 = $detaildichvu->dongia - $detaildichvu->maxgg;
+    $dongia1 = $detaildichvu->dongia - ($detaildichvu->dongia/100 * $detaildichvu->giamgia);
 
 @endphp
 <div class="fa-dichvu my-5" style="margin-bottom: 5em !important;">
@@ -25,11 +23,7 @@
                 <div class="box-gia">
                     <span class="giagiam">{{number_format($detaildichvu->dongia)}} đ </span>
                     <span class="gia left-bar">
-                        @if ($detaildichvu->giamgia == 1)
                         {{number_format($dongia1)}} đ
-                        @else
-                        {{number_format($dongia2)}} đ
-                        @endif</span>
                     <span class="name-danhmuc hover-pink left-bar"> {{$detaildichvu->namedm}}</span>
                 </div>
                 <div class="noidungngan mt-4">

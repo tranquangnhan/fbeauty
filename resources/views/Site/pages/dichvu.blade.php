@@ -146,13 +146,11 @@
                         <div class="row">
                             @php
                                 $dongia1 = 0;
-                                $dongia2 = 0;
                             @endphp
 
                             @foreach ($dichvu2 as $dichvu2item)
                                 @php
-                                 $dongia1 = $dichvu2item->dongia - ($dichvu2item->dongia/100 * $dichvu2item->numbergg);
-                                 $dongia2 = $dichvu2item->dongia - $dichvu2item->maxgg;
+                                 $dongia1 = $dichvu2item->dongia - ($dichvu2item->dongia/100 * $dichvu2item->giamgia);
                                 @endphp
                                 <div class="col-xl-4">
                                     <div class="item-dichvu-2" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvu2item->slug}}';">
@@ -173,11 +171,7 @@
                                             <div class="box-gia">
                                                 <span class="giagiam">{{number_format($dichvu2item->dongia)}} đ </span>
                                                 <span class="gia left-bar">
-                                                    @if ($dichvu2item->giamgia == 1)
                                                     {{number_format($dongia1)}} đ
-                                                    @else
-                                                    {{number_format($dongia2)}} đ
-                                                    @endif
                                                 </span>
                                             </div>
                                             <div class="name text-1 limit-text-row-1 px-5 mt-2">

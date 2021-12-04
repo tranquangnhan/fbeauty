@@ -84,9 +84,8 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     }
 
     public function dichvudetail($slug){
-        return $this->model->select('dichvu.*','danhmuc.name as namedm','giamgia.number as numbergg','giamgia.max as maxgg')
+        return $this->model->select('dichvu.*','danhmuc.name as namedm')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
-        ->join('giamgia','giamgia.id','=','dichvu.giamgia')
         ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
         ->where('dichvu.slug', '=', $slug)
         ->first();
