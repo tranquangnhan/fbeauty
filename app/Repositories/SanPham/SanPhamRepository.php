@@ -3,6 +3,7 @@
 
 namespace App\Repositories\SanPham;
 
+use App\Http\Controllers\Controller;
 use App\Repositories\BaseRepository;
 use App\Repositories\SanPham\SanPhamRepositoryInterface;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,8 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             DB::raw('(select id from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as idspct')
             )
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id" )
-            ->where('sanpham.trangthai', '=', 1)
+            ->where('sanpham.trangthai', '=', Controller::TRANGTHAI_SANPHAM)
+            ->orderBy('sanpham.id', 'DESC')
             ->get();
     }
 
@@ -49,9 +51,10 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
         ->orderBy('created_at', 'DESC')
         ->get();
     }
-    public function getsanpham1(){
-        return $this->model
-        ->where('sanpham.trangthai', '=', 1)
+    public function getsanphamtimkiem(){
+        return $this->model->select('sanpham.*', 'sanphamchitiet.dongia AS dongiasp')
+        ->where('sanpham.trangthai', '=', Controller::TRANGTHAI_SANPHAM)
+        ->join("sanphamchitiet", "sanphamchitiet.idsanpham", "=", "sanpham.id")
         ->orderBy('id', 'DESC')
         ->get();
     }
@@ -66,7 +69,7 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             DB::raw('(select id from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as idspct')
         )
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
-            ->where('sanpham.trangthai', "=", 1)
+            ->where('sanpham.trangthai', "=", Controller::TRANGTHAI_SANPHAM)
             ->orderBy("sanpham.id","DESC")
             ->limit(4)
             ->get();
@@ -80,7 +83,7 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
         )
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
             ->where('sanpham.iddanhmuc', $id)
-            ->where('sanpham.trangthai', 1)
+            ->where('sanpham.trangthai', Controller::TRANGTHAI_SANPHAM)
             ->limit(4)
             ->get();
     }
@@ -93,7 +96,7 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
         )
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
             ->where('sanpham.iddanhmuc', '!=', $id)
-            ->where('sanpham.trangthai', 1)
+            ->where('sanpham.trangthai', Controller::TRANGTHAI_SANPHAM)
             ->limit(4)
             ->get();
     }

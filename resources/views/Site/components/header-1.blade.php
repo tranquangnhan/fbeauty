@@ -17,9 +17,8 @@
                         SPA & BEAUTY
                     </div>
 
-                    <div class="text-center title-2 box-text-header  mt-3">
-                        Nơi Gửi Gắm Niềm Tin Của
-                        <br>Phái Đẹp
+                    <div class="text-center title-2 box-text-header m-auto  mt-3" style="width: 65%;">
+                        Nơi Gửi Gắm Niềm Tin Của Phái Đẹp
                     </div>
 
                     <div class="w-100 text-center mt-4">

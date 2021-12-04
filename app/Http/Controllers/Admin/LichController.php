@@ -143,7 +143,7 @@ class LichController extends Controller
                         'thutrongtuan' => $j,
                         'soluongkhach' => $khachhang,
                         'gio' => $toTime,
-                        'trangthai' => 0
+                        'trangthai' => Controller::TRANGTHAI_LICH_OPEN
                     ];
                     $this->Lich->create($lich);
                     $phut += $khoanGiuaKhungGio;

@@ -84,7 +84,7 @@
                                             </div>
 
                                             <div class="text-8 mt-1">
-                                                {{number_format($itemsanpham->dongia)}} đ
+                                                {{number_format($itemsanpham->dongiasp)}} đ
                                             </div>
 
                                             <div class="img-1 mt-4">
@@ -98,7 +98,7 @@
                                             </div>
 
                                             <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                {{$itemsanpham->motangan}}
+                                                {{$itemsanpham->mota}}
 
                                             </p>
                                         </div>
