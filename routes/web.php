@@ -115,6 +115,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::resource('datlichremake', DatLichRemakeController::class);
     Route::get('changeStatusDatLich/{id}/{status}', [DatLichRemakeController::class, "changeStatusDatLich"]);
     Route::get('getDuLieuDatLichChoCalendar/{ngay}', [DatLichRemakeController::class, "getDuLieuDatLichChoCalendar"]);
+    Route::get('changeStatusTime/{id}/{status}', [DatLichRemakeController::class, "changeStatusTime"]);
 
     /**
      *1: Lấy DỊch vụ đến Hóa đơn
