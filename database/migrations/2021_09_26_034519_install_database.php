@@ -37,6 +37,7 @@ class InstallDatabase extends Migration
         Schema::dropIfExists('giohang');
         Schema::dropIfExists('giohangchitiet');
         Schema::dropIfExists('lienhe');
+        Schema::dropIfExists('banner');
 
         Schema::create('banner', function (Blueprint $table) {
             $table->increments('id');
