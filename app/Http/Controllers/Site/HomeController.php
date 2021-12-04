@@ -418,7 +418,6 @@ class HomeController extends Controller
         $this->data['donhangcuatoi4']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAHUY);
         $this->data['donhangcuatoi5']=$this->DonHang->DonHanCuaBan(self::DONHANG_TRAHANG);
         return view("Site.pages.profile-user", $this->data);
-
     }
 
     public function getDanhMucVaDichVuHome() {
@@ -475,8 +474,32 @@ class HomeController extends Controller
         return response()->json($data);
     }
 
-    public static function findNameDichVuByIdLieuTrinh($id)
-    {
+    public function huyLieuTrinh(Request $request){
+        // check đã hoàn thành 1 dịch vụ sẽ không được huỷ
+        $hasHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($request->idlieutrinh);
+        if(count($hasHoaDon)>0){
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => 'Liệu trình đã thanh toán không thể huỷ!'
+            ]);
+        }else{
+            if( $request->idlieutrinh){
+                $res = $this->LieuTrinh->update($request->idlieutrinh,['trangthai'=>2]);
+                if($res){
+                    return response()->json([
+                        'success' => true,
+                        'titleMess' => 'Thành công!',
+                        'textMess' => 'Đã huỷ liệu trình!'
+                    ]);
+                    
+                }
+            }
+        }
+        
+    }
+
+    public static function findNameDichVuByIdLieuTrinh($id){
         $LieuTrinhResult = LieuTrinhChiTietModel::findNameDichVuByIdLieuTrinh($id);
 
         $arrName = [];

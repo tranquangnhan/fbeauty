@@ -56,6 +56,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->orderBy('created_at', 'DESC')
         ->get();
     }
+    
     public function getDichVubyGiamGia(){
         return $this->model->select('dichvu.*','danhmuc.name as namedm','giamgia.number as numbergg','giamgia.max as maxgg')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
@@ -65,6 +66,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->orderBy('giamgia', 'DESC')
         ->get();
     }
+
     public function getDichVusite(){
         return $this->model->select('dichvu.*','danhmuc.name as namedm','dichvu.img as imgdv','dichvu.dongia as dongiadv')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')

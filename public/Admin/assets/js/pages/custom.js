@@ -23,7 +23,7 @@ $(document).ready(function () {
                     "previous": "Trang Trước"
                 },
             },
-            "order": [['id', "desc" ]]
+            "ordering": false
         },
     );
 
@@ -119,7 +119,7 @@ $(document).ready(function () {
         },
     });
 
-    $('#ghichu').editable({
+    $('.ghichu').editable({
         type: 'text',
         pk: 1,
         url: 'quantri/editnamedv',

@@ -33,8 +33,11 @@
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
                                             </td>
                                             <td> 
-                                                
-                                                <img  class="img-common"  src="{{ asset('uploads/'.$item->img) }}">
+                                                @if ($item->img)
+                                                    <img  class="img-common"  src="{{ asset('uploads/'.$item->img) }}">
+                                                @else
+                                                    <img  class="img-common"  src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}">
+                                                @endif
                                             </td> 
                                             <td> 
                                                 {{$item->sdt}}

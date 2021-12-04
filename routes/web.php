@@ -110,6 +110,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
 
     Route::get('khachhang/lieutrinh/{id}/edit', [LieuTrinhController::class, 'editLieuTrinhChiTiet']);
     Route::patch('khachhang/lieutrinh/{id}/update', [KhachHangController::class, 'updateLieuTrinh']);
+  
 
     Route::resource('datlichremake', DatLichRemakeController::class);
     Route::get('changeStatusDatLich/{id}/{status}', [DatLichRemakeController::class, "changeStatusDatLich"]);
@@ -210,6 +211,7 @@ Route::group(['prefix' => '/'], function () {
      *Liệu trình
      */
     Route::get('lieutrinhchitiet/{id}/get', [HomeController::class, 'getLieuTrinhDetailByIdLieuTrinh']);
+    Route::post('lieutrinh/cancel', [HomeController::class, 'huyLieuTrinh']);
     /**
     *Hủy đơn
      */

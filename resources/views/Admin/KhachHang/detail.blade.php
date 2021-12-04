@@ -20,8 +20,11 @@
                         </p>
                         <div class="boxinfouser">
                             <div class="left">
-                                {{-- <i class="mdi mdi-account-circle"></i> --}}
-                                <img class="d-flex mr-3 rounded-circle avatar-md" style="object-fit: cover" alt="64x64" src="{{asset('uploads/'.$KhachHang->img)}}">
+                                @if ($KhachHang->img)
+                                    <img class="d-flex mr-3 rounded-circle avatar-md" style="object-fit: cover" alt="64x64" src="{{asset('uploads/'.$KhachHang->img)}}">
+                                @else
+                                    <img  class="mr-3 rounded-circle avatar-md"  style="object-fit: cover" src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}">
+                                @endif
                             </div>
                             <div class="right ml-2">
                                 <div class="boxnguoidung">
@@ -169,7 +172,7 @@
                                                         <td><img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($URL_IMG.$item->img) }}"><br></td>
                                                         <td>{{$item->name}}</td>
                                                         <td> {{Controller::caculateGia($item->dongia,$item->giamgia)}} VNĐ</td>
-                                                        <td>{{substr($item->motangan,0,300)}} ...</td>
+                                                        <td>{{substr($item->motangan,0,150)}} ...</td>
                                                     </tr>
                                                 @endforeach
                                          
