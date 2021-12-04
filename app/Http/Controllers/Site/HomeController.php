@@ -26,6 +26,7 @@ use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\LienHe\LienHeRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
+use App\Repositories\YeuThich\YeuThichRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -51,6 +52,7 @@ class HomeController extends Controller
     private $Blog;
     private $DonHang;
     private $LieuTrinh;
+    private $YeuThich;
 
     /**
      * CosoController constructor.
@@ -71,7 +73,8 @@ class HomeController extends Controller
         LieuTrinhChiTietRepository $LieuTrinhChiTiet,
         HoaDonRepository $HoaDon,
         HoaDonChiTietRepository $HoaDonChiTiet,
-        DonHangRepository $DonHang
+        DonHangRepository $DonHang,
+        YeuThichRepository $YeuThich
     )
     {
         $this->freeSMSController = new freeSMSController;
@@ -94,6 +97,7 @@ class HomeController extends Controller
         $this->HoaDon = $HoaDon;
         $this->HoaDonChiTiet = $HoaDonChiTiet;
         $this->DonHang=$DonHang;
+        $this->YeuThich=$YeuThich;
         $this->data = array(
             'danhmuc' => $danhmuc,
             'listCoSo' => $listCoSo,
@@ -133,8 +137,9 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
-        $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(self::LOAI_DANHMUC_SANPHAM);
-        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp]);
+        $this->data["danhmucsp"] = $this->DanhMuc->findDanhMucByIdLoai(self::LOAI_DANHMUC_SANPHAM);
+        $this->data["danhmucth"] = $this->DanhMuc->findDanhMucByIdLoai(self::LOAI_DANHMUC_THUONG_HIEU);
+        return view("Site.pages.sanpham", $this->data);
     }
 
     public function getSanPham($soluong)
@@ -418,6 +423,7 @@ class HomeController extends Controller
         $this->data['donhangcuatoi3']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAGIAO);
         $this->data['donhangcuatoi4']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAHUY);
         $this->data['donhangcuatoi5']=$this->DonHang->DonHanCuaBan(self::DONHANG_TRAHANG);
+        $this->data['spyeuthich']=$this->YeuThich->getYeuThichByIdKhachHang(session()->get('khachHang')->id);
         return view("Site.pages.profile-user", $this->data);
     }
 
