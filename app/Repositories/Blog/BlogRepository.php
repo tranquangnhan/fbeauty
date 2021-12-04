@@ -64,6 +64,13 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     {
         return $this->model->select('blog.*','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->offset(3)
+        ->limit(1)->orderBy('created_at', 'DESC')->get();
+    }
+    public function getBlognewtt()
+    {
+        return $this->model->select('blog.*','danhmuc.name AS danhmuc','danhmuc.slug AS slugdm')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->limit(1)->orderBy('created_at', 'DESC')->get();
     }
     public function getBlog2()
@@ -87,11 +94,26 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
             ->where('blog.slug','=', $slug)
             ->get();
     }
+    public function DanhMucBlogdetail($slug)
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddmm','danhmuc.name AS danhmuc')
+            ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+            ->where('blog.slug','=', $slug)
+            ->get();
+    }
     public function getblogbyiddm($id)
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->where('blog.iddm', '=',$id)
+        ->get();
+
+    }
+    public function getblogbyslugdm($slug)
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddm','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->where('danhmuc.slug', '=',$slug)
         ->get();
 
     }

@@ -26,12 +26,12 @@
                                     <h1 class=" font-weight-600">{{$viewdetail[0]->name}}.</h1>
                                 </div>
 
-                                <div class="list-reac d-flex">
+                                {{-- <div class="list-reac d-flex">
                                     <div class="reac-item pl-0"><i class="far fa-eye"></i> <span>5k</span></div>
                                     <div class="reac-item"><i class="far fa-heart"></i> <span>5k</span></div>
                                     <div class="reac-item pr-0 border-0"><i class="far fa-comments"></i> <span>5k</span>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="blog-body">
@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="noidung"><br>
-                                    {!! $viewdetail[0]->noidung !!}.
+                                    <a>{!! $viewdetail[0]->noidung !!}</a>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                                         <div
                                             class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 mb-1">
                                             <div class="mr-3">
-                                                <a href="" class="box-danhmuc-1 maincolor">Đặt lịch</a>
+                                                <a type-modal="modal-datlich" href="javascript:void(0)" data-show="one" class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
                                             </div>
                                         </div>
                                     </div>
@@ -154,6 +154,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/baiviet.css">
 @endsection
 
 @section('javascript')

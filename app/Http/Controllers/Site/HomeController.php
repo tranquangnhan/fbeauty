@@ -195,6 +195,7 @@ class HomeController extends Controller
     public function viewBaiViet()
     {
         $blog = $this->Blog->getBlog1();
+        $blognewtt = $this->Blog->getBlognewtt();
         $xuhuong = $this->Blog->getblogbyxuhuong();
         $luotxem = $this->Blog->getblogbyView();
         $listdanhmuc = $this->DanhMuc->getAll();
@@ -219,7 +220,6 @@ class HomeController extends Controller
         $blognew = $this->Blog->getBlognew();
 
         $this->data['blog'] = $blog;
-        $this->data['blog'] = $blog;
         $this->data['blog3'] = $blog3;
         $this->data['blog4'] = $blog4;
         $this->data['blognew'] = $blognew;
@@ -229,6 +229,7 @@ class HomeController extends Controller
         $this->data['listdanhmuc2'] = $listdanhmuc2;
         $this->data['luotxem'] = $luotxem;
         $this->data['xuhuong'] = $xuhuong;
+        $this->data['blognewtt'] = $blognewtt;
 
         $this->data['pathActive'] = 'bai-viet';
         $this->data['namePage'] = 'Bài viết';
@@ -248,16 +249,7 @@ class HomeController extends Controller
         foreach ($viewdetail2 as $detail) {
             $viewdt = $this->Blog->getblogbyiddm3($detail->iddm);
             $detail['viewdt'] = $viewdt;
-
         }
-        // $updateView = $this->Blog-> updateView($id);
-
-        // $this->data['updateView']= $updateView;
-        // $Blog = [
-        //     'luotxem' =>$request-> luotxem,
-        // ];
-
-
         $this->data['getBlog2'] = $getBlog2;
         $this->data['danhmuc'] = $danhmuc;
         $this->data['viewdetail'] = $viewdetail;
@@ -272,7 +264,24 @@ class HomeController extends Controller
 
         return view("Site.pages.baivietchitiet", $this->data);
     }
+    public function viewDanhmucBaiViet($slug){
+        $danhmuc = $this->DanhMuc->getAllDanhMuc();
+        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
+        $viewdetail = $this->Blog->getBlogByslugdm($slug);
 
+        $this->data['danhmuc'] = $danhmuc;
+        $this->data['viewdetail'] = $viewdetail;
+        $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
+
+        $this->data['pathActive'] = 'danh-muc-bai-viet';
+        $this->data['namePage'] = $nameDanhMucbyslug[0]->name;
+        $this->data['breadcrumbArray'] = [
+            ['link' => '/danh-muc-bai-viet', 'name' => 'Danh mục bài viết'],
+            ['link' => '', 'name' => 'Danh mục'],
+        ];
+
+        return view("Site.pages.dmblogchitiet", $this->data);
+    }
     public function viewDichVu(Request $request)
     {
         $dichvu = $this->Dichvu->getDichVu2();
