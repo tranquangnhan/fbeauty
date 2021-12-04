@@ -20,8 +20,11 @@
                         </p>
                         <div class="boxinfouser">
                             <div class="left">
-                                {{-- <i class="mdi mdi-account-circle"></i> --}}
-                                <img class="d-flex mr-3 rounded-circle avatar-md" style="object-fit: cover" alt="64x64" src="{{asset('uploads/'.$KhachHang->img)}}">
+                                @if ($KhachHang->img)
+                                    <img class="d-flex mr-3 rounded-circle avatar-md" style="object-fit: cover" alt="64x64" src="{{asset('uploads/'.$KhachHang->img)}}">
+                                @else
+                                    <img  class="mr-3 rounded-circle avatar-md"  style="object-fit: cover" src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}">
+                                @endif
                             </div>
                             <div class="right ml-2">
                                 <div class="boxnguoidung">
@@ -84,7 +87,7 @@
                                                 </div>
                                             </div>
                                             @if (count($LieuTrinh)>0)
-                                            <table class="table table-centered mb-0" id="btn-editable">
+                                            <table class="table table-centered mb-0 lieutrinhtable" >
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
@@ -98,13 +101,14 @@
                                                     </tr>
                                                 </thead>
 
-                                                <tbody>
+                                                <tbody >
                                                     @foreach ($LieuTrinh as $item)
                                                         
                                                         <tr>
                                                             <td>1</td>
                                                             <td>
                                                                 <img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($BASE_URL_UPLOAD_STAFF.$item->imgnv) }}"><br>
+                                                                <div class="badge badge-primary">{{$item->tennv}}</div> 
                                                             </td>
                                                             <td>{{date('d-m-Y',$item->ngaybatdau)}} </td>
                                                             <td> {{date('d-m-Y',$item->dukienketthuc) }}</td>
@@ -149,7 +153,7 @@
 
                                 <div class="tab-pane" id="basictab2">
                                     @if (count($DichVuDaSuDung)>0)
-                                    <table class="table table-centered mb-0" id="btn-editable">
+                                    <table class="table table-centered mb-0 lieutrinhtable" id="btn-editable">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -168,7 +172,7 @@
                                                         <td><img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($URL_IMG.$item->img) }}"><br></td>
                                                         <td>{{$item->name}}</td>
                                                         <td> {{Controller::caculateGia($item->dongia,$item->giamgia)}} VNĐ</td>
-                                                        <td>{{substr($item->motangan,0,300)}} ...</td>
+                                                        <td>{{substr($item->motangan,0,150)}} ...</td>
                                                     </tr>
                                                 @endforeach
                                          
@@ -182,7 +186,7 @@
 
                                 <div class="tab-pane" id="basictab3">
                                     @if (count($DatLich)>0)
-                                    <table class="table table-centered mb-0" id="btn-editable">
+                                    <table class="table table-centered mb-0 lieutrinhtable" id="btn-editable">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -198,8 +202,8 @@
                                                 @foreach ($DatLich as $item)
                                                     <tr>
                                                         <td>{{++$loop->index}}</td>
-                                                        <td><img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($URL_IMG.$item->img) }}"><br>
-                                                            <strong class="text-center mt-2">{{$item->tenkh}}</strong></td>
+                                                        <td ><img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($URL_IMG.$item->img) }}"><br>
+                                                            <div class="badge badge-primary ">{{$item->tenkh}}</div></td>
                                                         <td>{{KhachHangController::findDichVuByIds($item->iddichvu)}}</td>
                                                         <td> {{date('d/m/Y',$item->thoigiandat)}}</td>
                                                         <td><a name="" id="" class="btn btn-primary" href="#" role="button">Check in</a></td>

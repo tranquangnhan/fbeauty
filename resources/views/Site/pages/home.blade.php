@@ -234,16 +234,13 @@
                             <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">Tìm kiếm
                                 theo</div>
                             <ul class="nav nav-tabs" id="myTab-1" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link btn-3 active black-1" id="allservice-tab"
-                                        data-toggle="tab" href="#allservice" role="tab"
-                                        aria-controls="allservice" aria-selected="true">Mới Nhất</a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link btn-3 black-1" id="nhieuquantam-tab" data-toggle="tab"
-                                        href="#nhieuquantam" role="tab" aria-controls="nhieuquantam"
-                                        aria-selected="false">Danh mục</a>
-                                </li>
+                                @foreach ($listDanhMuc as $danhmuc)
+
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link btn-3 @if ($loop->index == 0) active @endif black-1" id="{{$danhmuc->slug}}-tab" data-toggle="tab" href="#{{$danhmuc->slug}}" role="tab" aria-controls="{{$danhmuc->slug}}" aria-selected="true">{{ $danhmuc->name }}</a>
+                                    </li>
+
+                                @endforeach
                             </ul>
                         </div>
 
@@ -253,37 +250,32 @@
 
             <div class="list-tabs mt-5">
                 <div class="tab-content" id="">
-                    <div class="tab-pane fade show active" id="allservice" role="tabpanel"
-                        aria-labelledby="allservice-tab">
-                        <div class="w-100">
-                            <div class="box-dichvu">
-                                <div class="box-sev">
-                                    @foreach ($dichvu as $itemdichvu)
-                                        <div class="dichvu-item">
-
-                                            <div class="content-1">
+                    @foreach ($arrDichVu as $itemdichvu)
+                        <div class="tab-pane @if ($loop->index == 0) show active @endif  fade" id="{{$listDanhMuc[$loop->index]->slug}}" role="tabpanel" aria-labelledby="{{$listDanhMuc[$loop->index]->slug}}-tab">
+                            <div class="w-100">
+                                <div class="box-dichvu">
+                                    <div class="box-sev">
+                                        @foreach ($itemdichvu as $item)
+                                        <div class="dichvu-item d-plex">
+                                            <div class="content-1" onclick="window.location='{{ asset('dich-vu') }}/{{$item->slug}}';" >
                                                 <div class="text-7 color-main-1">
-                                                    {{$itemdichvu->namedm}}
+                                                    {{$item->namedm}}
                                                 </div>
 
                                                 <div class="text-8 mt-1">
-                                                    {{str_replace(',', '.',number_format($itemdichvu->dongia))}}đ
+                                                    {{str_replace(',', '.',number_format($item->dongia))}}đ
                                                 </div>
-
                                                 <div class="img-1 mt-4">
-                                                <a href="{{ asset('dich-vu') }}/{{$itemdichvu->slug}}">
-                                                    <img class="" src="{{ asset('uploads/'.$itemdichvu->img) }}" alt="">
-                                                </a>
-                                                </div>
-
-                                                <div class="text-1 limit-text-row-1 mt-4">
-                                                    <a href="{{ asset('dich-vu') }}/{{$itemdichvu->slug}}">
-                                                        {{$itemdichvu->name}}
+                                                    <a href="{{ asset('dich-vu') }}/{{$item->slug}}">
+                                                        <img class="" src="{{ asset('uploads/'.$item->img) }}" alt="">
                                                     </a>
+                                                    </div>
+                                                <div class="text-1 limit-text-row-1 mt-4">
+                                                        {{$item->name}}
                                                 </div>
 
                                                 <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                    {{$itemdichvu->motangan}}
+                                                    {{$item->motangan}}
 
                                                 </p>
                                             </div>
@@ -293,57 +285,15 @@
 
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nhieuquantam" role="tabpanel"
-                        aria-labelledby="nhieuquantam-tab">
-                        <div class="w-100">
-                            <div class="box-dichvu">
-                                <div class="box-sev">
-                                    @foreach ($danhmuc as $temdanhmuc)
+                                        @endforeach
 
-                                    <div class="dichvu-item">
 
-                                        <div class="content-1">
-                                            <div class="text-7 color-main-1">
-                                                {{$temdanhmuc->name}}
-                                            </div>
-
-                                            <div class="text-8 mt-1">
-                                            </div>
-
-                                            <div class="img-1 mt-4">
-                                                <a href="{{ asset('danh-muc') }}/{{$temdanhmuc->slug}}">
-                                                    <img class="" src="{{ asset('uploads/'.$temdanhmuc->img) }}" alt="">
-                                                </a>
-                                            </div>
-
-                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                <a href="{{ asset('danh-muc') }}/{{$temdanhmuc->slug}}">
-                                                </a>
-                                            </div>
-
-                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                                do eiusmod tempor incididunt.
-
-                                            </p>
-                                        </div>
-                                        <div class="w-100 text-center mb-4">
-                                            <a href="javascript:void(0)">
-                                                <button  class="btn-4 btn-modal-main" type-modal="modal-datlich" data-show="one">Đặt lịch</button>
-                                            </a>
-                                        </div>
                                     </div>
-                                    @endforeach
                                 </div>
 
                             </div>
                         </div>
-                    </div>
+                        @endforeach
 
                 </div>
             </div>
@@ -368,19 +318,18 @@
 
             <div class="box-product-1">
                 <div class="row">
-                    <?php $spkhac=\Illuminate\Support\Facades\DB::table('sanpham')->select('sanpham.*', 'danhmuc.name AS tendm')
-                        ->orderBy("sanpham.id","DESC")
-                        ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")->where('sanpham.trangthai', "=", 1)->limit(4)->get();?>
                     @foreach($spkhac as $i => $spk)
-                        <?php $anhk=json_decode($spk->img);
-                        $splienquanctkhac=\Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("*")->where('idsanpham', $spk->id)->limit(1)->get();
-                            error_reporting(0);
+                        <?php
+                        $anhk=json_decode($spk->img);
                         ?>
                         <div class="col-3">
                             <div class="card rounded-0 product-card child-item-sanpham zbar">
                                 <div class="card-header bg-transparent border-bottom-0">
                                     @if(session()->has('khachHang') && session('khachHang') != '')
-                                        <?php $checkyeuthich1= \Illuminate\Support\Facades\DB::table('yeuthich')->where('idkhachhang', session('khachHang')->id)->where('idsanphamchitiet', $spk->id)->doesntExist()?>
+                                        <?php $checkyeuthich1= \Illuminate\Support\Facades\DB::table('yeuthich')
+                                            ->where('idkhachhang', session('khachHang')->id)
+                                            ->where('idsanphamchitiet', $spk->id)
+                                            ->doesntExist()?>
                                         <?php if ($checkyeuthich1 == false) {?>
                                         <div class="btn-add-wishlist btn-sticky hover-scale-1 active" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
                                             <div class="box-cicrle">
@@ -423,15 +372,15 @@
                                         </a>
                                         <div class="d-flex align-items-center justify-content-center" style="height: 40px;">
                                             <div class="mb-1 product-price">
-                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia)), ""}} đ</span> / <span>{{$splienquanctkhac[0]->ml}}ml</span>
+                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($spk->dongia)), ""}} đ</span> / <span>{{$spk->thetich}}ml</span>
                                                 @if($spk->giamgia !="")
-                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia-(($splienquanctkhac[0]->dongia * $spk->giamgia)/100))), ""}}đ</span>
+                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($spk->dongia-(($spk->dongia * $spk->giamgia)/100))), ""}}đ</span>
                                                 @endif
                                             </div>
                                         </div>
                                         <div class="product-action mt-2">
                                             <div class="d-grid gap-2">
-                                                <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splienquanctkhac[0]->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$spk->idspct}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
                                                 <a href="{{URL::to("san-pham/chi-tiet", $spk->slug)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
                                             </div>
                                         </div>

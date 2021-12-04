@@ -4,6 +4,7 @@
 namespace App\Repositories\HoaDonChiTiet;
 
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin\HoaDonChiTietModel;
 use App\Repositories\BaseRepository;
 
@@ -27,7 +28,7 @@ class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRep
         return $this->model->select("*")
             ->where('hoadonchitiet.idhoadon', '=', $id)
             ->where('hoadonchitiet.idlienquan', '=', $idsp)
-            ->where('hoadonchitiet.type', '=', 1)
+            ->where('hoadonchitiet.type', '=', Controller::DONHANG_TYPE_SANPHAM)
             ->doesntExist();
     }
 
@@ -35,7 +36,7 @@ class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRep
         return $this->model->select("*")
             ->where('hoadonchitiet.idhoadon', '=', $id)
             ->where('hoadonchitiet.idlienquan', '=', $iddv)
-            ->where('hoadonchitiet.type', '=', 0)
+            ->where('hoadonchitiet.type', '=', Controller::DONHANG_TYPE_DICHVU)
             ->doesntExist();
     }
 
@@ -43,7 +44,7 @@ class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRep
         return $this->model->select("*")
             ->where('hoadonchitiet.idhoadon', '=', $id)
             ->where('hoadonchitiet.idlienquan', '=', $idsp)
-            ->where('hoadonchitiet.type', '=', 1)
+            ->where('hoadonchitiet.type', '=', Controller::DONHANG_TYPE_SANPHAM)
             ->get();
     }
 
@@ -51,7 +52,7 @@ class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRep
         return $this->model->select("*")
             ->where('hoadonchitiet.idhoadon', '=', $id)
             ->where('hoadonchitiet.idlienquan', '=', $iddv)
-            ->where('hoadonchitiet.type', '=', 0)
+            ->where('hoadonchitiet.type', '=', Controller::DONHANG_TYPE_DICHVU)
             ->get();
     }
 
@@ -62,7 +63,7 @@ class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRep
         'dichvu.giamgia')
         ->join('dichvu','hoadonchitiet.idlienquan','=','dichvu.id')
         ->join('hoadon','hoadon.id','=','hoadonchitiet.idhoadon')
-        ->where('hoadonchitiet.type','=','0')
+        ->where('hoadonchitiet.type','=',Controller::DONHANG_TYPE_DICHVU)
         ->where('hoadon.idkhachhang','=',$id)
         ->get();
     }

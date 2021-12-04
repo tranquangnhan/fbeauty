@@ -210,6 +210,7 @@ class NhanVienController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $coSo = session()->get('coso');
 
         $img = $request->file('urlHinh');

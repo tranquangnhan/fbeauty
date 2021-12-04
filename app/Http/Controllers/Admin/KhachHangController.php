@@ -15,7 +15,7 @@ use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
-
+use Illuminate\Http\Request;
 class KhachHangController extends Controller
 {
 
@@ -69,11 +69,11 @@ class KhachHangController extends Controller
     public function store(KhachHang $request)
     {   
         $idCoSo = $request->session()->get('coso');
-        if($this->KhachHang->CheckEmail($request->email) === false){
+        if($this->KhachHang->CheckEmail($request->email) === false && $request->email !== null){
             return $this->handleErrorInput('Email đã tồn tại!');
         }
         
-        if($this->KhachHang->CheckSdt($request->sdt) === false){
+        if($this->KhachHang->CheckSdt($request->sdt) === false && $request->sdt !== null){
             return $this->handleErrorInput('Số điện thoại đã tồn tại!');
         }
        
@@ -133,7 +133,14 @@ class KhachHangController extends Controller
      */
     public function update(KhachHang $request, $id)
     {
-       
+        if($this->KhachHang->CheckEmail($request->email) === false && $request->email !== null){
+            return $this->handleErrorInput('Email đã tồn tại!');
+        }
+        
+        if($this->KhachHang->CheckSdt($request->sdt) === false && $request->sdt !== null){
+            return $this->handleErrorInput('Số điện thoại đã tồn tại!');
+        }
+        
         $password = $request->password;
         $passnew = "";
         if ($password == null) {
@@ -182,6 +189,10 @@ class KhachHangController extends Controller
 
     public function detailKhachHang($id){
         $KhachHang = $this->KhachHang->find($id);
+       
+        if($KhachHang->idcoso != session()->get('coso')){
+            return redirect('quantri/khachhang');
+        }
         $LieuTrinh =  $this->LieuTrinh->findLieuTrinhByIdKh($KhachHang->id);
         
         $NhanVien = $this->NhanVien->getAll();
@@ -204,7 +215,6 @@ class KhachHangController extends Controller
         ];
 
         $res = $this->LieuTrinh->create($data);
-        // dd($res);
         if($res){
            return redirect()->back();
         }else{
@@ -212,7 +222,7 @@ class KhachHangController extends Controller
         }
     }
 
-    public function updateLieuTrinh(LieuTrinh $request,$id){
+    public function updateLieuTrinh(Request $request,$id){
        
         $data = [
             'idnhanvien' => $request->idnhanvien,
@@ -257,9 +267,11 @@ class KhachHangController extends Controller
         $ids = json_decode($ids);
         $array = [];
         for ($i=0; $i < count($ids); $i++) { 
-            array_push($array,DichVuModel::find($ids[$i])->name);
+            array_push($array,DichVuModel::find($ids[$i]) ? DichVuModel::find($ids[$i])->name: '');
         }
         return implode(", ",$array);
     }
 
+
+  
 }

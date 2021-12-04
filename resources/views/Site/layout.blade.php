@@ -106,40 +106,5 @@
         $('#imgload').delay(2000).fadeOut('fast');
     });
 </script>
-@if(session('thanhtoanthanhcong'))
-    <script>
-        Swal.fire(
-            "Đặt hàng thành công",
-            'Hãy đăng nhập để kiểm tra đơn hàng của bạn!',
-            'success'
-        )
-    </script>
-@elseif(session('thanhtoanvnpaythanhcong'))
-    <?php if (session()->has('khachHang') && session('khachHang') != ''){?>
-    <script>
-        Swal.fire(
-            'Thanh toán thành công',
-            'Vào mục thông tin để kiểm tra đơn hàng của bạn!',
-            'success'
-        )
-    </script>
-    <?php } else{?>
-    <script>
-        Swal.fire(
-            'Thanh toán thành công',
-            'Hãy đăng nhập để kiểm tra đơn hàng của bạn!',
-            'success'
-        )
-    </script>
-    <?php }?>
-@elseif(session('thanhtoanthatbai'))
-    <script>
-        Swal.fire(
-            'Thanh toán thất bại',
-            'Hãy đăng nhập để kiểm tra đơn hàng của bạn!',
-            'error'
-        )
-    </script>
-@endif
-
+@include('Site.components.thongbao')
 @yield('javascript')

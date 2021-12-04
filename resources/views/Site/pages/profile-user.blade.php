@@ -64,9 +64,11 @@
                                             </div>
 
                                             <div class="body-tab">
+                                                <form action="{{URL::to("/updateprofile")}}" id="form_prof" class="mt-4 thongtintaikhoan" method="post" enctype="multipart/form-data">
                                                 <div class="row">
+
                                                     <div class="col-xl-8">
-                                                        <form action="" class="mt-4 thongtintaikhoan">
+                                                            @csrf
                                                             <div class="form-group form-control-custom">
                                                                 <div class="left">Số điện thoại</div>
                                                                 <div class="right">
@@ -77,14 +79,20 @@
                                                             <div class="form-group form-control-custom mt-0">
                                                                 <div class="left">Họ & tên</div>
                                                                 <div class="right">
-                                                                    <input type="text" class="form-control form-custom" name="" placeholder="Email của bạn" id="" value="Hoàng Thùy Linh">
+                                                                    <input type="text" class="form-control form-custom" name="username" placeholder="Họ và tên" id="username" value="<?php echo(session()->get("khachHang")->name!="")?session()->get("khachHang")->name:"";?>">
+                                                                    @error('username')
+                                                                    <span class='badge badge-danger'>{{ $message }}</span>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group form-control-custom">
                                                                 <div class="left">Email</div>
                                                                 <div class="right">
-                                                                    <input type="text" class="form-control form-custom" name="" placeholder="Email của bạn" id="">
+                                                                    <input type="email" class="form-control form-custom" value="<?php echo(session()->get("khachHang")->email!="")?session()->get("khachHang")->email:"";?>" name="email" placeholder="Email của bạn" id="email">
+                                                                    @error('email')
+                                                                    <span class='badge badge-danger'>{{ $message }}</span>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
 
@@ -92,14 +100,55 @@
                                                                 <div class="left">Mức độ thân thiết</div>
                                                                 <div class="right">
                                                                     <div class="row align-items-center">
+                                                                        @if(session()->has('khachHang') && session('khachHang') != '')
+                                                                            @if((int)session()->get('khachHang')->exp <= 5000000)
                                                                         <div class="col-6">
-                                                                            <div class="progress" style="height: 7px">
-                                                                                <div class="progress-bar progress-level" role="progressbar" price-value="10000" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                            <div class="progress" style="height: 7px;">
+                                                                                <div class="progress-bar progress-level" role="progressbar" price-value="5000000" style="width: <?php echo ((int)session()->get('khachHang')->exp/5000000)*100;?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-6">
                                                                             <span>LV 1</span>
                                                                         </div>
+                                                                                @elseif((int)session()->get('khachHang')->exp <= 10000000)
+                                                                                <div class="col-6">
+                                                                                    <div class="progress" style="height: 7px;">
+                                                                                        <div class="progress-bar progress-level" role="progressbar" price-value="10000000" style="width: <?php echo ((int)session()->get('khachHang')->exp/10000000)*100;?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6">
+                                                                                    <span>LV 2</span>
+                                                                                </div>
+
+                                                                                @elseif((int)session()->get('khachHang')->exp <= 50000000)
+                                                                                <div class="col-6">
+                                                                                    <div class="progress" style="height: 7px;">
+                                                                                        <div class="progress-bar progress-level" role="progressbar" price-value="50000000" style="width: <?php echo ((int)session()->get('khachHang')->exp/50000000)*100;?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6">
+                                                                                    <span>LV 3</span>
+                                                                                </div>
+                                                                            @elseif((int)session()->get('khachHang')->exp <= 100000000)
+                                                                                <div class="col-6">
+                                                                                    <div class="progress" style="height: 7px;">
+                                                                                        <div class="progress-bar progress-level" role="progressbar" price-value="100000" style="width: <?php echo ((int)session()->get('khachHang')->exp/100000000)*100;?>%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6">
+                                                                                    <span>LV 4</span>
+                                                                                </div>
+                                                                            @elseif((int)session()->get('khachHang')->exp >= 100000000)
+                                                                                <div class="col-6">
+                                                                                    <div class="progress" style="height: 7px;">
+                                                                                        <div class="progress-bar progress-level" role="progressbar" price-value="100000" style="width: 100%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-6">
+                                                                                    <span class="text-warning font-weight-bold">VIP <i class='fas fa-crown'></i></span>
+                                                                                </div>
+                                                                                @endif
+                                                                            @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -125,9 +174,11 @@
                                                                                             <div class="modal-body noidung-uu-dai">
                                                                                                 <nav class="fa-link-tabs">
                                                                                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                                                                        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Level 1 | 1.000.000 đ</a>
-                                                                                                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Level 2 | 5.000.000 đ</a>
-                                                                                                        <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Level 3 | 10.000.000 đ</a>
+                                                                                                        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Level 1 | 5.000.000 đ</a>
+                                                                                                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Level 2 | 10.000.000 đ</a>
+                                                                                                        <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Level 3 | 50.000.000 đ</a>
+                                                                                                        <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact1" role="tab" aria-controls="nav-contact1" aria-selected="false">Level 4 | 100.000.000 đ</a>
+                                                                                                        <a class="nav-link text-warning font-weight-bold" id="nav-contact-tab" data-toggle="tab" href="#nav-contact2" role="tab" aria-controls="nav-contact2" aria-selected="false">VIP<i class='fas fa-crown'></i> | (Hơn) 100.000.000 đ</a>
                                                                                                     </div>
                                                                                                   </nav>
                                                                                                 <div class="tab-content" id="nav-tabContent">
@@ -148,7 +199,7 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Quà tặng sinh nhật</div>
-                                                                                                                <div class="text-gray">1 x Vocher mua hàng 100k vào sinh nhật</div>
+                                                                                                                <div class="text-gray">1 x Voucher mua hàng 100k vào sinh nhật</div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -159,7 +210,7 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Giảm giá dịch vụ</div>
-                                                                                                                <div class="text-gray">Giảm 8% tổng hóa đơn khi sử dụng dịch vụ spa</div>
+                                                                                                                <div class="text-gray">Giảm 5% tổng hóa đơn khi sử dụng dịch vụ spa</div>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -168,8 +219,8 @@
                                                                                                                 <img src="{{ asset('Site/images/icon') }}/confetti.png" alt="">
                                                                                                             </div>
                                                                                                             <div class="text">
-                                                                                                                <div class="title">Quà tặng sinh nhật</div>
-                                                                                                                <div class="text-gray">2 x Vocher 500k vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                                <div class="title">Quà tặng sinh nhật khách hàng</div>
+                                                                                                                <div class="text-gray">1 x Voucher 500k vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -179,7 +230,7 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Ngày hội thành viên</div>
-                                                                                                                <div class="text-gray">15 hàng tháng, vocher hạng 2</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, voucher hạng 2</div>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -201,7 +252,7 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Quà tặng sinh nhật</div>
-                                                                                                                <div class="text-gray">3 x Vocher 500k vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                                <div class="text-gray">1 x Voucher 1 triệu đồng vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
                                                                                                             </div>
                                                                                                         </div>
 
@@ -211,7 +262,88 @@
                                                                                                             </div>
                                                                                                             <div class="text">
                                                                                                                 <div class="title">Ngày hội thành viên</div>
-                                                                                                                <div class="text-gray">15 hàng tháng, vocher hạng 3</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, voucher hạng 3</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="tab-pane fade" id="nav-contact1" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/massage-1.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Giảm giá dịch vụ</div>
+                                                                                                                <div class="text-gray">Giảm 25% tổng hóa đơn khi sử dụng dịch vụ spa</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/confetti.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sinh nhật khách hàng</div>
+                                                                                                                <div class="text-gray">1 x Voucher 5 triệu đồng vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/vip.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Ngày hội thành viên</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, voucher hạng 4</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/gifft.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sản phẩm</div>
+                                                                                                                <div class="text-gray">Bộ sản phẩm làm đẹp trị giá 10 triệu đồng</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                    <div class="tab-pane fade" id="nav-contact2" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/massage-1.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Giảm giá dịch vụ</div>
+                                                                                                                <div class="text-gray">Giảm 30% tổng hóa đơn khi sử dụng dịch vụ spa</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/confetti.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sinh nhật</div>
+                                                                                                                <div class="text-gray">1 x Voucher 10 triệu đồng vào sinh nhật áp dụng cho cả dịch vụ và mỹ phẩm</div>
+                                                                                                            </div>
+                                                                                                        </div>
+
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/vip.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Ngày hội thành viên</div>
+                                                                                                                <div class="text-gray">15 hàng tháng, voucher hạng VIP</div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="uudai-content-item">
+                                                                                                            <div class="icon">
+                                                                                                                <img src="{{ asset('Site/images/icon') }}/gifft.png" alt="">
+                                                                                                            </div>
+                                                                                                            <div class="text">
+                                                                                                                <div class="title">Quà tặng sản phẩm</div>
+                                                                                                                <div class="text-gray">Bộ sản phẩm làm đẹp trị giá 15 triệu đồng</div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -224,8 +356,25 @@
                                                                                         </div>
                                                                                       </div>
                                                                                 </div>
-                                                                                <div class="money-progress"><span class="current-money">1.255.000 đ</span> / 5tr đ</div>
-                                                                                <small>Mua thêm <b>3.745.000 đ </b>để đạt LV 2</small>
+                                                                                @if(session()->has('khachHang') && session('khachHang') != '')
+                                                                                    @if((int)session()->get('khachHang')->exp <= 5000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / 5tr đ</div>
+                                                                                        <small>Mua thêm <b>{{str_replace(",", ".", number_format(5000000 - (int)session()->get('khachHang')->exp))}} đ </b>để đạt LV 2</small>
+                                                                                    @elseif((int)session()->get('khachHang')->exp <= 10000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / 10tr đ</div>
+                                                                                        <small>Mua thêm <b>{{str_replace(",", ".", number_format(10000000 - (int)session()->get('khachHang')->exp))}} đ </b>để đạt LV 3</small>
+
+                                                                                    @elseif((int)session()->get('khachHang')->exp <= 50000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / 50tr đ</div>
+                                                                                        <small>Mua thêm <b>{{str_replace(",", ".", number_format(50000000 - (int)session()->get('khachHang')->exp))}} đ </b>để đạt LV 4</small>
+                                                                                    @elseif((int)session()->get('khachHang')->exp <= 100000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / 100tr đ</div>
+                                                                                        <small>Mua thêm <b>{{str_replace(",", ".", number_format(100000000 - (int)session()->get('khachHang')->exp))}} đ </b>để đạt VIP</small>
+                                                                                    @elseif((int)session()->get('khachHang')->exp >= 100000000)
+                                                                                        <div class="money-progress"><span class="current-money">{{str_replace(",", ".", number_format(session()->get('khachHang')->exp))}} đ</span> / (Hơn)100tr đ</div>
+                                                                                        <span class="text-warning font-weight-bold">Tài khoản VIP</span>
+                                                                                    @endif
+                                                                                @endif
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -235,29 +384,29 @@
                                                             <div class="form-group form-control-custom">
                                                                 <div class="left"></div>
                                                                 <div class="right">
-                                                                    <a href="">
-                                                                        <button class="btn-6 ml-0">
+                                                                    <a href="javascript:void(0)">
+                                                                        <button type="submit" class="btn-6 ml-0">
                                                                             Lưu
                                                                         </button>
                                                                     </a>
                                                                 </div>
                                                             </div>
-                                                        </form>
+
                                                     </div>
                                                     <div class="col-xl-4">
                                                         <div class="change-avt-box mt-4">
-                                                            <img src="{{ asset('Site/images') }}/xddn35VlCA.jpg" alt="">
+                                                            <img style="width: 100%; height: 150px; object-fit: contain;" id="imageA" src="{{ asset('uploads/khachhang') }}/<?php echo(session()->get('khachHang')->img!="")?session()->get('khachHang')->img:"photo-1637427933.jpg";?>" alt="">
                                                             <div class="form-group-image">
                                                                 <label for="ip-avt" class="form-control form-custom">Chọn ảnh</label>
-                                                                <input type="file" name="" id="ip-avt">
+                                                                <input type="file" name="urlHinh" id="ip-avt">
                                                             </div>
                                                             <div class="quydinh d-flex flex-column">
-                                                                <span class="text-gray">Dụng lượng file tối đa 1 MB</span>
                                                                 <span class="text-gray">Định dạng:.JPEG, .PNG </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -269,7 +418,7 @@
                                                         <a class="nav-link active" id="alldonhang-tab" data-toggle="tab" href="#alldonhang" role="tab" aria-controls="alldonhang" aria-selected="true">Tất cả</a>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
-                                                        <a class="nav-link" id="choxacnhan-tab" data-toggle="tab" href="#choxacnhan" role="tab" aria-controls="choxacnhan" aria-selected="false">Chờ xác nhận</a>
+                                                        <a class="nav-link" id="cholayhang-tab" data-toggle="tab" href="#xacnhan" role="tab" aria-controls="xacnhan" aria-selected="false">Chờ xác nhận</a>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
                                                         <a class="nav-link" id="cholayhang-tab" data-toggle="tab" href="#cholayhang" role="tab" aria-controls="cholayhang" aria-selected="false">Đang giao</a>
@@ -289,13 +438,7 @@
                                             <div class="tab-content" id="">
                                                 <div class="tab-pane fade show active" id="alldonhang" role="tabpanel" aria-labelledby="alldonhang-tab">
                                                      @if(session()->has('khachHang') && session('khachHang') != '')
-                                                         <?php
-                                                        $checkdonhang=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->doesntExist();
-                                                        ?>
-                                                        @if($checkdonhang == false)
-                                                                 <?php
-                                                                 $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->orderBy("id", "DESC")->get();
-                                                                 ?>
+
                                                              @foreach($donhangcuatoi as $indexstt =>$donhangofme)
                                                     <div class="box-donhang profile-minibox mt-4">
                                                         <div class="header">
@@ -390,7 +533,9 @@
                                                         </div>
                                                         <div class="giohang-body">
                                                             <?php
-                                                            $checkdhct=\Illuminate\Support\Facades\DB::table("donhangchitiet")->where("iddonhang", $donhangofme->id)->doesntExist();
+                                                            $checkdhct=\Illuminate\Support\Facades\DB::table("donhangchitiet")
+                                                                ->where("iddonhang", $donhangofme->id)
+                                                                ->doesntExist();
                                                             ?>
                                                             @if($checkdhct==false)
                                                                 <?php
@@ -531,277 +676,256 @@
                                                         </div>
                                                     </div>
                                                                      @endforeach
-                                                            @else
-                                                                 <div class="box-donhang profile-minibox mt-4">
-                                                                     Không có đơn hàng nào
-                                                                 </div>
-                                                            @endif
 
                                                     @endif
 
                                                 </div>
-                                                <div class="tab-pane fade" id="choxacnhan" role="tabpanel" aria-labelledby="choxacnhan-tab">
+                                                <div class="tab-pane fade" id="xacnhan" role="tabpanel" aria-labelledby="cholayhang-tab">
                                                     @if(session()->has('khachHang') && session('khachHang') != '')
-                                                        <?php
-                                                        $checkdonhang0=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 0)->doesntExist();
-                                                        ?>
-                                                        @if($checkdonhang0 == false)
-                                                            <?php
-                                                            $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 0)->orderBy("id", "DESC")->get();
-                                                            ?>
-                                                            @foreach($donhangcuatoi as $indexstt =>$donhangofme)
-                                                                <div class="box-donhang profile-minibox mt-4">
-                                                                    <div class="header">
-                                                                        <div class="item">
-                                                                            <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt}}">
-                                                                                <span class="mr-1 btn btn-dark">Thông tin đơn hàng</span>
-                                                                                <i class="far fa-question-circle"></i>
-                                                                            </button>
 
-                                                                            <div class="modal fade" id="infonguoinhan-{{$indexstt}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
-                                                                                <div class="modal-dialog">
-                                                                                    <div class="modal-content">
-                                                                                        <div class="modal-header">
-                                                                                            <h5 class="modal-title" id="infonguoinhan-1Label">Thông tin người nhận</h5>
-                                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                                <span aria-hidden="true">&times;</span>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                        <div class="modal-body">
-                                                                                            <form action="" class="">
-                                                                                                <div class="form-group form-control-custom mt-0 align-items-start">
-                                                                                                    <div class="left">Tên người nhận</div>
-                                                                                                    <div class="right">
-                                                                                                        <span>{{$donhangofme->tennguoinhan}}</span>
-                                                                                                    </div>
+                                                        @foreach($donhangcuatoi1 as $indexstt =>$donhangofme1)
+                                                            <div class="box-donhang profile-minibox mt-4">
+                                                                <div class="header">
+                                                                    <div class="item">
+                                                                        <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt}}">
+                                                                            <span class="mr-1 btn btn-dark">Thông tin đơn hàng</span>
+                                                                            <i class="far fa-question-circle"></i>
+                                                                        </button>
+
+                                                                        <div class="modal fade" id="infonguoinhan-{{$indexstt}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <h5 class="modal-title" id="infonguoinhan-1Label">Thông tin người nhận</h5>
+                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                            <span aria-hidden="true">&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form action="" class="">
+                                                                                            <div class="form-group form-control-custom mt-0 align-items-start">
+                                                                                                <div class="left">Tên người nhận</div>
+                                                                                                <div class="right">
+                                                                                                    <span>{{$donhangofme1->tennguoinhan}}</span>
                                                                                                 </div>
+                                                                                            </div>
 
-                                                                                                <div class="form-group form-control-custom align-items-start">
-                                                                                                    <div class="left">Số điện thoại</div>
-                                                                                                    <div class="right">
-                                                                                                        <span>{{$donhangofme->sdtnguoinhan}}</span>
-                                                                                                    </div>
+                                                                                            <div class="form-group form-control-custom align-items-start">
+                                                                                                <div class="left">Số điện thoại</div>
+                                                                                                <div class="right">
+                                                                                                    <span>{{$donhangofme1->sdtnguoinhan}}</span>
                                                                                                 </div>
+                                                                                            </div>
 
-                                                                                                <div class="form-group form-control-custom align-items-start">
-                                                                                                    <div class="left">Địa chỉ giao hàng</div>
-                                                                                                    <div class="right">
-                                                                                                        <span>{{$donhangofme->diachikhachhang}}</span>
-                                                                                                    </div>
+                                                                                            <div class="form-group form-control-custom align-items-start">
+                                                                                                <div class="left">Địa chỉ giao hàng</div>
+                                                                                                <div class="right">
+                                                                                                    <span>{{$donhangofme1->diachikhachhang}}</span>
                                                                                                 </div>
+                                                                                            </div>
 
-                                                                                                <div class="form-group form-control-custom align-items-start">
-                                                                                                    <div class="left">Ghi chú khách hàng</div>
-                                                                                                    <div class="right">
+                                                                                            <div class="form-group form-control-custom align-items-start">
+                                                                                                <div class="left">Ghi chú khách hàng</div>
+                                                                                                <div class="right">
                                                                                             <textarea disabled class="form-control form-custom" cols="10" rows="8">
-                                                                                                <?php echo($donhangofme->ghichucuakhachhang!=null)?$donhangofme->ghichucuakhachhang:"";?>
+                                                                                                <?php echo($donhangofme1->ghichucuakhachhang!=null)?$donhangofme1->ghichucuakhachhang:"";?>
                                                                                             </textarea>
-                                                                                                    </div>
                                                                                                 </div>
+                                                                                            </div>
 
 
 
 
-                                                                                            </form>
+                                                                                        </form>
 
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        @if($donhangofme->trangthai == 0)
-                                                                            <div class="item" id="huydonhang{{$donhangofme->id}}">
-                                                                                <span class="ml-1 btn btn-success">Chờ xác nhận</span>
-                                                                                <span onclick="HuyDatHang({{$donhangofme->id}})" class="ml-1 btn btn-danger">Hủy đơn</span>
-                                                                            </div>
-                                                                        @elseif($donhangofme->trangthai ==1)
-                                                                            <div class="item">
-                                                                                <span class="ml-1 btn btn-primary">Đang giao hàng</span>
-                                                                            </div>
-                                                                        @elseif($donhangofme->trangthai ==2)
-                                                                            <div class="item">
-                                                                                <i class="fas fa-truck-moving uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Giao hàng thành công</span>
-                                                                            </div>
-                                                                        @elseif($donhangofme->trangthai ==3)
-                                                                            <div class="item">
-                                                                                <span class="ml-1 btn btn-warning">Đơn hàng lỗi</span>
-                                                                            </div>
-                                                                        @elseif($donhangofme->trangthai ==4)
-                                                                            <div class="item">
-                                                                                <span class="ml-1 btn btn-warning">Trả hàng</span>
-                                                                            </div>
-                                                                        @elseif($donhangofme->trangthai ==5)
-                                                                            <div class="item">
-                                                                                <span class="ml-1 btn btn-danger">Đã hủy đơn</span>
-                                                                            </div>
-                                                                        @endif
-
                                                                     </div>
-                                                                    <div class="giohang-body">
+                                                                    @if($donhangofme1->trangthai == 0)
+                                                                        <div class="item" id="huydonhang{{$donhangofme1->id}}">
+                                                                            <span class="ml-1 btn btn-success">Chờ xác nhận</span>
+                                                                            <span onclick="HuyDatHang({{$donhangofme1->id}})" class="ml-1 btn btn-danger">Hủy đơn</span>
+                                                                        </div>
+                                                                    @elseif($donhangofme1->trangthai ==1)
+                                                                        <div class="item">
+                                                                            <span class="ml-1 btn btn-primary">Đang giao hàng</span>
+                                                                        </div>
+                                                                    @elseif($donhangofme1->trangthai ==2)
+                                                                        <div class="item">
+                                                                            <i class="fas fa-truck-moving uk-text-success"></i>
+                                                                            <span class="ml-1 uk-text-success">Giao hàng thành công</span>
+                                                                        </div>
+                                                                    @elseif($donhangofme1->trangthai ==3)
+                                                                        <div class="item">
+                                                                            <span class="ml-1 btn btn-warning">Đơn hàng lỗi</span>
+                                                                        </div>
+                                                                    @elseif($donhangofme1->trangthai ==4)
+                                                                        <div class="item">
+                                                                            <span class="ml-1 btn btn-warning">Trả hàng</span>
+                                                                        </div>
+                                                                    @elseif($donhangofme1->trangthai ==5)
+                                                                        <div class="item">
+                                                                            <span class="ml-1 btn btn-danger">Đã hủy đơn</span>
+                                                                        </div>
+                                                                    @endif
+
+                                                                </div>
+                                                                <div class="giohang-body">
+                                                                    <?php
+                                                                    $checkdhct=\Illuminate\Support\Facades\DB::table("donhangchitiet")->where("iddonhang", $donhangofme1->id)->doesntExist();
+                                                                    ?>
+                                                                    @if($checkdhct==false)
                                                                         <?php
-                                                                        $checkdhct=\Illuminate\Support\Facades\DB::table("donhangchitiet")->where("iddonhang", $donhangofme->id)->doesntExist();
+                                                                        $donhangchitiet=\Illuminate\Support\Facades\DB::table("donhangchitiet")
+                                                                            ->select("donhangchitiet.*")
+                                                                            ->where("donhangchitiet.iddonhang", $donhangofme1->id)
+                                                                            ->get();
                                                                         ?>
-                                                                        @if($checkdhct==false)
+                                                                        @foreach($donhangchitiet as $indexct =>$dhcts)
                                                                             <?php
-                                                                            $donhangchitiet=\Illuminate\Support\Facades\DB::table("donhangchitiet")
-                                                                                ->select("donhangchitiet.*")
-                                                                                ->where("donhangchitiet.iddonhang", $donhangofme->id)
+                                                                            $tensanpham =\Illuminate\Support\Facades\DB::table("sanphamchitiet")
+                                                                                ->select("sanphamchitiet.*", "sanpham.name")
+                                                                                ->join("sanpham", "sanphamchitiet.idsanpham", "=", "sanpham.id")
+                                                                                ->where("sanphamchitiet.id", $dhcts->idsanphamchitiet)
                                                                                 ->get();
                                                                             ?>
-                                                                            @foreach($donhangchitiet as $indexct =>$dhcts)
-                                                                                <?php
-                                                                                $tensanpham =\Illuminate\Support\Facades\DB::table("sanphamchitiet")
-                                                                                    ->select("sanphamchitiet.*", "sanpham.name")
-                                                                                    ->join("sanpham", "sanphamchitiet.idsanpham", "=", "sanpham.id")
-                                                                                    ->where("sanphamchitiet.id", $dhcts->idsanphamchitiet)
-                                                                                    ->get();
-                                                                                ?>
-                                                                                <div class="row shadow-2 align-items-center giohang-item">
-                                                                                    <div class="col-xl-1 d-flex  align-items-center">
-                                                                                        <div class="body-text d-flex">
-                                                                                            <img src="{{ asset('/uploads')}}/{{$dhcts->img}}" class="img-sanpham img-fluid m-0" alt="...">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-xl-3">
-                                                                                        <div class="body-text text-left">
-                                                                                            <?php if (strlen($tensanpham[0]->name)<= 45){echo $tensanpham[0]->name;}else  { echo substr($tensanpham[0]->name, 0, 45).'...';}?>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-xl-5">
-                                                                                        <div class="body-text">
-                                                                                            <div class="box-gia">
-                                                                                                @if((int)$dhcts->dongiatruocgiamgia != (int)$dhcts->dongiasaugiamgia)
-                                                                                                    <span class="giagiam">{{str_replace(',', '.',number_format($dhcts->dongiatruocgiamgia)), ""}} đ </span>
-                                                                                                    <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
-                                                                                                @else
-                                                                                                    <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
-                                                                                                @endif
-                                                                                                <span class="left-bar dungtich"> {{$tensanpham[0]->ml}}ml</span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-xl-1">
-                                                                                        <div class="body-text">
-                                                                                            <div class="input-group inline-group">
-                                                                                                <input class="form-control form-custom text-center quantity"     min="1" name="quantity" value="{{$dhcts->soluong}}" disabled type="number">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-xl-2">
-                                                                                        <div class="body-text text-right">
-                                                                                            <span class="tongtien">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia*$dhcts->soluong)), ""}} đ</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        @else
                                                                             <div class="row shadow-2 align-items-center giohang-item">
-                                                                                Không có sản phẩm nào
+                                                                                <div class="col-xl-1 d-flex  align-items-center">
+                                                                                    <div class="body-text d-flex">
+                                                                                        <img src="{{ asset('/uploads')}}/{{$dhcts->img}}" class="img-sanpham img-fluid m-0" alt="...">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xl-3">
+                                                                                    <div class="body-text text-left">
+                                                                                        <?php if (strlen($tensanpham[0]->name)<= 45){echo $tensanpham[0]->name;}else  { echo substr($tensanpham[0]->name, 0, 45).'...';}?>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xl-5">
+                                                                                    <div class="body-text">
+                                                                                        <div class="box-gia">
+                                                                                            @if((int)$dhcts->dongiatruocgiamgia != (int)$dhcts->dongiasaugiamgia)
+                                                                                                <span class="giagiam">{{str_replace(',', '.',number_format($dhcts->dongiatruocgiamgia)), ""}} đ </span>
+                                                                                                <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
+                                                                                            @else
+                                                                                                <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
+                                                                                            @endif
+                                                                                            <span class="left-bar dungtich"> {{$tensanpham[0]->ml}}ml</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xl-1">
+                                                                                    <div class="body-text">
+                                                                                        <div class="input-group inline-group">
+                                                                                            <input class="form-control form-custom text-center quantity"     min="1" name="quantity" value="{{$dhcts->soluong}}" disabled type="number">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xl-2">
+                                                                                    <div class="body-text text-right">
+                                                                                        <span class="tongtien">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia*$dhcts->soluong)), ""}} đ</span>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
-                                                                        @endif
+                                                                        @endforeach
+                                                                    @else
+                                                                        <div class="row shadow-2 align-items-center giohang-item">
+                                                                            Không có sản phẩm nào
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
+                                                                <div class="foot">
+                                                                    <div class="row">
+                                                                        <div class="col-xl-6 d-flex justify-content-between">
+                                                                            <label for="" class="text-gray">Phương thức giao hàng: </label>
+                                                                            <div class="ml-2">
+                                                                                {{$donhangofme1->phuongthucthanhtoan}}
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-xl-6 d-flex justify-content-between">
+                                                                            <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
+                                                                            <div class="ml-2">
+                                                                                {{str_replace(',', '.',number_format($donhangofme1->tongtientruocgiamgia)), ""}}đ
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="foot">
-                                                                        <div class="row">
-                                                                            <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Phương thức giao hàng: </label>
-                                                                                <div class="ml-2">
-                                                                                    {{$donhangofme->phuongthucthanhtoan}}
-                                                                                </div>
-                                                                            </div>
 
-                                                                            <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
-                                                                                <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia)), ""}}đ
-                                                                                </div>
+                                                                    <div class="row mt-1">
+                                                                        <div class="col-xl-6 d-flex justify-content-between">
+                                                                            <label for="" class="text-gray">Đơn vị vận chuyển: </label>
+                                                                            <div class="ml-2">
+                                                                                {{$donhangofme1->phuongthucgiaohang}}
                                                                             </div>
                                                                         </div>
-
-                                                                        <div class="row mt-1">
-                                                                            <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Đơn vị vận chuyển: </label>
-                                                                                <div class="ml-2">
-                                                                                    {{$donhangofme->phuongthucgiaohang}}
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Mã giảm giá: </label>
-                                                                                <div class="ml-2">
-                                                                                    @if($donhangofme->idgiamgia !="")
-                                                                                        <?php
-                                                                                        $tengiamgia=\Illuminate\Support\Facades\DB::table("giamgia")
-                                                                                            ->select("*")
-                                                                                            ->where("id", $donhangofme->idgiamgia)
-                                                                                            ->get();
-                                                                                        ?>
-                                                                                        {{$tengiamgia[0]->name}}
-                                                                                    @else
-                                                                                        <span>Không có</span>
-                                                                                    @endif
-                                                                                </div>
+                                                                        <div class="col-xl-6 d-flex justify-content-between">
+                                                                            <label for="" class="text-gray">Mã giảm giá: </label>
+                                                                            <div class="ml-2">
+                                                                                @if($donhangofme1->idgiamgia !="")
+                                                                                    <?php
+                                                                                    $tengiamgia=\Illuminate\Support\Facades\DB::table("giamgia")
+                                                                                        ->select("*")
+                                                                                        ->where("id", $donhangofme1->idgiamgia)
+                                                                                        ->get();
+                                                                                    ?>
+                                                                                    {{$tengiamgia[0]->name}}
+                                                                                @else
+                                                                                    <span>Không có</span>
+                                                                                @endif
                                                                             </div>
                                                                         </div>
+                                                                    </div>
 
-                                                                        <div class="row mt-1">
-                                                                            <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Trạng thái thanh toán: </label>
-                                                                                <div class="ml-2">
-                                                                                    @if($donhangofme->trangthaithanhtoan == 0)
-                                                                                        <span class="">Chưa thanh toán</span>
-                                                                                    @else
-                                                                                        <span class="">Đã thanh toán</span>
-                                                                                    @endif
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng tiền sau giảm : </label>
-                                                                                <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
-                                                                                </div>
+                                                                    <div class="row mt-1">
+                                                                        <div class="col-xl-6 d-flex justify-content-between">
+                                                                            <label for="" class="text-gray">Trạng thái thanh toán: </label>
+                                                                            <div class="ml-2">
+                                                                                @if($donhangofme1->trangthaithanhtoan == 0)
+                                                                                    <span class="">Chưa thanh toán</span>
+                                                                                @else
+                                                                                    <span class="">Đã thanh toán</span>
+                                                                                @endif
                                                                             </div>
                                                                         </div>
-
-                                                                        <div class="row mt-1">
-                                                                            <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Ngày đặt hàng: </label>
-                                                                                <div class="ml-2">
-                                                                                    @if($donhangofme->created_at != "")
-                                                                                        <span class="">{{date_format(date_create($donhangofme->created_at), "d/m/Y")}} Lúc {{date_format(date_create($donhangofme->created_at), "H:i:s")}}</span>
-                                                                                    @endif
-                                                                                </div>
+                                                                        <div class="col-xl-6 d-flex justify-content-between">
+                                                                            <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                            <div class="ml-2">
+                                                                                {{str_replace(',', '.',number_format($donhangofme1->tongtiensaugiamgia)), ""}}đ
                                                                             </div>
-                                                                            <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng thanh toán : </label>
-                                                                                <div class="ml-2 color-main price-total">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
-                                                                                </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row mt-1">
+                                                                        <div class="col-xl-6 d-flex justify-content-between">
+                                                                            <label for="" class="text-gray">Ngày đặt hàng: </label>
+                                                                            <div class="ml-2">
+                                                                                @if($donhangofme1->created_at != "")
+                                                                                    <span class="">{{date_format(date_create($donhangofme1->created_at), "d/m/Y")}} Lúc {{date_format(date_create($donhangofme1->created_at), "H:i:s")}}</span>
+                                                                                @endif
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
+                                                                            <label for="" class="text-gray">Tổng thanh toán : </label>
+                                                                            <div class="ml-2 color-main price-total">
+                                                                                {{str_replace(',', '.',number_format($donhangofme1->tongtiensaugiamgia)), ""}}đ
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            @endforeach
-                                                        @else
-                                                            <div class="box-donhang profile-minibox mt-4">
-                                                                Không có đơn hàng nào
                                                             </div>
-                                                        @endif
+                                                        @endforeach
 
                                                     @endif
                                                 </div>
+
                                                 <div class="tab-pane fade" id="cholayhang" role="tabpanel" aria-labelledby="cholayhang-tab">
                                                     @if(session()->has('khachHang') && session('khachHang') != '')
-                                                        <?php
-                                                        $checkdonhang1=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 1)->doesntExist();
-                                                        ?>
-                                                        @if($checkdonhang1 == false)
-                                                            <?php
-                                                            $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 1)->orderBy("id", "DESC")->get();
-                                                            ?>
-                                                            @foreach($donhangcuatoi as $indexstt =>$donhangofme)
+
+                                                            @foreach($donhangcuatoi2 as $indexstt =>$donhangofme)
                                                                 <div class="box-donhang profile-minibox mt-4">
                                                                     <div class="header">
                                                                         <div class="item">
@@ -1036,24 +1160,13 @@
                                                                     </div>
                                                                 </div>
                                                             @endforeach
-                                                        @else
-                                                            <div class="box-donhang profile-minibox mt-4">
-                                                                Không có đơn hàng nào
-                                                            </div>
-                                                        @endif
 
                                                     @endif
                                                 </div>
                                                 <div class="tab-pane fade" id="danggiao" role="tabpanel" aria-labelledby="danggiao-tab">
                                                     @if(session()->has('khachHang') && session('khachHang') != '')
-                                                        <?php
-                                                        $checkdonhang2=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 2)->doesntExist();
-                                                        ?>
-                                                        @if($checkdonhang2 == false)
-                                                            <?php
-                                                            $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 2)->orderBy("id", "DESC")->get();
-                                                            ?>
-                                                            @foreach($donhangcuatoi as $indexstt =>$donhangofme)
+
+                                                            @foreach($donhangcuatoi3 as $indexstt =>$donhangofme)
                                                                 <div class="box-donhang profile-minibox mt-4">
                                                                     <div class="header">
                                                                         <div class="item">
@@ -1288,24 +1401,13 @@
                                                                     </div>
                                                                 </div>
                                                             @endforeach
-                                                        @else
-                                                            <div class="box-donhang profile-minibox mt-4">
-                                                                Không có đơn hàng nào
-                                                            </div>
-                                                        @endif
 
                                                     @endif
                                                 </div>
                                                 <div class="tab-pane fade" id="dagiao" role="tabpanel" aria-labelledby="dagiao-tab">
                                                     @if(session()->has('khachHang') && session('khachHang') != '')
-                                                        <?php
-                                                        $checkdonhang5=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 5)->doesntExist();
-                                                        ?>
-                                                        @if($checkdonhang5 == false)
-                                                            <?php
-                                                            $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 5)->orderBy("id", "DESC")->get();
-                                                            ?>
-                                                            @foreach($donhangcuatoi as $indexstt =>$donhangofme)
+
+                                                            @foreach($donhangcuatoi4 as $indexstt =>$donhangofme)
                                                                 <div class="box-donhang profile-minibox mt-4">
                                                                     <div class="header">
                                                                         <div class="item">
@@ -1540,24 +1642,12 @@
                                                                     </div>
                                                                 </div>
                                                             @endforeach
-                                                        @else
-                                                            <div class="box-donhang profile-minibox mt-4">
-                                                                Không có đơn hàng nào
-                                                            </div>
-                                                        @endif
-
                                                     @endif
                                                 </div>
                                                 <div class="tab-pane fade" id="dahuy" role="tabpanel" aria-labelledby="dahuy-tab">
                                                     @if(session()->has('khachHang') && session('khachHang') != '')
-                                                        <?php
-                                                        $checkdonhang4=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 4)->doesntExist();
-                                                        ?>
-                                                        @if($checkdonhang4 == false)
-                                                            <?php
-                                                            $donhangcuatoi=\Illuminate\Support\Facades\DB::table("donhang")->where("idkhachhang", session()->get('khachHang')->id)->where("trangthai", 4)->orderBy("id", "DESC")->get();
-                                                            ?>
-                                                            @foreach($donhangcuatoi as $indexstt =>$donhangofme)
+
+                                                            @foreach($donhangcuatoi5 as $indexstt =>$donhangofme)
                                                                 <div class="box-donhang profile-minibox mt-4">
                                                                     <div class="header">
                                                                         <div class="item">
@@ -1792,12 +1882,6 @@
                                                                     </div>
                                                                 </div>
                                                             @endforeach
-                                                        @else
-                                                            <div class="box-donhang profile-minibox mt-4">
-                                                                Không có đơn hàng nào
-                                                            </div>
-                                                        @endif
-
                                                     @endif
                                                 </div>
                                             </div>
@@ -1864,6 +1948,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
+                                                              <button type="button" class="btn btn-danger" onclick="return huyLieuTrinh()" data-dismiss="modal">Huỷ Liệu Trình</button>
                                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                                                             </div>
                                                           </div>
@@ -1875,6 +1960,7 @@
 
                                             <div class="tab-content" id="">
                                                 <div class="tab-pane fade show active" id="alllieutrinh" role="tabpanel" aria-labelledby="alllieutrinh-tab">
+                                                       @if (count($dataLieuTrinh)>0)
                                                         @foreach ($dataLieuTrinh as $item)
                                                             <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
 
@@ -1906,9 +1992,12 @@
                                                                                 @if ($item->trangthai === 0)
                                                                                     <i class="far fa-check-circle uk-text-primary"></i>
                                                                                     <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                @else
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                @elseif($item->trangthai === 1)
+                                                                                    <i class="far fa-check-circle uk-text-success"></i>
+                                                                                    <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                @elseif($item->trangthai === 2)
+                                                                                    <i class="far fa-check-circle uk-text-danger"></i>
+                                                                                    <span class="ml-1 uk-text-danger">Đã Huỷ</span>
                                                                                 @endif
                                                                             </div>
                                                                         </div>
@@ -1933,16 +2022,21 @@
 
                                                                     </div>
                                                                 </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-
+                                                        @endforeach
+                                                        @else
+                                                            <div class="box-donhang profile-minibox mt-4">
+                                                                Không có liệu trình nào!
+                                                            </div>
+                                                        @endif
+                                                        
 
                                                 </div>
                                                 {{-- end tab tất cả --}}
                                                 <div class="tab-pane fade" id="lieutrinh-hoanthanh" role="tabpanel" aria-labelledby="lieutrinh-hoanthanh-tab">
-
+                                                    @if (count($dataLieuTrinh)>0)
                                                             @foreach ($dataLieuTrinh as $item)
                                                                  @if ($item->trangthai === 1)
                                                                     <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
@@ -1971,13 +2065,8 @@
                                                                                     </div>
                                                                                     <div class="col-4 justify-content-end">
                                                                                         <div class="item ml-4 text-right">
-                                                                                            @if ($item->trangthai === 0)
-                                                                                                <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                                <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                            @else
                                                                                             <i class="far fa-check-circle uk-text-success"></i>
                                                                                             <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                                            @endif
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -2007,10 +2096,18 @@
 
                                                                 @endif
                                                             @endforeach
+                                                            @else
+                                                                <div class="box-donhang profile-minibox mt-4">
+                                                                    Không có liệu trình nào!
+                                                                </div>
+                                                            @endif
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dangdieutri" role="tabpanel" aria-labelledby="lieutrinh-dangdieutri-tab">
+                                                    
+                                                
                                                     @foreach ($dataLieuTrinh as $item)
                                                                  @if ($item->trangthai === 0)
+                 
                                                                     <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
                                                                         <div class="body">
                                                                             <button  type="button"  class="button-none show-progress-lieutrinh" >
@@ -2037,13 +2134,8 @@
                                                                                     </div>
                                                                                     <div class="col-4 justify-content-end">
                                                                                         <div class="item ml-4 text-right">
-                                                                                            @if ($item->trangthai === 0)
-                                                                                                <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                                <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                            @else
-                                                                                            <i class="far fa-check-circle uk-text-success"></i>
-                                                                                            <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                                            @endif
+                                                                                            <i class="far fa-check-circle uk-text-primary"></i>
+                                                                                            <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -2070,13 +2162,16 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
                                                             @endif
                                                         @endforeach
+                                                       
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dahuy" role="tabpanel" aria-labelledby="lieutrinh-dahuy-tab">
+                                                  
                                                     @foreach ($dataLieuTrinh as $item)
+                                                    
                                                         @if ($item->trangthai === 2)
+
                                                         <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
                                                             <div class="body">
                                                                 <button  type="button"  class="button-none show-progress-lieutrinh" >
@@ -2103,13 +2198,8 @@
                                                                         </div>
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                @if ($item->trangthai === 0)
-                                                                                    <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                    <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                @else
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                                @endif
+                                                                                <i class="far fa-check-circle uk-text-danger"></i>
+                                                                                <span class="ml-1 uk-text-danger">Đã Huỷ</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -2136,10 +2226,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
+                                                      
                                                     @endif
                                                 @endforeach
-
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -2750,6 +2840,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.9.2/js/uikit.min.js"></script>
     <script src="{{ asset('Site/js') }}/profile-user.js"></script>
     <script>
+        $("#form_prof").validate({
+            rules: {
+                username: {required: true, maxlength: 45, minlength: 3},
+                email: {required: true, email: true}
+            },
+            messages: {
+                username: {
+                    required: "<span class='badge badge-danger'>Mời bạn nhập tên</span>",
+                    maxlength: "<span class='badge badge-danger'>Tên dài quá, phải <25 ký tự </span>",
+                    minlength: "<span class='badge badge-danger'>Tên ngắn quá, phải >3 ký tự </span>"
+                },
+                email:{
+                    required: "<span class='badge badge-danger'>Mời bạn nhập email</span>",
+                    email: "<span class='badge badge-danger'>Không đúng định dạng email</span>"
+                }
+            }
+        });
+
+        document.getElementById("ip-avt").onchange = function () {
+
+            var ListImages = document.getElementById("ip-avt").files;
+            if (ListImages.length > 0) {
+
+                var filetoload = ListImages[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var srcData = e.target.result;
+                    var newIMG = document.createElement('img');
+                    newIMG.src = srcData;
+                    document.getElementById("imageA").src = srcData;
+                };
+                //
+                // // read the image file as a data URL.
+                reader.readAsDataURL(filetoload);
+            }
+        };
 
         function HuyDatHang(id) {
             Swal.fire({

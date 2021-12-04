@@ -241,7 +241,7 @@
 
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="index.html" class="logo logo-dark text-center">
+            <a href="/quantri" class="logo logo-dark text-center">
                         <span class="logo-lg">
                             <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>
@@ -249,7 +249,7 @@
                             <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>
             </a>
-            <a href="index.html" class="logo logo-light text-center">
+            <a href="/quantri" class="logo logo-light text-center">
                         <span class="logo-lg">
                             <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>

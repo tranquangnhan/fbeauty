@@ -24,14 +24,7 @@
 
                                     <div class="head-blog-item">
                                         <div class="d-flex">
-                                            <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">
-                                                <form class="form-inline" action="">
-                                                    <div class="form-group">
-                                                      <input class="form-control" name="key" placeholder="Tìm Kiếm Bài Viết ....">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-default"><i class="fas fa-search color-black-2"></i></button>
-                                                </form>
-                                            </div>
+                                            <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">Tìm kiếm theo </div>
                                             <ul class="nav nav-tabs" id="myTab-1" role="tablist">
                                                 <li class="nav-item" role="presentation">
                                                     <a class="nav-link btn-3 active" id="new-tab" data-toggle="tab" href="#new" role="tab" aria-controls="new" aria-selected="true">Mới nhất</a>
@@ -55,11 +48,12 @@
                                                 <div class="box-danhmuc">
                                                     {{$blog[0]->danhmuc}}
                                                 </div>
-
-                                                <div class="img-1 w-100">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('uploads') }}/{{$blog[0]->img}}" alt="">
-                                                </div>
+                                                <a href="{{ asset('bai-viet') }}/{{$blog[0]->slug}}">
+                                                    <div class="img-1 w-100">
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('uploads') }}/{{$blog[0]->img}}" alt="">
+                                                    </div>
+                                                </a>
 
                                                 <div class="blog-content-bigsize">
                                                     <div class="blog-text-1 limit-text-row-2">
@@ -97,16 +91,17 @@
                                                         <div class="row">
                                                             <div class="col-xl-5">
                                                                 <div class="img-1 image-tin-1">
+                                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}">
                                                                     <img class="img-fluid"
                                                                         src="{{ asset('uploads') }}/{{$item->img}}"
-                                                                        alt="">
+                                                                        alt=""></a>
                                                                 </div>
                                                             </div>
                                                             <div class="col-xl-7 pl-0 align-self-center">
                                                                 <div class="row">
                                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                         <div class="mr-3">
-                                                                            <a href="" class="box-danhmuc-1">
+                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                                                {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
@@ -137,17 +132,18 @@
                                                 </div>
 
                                                 <div class="img-1 w-100">
-                                                    <img class="img-fluid"
-                                                        src="{{ asset('uploads') }}/{{$item1->img}}" alt="">
+                                                    <a href="{{ asset('bai-viet') }}/{{$item1->slug}}">
+                                                        <img class="img-fluid"
+                                                        src="{{ asset('uploads') }}/{{$item1->img}}" alt=""></a>
                                                 </div>
 
                                                 <div class="blog-content-bigsize">
                                                     <div class="blog-text-1 limit-text-row-2">
-                                                        <a href="{{ asset('bai-viet') }}/{{$item->slug}}">{{$item1->name}}</a>
+                                                        <a href="{{ asset('bai-viet') }}/{{$item1->slug}}">{{$item1->name}}</a>
                                                     </div>
                                                     <div class="blog-text-2 mt-2">
                                                         <?php
-                                                            $timestamp = strtotime($blog3[0]->created_at);
+                                                            $timestamp = strtotime($item1->created_at);
                                                             print date('d-m-y', $timestamp );
                                                             ?>
                                                     </div>
@@ -177,16 +173,17 @@
                                                         <div class="row">
                                                             <div class="col-xl-5">
                                                                 <div class="img-1 image-tin-1">
+                                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}">
                                                                     <img class="img-fluid"
                                                                         src="{{ asset('uploads') }}/{{$item->img}}"
-                                                                        alt="">
+                                                                        alt=""></a>
                                                                 </div>
                                                             </div>
                                                             <div class="col-xl-7 pl-0 align-self-center">
                                                                 <div class="row">
                                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                         <div class="mr-3">
-                                                                            <a href="" class="box-danhmuc-1">
+                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                                             {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
@@ -234,23 +231,27 @@
                             <div class="slide-tin-1">
                                 <div class="tin-item-1">
                                     <div class="image-tin-1">
-                                        <img class="img-fluid" src="{{ asset('uploads') }}/{{$blog[0]->img}}" alt="">
+                                        <a href="{{ asset('bai-viet') }}/{{$blognewtt[0]->slug}}">
+                                        <img class="img-fluid" src="{{ asset('uploads') }}/{{$blognewtt[0]->img}}" alt=""></a>
                                     </div>
                                     <div class="content-tin background-white">
                                         <div class="row">
                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                 <div class="mr-3">
-                                                    <a  class="box-danhmuc-1">
-                                                        {{$blog[0]->danhmuc}}</a>
+                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$blognewtt[0]->slugdm}}" class="box-danhmuc-1">
+                                                        {{$blognewtt[0]->danhmuc}}</a>
                                                 </div>
-                                                <span>@if ($blog[0]->created_at != null)
-                                                        {{$blog[0]->created_at->format('Y.m.d')}}
-                                                    @endif</span>
+                                                <span>@if ($blognewtt[0]->created_at != null)
+                                                   <?php
+                                                    $timestamp = strtotime($blognewtt[0]->created_at);
+                                                    print date('d-m-y', $timestamp );
+                                                    ?> 
+                                                @endif </span>
                                             </div>
                                         </div>
                                         <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
-                                                {{$blog[0]->name}}</a>
+                                            <a href="{{ asset('bai-viet') }}/{{$blognewtt[0]->slug}}" class="hover-pink">
+                                                {{$blognewtt[0]->name}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -259,17 +260,22 @@
                         <div class="col-xl-5">
                             <div class="box-tin-2 d-flex flex-column h-100">
                                 @foreach ($blognew as $item)
+                                <a href="{{ asset('bai-viet') }}/{{$item->slug}}">
                                     <div class="child-box-tin-2 d-flex align-items-end" style="background: url('{{ asset('uploads') }}/{{$item->img}}')">
                                         <div class="content-tin background-white">
                                             <div class="row">
                                                 <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
-                                                        <a  class="box-danhmuc-1 maincolor">
+                                                        <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1 maincolor">
                                                         {{$item->danhmuc}}</a>
                                                     </div>
-                                                    <span class="color-gray-5 fz-1em2">@if ($item->created_at != null)
-                                                        {{$item->created_at->format('Y.m.d')}}
-                                                    @endif</span>
+                                                    <span class="color-gray-5 fz-1em2">
+                                                        @if ($item->created_at != null)
+                                                            <?php
+                                                                $timestamp = strtotime($item->created_at);
+                                                                print date('d-m-y', $timestamp );
+                                                            ?> 
+                                                        @endif </span>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
@@ -278,6 +284,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                </a>
                                 @endforeach
                             </div>
                         </div>
@@ -312,12 +319,12 @@
                                 <div class="child-box-tin-2 d-flex align-items-center box-small" style="background: url('{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg');">
                                     <div class="content-tin background-white">
                                         <div class="text-bl-1 limit-text-row-2 mb-2">
-                                            <a href="" class="color-white hover-pink">Trải nghiệm cảm giác spa <br> đỉnh cao tại Fbeauty spa</a>
+                                            <a class="color-white hover-pink">Trải nghiệm cảm giác spa <br> đỉnh cao tại Fbeauty spa</a>
                                         </div>
                                         <div class="row">
                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                 <div class="mr-3">
-                                                    <a href="" class="box-danhmuc-1 maincolor">Đặt lịch</a>
+                                                    <a class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -327,7 +334,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -343,7 +349,7 @@
                                     <div class="title-3 mr-4">
                                         {{$item->name}}
                                     </div>
-                                    <div class="line-main-color ml-auto" style="width: 75%"></div>
+                                    <div class="line-main-color ml-auto" style="width: 70%"></div>
                                 </div>
                             </div>
 
@@ -353,17 +359,23 @@
                                     <div class="col-xl-4">
                                         <div class="tin-item-1 box-tin-hv">
                                             <div class="image-tin-1" style="height: 220px">
-                                                <img class="img-fluid" src="{{ asset('uploads') }}/{{$data->img}}" alt="">
+                                                <a href="{{ asset('bai-viet') }}/{{$data->slug}}">
+                                                <img class="img-fluid" src="{{ asset('uploads') }}/{{$data->img}}" alt=""></a>
                                             </div>
                                             <div class="content-tin-3 background-white">
                                                 <div class="row">
                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                         <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
+                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                             {{$item->name}}</a>
                                                         </div>
-                                                        <span>@if ($data->created_at != null)
-                                                            {{$data->created_at->format('Y.m.d')}} @endif</span>
+                                                        <span>  
+                                                            @if ($data->created_at != null)
+                                                                <?php
+                                                                    $timestamp = strtotime($data->created_at);
+                                                                    print date('d-m-y', $timestamp );
+                                                                ?> 
+                                                            @endif</span>
                                                     </div>
                                                 </div>
                                                 <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
@@ -409,17 +421,18 @@
                                 <div class="col-xl-3">
                                     <div class="tin-item-1">
                                         <div class="image-tin-1 " style="height: 180px;">
-                                            <img class="img-fluid " src="{{ asset('uploads') }}/{{$item->img}}" alt="">
+                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}">
+                                            <img class="img-fluid " src="{{ asset('uploads') }}/{{$item->img}}" alt=""></a>
                                         </div>
                                         <div class="content-tin background-none pt-4 p-0">
                                             <div class="row">
                                                 <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1 maincolor">
+                                                        <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1 maincolor">
                                                         {{$item->danhmuc}}</a>
                                                     </div>
                                                     <span class="color-gray-6">@if ($item->created_at != null)
-                                                        {{$item->created_at->format('Y.m.d')}}@endif</span>
+                                                        {{$item->created_at->format('d-m-y')}}@endif</span>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-1 mb-2 mt-3">
@@ -451,7 +464,7 @@
                                         <div class="title-3 mr-4">
                                             {{$item->name}}
                                         </div>
-                                        <div class="line-main-color ml-auto" style="width: 75%"></div>
+                                        <div class="line-main-color ml-auto" style="width: 70%"></div>
                                     </div>
                                 </div>
 
@@ -461,18 +474,23 @@
                                             <div class="col-xl-4 content1 mt-3">
                                                 <div class="tin-item-1 box-tin-hv">
                                                     <div class="image-tin-1 mt-3" style="height: 220px">
-                                                        <img class="img-fluid" src="{{ asset('uploads') }}/{{$data->img}}" alt="">
+                                                        <a href="{{ asset('bai-viet') }}/{{$data->slug}}">
+                                                        <img class="img-fluid" src="{{ asset('uploads') }}/{{$data->img}}" alt=""></a>
                                                     </div>
                                                     <div class="content-tin-3 background-white">
                                                         <div class="row">
                                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                 <div class="mr-3">
-                                                                    <a href="" class="box-danhmuc-1">
+                                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                                         {{$item->name}}</a>
                                                                 </div>
-                                                                <span>@if ($item->created_at != null)
-                                                                    {{$item->created_at->format('Y.m.d')}}</span>
-                                                                @endif
+                                                                <span> @if ($data->created_at != null)
+                                                                    <?php
+                                                                        $timestamp = strtotime($data->created_at);
+                                                                        print date('d-m-y', $timestamp );
+                                                                    ?>                                                          
+                                                                    @endif
+                                                                </span>
                                                             </div>
                                                         </div>
                                                         <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
@@ -505,16 +523,20 @@
                                 <div class="row">
                                     <div class="col-xl-5">
                                         <div class="img-1">
+                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}">
                                             <img class="img-fluid "
-                                                src="{{ asset('uploads/') }}/{{$item->img}}"
-                                                alt="">
+                                                src="{{ asset('uploads/') }}/{{$item->img}}" alt=""></a>
                                         </div>
                                     </div>
                                     <div class="col-xl-7 pl-0 align-self-center">
                                         <div class="row">
                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                <span>@if ($item->created_at != null)
-                                                    {{$item->created_at->format('Y.m.d')}}
+                                                <span>
+                                                    @if ($data->created_at != null)
+                                                        <?php
+                                                            $timestamp = strtotime($data->created_at);
+                                                            print date('d-m-y', $timestamp );
+                                                        ?>                                                         
                                                     @endif</span>
                                             </div>
                                         </div>

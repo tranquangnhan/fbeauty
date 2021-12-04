@@ -141,10 +141,8 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <?php $splienquan=\Illuminate\Support\Facades\DB::table('sanpham')->select('*')->where('iddanhmuc', $sanpham[0]->iddanhmuc) ->where('sanpham.trangthai', 1)->limit(4)->get();?>
                     @foreach($splienquan as $i => $splq)
                         <?php $anh=json_decode($splq->img);
-                        $splienquanct=\Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("*")->where('idsanpham', $splq->id)->limit(1)->get();
                         ?>
                         <div class="col-3">
                             <div class="card product-card child-item-sanpham zbar">
@@ -193,15 +191,15 @@
                                         </a>
                                         <div class="mt-2 d-flex align-items-center justify-content-center" style="height: 50px;">
                                             <div class="mb-1 product-price">
-                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($splienquanct[0]->dongia)), ""}} đ</span> / <span>{{$splienquanct[0]->ml}} ml</span>
+                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($splq->dongia)), ""}} đ</span> / <span>{{$splq->ml}} ml</span>
                                                 @if($splq->giamgia !="")
-                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($splienquanct[0]->dongia-(($splienquanct[0]->dongia * $splq->giamgia)/100))), ""}}đ</span>
+                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($splq->dongia-(($splq->dongia * $splq->giamgia)/100))), ""}}đ</span>
                                                 @endif
                                             </div>
                                         </div>
                                         <div class="product-action mt-1">
                                             <div class="d-grid gap-2">
-                                                <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splienquanct[0]->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splq->idspct}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
                                                 <a href="{{URL::to("san-pham/chi-tiet", $splq->slug)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
                                             </div>
                                         </div>
@@ -219,14 +217,8 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <?php $spkhac=\Illuminate\Support\Facades\DB::table('sanpham')->select('sanpham.*', 'danhmuc.name AS tendm')
-                        ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
-                        ->where('iddanhmuc', '!=',$sanpham[0]->iddanhmuc)
-                        ->where('sanpham.trangthai', 1)
-                        ->limit(4)->get();?>
                     @foreach($spkhac as $i => $spk)
                         <?php $anhk=json_decode($spk->img);
-                        $splienquanctkhac=\Illuminate\Support\Facades\DB::table('sanphamchitiet')->select("*")->where('idsanpham', $spk->id)->limit(1)->get();
                         ?>
                         <div class="col-3">
                             <div class="card rounded-0 product-card child-item-sanpham zbar">
@@ -275,16 +267,16 @@
                                         </a>
                                         <div class="d-flex align-items-center justify-content-center" style="height: 50px;">
                                             <div class="mb-1 product-price">
-                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia)), ""}} đ</span> / <span>{{$splienquanctkhac[0]->ml}}ml</span>
+                                                <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($spk->dongia)), ""}} đ</span> / <span>{{$spk->ml}}ml</span>
                                                 @if($spk->giamgia !="")
-                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($splienquanctkhac[0]->dongia-(($splienquanctkhac[0]->dongia * $spk->giamgia)/100))), ""}}đ</span>
+                                                    <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($spk->dongia-(($spk->dongia * $spk->giamgia)/100))), ""}}đ</span>
                                                 @endif
                                             </div>
                                         </div>
                                         <div class="product-action mt-2">
                                             <div class="d-grid gap-2">
 
-                                                <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$splienquanctkhac[0]->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$spk->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
                                                 <a href="{{URL::to("san-pham/chi-tiet", $spk->slug)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
                                             </div>
                                         </div>
@@ -303,5 +295,7 @@
 
 @section('javascript')
     <script src="{{ asset('Site/js') }}/sanpham.js"></script>
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/baiviet.css">
+
 @endsection
 

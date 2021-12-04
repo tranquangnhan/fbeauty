@@ -93,7 +93,7 @@
                             </div><!-- /.modal-dialog -->
                         </div>
 
-                        <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="7%">STT</th>
@@ -122,7 +122,7 @@
                                                 <form action="{{route('coso.destroy',$row->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger" title="Xóa" ><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa không ?');"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

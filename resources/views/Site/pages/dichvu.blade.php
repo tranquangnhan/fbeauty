@@ -21,21 +21,14 @@
                 </div>
                 <div class="head-service-item">`
                     <div class="d-flex">
-                        <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">
-                            <form class="form-inline" action="">
-                                <div class="form-group">
-                                  <input class="form-control" name="key" placeholder="Tìm Kiếm Dịch Vụ ....">
-                                </div>
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search color-black-2"></i></button>
-                            </form>
-                        </div>
                         <ul class="nav nav-tabs" id="myTab-1" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link btn-3 active black-1" id="damat-tab" data-toggle="tab" href="#damat" role="tab" aria-controls="damat" aria-selected="true">Da mặt</a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link btn-3 black-1" id="giammo-tab" data-toggle="tab" href="#giammo" role="tab" aria-controls="giammo" aria-selected="false">Danh mục</a>
-                            </li>
+                            @foreach ($listDanhMuc as $listdanhmuc)
+
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link btn-3 @if ($loop->index == 0) active @endif black-1" id="{{$listdanhmuc->slug}}-tab" data-toggle="tab" href="#{{$listdanhmuc->slug}}" role="tab" aria-controls="{{$listdanhmuc->slug}}" aria-selected="true">{{ $listdanhmuc->name }}</a>
+                                </li>
+
+                            @endforeach
                         </ul>
                     </div>
 
@@ -43,13 +36,14 @@
             </div>
             <div class="list-tabs">
                 <div class="tab-content" id="myTabContent-1">
-                    <div class="tab-pane fade show active" id="damat" role="tabpanel">
+                    @foreach ($arrDichVu as $itemdichvu)
+                    <div class="tab-pane @if ($loop->index == 0) show active @endif  fade" id="{{$listDanhMuc[$loop->index]->slug}}" role="tabpanel" aria-labelledby="{{$listDanhMuc[$loop->index]->slug}}-tab">
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
 
-                            @foreach ($dichvu as $dichvuitem)
-                                <div class="dichvu-item ml-0 w-100">
-                                    <div class="content-1">
+                            @foreach ($itemdichvu as $dichvuitem)
+                                <div class="dichvu-item d-plex w-100">
+                                    <div class="content-1" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvuitem->slug}}';">
                                         <div class="text-7 color-main-1">
                                             {{$dichvuitem->namedm}}
                                         </div>
@@ -76,38 +70,10 @@
                                 </div>
                             @endforeach
 
-
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="giammo" role="tabpanel">
-                        <div class="w-100">
-                            <div class="fa-list-dichvu mt-1">
-                                @foreach ($danhmuc as $danhmucitem)
-
-                                <div class="dichvu-item ml-0 w-100">
-                                    <div class="content-1">
-                                        <div class="text-7 color-main-1">
-                                            {{$danhmucitem->name}}
-                                        </div>
-
-                                        <div class="img-1 mt-4">
-                                            <a href="{{ asset('danh-muc') }}/{{$danhmucitem->slug}}">
-                                                <img class="" src="{{ asset('uploads/'.$danhmucitem->img) }}" alt="">
-                                            </a>
-                                        </div>
-
-                                        <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                            Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed
-                                            do eiusmod tempor incididunt.
-
-                                        </p>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -131,7 +97,7 @@
                             @foreach ($dichvu1 as $dichvu1item)
 
                             <div class="col-xl-4">
-                                <div class="item-dichvu-2">
+                                <div class="item-dichvu-2" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvu1item->slug}}';">
                                     <div class="dichvu-header">
                                         <div class="box-danhmuc-small">
                                             <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
@@ -150,7 +116,7 @@
                                             <span class="gia">{{number_format($dichvu1item->dongia)}} đ </span>
                                         </div>
                                         <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                            <a href="{{ asset('dich-vu') }}/{{$dichvu1item->slug}}"> {{$dichvu1item->name}}</a>
+                                            {{$dichvu1item->name}}
                                         </div>
 
                                         <p class="mota text-2 limit-text-row-3 mt-1 mt-2">
@@ -178,10 +144,18 @@
 
                     <div class="list-dichvu mt-4">
                         <div class="row">
-                            @foreach ($dichvu2 as $dichvu2item)
+                            @php
+                                $dongia1 = 0;
+                                $dongia2 = 0;
+                            @endphp
 
+                            @foreach ($dichvu2 as $dichvu2item)
+                                @php
+                                 $dongia1 = $dichvu2item->dongia - ($dichvu2item->dongia/100 * $dichvu2item->numbergg);
+                                 $dongia2 = $dichvu2item->dongia - $dichvu2item->maxgg;
+                                @endphp
                                 <div class="col-xl-4">
-                                    <div class="item-dichvu-2">
+                                    <div class="item-dichvu-2" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvu2item->slug}}';">
                                         <div class="dichvu-header">
                                             <div class="box-danhmuc-small">
                                                 <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
@@ -198,10 +172,16 @@
                                         <div class="content mt-5">
                                             <div class="box-gia">
                                                 <span class="giagiam">{{number_format($dichvu2item->dongia)}} đ </span>
-                                                <span class="gia left-bar">{{number_format($dichvu2item->dongia)}} đ </span>
+                                                <span class="gia left-bar">
+                                                    @if ($dichvu2item->giamgia == 1)
+                                                    {{number_format($dongia1)}} đ
+                                                    @else
+                                                    {{number_format($dongia2)}} đ
+                                                    @endif
+                                                </span>
                                             </div>
                                             <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                                <a href="{{ asset('dich-vu') }}/{{$dichvu2item->slug}}">{{$dichvu2item->name}}</a>
+                                                {{$dichvu2item->name}}
                                             </div>
 
                                             <p class="mota text-2 limit-text-row-3 mt-1 mt-2">

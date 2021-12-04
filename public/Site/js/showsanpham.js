@@ -57,11 +57,11 @@ function BeFore(data, bienkhac) {
             sanpham: mangdm[0],
         }
         TruyenObject(datas)
-        FilterGia(ArrayFlow, bien)
+        FilterSapXep(ArrayFlow, bien)
 
     } else {
         ArrayFlow = data;
-        FilterGia(ArrayFlow, bien)
+        FilterSapXep(ArrayFlow, bien)
     }
 }
 
@@ -295,16 +295,18 @@ function SearchFilter() {
 function ShowPhanTrang(dem) {
     var soSp = document.querySelectorAll(".fa-sanpham-item");
     var xemsp = document.getElementById("xemthemsanpham");
+    for (let i = dem; i <= soSp.length; i++) {
+        document.getElementById('AnHienSP' + i).style.display = "none";
+    }
+
     for (let j = 1; j <= dem; j++) {
         if (j <= soSp.length) {
-            document.getElementById('AnHienSP' + (j)).style.display = "block";
+            document.getElementById('AnHienSP' + j).style.display = "block";
         } else {
             xemsp.innerHTML = '<button class="w-25 border border-dark p-2" style="background-color: black; color: #e87c7b;" ><< Hết sản phẩm >></button>'
         }
     }
-    for (let i = dem; i < soSp.length; i++) {
-        document.getElementById('AnHienSP' + i).style.display = "none";
-    }
+
     if (dem <= soSp.length) {
         if ((soSp.length - dem) != 0) {
             xemsp.innerHTML = '<button class="w-25 border border-dark p-2" style="background-color: #e87c7b; " onclick="ShowPhanTrang(' + (dem + soluongshowtiep) + ')">Xem thêm (' + (soSp.length - dem) + ' sản phẩm )<i class="fa fa-angle-down"></i></button>'
@@ -317,4 +319,3 @@ function ShowPhanTrang(dem) {
 
 }
 
-ShowPhanTrang(sanphambandau);

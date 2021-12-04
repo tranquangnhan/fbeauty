@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -21,6 +22,7 @@ class Controller extends BaseController
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
     const LOAI_DANHMUC_BLOG = 3;
+    const LOAI_DANHMUC_THUONG_HIEU = 4;
     const KHACHHANG_CHUA_ACTIVE = 0;
     const KHACHHANG_DA_ACTIVE = 1;
     const TRANGTHAI_LICH_OPEN = 0;
@@ -28,7 +30,8 @@ class Controller extends BaseController
     const TRANGTHAI_HOADON_DA_THANH_TOAN = 1;
     const TRANGTHAI_HOADON_CHUA_THANH_TOAN = 0;
     const TRANGTHAI_DONHANG_DA_NHAN = 4;
-
+    const TRANGTHAI_DICHVU_HIEN = 1;
+    const TRANGTHAI_SANPHAM = 1;//HIỆN
     /**
      * ID_LIENQUAN_SP=1 LÀ SẢN PHẨM
      * ID_LIENQUAN_DV=0 LÀ DỊCH VỤ
@@ -47,7 +50,25 @@ class Controller extends BaseController
     // path upload using for uploadSingle and uploadMultipleImg
     const PATH_UPLOADS = 'public';
     const PATH_UPLOADS_KHACHHANG = 'imgKH';
-
+    /**
+    Trạng thái đơn hàng
+     */
+    const DONHANG_CHOXACNHAN=0;
+    const DONHANG_DANGGIAO=1;
+    const DONHANG_DAGIAO=2;
+    const DONHANG_DAHUY=5;
+    const DONHANG_TRAHANG=4;
+    /**
+    End trạng thái đơn hàng
+     */
+    /**
+    Trạng thái hóa đơn
+     */
+    const DONHANG_TYPE_DICHVU=0;
+    const DONHANG_TYPE_SANPHAM=1;
+    /**
+    End trạng thái hóa đơn
+     */
 
     function uploadSingle($path,$file){
         if($file == null) return null;
@@ -74,12 +95,24 @@ class Controller extends BaseController
      */
     public function checkImg($extension, $img)
     {
-        $allowedfileExtension = ['jpg', 'png', 'gif'];
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
         $check = in_array($extension, $allowedfileExtension);
         if (!$check) {
             return false;
         } else {
             $img->move(self::BASE_URL_UPLOAD_STAFF, $img->getClientOriginalName());
+            return true;
+        }
+    }
+
+    public function checkImgCustomer($extension, $img)
+    {
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
+        $check = in_array($extension, $allowedfileExtension);
+        if (!$check) {
+            return false;
+        } else {
+            $img->move(self::BASE_URL_UPLOAD_CUSTOMER, $img->getClientOriginalName());
             return true;
         }
     }
@@ -120,5 +153,19 @@ class Controller extends BaseController
             'cuoiNgayTimestamp' => $cuoiNgayTimestamp
         );
     }
+    // function unique slug
+    public function setSlugStore($model,$name){
+
+        $data = $model->getAll()->sortByDesc('id')->first();
+        $slug = Str::slug($name) . '-' .$data->id + 1;
+
+        return $slug;
+    }
+
+    public function setSlugUpdate($id,$name){
+        $slug = Str::slug($name) . '-' . $id;
+        return $slug;
+    }
+
 
 }

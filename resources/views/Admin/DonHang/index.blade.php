@@ -17,7 +17,7 @@
                         </p>
 
 
-                        <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive">
                                 <thead class="thead-light">
                                     <tr class="text-center">
                                         <th width="10.5%"> Mã đơn hàng </th>
