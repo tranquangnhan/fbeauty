@@ -34,7 +34,7 @@
                                     Hệ Thống Spa <br> Đẳng Cấp
                                 </div>
                                 <div class="text-1 mt-4">
-                                    Với 45 chi nhánh trải dài khắp cả nước, FBeauty Spa tự hào là chuỗi hệ thống thẩm mỹ
+                                    Với 45 chi nhánh trải dài khắp cả nước, FBeauty tự hào là chuỗi hệ thống thẩm mỹ
                                     viện hàng đầu Việt Nam
                                 </div>
                                 <div class="text-2 mt-1">
@@ -211,11 +211,11 @@
                     <h5 class="card-title mb-3" style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Cơ sở vật chất hàng đầu</h5>
                 </div>
                 <ul class="mt-4">
-                    <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn bật lên sự ấm cúng, thân thiện cùng nội thất hàng đầu, tiện nghi FBeauty Spa  là một trong những Spa thẩm mỹ có cơ sở vật chất đạt tiêu chuẩn quốc tế.</li>
-                    <li>Đồng thời, tất cả các giường thẩm mỹ được thiết kế độc lập, kín đáo mang đến không gian riêng tư, sự thoải mái nhất cho khách hàng khi trải nghiệm các dịch vụ tại FBeauty Spa</li>
+                    <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn bật lên sự ấm cúng, thân thiện cùng nội thất hàng đầu, tiện nghi FBeauty  là một trong những Spa có cơ sở vật chất đạt tiêu chuẩn quốc tế.</li>
+                    <li>Đồng thời, tất cả các giường thẩm mỹ được thiết kế độc lập, kín đáo mang đến không gian riêng tư, sự thoải mái nhất cho khách hàng khi trải nghiệm các dịch vụ tại FBeauty </li>
                     <li>Máy Móc Trang Thiết Bị </li>
                     <li>Hệ thống công nghệ được trang bị đầy đủ từ cơ bản đến nâng cao. Đồng thời luôn cập nhật và ứng dụng các công nghệ, thiết bị thẩm mỹ được đánh giá tốt nhất, hiện đại hàng đầu thế giới vào các dịch vụ tại Spa. </li>
-                    <li>Chuỗi phòng chờ, phòng hậu phẫu rộng rãi, tiện nghi tại FBeauty Spa chắc chắn sẽ làm khách hàng hài lòng.</li>
+                    <li>Chuỗi phòng chờ, phòng hậu phẫu rộng rãi, tiện nghi tại FBeauty chắc chắn sẽ làm khách hàng hài lòng.</li>
                 </ul>
               <div class="d-flex justify-content-start mt-5">
                 <div class="col-3"><img height="230px" class=""

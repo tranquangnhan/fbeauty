@@ -1,6 +1,7 @@
 @extends('Site.layout')
 
 @section('title')
+ bài viết chi tiết
 @endsection
 
 @section('main')
