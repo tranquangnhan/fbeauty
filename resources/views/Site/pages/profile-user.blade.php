@@ -2096,7 +2096,7 @@
                                                                 Không có liệu trình nào!
                                                             </div>
                                                         @endif
-                                                        
+
 
                                                 </div>
                                                 {{-- end tab tất cả --}}
@@ -2168,11 +2168,11 @@
                                                             @endif
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dangdieutri" role="tabpanel" aria-labelledby="lieutrinh-dangdieutri-tab">
-                                                    
-                                                
+
+
                                                     @foreach ($dataLieuTrinh as $item)
                                                                  @if ($item->trangthai === 0)
-                 
+
                                                                     <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
                                                                         <div class="body">
                                                                             <button  type="button"  class="button-none show-progress-lieutrinh" >
@@ -2229,12 +2229,12 @@
                                                                     </div>
                                                             @endif
                                                         @endforeach
-                                                       
+
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dahuy" role="tabpanel" aria-labelledby="lieutrinh-dahuy-tab">
-                                                  
+
                                                     @foreach ($dataLieuTrinh as $item)
-                                                    
+
                                                         @if ($item->trangthai === 2)
 
                                                         <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
@@ -2291,10 +2291,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                      
+
                                                     @endif
                                                 @endforeach
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -3006,7 +3006,7 @@
                         data: {id: id},
                         success: function (data) {
                             if (data==0){
-                                document.getElementById("huydonhang"+id).innerHTML='<span class="ml-1 btn btn-danger">Đã hủy đơn</span>';
+                                window.location.reload();
                             }
                         }
                     });
