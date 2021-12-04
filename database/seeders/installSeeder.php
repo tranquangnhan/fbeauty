@@ -16,8 +16,8 @@ class installSeeder extends Seeder
     public function run()
     {
         DB::table('banner')->insert([
-            ['id'=>1,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-01.jpg', 'AnHien'=>0],
-            ['id'=>1,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-01.jpg', 'AnHien'=>0]
+            ['id'=>0,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-01.jpg', 'AnHien'=>0],
+            ['id'=>1,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-02.jpg', 'AnHien'=>0]
         ]);
 
         DB::table('coso')->insert([

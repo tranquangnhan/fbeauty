@@ -342,6 +342,13 @@
                             </li>
 
                             <li>
+                                <a href="{{route("banner.index")}}">
+                                    <i class="fa fa-image"></i>
+                                    <span> Banner </span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="/quantri/datlichremake">
                                     <i class="far fa-calendar-check"></i>
 
