@@ -16,4 +16,5 @@ interface BlogReponsitoryinterface extends RepositoryInterface
     public function updateView($slug);
     public function getblogbyView();
     public function getblogbyxuhuong();
+    public function getblogbyslugdm($slug);
 }

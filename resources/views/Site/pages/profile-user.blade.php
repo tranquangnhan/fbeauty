@@ -2013,6 +2013,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
+                                                              <button type="button" class="btn btn-danger" onclick="return huyLieuTrinh()" data-dismiss="modal">Huỷ Liệu Trình</button>
                                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                                                             </div>
                                                           </div>
@@ -2024,6 +2025,7 @@
 
                                             <div class="tab-content" id="">
                                                 <div class="tab-pane fade show active" id="alllieutrinh" role="tabpanel" aria-labelledby="alllieutrinh-tab">
+                                                       @if (count($dataLieuTrinh)>0)
                                                         @foreach ($dataLieuTrinh as $item)
                                                             <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
 
@@ -2055,9 +2057,12 @@
                                                                                 @if ($item->trangthai === 0)
                                                                                     <i class="far fa-check-circle uk-text-primary"></i>
                                                                                     <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                @else
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                @elseif($item->trangthai === 1)
+                                                                                    <i class="far fa-check-circle uk-text-success"></i>
+                                                                                    <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                @elseif($item->trangthai === 2)
+                                                                                    <i class="far fa-check-circle uk-text-danger"></i>
+                                                                                    <span class="ml-1 uk-text-danger">Đã Huỷ</span>
                                                                                 @endif
                                                                             </div>
                                                                         </div>
@@ -2082,16 +2087,21 @@
 
                                                                     </div>
                                                                 </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-
+                                                        @endforeach
+                                                        @else
+                                                            <div class="box-donhang profile-minibox mt-4">
+                                                                Không có liệu trình nào!
+                                                            </div>
+                                                        @endif
+                                                        
 
                                                 </div>
                                                 {{-- end tab tất cả --}}
                                                 <div class="tab-pane fade" id="lieutrinh-hoanthanh" role="tabpanel" aria-labelledby="lieutrinh-hoanthanh-tab">
-
+                                                    @if (count($dataLieuTrinh)>0)
                                                             @foreach ($dataLieuTrinh as $item)
                                                                  @if ($item->trangthai === 1)
                                                                     <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
@@ -2120,13 +2130,8 @@
                                                                                     </div>
                                                                                     <div class="col-4 justify-content-end">
                                                                                         <div class="item ml-4 text-right">
-                                                                                            @if ($item->trangthai === 0)
-                                                                                                <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                                <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                            @else
                                                                                             <i class="far fa-check-circle uk-text-success"></i>
                                                                                             <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                                            @endif
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -2156,10 +2161,18 @@
 
                                                                 @endif
                                                             @endforeach
+                                                            @else
+                                                                <div class="box-donhang profile-minibox mt-4">
+                                                                    Không có liệu trình nào!
+                                                                </div>
+                                                            @endif
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dangdieutri" role="tabpanel" aria-labelledby="lieutrinh-dangdieutri-tab">
+                                                    
+                                                
                                                     @foreach ($dataLieuTrinh as $item)
                                                                  @if ($item->trangthai === 0)
+                 
                                                                     <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
                                                                         <div class="body">
                                                                             <button  type="button"  class="button-none show-progress-lieutrinh" >
@@ -2186,13 +2199,8 @@
                                                                                     </div>
                                                                                     <div class="col-4 justify-content-end">
                                                                                         <div class="item ml-4 text-right">
-                                                                                            @if ($item->trangthai === 0)
-                                                                                                <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                                <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                            @else
-                                                                                            <i class="far fa-check-circle uk-text-success"></i>
-                                                                                            <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                                            @endif
+                                                                                            <i class="far fa-check-circle uk-text-primary"></i>
+                                                                                            <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -2219,13 +2227,16 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
                                                             @endif
                                                         @endforeach
+                                                       
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dahuy" role="tabpanel" aria-labelledby="lieutrinh-dahuy-tab">
+                                                  
                                                     @foreach ($dataLieuTrinh as $item)
+                                                    
                                                         @if ($item->trangthai === 2)
+
                                                         <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
                                                             <div class="body">
                                                                 <button  type="button"  class="button-none show-progress-lieutrinh" >
@@ -2252,13 +2263,8 @@
                                                                         </div>
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                @if ($item->trangthai === 0)
-                                                                                    <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                    <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                @else
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                                @endif
+                                                                                <i class="far fa-check-circle uk-text-danger"></i>
+                                                                                <span class="ml-1 uk-text-danger">Đã Huỷ</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -2285,10 +2291,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
+                                                      
                                                     @endif
                                                 @endforeach
-
+                                                    
                                                 </div>
                                             </div>
                                         </div>

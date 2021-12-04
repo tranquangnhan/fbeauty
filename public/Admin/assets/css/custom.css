@@ -281,8 +281,8 @@ color: white;
 .time-item {
     font-size: 1.1em;
     font-weight: 500;
-    padding-left: 1em;
-    width: 255px;
+    /* padding-left: 1em; */
+    width: 290px;
     display: flex;
     align-items: center;
     min-width: 200px;
@@ -294,6 +294,23 @@ color: white;
     margin: 0em 0em;
     border-left: 1px solid gainsboro;
     background: none;
+}
+
+.datlich-item .btn-none i {
+    color: rgb(0 128 63);
+}
+
+.datlich-item .namekh {
+    color: #343A41;
+    font-weight: 500;
+}
+
+.datlich-item.check-in .btn-none i {
+    color: white;
+}
+
+.datlich-item.check-in .namekh {
+    color: white;
 }
 
 .lich-item:hover {
@@ -349,14 +366,14 @@ color: white;
 }
 
 .datlich-item .footer-item {
-    background-color: rgba(16,196,105,.2);
+    background-color: rgb(151 242 160);
     text-align: right;
     padding: 0.2em 0.8em;
-    height: 35px;
+    height: 31.5px;
 }
 
 .datlich-item .body-item {
-    background-color: rgba(16,196,105,.2);
+    background-color: rgb(151 242 160);
     padding: 0.2em 0.4em;
     font-weight: 400;
     color: #343a40 !important;
@@ -389,3 +406,139 @@ color: white;
     color: #dadada;
 }
 
+.lich-item.selected {
+	background-color: rgb(242 242 242);
+}
+
+.btn-cirle {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    padding: 0px;
+    line-height: 45px;
+}
+
+.child-button {
+    display: none;
+}
+
+.child-button.show {
+    display: block;
+}
+
+.btn-select-lich.hide {
+    display: none;
+}
+
+.btn-cirle i {
+    font-size: 1.5em;
+    line-height: 45px;
+}
+
+.lich-item.blocked {
+    background: rgb(9 117 63 / 47%);
+}
+
+.lich-item.blocked .time-item span {
+    color: white;
+}
+
+.btn-unblock-lich {
+    display: none;
+}
+
+.lich-item.blocked .time-item .btn-unblock-lich {
+    display: block;
+}
+
+.lich-item.blocked .btn-select-lich, .lich-item.blocked .child-button {
+    display: none;
+}
+
+.datlich-control {
+    margin-bottom: 1em;
+}
+
+.form-datlich-admin .card .head {
+    font-weight: 500;
+    margin-bottom: 0.6em;
+    color: #4ca3f7a8;
+    font-size: 1em;
+}
+
+.fa-select-search .select-search {
+    position: relative;
+}
+
+.fa-select-search .select-search .button-search {
+    font-size: .9rem;
+    font-weight: 400;
+    display: flex;
+    align-content: space-between;
+    border: 2px solid;
+    cursor: pointer;
+    align-items: center;
+    padding: 0.7em 1em;
+    border: 1px solid #ced4da;
+    border-radius: 0.2rem;
+    width: 100%;
+    background: white;
+}
+
+.fa-select-search .select-search .box-select-search {
+    position: absolute;
+    z-index: 10;
+    background: #ffffff;
+    /* padding: 0.5em 0.5em; */
+    width: 100%;
+    margin-top: 0.5em;
+    border: 1px solid #ced4da;
+    border-radius: 0.2rem;
+    display: none;
+}
+
+.fa-select-search .select-search .box-select-search.show {
+    display: block;
+}
+
+.fa-select-search .select-search .box-select-search .fa-head-select {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding-right: 0.7em;
+    border: 1px solid #ced4da;
+    border-radius: 0.2rem;
+    margin: 0.5em 0.5em;
+}
+
+.fa-select-search .select-search .box-select-search .fa-head-select input {
+    background: none;
+    border: none;
+}
+
+.fa-select-search .select-search .box-select-search .fa-body-select {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.fa-select-search .select-search .box-select-search .fa-body-select .body-select .option {
+    padding: .5em 0.7em;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.fa-select-search .select-search .box-select-search .fa-body-select .body-select .option:hover {
+    background: #4ca3f7;
+    color: white;
+}
+
+.fa-select-search .select-search .box-select-search.bottome {
+    bottom: 45px;
+    margin-bottom: 0.5em;
+}
+
+.gia-truocgiam {
+    text-decoration: line-through;
+    color: gainsboro;
+}

@@ -451,5 +451,16 @@ function checkVaCloseLich(idLich) {
     }
 }
 
-
+function checkTimeStatus(lich) {
+    if ($(`[fa-data-id-lich=${lich.id}]`).length > 0) {
+        if (lich.trangthai == 0) {
+            // open
+            $(`[fa-data-id-lich=${lich.id}]`).removeClass('time-close');
+            $(`[fa-data-id-lich=${lich.id}]`).addClass('option-time');
+        } else {
+            $(`[fa-data-id-lich=${lich.id}]`).addClass('time-close');
+            $(`[fa-data-id-lich=${lich.id}]`).removeClass('option-time');
+        }
+    }
+}
 

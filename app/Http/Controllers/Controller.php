@@ -27,6 +27,7 @@ class Controller extends BaseController
     const KHACHHANG_CHUA_ACTIVE = 0;
     const KHACHHANG_DA_ACTIVE = 1;
     const TRANGTHAI_LICH_OPEN = 0;
+    const TRANGTHAI_LICH_CLOSE = 1;
     const TRANGTHAI_HOADON_DA_THANH_TOAN = 1;
     const TRANGTHAI_HOADON_CHUA_THANH_TOAN = 0;
     const TRANGTHAI_DONHANG_DA_NHAN = 4;

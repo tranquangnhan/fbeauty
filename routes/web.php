@@ -111,10 +111,12 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
 
     Route::get('khachhang/lieutrinh/{id}/edit', [LieuTrinhController::class, 'editLieuTrinhChiTiet']);
     Route::patch('khachhang/lieutrinh/{id}/update', [KhachHangController::class, 'updateLieuTrinh']);
+  
 
     Route::resource('datlichremake', DatLichRemakeController::class);
     Route::get('changeStatusDatLich/{id}/{status}', [DatLichRemakeController::class, "changeStatusDatLich"]);
     Route::get('getDuLieuDatLichChoCalendar/{ngay}', [DatLichRemakeController::class, "getDuLieuDatLichChoCalendar"]);
+    Route::get('changeStatusTime/{id}/{status}', [DatLichRemakeController::class, "changeStatusTime"]);
 
     /**
      *1: Lấy DỊch vụ đến Hóa đơn
@@ -164,6 +166,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('thanh-toan', [HomeController::class, "viewThanhToan"]);
     Route::get('bai-viet', [HomeController::class, "viewBaiViet"]);
     Route::get('bai-viet/{id}', [HomeController::class, "viewBaiVietChiTiet"]);
+    Route::get('danh-muc-bai-viet/{id}', [HomeController::class, "viewDanhmucBaiViet"]);
     Route::get('dich-vu', [HomeController::class, "viewDichVu"]);
     Route::get('tim-kiem', [HomeController::class, "viewTimKiem"]);
     Route::get('lien-he', [HomeController::class, "viewLienHe"]);
@@ -213,6 +216,7 @@ Route::group(['prefix' => '/'], function () {
      *Liệu trình
      */
     Route::get('lieutrinhchitiet/{id}/get', [HomeController::class, 'getLieuTrinhDetailByIdLieuTrinh']);
+    Route::post('lieutrinh/cancel', [HomeController::class, 'huyLieuTrinh']);
     /**
     *Hủy đơn
      */

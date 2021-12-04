@@ -204,10 +204,13 @@ class HomeController extends Controller
     public function viewBaiViet()
     {
         $blog = $this->Blog->getBlog1();
+        $blognewtt = $this->Blog->getBlognewtt();
         $xuhuong = $this->Blog->getblogbyxuhuong();
         $luotxem = $this->Blog->getblogbyView();
         $listdanhmuc = $this->DanhMuc->getAll();
         $listdanhmuc2 = $this->DanhMuc->getall2danhmuc();
+        $this->getDanhMucVaBlog();
+
         foreach ($listdanhmuc as $dm) {
             $skip = 0;
             $take = 6;
@@ -228,7 +231,6 @@ class HomeController extends Controller
         $blognew = $this->Blog->getBlognew();
 
         $this->data['blog'] = $blog;
-        $this->data['blog'] = $blog;
         $this->data['blog3'] = $blog3;
         $this->data['blog4'] = $blog4;
         $this->data['blognew'] = $blognew;
@@ -238,6 +240,7 @@ class HomeController extends Controller
         $this->data['listdanhmuc2'] = $listdanhmuc2;
         $this->data['luotxem'] = $luotxem;
         $this->data['xuhuong'] = $xuhuong;
+        $this->data['blognewtt'] = $blognewtt;
 
         $this->data['pathActive'] = 'bai-viet';
         $this->data['namePage'] = 'Bài viết';
@@ -254,10 +257,10 @@ class HomeController extends Controller
         $danhmuc = $this->DanhMuc->getAllDanhMuc();
         $viewdetail = $this->Blog->editBlog($slug);
         $viewdetail2 = $this->Blog->editBlog($slug);
+        $this->getDanhMucVaBlog();
         foreach ($viewdetail2 as $detail) {
             $viewdt = $this->Blog->getblogbyiddm3($detail->iddm);
             $detail['viewdt'] = $viewdt;
-
         }
 
         $this->data['getBlog2'] = $getBlog2;
@@ -274,7 +277,24 @@ class HomeController extends Controller
 
         return view("Site.pages.baivietchitiet", $this->data);
     }
+    public function viewDanhmucBaiViet($slug){
+        $danhmuc = $this->DanhMuc->getAllDanhMuc();
+        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
+        $viewdetail = $this->Blog->getBlogByslugdm($slug);
 
+        $this->data['danhmuc'] = $danhmuc;
+        $this->data['viewdetail'] = $viewdetail;
+        $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
+
+        $this->data['pathActive'] = 'danh-muc-bai-viet';
+        $this->data['namePage'] = $nameDanhMucbyslug[0]->name;
+        $this->data['breadcrumbArray'] = [
+            ['link' => '/danh-muc-bai-viet', 'name' => 'Danh mục bài viết'],
+            ['link' => '', 'name' => 'Danh mục'],
+        ];
+
+        return view("Site.pages.dmblogchitiet", $this->data);
+    }
     public function viewDichVu(Request $request)
     {
         $dichvu = $this->Dichvu->getDichVu2();
@@ -300,7 +320,7 @@ class HomeController extends Controller
     public function viewTimKiem()
     {
         $dichvu = $this->Dichvu->getAllDichVu();
-        $sanpham = $this->SanPham->getsanpham1();
+        $sanpham = $this->SanPham->getsanphamtimkiem();
         $blog = $this->Blog->getAllBlog();
 
         $this->data['dichvu'] = $dichvu;
@@ -383,9 +403,10 @@ class HomeController extends Controller
         if ($khachHang === null) {
             return redirect('/')->with('alert', 'Deleted!');
         }
-        $this->data['pathActive'] = 'thong-tin-tai-khoan';
-        $this->data['namePage'] = 'Thông tin tài khoản';
-        $this->data['breadcrumbArray'] = [
+
+        $this->data['pathActive']          = 'thong-tin-tai-khoan';
+        $this->data['namePage']            = 'Thông tin tài khoản';
+        $this->data['breadcrumbArray']     = [
             ['link' => '', 'name' => 'Thông tin tài khoản'],
         ];
 
@@ -404,7 +425,6 @@ class HomeController extends Controller
         $this->data['donhangcuatoi5']=$this->DonHang->DonHanCuaBan(self::DONHANG_TRAHANG);
         $this->data['spyeuthich']=$this->YeuThich->getYeuThichByIdKhachHang(session()->get('khachHang')->id);
         return view("Site.pages.profile-user", $this->data);
-
     }
 
     public function getDanhMucVaDichVuHome() {
@@ -420,6 +440,21 @@ class HomeController extends Controller
 
         $this->data['listDanhMuc'] = $listDanhMuc;
         $this->data['arrDichVu'] = $arrDichVu;
+    }
+    public function getDanhMucVaBlog() {
+        $skip = 0;
+        $task = 6;
+        $limit = 6;
+        $listDanhMucBlog = $this->DanhMuc->getDanhMucLimitBlog($limit);
+
+        $arrBlog = array();
+        foreach ($listDanhMucBlog as $item) {
+            $BlogByIdDanhMuc = $this->Blog->getBlogByIdDanhmuc($item->id, $skip, $task);
+            $arrBlog[] = $BlogByIdDanhMuc;
+        }
+// dd($arrBlog);
+        $this->data['listDanhMucBlog'] = $listDanhMucBlog;
+        $this->data['arrBlog'] = $arrBlog;
     }
     public function getDanhMucVaDichVu() {
         $limit = 4;
@@ -446,8 +481,32 @@ class HomeController extends Controller
         return response()->json($data);
     }
 
-    public static function findNameDichVuByIdLieuTrinh($id)
-    {
+    public function huyLieuTrinh(Request $request){
+        // check đã hoàn thành 1 dịch vụ sẽ không được huỷ
+        $hasHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($request->idlieutrinh);
+        if(count($hasHoaDon)>0){
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => 'Liệu trình đã thanh toán không thể huỷ!'
+            ]);
+        }else{
+            if( $request->idlieutrinh){
+                $res = $this->LieuTrinh->update($request->idlieutrinh,['trangthai'=>2]);
+                if($res){
+                    return response()->json([
+                        'success' => true,
+                        'titleMess' => 'Thành công!',
+                        'textMess' => 'Đã huỷ liệu trình!'
+                    ]);
+
+                }
+            }
+        }
+
+    }
+
+    public static function findNameDichVuByIdLieuTrinh($id){
         $LieuTrinhResult = LieuTrinhChiTietModel::findNameDichVuByIdLieuTrinh($id);
 
         $arrName = [];
@@ -580,9 +639,7 @@ class HomeController extends Controller
                                 $request->listDichVu = '[0]';
                             }
                         }
-
                     }
-
                 }
 
                 if ($error == false) {
@@ -591,6 +648,9 @@ class HomeController extends Controller
                         $error = true;
                         $textMess = 'Đặt lịch không thành công vui lòng thử lại';
                     } else {
+
+                        // Tiến hành đặt lịch
+                        $datLich['typez'] = 'dat-lich';
                         event(
                             $e = new SendDatLich($datLich)
                         );

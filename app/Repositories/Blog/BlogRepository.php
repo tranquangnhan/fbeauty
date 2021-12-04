@@ -3,6 +3,7 @@
 
 namespace App\Repositories\Blog;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog;
 use App\Http\Requests\BlogEdit;
 use Carbon\Carbon;
@@ -64,6 +65,13 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     {
         return $this->model->select('blog.*','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->offset(3)
+        ->limit(1)->orderBy('created_at', 'DESC')->get();
+    }
+    public function getBlognewtt()
+    {
+        return $this->model->select('blog.*','danhmuc.name AS danhmuc','danhmuc.slug AS slugdm')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->limit(1)->orderBy('created_at', 'DESC')->get();
     }
     public function getBlog2()
@@ -87,11 +95,26 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
             ->where('blog.slug','=', $slug)
             ->get();
     }
+    public function DanhMucBlogdetail($slug)
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddmm','danhmuc.name AS danhmuc')
+            ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+            ->where('blog.slug','=', $slug)
+            ->get();
+    }
     public function getblogbyiddm($id)
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->where('blog.iddm', '=',$id)
+        ->get();
+
+    }
+    public function getblogbyslugdm($slug)
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddm','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->where('danhmuc.slug', '=',$slug)
         ->get();
 
     }
@@ -148,4 +171,13 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         ->orderBy('created_at', 'DESC')
         ->get();
     }
+    // public function getBlogByIdDanhMuc($idDanhMuc, $limit){
+    //     return $this->model->select('dichvu.*','danhmuc.name as namedm','danhmuc.id as iddanhmuc','danhmuc.slug as slugdm')
+    //     ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+    //     ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
+    //     ->where('danhmuc.loai', '=', Controller::LOAI_DANHMUC_DICHVU)
+    //     ->where('dichvu.iddm', '=', $idDanhMuc)
+    //     ->limit($limit)
+    //     ->get();
+    // }
 }

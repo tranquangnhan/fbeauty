@@ -295,5 +295,7 @@
 
 @section('javascript')
     <script src="{{ asset('Site/js') }}/sanpham.js"></script>
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/baiviet.css">
+
 @endsection
 

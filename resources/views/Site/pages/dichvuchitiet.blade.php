@@ -38,7 +38,7 @@
                     <div class="border-z border-right-z"></div>
                 </div>
 
-                <div class="mota mt-4">
+                <div class="mota mt-4 noidung">
                     <p>
                         <?php echo $detaildichvu->noidung;?>
                     </p>
@@ -58,3 +58,6 @@
 </div>
 @endsection
 
+@section('javascript')
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/baiviet.css">
+@endsection
