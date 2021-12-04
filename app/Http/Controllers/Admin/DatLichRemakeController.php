@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\SendDatLich;
 use App\Http\Controllers\Controller;
 use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DichVu\DichVuRepository;
@@ -57,8 +58,10 @@ class DatLichRemakeController extends Controller
         $toDay = Carbon::today();
         $this->data['toDay'] = $toDay->toDateString();
 
+        $this->data['listDichVu'] = $this->DichVu->getAllDichVu();
+        $this->data['listKhachHang'] = $this->KhachHang->getAllCungCoSo(session('coso'));
         $this->data['duLieuCalendar'] = $this->getDuLieuChoCalendar($toDay);
-
+        $this->data['statusLichClose'] = Controller::TRANGTHAI_LICH_CLOSE;
         return view('Admin.DatLichRemake.index', $this->data);
     }
 
@@ -160,7 +163,7 @@ class DatLichRemakeController extends Controller
                     $toDay = Carbon::today()->format('d/m/Y');
                     $ngayDat = Carbon::parse($datLich->thoigiandat)->format('d/m/Y');
 
-                    if ($toDay <= $ngayDat) {
+                    if ($toDay >= $ngayDat) {
                         // update trạng thái
                         $datLich->trangthai = $status;
                         $datLich->save();
@@ -171,7 +174,7 @@ class DatLichRemakeController extends Controller
                             'status' => $status,
                             'toDay' => $toDay,
                             'ngayDat' => $ngayDat,
-                            '(int)$idDatLich' => (int)$idDatLich,
+                            'idDatLich' => (int)$idDatLich,
                         );
                     } else {
                         $response = Array(
@@ -187,7 +190,7 @@ class DatLichRemakeController extends Controller
                         'success' => false,
                         'titleMess' => 'Đã xảy ra lỗi !',
                         'textMess' => 'Không tìm thấy id đặt lịch',
-                        '(int)$idDatLich' => (int)$idDatLich,
+                        'idDatLich' => $idDatLich,
                     );
                 }
 
@@ -199,6 +202,52 @@ class DatLichRemakeController extends Controller
                 'success' => false,
                 'titleMess' => 'Đã xảy ra lỗi !',
                 'datLich' => $datLich,
+                'textMess' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    function changeStatusTime(Request $request, $id, $status) {
+        try {
+            if ($request->ajax()) {
+                $id = (int)$id;
+                $lich = $this->Lich->find($id);
+
+                if ($lich != null) {
+                    $data = [
+                        'trangthai' => $status,
+                    ];
+
+                    $lich = $this->Lich->update($id, $data);
+                    $lich['typez'] = 'lich';
+
+                    event(
+                        $e = new SendDatLich($lich)
+                    );
+
+                    $response = Array(
+                        'success' => true,
+                        'id' => $id,
+                        'status' => $status,
+                        'lich' => $lich
+                    );
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => 'Không tìm thấy lịch',
+                        'id' => $id,
+                    );
+                }
+
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'lich' => $lich,
                 'textMess' => $e->getMessage(),
             ]);
         }

@@ -357,6 +357,7 @@ class HomeController extends Controller
         if($khachHang === null){
             return redirect('/')->with('alert', 'Deleted!');
         }
+
         $this->data['pathActive']          = 'thong-tin-tai-khoan';
         $this->data['namePage']            = 'Thông tin tài khoản';
         $this->data['breadcrumbArray']     = [
@@ -524,9 +525,7 @@ class HomeController extends Controller
                                 $request->listDichVu = '[0]';
                             }
                         }
-
                     }
-
                 }
 
                 if ($error == false) {
@@ -535,6 +534,9 @@ class HomeController extends Controller
                         $error = true;
                         $textMess = 'Đặt lịch không thành công vui lòng thử lại';
                     } else {
+
+                        // Tiến hành đặt lịch
+                        $datLich['typez'] = 'dat-lich';
                         event(
                             $e = new SendDatLich($datLich)
                         );
