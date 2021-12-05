@@ -25,5 +25,11 @@ class YeuThichRepository extends BaseRepository implements YeuThichRepositoryInt
     public function getAllYeuThich($id){
         return $this->model->select("idsanphamchitiet")->where('idkhachhang', $id)->get();
     }
+    public function getYeuThichByIdKhachHang($id){
+        return $this->model->select("yeuthich.*", "sanpham.name", "sanpham.img", "sanpham.slug")
+            ->join('sanpham', "yeuthich.idsanphamchitiet", "=", "sanpham.id")
+            ->where('idkhachhang', $id)
+            ->get();
+    }
 
 }

@@ -272,4 +272,6 @@ class KhachHangController extends Controller
         return implode(", ",$array);
     }
 
+
+  
 }

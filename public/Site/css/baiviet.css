@@ -2,6 +2,7 @@
     background: #e87c7b;
     color: white;
 }
+<<<<<<< HEAD
 
 
 /* loadmore */
@@ -44,19 +45,20 @@
 
 
 /* display: none;
+=======
+.noidung img{
+  text-align:center;
 }
-#loadMore {
-  width: 200px;
-  color: #fff;
-  display: block;
-  text-align: center;
-  margin: 20px auto;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  background-color: blue;
-  transition: .3s;
+.noidung a{
+  word-wrap: break-word;
+  font-family: 'Roboto', sans-serif !important;
+>>>>>>> 2d44460e6df83bfdd9a04a1a2e4745774d212e8c
 }
+.noidung p,h1,h2,h3,h4,h5,h6,span,li{
+  word-wrap: break-word;
+  font-family: 'Roboto', sans-serif !important;
+}
+<<<<<<< HEAD
 #loadMore:hover {
   color: blue;
   background-color: #fff;
@@ -70,3 +72,5 @@
 
 
 /* } */
+=======
+>>>>>>> 2d44460e6df83bfdd9a04a1a2e4745774d212e8c

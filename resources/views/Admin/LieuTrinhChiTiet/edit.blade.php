@@ -155,7 +155,7 @@
 
                                                     </div>
 
-                                                    <p class="mota" style="margin-top: 5px !important;" id="ghichu" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->ghichu}} </p>
+                                                    <p class="ghichu" style="margin-top: 5px !important;" id="ghichu" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->ghichu}} </p>
 
                                                     <div>
 

@@ -49,6 +49,12 @@
                                                 Lịch hẹn
                                             </a>
                                         </li>
+                                        <li class="profile-tab-control-li" role="presentation">
+                                            <a class="nav-link profile-tab-control-a" id="yeuthich-tab" data-toggle="tab" href="#yeuthich" role="tab" aria-controls="yeuthich" aria-selected="false">
+                                                <i class='fas fa-heart text-danger'></i>
+                                                Sản phẩm yêu thích
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -553,9 +559,9 @@
                                                                         ->get();
                                                                         ?>
                                                             <div class="row shadow-2 align-items-center giohang-item">
-                                                                <div class="col-xl-1 d-flex  align-items-center">
+                                                                <div class="col-xl-2 d-flex  align-items-center">
                                                                     <div class="body-text d-flex">
-                                                                        <img src="{{ asset('/uploads')}}/{{$dhcts->img}}" class="img-sanpham img-fluid m-0" alt="...">
+                                                                        <img src="{{ asset('/uploads')}}/{{$dhcts->img}}" class="img-sanpham img-fluid m-0 " alt="...">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-3">
@@ -563,14 +569,14 @@
                                                                     <?php if (strlen($tensanpham[0]->name)<= 45){echo $tensanpham[0]->name;}else  { echo substr($tensanpham[0]->name, 0, 45).'...';}?>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-xl-5">
+                                                                <div class="col-xl-4">
                                                                     <div class="body-text">
                                                                         <div class="box-gia">
                                                                             @if((int)$dhcts->dongiatruocgiamgia != (int)$dhcts->dongiasaugiamgia)
                                                                             <span class="giagiam">{{str_replace(',', '.',number_format($dhcts->dongiatruocgiamgia)), ""}} đ </span>
                                                                             <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                             @else
-                                                                                <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
+                                                                                <span class="gia ">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                 @endif
                                                                             <span class="left-bar dungtich"> {{$tensanpham[0]->ml}}ml</span>
                                                                         </div>
@@ -606,9 +612,9 @@
                                                                 </div>
 
                                                                 <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
+                                                                    <label for="" class="text-gray">Tổng tiền hàng: </label>
                                                                     <div class="ml-2">
-                                                                        {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia)), ""}}đ
+                                                                        {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia - App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -650,11 +656,12 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-xl-6 d-flex justify-content-between">
-                                                                    <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                    <label for="" class="text-gray">Phí ship : </label>
                                                                     <div class="ml-2">
-                                                                        {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
+                                                                        {{str_replace(',', '.', number_format(App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                     </div>
                                                                 </div>
+
                                                             </div>
 
                                                             <div class="row mt-1">
@@ -666,6 +673,15 @@
                                                                         @endif
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-xl-6 d-flex justify-content-between">
+                                                                    <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                    <div class="ml-2">
+                                                                        {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-1">
+                                                                <div class="col-xl-6 d-flex justify-content-between"></div>
                                                                 <div class="col-xl-6 mt-2 tongthanhtoan d-flex justify-content-between">
                                                                     <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                     <div class="ml-2 color-main price-total">
@@ -687,12 +703,12 @@
                                                             <div class="box-donhang profile-minibox mt-4">
                                                                 <div class="header">
                                                                     <div class="item">
-                                                                        <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt}}">
+                                                                        <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt."a"}}">
                                                                             <span class="mr-1 btn btn-dark">Thông tin đơn hàng</span>
                                                                             <i class="far fa-question-circle"></i>
                                                                         </button>
 
-                                                                        <div class="modal fade" id="infonguoinhan-{{$indexstt}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
+                                                                        <div class="modal fade" id="infonguoinhan-{{$indexstt."a"}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
                                                                             <div class="modal-dialog">
                                                                                 <div class="modal-content">
                                                                                     <div class="modal-header">
@@ -795,7 +811,7 @@
                                                                                 ->get();
                                                                             ?>
                                                                             <div class="row shadow-2 align-items-center giohang-item">
-                                                                                <div class="col-xl-1 d-flex  align-items-center">
+                                                                                <div class="col-xl-2 d-flex  align-items-center">
                                                                                     <div class="body-text d-flex">
                                                                                         <img src="{{ asset('/uploads')}}/{{$dhcts->img}}" class="img-sanpham img-fluid m-0" alt="...">
                                                                                     </div>
@@ -805,14 +821,14 @@
                                                                                         <?php if (strlen($tensanpham[0]->name)<= 45){echo $tensanpham[0]->name;}else  { echo substr($tensanpham[0]->name, 0, 45).'...';}?>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-xl-5">
+                                                                                <div class="col-xl-4">
                                                                                     <div class="body-text">
                                                                                         <div class="box-gia">
                                                                                             @if((int)$dhcts->dongiatruocgiamgia != (int)$dhcts->dongiasaugiamgia)
                                                                                                 <span class="giagiam">{{str_replace(',', '.',number_format($dhcts->dongiatruocgiamgia)), ""}} đ </span>
                                                                                                 <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                             @else
-                                                                                                <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
+                                                                                                <span class="gia ">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                             @endif
                                                                                             <span class="left-bar dungtich"> {{$tensanpham[0]->ml}}ml</span>
                                                                                         </div>
@@ -848,9 +864,9 @@
                                                                         </div>
 
                                                                         <div class="col-xl-6 d-flex justify-content-between">
-                                                                            <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
+                                                                            <label for="" class="text-gray">Tổng tiền hàng: </label>
                                                                             <div class="ml-2">
-                                                                                {{str_replace(',', '.',number_format($donhangofme1->tongtientruocgiamgia)), ""}}đ
+                                                                                {{str_replace(',', '.',number_format($donhangofme1->tongtientruocgiamgia - App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -892,11 +908,12 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-xl-6 d-flex justify-content-between">
-                                                                            <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                            <label for="" class="text-gray">Phí ship : </label>
                                                                             <div class="ml-2">
-                                                                                {{str_replace(',', '.',number_format($donhangofme1->tongtiensaugiamgia)), ""}}đ
+                                                                                {{str_replace(',', '.', number_format(App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                             </div>
                                                                         </div>
+
                                                                     </div>
 
                                                                     <div class="row mt-1">
@@ -908,7 +925,17 @@
                                                                                 @endif
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
+
+                                                                        <div class="col-xl-6 d-flex justify-content-between">
+                                                                            <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                            <div class="ml-2">
+                                                                                {{str_replace(',', '.',number_format($donhangofme1->tongtiensaugiamgia)), ""}}đ
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-1">
+                                                                        <div class="col-xl-6 d-flex justify-content-between"></div>
+                                                                        <div class="col-xl-6 mt-2 tongthanhtoan d-flex justify-content-between">
                                                                             <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                             <div class="ml-2 color-main price-total">
                                                                                 {{str_replace(',', '.',number_format($donhangofme1->tongtiensaugiamgia)), ""}}đ
@@ -929,12 +956,12 @@
                                                                 <div class="box-donhang profile-minibox mt-4">
                                                                     <div class="header">
                                                                         <div class="item">
-                                                                            <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt}}">
+                                                                            <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt."b"}}">
                                                                                 <span class="mr-1 btn btn-dark">Thông tin đơn hàng</span>
                                                                                 <i class="far fa-question-circle"></i>
                                                                             </button>
 
-                                                                            <div class="modal fade" id="infonguoinhan-{{$indexstt}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
+                                                                            <div class="modal fade" id="infonguoinhan-{{$indexstt."b"}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
                                                                                 <div class="modal-dialog">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header">
@@ -1037,7 +1064,7 @@
                                                                                     ->get();
                                                                                 ?>
                                                                                 <div class="row shadow-2 align-items-center giohang-item">
-                                                                                    <div class="col-xl-1 d-flex  align-items-center">
+                                                                                    <div class="col-xl-2 d-flex  align-items-center">
                                                                                         <div class="body-text d-flex">
                                                                                             <img src="{{ asset('/uploads')}}/{{$dhcts->img}}" class="img-sanpham img-fluid m-0" alt="...">
                                                                                         </div>
@@ -1047,14 +1074,14 @@
                                                                                             <?php if (strlen($tensanpham[0]->name)<= 45){echo $tensanpham[0]->name;}else  { echo substr($tensanpham[0]->name, 0, 45).'...';}?>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-xl-5">
+                                                                                    <div class="col-xl-4">
                                                                                         <div class="body-text">
                                                                                             <div class="box-gia">
                                                                                                 @if((int)$dhcts->dongiatruocgiamgia != (int)$dhcts->dongiasaugiamgia)
                                                                                                     <span class="giagiam">{{str_replace(',', '.',number_format($dhcts->dongiatruocgiamgia)), ""}} đ </span>
                                                                                                     <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                                 @else
-                                                                                                    <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
+                                                                                                    <span class="gia ">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                                 @endif
                                                                                                 <span class="left-bar dungtich"> {{$tensanpham[0]->ml}}ml</span>
                                                                                             </div>
@@ -1090,9 +1117,9 @@
                                                                             </div>
 
                                                                             <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
+                                                                                <label for="" class="text-gray">Tổng tiền hàng: </label>
                                                                                 <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia)), ""}}đ
+                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia - App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1134,9 +1161,9 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                                <label for="" class="text-gray">Phí ship : </label>
                                                                                 <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
+                                                                                    {{str_replace(',', '.', number_format(App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1150,7 +1177,16 @@
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
+                                                                            <div class="col-xl-6 d-flex justify-content-between">
+                                                                                <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                                <div class="ml-2">
+                                                                                    {{str_replace(',', '.',number_format($donhangofme1->tongtiensaugiamgia)), ""}}đ
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-1">
+                                                                            <div class="col-xl-6 d-flex justify-content-between"></div>
+                                                                            <div class="col-xl-6 mt-2 tongthanhtoan d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                                 <div class="ml-2 color-main price-total">
                                                                                     {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
@@ -1170,12 +1206,12 @@
                                                                 <div class="box-donhang profile-minibox mt-4">
                                                                     <div class="header">
                                                                         <div class="item">
-                                                                            <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt}}">
+                                                                            <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt."c"}}">
                                                                                 <span class="mr-1 btn btn-dark">Thông tin đơn hàng</span>
                                                                                 <i class="far fa-question-circle"></i>
                                                                             </button>
 
-                                                                            <div class="modal fade" id="infonguoinhan-{{$indexstt}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
+                                                                            <div class="modal fade" id="infonguoinhan-{{$indexstt."c"}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
                                                                                 <div class="modal-dialog">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header">
@@ -1278,7 +1314,7 @@
                                                                                     ->get();
                                                                                 ?>
                                                                                 <div class="row shadow-2 align-items-center giohang-item">
-                                                                                    <div class="col-xl-1 d-flex  align-items-center">
+                                                                                    <div class="col-xl-2 d-flex  align-items-center">
                                                                                         <div class="body-text d-flex">
                                                                                             <img src="{{ asset('/uploads')}}/{{$dhcts->img}}" class="img-sanpham img-fluid m-0" alt="...">
                                                                                         </div>
@@ -1288,14 +1324,14 @@
                                                                                             <?php if (strlen($tensanpham[0]->name)<= 45){echo $tensanpham[0]->name;}else  { echo substr($tensanpham[0]->name, 0, 45).'...';}?>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-xl-5">
+                                                                                    <div class="col-xl-4">
                                                                                         <div class="body-text">
                                                                                             <div class="box-gia">
                                                                                                 @if((int)$dhcts->dongiatruocgiamgia != (int)$dhcts->dongiasaugiamgia)
                                                                                                     <span class="giagiam">{{str_replace(',', '.',number_format($dhcts->dongiatruocgiamgia)), ""}} đ </span>
                                                                                                     <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                                 @else
-                                                                                                    <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
+                                                                                                    <span class="gia ">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                                 @endif
                                                                                                 <span class="left-bar dungtich"> {{$tensanpham[0]->ml}}ml</span>
                                                                                             </div>
@@ -1331,9 +1367,9 @@
                                                                             </div>
 
                                                                             <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
+                                                                                <label for="" class="text-gray">Tổng tiền hàng: </label>
                                                                                 <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia)), ""}}đ
+                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia - App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1374,10 +1410,11 @@
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
+
                                                                             <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                                <label for="" class="text-gray">Phí ship : </label>
                                                                                 <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
+                                                                                    {{str_replace(',', '.', number_format(App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1391,7 +1428,16 @@
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
+                                                                            <div class="col-xl-6 d-flex justify-content-between">
+                                                                                <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                                <div class="ml-2">
+                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-1">
+                                                                            <div class="col-xl-6 d-flex justify-content-between"></div>
+                                                                            <div class="col-xl-6 mt-2 tongthanhtoan d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                                 <div class="ml-2 color-main price-total">
                                                                                     {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
@@ -1411,12 +1457,12 @@
                                                                 <div class="box-donhang profile-minibox mt-4">
                                                                     <div class="header">
                                                                         <div class="item">
-                                                                            <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt}}">
+                                                                            <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt."d"}}">
                                                                                 <span class="mr-1 btn btn-dark">Thông tin đơn hàng</span>
                                                                                 <i class="far fa-question-circle"></i>
                                                                             </button>
 
-                                                                            <div class="modal fade" id="infonguoinhan-{{$indexstt}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
+                                                                            <div class="modal fade" id="infonguoinhan-{{$indexstt."d"}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
                                                                                 <div class="modal-dialog">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header">
@@ -1519,7 +1565,7 @@
                                                                                     ->get();
                                                                                 ?>
                                                                                 <div class="row shadow-2 align-items-center giohang-item">
-                                                                                    <div class="col-xl-1 d-flex  align-items-center">
+                                                                                    <div class="col-xl-2 d-flex  align-items-center">
                                                                                         <div class="body-text d-flex">
                                                                                             <img src="{{ asset('/uploads')}}/{{$dhcts->img}}" class="img-sanpham img-fluid m-0" alt="...">
                                                                                         </div>
@@ -1529,14 +1575,14 @@
                                                                                             <?php if (strlen($tensanpham[0]->name)<= 45){echo $tensanpham[0]->name;}else  { echo substr($tensanpham[0]->name, 0, 45).'...';}?>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-xl-5">
+                                                                                    <div class="col-xl-4">
                                                                                         <div class="body-text">
                                                                                             <div class="box-gia">
                                                                                                 @if((int)$dhcts->dongiatruocgiamgia != (int)$dhcts->dongiasaugiamgia)
                                                                                                     <span class="giagiam">{{str_replace(',', '.',number_format($dhcts->dongiatruocgiamgia)), ""}} đ </span>
                                                                                                     <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                                 @else
-                                                                                                    <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
+                                                                                                    <span class="gia ">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                                 @endif
                                                                                                 <span class="left-bar dungtich"> {{$tensanpham[0]->ml}}ml</span>
                                                                                             </div>
@@ -1572,9 +1618,9 @@
                                                                             </div>
 
                                                                             <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
+                                                                                <label for="" class="text-gray">Tổng tiền hàng: </label>
                                                                                 <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia)), ""}}đ
+                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia - App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1616,9 +1662,9 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                                <label for="" class="text-gray">Phí ship : </label>
                                                                                 <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
+                                                                                    {{str_replace(',', '.', number_format(App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1632,7 +1678,16 @@
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
+                                                                            <div class="col-xl-6 d-flex justify-content-between">
+                                                                                <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                                <div class="ml-2">
+                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-1">
+                                                                            <div class="col-xl-6 d-flex justify-content-between"></div>
+                                                                            <div class="col-xl-6 mt-2 tongthanhtoan d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                                 <div class="ml-2 color-main price-total">
                                                                                     {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
@@ -1651,12 +1706,12 @@
                                                                 <div class="box-donhang profile-minibox mt-4">
                                                                     <div class="header">
                                                                         <div class="item">
-                                                                            <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt}}">
+                                                                            <button type="button" class="button-none" data-toggle="modal" data-target="#infonguoinhan-{{$indexstt."e"}}">
                                                                                 <span class="mr-1 btn btn-dark">Thông tin đơn hàng</span>
                                                                                 <i class="far fa-question-circle"></i>
                                                                             </button>
 
-                                                                            <div class="modal fade" id="infonguoinhan-{{$indexstt}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
+                                                                            <div class="modal fade" id="infonguoinhan-{{$indexstt."e"}}" tabindex="-1" aria-labelledby="infonguoinhan-1Label" aria-hidden="true">
                                                                                 <div class="modal-dialog">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header">
@@ -1759,7 +1814,7 @@
                                                                                     ->get();
                                                                                 ?>
                                                                                 <div class="row shadow-2 align-items-center giohang-item">
-                                                                                    <div class="col-xl-1 d-flex  align-items-center">
+                                                                                    <div class="col-xl-2 d-flex  align-items-center">
                                                                                         <div class="body-text d-flex">
                                                                                             <img src="{{ asset('/uploads')}}/{{$dhcts->img}}" class="img-sanpham img-fluid m-0" alt="...">
                                                                                         </div>
@@ -1769,14 +1824,14 @@
                                                                                             <?php if (strlen($tensanpham[0]->name)<= 45){echo $tensanpham[0]->name;}else  { echo substr($tensanpham[0]->name, 0, 45).'...';}?>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-xl-5">
+                                                                                    <div class="col-xl-4">
                                                                                         <div class="body-text">
                                                                                             <div class="box-gia">
                                                                                                 @if((int)$dhcts->dongiatruocgiamgia != (int)$dhcts->dongiasaugiamgia)
                                                                                                     <span class="giagiam">{{str_replace(',', '.',number_format($dhcts->dongiatruocgiamgia)), ""}} đ </span>
                                                                                                     <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                                 @else
-                                                                                                    <span class="gia left-bar">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
+                                                                                                    <span class="gia">{{str_replace(',', '.',number_format($dhcts->dongiasaugiamgia)), ""}} đ </span>
                                                                                                 @endif
                                                                                                 <span class="left-bar dungtich"> {{$tensanpham[0]->ml}}ml</span>
                                                                                             </div>
@@ -1814,7 +1869,7 @@
                                                                             <div class="col-xl-6 d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng tiền hàng (2 sản phẩm): </label>
                                                                                 <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia)), ""}}đ
+                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtientruocgiamgia - App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1855,10 +1910,11 @@
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
+
                                                                             <div class="col-xl-6 d-flex justify-content-between">
-                                                                                <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                                <label for="" class="text-gray">Phí ship : </label>
                                                                                 <div class="ml-2">
-                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
+                                                                                    {{str_replace(',', '.', number_format(App\Http\Controllers\Controller::PHI_SHIP_HANG)), ""}}đ
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1872,7 +1928,17 @@
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-xl-6 tongthanhtoan d-flex justify-content-between">
+
+                                                                            <div class="col-xl-6 d-flex justify-content-between">
+                                                                                <label for="" class="text-gray">Tổng tiền sau giảm : </label>
+                                                                                <div class="ml-2">
+                                                                                    {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-1">
+                                                                            <div class="col-xl-6 d-flex justify-content-between"></div>
+                                                                            <div class="col-xl-6 mt-2 tongthanhtoan d-flex justify-content-between">
                                                                                 <label for="" class="text-gray">Tổng thanh toán : </label>
                                                                                 <div class="ml-2 color-main price-total">
                                                                                     {{str_replace(',', '.',number_format($donhangofme->tongtiensaugiamgia)), ""}}đ
@@ -1887,7 +1953,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="tab-pane fade" id="lieutrinh" role="tabpanel" aria-labelledby="lieutrinh-tab">
                                         <div class="donmua-tab">
                                             <div class="fa-nav">
@@ -1948,6 +2013,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
+                                                              <button type="button" class="btn btn-danger" onclick="return huyLieuTrinh()" data-dismiss="modal">Huỷ Liệu Trình</button>
                                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                                                             </div>
                                                           </div>
@@ -1959,6 +2025,7 @@
 
                                             <div class="tab-content" id="">
                                                 <div class="tab-pane fade show active" id="alllieutrinh" role="tabpanel" aria-labelledby="alllieutrinh-tab">
+                                                       @if (count($dataLieuTrinh)>0)
                                                         @foreach ($dataLieuTrinh as $item)
                                                             <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
 
@@ -1990,9 +2057,12 @@
                                                                                 @if ($item->trangthai === 0)
                                                                                     <i class="far fa-check-circle uk-text-primary"></i>
                                                                                     <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                @else
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                @elseif($item->trangthai === 1)
+                                                                                    <i class="far fa-check-circle uk-text-success"></i>
+                                                                                    <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                @elseif($item->trangthai === 2)
+                                                                                    <i class="far fa-check-circle uk-text-danger"></i>
+                                                                                    <span class="ml-1 uk-text-danger">Đã Huỷ</span>
                                                                                 @endif
                                                                             </div>
                                                                         </div>
@@ -2017,16 +2087,21 @@
 
                                                                     </div>
                                                                 </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
+                                                        @endforeach
+                                                        @else
+                                                            <div class="box-donhang profile-minibox mt-4">
+                                                                Không có liệu trình nào!
+                                                            </div>
+                                                        @endif
 
 
                                                 </div>
                                                 {{-- end tab tất cả --}}
                                                 <div class="tab-pane fade" id="lieutrinh-hoanthanh" role="tabpanel" aria-labelledby="lieutrinh-hoanthanh-tab">
-
+                                                    @if (count($dataLieuTrinh)>0)
                                                             @foreach ($dataLieuTrinh as $item)
                                                                  @if ($item->trangthai === 1)
                                                                     <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
@@ -2055,13 +2130,8 @@
                                                                                     </div>
                                                                                     <div class="col-4 justify-content-end">
                                                                                         <div class="item ml-4 text-right">
-                                                                                            @if ($item->trangthai === 0)
-                                                                                                <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                                <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                            @else
                                                                                             <i class="far fa-check-circle uk-text-success"></i>
                                                                                             <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                                            @endif
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -2091,10 +2161,18 @@
 
                                                                 @endif
                                                             @endforeach
+                                                            @else
+                                                                <div class="box-donhang profile-minibox mt-4">
+                                                                    Không có liệu trình nào!
+                                                                </div>
+                                                            @endif
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dangdieutri" role="tabpanel" aria-labelledby="lieutrinh-dangdieutri-tab">
+
+
                                                     @foreach ($dataLieuTrinh as $item)
                                                                  @if ($item->trangthai === 0)
+
                                                                     <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
                                                                         <div class="body">
                                                                             <button  type="button"  class="button-none show-progress-lieutrinh" >
@@ -2121,13 +2199,8 @@
                                                                                     </div>
                                                                                     <div class="col-4 justify-content-end">
                                                                                         <div class="item ml-4 text-right">
-                                                                                            @if ($item->trangthai === 0)
-                                                                                                <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                                <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                            @else
-                                                                                            <i class="far fa-check-circle uk-text-success"></i>
-                                                                                            <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                                            @endif
+                                                                                            <i class="far fa-check-circle uk-text-primary"></i>
+                                                                                            <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -2154,13 +2227,16 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
                                                             @endif
                                                         @endforeach
+
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dahuy" role="tabpanel" aria-labelledby="lieutrinh-dahuy-tab">
+
                                                     @foreach ($dataLieuTrinh as $item)
+
                                                         @if ($item->trangthai === 2)
+
                                                         <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
                                                             <div class="body">
                                                                 <button  type="button"  class="button-none show-progress-lieutrinh" >
@@ -2187,13 +2263,8 @@
                                                                         </div>
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
-                                                                                @if ($item->trangthai === 0)
-                                                                                    <i class="far fa-check-circle uk-text-primary"></i>
-                                                                                    <span class="ml-1 uk-text-primary">Đang Tiến Hành</span>
-                                                                                @else
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                                @endif
+                                                                                <i class="far fa-check-circle uk-text-danger"></i>
+                                                                                <span class="ml-1 uk-text-danger">Đã Huỷ</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -2229,7 +2300,6 @@
                                         </div>
 
                                     </div>
-
                                     <div class="tab-pane fade" id="lichhen" role="tabpanel" aria-labelledby="lichhen-tab">
                                         <div class="donmua-tab">
                                             <div class="fa-nav">
@@ -2250,124 +2320,130 @@
                                             </div>
                                             <div class="tab-content" id="">
                                                 <div class="tab-pane fade show active" id="alllichdat" role="tabpanel" aria-labelledby="alllichdat-tab">
-                                                    <div class="profile-minibox mt-4">
-                                                        <div class="header">
-                                                            <div class="item">
-                                                                <button type="button" class="button-none">
-                                                                    <i class="far fa-calendar-alt"></i>
-                                                                    <span class="ml-1">2021 (7)</span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="body">
-                                                            <div class="box-datlich-history mt-0">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
-
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-calendar uk-text-primary"></i>
-                                                                                <span class="ml-1 uk-text-primary">7 ngày tới</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-between">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Spa chọn nhân viên giúp bạn
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Bạn muốn tư vấn
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 text-right">
-                                                                            <a href="">
-                                                                                <button class="button-href-basic ml-0">
-                                                                                    Huỷ lịch
-                                                                                </button>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
-
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-between">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Spa chọn nhân viên giúp bạn
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Bạn muốn tư vấn
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 text-right">
-                                                                            <a href="">
-                                                                                <button class="button-href-basic ml-0">
-                                                                                    Đặt lại
-                                                                                </button>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="w-100 text-center mt-4 mb-2">
-                                                                <a href="" class="text-center">
-                                                                    <button class="btn-6 ml-0">
-                                                                        Xem thêm
+                                                    @foreach ($lichSuDatLich as $datLich)
+                                                        <div class="profile-minibox mt-4">
+                                                            <div class="header">
+                                                                <div class="item">
+                                                                    <button type="button" class="button-none">
+                                                                        <i class="far fa-calendar-alt"></i>
+                                                                        <span class="ml-1">{{ $datLich['year'] }} (7)</span>
                                                                     </button>
-                                                                </a>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="body">
+                                                                {{-- @foreach ($datLich['arrayDatLich'] as $item)
+
+                                                                @endforeach --}}
+                                                                <div class="box-datlich-history mt-0">
+                                                                    <div class="left">
+                                                                        <div class="time">
+                                                                            15h00
+                                                                        </div>
+                                                                        <div class="date">21 Tháng 12</div>
+                                                                    </div>
+
+                                                                    <div class="right">
+                                                                        <div class="row d-flex justify-content-between">
+                                                                            <div class="col-8">
+                                                                                <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
+                                                                            </div>
+
+                                                                            <div class="col-4 justify-content-end">
+                                                                                <div class="item ml-4 text-right">
+                                                                                    <i class="far fa-calendar uk-text-primary"></i>
+                                                                                    <span class="ml-1 uk-text-primary">7 ngày tới</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row mt-3 justify-content-between">
+                                                                            <div class="col-xl-4 d-flex">
+                                                                                <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                                <div class="ml-2 limit-text-row-1">
+                                                                                    Spa chọn nhân viên giúp bạn
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-xl-4 d-flex text-center">
+                                                                                <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
+                                                                                <div class="ml-2 limit-text-row-1">
+                                                                                    Bạn muốn tư vấn
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-xl-4 text-right">
+                                                                                <a href="">
+                                                                                    <button class="button-href-basic ml-0">
+                                                                                        Huỷ lịch
+                                                                                    </button>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="box-datlich-history">
+                                                                    <div class="left">
+                                                                        <div class="time">
+                                                                            15h00
+                                                                        </div>
+                                                                        <div class="date">21 Tháng 12</div>
+                                                                    </div>
+
+                                                                    <div class="right">
+                                                                        <div class="row d-flex justify-content-between">
+                                                                            <div class="col-8">
+                                                                                <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
+                                                                            </div>
+
+                                                                            <div class="col-4 justify-content-end">
+                                                                                <div class="item ml-4 text-right">
+                                                                                    <i class="far fa-check-circle uk-text-success"></i>
+                                                                                    <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row mt-3 justify-content-between">
+                                                                            <div class="col-xl-4 d-flex">
+                                                                                <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                                <div class="ml-2 limit-text-row-1">
+                                                                                    Spa chọn nhân viên giúp bạn
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-xl-4 d-flex text-center">
+                                                                                <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
+                                                                                <div class="ml-2 limit-text-row-1">
+                                                                                    Bạn muốn tư vấn
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-xl-4 text-right">
+                                                                                <a href="">
+                                                                                    <button class="button-href-basic ml-0">
+                                                                                        Đặt lại
+                                                                                    </button>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="w-100 text-center mt-4 mb-2">
+                                                                    <a href="" class="text-center">
+                                                                        <button class="btn-6 ml-0">
+                                                                            Xem thêm
+                                                                        </button>
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
 
-                                                    <div class="profile-minibox mt-4">
+
+                                                    {{-- <div class="profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
                                                                 <button type="button" class="button-none" >
@@ -2482,7 +2558,7 @@
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="tab-pane fade" id="lichhoanthanh" role="tabpanel" aria-labelledby="lichhoanthanh-tab">
                                                     <div class="profile-minibox mt-4">
@@ -2800,6 +2876,47 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="tab-pane fade" id="yeuthich" role="tabpanel" aria-labelledby="yeuthich-tab">
+                                        <div class="donmua-tab">
+                                            <div class="fa-nav">
+                                                <ul class="nav nav-tabs" id="" role="tablist">
+                                                    <li class="nav-item pl-0" role="presentation">
+                                                        <a class="nav-link active" id="allyeuthich-tab" data-toggle="tab" href="#allyeuthich" role="tab" aria-controls="allyeuthich" aria-selected="true" style="font-size: 13pt;">Sản yêu thích của bạn</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content" id="">
+                                                <div class="tab-pane fade show active" id="allyeuthich" role="tabpanel" aria-labelledby="allyeuthich-tab">
+                                                    <div class="profile-minibox mt-4">
+                                                        <div class="body">
+                                                            <table class="table">
+                                                                <thead class="" style="background: var(--main-color);">
+                                                                <tr class="text-center text-white">
+                                                                    <th scope="col">STT</th>
+                                                                    <th scope="col">Ảnh</th>
+                                                                    <th scope="col">Tên sản phẩm</th>
+                                                                    <th scope="col">Xóa</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                @foreach($spyeuthich as $indexyt => $yeuthich)
+                                                                <?php $anh=json_decode($yeuthich->img);?>
+                                                                <tr id="yt{{ $yeuthich->id}}">
+                                                                    <th scope="row">{{$indexyt+=1}}</th>
+                                                                    <td class="w-15"><a href="{{URL::to("san-pham/chi-tiet", $yeuthich->slug)}}"> <img src="{{ asset('/uploads')}}/{{$anh[0]}}" class="card-img-top img-sanpham-zbar w-100" style="object-fit: cover; height: 80px;" alt="..."></a></td>
+                                                                    <td><a href="{{URL::to("san-pham/chi-tiet", $yeuthich->slug)}}" class="text-dark font-weight-bold text-decoration-none">{{$yeuthich->name}}
+                                                                        </a></td>
+                                                                    <td width="10%" class="text-center"><span onclick="XoaYeuThich({{$yeuthich->id}})" class="btn btn-dark text-white"><i class='fas fa-trash-alt'></i></span></td>
+                                                                </tr>
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2895,13 +3012,48 @@
                         data: {id: id},
                         success: function (data) {
                             if (data==0){
-                                document.getElementById("huydonhang"+id).innerHTML='<span class="ml-1 btn btn-danger">Đã hủy đơn</span>';
+                                window.location.reload();
                             }
                         }
                     });
                 }
             });
 
+        }
+
+        function XoaYeuThich(id) {
+            $.ajax({
+                url: domain + '/xoayeuthich/' + id,
+                type: 'GET',
+                async: false,
+                dataType: 'json',
+                data: {id: id},
+                success: function (datayeuthich) {
+                    if (datayeuthich==0){
+                        iziToast.success({
+                            title: 'Xóa thành công !!!',
+                            message: '',
+                            position: 'bottomRight',
+                            backgroundColor: 'green',
+                            titleColor: 'white',
+                            messageColor: 'white',
+                            iconColor: 'white',
+                        });
+                        $("#yt"+id).css({display: "none"});
+                    }
+                    else {
+                        iziToast.warning({
+                            title: 'Xóa thất bại!!!',
+                            message: '',
+                            position: 'bottomRight',
+                            backgroundColor: 'oranged',
+                            titleColor: 'black',
+                            messageColor: 'black',
+                            iconColor: 'black',
+                        });
+                    }
+                }
+            });
         }
 
     </script>

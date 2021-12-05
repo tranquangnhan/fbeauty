@@ -101,7 +101,7 @@
                                                                 <div class="row">
                                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                         <div class="mr-3">
-                                                                            <a href="" class="box-danhmuc-1">
+                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                                                {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
@@ -183,7 +183,7 @@
                                                                 <div class="row">
                                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                         <div class="mr-3">
-                                                                            <a href="" class="box-danhmuc-1">
+                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                                             {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
@@ -231,27 +231,27 @@
                             <div class="slide-tin-1">
                                 <div class="tin-item-1">
                                     <div class="image-tin-1">
-                                        <a href="{{ asset('bai-viet') }}/{{$blog[0]->slug}}">
-                                        <img class="img-fluid" src="{{ asset('uploads') }}/{{$blog[0]->img}}" alt=""></a>
+                                        <a href="{{ asset('bai-viet') }}/{{$blognewtt[0]->slug}}">
+                                        <img class="img-fluid" src="{{ asset('uploads') }}/{{$blognewtt[0]->img}}" alt=""></a>
                                     </div>
                                     <div class="content-tin background-white">
                                         <div class="row">
                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                 <div class="mr-3">
-                                                    <a  class="box-danhmuc-1">
-                                                        {{$blog[0]->danhmuc}}</a>
+                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$blognewtt[0]->slugdm}}" class="box-danhmuc-1">
+                                                        {{$blognewtt[0]->danhmuc}}</a>
                                                 </div>
-                                                <span>@if ($blog[0]->created_at != null)
+                                                <span>@if ($blognewtt[0]->created_at != null)
                                                    <?php
-                                                    $timestamp = strtotime($blog[0]->created_at);
+                                                    $timestamp = strtotime($blognewtt[0]->created_at);
                                                     print date('d-m-y', $timestamp );
                                                     ?> 
                                                 @endif </span>
                                             </div>
                                         </div>
                                         <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
-                                            <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
-                                                {{$blog[0]->name}}</a>
+                                            <a href="{{ asset('bai-viet') }}/{{$blognewtt[0]->slug}}" class="hover-pink">
+                                                {{$blognewtt[0]->name}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +266,7 @@
                                             <div class="row">
                                                 <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
-                                                        <a  class="box-danhmuc-1 maincolor">
+                                                        <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1 maincolor">
                                                         {{$item->danhmuc}}</a>
                                                     </div>
                                                     <span class="color-gray-5 fz-1em2">
@@ -324,7 +324,7 @@
                                         <div class="row">
                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                 <div class="mr-3">
-                                                    <a type-modal="modal-datlich" href="javascript:void(0)" data-show="one" class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
+                                                    <a class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -334,7 +334,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -350,7 +349,7 @@
                                     <div class="title-3 mr-4">
                                         {{$item->name}}
                                     </div>
-                                    <div class="line-main-color ml-auto" style="width: 75%"></div>
+                                    <div class="line-main-color ml-auto" style="width: 70%"></div>
                                 </div>
                             </div>
 
@@ -367,7 +366,7 @@
                                                 <div class="row">
                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                         <div class="mr-3">
-                                                            <a href="" class="box-danhmuc-1">
+                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                             {{$item->name}}</a>
                                                         </div>
                                                         <span>  
@@ -429,7 +428,7 @@
                                             <div class="row">
                                                 <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
-                                                        <a href="" class="box-danhmuc-1 maincolor">
+                                                        <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1 maincolor">
                                                         {{$item->danhmuc}}</a>
                                                     </div>
                                                     <span class="color-gray-6">@if ($item->created_at != null)
@@ -465,7 +464,7 @@
                                         <div class="title-3 mr-4">
                                             {{$item->name}}
                                         </div>
-                                        <div class="line-main-color ml-auto" style="width: 75%"></div>
+                                        <div class="line-main-color ml-auto" style="width: 70%"></div>
                                     </div>
                                 </div>
 
@@ -482,7 +481,7 @@
                                                         <div class="row">
                                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                 <div class="mr-3">
-                                                                    <a href="" class="box-danhmuc-1">
+                                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                                         {{$item->name}}</a>
                                                                 </div>
                                                                 <span> @if ($data->created_at != null)

@@ -62,4 +62,14 @@ class YeuThichController extends Controller
             return $this->YeuThich->getAllYeuThich(00);
         }
     }
+
+    public function xoayeuthich($id){
+        $delete=$this->YeuThich->delete($id);
+        if ($delete){
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
 }
