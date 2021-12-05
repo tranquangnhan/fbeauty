@@ -50,6 +50,7 @@ function loopBlogs(blogs) {
 }
 
 function blogItemHTML(blog) {
+
 	let html = 
 	`
 	<div class="col-xl-4 content1 mt-3">
@@ -63,7 +64,7 @@ function blogItemHTML(blog) {
 	                    <div class="mr-3">
 	                        <a href="" class="box-danhmuc-1">${blog.danhmuc}</a>
 	                    </div>
-						<span>${moment(blog.created_at).format('YYYY-MM-DD H:m:s')}</span>
+						<span>${ moment(blog.created_at).format('YYYY-MM-DD')}</span>
 	                </div>
 	            </div>
 	            <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
@@ -75,5 +76,7 @@ function blogItemHTML(blog) {
 	        </div>
 	    </div>
 	</div>`;
-	return html;
+
+	return html;	
 }
+

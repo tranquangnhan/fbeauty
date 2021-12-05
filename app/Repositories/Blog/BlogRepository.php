@@ -90,7 +90,7 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     }
     public function editBlog($slug)
     {
-        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddmm','danhmuc.name AS danhmuc')
+        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddmm','danhmuc.name AS danhmuc','danhmuc.slug AS slugdm')
             ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
             ->where('blog.slug','=', $slug)
             ->get();

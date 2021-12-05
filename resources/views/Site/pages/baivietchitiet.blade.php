@@ -17,10 +17,15 @@
                                     <div
                                         class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                         <div class="mr-3">
-                                            <a href="" class="box-danhmuc-1 fz-1em2">
+                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$viewdetail[0]->slugdm}}" class="box-danhmuc-1 fz-1em2">
                                                 {{$viewdetail[0]->danhmuc}}</a>
                                         </div>
-                                        <span class="fz-1em1">{{$viewdetail[0]->created_at}}</span>
+                                        <span class="fz-1em1">@if ($viewdetail[0]->created_at != null)
+                                            <?php
+                                                $timestamp = strtotime($viewdetail[0]->created_at);
+                                                print date('d-m-y', $timestamp );
+                                            ?>                                                          
+                                            @endif</span>
                                     </div>
                                 </div>
                                 <div class="name-blog mt-3">
@@ -59,23 +64,23 @@
                         </div>
 
                         <div class="list-social">
-                            <a href="#">
-                                <span><i class="fab fa-facebook-f"></i> <span>15000</span></span>
+                            <a href="https://www.facebook.com/FBeauty-103098148891666">
+                                <span><i class="fab fa-facebook-f"></i> <span>15000</span> <small class="fz-0em9"> Like</small></span>
                                 <span class="fz-0em9">Like</span>
                             </a>
 
-                            <a href="#">
-                                <span><i class="fab fa-twitter"></i> <span>15000</span></span>
+                            <a href="https://twitter.com/HuynTrn26589599">
+                                <span><i class="fab fa-twitter"></i> <span>15000</span> <small class="fz-0em9"> Tweet</small></span>
                                 <span class="fz-0em9">Like</span>
                             </a>
 
-                            <a href="#">
-                                <span><i class="fab fa-instagram"></i><span>32k+</span></span>
+                            <a href="https://www.instagram.com/fbeautyspa__/">
+                                <span><i class="fab fa-instagram"></i><span>32k+</span> <small class="fz-0em9"> Follower</small></span>
                                 <span class="fz-0em9">Follower</span>
                             </a>
 
-                            <a href="#">
-                                <span><i class="fab fa-youtube"></i> <span>15000</span></span>
+                            <a href="https://www.youtube.com/channel/UCKmLj9UShXnCrweFbjA9Jvg">
+                                <span><i class="fab fa-youtube"></i> <span>15000</span> <small class="fz-0em9"> Subscriber</small></span>
                                 <span class="fz-0em9">Subscribe</span>
                             </a>
                         </div>
@@ -122,19 +127,25 @@
                                 <div class="col-xl-3">
                                     <div class="tin-item-1 box-tin-hv">
                                         <div class="image-tin-1" style="height: 220px;">
-                                            <img class="img-fluid"
+                                            <a href="{{ asset('bai-viet') }}/{{$data->slug}}">
+                                                <img class="img-fluid"
                                                 src="{{ asset('uploads') }}/{{$data->img}}"
-                                                alt="">
+                                                alt=""></a>
                                         </div>
                                         <div class="content-tin-3 background-white">
                                             <div class="row">
                                                 <div
                                                     class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
-                                                        <a  class="box-danhmuc-1">
+                                                        <a href="{{ asset('danh-muc-bai-viet') }}/{{$data1->slugdm}}" class="box-danhmuc-1">
                                                             {{$data->danhmuc}}</a>
                                                     </div>
-                                                    <span>{{$data->created_at}}</span>
+                                                    <span>@if ($data->created_at != null)
+                                                        <?php
+                                                            $timestamp = strtotime($data->created_at);
+                                                            print date('d-m-y', $timestamp );
+                                                        ?>                                                          
+                                                        @endif </span>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">

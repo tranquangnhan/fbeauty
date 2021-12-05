@@ -73,11 +73,8 @@
                 Luôn học hỏi, nỗ lực và cập nhật những kiến thức y khoa – xu hướng thẩm mỹ mới nhất để bắt kịp với xu hướng y học hiện đại cam kết mang đến cho khách hàng kết quả thẩm mỹ tốt nhất.
             </p>
         </div>
-        <div class="w-100 mt-4">
-            {{-- <iframe width="100%" style="border:2px solid #e87c7b;" height="300" src="https://www.youtube.com/embed/5RFqEdSy9nQ?autoplay=1"
-            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
-            clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
-            <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class="image mb-2" style="width:100%;height:100%;">
+        <div class="w-100 mt-4 container">
+            <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class=" mb-2" style="width:100%;height:100%;">
         </div>
     </div>
     <div class="box-lieutrinh mt-5">
