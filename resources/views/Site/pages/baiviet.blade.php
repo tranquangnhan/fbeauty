@@ -46,7 +46,8 @@
                                         <div class="col-xl-6 pr-0">
                                             <div class="blog-bigsize">
                                                 <div class="box-danhmuc">
-                                                    {{$blog[0]->danhmuc}}
+                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$blog[0]->slugdm}}">
+                                                    {{$blog[0]->danhmuc}}</a>
                                                 </div>
                                                 <a href="{{ asset('bai-viet') }}/{{$blog[0]->slug}}">
                                                     <div class="img-1 w-100">
@@ -101,7 +102,7 @@
                                                                 <div class="row">
                                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                         <div class="mr-3">
-                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
+                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slugdm}}" class="box-danhmuc-1">
                                                                                {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
@@ -128,7 +129,8 @@
                                         <div class="col-xl-7 pr-0">
                                             <div class="blog-bigsize">
                                                 <div class="box-danhmuc">
-                                                    {{$item1->danhmuc}}"
+                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$item1->slugdm}}">
+                                                    {{$item1->danhmuc}}</a>
                                                 </div>
 
                                                 <div class="img-1 w-100">
@@ -183,7 +185,7 @@
                                                                 <div class="row">
                                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                         <div class="mr-3">
-                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
+                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slugdm}}" class="box-danhmuc-1">
                                                                             {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
