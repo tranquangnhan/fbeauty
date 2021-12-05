@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CoSoController;
 use App\Http\Controllers\Admin\DangNhapAdminController;
 use App\Http\Controllers\Admin\DanhMucController;
@@ -146,6 +147,9 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/{id}/edit/huygiamgia/{tien}', [HoaDonChiTietController::class, 'HuyGiamGia']);
     // nhan add hoá đơn by id liệu trình
     Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class, 'addHoaDonByIdLieuTrinh']);
+    //Banner
+    Route::resource('banner', BannerController::class);
+    Route::get('banner/{id}/destroy', [BannerController::class, 'destroy']);
 });
 
 Route::group(['prefix' => '/'], function () {
@@ -221,6 +225,11 @@ Route::group(['prefix' => '/'], function () {
     *Update profile
      */
     Route::post("updateprofile", [HomeController::class, "updateprofile"]);
+    /**
+    *Delete yêu thích
+     */
+    Route::get('xoayeuthich/{id}',[YeuThichController::class, "xoayeuthich"]);
+
 
 });
 

@@ -18,6 +18,7 @@ class Controller extends BaseController
     const URL_IMG = 'uploads/';
     const BASE_URL_UPLOAD_STAFF = 'uploads/imgusers/';
     const BASE_URL_UPLOAD_CUSTOMER = 'uploads/khachhang/';
+    const BASE_URL_UPLOAD_BANNER = 'Site/images/';
 
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
@@ -69,7 +70,18 @@ class Controller extends BaseController
     /**
     End trạng thái hóa đơn
      */
-
+    /**
+     * Phí ship hàng
+    */
+    const PHI_SHIP_HANG=30000;
+    /**
+    *Banner
+     */
+    const BANNER_HIEN=0;
+    const BANNER_AN=1;
+    /**
+     *end banner
+     */
     function uploadSingle($path,$file){
         if($file == null) return null;
         $filename = 'photo-' . time() . '.' . $file->getClientOriginalExtension();
@@ -101,6 +113,18 @@ class Controller extends BaseController
             return false;
         } else {
             $img->move(self::BASE_URL_UPLOAD_STAFF, $img->getClientOriginalName());
+            return true;
+        }
+    }
+
+    public function checkImgBanner($extension, $img)
+    {
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
+        $check = in_array($extension, $allowedfileExtension);
+        if (!$check) {
+            return false;
+        } else {
+            $img->move(self::BASE_URL_UPLOAD_BANNER, $img->getClientOriginalName());
             return true;
         }
     }

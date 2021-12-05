@@ -4,6 +4,8 @@ namespace App\Providers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\CoSoController;
 use App\Models\Admin\CosoModel;
+use App\Repositories\Banner\BannerReponsitoryinterface;
+use App\Repositories\Banner\BannerRepository;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHang\DonHangRepositoryInterface;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
@@ -69,6 +71,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(DonHangRepositoryInterface::class, DonHangRepository::class);
         $this->app->singleton(DonHangChiTietRepository::class, DonHangChiTietRepository::class);
         $this->app->singleton(KhachHangRepositoryInterface::class, KhachHangRepository::class);
+        $this->app->singleton(BannerReponsitoryinterface::class, BannerRepository::class);
     }
 
     /**
