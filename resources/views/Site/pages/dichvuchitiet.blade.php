@@ -48,6 +48,97 @@
 
         </div>
     </div>
+    <div class="row mt-5">
+        <div class="danhmuc-listblog container">
+            <div class="head-blog-item blog-title">
+                <div class="w-100 text-left d-flex align-items-center">
+                    <div class="title-3 mr-4">
+                        Dịch Vụ Liên Quan
+                    </div>
+                    <div class="line-main-color ml-auto" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <div class="list-blog-1 mt-4">
+                <div class="row  mb-30px">
+
+                    @foreach ($dichvulienquan as $data)
+
+                        <div class="col-xl-3" onclick="window.location='{{ asset('dich-vu') }}/{{$data->slug}}';">
+                            <div class="tin-item-1 box-tin-hv">
+                                <div class="image-tin-1" style="height: 220px;">
+                                    <img class="img-fluid"src="{{ asset('uploads') }}/{{$data->img}}"alt="">
+                                </div>
+                                <div class="content-tin-3 background-white">
+                                    <div class="row">
+                                        <div
+                                            class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                            <div class="mr-3">
+                                                <a  class="box-danhmuc-1">
+                                                    {{$data->tendm}}</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
+                                        <a href="{{ asset('dich-vu') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
+                                    </div>
+                                    <p class="blog-mota mb-0 limit-text-row-3">
+                                        {{$data->motangan}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="danhmuc-listblog container">
+            <div class="head-blog-item blog-title">
+                <div class="w-100 text-left d-flex align-items-center">
+                    <div class="title-3 mr-4">
+                        Các Dịch Vụ Khác
+                    </div>
+                    <div class="line-main-color ml-auto" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <div class="list-blog-1 mt-4">
+                <div class="row  mb-30px">
+
+                    @foreach ($dichvukhac as $itemdichvukhac)
+
+                        <div class="col-xl-3" onclick="window.location='{{ asset('dich-vu') }}/{{$itemdichvukhac->slug}}';">
+                            <div class="tin-item-1 box-tin-hv">
+                                <div class="image-tin-1" style="height: 220px;">
+                                    <img class="img-fluid"src="{{ asset('uploads') }}/{{$itemdichvukhac->img}}"alt="">
+                                </div>
+                                <div class="content-tin-3 background-white">
+                                    <div class="row">
+                                        <div
+                                            class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                            <div class="mr-3">
+                                                <a  class="box-danhmuc-1">
+                                                    {{$itemdichvukhac->tendm}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
+                                        <a href="{{ asset('dich-vu') }}/{{$itemdichvukhac->slug}}" class="hover-pink">{{$itemdichvukhac->name}}</a>
+                                    </div>
+                                    <p class="blog-mota mb-0 limit-text-row-3">
+                                        {{$itemdichvukhac->motangan}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
     @include('Site.components.gioithieulieutrinh')
 </div>
 @endsection

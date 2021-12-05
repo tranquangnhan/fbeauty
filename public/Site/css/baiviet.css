@@ -1,25 +1,49 @@
-.xemthemblog{
+.xemthemblog {
     background: #e87c7b;
-    color:white;
+    color: white;
 }
+
+
 /* loadmore */
+
+
 /* .flex {
   display: flex;
-  
+
 }
 .content1 {
   /* height: 100px; */
-  /* float: left;
+
+
+/* float: left;
   width: 45%; */
-  /* color: #fff; */
-  /* font-size: 24px; */
-  /* line-height: 100px;  */
-  /* centering text just for view */
-  /* text-align: center; */
-  /* background-color: grey; */
-  /* margin: 5px; */
-  /* border: 1px solid lightgrey; */
-  /* display: none;
+
+
+/* color: #fff; */
+
+
+/* font-size: 24px; */
+
+
+/* line-height: 100px;  */
+
+
+/* centering text just for view */
+
+
+/* text-align: center; */
+
+
+/* background-color: grey; */
+
+
+/* margin: 5px; */
+
+
+/* border: 1px solid lightgrey; */
+
+
+/* display: none;
 }
 #loadMore {
   width: 200px;
@@ -43,4 +67,6 @@
   color: #000 !important;
   background-color: transparent !important;
   pointer-events: none; */
-/* } */ 
+
+
+/* } */
