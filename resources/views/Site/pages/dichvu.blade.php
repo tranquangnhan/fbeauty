@@ -100,7 +100,7 @@
                                 <div class="item-dichvu-2" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvu1item->slug}}';">
                                     <div class="dichvu-header">
                                         <div class="box-danhmuc-small">
-                                            <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
+                                            <img src="{{ asset('uploads/'.$dichvu1item->icon) }}"
                                             class="img-fluid" alt="">
                                         </div>
                                         <div class="img-dichvu">
@@ -146,19 +146,17 @@
                         <div class="row">
                             @php
                                 $dongia1 = 0;
-                                $dongia2 = 0;
                             @endphp
 
                             @foreach ($dichvu2 as $dichvu2item)
                                 @php
-                                 $dongia1 = $dichvu2item->dongia - ($dichvu2item->dongia/100 * $dichvu2item->numbergg);
-                                 $dongia2 = $dichvu2item->dongia - $dichvu2item->maxgg;
+                                 $dongia1 = $dichvu2item->dongia - ($dichvu2item->dongia/100 * $dichvu2item->giamgia);
                                 @endphp
                                 <div class="col-xl-4">
                                     <div class="item-dichvu-2" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvu2item->slug}}';">
                                         <div class="dichvu-header">
                                             <div class="box-danhmuc-small">
-                                                <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
+                                                <img src="{{ asset('uploads/'.$dichvu2item->icon) }}"
                                                 class="img-fluid" alt="">
                                             </div>
                                             <div class="img-dichvu">
@@ -173,11 +171,7 @@
                                             <div class="box-gia">
                                                 <span class="giagiam">{{number_format($dichvu2item->dongia)}} đ </span>
                                                 <span class="gia left-bar">
-                                                    @if ($dichvu2item->giamgia == 1)
                                                     {{number_format($dongia1)}} đ
-                                                    @else
-                                                    {{number_format($dongia2)}} đ
-                                                    @endif
                                                 </span>
                                             </div>
                                             <div class="name text-1 limit-text-row-1 px-5 mt-2">
@@ -221,104 +215,25 @@
         </div>
 
         <div class="row">
-            <div class="col-xl-4">
-                <div class="danhmuc-2-item">
+            @foreach ($listDanhMucDichVu1 as $danhmuclistdichvu)
+
+            <div class="col-xl-4" >
+                <div class="danhmuc-2-item" onclick="window.location='{{ asset('danh-muc') }}/{{$danhmuclistdichvu->id}}';" >
                     <div class="image">
-                        <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png" class="img-fluid" alt="">
+                        <img src="{{ asset('uploads/'.$danhmuclistdichvu->img) }}" class="img-fluid" alt="">
                     </div>
                     <div class="content mt-1 px-5">
                         <h5 class="title">
-                            Chăm sóc da mặt
+                            {{$danhmuclistdichvu->name}}
                         </h5>
                         <p class="text-2">
-                            Chăm sóc da mặt là một trong các gói dịch vụ Spa cơ bản và đông khách nhất hiện nay.
+                            {{-- {{$danhmuclistdichvu->mota}} --}}
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-4">
-                <div class="danhmuc-2-item">
-                    <div class="image">
-                        <img src="{{ asset('Site/images/icon') }}/acne.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="content mt-1 px-5">
-                        <h5 class="title">
-                            Điều trị mụn, sẹo
-                        </h5>
-                        <p class="text-2">
-                            Điều trị mụn là phương pháp hiệu quả nhất nhằm làm sạch mụn
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-4">
-                <div class="danhmuc-2-item">
-                    <div class="image">
-                        <img src="{{ asset('Site/images/icon') }}/facial-treatment-black.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="content mt-1 px-5">
-                        <h5 class="title">
-                            Dịch vụ trị nám, tàn nhang
-                        </h5>
-                        <p class="text-2">
-                            Để che mờ những vết nám, tàng nhang trên khuôn mặt
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-4">
-                <div class="danhmuc-2-item">
-                    <div class="image">
-                        <img src="{{ asset('Site/images/icon') }}/mesotherapy.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="content mt-1 px-5">
-                        <h5 class="title">
-                            Làm trẻ hóa da
-                        </h5>
-                        <p class="text-2">
-                            Hiện nay có rất nhiều công nghệ không xâm lấn giúp làm cho
-                            da săn chắc
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-4">
-                <div class="danhmuc-2-item">
-                    <div class="image">
-                        <img src="{{ asset('Site/images/icon') }}/hot-stone.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="content mt-1 px-5">
-                        <h5 class="title">
-                            Dịch vụ massage
-                        </h5>
-                        <p class="text-2">
-                            Massage foot và massage body có tác dụng giúp
-                            giảm đau, thư giãn
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-4">
-                <div class="danhmuc-2-item">
-                    <div class="image">
-                        <img src="{{ asset('Site/images/icon') }}/fitness-black.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="content mt-1 px-5">
-                        <h5 class="title">
-                            Dịch vụ giảm béo
-                        </h5>
-                        <p class="text-2">
-                            Tăng cân, béo phì là vấn đề mà rất nhiều chị em lo lắng
-                        </p>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </div>
 </div>

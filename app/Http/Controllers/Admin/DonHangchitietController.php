@@ -47,7 +47,7 @@ class DonHangchitietController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    function editDetailDonHang($id){
+    function editDetailDonHang(Request $request, $id){
 
         $donHang = $this->DonHang->find($id);
 
@@ -56,6 +56,7 @@ class DonHangchitietController extends Controller
         $sanpham = $this->DonHangChiTiet->getDonHangChiTietByIdDonHangInnerJoin($id);
 
         $Tong = $this->DonHangChiTiet->getIdTongthanhtoanByIdDonHangChiTtiet($id);
+
 
         return view('Admin.DonHang.detail', compact('donHang','sanpham','khachHang','Tong'));
     }

@@ -174,7 +174,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
 
     Route::get('dich-vu/{slug}', [HomeController::class, "viewDichVuChiTiet"]);
-    Route::get('danh-muc/{slug}', [HomeController::class, "viewDanhMucgetDichvu"]);
+    Route::get('danh-muc/{id}', [HomeController::class, "danhmucchitiet"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
