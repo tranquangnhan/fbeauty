@@ -177,6 +177,21 @@ class Controller extends BaseController
             'cuoiNgayTimestamp' => $cuoiNgayTimestamp
         );
     }
+
+    public function getThoiGianTimestampDauNamVaCuoiNam($nam) {
+        $date = Carbon::createFromDate($nam);
+        $startOfYear = $date->copy()->startOfYear();
+        $endOfYear   = $date->copy()->endOfYear();
+
+        $startOfYear = Carbon::parse($startOfYear)->timestamp;
+        $endOfYear = Carbon::parse($endOfYear)->timestamp;
+
+        return array (
+            'startOfYear' => $startOfYear,
+            'endOfYear' => $endOfYear
+        );
+    }
+
     // function unique slug
     public function setSlugStore($model,$name){
 
