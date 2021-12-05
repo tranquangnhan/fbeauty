@@ -65,7 +65,7 @@
             </div>
             <h1 style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Chuyên gia và các bác sĩ</h1>
             <p class="mt-4">
-                100% các bác sĩ tại FBeauty Spa được đào tạo bài bản từ các trường Đại học danh tiếng trong và ngoài nước.
+                100% các bác sĩ tại FBeauty được đào tạo bài bản từ các trường Đại học danh tiếng trong và ngoài nước.
                  Ngoài kiến thức và kỹ năng trong nghề,
 
                 mỗi Bác  sĩ và Trưởng <br> bộ phận phải trải qua quá trình trị liệu tối thiểu 10,000 ca lâm sàng để có hiểu biết chuyên sâu về làn da cũng như cơ địa người Châu Á.
