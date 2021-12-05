@@ -2031,7 +2031,7 @@
                                                                 Không có liệu trình nào!
                                                             </div>
                                                         @endif
-                                                        
+
 
                                                 </div>
                                                 {{-- end tab tất cả --}}
@@ -2103,11 +2103,11 @@
                                                             @endif
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dangdieutri" role="tabpanel" aria-labelledby="lieutrinh-dangdieutri-tab">
-                                                    
-                                                
+
+
                                                     @foreach ($dataLieuTrinh as $item)
                                                                  @if ($item->trangthai === 0)
-                 
+
                                                                     <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
                                                                         <div class="body">
                                                                             <button  type="button"  class="button-none show-progress-lieutrinh" >
@@ -2164,12 +2164,12 @@
                                                                     </div>
                                                             @endif
                                                         @endforeach
-                                                       
+
                                                 </div>
                                                 <div class="tab-pane fade" id="lieutrinh-dahuy" role="tabpanel" aria-labelledby="lieutrinh-dahuy-tab">
-                                                  
+
                                                     @foreach ($dataLieuTrinh as $item)
-                                                    
+
                                                         @if ($item->trangthai === 2)
 
                                                         <div class="profile-minibox mt-4" onclick="showLieuTrinhDetail({{$item->idlieutrinh}})">
@@ -2226,10 +2226,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                      
+
                                                     @endif
                                                 @endforeach
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -2256,124 +2256,130 @@
                                             </div>
                                             <div class="tab-content" id="">
                                                 <div class="tab-pane fade show active" id="alllichdat" role="tabpanel" aria-labelledby="alllichdat-tab">
-                                                    <div class="profile-minibox mt-4">
-                                                        <div class="header">
-                                                            <div class="item">
-                                                                <button type="button" class="button-none">
-                                                                    <i class="far fa-calendar-alt"></i>
-                                                                    <span class="ml-1">2021 (7)</span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="body">
-                                                            <div class="box-datlich-history mt-0">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
-
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-calendar uk-text-primary"></i>
-                                                                                <span class="ml-1 uk-text-primary">7 ngày tới</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-between">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Spa chọn nhân viên giúp bạn
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Bạn muốn tư vấn
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 text-right">
-                                                                            <a href="">
-                                                                                <button class="button-href-basic ml-0">
-                                                                                    Huỷ lịch
-                                                                                </button>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="box-datlich-history">
-                                                                <div class="left">
-                                                                    <div class="time">
-                                                                        15h00
-                                                                    </div>
-                                                                    <div class="date">21 Tháng 12</div>
-                                                                </div>
-
-                                                                <div class="right">
-                                                                    <div class="row d-flex justify-content-between">
-                                                                        <div class="col-8">
-                                                                            <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
-                                                                        </div>
-
-                                                                        <div class="col-4 justify-content-end">
-                                                                            <div class="item ml-4 text-right">
-                                                                                <i class="far fa-check-circle uk-text-success"></i>
-                                                                                <span class="ml-1 uk-text-success">Hoàn thành</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row mt-3 justify-content-between">
-                                                                        <div class="col-xl-4 d-flex">
-                                                                            <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Spa chọn nhân viên giúp bạn
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 d-flex text-center">
-                                                                            <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
-                                                                            <div class="ml-2 limit-text-row-1">
-                                                                                Bạn muốn tư vấn
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-xl-4 text-right">
-                                                                            <a href="">
-                                                                                <button class="button-href-basic ml-0">
-                                                                                    Đặt lại
-                                                                                </button>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="w-100 text-center mt-4 mb-2">
-                                                                <a href="" class="text-center">
-                                                                    <button class="btn-6 ml-0">
-                                                                        Xem thêm
+                                                    @foreach ($lichSuDatLich as $datLich)
+                                                        <div class="profile-minibox mt-4">
+                                                            <div class="header">
+                                                                <div class="item">
+                                                                    <button type="button" class="button-none">
+                                                                        <i class="far fa-calendar-alt"></i>
+                                                                        <span class="ml-1">{{ $datLich['year'] }} (7)</span>
                                                                     </button>
-                                                                </a>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="body">
+                                                                {{-- @foreach ($datLich['arrayDatLich'] as $item)
+
+                                                                @endforeach --}}
+                                                                <div class="box-datlich-history mt-0">
+                                                                    <div class="left">
+                                                                        <div class="time">
+                                                                            15h00
+                                                                        </div>
+                                                                        <div class="date">21 Tháng 12</div>
+                                                                    </div>
+
+                                                                    <div class="right">
+                                                                        <div class="row d-flex justify-content-between">
+                                                                            <div class="col-8">
+                                                                                <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
+                                                                            </div>
+
+                                                                            <div class="col-4 justify-content-end">
+                                                                                <div class="item ml-4 text-right">
+                                                                                    <i class="far fa-calendar uk-text-primary"></i>
+                                                                                    <span class="ml-1 uk-text-primary">7 ngày tới</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row mt-3 justify-content-between">
+                                                                            <div class="col-xl-4 d-flex">
+                                                                                <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                                <div class="ml-2 limit-text-row-1">
+                                                                                    Spa chọn nhân viên giúp bạn
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-xl-4 d-flex text-center">
+                                                                                <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
+                                                                                <div class="ml-2 limit-text-row-1">
+                                                                                    Bạn muốn tư vấn
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-xl-4 text-right">
+                                                                                <a href="">
+                                                                                    <button class="button-href-basic ml-0">
+                                                                                        Huỷ lịch
+                                                                                    </button>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="box-datlich-history">
+                                                                    <div class="left">
+                                                                        <div class="time">
+                                                                            15h00
+                                                                        </div>
+                                                                        <div class="date">21 Tháng 12</div>
+                                                                    </div>
+
+                                                                    <div class="right">
+                                                                        <div class="row d-flex justify-content-between">
+                                                                            <div class="col-8">
+                                                                                <div class="diachi">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận 12, Thành phố Hồ Chí Minh</div>
+                                                                            </div>
+
+                                                                            <div class="col-4 justify-content-end">
+                                                                                <div class="item ml-4 text-right">
+                                                                                    <i class="far fa-check-circle uk-text-success"></i>
+                                                                                    <span class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row mt-3 justify-content-between">
+                                                                            <div class="col-xl-4 d-flex">
+                                                                                <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
+                                                                                <div class="ml-2 limit-text-row-1">
+                                                                                    Spa chọn nhân viên giúp bạn
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-xl-4 d-flex text-center">
+                                                                                <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
+                                                                                <div class="ml-2 limit-text-row-1">
+                                                                                    Bạn muốn tư vấn
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-xl-4 text-right">
+                                                                                <a href="">
+                                                                                    <button class="button-href-basic ml-0">
+                                                                                        Đặt lại
+                                                                                    </button>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="w-100 text-center mt-4 mb-2">
+                                                                    <a href="" class="text-center">
+                                                                        <button class="btn-6 ml-0">
+                                                                            Xem thêm
+                                                                        </button>
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
 
-                                                    <div class="profile-minibox mt-4">
+
+                                                    {{-- <div class="profile-minibox mt-4">
                                                         <div class="header">
                                                             <div class="item">
                                                                 <button type="button" class="button-none" >
@@ -2488,7 +2494,7 @@
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="tab-pane fade" id="lichhoanthanh" role="tabpanel" aria-labelledby="lichhoanthanh-tab">
                                                     <div class="profile-minibox mt-4">

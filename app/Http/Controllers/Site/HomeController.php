@@ -409,6 +409,9 @@ class HomeController extends Controller
         if ($khachHang) {
             $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
             $this->data['dataLieuTrinh'] = $dataLieuTrinh;
+            $this->data['lichSuDatLich'] = $this->getDuLieuTabLichSuDatLich($khachHang->id);
+
+            // dd($this->data['lichSuDatLich']);
         } else {
             $this->data['dataLieuTrinh'] = [];
         }
@@ -419,6 +422,46 @@ class HomeController extends Controller
         $this->data['donhangcuatoi4']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAHUY);
         $this->data['donhangcuatoi5']=$this->DonHang->DonHanCuaBan(self::DONHANG_TRAHANG);
         return view("Site.pages.profile-user", $this->data);
+    }
+
+    public function getDuLieuTabLichSuDatLich($idKhachHang) {
+        $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
+        $arrayDatLich = $this->getDatLichByYearArrayAndIdKhachHang($idKhachHang, $arrayYear);
+        // dd($arrayDatLich);
+        return $arrayDatLich;
+    }
+
+    public function getArrayYearInDatLich($idKhachHang) {
+        $listDatLich = $this->DatLich->getDatLichByIdKhachHang($idKhachHang);
+        $arrayYear = array();
+        foreach($listDatLich as $datLich) {
+            $year = date('Y', $datLich->thoigiandat);
+            if (!in_array($year, $arrayYear)) {
+                $arrayYear[] = $year;
+            }
+        }
+        return $arrayYear;
+    }
+
+    public function getDatLichByYearArrayAndIdKhachHang($idKhachHang, $arrayYear) {
+        $arrayDatLich = array();
+        for ($i = 0; $i < count($arrayYear); $i++) {
+            $thoiGian = Controller::getThoiGianTimestampDauNamVaCuoiNam($arrayYear[$i]);
+            $listDatLichByTime = $this->DatLich->getDatLichByIdKhachHangAndThoiGianDat($idKhachHang, $thoiGian['startOfYear'], $thoiGian['endOfYear']);
+
+            foreach ($listDatLichByTime as $datLich) {
+                $thoiGianDayYMD = date('Y-m-d', $datLich->thoigiandat);
+                $datLich['thoiGianDayYMD'] = $thoiGianDayYMD;
+            }
+
+            $dataDatLich = array (
+                "year" => $arrayYear[$i],
+                "arrayDatLich" => $listDatLichByTime
+            );
+            $arrayDatLich[] = $dataDatLich;
+        }
+
+        return $arrayDatLich;
     }
 
     public function getDanhMucVaDichVuHome() {

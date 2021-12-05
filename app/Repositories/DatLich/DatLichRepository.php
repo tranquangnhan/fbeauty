@@ -100,4 +100,14 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->get();
     }
 
+    public function getDatLichByIdKhachHang($idKhachHang) {
+        return $this->model->where('idkhachhang', '=', $idKhachHang)->get();
+    }
+
+    public function getDatLichByIdKhachHangAndThoiGianDat($idKhachHang, $start, $end) {
+        return $this->model
+        ->whereBetween('thoigiandat', [$start, $end])
+        ->where('idkhachhang', '=', $idKhachHang)
+        ->get();
+    }
 }
