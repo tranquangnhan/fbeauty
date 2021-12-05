@@ -16,6 +16,7 @@ class DatLichSeeder extends Seeder
     {
         $now = Carbon::now('Asia/Ho_Chi_Minh');
         $yesterday = Carbon::now()->subDays(1)->toDateString();
+        $subYearr = Carbon::now()->subYear(1)->toDateString();
         $date = $now->toDateString();
 
         $dateTime1 = $date . '9:00:00';
@@ -27,6 +28,8 @@ class DatLichSeeder extends Seeder
         $yesterdayTime2 = $yesterday . '10:00:00';
         $yesterdayTime3 = $yesterday . '11:00:00';
         $yesterdayTime4 = $yesterday . '17:00:00';
+
+        $subYear = $subYearr . '9:00:00';
         DB::table('datlich')->delete();
 
         DB::table('datlich')->insert([
@@ -51,8 +54,11 @@ class DatLichSeeder extends Seeder
             ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 2, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime3)],
             ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 3, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime4)],
             ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 4, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime1)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 2, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime2)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 5, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime3)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime2)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime3)],
+
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
         ]);
     }
 }

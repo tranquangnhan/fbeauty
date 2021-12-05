@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\DichVu;
 use App\Models\Admin\DichVuModel;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\DB;
 
 class DichVuRepository extends BaseRepository implements DichVuRepositoryInterface
 {
@@ -49,22 +50,25 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         return $this->model->select('dichvu.*','danhmuc.name as namedm')->join('danhmuc','dichvu.iddm','=','danhmuc.id')->where('dichvu.trangthai', '=', 1)->get();
     }
     public function getDichVu1(){
-        return $this->model->select('dichvu.*','danhmuc.name as namedm')
+        return $this->model->select('dichvu.*','danhmuc.name as namedm','danhmuc.img as icon')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
         ->offset(1)->limit(3)
         ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
-        ->orderBy('created_at', 'DESC')
+        ->where('danhmuc.loai', '=', Controller::LOAI_DANHMUC_DICHVU)
+        ->orderBy('id', 'DESC')
         ->get();
     }
+    
     public function getDichVubyGiamGia(){
-        return $this->model->select('dichvu.*','danhmuc.name as namedm','giamgia.number as numbergg','giamgia.max as maxgg')
+        return $this->model->select('dichvu.*','danhmuc.name as namedm','danhmuc.img as icon')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
-        ->join('giamgia','giamgia.id','=','dichvu.giamgia')
         ->offset(1)->limit(3)
         ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
+        ->where('danhmuc.loai', '=', Controller::LOAI_DANHMUC_DICHVU)
         ->orderBy('giamgia', 'DESC')
         ->get();
     }
+
     public function getDichVusite(){
         return $this->model->select('dichvu.*','danhmuc.name as namedm','dichvu.img as imgdv','dichvu.dongia as dongiadv')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
@@ -78,18 +82,34 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         return $this->model->select('dichvu.*','danhmuc.name as namedm')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
         ->offset(1)->limit(3)
-        ->where('dichvu.trangthai', '=', 1)
+        ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
         ->orderBy('id', 'DESC')
         ->get();
+
     }
 
     public function dichvudetail($slug){
-        return $this->model->select('dichvu.*','danhmuc.name as namedm','giamgia.number as numbergg','giamgia.max as maxgg')
+        return $this->model->select('dichvu.*','danhmuc.name as namedm')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
-        ->join('giamgia','giamgia.id','=','dichvu.giamgia')
         ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
         ->where('dichvu.slug', '=', $slug)
         ->first();
+    }
+    public function  getdichvujoindanhmuc($slug){
+        return $this->model->select('dichvu.*','danhmuc.name as namedm')
+        ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+        ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
+        ->where('dichvu.slug', '=', $slug)
+        ->get();
+    }
+    public function  getDichvuJoinDanhMucSlug($slug , $limit){
+        return $this->model->select("dichvu.*", "danhmuc.name AS namedm")
+            ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
+            ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
+            ->where('danhmuc.loai', '=', Controller::LOAI_DANHMUC_DICHVU)
+            ->where('dichvu.iddm', '=', $slug)
+            ->limit($limit)
+            ->get();
     }
 
     public function getDichVuByIdDanhMuc($idDanhMuc, $limit){
@@ -110,4 +130,23 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     public function findDichVuById($id){
         return $this->model->find($id);
     }
+
+    public function GetDichvuLienQuan($id){
+        return $this->model->select('dichvu.*', 'danhmuc.name AS tendm',)
+            ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
+            ->where('dichvu.iddm', $id)
+            ->where('dichvu.trangthai', Controller::TRANGTHAI_DICHVU_HIEN)
+            ->limit(4)
+            ->get();
+    }
+    public function GetDichvuLienQuanKhacIDDM($id){
+            return $this->model->select('dichvu.*', 'danhmuc.name AS tendm',)
+            ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
+            ->where('dichvu.iddm', '!=' , $id)
+            ->where('dichvu.trangthai', Controller::TRANGTHAI_DICHVU_HIEN)
+            ->limit(4)
+            ->get();
+    }
+
+
 }

@@ -56,7 +56,7 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
     }
 
     public function getDanhMucLimit($limit){
-        return $this->model->select('*')
+        return $this->model->select('danhmuc.*')
         ->where('loai', '=', Controller::LOAI_DANHMUC_DICHVU)
         ->limit($limit)
         ->get();

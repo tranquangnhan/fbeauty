@@ -18,6 +18,7 @@ class Controller extends BaseController
     const URL_IMG = 'uploads/';
     const BASE_URL_UPLOAD_STAFF = 'uploads/imgusers/';
     const BASE_URL_UPLOAD_CUSTOMER = 'uploads/khachhang/';
+    const BASE_URL_UPLOAD_BANNER = 'Site/images/';
 
     const LOAI_DANHMUC_DICHVU = 1;
     const LOAI_DANHMUC_SANPHAM = 2;
@@ -26,6 +27,7 @@ class Controller extends BaseController
     const KHACHHANG_CHUA_ACTIVE = 0;
     const KHACHHANG_DA_ACTIVE = 1;
     const TRANGTHAI_LICH_OPEN = 0;
+    const TRANGTHAI_LICH_CLOSE = 1;
     const TRANGTHAI_HOADON_DA_THANH_TOAN = 1;
     const TRANGTHAI_HOADON_CHUA_THANH_TOAN = 0;
     const TRANGTHAI_DONHANG_DA_NHAN = 4;
@@ -68,7 +70,18 @@ class Controller extends BaseController
     /**
     End trạng thái hóa đơn
      */
-
+    /**
+     * Phí ship hàng
+    */
+    const PHI_SHIP_HANG=30000;
+    /**
+    *Banner
+     */
+    const BANNER_HIEN=0;
+    const BANNER_AN=1;
+    /**
+     *end banner
+     */
     function uploadSingle($path,$file){
         if($file == null) return null;
         $filename = 'photo-' . time() . '.' . $file->getClientOriginalExtension();
@@ -100,6 +113,18 @@ class Controller extends BaseController
             return false;
         } else {
             $img->move(self::BASE_URL_UPLOAD_STAFF, $img->getClientOriginalName());
+            return true;
+        }
+    }
+
+    public function checkImgBanner($extension, $img)
+    {
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
+        $check = in_array($extension, $allowedfileExtension);
+        if (!$check) {
+            return false;
+        } else {
+            $img->move(self::BASE_URL_UPLOAD_BANNER, $img->getClientOriginalName());
             return true;
         }
     }
@@ -152,6 +177,21 @@ class Controller extends BaseController
             'cuoiNgayTimestamp' => $cuoiNgayTimestamp
         );
     }
+
+    public function getThoiGianTimestampDauNamVaCuoiNam($nam) {
+        $date = Carbon::createFromDate($nam);
+        $startOfYear = $date->copy()->startOfYear();
+        $endOfYear   = $date->copy()->endOfYear();
+
+        $startOfYear = Carbon::parse($startOfYear)->timestamp;
+        $endOfYear = Carbon::parse($endOfYear)->timestamp;
+
+        return array (
+            'startOfYear' => $startOfYear,
+            'endOfYear' => $endOfYear
+        );
+    }
+
     // function unique slug
     public function setSlugStore($model,$name){
 

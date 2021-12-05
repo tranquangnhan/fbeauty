@@ -23,7 +23,11 @@
                         <div class="row">
                             <div class="col-md-4">
                                     <label class="w-100" for="files">Tải ảnh khách hàng:<br>
-                                    <img class="imgpreview"  src="{{ asset($URL_IMG.$KhachHang->img) }}" alt=""><br><br>    
+                                    @if ($KhachHang->img)
+                                        <img class="imgpreview"  src="{{ asset($URL_IMG.$KhachHang->img) }}" alt=""><br><br>    
+                                    @else
+                                    <img class="imgpreview"  src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}" alt=""><br><br>    
+                                    @endif
                                     <input type="file" class="mt-2" name="urlHinh" onchange="previewImg(event)"  > <br>
                                     @error('img')
                                     <span class="badge badge-danger">{{$message}}</span>
