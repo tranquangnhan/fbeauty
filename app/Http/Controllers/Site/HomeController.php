@@ -209,7 +209,6 @@ class HomeController extends Controller
         $luotxem = $this->Blog->getblogbyView();
         $listdanhmuc = $this->DanhMuc->getAll();
         $listdanhmuc2 = $this->DanhMuc->getall2danhmuc();
-        $this->getDanhMucVaBlog();
 
         foreach ($listdanhmuc as $dm) {
             $skip = 0;
@@ -257,7 +256,6 @@ class HomeController extends Controller
         $danhmuc = $this->DanhMuc->getAllDanhMuc();
         $viewdetail = $this->Blog->editBlog($slug);
         $viewdetail2 = $this->Blog->editBlog($slug);
-        $this->getDanhMucVaBlog();
         foreach ($viewdetail2 as $detail) {
             $viewdt = $this->Blog->getblogbyiddm3($detail->iddm);
             $detail['viewdt'] = $viewdt;
