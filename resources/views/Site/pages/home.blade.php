@@ -252,7 +252,7 @@
                 <div class="tab-content" id="">
                     @foreach ($arrDichVu as $itemdichvu)
                         <div class="tab-pane @if ($loop->index == 0) show active @endif  fade" id="{{$listDanhMuc[$loop->index]->slug}}" role="tabpanel" aria-labelledby="{{$listDanhMuc[$loop->index]->slug}}-tab">
-                            <div class="w-100">
+                            <div class="w-100 d-flex">
                                 <div class="box-dichvu">
                                     <div class="box-sev">
                                         @foreach ($itemdichvu as $item)
