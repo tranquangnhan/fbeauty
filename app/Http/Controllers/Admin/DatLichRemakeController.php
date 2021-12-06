@@ -32,7 +32,7 @@ class DatLichRemakeController extends Controller
         DichVuRepository $DichVu,
         KhachHangRepository $KhachHang,
         NhanVienRepository $NhanVien,
-        LichRepository $Lich,
+        LichRepository $Lich
         )
     {
         $this->CoSo = $CoSo;

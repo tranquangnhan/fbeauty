@@ -441,7 +441,7 @@
                                                 </ul>
 
                                             </div>
-                                            <div class="tab-content" id="">
+                                            <div class="tab-content order-overflow" id="">
                                                 <div class="tab-pane fade show active" id="alldonhang" role="tabpanel" aria-labelledby="alldonhang-tab">
                                                      @if(session()->has('khachHang') && session('khachHang') != '')
 
