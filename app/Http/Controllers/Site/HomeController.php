@@ -298,10 +298,11 @@ class HomeController extends Controller
     public function viewDichVu(Request $request)
     {
         $dichvu = $this->Dichvu->getDichVu2();
-        $dichvu1 = $this->Dichvu->getDichVu1();
+        $dichvu1 = $this->Dichvu->getLastWeekdichvu();
         $dichvu2 = $this->Dichvu->getDichVubyGiamGia();
         $danhmuc = $this->DanhMuc->getalldanhmuc();
         $this->getDanhMucVaDichVu();
+        //$mouth = $this->Dichvu->getLastWeekdichvu();
 
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
@@ -316,14 +317,18 @@ class HomeController extends Controller
 
         return view("Site.pages.dichvu", $this->data);
     }
-    public function danhmucchitiet($id)
+    public function danhmucdichvu($slug)
     {
+    $limit = 6;
+        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
+        $viewdetail = $this->Dichvu->getdichvuiddanhmuc($slug , $limit);
 
-        $this->getDanhMucVaDichVu();
-        $this->data['pathActive'] = 'danhmuc-dichvu';
+        $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
+        $this->data['viewdetail'] = $viewdetail;
+        $this->data['pathActive'] = 'danh-muc-dich-vu';
         $this->data['namePage'] = 'Danh Mục Dịch Vụ';
         $this->data['breadcrumbArray'] = [
-            ['link' => '/danhmuc-dichvu', 'name' => 'Danh Mục Dịch Vụ'],
+            ['link' => '/danh-muc-dich-vu', 'name' => 'Danh Mục Dịch Vụ'],
             ['link' => '', 'name' => 'Tên Dịch Vụ'],
 
         ];
@@ -494,6 +499,7 @@ class HomeController extends Controller
         $limit = 3;
         $listDanhMuc = $this->DanhMuc->getDanhMucLimit($limit);
 
+
         $arrDichVu = array();
         foreach ($listDanhMuc as $item) {
             $dichVuByIdDanhMuc = $this->Dichvu->getDichVuByIdDanhMuc($item->id, $limit);
@@ -522,9 +528,9 @@ class HomeController extends Controller
     public function getDanhMucVaDichVu() {
         $limit = 4;
         $limitdv = $limit + 5;
-        $limitdichvu = $limit + 2;
+        $limitdm = $limit + 2;
+        $listDanhMucDichVu1  = $this->DanhMuc->getDanhMucLimit($limitdm);
         $listDanhMuc = $this->DanhMuc->getDanhMucLimit($limit);
-        $listDanhMucDichVu1 = $this->DanhMuc->getDanhMucLimit($limitdichvu);
 
 
         $arrDichVu = array();
@@ -533,16 +539,10 @@ class HomeController extends Controller
             $arrDichVu[] = $dichVuByIdDanhMuc;
         }
 
-        $arrDichVu1 = array();
-        foreach ($listDanhMucDichVu1 as $item) {
-            $dichVuByIdDanhMuc1 = $this->Dichvu->getDichVuByIdDanhMuc($item->id, $limitdv);
-            $arrDichVu1[] = $dichVuByIdDanhMuc1;
-        }
 
         $this->data['listDanhMuc'] = $listDanhMuc;
         $this->data['listDanhMucDichVu1'] = $listDanhMucDichVu1;
         $this->data['arrDichVu'] = $arrDichVu;
-        $this->data['arrDichVu1'] = $arrDichVu1;
     }
 
 

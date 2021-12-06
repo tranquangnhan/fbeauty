@@ -218,7 +218,7 @@
             @foreach ($listDanhMucDichVu1 as $danhmuclistdichvu)
 
             <div class="col-xl-4" >
-                <div class="danhmuc-2-item" onclick="window.location='{{ asset('danh-muc') }}/{{$danhmuclistdichvu->id}}';" >
+                <div class="danhmuc-2-item" onclick="window.location='{{ asset('danh-muc-dich-vu') }}/{{$danhmuclistdichvu->slug}}';" >
                     <div class="image">
                         <img src="{{ asset('uploads/'.$danhmuclistdichvu->img) }}" class="img-fluid" alt="">
                     </div>
@@ -227,7 +227,7 @@
                             {{$danhmuclistdichvu->name}}
                         </h5>
                         <p class="text-2">
-                            {{-- {{$danhmuclistdichvu->mota}} --}}
+
                         </p>
                     </div>
                 </div>

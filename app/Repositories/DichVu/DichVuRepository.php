@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\DichVu;
 use App\Models\Admin\DichVuModel;
 use App\Repositories\BaseRepository;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class DichVuRepository extends BaseRepository implements DichVuRepositoryInterface
@@ -49,16 +50,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     public function getDichVu2(){
         return $this->model->select('dichvu.*','danhmuc.name as namedm')->join('danhmuc','dichvu.iddm','=','danhmuc.id')->where('dichvu.trangthai', '=', 1)->get();
     }
-    public function getDichVu1(){
-        return $this->model->select('dichvu.*','danhmuc.name as namedm','danhmuc.img as icon')
-        ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
-        ->offset(1)->limit(3)
-        ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
-        ->where('danhmuc.loai', '=', Controller::LOAI_DANHMUC_DICHVU)
-        ->orderBy('id', 'DESC')
-        ->get();
-    }
-    
+
     public function getDichVubyGiamGia(){
         return $this->model->select('dichvu.*','danhmuc.name as namedm','danhmuc.img as icon')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
@@ -121,7 +113,14 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->limit($limit)
         ->get();
     }
-
+    public function getdichvuiddanhmuc($slug ,$limit)
+    {
+        return $this->model->select('dichvu.*', 'dichvu.id','danhmuc.id AS iddm','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'dichvu.iddm', '=', 'danhmuc.id')
+        ->where('danhmuc.slug', '=',$slug)
+        ->limit($limit)
+        ->get();
+    }
 
     public function getAllDichVu(){
         return $this->model->select("*")->where("trangthai",Controller::TRANGTHAI_DICHVU_HIEN)->get();
@@ -146,6 +145,21 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
             ->where('dichvu.trangthai', Controller::TRANGTHAI_DICHVU_HIEN)
             ->limit(4)
             ->get();
+    }
+
+    public function getLastWeekdichvu()
+    {
+        $datenow = Carbon::now('Asia/Ho_Chi_Minh');
+        $date =  Carbon::now('Asia/Ho_Chi_Minh')->subMonths(1);
+        return $this->model->select('dichvu.*', 'danhmuc.name AS danhmuc' ,'danhmuc.img as icon')
+        ->whereDate('dichvu.created_at','>=', $date->toDateString())
+        ->whereDate('dichvu.created_at','<', $datenow->toDateString())
+        ->join('danhmuc', 'dichvu.iddm', '=', 'danhmuc.id')
+        ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
+        ->where('danhmuc.loai', '=', Controller::LOAI_DANHMUC_DICHVU)
+        ->orderBy('id', 'DESC')
+        ->limit(3)
+        ->get();
     }
 
 
