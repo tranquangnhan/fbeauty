@@ -3,6 +3,7 @@
 
 namespace App\Repositories\DatLich;
 
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use DB;
 use App\Repositories\BaseRepository;
@@ -50,7 +51,7 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
     }
     public function active($id){
         return $this->model->select('*')
-        ->where('id', $id)
+        ->where('datlich.id', $id)
         ->get();
     }
 
@@ -115,6 +116,33 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
         ->whereBetween('thoigiandat', [$start, $end])
         ->where('idkhachhang', '=', $idKhachHang)
+        ->get();
+    }
+    public function getDatLichByIdKhachHangAndThoiGianDat1($idKhachHang, $start, $end) {
+        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso','nhanvien.name as namenhanvien')
+        ->join('coso','datlich.idcoso', '=', 'coso.id')
+        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
+        ->whereBetween('thoigiandat', [$start, $end])
+        ->where('idkhachhang', '=', $idKhachHang)
+        ->where('datlich.trangthai', Controller::DATLICH_HOANTHANH)
+        ->get();
+    }
+    public function getDatLichByIdKhachHangAndThoiGianDat2($idKhachHang, $start, $end) {
+        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso','nhanvien.name as namenhanvien')
+        ->join('coso','datlich.idcoso', '=', 'coso.id')
+        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
+        ->whereBetween('thoigiandat', [$start, $end])
+        ->where('idkhachhang', '=', $idKhachHang)
+        ->where('datlich.trangthai', Controller::DATLICH_CHUADEN)
+        ->get();
+    }
+    public function getDatLichByIdKhachHangAndThoiGianDat3($idKhachHang, $start, $end) {
+        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso','nhanvien.name as namenhanvien')
+        ->join('coso','datlich.idcoso', '=', 'coso.id')
+        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
+        ->whereBetween('thoigiandat', [$start, $end])
+        ->where('idkhachhang', '=', $idKhachHang)
+        ->where('datlich.trangthai', Controller::DATLICH_HUY)
         ->get();
     }
 }
