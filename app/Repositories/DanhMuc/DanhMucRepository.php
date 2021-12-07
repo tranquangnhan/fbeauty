@@ -19,7 +19,15 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
         return \App\Models\Admin\DanhMuc::class;
     }
     public function getAllDanhMuc(){
-        return $this->model->select('danhmuc.*')->limit(6)->get();
+        return $this->model->select('danhmuc.*')->limit(5)
+        ->where('danhmuc.loai', '=', 3)
+        ->get();
+    }
+    public function getAllDanhMucchitiet($skip, $take){
+        return $this->model->select('danhmuc.*')->limit(12)
+        ->where('danhmuc.loai', '=', 3)
+        ->skip($skip)->take($take)->orderBy('id', 'DESC')
+        ->get();
     }
     public function getall2danhmuc(){
         return $this->model->select('danhmuc.*')->limit(1)->get();

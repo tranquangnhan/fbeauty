@@ -510,13 +510,10 @@
                                 </div>
                             </div>
                             @if (count($item->blogbyid) == 6)
+                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}">
                                 <button data-iddm="{{$item->id}}" onclick="anbutton()" type="button" class="xemthemblog btn mb-5 mt-3" id="buttonid" data-take="3" data-skip="6">Xem thêm</button>
-                               {{-- <script>
-                                    function anbutton(){
-                                        document.getElementById("buttonid").style.display = "none";
-                                    }
-                               </script> --}}
-                            @else
+                            </a>
+                                @else
                                 <br> <br>
                             @endif
                     @endif
