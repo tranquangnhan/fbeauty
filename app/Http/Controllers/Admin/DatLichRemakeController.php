@@ -55,11 +55,14 @@ class DatLichRemakeController extends Controller
             ['link' => '/quantri/datlichremake', 'name' => 'Đặt lịch'],
             ['link' => '', 'name' => 'Danh sách'],
         ];
-        $toDay = Carbon::today();
+        $toDay = Carbon::now();
         $this->data['toDay'] = $toDay->toDateString();
+        $this->data['timeToDay'] = $toDay->toTimeString();
 
         $this->data['listDichVu'] = $this->DichVu->getAllDichVu();
         $this->data['listKhachHang'] = $this->KhachHang->getAllCungCoSo(session('coso'));
+        $this->data['listNhanVien'] = $this->NhanVien->getNhanVienByIdCoSo(session('coso'));
+        $this->data['idCoSo'] = session('coso');
         $this->data['duLieuCalendar'] = $this->getDuLieuChoCalendar($toDay);
         $this->data['statusLichClose'] = Controller::TRANGTHAI_LICH_CLOSE;
         return view('Admin.DatLichRemake.index', $this->data);
