@@ -20,32 +20,15 @@
                     </div>
                 </div>
         </div>
-        <div class="w-100 text-center mb-5">
-                <div class="head-service-item">`
-                    <div class="d-flex">
-                        <ul class="nav nav-tabs" id="myTab-1" role="tablist">
-                            @foreach ($listDanhMucDichVu1 as $listdanhmuc1)
-
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link btn-3 @if ($loop->index == 0) active @endif black-1" id="{{$listdanhmuc1->slug}}-tab" data-toggle="tab" href="#{{$listdanhmuc1->slug}}" role="tab" aria-controls="{{$listdanhmuc1->slug}}" aria-selected="true">{{ $listdanhmuc1->name }}</a>
-                                </li>
-
-                            @endforeach
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
             <div class="list-tabs">
                 <div class="tab-content" id="myTabContent-1">
-                    @foreach ($arrDichVu1 as $itemdichvu)
-                    <div class="tab-pane @if ($loop->index == 0) show active @endif  fade" id="{{$listDanhMucDichVu1[$loop->index]->slug}}" role="tabpanel" aria-labelledby="{{$listDanhMucDichVu1[$loop->index]->slug}}-tab">
+                    <div>
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
 
-                            @foreach ($itemdichvu as $dichvuitem)
+                            @foreach ($viewdetail as $dichvuitem)
                                 <div class="dichvu-item d-plex w-100">
-                                    <div class="content-1" onclick="window.location='{{ asset('dich-vu') }}/{{$dichvuitem->slug}}';">
+                                    <div class="content-1">
                                         <div class="text-7 color-main-1">
                                             {{$dichvuitem->namedm}}
                                         </div>
@@ -75,7 +58,6 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
             </div>
         </div>

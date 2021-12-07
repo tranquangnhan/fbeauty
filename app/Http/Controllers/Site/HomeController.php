@@ -296,10 +296,11 @@ class HomeController extends Controller
     public function viewDichVu(Request $request)
     {
         $dichvu = $this->Dichvu->getDichVu2();
-        $dichvu1 = $this->Dichvu->getDichVu1();
+        $dichvu1 = $this->Dichvu->getLastWeekdichvu();
         $dichvu2 = $this->Dichvu->getDichVubyGiamGia();
         $danhmuc = $this->DanhMuc->getalldanhmuc();
         $this->getDanhMucVaDichVu();
+        //$mouth = $this->Dichvu->getLastWeekdichvu();
 
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
@@ -314,21 +315,31 @@ class HomeController extends Controller
 
         return view("Site.pages.dichvu", $this->data);
     }
-    public function danhmucchitiet($id)
+    public function danhmucdichvu($slug)
     {
+    $limit = 6;
+        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
+        $viewdetail = $this->Dichvu->getdichvuiddanhmuc($slug , $limit);
 
-        $this->getDanhMucVaDichVu();
-        $this->data['pathActive'] = 'danhmuc-dichvu';
+        $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
+        $this->data['viewdetail'] = $viewdetail;
+        $this->data['pathActive'] = 'danh-muc-dich-vu';
         $this->data['namePage'] = 'Danh Mục Dịch Vụ';
         $this->data['breadcrumbArray'] = [
-            ['link' => '/danhmuc-dichvu', 'name' => 'Danh Mục Dịch Vụ'],
+            ['link' => '/danh-muc-dich-vu', 'name' => 'Danh Mục Dịch Vụ'],
             ['link' => '', 'name' => 'Tên Dịch Vụ'],
 
         ];
 
         return view("Site.pages.danhmucchitiet", $this->data);
     }
-
+    public function Huyprofile(Request $request, $id){
+            $id = $request->id;
+            $huy = DatLichModel::find($id);
+            $huy->trangthai = 2;
+            $huy->save();
+            return redirect('/thong-tin-tai-khoan');
+    }
 
     public function viewTimKiem()
     {
@@ -433,8 +444,13 @@ class HomeController extends Controller
             $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
             $this->data['dataLieuTrinh'] = $dataLieuTrinh;
             $this->data['lichSuDatLich'] = $this->getDuLieuTabLichSuDatLich($khachHang->id);
+            $this->data['lichSuDatLich1'] = $this->getDuLieuTabLichSuDatLich1($khachHang->id);
+            $this->data['lichSuDatLich2'] = $this->getDuLieuTabLichSuDatLich2($khachHang->id);
+            $this->data['lichSuDatLich3'] = $this->getDuLieuTabLichSuDatLich3($khachHang->id);
 
-            // dd($this->data['lichSuDatLich']);
+
+
+
         } else {
             $this->data['dataLieuTrinh'] = [];
         }
@@ -451,8 +467,26 @@ class HomeController extends Controller
     public function getDuLieuTabLichSuDatLich($idKhachHang) {
         $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
         $arrayDatLich = $this->getDatLichByYearArrayAndIdKhachHang($idKhachHang, $arrayYear);
-        // dd($arrayDatLich);
+
         return $arrayDatLich;
+    }
+    public function getDuLieuTabLichSuDatLich1($idKhachHang) {
+        $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
+        $arrayDatLich1 = $this->getDatLichByYearArrayAndIdKhachHang1($idKhachHang, $arrayYear);
+
+        return $arrayDatLich1;
+    }
+    public function getDuLieuTabLichSuDatLich2($idKhachHang) {
+        $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
+        $arrayDatLich2 = $this->getDatLichByYearArrayAndIdKhachHang2($idKhachHang, $arrayYear);
+
+        return $arrayDatLich2;
+    }
+    public function getDuLieuTabLichSuDatLich3($idKhachHang) {
+        $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
+        $arrayDatLich3 = $this->getDatLichByYearArrayAndIdKhachHang3($idKhachHang, $arrayYear);
+
+        return $arrayDatLich3;
     }
 
     public function getArrayYearInDatLich($idKhachHang) {
@@ -482,15 +516,78 @@ class HomeController extends Controller
                 "year" => $arrayYear[$i],
                 "arrayDatLich" => $listDatLichByTime
             );
+
             $arrayDatLich[] = $dataDatLich;
         }
 
         return $arrayDatLich;
     }
+    public function getDatLichByYearArrayAndIdKhachHang1($idKhachHang, $arrayYear) {
+        $arrayDatLich1 = array();
+        for ($i = 0; $i < count($arrayYear); $i++) {
+            $thoiGian = Controller::getThoiGianTimestampDauNamVaCuoiNam($arrayYear[$i]);
+            $listDatLichByTime = $this->DatLich->getDatLichByIdKhachHangAndThoiGianDat1($idKhachHang, $thoiGian['startOfYear'], $thoiGian['endOfYear']);
+
+            foreach ($listDatLichByTime as $datLich) {
+                $thoiGianDayYMD = date('Y-m-d', $datLich->thoigiandat);
+                $datLich['thoiGianDayYMD'] = $thoiGianDayYMD;
+            }
+
+            $dataDatLich = array (
+                "year" => $arrayYear[$i],
+                "arrayDatLich" => $listDatLichByTime
+            );
+            $arrayDatLich1[] = $dataDatLich;
+        }
+
+        return $arrayDatLich1;
+    }
+    public function getDatLichByYearArrayAndIdKhachHang2($idKhachHang, $arrayYear) {
+        $arrayDatLich2 = array();
+        for ($i = 0; $i < count($arrayYear); $i++) {
+            $thoiGian = Controller::getThoiGianTimestampDauNamVaCuoiNam($arrayYear[$i]);
+            $listDatLichByTime = $this->DatLich->getDatLichByIdKhachHangAndThoiGianDat2($idKhachHang, $thoiGian['startOfYear'], $thoiGian['endOfYear']);
+
+            foreach ($listDatLichByTime as $datLich) {
+                $thoiGianDayYMD = date('Y-m-d', $datLich->thoigiandat);
+                $datLich['thoiGianDayYMD'] = $thoiGianDayYMD;
+            }
+
+            $dataDatLich = array (
+                "year" => $arrayYear[$i],
+                "arrayDatLich" => $listDatLichByTime
+            );
+            $arrayDatLich2[] = $dataDatLich;
+        }
+
+        return $arrayDatLich2;
+    }
+    public function getDatLichByYearArrayAndIdKhachHang3($idKhachHang, $arrayYear) {
+        $arrayDatLich3 = array();
+        for ($i = 0; $i < count($arrayYear); $i++) {
+            $thoiGian = Controller::getThoiGianTimestampDauNamVaCuoiNam($arrayYear[$i]);
+            $listDatLichByTime = $this->DatLich->getDatLichByIdKhachHangAndThoiGianDat3($idKhachHang, $thoiGian['startOfYear'], $thoiGian['endOfYear']);
+
+            foreach ($listDatLichByTime as $datLich) {
+                $thoiGianDayYMD = date('Y-m-d', $datLich->thoigiandat);
+                $datLich['thoiGianDayYMD'] = $thoiGianDayYMD;
+            }
+
+            $dataDatLich = array (
+                "year" => $arrayYear[$i],
+                "arrayDatLich" => $listDatLichByTime
+            );
+            $arrayDatLich3[] = $dataDatLich;
+        }
+
+        return $arrayDatLich3;
+    }
+
 
     public function getDanhMucVaDichVuHome() {
         $limit = 3;
         $listDanhMuc = $this->DanhMuc->getDanhMucLimit($limit);
+
 
         $arrDichVu = array();
         foreach ($listDanhMuc as $item) {
@@ -520,9 +617,9 @@ class HomeController extends Controller
     public function getDanhMucVaDichVu() {
         $limit = 4;
         $limitdv = $limit + 5;
-        $limitdichvu = $limit + 2;
+        $limitdm = $limit + 2;
+        $listDanhMucDichVu1  = $this->DanhMuc->getDanhMucLimit($limitdm);
         $listDanhMuc = $this->DanhMuc->getDanhMucLimit($limit);
-        $listDanhMucDichVu1 = $this->DanhMuc->getDanhMucLimit($limitdichvu);
 
 
         $arrDichVu = array();
@@ -531,16 +628,10 @@ class HomeController extends Controller
             $arrDichVu[] = $dichVuByIdDanhMuc;
         }
 
-        $arrDichVu1 = array();
-        foreach ($listDanhMucDichVu1 as $item) {
-            $dichVuByIdDanhMuc1 = $this->Dichvu->getDichVuByIdDanhMuc($item->id, $limitdv);
-            $arrDichVu1[] = $dichVuByIdDanhMuc1;
-        }
 
         $this->data['listDanhMuc'] = $listDanhMuc;
         $this->data['listDanhMucDichVu1'] = $listDanhMucDichVu1;
         $this->data['arrDichVu'] = $arrDichVu;
-        $this->data['arrDichVu1'] = $arrDichVu1;
     }
 
 

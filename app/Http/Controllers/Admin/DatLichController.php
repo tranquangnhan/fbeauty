@@ -38,7 +38,6 @@ class DatLichController extends Controller
     {
         // $data = $this->DatLich->getAll2CungCoSo(1);
         $data=$this->DatLich->getdv();
-        dd($data);
         return view('Admin.DatLich.index',compact($data));
     }
 

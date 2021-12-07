@@ -247,7 +247,7 @@
                                                    <?php
                                                     $timestamp = strtotime($blognewtt[0]->created_at);
                                                     print date('d-m-y', $timestamp );
-                                                    ?> 
+                                                    ?>
                                                 @endif </span>
                                             </div>
                                         </div>
@@ -276,7 +276,7 @@
                                                             <?php
                                                                 $timestamp = strtotime($item->created_at);
                                                                 print date('d-m-y', $timestamp );
-                                                            ?> 
+                                                            ?>
                                                         @endif </span>
                                                 </div>
                                             </div>
@@ -371,12 +371,12 @@
                                                             <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                             {{$item->name}}</a>
                                                         </div>
-                                                        <span>  
+                                                        <span>
                                                             @if ($data->created_at != null)
                                                                 <?php
                                                                     $timestamp = strtotime($data->created_at);
                                                                     print date('d-m-y', $timestamp );
-                                                                ?> 
+                                                                ?>
                                                             @endif</span>
                                                     </div>
                                                 </div>
@@ -490,7 +490,7 @@
                                                                     <?php
                                                                         $timestamp = strtotime($data->created_at);
                                                                         print date('d-m-y', $timestamp );
-                                                                    ?>                                                          
+                                                                    ?>
                                                                     @endif
                                                                 </span>
                                                             </div>
@@ -547,7 +547,7 @@
                                                         <?php
                                                             $timestamp = strtotime($data->created_at);
                                                             print date('d-m-y', $timestamp );
-                                                        ?>                                                         
+                                                        ?>
                                                     @endif</span>
                                             </div>
                                         </div>

@@ -62,6 +62,15 @@ class Controller extends BaseController
     /**
     End trạng thái đơn hàng
      */
+        /**
+    Trạng thái đơn hàng
+     */
+    const DATLICH_CHUADEN=0;
+    const DATLICH_HOANTHANH=1;
+    const DATLICH_HUY=2;
+    /**
+    End trạng thái đơn hàng
+     */
     /**
     Trạng thái hóa đơn
      */
