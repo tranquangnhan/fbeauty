@@ -134,8 +134,11 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $this->Blog->delete($id);
-
-        return redirect('quantri/blog')->with('success', 'Xoá thành công');
+        $delete= $this->Blog->delete($id);
+        if ($delete){
+            return 0;
+        }else{
+            return 1;
+        }
     }
 }

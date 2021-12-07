@@ -1,8 +1,14 @@
-var changeStatusDatLichUrl =  serverNameUrl + 'quantri/changeStatusDatLich/';
-var getDuLieuDatLichChoCalendarUrl =  serverNameUrl + 'quantri/getDuLieuDatLichChoCalendar/';
-var changeStatusTimeUrl = serverNameUrl + 'quantri/changeStatusTime/';
-var statusLichOpen = 0;
-var statusLichClose = 1;
+const changeStatusDatLichUrl =  serverNameUrl + 'quantri/changeStatusDatLich/';
+const getDuLieuDatLichChoCalendarUrl =  serverNameUrl + 'quantri/getDuLieuDatLichChoCalendar/';
+const changeStatusTimeUrl = serverNameUrl + 'quantri/changeStatusTime/';
+const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/';
+const statusLichOpen = 0;
+const statusLichClose = 1;
+const trangThaiLichSanSang = 0;
+const postDatLichUrl = serverNameUrl + 'datLich/';
+
+var todayYMD = moment().format('YYYY-MM-DD');
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
@@ -472,6 +478,11 @@ $("body").on("click", ".option-select",function (e) {
         boxSelected.attr('giamgia', giamgia);
     }
 
+    if (type == 'nhan-vien') {
+        var idTime = 0;
+        getDayAndNhanVienThenLoadGio(idTime);
+    }
+
 });
 
 $('.remove-khachhang-selected').click(function (e) {
@@ -494,6 +505,10 @@ $('.search-option').keyup(function (e) {
     if (type == 'dich-vu') {
         xuLiTimKiemDichVu(keyword, type);
     }
+
+    if (type == 'nhan-vien') {
+        xuLiTimKiemNhanVien(keyword, type);
+    }
 });
 
 function reloadName(type, data) {
@@ -505,16 +520,52 @@ function reloadName(type, data) {
     }
 
     if (type == 'dich-vu') {
+        html += `
+            <div class="option option-select d-flex" type-value="dich-vu"
+                id-option="0"
+                name-dichvu="Đến Spa tư vấn"
+                dongia="0"
+                giamgia="">
+                <span class="mr-auto"> Đến Spa tư vấn </span>
+            </div>
+        `;
         data.forEach(element => {
             html += getHTMLOptionDichVu(element);
         });
     }
 
+    if (type == 'nhan-vien') {
+        html += `
+            <div class="option option-select" type-value="nhan-vien"
+                id-option="0"
+                data-name="Spa chọn cho khách hàng"
+                data-sdt="">
+                Spa chọn cho khách hàng
+            </div>
+        `;
+        data.forEach(element => {
+            html += getHTMLOptionNhanVien(element);
+        });
+    }
 
     $(`[body-type="${type}"]`).children().remove();
     $(`[body-type="${type}"]`).append(html);
-
 }
+
+function getHTMLOptionNhanVien(nhanVien) {
+    var html =
+    `
+    <div class="option option-select" type-value="nhan-vien"
+        id-option="${nhanVien.id}"
+        data-name="${nhanVien.name}"
+        data-sdt="${nhanVien.sdt}">
+        ${nhanVien.name} (${nhanVien.sdt})
+    </div>
+    `;
+
+    return html;
+}
+
 
 function getHTMLOptionKhachHang(khachHang) {
     var html =
@@ -533,10 +584,24 @@ function getHTMLOptionKhachHang(khachHang) {
 function getHTMLOptionDichVu(dichVu) {
     var html =
     `
-    <div class="option option-select" type-value="dich-vu"
-        id-option="${dichVu.id}">
-        ${dichVu.name}
-    </div>
+    <div class="option option-select d-flex" type-value="dich-vu"
+        id-option="${dichVu.id}"
+        name-dichvu="${dichVu.name}"
+        dongia="${dichVu.dongia}"
+        giamgia="${dichVu.giamgia}">
+        <span class="mr-auto"> ${ dichVu.name} </span>`;
+        if (dichVu.giamgia > 0) {
+            var giaSauGiam = dichVu.dongia - (dichVu.dongia * dichVu.giamgia / 100);
+            html += `
+                <span class="gia-truocgiam mr-1">${numberFormat(dichVu.dongia)}</span>
+                <span class="price-dichvu">${numberFormat(giaSauGiam) }</span>
+            `;
+        } else {
+            html+= `
+            <span class="price-dichvu"> ${numberFormat(dichVu.dongia)}</span>
+            `;
+        }
+    html += `</div>
     `;
 
     return html;
@@ -572,6 +637,36 @@ function xuLiTimKiemKhachHang(keyword, type) {
     }
 }
 
+function xuLiTimKiemNhanVien(keyword, type) {
+    if (keyword.length > 0) {
+        var ArraySearch = [];
+
+        listNhanVien.forEach(nhanVien => {
+            var nameNhanVien = removeAccents(nhanVien.name);
+            nameNhanVien = nameNhanVien.toLowerCase();
+
+            // Kiếm tra tên
+            if (nameNhanVien.includes(keyword)) {
+                ArraySearch.push(nhanVien);
+            }
+
+            // Kiểm tra số điện thoại
+            if (nhanVien.sdt.includes(keyword)) {
+                ArraySearch.push(nhanVien);
+            }
+        });
+
+        if (ArraySearch.length > 0) {
+            reloadName(type, ArraySearch);
+        } else {
+            var title = '<h5 class="text-center">Không tìm thấy nhân viên !<h5>';
+            $(`[body-type="${type}"]`).html(title);
+        }
+    } else {
+        reloadName(type, listNhanVien);
+    }
+}
+
 function xuLiTimKiemDichVu(keyword, type) {
     if (keyword.length > 0) {
         var ArraySearch = [];
@@ -602,7 +697,7 @@ $('.selected-dichvu').click(function (e) {
     var boxSelectedDichVu = $(`[type-selected="dich-vu"]`);
     var idDichVuSelected = boxSelectedDichVu.attr('id-selected');
 
-    if (idDichVuSelected > 0) {
+    if (idDichVuSelected != '') {
         var nameSelected = boxSelectedDichVu.attr('name-selected');
         var donGia = boxSelectedDichVu.attr('dongia');
         var giamGia = boxSelectedDichVu.attr('giamgia');
@@ -657,4 +752,268 @@ $("body").on('click', ".remove-dichvu-selected", function (e) {
     e.preventDefault();
     var id = $(this).attr('id-remove-dich-vu');
     $(`[id-dich-vu="${id}"]`).remove();
+});
+
+function getDayAndNhanVienThenLoadGio(idTime) {
+    var ngay = $('.ip-date-datlich').val();
+    var idNhanVien = $(`[type-selected="nhan-vien"]`).attr('id-selected');
+    if (idNhanVien != '') {
+        loadGio(ngay, idNhanVien, idTime);
+    }
+}
+
+
+function loadGio(ngay, idNhanVien, idTime) {
+    var ngayWasFormat = moment(ngay).format('YYYY-MM-DD');
+    if (ngay == null) {
+        ngay = moment();
+    } else {
+        ngay = moment(ngay);
+    }
+    var numberThu = ngay.day();
+
+    $.ajax({
+        async: true,
+        type: "GET",
+        url: getGioTheoThuUrl,
+        data: {
+            'ngay': ngayWasFormat,
+            'thu': numberThu,
+            'idCoSo': parseInt(idCoSo),
+            'idNhanVien': idNhanVien
+        },
+        success: function (respon) {
+            reloadKhungGio(respon.lich, respon.ngay, idTime);
+        },
+        error: function () {
+            alert('Lỗi khi lấy data khung giờ');
+        }
+    });
+}
+
+function reloadKhungGio(data, ngay, idTime) {
+    var html = ``;
+    console.log(data);
+    data.forEach(element => {
+        html += getHTMLOptionTime(element, ngay, idTime);
+    });
+
+
+    $(`#select-gio`).children().remove();
+    $(`#select-gio`).append(html);
+
+}
+
+function getHTMLOptionTime(lich, ngay, idTime) {
+    var gioiHanDatLich = moment().add(10, 'minutes').format('HH:mm:ss');
+    var quaGio = false;
+    if (ngay == todayYMD) {
+        if (lich.gio < gioiHanDatLich) {
+            quaGio = true;
+        }
+    }
+
+    if (lich.coNhanVien == 'false' || lich.soKhachDaDat >= lich.soluongkhach || quaGio == true || !lich.trangthai == trangThaiLichSanSang) {
+        var html = `
+            <option class="option-disabled" disabled="disabled">${lich.gio}</option>
+        `;
+    } else {
+        // Lịch selected
+        if (lich.id == idTime) {
+            var html = `
+                <option value="${lich.gio}" selected>${lich.gio}</option>
+            `;
+        } else {
+            var html = `
+                <option value="${lich.gio}">${lich.gio}</option>
+            `;
+        }
+
+    }
+
+    return html;
+}
+
+function luuLich() {
+    var idDatLich = 0; // 0 là thêm mới
+    var ngay = $('.ip-date-datlich').val();
+    var idNhanVien = $(`[type-selected="nhan-vien"]`).attr('id-selected');
+    var gio = $('select[id=select-gio] option').filter(':selected').val()
+    var nameKhachHang = $(`.ip-namekh-${idDatLich}`).val();
+    var sdt = $('.sdt').val();
+
+    // get list dịch vụ
+    var arrIdDichVu = [];
+    var listDichVu = $(".box-dich-vu-selected");
+    listDichVu.each( function(i){
+        var idDichVuSelected = listDichVu.eq(i).attr('id-dich-vu');
+        arrIdDichVu.push(idDichVuSelected);
+    });
+
+    var er = validateDatLich(ngay, gio, idNhanVien, nameKhachHang, sdt, arrIdDichVu, idDatLich);
+    if (!er) {
+        datLich(ngay, gio, idCoSo, arrIdDichVu, idNhanVien, nameKhachHang, sdt);
+    }
+}
+
+function validateDatLich(ngay, gio, idNhanVien, nameKhachHang, sdt, arrIdDichVu, idDatLich) {
+    var er = false;
+
+    // Bắt lỗi name khách hàng
+    var errorNameKH = $(`.error-namekh-${idDatLich}`);
+    var inputNameKH = $(`.ip-namekh-${idDatLich}`);
+    inputNameKH.removeClass('border-error');
+    errorNameKH.hide();
+    if (nameKhachHang == '') {
+        var errorText = 'Tên không được để trống';
+        errorNameKH.html(errorText);
+        errorNameKH.show();
+        inputNameKH.addClass('border-error');
+        er = true;
+    } else if (nameKhachHang.length < 2 || nameKhachHang > 25) {
+        var errorText = 'Tên chỉ được 2 - 25 ký tự';
+        errorNameKH.html(errorText);
+        errorNameKH.show();
+        inputNameKH.addClass('border-error');
+        er = true;
+    }
+
+    // bắt lỗi số điện thoại
+    var errorSDTKH = $(`.error-sdt-${idDatLich}`);
+    var inputSDTKH = $(`.ip-sdt-${idDatLich}`);
+    inputSDTKH.removeClass('border-error');
+    errorSDTKH.hide();
+    var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+    if (nameKhachHang.length == 0) {
+        var errorText = 'Số điện thoại không được để trống';
+        errorSDTKH.html(errorText);
+        errorSDTKH.show();
+        inputSDTKH.addClass('border-error');
+        er = true;
+    } else if (vnf_regex.test(sdt) == false) {
+        var errorText = 'Số điện thoại không đúng định dạng';
+        errorSDTKH.html(errorText);
+        errorSDTKH.show();
+        inputSDTKH.addClass('border-error');
+        er = true;
+    }
+
+    // Bắt lỗi chọn nhân viên
+    var errorNhanVien = $(`.error-nhan-vien-${idDatLich}`);
+    var buttonNhanVien = $(`.button-nhan-vien-${idDatLich}`);
+    buttonNhanVien.removeClass('border-error');
+    errorNhanVien.hide();
+    if (idNhanVien == '') {
+        var errorText = 'Vui lòng chọn nhân viên';
+        errorNhanVien.html(errorText);
+        errorNhanVien.show();
+        buttonNhanVien.addClass('border-error');
+        er = true;
+    }
+
+    // Bắt lỗi dịch vụ
+    var errorDichVu = $(`.error-dich-vu-${idDatLich}`);
+    var buttonDichVu = $(`.button-dich-vu-${idDatLich}`);
+    buttonDichVu.removeClass('border-error');
+    errorDichVu.hide();
+    if (arrIdDichVu.length == 0) {
+        var errorText = 'Vui lòng chọn dịch vụ';
+        errorDichVu.html(errorText);
+        errorDichVu.show();
+        buttonDichVu.addClass('border-error');
+        er = true;
+    }
+
+    return er;
+}
+
+function datLich(ngaySelected, timeSelected, idCoSo, arrIdDichVu, nhanVienSelected, nameKhachHang, phoneNumber) {
+    let _token   = $('meta[name="csrf-token"]').attr('content');
+    let ngayGioSelected = ngaySelected + ' ' + timeSelected;
+    let thoiGianDat = moment(ngayGioSelected, 'YYYY-MM-DD HH:mm:ss', true).unix();
+
+    let data = {
+        idCoSo: idCoSo,
+        listDichVu: JSON.stringify(arrIdDichVu),
+        idNhanVien: nhanVienSelected,
+        nameKhachHang: nameKhachHang,
+        ngay: ngaySelected,
+        gio: timeSelected,
+        soDienThoai: phoneNumber,
+        thoiGianDat: thoiGianDat,
+        _token: _token,
+    }
+    console.log(data);
+    Swal.fire({
+        title: 'Kiểm tra thông tin?',
+        icon: 'info',
+        text: 'Xác nhận đặt lịch',
+        showDenyButton: false,
+        showCancelButton: true,
+        cancelButtonText: 'Xem lại',
+        confirmButtonText: 'Xác nhận',
+      }).then((result) => {
+        if (result.isConfirmed) {
+            showLoading();
+            $.ajax({
+                type: "POST",
+                url: postDatLichUrl,
+                data: data,
+                success: function (respon) {
+                    if (respon.success == true) {
+                        swal.fire({
+                            icon: 'success',
+                            title: 'Đặt lịch thành công !',
+                            confirmButtonText: 'Ok',
+                        }).then((resul) => {
+                            if (result.isConfirmed) {
+                                resetModal();
+                            }
+                        });
+                    } else {
+                        swal.fire({
+                            icon: 'error',
+                            title: respon.titleMess,
+                            text: respon.textMess,
+                            confirmButtonText: 'Thử lại',
+                        });
+                    }
+                },
+                error: function () {
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Đã xảy ra lỗi',
+                        text: 'Gửi dữ liệu không thành công',
+                        confirmButtonText: 'Thử lại',
+                    });
+                }
+            });
+        }
+    });
+}
+
+$('.luu-lich-hen').click(function (e) {
+    e.preventDefault();
+    luuLich();
+});
+
+function resetModal() {
+    location.reload();
+}
+
+var showLoading = function () {
+    Swal.fire({
+        title: 'Tiến hành đặt lịch !',
+        html: '<div>Vui lòng chờ trong giây lát </div>',
+        willOpen: () => {
+            Swal.showLoading()
+        },
+        showConfirmButton: false,
+    });
+}
+
+$('.button-add').click(function (e) {
+    e.preventDefault();
+    var idTime = $(this).attr('id-add-time');
+    getDayAndNhanVienThenLoadGio(idTime);
 });

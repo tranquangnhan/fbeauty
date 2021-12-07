@@ -111,7 +111,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
 
     Route::get('khachhang/lieutrinh/{id}/edit', [LieuTrinhController::class, 'editLieuTrinhChiTiet']);
     Route::patch('khachhang/lieutrinh/{id}/update', [KhachHangController::class, 'updateLieuTrinh']);
-  
+
 
     Route::resource('datlichremake', DatLichRemakeController::class);
     Route::get('changeStatusDatLich/{id}/{status}', [DatLichRemakeController::class, "changeStatusDatLich"]);
@@ -149,7 +149,6 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class, 'addHoaDonByIdLieuTrinh']);
     //Banner
     Route::resource('banner', BannerController::class);
-    Route::get('banner/{id}/destroy', [BannerController::class, 'destroy']);
 });
 
 Route::group(['prefix' => '/'], function () {
@@ -174,9 +173,10 @@ Route::group(['prefix' => '/'], function () {
     Route::get('thong-tin-tai-khoan', [HomeController::class, "viewProfileUser"]);
 
     Route::get('dich-vu/{slug}', [HomeController::class, "viewDichVuChiTiet"]);
-    Route::get('danh-muc/{id}', [HomeController::class, "danhmucchitiet"]);
+    Route::get('danh-muc-dich-vu/{slug}', [HomeController::class, "danhmucdichvu"]);
     Route::get('nhanviencuacoso/{id}', [HomeController::class, "getNhanVienByIdCoSo"]);
     Route::get('getDataKhungGio', [HomeController::class, "getDataKhungGio"]);
+    Route::get('huyprofile/{id}', [HomeController::class, "Huyprofile"]);
     Route::post('datLich', [HomeController::class, "datLich"]);
     Route::post('site-login', [HomeController::class, "login"]);
     Route::get('site-logout', [HomeController::class, "logoutSite"]);

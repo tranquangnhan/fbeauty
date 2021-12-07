@@ -240,3 +240,52 @@ function checkConfirm(){
 }
 
 
+function deleteCommon(id){
+    Swal.fire({
+        title: 'Bạn có chắc chắn xoá không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Đồng Ý',
+        cancelButtonText:'Hủy'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            swal.fire(
+                {
+                    title: 'Xóa thành công',
+                    icon: 'success'
+                }
+            );
+            callDelete(id)
+        }
+    });
+}
+
+
+function callDelete(id) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+        },
+    });
+    $.ajax({
+        url: document.URL+"/"+id,
+        method: 'DELETE',
+        async: false,
+        dataType: 'json',
+        success: function (data) {
+            if (data==0){
+                $("#row"+id).css({display: "none"});
+            }
+            else {
+                swal.fire(
+                    {
+                        title: 'Xóa thất bại',
+                        icon: 'warning'
+                    }
+                );
+            }
+        }
+    });
+}
