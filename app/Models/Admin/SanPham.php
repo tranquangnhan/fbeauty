@@ -19,6 +19,7 @@ class SanPham extends Model
         'img',
         'mota',
         'noidung',
+        'giamgia',
         'trangthai',
     ];
 }

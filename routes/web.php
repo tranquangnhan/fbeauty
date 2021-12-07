@@ -149,7 +149,6 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class, 'addHoaDonByIdLieuTrinh']);
     //Banner
     Route::resource('banner', BannerController::class);
-    Route::get('banner/{id}/destroy', [BannerController::class, 'destroy']);
 });
 
 Route::group(['prefix' => '/'], function () {
