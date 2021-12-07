@@ -333,7 +333,11 @@ class HomeController extends Controller
 
         return view("Site.pages.danhmucchitiet", $this->data);
     }
+    public function Huy_profile($id){
+        $this->DatLich->active($id)->update(['trangthai'=>3]);
 
+        return view("Site.pages.profile-user", $this->data);
+    }
 
     public function viewTimKiem()
     {
@@ -439,7 +443,8 @@ class HomeController extends Controller
             $this->data['dataLieuTrinh'] = $dataLieuTrinh;
             $this->data['lichSuDatLich'] = $this->getDuLieuTabLichSuDatLich($khachHang->id);
 
-            // dd($this->data['lichSuDatLich']);
+
+
         } else {
             $this->data['dataLieuTrinh'] = [];
         }
@@ -456,7 +461,7 @@ class HomeController extends Controller
     public function getDuLieuTabLichSuDatLich($idKhachHang) {
         $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
         $arrayDatLich = $this->getDatLichByYearArrayAndIdKhachHang($idKhachHang, $arrayYear);
-        // dd($arrayDatLich);
+
         return $arrayDatLich;
     }
 

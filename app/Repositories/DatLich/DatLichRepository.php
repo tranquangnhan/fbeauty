@@ -48,6 +48,11 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
     public function getdv(){
         return DichVuModel::class;
     }
+    public function active($id){
+        return $this->model->select('*')
+        ->where('id', $id)
+        ->get();
+    }
 
     public function findDatLichCuaNhanVienTheoThoiGian($thoiGianDat, $idNhanVien)
     {
@@ -105,7 +110,9 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
     }
 
     public function getDatLichByIdKhachHangAndThoiGianDat($idKhachHang, $start, $end) {
-        return $this->model
+        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso','nhanvien.name as namenhanvien')
+        ->join('coso','datlich.idcoso', '=', 'coso.id')
+        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
         ->whereBetween('thoigiandat', [$start, $end])
         ->where('idkhachhang', '=', $idKhachHang)
         ->get();
