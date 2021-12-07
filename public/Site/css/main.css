@@ -57,6 +57,12 @@ body {
     overflow-x: hidden;
 }
 
+.order-overflow{
+    overflow: scroll;
+    height: 800px;
+    overflow-x: hidden;
+}
+
 .about {
     min-height: 720px;
     margin-top: 5em;

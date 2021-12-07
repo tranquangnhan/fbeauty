@@ -47,7 +47,7 @@
                                                         ['id'=>4,'name'=>"Thương Hiệu"]
                                                     ];
                                                 @endphp
-                                
+
                                                 <select class="form-control select2" name="loai">
                                                     @foreach ($array as $item)
                                                         <option value="{{$item['id']}}">{{$item['name']}}</option>
@@ -63,15 +63,15 @@
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div>
-                      
+
                         <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="10%">STT</th>
                                         <th width="20%">Ảnh Danh Mục</th>
                                         <th width="40%">Tên Danh Mục</th>
-                                        <th width="15%">Loại</th>  
-                                        <th width="15%">Hành Động</th>  
+                                        <th width="15%">Loại</th>
+                                        <th width="15%">Hành Động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,9 +87,9 @@
                                                         {{$row['name']}}
                                                     @endif
                                                 @endforeach
-                                            </td> 
+                                            </td>
                                             <td class="d-flex border-none">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
+                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
                                                 <form action="{{route('danhmuc.destroy',$item->id)}}"  method="post">
                                                     @csrf
                                                     {!!method_field('delete')!!}
@@ -98,8 +98,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                   
-                             
                                 </tbody>
                             </table>
                     </div>
@@ -112,15 +110,15 @@
                         <ul class="pagination pagination-split">
                             <?php
                             // echo $Pagination;
-                            ?>      
+                            ?>
                         </ul>
-                    </nav>    
-                      
+                    </nav>
+
                 </div>
             </div>
-                 
-         
-            
+
+
+
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->
