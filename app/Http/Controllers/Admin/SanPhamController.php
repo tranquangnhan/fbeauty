@@ -57,7 +57,7 @@ class SanPhamController extends Controller
      */
     public function store(SanPham $request)
     {
-
+     
         if($request->imgs === null){
             return $this->handleErrorInput('Vui lòng chọn hình ảnh');
         }
@@ -76,6 +76,7 @@ class SanPhamController extends Controller
                 "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
+                'giamgia'=>$request->giamgia,
                 "trangthai"=>($request->trangthai ) ? 1 : 0
             ];
     
@@ -92,6 +93,7 @@ class SanPhamController extends Controller
                 "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
+                'giamgia'=>$request->giamgia,
                 "trangthai"=>($request->trangthai ) ? 1 : 0
             ];
     
@@ -140,12 +142,15 @@ class SanPhamController extends Controller
      */
     public function update(SanPham $request, $id)
     {
+    
+
         $data = [
             'iddanhmuc'=>$request->iddanhmuc,
             'idthuonghieu'=> $request->idthuonghieu,
             'name'=> $request->name,
             'slug'=>$this->setSlugUpdate($id,$request->name),
             'mota'=>$request->mota,
+            'giamgia'=>$request->giamgia,
             'noidung'=>$request->noidung,
             "trangthai"=>$request->trangthai,
         ];

@@ -53,7 +53,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($banner as $index =>$bn)
-                                <tr id="bann{{$bn->id}}">
+                                <tr id="row{{$bn->id}}">
                                     <td>{{$index+=1}}</td>
                                     <td>{{$bn->tieude}}</td>
                                     <td>{{$bn->noidung}}</td>
@@ -62,7 +62,8 @@
                                     <td class="text-center">
                                         <a href="{{route("banner.edit",$bn->id)}}" class="btn btn-primary text-white" data-bs-toggle="tooltip" data-bs-placement="right" title="Sửa"><i class="fa fa-edit"></i></a>
                                     <br>
-                                        <button type="button" onclick="XoaBanner({{$bn->id}})" class="btn btn-primary text-white mt-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
+                                        @csrf
+                                        <button type="button" onclick="deleteCommon({{$bn->id}})" class="btn btn-primary text-white mt-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                                     @endforeach
@@ -93,51 +94,6 @@
 
     </div>
 
-<script>
-    function XoaBanner(id) {
-        Swal.fire({
-            title: 'Bạn muốn xóa banner này chứ?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#efa789',
-            cancelButtonColor: '#000000',
-            confirmButtonText: 'Đồng Ý',
-            cancelButtonText:'Hủy'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                swal.fire(
-                    {
-                        title: 'Xóa thành công',
-                        icon: 'success'
-                    }
-                );
-                CallDelete(id)
-            }
-        });
-    }
 
-    function CallDelete(id) {
-        $.ajax({
-            url: document.URL+"/"+id+"/destroy",
-            type: 'GET',
-            async: false,
-            dataType: 'json',
-            data: {id: id},
-            success: function (data) {
-                if (data==0){
-                    $("#bann"+id).css({display: "none"});
-                }
-                else {
-                    swal.fire(
-                        {
-                            title: 'Xóa thất bại',
-                            icon: 'warning'
-                        }
-                    );
-                }
-            }
-        });
-    }
-</script>
 
 @endsection
