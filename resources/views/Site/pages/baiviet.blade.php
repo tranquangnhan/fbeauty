@@ -46,7 +46,8 @@
                                         <div class="col-xl-6 pr-0">
                                             <div class="blog-bigsize">
                                                 <div class="box-danhmuc">
-                                                    {{$blog[0]->danhmuc}}
+                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$blog[0]->slugdm}}">
+                                                    {{$blog[0]->danhmuc}}</a>
                                                 </div>
                                                 <a href="{{ asset('bai-viet') }}/{{$blog[0]->slug}}">
                                                     <div class="img-1 w-100">
@@ -101,7 +102,7 @@
                                                                 <div class="row">
                                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                         <div class="mr-3">
-                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
+                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slugdm}}" class="box-danhmuc-1">
                                                                                {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
@@ -128,7 +129,8 @@
                                         <div class="col-xl-7 pr-0">
                                             <div class="blog-bigsize">
                                                 <div class="box-danhmuc">
-                                                    {{$item1->danhmuc}}"
+                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$item1->slugdm}}">
+                                                    {{$item1->danhmuc}}</a>
                                                 </div>
 
                                                 <div class="img-1 w-100">
@@ -183,7 +185,7 @@
                                                                 <div class="row">
                                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                                         <div class="mr-3">
-                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
+                                                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slugdm}}" class="box-danhmuc-1">
                                                                             {{$item->danhmuc}} </a>
                                                                         </div>
                                                                         <span><?php
@@ -294,22 +296,22 @@
                             </div>
 
                             <div class="list-social">
-                                <a href="#">
+                                <a href="https://www.facebook.com/FBeauty-103098148891666">
                                     <span><i class="fab fa-facebook-f"></i> <span>15000</span> <small class="fz-0em9"> Like</small></span>
                                     <span class="fz-0em9">Like</span>
                                 </a>
 
-                                <a href="#">
+                                <a href="https://twitter.com/HuynTrn26589599">
                                     <span><i class="fab fa-twitter"></i> <span>15000</span> <small class="fz-0em9"> Tweet</small></span>
                                     <span class="fz-0em9">Like</span>
                                 </a>
 
-                                <a href="#">
+                                <a href="https://www.instagram.com/fbeautyspa__/">
                                     <span><i class="fab fa-instagram"></i><span>32k+</span> <small class="fz-0em9"> Follower</small></span>
                                     <span class="fz-0em9">Follower</span>
                                 </a>
 
-                                <a href="#">
+                                <a href="https://www.youtube.com/channel/UCKmLj9UShXnCrweFbjA9Jvg">
                                     <span><i class="fab fa-youtube"></i> <span>15000</span> <small class="fz-0em9"> Subscriber</small></span>
                                     <span class="fz-0em9">Subscribe</span>
                                 </a>
@@ -458,7 +460,7 @@
                         @foreach ($listdanhmuc as $item)
 
                         @if (count($item->blogbyid) > 0 )
-                            <div class="danhmuc-listblog">
+                            <div class="danhmuc-listblog mt-4">
                                 <div class="head-blog-item blog-title">
                                     <div class="w-100 text-left d-flex align-items-center">
                                         <div class="title-3 mr-4">
@@ -507,7 +509,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <button data-iddm="{{$item->id}}" type="button" class="xemthemblog btn mb-5 mt-3" data-take="3" data-skip="6">Xem thêm</button>
+                            @if (count($item->blogbyid) == 6)
+                                <button data-iddm="{{$item->id}}" onclick="anbutton()" type="button" class="xemthemblog btn mb-5 mt-3" id="buttonid" data-take="3" data-skip="6">Xem thêm</button>
+                               {{-- <script>
+                                    function anbutton(){
+                                        document.getElementById("buttonid").style.display = "none";
+                                    }
+                               </script> --}}
+                            @else
+                                <br> <br>
+                            @endif
                     @endif
                         @endforeach
                     </div>

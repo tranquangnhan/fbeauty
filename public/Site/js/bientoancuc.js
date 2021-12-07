@@ -1,4 +1,5 @@
 const serverNameUrl = $('#server-name').val();
+console.log(serverNameUrl);
 const getNhanVienByIdCoSoUrl = serverNameUrl + 'nhanviencuacoso/'; // nhanviencuacoso/id
 const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/'; // getGio/{thu}
 const postDatLichUrl = serverNameUrl + 'datLich/';
@@ -87,4 +88,3 @@ var objectNhanVienSelected = {
 
 var activeStep;
 var nextStep;
-

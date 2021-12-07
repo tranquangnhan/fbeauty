@@ -36,7 +36,7 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     {
         $datenow = Carbon::now('Asia/Ho_Chi_Minh');
         $date =  Carbon::now('Asia/Ho_Chi_Minh')->subDays(7);
-        return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' )
+        return $this->model->select('blog.*', 'danhmuc.name AS danhmuc','danhmuc.slug AS slugdm' )
         ->whereDate('blog.created_at','>=', $date->toDateString())
         ->whereDate('blog.created_at','<', $datenow->toDateString())
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
@@ -47,7 +47,7 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     {
         $datenow = Carbon::now('Asia/Ho_Chi_Minh');
         $date =  Carbon::now('Asia/Ho_Chi_Minh')->subDays(7);
-        return $this->model->select('blog.*', 'danhmuc.name AS danhmuc' )
+        return $this->model->select('blog.*', 'danhmuc.name AS danhmuc','danhmuc.slug AS slugdm' )
         ->whereDate('blog.created_at','>=', $date->toDateString())
         ->whereDate('blog.created_at','<', $datenow->toDateString())
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
@@ -63,7 +63,7 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     }
     public function getBlog1()
     {
-        return $this->model->select('blog.*','danhmuc.name AS danhmuc')
+        return $this->model->select('blog.*','danhmuc.name AS danhmuc','danhmuc.slug AS slugdm')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->offset(3)
         ->limit(1)->orderBy('created_at', 'DESC')->get();
@@ -76,7 +76,7 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     }
     public function getBlog2()
     {
-        return $this->model->select('blog.*','danhmuc.name AS danhmuc')
+        return $this->model->select('blog.*','danhmuc.name AS danhmuc','danhmuc.slug AS slugdm')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->offset(1)->limit(4)->orderBy('created_at', 'DESC')->get();
     }
@@ -90,7 +90,7 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     }
     public function editBlog($slug)
     {
-        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddmm','danhmuc.name AS danhmuc')
+        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddmm','danhmuc.name AS danhmuc','danhmuc.slug AS slugdm')
             ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
             ->where('blog.slug','=', $slug)
             ->get();

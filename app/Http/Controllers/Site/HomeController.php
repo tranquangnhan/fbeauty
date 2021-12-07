@@ -209,7 +209,6 @@ class HomeController extends Controller
         $luotxem = $this->Blog->getblogbyView();
         $listdanhmuc = $this->DanhMuc->getAll();
         $listdanhmuc2 = $this->DanhMuc->getall2danhmuc();
-        $this->getDanhMucVaBlog();
 
         foreach ($listdanhmuc as $dm) {
             $skip = 0;
@@ -257,7 +256,6 @@ class HomeController extends Controller
         $danhmuc = $this->DanhMuc->getAllDanhMuc();
         $viewdetail = $this->Blog->editBlog($slug);
         $viewdetail2 = $this->Blog->editBlog($slug);
-        $this->getDanhMucVaBlog();
         foreach ($viewdetail2 as $detail) {
             $viewdt = $this->Blog->getblogbyiddm3($detail->iddm);
             $detail['viewdt'] = $viewdt;
@@ -316,6 +314,21 @@ class HomeController extends Controller
 
         return view("Site.pages.dichvu", $this->data);
     }
+    public function danhmucchitiet($id)
+    {
+
+        $this->getDanhMucVaDichVu();
+        $this->data['pathActive'] = 'danhmuc-dichvu';
+        $this->data['namePage'] = 'Danh Mục Dịch Vụ';
+        $this->data['breadcrumbArray'] = [
+            ['link' => '/danhmuc-dichvu', 'name' => 'Danh Mục Dịch Vụ'],
+            ['link' => '', 'name' => 'Tên Dịch Vụ'],
+
+        ];
+
+        return view("Site.pages.danhmucchitiet", $this->data);
+    }
+
 
     public function viewTimKiem()
     {
@@ -383,7 +396,12 @@ class HomeController extends Controller
     public function viewDichVuChiTiet($slug)
     {
         $detaildichvu = $this->Dichvu->dichvudetail($slug);
+        $dichvuview = $this->Dichvu->getdichvujoindanhmuc($slug);
+        $dichvulienquan = $this->Dichvu->GetDichvuLienQuan($dichvuview[0]->iddm);
+        $dichvukhac = $this->Dichvu->GetDichvuLienQuanKhacIDDM($dichvuview[0]->iddm);
 
+        $this->data['dichvulienquan'] = $dichvulienquan;
+        $this->data['dichvukhac'] = $dichvukhac;
         $this->data['detaildichvu'] = $detaildichvu;
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
@@ -484,6 +502,7 @@ class HomeController extends Controller
         $this->data['listDanhMuc'] = $listDanhMuc;
         $this->data['arrDichVu'] = $arrDichVu;
     }
+
     public function getDanhMucVaBlog() {
         $skip = 0;
         $task = 6;
@@ -495,14 +514,16 @@ class HomeController extends Controller
             $BlogByIdDanhMuc = $this->Blog->getBlogByIdDanhmuc($item->id, $skip, $task);
             $arrBlog[] = $BlogByIdDanhMuc;
         }
-// dd($arrBlog);
         $this->data['listDanhMucBlog'] = $listDanhMucBlog;
         $this->data['arrBlog'] = $arrBlog;
     }
     public function getDanhMucVaDichVu() {
         $limit = 4;
         $limitdv = $limit + 5;
+        $limitdichvu = $limit + 2;
         $listDanhMuc = $this->DanhMuc->getDanhMucLimit($limit);
+        $listDanhMucDichVu1 = $this->DanhMuc->getDanhMucLimit($limitdichvu);
+
 
         $arrDichVu = array();
         foreach ($listDanhMuc as $item) {
@@ -510,10 +531,19 @@ class HomeController extends Controller
             $arrDichVu[] = $dichVuByIdDanhMuc;
         }
 
+        $arrDichVu1 = array();
+        foreach ($listDanhMucDichVu1 as $item) {
+            $dichVuByIdDanhMuc1 = $this->Dichvu->getDichVuByIdDanhMuc($item->id, $limitdv);
+            $arrDichVu1[] = $dichVuByIdDanhMuc1;
+        }
 
         $this->data['listDanhMuc'] = $listDanhMuc;
+        $this->data['listDanhMucDichVu1'] = $listDanhMucDichVu1;
         $this->data['arrDichVu'] = $arrDichVu;
+        $this->data['arrDichVu1'] = $arrDichVu1;
     }
+
+
 
     public function getLieuTrinhDetailByIdLieuTrinh($id){
         $dataLieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
