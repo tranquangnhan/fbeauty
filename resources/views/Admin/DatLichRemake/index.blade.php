@@ -53,7 +53,7 @@
 
                                     </div>
 
-                                    <div class="tab-content" id="myTabContent">
+                                    <div class="tab-content" id="">
                                         <div class="tab-pane fade show active" id="datlich-day" role="tabpanel" aria-labelledby="datlich-day-tab">
                                             <div class="card-box p-0">
                                                 <div class="card-header bg-white">
@@ -100,8 +100,10 @@
                                                                 <button class="ml-5 mr-3 btn-custom-success btn-unblock-lich" id-unblock-time="{{ $item->id }}"><i class="fas fa-unlock mr-1"></i>MỞ KHÓA</button>
                                                                 <button class="ml-5 mr-3 btn-custom-success btn-select-lich" id-time="{{ $item->id }}"><i class="fas fa-check mr-1"></i>SELECT</button>
                                                                 <div class="child-button" fa-child-button="{{ $item->id }}">
-                                                                    <button class="ml-4 btn-custom-success btn-cirle button-unselect" id-unselect-time="{{ $item->id }}"><i class="fas fa-minus"></i></button>
-																	<button class="ml-2 btn-custom-success btn-cirle button-add" data-toggle="modal" data-target="#addDatLich" id-add-time="{{ $item->id }}"><i class="fas fa-plus"></i></button>
+                                                                    <button class="@if ($item->gio > $timeToDay) ml-4 @else ml-5 @endif  btn-custom-success btn-cirle button-unselect" id-unselect-time="{{ $item->id }}"><i class="fas fa-minus"></i></button>
+                                                                    @if ($item->gio > $timeToDay)
+                                                                        <button class="ml-2 btn-custom-success btn-cirle button-add" data-toggle="modal" data-target="#addDatLich" id-add-time="{{ $item->id }}" data-time=""><i class="fas fa-plus"></i></button>
+                                                                    @endif
 																	<button class="ml-2 btn-custom-success btn-cirle button-block" id-block-time="{{ $item->id }}"><i class="fas fa-lock"></i></button>
 																</div>
                                                             </div>
@@ -119,14 +121,14 @@
                                                                                 <div class="body-item">
                                                                                     <div class="name-nhanvien">{{ $item->listDatLich[$i]->nameNhanVien }}</div>
                                                                                     <li class="limit-text-row-1 ">
-                                                                                        @isset($item->listDatLich[$i]->arrayDichVu)
+                                                                                        @if($item->listDatLich[$i]->arrayDichVu[0] != null)
                                                                                             <a href="" class="cl-black">{{ $item->listDatLich[$i]->arrayDichVu[0]->name }}</a>
                                                                                             @if (count($item->listDatLich[$i]->arrayDichVu) > 1)
                                                                                                 ...
                                                                                             @endif
                                                                                         @else
                                                                                             <a href="" class="cl-black">Khách muốn tư vấn</a>
-                                                                                        @endisset
+                                                                                        @endif
 
                                                                                     </li>
                                                                                 </div>
@@ -139,7 +141,6 @@
 																					<button class="btn-none">
 																						<i class="fas fa-trash-alt"></i>
 																					</button>
-
 
                                                                                 </div>
                                                                             @endif
@@ -228,16 +229,20 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="">Họ & tên</label>
-                                        <input type="text" class="form-control namekh" id="">
-                                        <small class="form-text text-muted error-namekh"></small>
+                                        <input type="text" class="form-control namekh ip-namekh-0" id="">
+                                        <ul class="parsley-errors-list filled" id="" aria-hidden="false">
+                                            <li class="li-error error-namekh-0"></li>
+                                        </ul>
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="">Số điện thoại liên hệ</label>
-                                        <input type="number" class="form-control sdt" id="">
-                                        <small class="form-text text-muted error-sdt"></small>
+                                        <input type="number" class="form-control sdt ip-sdt-0" id="">
+                                        <ul class="parsley-errors-list filled" id="" aria-hidden="false">
+                                            <li class="li-error error-sdt-0"></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -252,41 +257,67 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="">Ngày</label>
-                                        <select class="form-control" id="">
-                                          <option>1</option>
-                                          <option>2</option>
-                                          <option>3</option>
-                                          <option>4</option>
-                                          <option>5</option>
-                                        </select>
-                                      </div>
-                                </div>
-
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="">Giờ</label>
-                                        <select class="form-control" id="">
-                                          <option>1</option>
-                                          <option>2</option>
-                                          <option>3</option>
-                                          <option>4</option>
-                                          <option>5</option>
-                                        </select>
-                                      </div>
+                                        <input type="date" class="form-control ip-date-datlich" onchange="getDayAndNhanVienThenLoadGio()" placeholder="mm/dd/yyyy" min="{{ $toDay }}" value="{{ $toDay }}">
+                                    </div>
                                 </div>
 
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="">Chuyên viên</label>
-                                        <select class="form-control" id="">
-                                          <option>1</option>
-                                          <option>2</option>
-                                          <option>3</option>
-                                          <option>4</option>
-                                          <option>5</option>
+                                        <div class="w-100">
+                                            <div class="fa-select-search">
+                                                <div class="select-search">
+                                                    <button class="button-search button-nhan-vien-0" data-select='nhan-vien'>
+                                                        <span class="mr-auto box-selected limit-text-row-1 text-left" type-selected="nhan-vien" id-selected="0">Spa chọn cho khách hàng</span>
+                                                        <i class="fas fa-address-book"></i>
+                                                    </button>
+
+                                                    <div class="box-select-search bottome" box-select='nhan-vien'>
+                                                        <div class="fa-head-select form-group">
+                                                            <input type="text" class="form-control search-option" data-type-option='nhan-vien'>
+                                                            <i class="fas fa-search"></i>
+                                                        </div>
+
+                                                        <div class="fa-body-select">
+                                                            <div class="body-select" body-type="nhan-vien">
+                                                                @foreach ($listNhanVien as $nhanVien)
+                                                                    <div class="option option-select" type-value="nhan-vien"
+                                                                        id-option="{{ $nhanVien->id }}"
+                                                                        data-name="{{ $nhanVien->name }}"
+                                                                        data-sdt="{{ $nhanVien->sdt }}">
+                                                                        {{ $nhanVien->name }} ({{ $nhanVien->sdt }})
+                                                                    </div>
+                                                                @endforeach
+                                                                <div class="option option-select" type-value="nhan-vien"
+                                                                    id-option="0"
+                                                                    data-name="Spa chọn cho khách hàng"
+                                                                    data-sdt="">
+                                                                    Spa chọn cho khách hàng
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="parsley-errors-list filled" id="" aria-hidden="false">
+                                            <li class="li-error error-nhan-vien-0"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="">Giờ</label>
+                                        <select class="form-control" id="select-gio">
+                                            <option>Vui lòng chọn chuyên viên</option>
+
                                         </select>
                                       </div>
                                 </div>
+
+
                             </div>
                         </div>
 
@@ -318,8 +349,8 @@
                                 <div class="col-12 d-flex">
                                     <div class="fa-select-search" style="width: 79.5%;">
                                         <div class="select-search">
-                                            <button class="button-search" data-select='dich-vu'>
-                                                <span class="mr-auto box-selected" type-selected="dich-vu" id-selected="0" name-selected="" dongia="" giamgia="">Tìm kiếm tên dịch vụ</span>
+                                            <button class="button-search button-dich-vu-0" data-select='dich-vu'>
+                                                <span class="mr-auto box-selected" type-selected="dich-vu" id-selected="" name-selected="" dongia="" giamgia="">Tìm kiếm tên dịch vụ</span>
                                                 <i class="fas fa-address-book"></i>
                                             </button>
 
@@ -336,7 +367,6 @@
                                                                 @if ($dichVu->giamgia > 0)
                                                                     @php
                                                                         $giaSauGiam = $dichVu->dongia - ($dichVu->dongia * $dichVu->giamgia / 100);
-
                                                                     @endphp
                                                                     <span class="gia-truocgiam mr-1">{{ number_format($dichVu->dongia, 0) }} đ </span>
                                                                     <span class="price-dichvu"> {{ number_format($giaSauGiam, 0) }} đ</span>
@@ -345,6 +375,13 @@
                                                                 @endif
                                                             </div>
                                                         @endforeach
+                                                        <div class="option option-select d-flex" type-value="dich-vu"
+                                                            id-option="0"
+                                                            name-dichvu="Đến Spa tư vấn"
+                                                            dongia="0"
+                                                            giamgia="">
+                                                            <span class="mr-auto"> Đến Spa tư vấn </span>
+                                                        </div>
 
                                                     </div>
                                                 </div>
@@ -359,6 +396,12 @@
 
                                     <button class="btn btn-info waves-effect waves-light ml-2 selected-dichvu"> <i class="far fa-check-circle mr-1"></i><span> Xác nhận</span> </button>
                                 </div>
+
+                                <div class="col-12">
+                                    <ul class="parsley-errors-list filled" id="" aria-hidden="false">
+                                        <li class="li-error error-dich-vu-0"></li>
+                                    </ul>
+                                </div>
                             </div>
 
                         </div>
@@ -368,7 +411,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary">Lưu lịch hẹn</button>
+                    <button type="button" class="btn btn-primary luu-lich-hen">Lưu lịch hẹn</button>
                 </div>
             </div>
         </div>
@@ -380,6 +423,10 @@
 				background-color: #71b6f9!important;
 		}
 
+        .datepicker-years {
+            display: block !important;
+        }
+
         @media (min-width: 992px) {
             .modal-lg, .modal-xl {
                 max-width: 700px !important;
@@ -388,13 +435,17 @@
 	</style>
 @endsection
 @section('custom-javascript')
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.9.0/main.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.9.0/main.css">
 <script>
-        var	listDichVu = <?php echo json_encode($listDichVu); ?>;
+    var	listDichVu = <?php echo json_encode($listDichVu); ?>;
     var	listKhachHang = <?php echo json_encode($listKhachHang); ?>;
     var	duLieuCalendar = <?php echo json_encode($duLieuCalendar); ?>;
+    var idCoSo = <?php echo json_encode($idCoSo); ?>;
+    var listNhanVien = <?php echo json_encode($listNhanVien); ?>;
+
 </script>
 <script src="{{ asset('Admin/assets') }}/js/pages/datlichremake.js"></script>
 @endsection

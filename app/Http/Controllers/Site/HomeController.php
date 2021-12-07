@@ -703,7 +703,7 @@ class HomeController extends Controller
                 if ($error == false) {
                     $sdt = '+84' . substr($request->soDienThoai, 1, strlen($request->soDienThoai));
                     $message = $this->makeMessageCamOnDatLich($request->idCoSo, $request->ngay, $request->gio);
-                    $this->freeSMSController->sendSingleMessage($sdt, $message);
+                    // $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                     $response = Array(
                         'success' => true,
