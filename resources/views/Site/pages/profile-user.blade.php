@@ -2380,11 +2380,14 @@
                                                                                 <div class="col-xl-4 d-flex">
                                                                                     <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
                                                                                     <div class="ml-2 limit-text-row-1">
+
+
                                                                                         @if ($item->idnhanvien == 0)
                                                                                         Spa chọn nhân viên giúp bạn
                                                                                         @else
                                                                                         Nhân viên : {{$item->namenhanvien}}
                                                                                         @endif
+
 
                                                                                     </div>
                                                                                 </div>
@@ -2392,7 +2395,12 @@
                                                                                 <div class="col-xl-4 d-flex text-center">
                                                                                     <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
                                                                                     <div class="ml-2 limit-text-row-1">
-                                                                                        Bạn muốn tư vấn
+                                                                                        @if ($item->iddichvu == [0])
+                                                                                         muốn tư vấn
+                                                                                        @else
+                                                                                         không muốn tư vấn
+                                                                                        @endif
+
                                                                                     </div>
                                                                                 </div>
 
@@ -2756,7 +2764,7 @@
                                                                         <div class="col-4 justify-content-end">
                                                                             <div class="item ml-4 text-right">
                                                                                 <i class="far fa-calendar uk-text-primary"></i>
-                                                                                <span class="ml-1 uk-text-primary">7 ngày tới</span>
+                                                                                <span class="ml-1 uk-text-primary"> ngày tới</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>

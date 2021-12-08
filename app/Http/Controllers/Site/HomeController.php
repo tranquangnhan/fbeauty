@@ -343,10 +343,19 @@ class HomeController extends Controller
 
     public function viewTimKiem()
     {
+
         $dichvu = $this->Dichvu->getAllDichVu();
         $sanpham = $this->SanPham->getsanphamtimkiem();
         $blog = $this->Blog->getAllBlog();
 
+//         $obj = [];
+//         for ($i = 0; $i < count($sanpham); $i++) {
+//             $obj = json_decode($sanpham[$i]->img);
+//         }
+// dd($obj);
+
+
+        $this->data['dichvu'] = $dichvu;
         $this->data['dichvu'] = $dichvu;
         $this->data['sanpham'] = $sanpham;
         $this->data['blog'] = $blog;
@@ -355,6 +364,7 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Tìm Kiếm'],
         ];
+
         if($valueSearch = request()->key){
             $dichvu = $this->Dichvu->search($valueSearch);
             $sanpham = $this->SanPham->searchsanpham($valueSearch);
@@ -365,6 +375,7 @@ class HomeController extends Controller
             $this->data['blog'] = $blog;
 
         }
+
 
 
         return view("Site.pages.timkiem", $this->data);
@@ -451,6 +462,7 @@ class HomeController extends Controller
 
 
 
+
         } else {
             $this->data['dataLieuTrinh'] = [];
         }
@@ -489,6 +501,7 @@ class HomeController extends Controller
         return $arrayDatLich3;
     }
 
+
     public function getArrayYearInDatLich($idKhachHang) {
         $listDatLich = $this->DatLich->getDatLichByIdKhachHang($idKhachHang);
         $arrayYear = array();
@@ -503,18 +516,25 @@ class HomeController extends Controller
 
     public function getDatLichByYearArrayAndIdKhachHang($idKhachHang, $arrayYear) {
         $arrayDatLich = array();
+        // $mytime = Carbon\::now();
+
         for ($i = 0; $i < count($arrayYear); $i++) {
             $thoiGian = Controller::getThoiGianTimestampDauNamVaCuoiNam($arrayYear[$i]);
             $listDatLichByTime = $this->DatLich->getDatLichByIdKhachHangAndThoiGianDat($idKhachHang, $thoiGian['startOfYear'], $thoiGian['endOfYear']);
+            // $listDatLichByNhanVien = $this->DatLich->getDatLichByIdnhanvien($idKhachHang);
+
+
 
             foreach ($listDatLichByTime as $datLich) {
                 $thoiGianDayYMD = date('Y-m-d', $datLich->thoigiandat);
                 $datLich['thoiGianDayYMD'] = $thoiGianDayYMD;
+                // $datLich['name'] = $listDatLichByNhanVien;
             }
-
+            // dd($datLich['thoiGianDayYMD']);
             $dataDatLich = array (
                 "year" => $arrayYear[$i],
-                "arrayDatLich" => $listDatLichByTime
+                "arrayDatLich" => $listDatLichByTime,
+                // "listDatLichByNhanVien" => $listDatLichByNhanVien,
             );
 
             $arrayDatLich[] = $dataDatLich;
