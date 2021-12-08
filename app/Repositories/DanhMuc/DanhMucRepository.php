@@ -29,8 +29,21 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
         ->skip($skip)->take($take)->orderBy('id', 'DESC')
         ->get();
     }
+    public function getall(){
+        return $this->model->select('danhmuc.*')
+        ->orderBy('id', 'DESC')
+        ->get();
+    }
+    public function getalledit(){
+        return $this->model->select('danhmuc.*')
+        ->where('danhmuc.loai', '=', 3)
+        ->orderBy('id', 'DESC')
+        ->get();
+    }
     public function getall2danhmuc(){
-        return $this->model->select('danhmuc.*')->limit(1)->get();
+        return $this->model->select('danhmuc.*')->limit(1)
+        ->where('danhmuc.loai', '=', 3)
+        ->get();
     }
     public function setModel()
     {
