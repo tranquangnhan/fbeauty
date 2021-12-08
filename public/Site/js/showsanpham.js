@@ -1,6 +1,7 @@
 var sanphambandau = 9; //Số lượng sản phẩm hiện ban đầu
 var soluongshowtiep = 3; //Số lượng sản phẩm hiện khi click phân trang
 var ArrayDanhMuc = []; //Chứa số danh mục cần lọc
+var ArrayThuongHieu = []; //Chứa số danh mục cần lọc
 let Arrayphu = []; // Lưu trữ mã trả về ban đầu
 let ArrayFlow = []; // Mảng lưu động thay đổi theo khi lọc
 let YeuThichSPS = []; // Chưa id của sản phẩm mà User yêu thích khi login
@@ -44,7 +45,7 @@ function BeFore(data, bienkhac) {
         var locmang;
         for (let i = 0; i < bienkhac.length; i++) {
             locmang = mang.filter(function (e) {
-                return e.iddanhmuc == bienkhac[i];
+                return e.iddanhmuc == bienkhac[i] || e.idthuonghieu == bienkhac[i];
             })
             mangdm.push(locmang);
         }
@@ -326,6 +327,12 @@ function ShowPhanTrang(dem) {
         xemsp.innerHTML = '<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;" ><< Không có sản phẩm nào >></button>'
     }
 
+}
+
+function UnCheck() {
+    $("#locgia0").prop("checked", true);
+    $("#sapxep select").val("AZ");
+    document.getElementById("seach").value = '';
 }
 
 GetYeuThichSP();
