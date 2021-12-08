@@ -77,6 +77,8 @@
                             <div class="fa-list-dichvu mt-1">
 
                                 @foreach ($sanpham as $itemsanpham)
+                                <?php $anhsp=json_decode($itemsanpham->img);
+                                     ?>
                                     <div class="dichvu-item d-plex w-100">
                                         <div class="content-1">
                                             <div class="text-7 color-main-1">
@@ -89,7 +91,7 @@
 
                                             <div class="img-1 mt-4">
                                                 <a href="{{ asset('san-pham') }}/chi-tiet/{{$itemsanpham->slug}}">
-                                                    <img class="" src="{{ asset('uploads/'.$itemsanpham->anhsp) }}" alt="">
+                                                    <img class="" src="{{ asset('/uploads')}}/{{$anhsp[0]}}" alt="">
                                                 </a>
                                             </div>
 

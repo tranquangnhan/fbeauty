@@ -110,10 +110,19 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         return $this->model->where('idkhachhang', '=', $idKhachHang)->get();
     }
 
+    // public function getDatLichByIdnhanvien($idNhanVien) {
+    //     return $this->model->where('idnhanvien', '=', $idNhanVien)->get();
+    // }
+    // public function getDatLichByIdnhanvien($idNhanVien) {
+    //     return $this->model->select('datlich.*', 'nhanvien.id as idnhanvien')
+    //     ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
+    //     ->where('nhanvien.id', '=', $idNhanVien)
+    //     ->get();
+    // }
+
     public function getDatLichByIdKhachHangAndThoiGianDat($idKhachHang, $start, $end) {
-        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso','nhanvien.name as namenhanvien')
+        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso')
         ->join('coso','datlich.idcoso', '=', 'coso.id')
-        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
         ->whereBetween('thoigiandat', [$start, $end])
         ->where('idkhachhang', '=', $idKhachHang)
         ->get();
