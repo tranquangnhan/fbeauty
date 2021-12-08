@@ -149,14 +149,13 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class, 'addHoaDonByIdLieuTrinh']);
     //Banner
     Route::resource('banner', BannerController::class);
-    Route::get('banner/{id}/destroy', [BannerController::class, 'destroy']);
 });
 
 Route::group(['prefix' => '/'], function () {
     Route::get('', [HomeController::class, "index"]);
     Route::get('trang-chu', [HomeController::class, "index"]);
     Route::get('san-pham', [HomeController::class, "viewSanPham"]);
-    Route::get('san-pham/soluong/{id}', [HomeController::class, "getSanPham"]);
+    Route::get('san-pham/getall', [HomeController::class, "getSanPham"]);
     Route::get('san-pham/chi-tiet/{id}', [HomeController::class, "viewSanPhamChiTiet"]);
     Route::get('san-pham/checkyeuthich/{id}', [YeuThichController::class, "getSanPhamYeuThich"]);
     Route::get('getyeuthichsps', [YeuThichController::class, "getAllSPYeuThich"]);

@@ -29,6 +29,7 @@ class SanPham extends FormRequest
             'name' => ['required','min:3','max:100'],
             'mota' => ['required','min:3','max:255'],
             'noidung'=>['required'],
+            'giamgia'=>['gt:-1','lt:100'],
             'trangthai'=>['integer'],
         ];
     }
@@ -47,6 +48,8 @@ class SanPham extends FormRequest
             'mota.min' => 'Mô tả phải trên 3 kí tự',
             'mota.max' => 'Mô tả giới hạn 255 kí tự',
             'noidung.required' => 'Nội dung bắt buộc nhập',
+            'giamgia.gt' => 'giảm giá phải lớn hơn hoặc bằng 0 ',
+            'giamgia.lt' => 'giảm giá phải nhỏ hơn 100',
             'trangthai.integer' => 'Trạng thái phải là số nguyên',
         ];
     }
@@ -59,6 +62,7 @@ class SanPham extends FormRequest
             'name' => 'Tên sản phẩm',
             'mota' => 'Mô tả sản phẩm',
             'noidung'=> 'Nội dung sản phẩm',
+            'giamgia'=> 'Giảm giá sản phẩm',
             'trangthai'=>'Trạng thái sản phẩm',
             'img'=>'Ảnh sản phẩm',
         ];

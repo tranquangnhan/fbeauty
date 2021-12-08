@@ -75,12 +75,11 @@
                                 @endif
                                 </div>
                             </div>
-                            {{-- <button  type="button" class="xemthemblog btn mb-5 mt-3" data-take="3" data-skip="6">Xem thêm</button> --}}
-                    {{-- @endif
-                        @endforeach --}}
+                            <button data-iddm="{{$item->id}}" onclick="anbutton()" type="button" class="xemthemblog btn mb-5 mt-3" id="buttonid" data-take="3" data-skip="6">Xem thêm</button>
+
                     </div>
                     <div class="col-xl-3">
-                        @include('Site.components.danhmuc-baiviet')
+                        @include('Site.components.danhmucct-baiviet')
                     </div>
                 </div>
             </div>

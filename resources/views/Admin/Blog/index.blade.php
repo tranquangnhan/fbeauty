@@ -24,7 +24,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $i=> $item)
-                                        <tr>
+                                        <tr id="row{{$item->id}}">
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td> 
                                                  {{$item->name}} <br>
@@ -43,11 +43,8 @@
                                             </td>
                                             <td class="d-flex">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('blog.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
-                                                <form action="{{route('blog.destroy',$item->id)}}"  method="post">
-                                                    @csrf
-                                                    {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa không ?');"><i class="fa fa-trash"></i></button>
-                                                </form>
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger"  onclick="deleteCommon({{$item->id}})"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach

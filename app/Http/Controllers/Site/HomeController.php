@@ -142,9 +142,9 @@ class HomeController extends Controller
         return view("Site.pages.sanpham", $this->data);
     }
 
-    public function getSanPham($soluong)
+    public function getSanPham()
     {
-        $sanpham = $this->SanPham->getSanPhamJoinDanhMuc($soluong);
+        $sanpham = $this->SanPham->getSanPhamJoinDanhMuc();
         $sl = $this->SanPham->DemSanPham();
         $data = ['sanpham' => $sanpham];
         return $data;
@@ -276,11 +276,13 @@ class HomeController extends Controller
         return view("Site.pages.baivietchitiet", $this->data);
     }
     public function viewDanhmucBaiViet($slug){
-        $danhmuc = $this->DanhMuc->getAllDanhMuc();
+        $skip = 0;
+        $take = 12;
+        $danhmucct = $this->DanhMuc->getAllDanhMucchitiet($skip, $take);
         $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
         $viewdetail = $this->Blog->getBlogByslugdm($slug);
 
-        $this->data['danhmuc'] = $danhmuc;
+        $this->data['danhmucct'] = $danhmucct;
         $this->data['viewdetail'] = $viewdetail;
         $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
 

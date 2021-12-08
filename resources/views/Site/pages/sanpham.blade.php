@@ -46,8 +46,10 @@
                                     <h6 class="title-loc">Danh Mục Thương Hiệu</h6>
 
                                     @foreach($danhmucth as $dm)
-                                        <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 1)->count();?>
-                                        <li>
+                                        <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')
+                                            ->where('idthuonghieu', $dm->id)
+                                            ->where('trangthai', 1)
+                                            ->count();?>                                        <li>
                                             <a href="javascript:;" class="text-decoration-none hover-pink hov">
                                                 <label for="danhmuc{{$dm->id}}">
                                                     <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
