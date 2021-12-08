@@ -51,3 +51,21 @@
         )
     </script>
     @endif
+
+@if(session('guilienhe'))
+    <script>
+        Swal.fire(
+            '{{session('guilienhe')}}',
+            '',
+            'success'
+        )
+    </script>
+@elseif(session('guilienhethatbai'))
+    <script>
+        Swal.fire(
+            '{{session('guilienhethatbai')}}',
+            '',
+            'error'
+        )
+    </script>
+@endif
