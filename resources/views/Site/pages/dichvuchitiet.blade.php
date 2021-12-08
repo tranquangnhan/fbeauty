@@ -17,7 +17,7 @@
             <div class="image w-100">
                 <img src="{{ asset('uploads/'.$detaildichvu->img) }}" class="img-fluid" alt="">
             </div>
-<div class="content">
+<div class="content5">
             <div class="dichvu-content box-shadow-1 blog-body">
                 <h1 class=" font-weight-600">{{$detaildichvu->name}}</h1>
                 <div class="box-gia">
@@ -50,7 +50,7 @@
 
         </div>
 
-    <div class="content">
+    <div class="content5">
     <div class="row mt-5">
         <div class="danhmuc-listblog container">
             <div class="head-blog-item blog-title">

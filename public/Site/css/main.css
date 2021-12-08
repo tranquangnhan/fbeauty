@@ -1829,28 +1829,28 @@ button:focus {
     z-index: 0;
 }
 
-.content1 {
+.content5 {
     min-height: 100%;
     height: 100%;
     background: white;
     z-index: 0;
 }
 
-.content1 h1 {
+.content5 h1 {
     padding: 75px 0 30px 0;
     text-align: center;
     font-size: 30px;
     line-height: 30px;
 }
 
-.content1 .buttons {
+.content5 .buttons {
     max-width: 800px;
     margin: 0 auto;
     padding: 0;
     text-align: center;
 }
 
-.content1 .buttons .button {
+.content5 .buttons .button {
     display: inline-block;
     text-align: center;
     padding: 10px 15px;
@@ -1863,7 +1863,7 @@ button:focus {
     cursor: pointer;
 }
 
-.content1 .buttons .button:hover {
+.content5 .buttons .button:hover {
     color: white;
     background: #009bd5;
 }
