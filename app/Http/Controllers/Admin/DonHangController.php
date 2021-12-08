@@ -126,11 +126,6 @@ class DonHangController extends Controller
     public function destroy($id)
     {
         $this->DonHang->delete($id);
-
-
         return redirect('quantri/donhang')->with('success','Xoá thành công');
     }
-
-
-
 }

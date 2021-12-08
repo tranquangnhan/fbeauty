@@ -15,7 +15,7 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
         return \App\Models\Admin\SanPham::class;
     }
 
-    public function getSanPhamJoinDanhMuc($soluong){
+    public function getSanPhamJoinDanhMuc(){
         return $this->model->select("sanpham.*", "danhmuc.name AS tendm",
             DB::raw('(select dongia from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as dongia'),
             DB::raw('(select ml from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as thetich'),

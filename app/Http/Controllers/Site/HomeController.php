@@ -142,9 +142,9 @@ class HomeController extends Controller
         return view("Site.pages.sanpham", $this->data);
     }
 
-    public function getSanPham($soluong)
+    public function getSanPham()
     {
-        $sanpham = $this->SanPham->getSanPhamJoinDanhMuc($soluong);
+        $sanpham = $this->SanPham->getSanPhamJoinDanhMuc();
         $sl = $this->SanPham->DemSanPham();
         $data = ['sanpham' => $sanpham];
         return $data;
