@@ -21,7 +21,7 @@ class TheoDoiController extends Controller
     public function store(TheoDoi $request){
         $CheckEmail=$this->TheoDoi->CheckEmail($request->email);
         if (empty($CheckEmail) == false){
-            $this->SendMail($request->email);
+            $gui= $this->SendMail($request->email);
         }
         else{
             $CreateEmail=[
@@ -29,10 +29,14 @@ class TheoDoiController extends Controller
             ];
             $add=$this->TheoDoi->create($CreateEmail);
             if ($add){
-                 $this->SendMail($request->email);
+                $gui= $this->SendMail($request->email);
             }
         }
-        return redirect()->back()->with('guilienhe', 'Cảm ơn bạn đã liên hệ cho chúng tôi. Chúng tôi sẽ nhanh chóng phản hồi email của bạn.');
+        if (!$gui) {
+            return redirect()->back()->with('guilienhe', 'Cảm ơn bạn đã liên hệ cho chúng tôi. Chúng tôi sẽ nhanh chóng phản hồi email của bạn.');
+        }else{
+            return redirect()->back()->with('guilienhethatbai', 'Gửi thất bại. Bạn vui lòng kiểm tra email');
+        }
     }
 
     public function SendMail($email){

@@ -60,4 +60,12 @@
             'success'
         )
     </script>
+@elseif(session('guilienhethatbai'))
+    <script>
+        Swal.fire(
+            '{{session('guilienhethatbai')}}',
+            '',
+            'error'
+        )
+    </script>
 @endif
