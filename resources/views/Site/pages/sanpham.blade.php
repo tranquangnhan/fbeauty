@@ -28,15 +28,15 @@
 
                                     @foreach($danhmucsp as $dm)
                                         <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 1)->count();?>
-                                            <li>
-                                                <a href="javascript:;" class="text-decoration-none hover-pink hov">
-                                                    <label for="danhmuc{{$dm->id}}">
-                                                        <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
-                                                               name="danhmuc" id="danhmuc{{$dm->id}}"> {{$dm->name}}
-                                                    </label><span
-                                                        class="badge badge-pill badge-primary background-color-main float-right">{{$soluong}}</span>
-                                                </a>
-                                            </li>
+                                        <li>
+                                            <a href="javascript:;" class="text-decoration-none hover-pink hov">
+                                                <label for="danhmuc{{$dm->id}}">
+                                                    <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
+                                                           name="danhmuc" id="danhmuc{{$dm->id}}"> {{$dm->name}}
+                                                </label><span
+                                                    class="badge badge-pill badge-primary background-color-main float-right">{{$soluong}}</span>
+                                            </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -49,7 +49,8 @@
                                         <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')
                                             ->where('idthuonghieu', $dm->id)
                                             ->where('trangthai', 1)
-                                            ->count();?>                                        <li>
+                                            ->count();?>
+                                        <li>
                                             <a href="javascript:;" class="text-decoration-none hover-pink hov">
                                                 <label for="danhmuc{{$dm->id}}">
                                                     <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
