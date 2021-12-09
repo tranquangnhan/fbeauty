@@ -45,7 +45,7 @@ function BeFore(data, bienkhac) {
         for (let i = 0; i < bienkhac.length; i++) {
             locmang = mang.filter(function (e) {
                 return e.iddanhmuc == bienkhac[i] || e.idthuonghieu == bienkhac[i];
-            })
+            });
             mangdm.push(locmang);
         }
         if (mangdm.length > 1) {
@@ -55,13 +55,16 @@ function BeFore(data, bienkhac) {
                 }
             }
         }
+        //lọc sản phẩm trùng lặp
+        var newarr=mangdm[0].filter((item, index) => {
+            return mangdm[0].indexOf(item) === index
+        });
 
         datas = {
-            sanpham: mangdm[0],
+            sanpham: newarr,
         }
         TruyenObject(datas)
         FilterSapXep(ArrayFlow, bien)
-
     } else {
         ArrayFlow = data;
         FilterSapXep(ArrayFlow, bien)
