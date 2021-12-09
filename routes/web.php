@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\LieuTrinhController;
 use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\SanPhamChiTietController;
+use App\Http\Controllers\Admin\TheoDoiFLController;
 use App\Http\Controllers\Admin\ThongkeController;
 use App\Http\Controllers\Admin\DatLichController;
 use App\Http\Controllers\Admin\DatLichRemakeController;
@@ -150,6 +151,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class, 'addHoaDonByIdLieuTrinh']);
     //Banner
     Route::resource('banner', BannerController::class);
+    //Follower
+    Route::resource('theodoi', TheoDoiFLController::class);
 });
 
 Route::group(['prefix' => '/'], function () {

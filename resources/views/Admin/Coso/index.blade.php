@@ -109,7 +109,7 @@
                                 <?php $i=0; ?>
                                     @foreach ($data as $row)
 
-                                        <tr>
+                                        <tr id="row{{$row->id}}">
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td class="" >{{$row->name}}</td>
                                             <td class="" >{{$row->diachi}}</td>
@@ -117,13 +117,11 @@
                                             <td class="" >{{$row->province->name_quanhuyen}}</td>
                                             <td class="" >{{$row->wards->name_xaphuong}}</td>
 
-                                            <td class="d-flex">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('coso.edit',$row->id)}}" role="button"><i class="fa fa-edit"></i></a>
-                                                <form action="{{route('coso.destroy',$row->id)}}"  method="post">
-                                                    @csrf
-                                                    {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa không ?');"><i class="fa fa-trash"></i></button>
-                                                </form>
+                                            <td>
+                                                <a role="button" class="btn btn-danger mr-2" href="{{route('coso.edit',$row->id)}}"><i class="fa fa-edit"></i></a>
+                                                <br>
+                                                @csrf
+                                                <button type="button" onclick="deleteCommon({{$row->id}})" class="btn btn-danger text-white mt-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
