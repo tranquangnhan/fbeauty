@@ -9,44 +9,44 @@
                 <div class="col-12">
                     <div class="card-box">
                         <div>
-                             {{-- <button class="btn btn-primary waves-effect waves-light mb-3" ><a class="text-white" href="{{route('dichvu.create')}}">Thêm Dịch Vụ</a> </button> --}}
+                             <button class="btn btn-primary waves-effect waves-light mb-3" >Bảng liên hệ  </button>
                         </div>
-                        <table class="table table-striped table-bordered dt-responsive nowrap">
-                                <thead class="thead-light">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive ">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th width="3%">STT</th>
+                                    <th width="15%">Tên Khách hàng</th>
+                                    <th width="25%">Email</th>  
+                                    <th width="20%">Số điện thoại</th>  
+                                    <th width="20%">Nội dung</th>  
+                                    <th width="20%">Thời gian</th>  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data as $item)
                                     <tr>
-                                        <th width="3%">STT</th>
-                                        <th width="15%">Tên Khách hàng</th>
-                                        <th width="25%">Email</th>  
-                                        <th width="20%">Số điện thoại</th>  
-                                        <th width="20%">Nội dung</th>  
-                                        <th width="20%">Thời gian</th>  
+                                        <td>{{++$loop->index}}</td>
+                                        <td>{{$item->namekh}} 
+                                        </td> 
+                                        <td>
+                                            {{$item->email}}
+                                        </td> 
+                                        <td >
+                                            {{$item->sdt}}
+                                        </td> 
+                                        <td >
+                                            {{$item->noidung}}
+                                        </td> 
+                                        <td>
+                                            {{$item->created_at->format('Y-m-d')}} 
+                                        </td> 
+                                        
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data as $item)
-                                        <tr>
-                                            <td>{{++$loop->index}}</td>
-                                            <td>{{$item->namekh}} 
-                                            </td> 
-                                            <td>
-                                                {{$item->email}}
-                                            </td> 
-                                            <td >
-                                               {{$item->sdt}}
-                                            </td> 
-                                            <td >
-                                               {{$item->noidung}}
-                                            </td> 
-                                            <td>
-                                                {{$item->created_at}} 
-                                            </td> 
-                                           
-                                        </tr>
-                                    @endforeach
-                                   
-                             
-                                </tbody>
-                            </table>
+                                @endforeach
+                                
+                            
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -57,15 +57,15 @@
                         <ul class="pagination pagination-split">
                             <?php
                             // echo $Pagination;
-                            ?>      
+                            ?>
                         </ul>
-                    </nav>    
-                      
+                    </nav>
+
                 </div>
             </div>
-                 
-         
-            
+
+
+
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->

@@ -11,9 +11,10 @@
                 <div class="title-3">
                     Đăng Ký Và Là Người Đầu Tiên Biết Về <br>Các Sản Phẩm Đặc Biệt, Sự Kiện Và Hơn Thế Nữa!
                 </div>
-                <form action="" class="form-subscribe">
+                <form action="{{URL::to("/emaillienhe")}}" class="form-subscribe" method="post">
+                    @csrf
                     <div class="bg-white div-subscribe">
-                        <input type="text" placeholder="Nhập email của bạn">
+                        <input type="email" name="email" placeholder="Nhập email của bạn">
                         <button type="submit" class="btn-nor">Gửi email</button>
                     </div>
                 </form>

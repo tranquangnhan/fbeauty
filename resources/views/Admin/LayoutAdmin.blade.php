@@ -352,9 +352,13 @@
                             <li>
                                 <a href="/quantri/datlichremake">
                                     <i class="far fa-calendar-check"></i>
-
-
                                     <span> Đặt Lịch </span>
+                                </a>
+                            </li>
+                              <li>
+                                <a href="/quantri/lienhe">
+                                    <i class="fa fa-phone"></i>
+                                    <span> Liên hệ </span>
                                 </a>
                             </li>
                           <li>
