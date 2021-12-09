@@ -63,7 +63,7 @@
                                         <a href="{{route("banner.edit",$bn->id)}}" class="btn btn-primary text-white" data-bs-toggle="tooltip" data-bs-placement="right" title="Sửa"><i class="fa fa-edit"></i></a>
                                     <br>
                                         @csrf
-                                        <button type="button" onclick="deleteCommon({{$bn->id}})" class="btn btn-primary text-white mt-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
+                                        <button type="button" onclick="deleteCommon({{$bn->id}})" class="btn btn-danger text-white mt-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                                     @endforeach
