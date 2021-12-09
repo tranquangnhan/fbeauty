@@ -52,13 +52,13 @@ class DatLichSeeder extends Seeder
             ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 5, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime1)],
             ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 6, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime2)],
             ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 2, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime3)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 9, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime4)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 9, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime1)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 9, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime2)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 9, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime3)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime4)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime1)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime2)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime3)],
 
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 9, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 9, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
         ]);
     }
 }
