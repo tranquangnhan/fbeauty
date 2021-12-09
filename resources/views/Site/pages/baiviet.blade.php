@@ -51,7 +51,7 @@
                                                 </div>
                                                 <a href="{{ asset('bai-viet') }}/{{$blog[0]->slug}}">
                                                     <div class="img-1 w-100">
-                                                            <img class="img-fluid"
+                                                            <img width="490" class="img-fluid"
                                                                 src="{{ asset('uploads') }}/{{$blog[0]->img}}" alt="">
                                                     </div>
                                                 </a>
@@ -126,7 +126,7 @@
                                 <div class="tab-pane fade" id="lastweek" role="tabpanel" aria-labelledby="lastweek-tab">
                                     <div class="row">
                                         @foreach ($blog3 as $item1)
-                                        <div class="col-xl-7 pr-0">
+                                        <div class="col-xl-6 pr-0">
                                             <div class="blog-bigsize">
                                                 <div class="box-danhmuc">
                                                     <a href="{{ asset('danh-muc-bai-viet') }}/{{$item1->slugdm}}">
@@ -135,7 +135,7 @@
 
                                                 <div class="img-1 w-100">
                                                     <a href="{{ asset('bai-viet') }}/{{$item1->slug}}">
-                                                        <img class="img-fluid"
+                                                        <img width="490" class="img-fluid"
                                                         src="{{ asset('uploads') }}/{{$item1->img}}" alt=""></a>
                                                 </div>
 
@@ -168,7 +168,7 @@
                                             </div>
                                         </div>
                                         @endforeach
-                                        <div class="col-xl-5 pl-0">
+                                        <div class="col-xl-6 pl-0">
                                             <div class="list-blog-small pl-5">
                                                 @foreach ($blog4 as $item)
                                                     <div class="small-blog-item box-tin-hv pt-0">
@@ -326,7 +326,9 @@
                                         <div class="row">
                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                 <div class="mr-3">
-                                                    <a class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
+                                                    <a class="btn-modal-main" type-modal="modal-datlich" href="javascript:void(0)" data-show="one">
+                                                        <button  type="button" class=" text-white btn mb-5 mt-3" >Đặt Lịch</button>
+                                                        </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -511,7 +513,7 @@
                             </div>
                             @if (count($item->blogbyid) == 6)
                             <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}">
-                                <button data-iddm="{{$item->id}}" onclick="anbutton()" type="button" class="xemthemblog btn mb-5 mt-3" id="buttonid" data-take="3" data-skip="6">Xem thêm</button>
+                                <button data-iddm="{{$item->id}}"  type="button" class="xemthemblog btn mb-5 mt-3"  data-take="3" data-skip="6">Xem thêm</button>
                             </a>
                                 @else
                                 <br> <br>

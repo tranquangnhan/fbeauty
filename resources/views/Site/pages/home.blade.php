@@ -445,7 +445,9 @@
                                     </div>
 
                                     <div class="img-1 w-100">
-                                        <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt="">
+                                        <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
+                                            <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt="">
+                                        </a>
                                     </div>
 
                                     <div class="blog-content-bigsize">
@@ -454,7 +456,7 @@
                                         </div>
                                         <div class="blog-text-2 mt-2 formatDayCustom" data-type="long" data-format="{{ $item->created_at }}">
                                             @if ($item->created_at != null)
-                                                {{$item->created_at->format('Y.m.d')}}
+                                                {{$item->created_at->format('Y-m-d')}}
                                             @endif
                                         </div>
                                         <div class="blog-text-3 text-2 mt-2 limit-text-row-3">
@@ -483,7 +485,10 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt="">
+                                                    {{-- <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt=""> --}}
+                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
+                                                        <img class="img-fluid" src="{{ asset('uploads/') }}/{{$item->img}}" alt="">
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
@@ -521,7 +526,9 @@
                                     </div>
 
                                     <div class="img-1 w-100">
-                                        <img class="img-fluid" src="{{ asset('uploads/') }}/{{$item->img}}" alt="">
+                                        <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
+                                            <img class="img-fluid" src="{{ asset('uploads/') }}/{{$item->img}}" alt="">
+                                        </a>
                                     </div>
 
                                     <div class="blog-content-bigsize">
@@ -560,7 +567,9 @@
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt="">
+                                                    <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
+                                                        <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt="">
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
