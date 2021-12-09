@@ -59,7 +59,16 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
         ->get();
     }
     public function searchsanpham($valueSearch){
-        return $this->model->where('name','LIKE','%'.$valueSearch.'%')->get();
+        return $this->model->select("sanpham.*", "danhmuc.name AS tendm",
+            DB::raw('(select dongia from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as dongia'),
+            DB::raw('(select ml from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as thetich'),
+            DB::raw('(select id from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as idspct')
+            )
+            ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id" )
+            ->where('sanpham.trangthai', '=', Controller::TRANGTHAI_SANPHAM)
+            ->where('sanpham.name','LIKE','%'.$valueSearch.'%')
+            ->orderBy('sanpham.id', 'DESC')
+            ->get();
     }
 
     public function getSanPhamHome(){

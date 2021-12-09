@@ -151,7 +151,6 @@ function FilterGia(data, bienkhac) {
 
 //Nhận data từ function FilterSapXep lọc sản phẩm theo tên
 function FilterName(data, bienkhac) {
-
     let mang = data.sanpham;
     let datas = [];
     let bien = '';

@@ -5,6 +5,9 @@
 @endsection
 
 @section('main')
+@php
+    use app\Http\Controllers\Controller;
+@endphp
 <div class="fa-dichvu my-5" style="margin-bottom: 5em !important;">
     <div class="container">
         <div class="w-100 text-center mb-5">
@@ -33,8 +36,9 @@
                         <div class="title-small color-black-main text-left">Kết quả tìm kiếm dịch vụ</div>
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
-
-                                @foreach ($dichvu as $dichvuitem)
+                                <input type="hidden" id="data" value="{{$dulieu}}">
+                           
+                                {{-- @foreach ($dichvu as $dichvuitem)
                                     <div class="dichvu-item d-plex w-100">
                                         <div class="content-1">
                                             <div class="text-7 color-main-1">
@@ -66,7 +70,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                @endforeach
+                                @endforeach --}}
 
                             </div>
                         </div>
@@ -76,8 +80,8 @@
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
 
-                                @foreach ($sanpham as $itemsanpham)
-                                <?php $anhsp=json_decode($itemsanpham->img);
+                                {{-- @foreach ($sanPham as $itemsanpham)
+                                <?php //$anhsp=json_decode($itemsanpham->img);
                                      ?>
                                     <div class="dichvu-item d-plex w-100">
                                         <div class="content-1">
@@ -86,7 +90,7 @@
                                             </div>
 
                                             <div class="text-8 mt-1">
-                                                {{number_format($itemsanpham->dongiasp)}} đ
+                                                {{Controller::caculateGia($itemsanpham->dongia,$itemsanpham->giamgia)}} đ
                                             </div>
 
                                             <div class="img-1 mt-4">
@@ -105,7 +109,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                @endforeach
+                                @endforeach --}}
 
                             </div>
                         </div>
@@ -115,7 +119,7 @@
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
 
-                            @foreach ($blog as $blogtem)
+                            {{-- @foreach ($blog as $blogtem)
                                 <div class="dichvu-item d-plex w-100">
                                     <div class="content-1">
                                         <div class="text-7 color-main-1">
@@ -147,7 +151,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            @endforeach
+                            @endforeach --}}
 
                             </div>
                         </div>

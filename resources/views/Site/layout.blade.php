@@ -33,6 +33,7 @@
 
     {{-- Custom css --}}
     <link rel="stylesheet" href="{{ asset('Site/css') }}/main.css">
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/custom.nhan.css">
 
 </head>
 

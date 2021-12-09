@@ -36,8 +36,14 @@
                 </li>
             </ul>
             <div class="box-icon">
-                <li class="icon-item d-inline-block hover-scale-1  {{ ($pathActive == 'tim-kiem') ? 'active' : '' }} ">
-                    <a class="btn-modal-sreach" href="/tim-kiem"><i class="fas fa-search color-black-2"></i></a>
+                <li class="icon-item d-inline-block boxsearch {{ ($pathActive == 'tim-kiem') ? 'active' : '' }} ">
+                    <a class="btn-modal-sreach" ><i class="fas fa-search color-black-2"></i></a>
+                    <form action="/tim-kiem" >
+                        <div class="form-group search">
+                            <input type="text" name="key" id="" class="form-control" placeholder="Tìm Kiếm.. " aria-describedby="helpId">
+                            <button type="submit" class="buttonsearch hover-scale-1"><i class="fa fa-search " aria-hidden="true"></i></button>
+                          </div>
+                    </form>
                 </li>
                 @if (session()->has('khachHang') && session('khachHang') != '')
                 <li class="icon-item d-inline-block fa-dropdown-custom-1">

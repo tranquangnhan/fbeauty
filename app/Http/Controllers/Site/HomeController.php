@@ -30,7 +30,7 @@ use App\Repositories\YeuThich\YeuThichRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     private $data = array();
@@ -350,12 +350,7 @@ class HomeController extends Controller
         $sanpham = $this->SanPham->getsanphamtimkiem();
         $blog = $this->Blog->getAllBlog();
 
-//         $obj = [];
-//         for ($i = 0; $i < count($sanpham); $i++) {
-//             $obj = json_decode($sanpham[$i]->img);
-//         }
-// dd($obj);
-
+        
 
         $this->data['dichvu'] = $dichvu;
         $this->data['dichvu'] = $dichvu;
@@ -368,19 +363,18 @@ class HomeController extends Controller
         ];
 
         if($valueSearch = request()->key){
-            $dichvu = $this->Dichvu->search($valueSearch);
-            $sanpham = $this->SanPham->searchsanpham($valueSearch);
+            $dichVu = $this->Dichvu->search($valueSearch);
+            $sanPham = $this->SanPham->searchsanpham($valueSearch);
+
             $blog = $this->Blog->searchblog($valueSearch);
 
-            $this->data['dichvu'] = $dichvu;
-            $this->data['sanpham'] = $sanpham;
-            $this->data['blog'] = $blog;
-
+            $this->dulieu['dichvu'] = $dichVu;
+            $this->dulieu['sanPham'] = $sanPham;
+            $this->dulieu['blog'] = $blog;
         }
 
 
-
-        return view("Site.pages.timkiem", $this->data);
+        return view("Site.pages.timkiem",$this->data,['dulieu'=>json_encode($this->dulieu)]);
     }
 
     public function viewLienHe()
