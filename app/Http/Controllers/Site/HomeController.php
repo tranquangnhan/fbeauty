@@ -145,7 +145,6 @@ class HomeController extends Controller
     public function getSanPham()
     {
         $sanpham = $this->SanPham->getSanPhamJoinDanhMuc();
-        $sl = $this->SanPham->DemSanPham();
         $data = ['sanpham' => $sanpham];
         return $data;
     }
@@ -153,7 +152,6 @@ class HomeController extends Controller
     public function viewSanPhamChiTiet($slug)
     {
         error_reporting(0);
-
         $this->data['pathActive'] = 'san-pham';
         $this->data['namePage'] = 'Sản phẩm chi tiết';
         $this->data['breadcrumbArray'] = [
