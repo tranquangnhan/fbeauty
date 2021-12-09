@@ -402,7 +402,7 @@
 
 @include('Site.components.gioithieulieutrinh')
 
-<div class="box-blog">
+<div class="box-blog my-5">
     <div class="container">
         <div class="list-blog p-0">
             <div class="mb-4">
@@ -441,7 +441,7 @@
                             @foreach ($blog as $item)
                                 <div class="blog-bigsize">
                                     <div class="box-danhmuc">
-                                        {{$item->danhmuc}}
+                                        {{ $item->danhmuc }}
                                     </div>
 
                                     <div class="img-1 w-100">
@@ -449,10 +449,10 @@
                                     </div>
 
                                     <div class="blog-content-bigsize">
-                                        <div class="blog-text-1 limit-text-row-1">
+                                        <div class="blog-text-1 limit-text-row-2">
                                             <a href="{{ asset('bai-viet') }}/{{$item->slug}}">{{$item->name}}</a>
                                         </div>
-                                        <div class="blog-text-2 mt-2">
+                                        <div class="blog-text-2 mt-2 formatDayCustom" data-type="long" data-format="{{ $item->created_at }}">
                                             @if ($item->created_at != null)
                                                 {{$item->created_at->format('Y.m.d')}}
                                             @endif
@@ -479,29 +479,29 @@
                             <div class="col-xl-5 pl-0">
                                 <div class="list-blog-small pl-5">
                                 @foreach ($getBlog2 as $item)
-
-                                    <div class="small-blog-item box-tin-hv pt-0">
+                                    <div class="small-blog-item box-tin-hv @if ($loop->index == 0) pt-0 @endif ">
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
-                                                    <img class="img-fluid" src="{{ asset('uploads/') }}/{{$item->img}}" alt="">
+                                                    <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
                                                 <div class="row">
-                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 mt-1">
                                                         <div class="mr-3">
                                                             <a class="box-danhmuc-1">
                                                             {{$item->danhmuc}}</a>
                                                         </div>
-                                                        @if ($item->created_at != null)
-                                                            {{$item->created_at->format('Y.m.d')}}
-                                                        @endif
+                                                        <div class="formatDayCustom" data-type="short" data-format="{{ $item->created_at }}">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
+                                                <div class="text-bl-1 limit-text-row-2 mt-3 mb-1">
                                                     <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
                                                 </div>
+                                                <p class="limit-text-row-2 mb-0">{{ $item->motangan }}</p>
+
                                             </div>
                                         </div>
                                     </div>
@@ -514,8 +514,7 @@
                     <div class="tab-pane fade" id="lastweek" role="tabpanel" aria-labelledby="lastweek-tab">
                         <div class="row">
                         @foreach ($blog3 as $item)
-
-                            <div class="col-xl-7 pr-0">
+                            <div class="col-xl-7 pr-0" >
                                 <div class="blog-bigsize">
                                     <div class="box-danhmuc">
                                         {{$item->danhmuc}}
@@ -526,10 +525,10 @@
                                     </div>
 
                                     <div class="blog-content-bigsize">
-                                        <div class="blog-text-1 limit-text-row-1">
+                                        <div class="blog-text-1 limit-text-row-2">
                                             <a href="{{ asset('bai-viet') }}/{{$item->slug}}">{{$item->name}}</a>
                                         </div>
-                                        <div class="blog-text-2 mt-2">
+                                        <div class="blog-text-2 mt-2 formatDayCustom" data-type="long" data-format="{{ $item->created_at }}">
                                             @if ($item->created_at != null)
                                                 {{$item->created_at->format('Y.m.d')}}
                                             @endif
@@ -557,7 +556,7 @@
                                 <div class="list-blog-small pl-5">
                                 @foreach ($blog4 as $item)
 
-                                    <div class="small-blog-item box-tin-hv pt-0">
+                                    <div class="small-blog-item box-tin-hv @if ($loop->index == 0) pt-0 @endif ">
                                         <div class="row">
                                             <div class="col-xl-5">
                                                 <div class="img-1 image-tin-1">
@@ -566,19 +565,20 @@
                                             </div>
                                             <div class="col-xl-7 pl-0 align-self-center">
                                                 <div class="row">
-                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                    <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 mt-1">
                                                         <div class="mr-3">
                                                             <a class="box-danhmuc-1">
                                                             {{$item->danhmuc}}</a>
                                                         </div>
-                                                        @if ($item->created_at != null)
-                                                            {{$item->created_at->format('Y.m.d')}}
-                                                        @endif
+                                                        <div class="formatDayCustom" data-type="short" data-format="{{ $item->created_at }}">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="text-bl-1 limit-text-row-1 mb-2 mt-1">
+                                                <div class="text-bl-1 limit-text-row-2 mt-3 mb-1">
                                                     <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">{{$item->name}}</a>
                                                 </div>
+                                                <p class="limit-text-row-2 mb-0">{{ $item->motangan }}</p>
+
                                             </div>
                                         </div>
                                     </div>

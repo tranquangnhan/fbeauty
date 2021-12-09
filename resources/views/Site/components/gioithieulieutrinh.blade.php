@@ -32,7 +32,7 @@
                                     alt="">
                             </div>
                             <div class="text-2 mt-4 color-white font-weight-300 ">
-                                Lo lắng giữa thị trường “xô bồ” của mỹ phẩm có chứa thành phần hóa học ảnh hưởng xấu đến da thì mỹ phẩm được chiết xuất từ thiên nhiên ra đời giống như cứu cánh cho phái đẹp.
+                                Đến với Spa bạn sẽ được thăm khám, tư vấn, đưa ra một liệu trình phù hợp với làn da của bạn
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="text-2 mt-4 color-white font-weight-300">
-                                Hãy theo dõi chũng tôi để biết được những ưu đãi đặc biệt dành cho khách hàng, chúng tôi cam đoan những dòng mỹ phẩm nổi tiếng và mới nhất sẽ nhanh chóng nằm trong tay của bạn còn chờ gì mà không theo dõi ngay.
+                                Căn theo liệu trình của bác sỹ, từng bước hoàn thành liệu trình bạn sẽ có làn da mong muốn
                             </div>
                         </div>
 
@@ -70,7 +70,7 @@
                             </div>
 
                             <div class="text-2 mt-4 color-white font-weight-300">
-                                Với đội ngũ nhân viên chuyên nghiệp phục vụ bạn 24/7 chỉ cần nhấc máy và gọi chúng tôi sẽ hỗ trợ cho bạn tận tình và đưa ra giải pháp hợp lý giúp bạn có thân hình toàn diện.
+                                Đội ngũ chuyên nghiệp hỗ trợ bạn 24/7 chỉ cần nhấc máy và gọi chúng tôi
                             </div>
                         </div>
                     </div>

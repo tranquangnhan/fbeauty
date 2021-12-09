@@ -27,6 +27,7 @@ use App\Repositories\LienHe\LienHeRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use App\Repositories\YeuThich\YeuThichRepository;
+use App\Repositories\Banner\BannerRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +54,7 @@ class HomeController extends Controller
     private $DonHang;
     private $LieuTrinh;
     private $YeuThich;
-
+    private $Banner;
     /**
      * CosoController constructor.
      */
@@ -74,7 +75,8 @@ class HomeController extends Controller
         HoaDonRepository $HoaDon,
         HoaDonChiTietRepository $HoaDonChiTiet,
         DonHangRepository $DonHang,
-        YeuThichRepository $YeuThich
+        YeuThichRepository $YeuThich,
+        BannerRepository $Banner
     )
     {
         $this->freeSMSController = new freeSMSController;
@@ -90,19 +92,24 @@ class HomeController extends Controller
         $this->SanPhamChiTiet = $SanPhamChiTiet;
         $this->LieuTrinh = $LieuTrinh;
         $this->LienHe = $LienHe;
+        $this->HoaDon = $HoaDon;
+        $this->HoaDonChiTiet = $HoaDonChiTiet;
+        $this->DonHang = $DonHang;
+        $this->YeuThich = $YeuThich;
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
+        $this->Banner = $Banner;
+
         $danhmuc = $this->DanhMuc->getdanhmucshow();
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
-        $this->HoaDon = $HoaDon;
-        $this->HoaDonChiTiet = $HoaDonChiTiet;
-        $this->DonHang=$DonHang;
-        $this->YeuThich=$YeuThich;
+        $listBanner = $this->getBanner();
+
         $this->data = array(
             'danhmuc' => $danhmuc,
             'listCoSo' => $listCoSo,
             'listDanhMucDichVu' => $listDanhMucDichVu,
             'pathActive' => '',
+            'listBanner' => $listBanner
         );
     }
 
@@ -1475,5 +1482,10 @@ class HomeController extends Controller
         $infokh=$this->KhachHang->find(session()->get("khachHang")->id);
         session()->put("khachHang", $infokh);
         return true;
+    }
+
+    public function getBanner() {
+        $listBanner = $this->Banner->getBannerHien();
+        return $listBanner;
     }
 }

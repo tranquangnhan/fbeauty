@@ -105,30 +105,6 @@ function getTextDateOnBrowser(index, ngayThang, thuTrongTuan) {
     return text;
 }
 
-function getThuVietHoa(numberThu) {
-    var text = '';
-
-    if (numberThu == 0) {
-        text = 'CN';
-    } else if (numberThu == 1) {
-        text = 'T2';
-    } else if (numberThu == 2) {
-        text = 'T3';
-    } else if (numberThu == 3) {
-        text = 'T4';
-    } else if (numberThu == 4) {
-        text = 'T5';
-    } else if (numberThu == 5) {
-        text = 'T6';
-    } else if (numberThu == 6) {
-        text = 'T7';
-    }
-
-    return text;
-}
-
-
-
 function loadGio(ngay, idNhanVien) {
     if (ngay == null) {
         ngay = moment();
