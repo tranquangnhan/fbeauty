@@ -297,22 +297,22 @@
 
                             <div class="list-social">
                                 <a href="https://www.facebook.com/FBeauty-103098148891666">
-                                    <span><i class="fab fa-facebook-f"></i> <span>15000</span> <small class="fz-0em9"> Like</small></span>
+                                    <span><i class="fab fa-facebook-f"></i> <span>15000</span></span>
                                     <span class="fz-0em9">Like</span>
                                 </a>
 
                                 <a href="https://twitter.com/HuynTrn26589599">
-                                    <span><i class="fab fa-twitter"></i> <span>15000</span> <small class="fz-0em9"> Tweet</small></span>
+                                    <span><i class="fab fa-twitter"></i> <span>15000</span></span>
                                     <span class="fz-0em9">Like</span>
                                 </a>
 
                                 <a href="https://www.instagram.com/fbeautyspa__/">
-                                    <span><i class="fab fa-instagram"></i><span>32k+</span> <small class="fz-0em9"> Follower</small></span>
+                                    <span><i class="fab fa-instagram"></i><span>32k+</span></span>
                                     <span class="fz-0em9">Follower</span>
                                 </a>
 
                                 <a href="https://www.youtube.com/channel/UCKmLj9UShXnCrweFbjA9Jvg">
-                                    <span><i class="fab fa-youtube"></i> <span>15000</span> <small class="fz-0em9"> Subscriber</small></span>
+                                    <span><i class="fab fa-youtube"></i> <span>15000</span></span>
                                     <span class="fz-0em9">Subscribe</span>
                                 </a>
                             </div>
