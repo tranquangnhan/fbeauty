@@ -452,7 +452,6 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Thông tin tài khoản'],
         ];
 
-
         if ($khachHang) {
             $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
             $this->data['dataLieuTrinh'] = $dataLieuTrinh;
@@ -460,11 +459,7 @@ class HomeController extends Controller
             $this->data['lichSuDatLich1'] = $this->getDuLieuTabLichSuDatLich1($khachHang->id);
             $this->data['lichSuDatLich2'] = $this->getDuLieuTabLichSuDatLich2($khachHang->id);
             $this->data['lichSuDatLich3'] = $this->getDuLieuTabLichSuDatLich3($khachHang->id);
-
-
-
-
-
+            // dd($this->data['lichSuDatLich']);
         } else {
             $this->data['dataLieuTrinh'] = [];
         }
@@ -1496,4 +1491,7 @@ class HomeController extends Controller
         session()->put("khachHang", $infokh);
         return true;
     }
+
+   
+    
 }

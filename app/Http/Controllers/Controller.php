@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\NhanVien;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -216,4 +217,15 @@ class Controller extends BaseController
     }
 
 
+    public static function findNameKhById($id){
+        return NhanVien::findNhanVienById($id)->name;
+    }
+
+    public static function minusDate($startTime, $endTime){
+        $start_time = \Carbon\Carbon::parse(date('Y-m-d',$startTime));
+        $finish_time = \Carbon\Carbon::parse(date('Y-m-d',$endTime));
+        $newDate =  $start_time->diffInDays($finish_time, false);
+        // dd($newDate
+        return $newDate;
+    }
 }

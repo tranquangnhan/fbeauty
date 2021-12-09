@@ -154,4 +154,5 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->where('datlich.trangthai', Controller::DATLICH_HUY)
         ->get();
     }
+    
 }

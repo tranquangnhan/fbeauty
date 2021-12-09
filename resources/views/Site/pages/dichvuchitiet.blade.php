@@ -32,7 +32,7 @@
                     <div class="border-z border-right-z"></div>
                 </div>
 
-                <div class="mota mt-4 noidung">
+                <div class="mota mt-4">
                     <p>
                         <?php echo $detaildichvu->noidung;?>
                     </p>
