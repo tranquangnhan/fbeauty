@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="">Giảm Tối Đa Theo Giá </label><span style="color:red;"> (*)</span>
-                                                <input type="number" name="number" id="giamgia" class="form-control @error('number') border-error @enderror number" value="{{$data->number}}"  parsley-trigger="change" required
+                                                <input type="number" name="number" id="giamgia" class="form-control @error('number') border-error @enderror number" value="{{$data->number}} 0"  parsley-trigger="change" required
                                                     placeholder="Khoảng Giá Từ " >
                                             </div>
                                             <div class="form-group col-md-4">

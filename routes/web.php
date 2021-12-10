@@ -80,6 +80,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/trangthaithanhtoan/{id}', [HoaDonController::class, "trangthaithanhtoan"]);
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
 
+    // quản lý đặt lịch
     Route::resource('datlich', DatLichController::class);
     Route::resource('lich', LichController::class);
     Route::get('lich/{id}/thungay/{idthu}', [LichController::class, 'showlich']);
@@ -113,26 +114,11 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('khachhang/lieutrinh/{id}/edit', [LieuTrinhController::class, 'editLieuTrinhChiTiet']);
     Route::patch('khachhang/lieutrinh/{id}/update', [KhachHangController::class, 'updateLieuTrinh']);
 
-
     Route::resource('datlichremake', DatLichRemakeController::class);
     Route::get('changeStatusDatLich/{id}/{status}', [DatLichRemakeController::class, "changeStatusDatLich"]);
     Route::get('getDuLieuDatLichChoCalendar/{ngay}', [DatLichRemakeController::class, "getDuLieuDatLichChoCalendar"]);
     Route::get('changeStatusTime/{id}/{status}', [DatLichRemakeController::class, "changeStatusTime"]);
 
-    /**
-     *1: Lấy DỊch vụ đến Hóa đơn
-     * 2: Lấy Sp chi tiết đến hóa Đơn
-     * 3: Lấy hóa đơn chi tiết
-     * 4: lấy sản phẩm chi tiết
-     * 5: Lấy dịch vụ
-     * 6: Lấy giảm giá
-     * 7: Xét điều kiện giảm giá
-     * 8:Cập nhật giá
-     * 9:Xóa
-     * 10:Thêm sản phẩm vào hóa đơn chi tiết
-     * 11:Thêm dịch vụ vào hóa đơn chi tiết
-     * 12: Cập nhật số lượng
-     */
     Route::get('/getDichVu', [DichVuController::class, 'getDichVuToHoaDon']);
     Route::get('/getSanPham', [SanPhamChiTietController::class, 'getSanPhamToHoaDon']);
     Route::get('hoadon/{id}/edit/getHoaDonChiTiet', [HoaDonChiTietController::class, 'getHoaDonChiTiet']);
@@ -150,7 +136,22 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class, 'addHoaDonByIdLieuTrinh']);
     //Banner
     Route::resource('banner', BannerController::class);
+        /**
+     *1: Lấy DỊch vụ đến Hóa đơn
+     * 2: Lấy Sp chi tiết đến hóa Đơn
+     * 3: Lấy hóa đơn chi tiết
+     * 4: lấy sản phẩm chi tiết
+     * 5: Lấy dịch vụ
+     * 6: Lấy giảm giá
+     * 7: Xét điều kiện giảm giá
+     * 8:Cập nhật giá
+     * 9:Xóa
+     * 10:Thêm sản phẩm vào hóa đơn chi tiết
+     * 11:Thêm dịch vụ vào hóa đơn chi tiết
+     * 12: Cập nhật số lượng
+     */
 });
+
 
 Route::group(['prefix' => '/'], function () {
     Route::get('', [HomeController::class, "index"]);
