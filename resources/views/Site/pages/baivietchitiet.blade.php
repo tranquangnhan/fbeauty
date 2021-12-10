@@ -49,7 +49,7 @@
                                     <div class="border-z border-right-z"></div>
                                 </div>
 
-                                <div class="noidung" style="font-family:'Roboto', sans-serif !important;"><br>
+                                <div class="noidung divnoidung" style="font-family:'Roboto', sans-serif !important;"><br>
                                     <a >{!! $viewdetail[0]->noidung !!}</a>
                                 </div>
                             </div>
