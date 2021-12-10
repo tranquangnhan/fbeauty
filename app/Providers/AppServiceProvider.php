@@ -15,6 +15,8 @@ use App\Repositories\GioHangChiTiet\GioHangChiTietRepository;
 use App\Repositories\GioHangChiTiet\GioHangChiTietRepositoryInterface;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\KhachHang\KhachHangRepositoryInterface;
+use App\Repositories\TheoDoi\TheoDoiRepository;
+use App\Repositories\TheoDoi\TheoDoiRepositoryInterface;
 use App\Repositories\YeuThich\YeuThichRepository;
 use App\Repositories\YeuThich\YeuThichRepositoryInterface;
 use Illuminate\Support\Facades\View;
@@ -72,6 +74,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(DonHangChiTietRepository::class, DonHangChiTietRepository::class);
         $this->app->singleton(KhachHangRepositoryInterface::class, KhachHangRepository::class);
         $this->app->singleton(BannerReponsitoryinterface::class, BannerRepository::class);
+        $this->app->singleton(TheoDoiRepositoryInterface::class, TheoDoiRepository::class);
     }
 
     /**

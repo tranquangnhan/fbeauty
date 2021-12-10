@@ -297,12 +297,12 @@
 
                             <div class="list-social">
                                 <a href="https://www.facebook.com/FBeauty-103098148891666">
-                                    <span><i class="fab fa-facebook-f"></i> <span>15000</span> </span>
+                                    <span><i class="fab fa-facebook-f"></i> <span>15000</span></span>
                                     <span class="fz-0em9">Like</span>
                                 </a>
 
                                 <a href="https://twitter.com/HuynTrn26589599">
-                                    <span><i class="fab fa-twitter"></i> <span>15000</span> </span>
+                                    <span><i class="fab fa-twitter"></i> <span>15000</span></span>
                                     <span class="fz-0em9">Like</span>
                                 </a>
 

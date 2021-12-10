@@ -22,12 +22,12 @@ class DatLichSeeder extends Seeder
         $dateTime1 = $date . '9:00:00';
         $dateTime2 = $date . '10:00:00';
         $dateTime3 = $date . '11:00:00';
-        $dateTime4 = $date . '17:00:00';
+        $dateTime4 = $date . '19:00:00';
 
         $yesterdayTime1 = $yesterday . '9:00:00';
         $yesterdayTime2 = $yesterday . '10:00:00';
         $yesterdayTime3 = $yesterday . '11:00:00';
-        $yesterdayTime4 = $yesterday . '17:00:00';
+        $yesterdayTime4 = $yesterday . '19:00:00';
 
         $subYear = $subYearr . '9:00:00';
         DB::table('datlich')->delete();
@@ -52,13 +52,13 @@ class DatLichSeeder extends Seeder
             ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 5, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime1)],
             ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 6, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime2)],
             ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 2, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime3)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime4)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime1)],
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime2)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime3)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime4)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime1)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime2)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($yesterdayTime3)],
 
-            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
-            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 7, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
+            ['idcoso' => 1, 'iddichvu' => '[1]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
+            ['idcoso' => 1, 'iddichvu' => '[1, 4]', 'idkhachhang' => 8, 'idnhanvien' => 0, 'thoigiandat' => strtotime($subYear)],
         ]);
     }
 }
