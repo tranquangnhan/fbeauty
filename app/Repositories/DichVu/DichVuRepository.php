@@ -183,8 +183,9 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->get();
     }
 
-    public function CheckDichVuByIdDanhMuc($id){
+    public function CheckDichVuByIdDanhMuc($id)
+    {
         return $this->model->select("*")->where('iddm', $id)->doesntExist();
 
-
+    }
 }
