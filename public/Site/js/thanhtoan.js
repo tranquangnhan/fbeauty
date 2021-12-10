@@ -97,11 +97,13 @@ function ApplyGiamGia() {
 }
 
 function HuyGiamGia() {
-    $('#tongtiensaugiam').html(0);
-    $("#idgiam").val("");
-    $("#magiamgia").val("");
-    showGioHang();
-    LuuSessionGiamGia(0)
+    if (window.location == domain+'/thanh-toan') {
+        $('#tongtiensaugiam').html(0);
+        $("#idgiam").val("");
+        $("#magiamgia").val("");
+        showGioHang();
+        LuuSessionGiamGia(0)
+    }
 }
 
 function phuongthucgiaohang(bien) {

@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
-                            <h4 class="mt-0 header-title">Thêm nhân viên</h4>
+                            <h4 class="mt-0 header-title">Thêm Banner</h4>
                             <div>
                                 <a href="{{route("banner.index")}}"
                                    class="btn btn-primary waves-effect waves-light mb-3">Danh sách Banner</a>
@@ -95,7 +95,7 @@
                                                    class="btn btn-light waves-effect"
                                                 >Huỷ
                                                 </a>
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light " id="them">
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light ml-1" id="them">
                                                     Thêm
                                                 </button>
                                             </div>

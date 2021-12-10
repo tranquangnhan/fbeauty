@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Repositories\HoaDon\HoaDonRepository;
 use Carbon\Carbon;
 
 use App\Http\Controllers\Controller;
@@ -16,15 +17,16 @@ class GiamGiaController extends Controller
 {
     private $GiamGia;
     private $DonHang;
+    private $HoaDon;
 
     /**
      * GiamGiaController constructor.
      */
-    public function __construct(GiamGiaRepository $GiamGia ,DonHangRepository $DonHang)
+    public function __construct(GiamGiaRepository $GiamGia, DonHangRepository $DonHang, HoaDonRepository $HoaDon)
     {
         $this->GiamGia = $GiamGia;
         $this->DonHang = $DonHang;
-        // ProvinceRepository $Province , WardsRepository $wards
+        $this->HoaDon = $HoaDon;
     }
 
 
@@ -50,25 +52,25 @@ class GiamGiaController extends Controller
     {
         // $validated = $request->validated();
         $mytime = Carbon::now()->format('Y-m-d');
-    if($request->ngayhethan > $request->ngaytao){
-        if ($request->ngaytao >= $mytime) {
-            $data = [
-                'name' => $request->name,
-                'ma' => $request->ma,
-                'number' => $request->number,
-                'max' => $request->max,
-                'loai' => $request->loai,
-                'ngaytao' => strtotime($request->ngaytao),
-                'ngayhethan' =>strtotime($request->ngayhethan)
-            ];
+        if ($request->ngayhethan > $request->ngaytao) {
+            if ($request->ngaytao >= $mytime) {
+                $data = [
+                    'name' => $request->name,
+                    'ma' => $request->ma,
+                    'number' => $request->number,
+                    'max' => $request->max,
+                    'loai' => $request->loai,
+                    'ngaytao' => strtotime($request->ngaytao),
+                    'ngayhethan' => strtotime($request->ngayhethan)
+                ];
+            } else {
+                return redirect('quantri/giamgia')->with('Vui lòng kiểm tra ngày tạo phải lớn hơn hoặc bằng ngày hiện tại');
+            }
         } else {
-            return redirect('quantri/giamgia')->with('Vui lòng kiểm tra ngày tạo phải lớn hơn hoặc bằng ngày hiện tại');
+            return redirect('quantri/giamgia')->with('Vui lòng kiểm tra ngày tạo phải nhỏ hơn ngày hết hạn');
         }
-    } else {
-        return redirect('quantri/giamgia')->with('Vui lòng kiểm tra ngày tạo phải nhỏ hơn ngày hết hạn');
-    }
 
-       $data= $this->GiamGia->create($data);
+        $data = $this->GiamGia->create($data);
         return redirect('quantri/giamgia')->with('success', 'Thêm thành công');
     }
 
@@ -110,26 +112,24 @@ class GiamGiaController extends Controller
     public function update(GiamGia $request, $id)
     {
         $validated = $request->validated();
-        if($validated == true ){
-        $data = [
-            'name' => $request->name,
-            'ma' => $request->ma,
-            'number' => $request->number,
-            'max' => $request->max,
-            'loai' => $request->loai,
-            'ngaytao' => strtotime($request->ngaytao),
-            'ngayhethan' =>strtotime($request->ngayhethan)
-        ];
+        if ($validated == true) {
+            $data = [
+                'name' => $request->name,
+                'ma' => $request->ma,
+                'number' => $request->number,
+                'max' => $request->max,
+                'loai' => $request->loai,
+                'ngaytao' => strtotime($request->ngaytao),
+                'ngayhethan' => strtotime($request->ngayhethan)
+            ];
 
 
-       $this->GiamGia->update($id,$data);
+            $this->GiamGia->update($id, $data);
 
-       return redirect('quantri/giamgia')->with('thanhcong', 'Sửa giảm giá thành công');
-    } else {
-        return redirect('quantri/giamgia')->with('thatbai', 'giảm giá không hợp lệ');
-    }
-
-        // return redirect('quantri/giamgia')->with('success','Sửa thành công');
+            return redirect('quantri/giamgia')->with('thanhcong', 'Sửa giảm giá thành công');
+        } else {
+            return redirect('quantri/giamgia')->with('thatbai', 'giảm giá không hợp lệ');
+        }
     }
 
     /**
@@ -138,34 +138,26 @@ class GiamGiaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-//    public function destroy($id)
-//    {
-//        $this->GiamGia->delete($id);
-//
-//        return redirect('quantri/giamgia')->with('success', 'Xoá thành công');
-//    }
-    // public function findDonHangByIdGiamGia($id, $idDonHang){
-    //     $data=$this->DonHang->getDichVuByID($idDonHang);
-    //     return $data;
-    // }
     public function destroy($id)
     {
         $hasChiTiet = $this->DonHang->getDonHangIdGiamGia($id);
-        if(count($hasChiTiet)>0){
-            return redirect('quantri/giamgia')->withErrors('Xoá không thành công, giảm giá tồn tại trong đơn hàng và hóa đơn!');
-        }else{
+        $CheckHoaDon = $this->HoaDon->getHoaDonBYIdGiamGia($id);
+        if (count($hasChiTiet) > 0 && $CheckHoaDon == false) {
+            return 1;
+        } else {
             $this->GiamGia->delete($id);
-            return redirect('quantri/giamgia')->with('success','Xoá thành công!');
+            return 0;
         }
     }
 
-    public function CheckGiamGia($name, $gia){
+    public function CheckGiamGia($name, $gia)
+    {
         $checkCode = $this->GiamGia->CheckCODE($name);
         if ($checkCode == false) {
             $giamgia = $this->GiamGia->GetGiamGiaByCODE($name);
             if ($gia >= $giamgia[0]["max"]) {
                 $today = date('Y-m-d');
-                if (strtotime($today) < $giamgia[0]["ngayhethan"]) {
+                if (strtotime($today) < $giamgia[0]["ngayhethan"] && strtotime($today) > $giamgia[0]["ngaytao"]) {
                     return $giamgia;
                 } else {
                     return 0;
@@ -178,11 +170,12 @@ class GiamGiaController extends Controller
         }
     }
 
-    public function capnhatgiamgiasession($giam){
+    public function capnhatgiamgiasession($giam)
+    {
         session()->get("tiengiam");
-        if ($giam <=0){
+        if ($giam <= 0) {
             session()->forget("tiengiam");
-        }else{
+        } else {
             session()->put("tiengiam", $giam);
         }
         return session()->get("tiengiam");

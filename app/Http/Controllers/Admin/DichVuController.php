@@ -79,7 +79,7 @@ class DichVuController extends Controller
             ];
             $this->DichVu->create($DichVu);
             return redirect('quantri/dichvu')->with('success', 'Thêm dịch vụ thành công');
-         
+
     }
 
     /**
@@ -146,9 +146,13 @@ class DichVuController extends Controller
      */
     public function destroy($id)
     {
-        $this->DichVu->delete($id);
-
-        return redirect('quantri/dichvu')->with('success', 'Xoá thành công');
+        $delete=$this->DichVu->delete($id);
+        if ($delete){
+            return 0;
+        }
+        else{
+            return 1;
+        }
     }
 
     public function getDichVuByIdToHoaDon($id, $iddv){

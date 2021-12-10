@@ -65,4 +65,10 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
     public function getHoaDonIdCoSo($id){
         return $this->model->where('idcoso',"=",$id)->get();
     }
+
+    public function getHoaDonBYIdGiamGia($id){
+        return  $this->model->select("*")
+            ->where('idgiamgia', '=', $id)
+            ->doesntExist();
+    }
 }

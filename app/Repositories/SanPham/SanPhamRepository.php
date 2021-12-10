@@ -95,5 +95,12 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             ->get();
     }
 
+    public function CheckSanPhamByIdDanhMuc($id){
+        return $this->model->select("*")
+            ->where('iddanhmuc', $id)
+            ->orwhere('idthuonghieu', $id)
+            ->doesntExist();
+    }
+
 
 }

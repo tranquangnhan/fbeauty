@@ -42,7 +42,9 @@
                                 @foreach($hoadon as $index => $hd)
                                     <tr>
                                         <td>{{$index+=1}}</td>
-                                        <td> <strong>Mã hóa đơn: </strong> {{date_format(date_create($hd->created_at), 'YmdHis')}}<br>
+                                        <td><strong>Mã hóa
+                                                đơn: </strong> {{date_format(date_create($hd->created_at), 'YmdHis')}}
+                                            <br>
                                             <strong>Tên: </strong>{{$hd->tenKh}}
                                             <br>
                                             <strong>SĐT: </strong> {{$hd->sodienthoai}}
@@ -61,26 +63,28 @@
                                             <br>
                                             <strong>Email: </strong> {{$hd->emailNV}}
                                         </td>
-                                        <td><strong>Trước
-                                                giảm: </strong> {{number_format($hd->tongtientruocgiamgia), ""}} VND
+                                        <td><strong>
+                                                Trước giảm: </strong> {{number_format($hd->tongtientruocgiamgia), ""}}
+                                            VND
                                             <br>
                                             <strong>Sau giảm: </strong>{{number_format($hd->tongtiensaugiamgia), ""}}
                                             VND
                                         </td>
                                         <td><?php echo ($hd->trangthai == \App\Http\Controllers\Controller::TRANGTHAITHANHTOAN) ?
-                                                ' <a href="'.URL::to("quantri/hoadon/trangthaithanhtoan", $hd->id).'"><span class="badge badge-success p-1"><i class="fa fa-check-circle" ></i> Đã thanh toán</span></a>' :
-                                                '<a href="'.URL::to("quantri/hoadon/trangthaithanhtoan", $hd->id).'"><span class="badge badge-danger p-1"><i class="fa fa-minus-circle"></i> Chưa thanh toán</span></a>';?>
+                                                ' <a href="' . URL::to("quantri/hoadon/trangthaithanhtoan", $hd->id) . '"><span class="badge badge-success p-1"><i class="fa fa-check-circle" ></i> Đã thanh toán</span></a>' :
+                                                '<a href="' . URL::to("quantri/hoadon/trangthaithanhtoan", $hd->id) . '"><span class="badge badge-danger p-1"><i class="fa fa-minus-circle"></i> Chưa thanh toán</span></a>';?>
                                             <br>
                                             <strong>Ngày: </strong> {{date_format(date_create($hd->created_at), "d-m-Y")}}
                                             <br>
-                                            <strong>Giờ: </strong> {{date_format(date_create($hd->created_at), "H:i:s")}}
-                                            <br>
 
                                         </td>
-                                        <td><a href="{{route("hoadonchitiet.show",$hd->id)}}" class="btn btn-primary mb-2" data-toggle="tooltip" data-placement="right" title="Xem hóa đơn" ><i
-                                                    class="fa fa-eye"  style="color: white;"></i></a> <br>
-                                            <a href="{{route("hoadon.edit",$hd->id)}}" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Sửa" ><i
-                                                    class="fa fa-edit"  style="color: white;"></i></a>
+                                        <td><a href="{{route("hoadonchitiet.show",$hd->id)}}"
+                                               class="btn btn-primary mb-2" data-toggle="tooltip" data-placement="right"
+                                               title="Xem hóa đơn"><i
+                                                    class="fa fa-eye" style="color: white;"></i></a> <br>
+                                            <a href="{{route("hoadon.edit",$hd->id)}}" class="btn btn-primary"
+                                               data-toggle="tooltip" data-placement="right" title="Sửa"><i
+                                                    class="fa fa-edit" style="color: white;"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

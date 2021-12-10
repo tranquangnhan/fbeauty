@@ -25,6 +25,7 @@ class HoaDonController extends Controller
     private $khachhang;
     private $giamgia;
     private $LieuTrinh;
+    private $LieuTrinhChiTiet;
     public function __construct(
         GiamGiaRepository $giamgia,
         KhachHangRepository $khachhang,
@@ -151,7 +152,7 @@ class HoaDonController extends Controller
             if ($tien >= $giamgia[0]["max"]) {
                 $ma = ['idgiamgia' => $giamgia[0]["id"]];
                 $today = date('Y-m-d');
-                if (strtotime($today) < $giamgia[0]["ngayhethan"]) {
+                if (strtotime($today) < $giamgia[0]["ngayhethan"] && $giamgia[0]["ngaytao"] < strtotime($today)) {
                     $this->hoadon->update($id, $ma);
                     return true;
                 } else {
