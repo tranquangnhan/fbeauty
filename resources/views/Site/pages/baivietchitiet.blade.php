@@ -20,12 +20,14 @@
                                             <a href="{{ asset('danh-muc-bai-viet') }}/{{$viewdetail[0]->slugdm}}" class="box-danhmuc-1 fz-1em2">
                                                 {{$viewdetail[0]->danhmuc}}</a>
                                         </div>
-                                        <span class="fz-1em1">@if ($viewdetail[0]->created_at != null)
-                                            <?php
-                                                $timestamp = strtotime($viewdetail[0]->created_at);
-                                                print date('d-m-y', $timestamp );
-                                            ?>                                                          
+                                        <div class="formatDayCustom" data-type="long" data-format="{{$viewdetail[0]->created_at}}">
+                                            <span class="fz-1em1">@if ($viewdetail[0]->created_at != null)
+                                                <?php
+                                                    $timestamp = strtotime($viewdetail[0]->created_at);
+                                                    print date('d-m-y', $timestamp );
+                                                ?>                                                          
                                             @endif</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="name-blog mt-3">
@@ -140,12 +142,14 @@
                                                         <a href="{{ asset('danh-muc-bai-viet') }}/{{$data1->slugdm}}" class="box-danhmuc-1">
                                                             {{$data->danhmuc}}</a>
                                                     </div>
-                                                    <span>@if ($data->created_at != null)
-                                                        <?php
-                                                            $timestamp = strtotime($data->created_at);
-                                                            print date('d-m-y', $timestamp );
-                                                        ?>                                                          
+                                                    <div class="formatDayCustom" data-type="short" data-format="{{$data->created_at}}">
+                                                        <span>@if ($data->created_at != null)
+                                                            <?php
+                                                                $timestamp = strtotime($data->created_at);
+                                                                print date('d-m-y', $timestamp );
+                                                            ?>                                                          
                                                         @endif </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">

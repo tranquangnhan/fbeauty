@@ -105,10 +105,14 @@
                                                                             <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slugdm}}" class="box-danhmuc-1">
                                                                                {{$item->danhmuc}} </a>
                                                                         </div>
-                                                                        <span><?php
-                                                                            $timestamp = strtotime($item->created_at);
-                                                                            print date('d-m-y', $timestamp );
-                                                                            ?></span>
+                                                                        <div class="formatDayCustom" data-type="short" data-format="{{$item->created_at}}">
+                                                                            <span>
+                                                                                <?php
+                                                                                $timestamp = strtotime($item->created_at);
+                                                                                print date('d-m-y', $timestamp );
+                                                                                ?>
+                                                                            </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
@@ -143,7 +147,7 @@
                                                     <div class="blog-text-1 limit-text-row-2">
                                                         <a href="{{ asset('bai-viet') }}/{{$item1->slug}}">{{$item1->name}}</a>
                                                     </div>
-                                                    <div class="blog-text-2 mt-2">
+                                                    <div class="blog-text-2 mt-2 formatDayCustom" data-type="long" data-format="{{$item1->created_at}}">
                                                         <?php
                                                             $timestamp = strtotime($item1->created_at);
                                                             print date('d-m-y', $timestamp );
@@ -188,10 +192,14 @@
                                                                             <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slugdm}}" class="box-danhmuc-1">
                                                                             {{$item->danhmuc}} </a>
                                                                         </div>
-                                                                        <span><?php
-                                                                            $timestamp = strtotime($item->created_at);
-                                                                            print date('d-m-y', $timestamp );
-                                                                            ?></span>
+                                                                        <div class="div formatDayCustom" data-type="short" data-format="{{$item->created_at}}">
+                                                                            <span>
+                                                                                <?php
+                                                                                    $timestamp = strtotime($item->created_at);
+                                                                                    print date('d-m-y', $timestamp );
+                                                                                ?>
+                                                                            </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="text-bl-1 limit-text-row-2 mb-2 mt-1">
@@ -243,12 +251,14 @@
                                                     <a href="{{ asset('danh-muc-bai-viet') }}/{{$blognewtt[0]->slugdm}}" class="box-danhmuc-1">
                                                         {{$blognewtt[0]->danhmuc}}</a>
                                                 </div>
-                                                <span>@if ($blognewtt[0]->created_at != null)
-                                                   <?php
-                                                    $timestamp = strtotime($blognewtt[0]->created_at);
-                                                    print date('d-m-y', $timestamp );
+                                                <div class="div formatDayCustom" data-type="long" data-format="{{$blognewtt[0]->created_at}}">
+                                                    <span>@if ($blognewtt[0]->created_at != null)
+                                                    <?php
+                                                        $timestamp = strtotime($blognewtt[0]->created_at);
+                                                        print date('d-m-y', $timestamp );
                                                     ?>
-                                                @endif </span>
+                                                     @endif </span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
@@ -271,13 +281,16 @@
                                                         <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1 maincolor">
                                                         {{$item->danhmuc}}</a>
                                                     </div>
-                                                    <span class="color-gray-5 fz-1em2">
-                                                        @if ($item->created_at != null)
-                                                            <?php
-                                                                $timestamp = strtotime($item->created_at);
-                                                                print date('d-m-y', $timestamp );
-                                                            ?>
-                                                        @endif </span>
+                                                    <div class="div formatDayCustom" data-type="long" data-format="{{$blognewtt[0]->created_at}}">
+                                                        <span class="color-gray-5 fz-1em2">
+                                                            @if ($item->created_at != null)
+                                                                <?php
+                                                                    $timestamp = strtotime($item->created_at);
+                                                                    print date('d-m-y', $timestamp );
+                                                                ?>
+                                                            @endif 
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
@@ -374,14 +387,15 @@
                                                             <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                             {{$item->name}}</a>
                                                         </div>
-
-                                                         <span>
+                                                        <div class="div formatDayCustom" data-type="short" data-format="{{$blognewtt[0]->created_at}}">
+                                                            <span>
                                                             @if ($data->created_at != null)
                                                                 <?php
                                                                     $timestamp = strtotime($data->created_at);
                                                                     print date('d-m-y', $timestamp );
                                                                 ?>
                                                             @endif</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
@@ -438,8 +452,11 @@
                                                         <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1 maincolor">
                                                         {{$item->danhmuc}}</a>
                                                     </div>
-                                                    <span class="color-gray-6">@if ($item->created_at != null)
-                                                        {{$item->created_at->format('d-m-y')}}@endif</span>
+                                                    <div class="div formatDayCustom" data-type="short" data-format="{{$blognewtt[0]->created_at}}">
+                                                        <span class="color-gray-6">@if ($item->created_at != null)
+                                                            {{$item->created_at->format('d-m-y')}}@endif
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-1 mb-2 mt-3">
@@ -491,13 +508,15 @@
                                                                     <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                                         {{$item->name}}</a>
                                                                 </div>
-                                                                <span> @if ($data->created_at != null)
-                                                                    <?php
-                                                                        $timestamp = strtotime($data->created_at);
-                                                                        print date('d-m-y', $timestamp );
-                                                                    ?>
-                                                                    @endif
-                                                                </span>
+                                                                <div class=" formatDayCustom" data-type="short" data-format="{{$blognewtt[0]->created_at}}">
+                                                                    <span> @if ($data->created_at != null)
+                                                                        <?php
+                                                                            $timestamp = strtotime($data->created_at);
+                                                                            print date('d-m-y', $timestamp );
+                                                                        ?>
+                                                                        @endif
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
@@ -543,7 +562,7 @@
                                     </div>
                                     <div class="col-xl-7 pl-0 align-self-center">
                                         <div class="row">
-                                            <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                            <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 formatDayCustom" data-type="short" data-format="{{$data->created_at}}">
                                                 <span>
                                                     @if ($data->created_at != null)
                                                         <?php
