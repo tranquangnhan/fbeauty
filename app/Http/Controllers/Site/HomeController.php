@@ -277,13 +277,15 @@ class HomeController extends Controller
     }
     public function viewDanhmucBaiViet($slug){
         $skip = 0;
-        $take = 12;
+        $take = 9;
         $danhmucct = $this->DanhMuc->getAllDanhMucchitiet($skip, $take);
-        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
         $viewdetail = $this->Blog->getBlogByslugdm($slug);
+        $viewbt = $this->Blog->getblogbyslugdmbt($slug);
+        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
 
         $this->data['danhmucct'] = $danhmucct;
         $this->data['viewdetail'] = $viewdetail;
+        $this->data['viewbt'] = $viewbt;
         $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
 
         $this->data['pathActive'] = 'danh-muc-bai-viet';
