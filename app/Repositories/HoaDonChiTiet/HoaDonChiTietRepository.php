@@ -7,7 +7,7 @@ namespace App\Repositories\HoaDonChiTiet;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\HoaDonChiTietModel;
 use App\Repositories\BaseRepository;
-
+use Illuminate\Support\Facades\DB;
 class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRepositoryInterface
 {
     protected $model;
@@ -68,5 +68,14 @@ class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRep
         ->get();
     }
 
+    public function getHoaDonCTByTime($start, $end, $skip, $take) {
+        return $this->model->select('idlienquan', DB::raw('COUNT(idlienquan) as count'))
+        ->where('type', '=', Controller::ID_LIENQUAN_DV_)
+        ->whereBetween('created_at', [$start, $end])
+        ->groupBy('idlienquan')
+        ->orderBy('count', 'desc')
+        ->skip($skip)->take($take)
+        ->get();
+    }
 
 }

@@ -17,11 +17,10 @@ class HoaDonSeeder extends Seeder
     public function run()
     {
         $today = Carbon::now()->subDays(0)->toDateTimeString();
+        $lastMonth = Carbon::now()->subMonth(1)->toDateTimeString();
         $yesterday = Carbon::now()->subDays(1)->toDateTimeString();
         DB::table('hoadonchitiet')->delete();
         DB::table('hoadon')->delete();
-
-
 
         DB::table('hoadon')->insert([
             ['id'=>1,'idkhachhang' => 1, 'idcoso'=> 1, 'idnhanvien'=> 1, 'idthungan' => 1,'idlieutrinh'=> 1,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '1450000','tongtiensaugiamgia'=>'1450000', 'trangthai'=>1, 'ghichu'=>'dịch vụ rất đa dạng và bắt mắt ', 'created_at'=>$yesterday],
@@ -74,18 +73,26 @@ class HoaDonSeeder extends Seeder
         ]);
 
         DB::table('hoadonchitiet')->insert([
-            ['id'=>1,'idhoadon'=>1,'idlienquan'=>1,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'15000000','dongiasaugiamgia'=>'14000000'],
-            ['id'=>2,'idhoadon'=>2,'idlienquan'=>2,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'18000000','dongiasaugiamgia'=>'17500000'],
-            ['id'=>3,'idhoadon'=>3,'idlienquan'=>3,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000'],
-            ['id'=>4,'idhoadon'=>4,'idlienquan'=>4,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000'],
-            ['id'=>5,'idhoadon'=>5,'idlienquan'=>3,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000'],
-            ['id'=>6,'idhoadon'=>6,'idlienquan'=>4,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000'],
-            ['id'=>7,'idhoadon'=>7,'idlienquan'=>1,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'15000000','dongiasaugiamgia'=>'14000000'],
-            ['id'=>8,'idhoadon'=>8,'idlienquan'=>2,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'18000000','dongiasaugiamgia'=>'17500000'],
-            ['id'=>9,'idhoadon'=>9,'idlienquan'=>3,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000'],
-            ['id'=>10,'idhoadon'=>10,'idlienquan'=>4,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000'],
-            ['id'=>11,'idhoadon'=>11,'idlienquan'=>3,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000'],
-            ['id'=>12,'idhoadon'=>12,'idlienquan'=>4,'type'=>1,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000'],
+            ['id'=>1,'idhoadon'=>1,'idlienquan'=>2,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'15000000','dongiasaugiamgia'=>'14000000', 'created_at' => $lastMonth],
+            ['id'=>2,'idhoadon'=>2,'idlienquan'=>4,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'18000000','dongiasaugiamgia'=>'17500000', 'created_at' => $lastMonth],
+            ['id'=>3,'idhoadon'=>3,'idlienquan'=>4,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000', 'created_at' => $lastMonth],
+            ['id'=>4,'idhoadon'=>4,'idlienquan'=>5,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000', 'created_at' => $lastMonth],
+            ['id'=>5,'idhoadon'=>5,'idlienquan'=>6,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000', 'created_at' => $lastMonth],
+            ['id'=>6,'idhoadon'=>6,'idlienquan'=>7,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000', 'created_at' => $lastMonth],
+            ['id'=>7,'idhoadon'=>7,'idlienquan'=>8,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'15000000','dongiasaugiamgia'=>'14000000', 'created_at' => $lastMonth],
+            ['id'=>8,'idhoadon'=>8,'idlienquan'=>8,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'18000000','dongiasaugiamgia'=>'17500000', 'created_at' => $lastMonth],
+            ['id'=>9,'idhoadon'=>9,'idlienquan'=>8,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000', 'created_at' => $lastMonth],
+            ['id'=>10,'idhoadon'=>10,'idlienquan'=>2,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000', 'created_at' => $lastMonth],
+            ['id'=>11,'idhoadon'=>11,'idlienquan'=>2,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000', 'created_at' => $lastMonth],
+            ['id'=>12,'idhoadon'=>12,'idlienquan'=>2,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000', 'created_at' => $lastMonth],
+            ['id'=>13,'idhoadon'=>13,'idlienquan'=>2,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'18000000','dongiasaugiamgia'=>'17500000', 'created_at' => $lastMonth],
+            ['id'=>14,'idhoadon'=>14,'idlienquan'=>8,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000', 'created_at' => $lastMonth],
+            ['id'=>15,'idhoadon'=>15,'idlienquan'=>8,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000', 'created_at' => $lastMonth],
+            ['id'=>16,'idhoadon'=>16,'idlienquan'=>8,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000', 'created_at' => $lastMonth],
+            ['id'=>17,'idhoadon'=>17,'idlienquan'=>8,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000', 'created_at' => $lastMonth],
+            ['id'=>18,'idhoadon'=>18,'idlienquan'=>10,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000', 'created_at' => $lastMonth],
+            ['id'=>19,'idhoadon'=>19,'idlienquan'=>2,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'21000000','dongiasaugiamgia'=>'20000000', 'created_at' => $lastMonth],
+            ['id'=>20,'idhoadon'=>20,'idlienquan'=>2,'type'=>0,'soluong'=>'2','dongiatruocgiamgia'=>'30000000','dongiasaugiamgia'=>'29500000', 'created_at' => $lastMonth],
         ]);
 
         for ($i = 0; $i < 12; $i++) {
