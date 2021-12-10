@@ -47,7 +47,7 @@ class DichVuController extends Controller
     public function create()
     {
         $DichVu = $this->DichVu->getAll();
-        $DanhMuc = $this->DanhMuc->getalledit();
+        $DanhMuc = $this->DanhMuc->getalldvdm();
         return view("Admin.DichVu.create", ['DichVu' => $DichVu, 'DanhMuc' => $DanhMuc]);
         //
     }
@@ -102,7 +102,7 @@ class DichVuController extends Controller
      */
     public function edit($slug)
     {
-        $DanhMuc = $this->DanhMuc->getalledit();
+        $DanhMuc = $this->DanhMuc->getalldvdm();
         $DichVu = $this->DichVu->find($slug);
         return view("Admin.DichVu.edit", ['DanhMuc' => $DanhMuc, 'DichVu' => $DichVu]);
     }

@@ -1,5 +1,5 @@
 <div class="owl-carousel owl-theme" id="header-slide">
-    @foreach($banners as $index =>$banner)
+    @foreach($banners as $index => $banner)
     <div class="item header-item">
         <div class="header-img">
             <img src="{{ asset('Site/images') }}/{{$banner->img}}"
@@ -22,5 +22,5 @@
             </div>
         </div>
     </div>
-        @endforeach
+    @endforeach
 </div>

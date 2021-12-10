@@ -87,6 +87,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->where('dichvu.slug', '=', $slug)
         ->first();
     }
+
     public function  getdichvujoindanhmuc($slug){
         return $this->model->select('dichvu.*','danhmuc.name as namedm')
         ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
@@ -94,6 +95,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->where('dichvu.slug', '=', $slug)
         ->get();
     }
+
     public function  getDichvuJoinDanhMucSlug($slug , $limit){
         return $this->model->select("dichvu.*", "danhmuc.name AS namedm")
             ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
@@ -138,6 +140,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
             ->limit(4)
             ->get();
     }
+
     public function GetDichvuLienQuanKhacIDDM($id){
             return $this->model->select('dichvu.*', 'danhmuc.name AS tendm',)
             ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
@@ -162,9 +165,26 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
         ->get();
     }
 
+    public function getDichvuAndDanhMucById($id){
+        return $this->model->select("dichvu.*", "danhmuc.name AS namedm")
+            ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
+            ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
+            ->where('dichvu.id', '=', $id)
+            ->first();
+    }
+
+    public function getDichVuGiamGiaAndDanhMuc($take, $skip) {
+        return $this->model->select("dichvu.*", "danhmuc.name AS namedm")
+        ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
+        ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
+        ->where('giamgia', '>', 0)
+        ->skip($skip)->take($take)
+        ->orderBy('dichvu.id')
+        ->get();
+    }
+
     public function CheckDichVuByIdDanhMuc($id){
         return $this->model->select("*")->where('iddm', $id)->doesntExist();
-    }
 
 
 }

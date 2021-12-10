@@ -13,4 +13,5 @@ interface HoaDonChiTietRepositoryInterface extends RepositoryInterface
     public function CheckDVTonTai($id, $iddv);
     public function getDV($id, $iddv);
     public function findDichVuByIdKhachHang($id);
+    public function getHoaDonCTByTime($start, $end, $skip, $take);
 }
