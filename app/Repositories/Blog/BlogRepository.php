@@ -114,9 +114,15 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
     {
         return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddm','danhmuc.name AS danhmuc')
         ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->where('danhmuc.slug', '=',$slug)->limit(9)
+        ->get();
+    }
+    public function getblogbyslugdmbt($slug)
+    {
+        return $this->model->select('blog.*', 'blog.id','danhmuc.id AS iddmm','danhmuc.name AS danhmuc')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
         ->where('danhmuc.slug', '=',$slug)
         ->get();
-
     }
     public function getblogbyiddm2($id)
     {

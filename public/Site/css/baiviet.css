@@ -2,9 +2,24 @@
     background: #e87c7b;
     color: white;
 }
-<<<<<<< HEAD
 
+.list-blog-dmct{
+  height: 1330px;
+overflow: hidden;
+}
+.list-blog-dmct6{
+  height: 630px;
+  overflow: hidden;
+}
+.list-blog-dmct3{
+  height: 880px;
+  overflow: hidden;
+  /* margin-bottom: 160px; */
 
+}
+.showAllList{
+  height: 100%;
+}
 /* loadmore */
 
 
@@ -45,20 +60,11 @@
 
 
 /* display: none;
-=======
-.noidung img{
-  text-align:center;
-}
-.noidung a{
-  word-wrap: break-word;
-  font-family: 'Roboto', sans-serif !important;
->>>>>>> 2d44460e6df83bfdd9a04a1a2e4745774d212e8c
 }
 .noidung p,h1,h2,h3,h4,h5,h6,span,li{
   word-wrap: break-word;
   font-family: 'Roboto', sans-serif !important;
 }
-<<<<<<< HEAD
 #loadMore:hover {
   color: blue;
   background-color: #fff;
@@ -72,5 +78,3 @@
 
 
 /* } */
-=======
->>>>>>> 2d44460e6df83bfdd9a04a1a2e4745774d212e8c
