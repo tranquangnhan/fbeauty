@@ -40,6 +40,12 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
         ->orderBy('id', 'DESC')
         ->get();
     }
+    public function getalldvdm(){
+        return $this->model->select('danhmuc.*')
+        ->where('danhmuc.loai', '=', 1)
+        ->orderBy('id', 'DESC')
+        ->get();
+    }
     public function getall2danhmuc(){
         return $this->model->select('danhmuc.*')->limit(1)
         ->where('danhmuc.loai', '=', 3)

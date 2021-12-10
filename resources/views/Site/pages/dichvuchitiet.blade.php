@@ -33,9 +33,11 @@
                 </div>
 
                 <div class="mota mt-4 noidung">
-                    <p>
-                        <?php echo $detaildichvu->noidung;?>
-                    </p>
+                    <div class="divnoidung">
+                        <p>
+                            <?php echo $detaildichvu->noidung;?>
+                        </p>
+                    </div>
                 </div>
 
                 <div class="d-flex justify-content-end">

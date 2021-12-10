@@ -60,7 +60,7 @@
                                                     <div class="blog-text-1 limit-text-row-2">
                                                         <a href="{{ asset('bai-viet') }}/{{$blog[0]->slug}}">{{$blog[0]->name}}</a>
                                                     </div>
-                                                    <div class="blog-text-2 mt-2">
+                                                    <div class="blog-text-2 mt-2 formatDayCustom" data-type="long" data-format="{{$blog[0]->created_at}}">
                                                         <?php
                                                             $timestamp = strtotime($blog[0]->created_at);
                                                             print date('d-m-y', $timestamp );
@@ -374,7 +374,8 @@
                                                             <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}" class="box-danhmuc-1">
                                                             {{$item->name}}</a>
                                                         </div>
-                                                        <span>
+
+                                                         <span>
                                                             @if ($data->created_at != null)
                                                                 <?php
                                                                     $timestamp = strtotime($data->created_at);
