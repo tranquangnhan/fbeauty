@@ -14,4 +14,5 @@ interface DichVuRepositoryInterface extends RepositoryInterface
     public function dichVuInerjoinDanhMuc();
     public function findDichVuById($id);
     public function getDichVuByIdDanhMuc($idDanhMuc, $limit);
+    public function getDichVuGiamGiaAndDanhMuc($take, $skip);
 }

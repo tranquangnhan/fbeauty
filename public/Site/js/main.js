@@ -34,11 +34,34 @@ $('#logo-slide').owlCarousel({
     }
 });
 
-var productSlide = $('#product-slide');
-$(productSlide).owlCarousel({
+var productSlide = $('#product-home-slide');
+productSlide.owlCarousel({
     loop: true,
-    margin: 30,
-    nav: true,
+    margin: 0,
+    nav: false,
+    pagination: false,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 2
+        },
+        1000: {
+            items: 4
+        }
+    }
+});
+
+var dichVuUaChuong = $('#dich-home-slide');
+dichVuUaChuong.owlCarousel({
+    loop: true,
+    margin: 70,
+    nav: false,
     pagination: false,
     dots: false,
     autoplay: true,
@@ -48,11 +71,40 @@ $(productSlide).owlCarousel({
         0: {
             items: 1
         },
-        600: {
-            items: 3
+        800: {
+            items: 1
         },
-        1000: {
-            items: 4
+        1150: {
+            items: 2
+        },
+        1250: {
+            items: 3
+        }
+    }
+});
+
+var dichVuGiamGiaSlide = $('#dichvugiamgia-home-slide');
+dichVuGiamGiaSlide.owlCarousel({
+    loop: true,
+    margin: 70,
+    nav: false,
+    pagination: false,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 10000,
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        800: {
+            items: 1
+        },
+        1150: {
+            items: 2
+        },
+        1250: {
+            items: 3
         }
     }
 });

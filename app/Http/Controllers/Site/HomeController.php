@@ -121,7 +121,8 @@ class HomeController extends Controller
         $blog3 = $this->Blog->getLastWeek1();
         $blog4 = $this->Blog->getLastWeek2();
         $spkhac = $this->SanPham->getSanPhamHome();
-        $this->getDanhMucVaDichVuHome();
+
+        $this->getDichVuTrangHome();
 
         $this->data['sanPham'] = $sanPham;
         $this->data['blog'] = $blog;
@@ -614,9 +615,8 @@ class HomeController extends Controller
 
 
     public function getDanhMucVaDichVuHome() {
-        $limit = 3;
-        $listDanhMuc = $this->DanhMuc->getDanhMucLimit($limit);
-
+        $limit = 6;
+        $listDanhMuc = $this->DanhMuc->getAllDanhMucDichVu();
 
         $arrDichVu = array();
         foreach ($listDanhMuc as $item) {
@@ -1508,4 +1508,28 @@ class HomeController extends Controller
         $listBanner = $this->Banner->getBannerHien();
         return $listBanner;
     }
+
+    public function getDichVuUaChuongThangTruoc($skip, $take) {
+        $date = \Carbon\Carbon::now();
+        $lastMonth =  $date->subMonth(1);
+        $startOfMonth = $lastMonth->startOfMonth()->toDateTimeString();
+        $endOfMonth = $lastMonth->endOfMonth()->toDateTimeString();
+        // Get list id dich vụ sử dụng nhiều nhất trong tháng
+        $listHDCT = $this->HoaDonChiTiet->getHoaDonCTByTime($startOfMonth, $endOfMonth, $skip, $take);
+
+        // Get list dịch vụ theo id
+        foreach ($listHDCT as $hoaDonChiTiet) {
+            $hoaDonChiTiet['dichvu'] = $this->Dichvu->getDichvuAndDanhMucById($hoaDonChiTiet->idlienquan);
+        }
+        return $listHDCT;
+    }
+
+    public function getDichVuTrangHome() {
+        $take = 5;
+        $skip = 0;
+        $listDichVu = $this->getDichVuUaChuongThangTruoc($skip, $take);
+        $this->data['listDichVuUaChuong'] = $listDichVu;
+        $this->data['listDichVuGiamGia'] = $this->Dichvu->getDichVuGiamGiaAndDanhMuc($take, $skip);
+    }
+
 }

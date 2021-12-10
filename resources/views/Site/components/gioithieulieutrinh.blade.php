@@ -2,7 +2,7 @@
     <div class="bg-lieutrinh">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-xl-3">
+            <div class="col-xl-3 col-lg-3 col-md-12">
                     <div class="box-title-lieutrinh">
                         <div class="title-3">
                             Điều Trị <br> Theo Liệu Trình
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-9">
+                <div class="col-xl-9 col-lg-9 col-md-12">
                     <div class="cac-buoc-lieutrinh">
                         <div class="lieutrinh-item">
                             {{-- <div class="number-1">

@@ -1,14 +1,14 @@
-<div class="nav-box container">
-    <nav class="navbar container navbar-expand-lg navbar-light background-color-none p-0">
+<div class="nav-box">
+    <nav class="navbar navbar-expand-lg navbar-light background-color-none p-0">
         <div class="pl-0" style="width: 155px;">
-            <a href="/trang-chu" class=""><img style="width: 60%" src="{{asset('img/logo.svg')}}" alt=""></a>
+            <a href="/trang-chu" class=""><img class="img-logo-header" src="{{asset('img/logo.svg')}}" alt=""></a>
         </div>
 
         <div class="div-mobile-nav">
             <div class="d-flex">
                 <div class="box-icon mr-4">
-                    <li class="icon-item d-inline-block hover-scale-1  {{ ($pathActive == 'tim-kiem') ? 'active' : '' }} ">
-                        <a class="btn-modal-sreach" href="/tim-kiem"><i class="fas fa-search color-black-2"></i></a>
+                    <li class="icon-item d-inline-block {{ ($pathActive == 'tim-kiem') ? 'active' : '' }} ">
+                        <a class="btn-modal-sreach" href="/tim-kiem"><i class="fas fa-search color-black-2 hover-pink"></i></a>
                     </li>
                     @if (session()->has('khachHang') && session('khachHang') != '')
                     <li class="icon-item d-inline-block fa-dropdown-custom-1">
@@ -29,12 +29,12 @@
                     </li>
                     @else
                     <li class="icon-item d-inline-block">
-                        <a class="btn-modal-main" id="btn-modal-dangnhaps" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
+                        <a class="btn-modal-main" id="btn-modal-dangnhaps" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2 hover-pink"></i></a>
                     </li>
                     @endif
-                    <li class="icon-item d-inline-block hover-scale-1 position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">
+                    <li class="icon-item d-inline-block position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">
                         <span class="badge badge-pill badge-primary number-cart" id="soluonghang1">0</span>
-                        <a href="javascript:void(0)"><i class="fas fa-shopping-cart color-black-2"></i></a>
+                        <a href="javascript:void(0)"><i class="fas fa-shopping-cart color-black-2 hover-pink"></i></a>
                     </li>
                 </div>
 
@@ -73,11 +73,10 @@
                 </li>
             </ul>
 
-            <div class="box-icon">
-                <li class="icon-item d-inline-block hover-scale-1  {{ ($pathActive == 'tim-kiem') ? 'active' : '' }} ">
+            <div class="box-icon box-desk">
+                <li class="icon-item d-inline-block {{ ($pathActive == 'tim-kiem') ? 'active' : '' }} ">
                     <a class="btn-modal-sreach" href="/tim-kiem">
-                        {{-- <img src="{{ asset('Site/images') }}/icon/search-interface-symbol.png" alt=""> --}}
-                        {{-- <i class="fas fa-search color-black-2"></i> --}}
+                        <i class="fas fa-search color-black-2 hover-pink"></i>
                     </a>
                 </li>
                 @if (session()->has('khachHang') && session('khachHang') != '')
@@ -99,12 +98,12 @@
                 </li>
                 @else
                 <li class="icon-item d-inline-block">
-                    <a class="btn-modal-main" id="btn-modal-dangnhaps" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2"></i></a>
+                    <a class="btn-modal-main" id="btn-modal-dangnhaps" type-modal="modal-user" href="javascript:void(0)" data-show="one"><i class="fas fa-user-alt color-black-2 hover-pink"></i></a>
                 </li>
                 @endif
-                <li class="icon-item d-inline-block hover-scale-1 position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">
+                <li class="icon-item d-inline-block position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">
                     <span class="badge badge-pill badge-primary number-cart" id="soluonghang1">0</span>
-                    <a href="javascript:void(0)"><i class="fas fa-shopping-cart color-black-2"></i></a>
+                    <a href="javascript:void(0)"><i class="fas fa-shopping-cart color-black-2 hover-pink"></i></a>
                 </li>
             </div>
         </div>

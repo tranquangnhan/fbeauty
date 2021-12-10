@@ -19,11 +19,10 @@
                         src="{{ asset('Site/images') }}/coso4.jpg" alt="">
                 </div>
             </div>
-            {{-- <div class="big-title about-title-custom title-font">About us</div> --}}
         </div>
         <div class="container">
         <div class="row flex-row-reverse">
-                <div class="col-xl-6" style="margin-top: 100px">
+                <div class="col-xl-6 col-lg-6 col-ml-6 col-sm-12 col-12">
                     <div class="about-content">
                         <div class="title-small line-before">
                             VỀ CHÚNG TÔI
@@ -32,10 +31,16 @@
                             <div class="title-1">
                                 Hệ Thống Spa <br> Đẳng Cấp
                             </div>
-                            <div class="text-1 mt-4">
+
+                            <div class="text-4">
+                                Hệ Thống Spa Đẳng Cấp
+                            </div>
+
+                            <div class="text-1 mt-4 text-desk">
                                 Với 45 chi nhánh trải dài khắp cả nước, FBeauty Spa tự hào là chuỗi hệ thống thẩm mỹ
                                 viện hàng đầu Việt Nam
                             </div>
+
                             <div class="text-2 mt-1">
                                 Mang trong mình niềm tin về sứ mệnh đánh thức vẻ đẹp tiềm ẩn trong mỗi người, Seoul
                                 Spa luôn nỗ lực
@@ -46,7 +51,7 @@
                                 phút giây tận hưởng hạnh phúc thật sự của mỗi khách hàng.
                             </div>
                         </div>
-                        <div class="w-100 text-left mt-3">
+                        <div class="w-100 text-left mt-3 div-button">
                             <a href="{{URL::to("gioi-thieu")}}">
                                 <button class="btn-3 active black-1">Xem chi tiết</button>
                             </a>
@@ -65,9 +70,9 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-6"></div>
-                    <div class="col-xl-6 p-4em">
-                        <div class="about-content position-relative z-index-1">
+                    <div class="col-xl-6 col-lg-6 col-12 "></div>
+                    <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10 col-12 p-4em fa-list-danhmuc">
+                        <div class="service-content position-relative z-index-1">
                             <div class="title-small line-before">
                                 Dich Vụ
                             </div>
@@ -78,13 +83,13 @@
                                 <div class="list-danhmuc mt-4">
                                     <div class="danhmuc-item">
                                         <div class="row">
-                                            <div class="col-xl-2">
+                                            <div class="col-xl-2 col-lg-3 fa-img">
                                                 <div class="box-icon-1">
                                                     <img src="{{ asset('Site/images/icon') }}/beauty-treatment.png"
                                                         class="img-fluid" alt="">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-10 pl-4 d-flex align-content-stretch flex-wrap">
+                                            <div class="col-xl-10 col-lg-9 pl-4 fa-text d-flex align-content-stretch flex-wrap">
                                                 <div class="text-5">
                                                     Chăm sóc da mặt
                                                 </div>
@@ -98,13 +103,13 @@
 
                                     <div class="danhmuc-item mt-5">
                                         <div class="row">
-                                            <div class="col-xl-2">
+                                            <div class="col-xl-2 col-lg-3 fa-img">
                                                 <div class="box-icon-1">
                                                     <img src="{{ asset('Site/images/icon') }}/acne.png"
                                                         class="img-fluid" alt="">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-10 pl-4 d-flex align-content-stretch flex-wrap">
+                                            <div class="col-xl-10 col-lg-9 pl-4 fa-text d-flex align-content-stretch flex-wrap">
                                                 <div class="text-5">
                                                     Điều trị mụn, sẹo
                                                 </div>
@@ -118,13 +123,13 @@
 
                                     <div class="danhmuc-item mt-5">
                                         <div class="row">
-                                            <div class="col-xl-2">
+                                            <div class="col-xl-2 col-lg-3 fa-img">
                                                 <div class="box-icon-1">
                                                     <img src="{{ asset('Site/images/icon') }}/facial-treatment-black.png"
                                                         class="img-fluid" alt="">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-10 pl-4 d-flex align-content-stretch flex-wrap">
+                                            <div class="col-xl-10 col-lg-9 pl-4 fa-text d-flex align-content-stretch flex-wrap">
                                                 <div class="text-5">
                                                     Dịch vụ trị nám, tàn nhang
                                                 </div>
@@ -140,13 +145,13 @@
 
                                     <div class="danhmuc-item mt-5">
                                         <div class="row">
-                                            <div class="col-xl-2">
+                                            <div class="col-xl-2 col-lg-3 fa-img">
                                                 <div class="box-icon-1">
                                                     <img src="{{ asset('Site/images/icon') }}/mesotherapy.png"
                                                         class="img-fluid" alt="">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-10 pl-4 d-flex align-content-stretch flex-wrap">
+                                            <div class="col-xl-10 col-lg-9 pl-4 fa-text d-flex align-content-stretch flex-wrap">
                                                 <div class="text-5">
                                                     Làm trẻ hóa da
                                                 </div>
@@ -161,13 +166,13 @@
 
                                     <div class="danhmuc-item mt-5">
                                         <div class="row">
-                                            <div class="col-xl-2">
+                                            <div class="col-xl-2 col-lg-3 fa-img">
                                                 <div class="box-icon-1">
                                                     <img src="{{ asset('Site/images/icon') }}/hot-stone.png"
                                                         class="img-fluid" alt="">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-10 pl-4 d-flex align-content-stretch flex-wrap">
+                                            <div class="col-xl-10 col-lg-9 pl-4 fa-text d-flex align-content-stretch flex-wrap">
                                                 <div class="text-5">
                                                     Dịch vụ massage
                                                 </div>
@@ -182,13 +187,13 @@
 
                                     <div class="danhmuc-item mt-5">
                                         <div class="row">
-                                            <div class="col-xl-2">
+                                            <div class="col-xl-2 col-lg-3 fa-img">
                                                 <div class="box-icon-1">
                                                     <img src="{{ asset('Site/images/icon') }}/fitness-black.png"
                                                         class="img-fluid" alt="">
                                                 </div>
                                             </div>
-                                            <div class="col-xl-10 pl-4 d-flex align-content-stretch flex-wrap">
+                                            <div class="col-xl-10 col-lg-9 pl-4 fa-text d-flex align-content-stretch flex-wrap">
                                                 <div class="text-5">
                                                     Dịch vụ giảm béo
                                                 </div>
@@ -218,7 +223,7 @@
     <div class="list-service">
         <div class="container position-relative z-index-1 p-0">
             <div class="container">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center fa-header-service">
                     <div class="head-service-item service-title">
                         <div class="w-100 text-left">
                             <div class="title-small color-black-main">
@@ -231,16 +236,25 @@
                     </div>
                     <div class="head-service-item">
                         <div class="d-flex">
-                            <div class="d-flex align-items-center text-2 mr-4" style="color: #000000;">Tìm kiếm
-                                theo</div>
-                            <ul class="nav nav-tabs" id="myTab-1" role="tablist">
-                                @foreach ($listDanhMuc as $danhmuc)
-
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link btn-3 @if ($loop->index == 0) active @endif black-1" id="{{$danhmuc->slug}}-tab" data-toggle="tab" href="#{{$danhmuc->slug}}" role="tab" aria-controls="{{$danhmuc->slug}}" aria-selected="true">{{ $danhmuc->name }}</a>
-                                    </li>
-
-                                @endforeach
+                            <div class="d-flex align-items-center text-2 mr-4 lg-hide head-service-item service-title" style="color: #000000;">Tìm kiếm
+                                theo
+                            </div>
+                            <ul class="nav nav-tabs" id="" role="tablist">
+                                <li class="nav-item pl-0" role="presentation">
+                                    <a class="nav-link btn-3 active black-1"
+                                    id="uachuong-tab"
+                                    data-toggle="tab"
+                                    href="#uachuong"
+                                    role="tab"
+                                    aria-controls="uachuong"
+                                    aria-selected="true">Ưa chuộng tháng</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link btn-3 black-1" id="khuyenmai-tab" data-toggle="tab" href="#khuyenmai" role="tab" aria-controls="khuyenmai" aria-selected="false">Giá ưu đãi</a>
+                                </li>
+                                <li class="nav-item pr-0" role="presentation">
+                                    <a class="nav-link btn-3 black-1" id="khuyenmai-tab" href="/dich-vu">Xem Thêm</a>
+                                </li>
                             </ul>
                         </div>
 
@@ -250,51 +264,115 @@
 
             <div class="list-tabs mt-5">
                 <div class="tab-content" id="">
-                    @foreach ($arrDichVu as $itemdichvu)
-                        <div class="tab-pane @if ($loop->index == 0) show active @endif  fade" id="{{$listDanhMuc[$loop->index]->slug}}" role="tabpanel" aria-labelledby="{{$listDanhMuc[$loop->index]->slug}}-tab">
-                            <div class="w-100 d-flex">
-                                <div class="box-dichvu">
-                                    <div class="box-sev">
-                                        @foreach ($itemdichvu as $item)
-                                        <div class="dichvu-item d-plex">
-                                            <div class="content-1" onclick="window.location='{{ asset('dich-vu') }}/{{$item->slug}}';" >
-                                                <div class="text-7 color-main-1">
-                                                    {{$item->namedm}}
-                                                </div>
-
-                                                <div class="text-8 mt-1">
-                                                    {{str_replace(',', '.',number_format($item->dongia))}}đ
-                                                </div>
-                                                <div class="img-1 mt-4">
-                                                    <a href="{{ asset('dich-vu') }}/{{$item->slug}}">
-                                                        <img class="" src="{{ asset('uploads/'.$item->img) }}" alt="">
-                                                    </a>
+                    <div class="tab-pane fade show active" id="uachuong" role="tabpanel" aria-labelledby="uachuong-tab">
+                        <div class="w-100">
+                            <div class="box-dichvu">
+                                <div class="box-sev">
+                                    <div class="owl-carousel owl-theme slide-dichvu" id="dich-home-slide">
+                                        @foreach ($listDichVuUaChuong as $dichVuUaChuong)
+                                            @if ($dichVuUaChuong->dichvu != null)
+                                            <div class="dichvu-item">
+                                                <div class="content-1">
+                                                    <div class="text-7 color-main-1">
+                                                        {{ $dichVuUaChuong->dichvu->namedm }}
                                                     </div>
-                                                <div class="text-1 limit-text-row-1 mt-4">
-                                                        {{$item->name}}
+
+                                                    <div class="img-1 mt-4">
+                                                        <img class="" src="{{ asset('uploads/')}}/{{ $dichVuUaChuong->dichvu->img }}" alt="">
+                                                    </div>
+
+                                                    <div class="text-1 limit-text-row-1 mt-4">
+                                                        {{ $dichVuUaChuong->dichvu->name }}
+                                                    </div>
+
+                                                    <div class="box-gia-dichvu mt-2">
+                                                        @if ($dichVuUaChuong->dichvu->giamgia > 0)
+                                                            @php
+                                                                $giaSauGiam = $dichVuUaChuong->dichvu->dongia - ($dichVuUaChuong->dichvu->dongia * $dichVuUaChuong->dichvu->giamgia / 100);
+                                                            @endphp
+                                                            <span class="giagiam">{{ number_format($dichVuUaChuong->dichvu->dongia, 0) }} đ </span>
+                                                            <span class="gia left-bar">
+                                                                {{ number_format($giaSauGiam, 0)}} đ
+                                                            </span>
+                                                        @else
+                                                            <span class="gia">
+                                                                {{ number_format($dichVuUaChuong->dichvu->dongia, 0) }} đ
+                                                            </span>
+                                                        @endif
+
+                                                    </div>
+
+                                                    <p class="text-2 limit-text-row-3 mt-1 mt-2">
+                                                        {{ $dichVuUaChuong->dichvu->motangan }}
+
+                                                    </p>
                                                 </div>
-
-                                                <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                    {{$item->motangan}}
-
-                                                </p>
+                                                <div class="w-100 text-center mb-4">
+                                                    <button data-show="one" type-modal="modal-datlich" class="button btn-4 btn-modal-main">Đặt lịch</button>
+                                                </div>
                                             </div>
-                                            <div class="w-100 text-center mb-4">
-                                                <button class="button btn-4 btn-datlich btn-modal-main" type-modal="modal-datlich" data-show="one">Đặt
-                                                    lịch</button>
-
-                                            </div>
-                                        </div>
+                                            @endif
                                         @endforeach
-
-
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        @endforeach
+                    </div>
+                    <div class="tab-pane fade" id="khuyenmai" role="tabpanel" aria-labelledby="khuyenmai-tab">
+                        <div class="w-100">
+                            <div class="box-dichvu">
+                                <div class="box-sev">
+                                    <div class="owl-carousel owl-theme slide-dichvu" id="dichvugiamgia-home-slide">
 
+                                        @foreach ($listDichVuGiamGia as $dichVuGiamGia)
+                                            <div class="dichvu-item">
+                                                <div class="content-1">
+                                                    <div class="text-7 color-main-1">
+                                                        {{ $dichVuGiamGia->namedm }}
+                                                    </div>
+
+                                                    <div class="img-1 mt-4">
+                                                        <img class="" src="{{ asset('uploads/')}}/{{ $dichVuGiamGia->img }}" alt="">
+                                                    </div>
+
+                                                    <div class="text-1 limit-text-row-1 mt-4">
+                                                        {{ $dichVuGiamGia->name }}
+                                                    </div>
+
+                                                    <div class="box-gia-dichvu mt-2">
+                                                        @if ($dichVuGiamGia->giamgia > 0)
+                                                            @php
+                                                                $giaSauGiam = $dichVuGiamGia->dongia - ($dichVuGiamGia->dongia * $dichVuGiamGia->giamgia / 100);
+                                                            @endphp
+                                                            <span class="giagiam">{{ number_format($dichVuGiamGia->dongia, 0) }} đ </span>
+                                                            <span class="gia left-bar">
+                                                                {{ number_format($giaSauGiam, 0)}} đ
+                                                            </span>
+                                                        @else
+                                                            <span class="gia">
+                                                                {{ number_format($dichVuGiamGia->dongia, 0) }} đ
+                                                            </span>
+                                                        @endif
+
+                                                    </div>
+
+                                                    <p class="text-2 limit-text-row-3 mt-1 mt-2">
+                                                        {{ $dichVuGiamGia->motangan }}
+
+                                                    </p>
+                                                </div>
+                                                <div class="w-100 text-center mb-4">
+                                                    <button data-show="one" type-modal="modal-datlich" class="button btn-4 btn-modal-main">Đặt lịch</button>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -318,11 +396,12 @@
 
             <div class="box-product-1">
                 <div class="row">
+                    <div class="owl-carousel owl-theme" id="product-home-slide">
                     @foreach($spkhac as $i => $spk)
                         <?php
-                        $anhk=json_decode($spk->img);
+                            $anhk = json_decode($spk->img);
                         ?>
-                        <div class="col-3">
+                        <div class="fa-card-product-item">
                             <div class="card rounded-0 product-card child-item-sanpham zbar">
                                 <div class="card-header bg-transparent border-bottom-0">
                                     @if(session()->has('khachHang') && session('khachHang') != '')
@@ -388,7 +467,8 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
              <div class="w-100 text-center mt-3">
@@ -437,7 +517,7 @@
                 <div class="tab-content" id="">
                     <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
                         <div class="row">
-                            <div class="col-xl-7 pr-0">
+                            <div class="col-xl-7 col-lg-6 pr-0">
                             @foreach ($blog as $item)
                                 <div class="blog-bigsize">
                                     <div class="box-danhmuc">
@@ -478,12 +558,12 @@
                             @endforeach
                             </div>
 
-                            <div class="col-xl-5 pl-0">
+                            <div class="col-xl-5 col-lg-6 pl-0">
                                 <div class="list-blog-small pl-5">
                                 @foreach ($getBlog2 as $item)
                                     <div class="small-blog-item box-tin-hv @if ($loop->index == 0) pt-0 @endif ">
                                         <div class="row">
-                                            <div class="col-xl-5">
+                                            <div class="col-xl-5 col-lg-5 col-md-5 col-5">
                                                 <div class="img-1 image-tin-1">
                                                     {{-- <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt=""> --}}
                                                     <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
@@ -491,7 +571,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-7 pl-0 align-self-center">
+                                            <div class="col-xl-7 col-lg-7 col-md-7 col-7 pl-0 align-self-center">
                                                 <div class="row">
                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 mt-1">
                                                         <div class="mr-3">
@@ -519,7 +599,7 @@
                     <div class="tab-pane fade" id="lastweek" role="tabpanel" aria-labelledby="lastweek-tab">
                         <div class="row">
                         @foreach ($blog3 as $item)
-                            <div class="col-xl-7 pr-0" >
+                            <div class="col-xl-7 col-lg-6 pr-0" >
                                 <div class="blog-bigsize">
                                     <div class="box-danhmuc">
                                         {{$item->danhmuc}}
@@ -559,20 +639,20 @@
                             </div>
                         @endforeach
 
-                            <div class="col-xl-5 pl-0">
+                            <div class="col-xl-5 col-lg-6 pl-0">
                                 <div class="list-blog-small pl-5">
                                 @foreach ($blog4 as $item)
 
                                     <div class="small-blog-item box-tin-hv @if ($loop->index == 0) pt-0 @endif ">
                                         <div class="row">
-                                            <div class="col-xl-5">
+                                            <div class="col-xl-5 col-lg-5 col-md-5 col-5">
                                                 <div class="img-1 image-tin-1">
                                                     <a href="{{ asset('bai-viet') }}/{{$item->slug}}" class="hover-pink">
                                                         <img class="img-fluid" src="{{ asset('uploads/')}}/{{$item->img}}" alt="">
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-7 pl-0 align-self-center">
+                                            <div class="col-xl-7 col-lg-7 col-md-7 col-7 pl-0 align-self-center">
                                                 <div class="row">
                                                     <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 mt-1">
                                                         <div class="mr-3">
