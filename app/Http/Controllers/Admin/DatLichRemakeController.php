@@ -55,6 +55,7 @@ class DatLichRemakeController extends Controller
             ['link' => '/quantri/datlichremake', 'name' => 'Đặt lịch'],
             ['link' => '', 'name' => 'Danh sách'],
         ];
+
         $toDay = Carbon::now();
         $this->data['toDay'] = $toDay->toDateString();
         $this->data['timeToDay'] = $toDay->toTimeString();
