@@ -85,7 +85,7 @@
                                                 </label>
                                             </div>
 
-                                           
+
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -107,11 +107,11 @@
                                                             </div>
                                                       </div>
                                                 </div>
-                                            </div>   
-                                           
-                                           
+                                            </div>
+
+
                                             <div class="form-group">
-                                
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <label class="w-100" for="files">Avatar nhân
@@ -193,13 +193,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                  
+
                                 <div class="modal-footer">
                                     <a href="{{route("nhanvien.index")}}" type="button"
                                        class="btn btn-light waves-effect"
                                     >Huỷ
                                     </a>
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light " id="them">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light ml-2" id="them">
                                         Cập nhật
                                     </button>
                                 </div>

@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
-                            <h4 class="mt-0 header-title">Thêm nhân viên</h4>
+                            <h4 class="mt-0 header-title">Sửa Banner</h4>
                             <div>
                                 <a href="{{route("banner.index")}}"
                                    class="btn btn-primary waves-effect waves-light mb-3">Danh sách Banner</a>

@@ -363,6 +363,7 @@ function XoaSanPham(id) {
                     iconColor: 'white',
                 });
                 showGioHang();
+                HuyGiamGia();
             }
             else {
                 iziToast.warning({
@@ -423,6 +424,7 @@ function GiamSoLuong(id) {
             data: {id: id},
             success: function (data) {
                 showGioHang();
+                HuyGiamGia();
             }
         });
     }

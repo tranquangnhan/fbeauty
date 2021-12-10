@@ -32,6 +32,13 @@ class HoaDonChiTietRepository extends BaseRepository implements HoaDonChiTietRep
             ->doesntExist();
     }
 
+    public function findHoaDonChiTietByIdSanPhamChiTiet($id){
+        return $this->model->select("*")
+            ->where('hoadonchitiet.idlienquan', '=', $id)
+            ->where('hoadonchitiet.type', '=', Controller::DONHANG_TYPE_SANPHAM)
+            ->doesntExist();
+    }
+
     public function CheckDVTonTai($id, $iddv){
         return $this->model->select("*")
             ->where('hoadonchitiet.idhoadon', '=', $id)
