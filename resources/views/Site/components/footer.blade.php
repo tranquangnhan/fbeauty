@@ -30,13 +30,13 @@
     <div class="footer-bg">
         <div class="container">
             <div class="row">
-                <div class="col-3 pr-5">
-                    <div class="w-100 text-left mx-auto">
-                        <div class="col-6">
-                            <a class="ml-5"><img class="" src="{{asset('img/logo.svg')}}" alt=""></a>
+                <div class="col-xl-3 col-lg-4 col-12">
+                    <div class="box-footer box-footer-1 mt-0">
+                        <div class="w-100 text-center">
+                            <a class="m-auto"><img class="logo-footer" src="{{asset('img/logo.svg')}}" alt=""></a>
                         </div>
 
-                        <div class="text-6 text-left" style="margin-top: 2em">
+                        <div class="text-6" style="margin-top: 2em">
                             FBeauty Spa luôn nỗ lực không ngừng để đem đến cho khách hàng những dịch vụ hoàn hảo
                             nhất. Thẩm mỹ khỏe – đẹp – an toàn để mỗi phút giây ngắm mình trong gương là những phút
                             giây tận hưởng hạnh phúc thật sự của mỗi khách hàng.
@@ -75,78 +75,78 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-9 pl-5">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="footer-menu">
-                                <div class="title-4 d-inline-block">
-                                    Danh Mục
-                                </div>
 
-                                <div class="content-1">
 
-                                    <div class="menu-item text-6">
-                                        <a href="">Chăm sóc da mặt
-                                        </a>
-                                    </div>
 
-                                    <div class="menu-item text-6">
-                                        <a href="">Điều trị mụn, sẹo
-                                        </a>
-                                    </div>
 
-                                    <div class="menu-item text-6">
-                                        <a href="">Dịch vụ trị nám, tàn nhang
-                                        </a>
-                                    </div>
 
-                                    <div class="menu-item text-6">
-                                        <a href="">Làm trẻ hóa da
-                                        </a>
-                                    </div>
-
-                                    <div class="menu-item text-6">
-                                        <a href="">Dịch vụ massage
-                                        </a>
-                                    </div>
-
-                                    <div class="menu-item text-6">
-                                        <a href="">Dịch vụ giảm béo
-
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </div>
+                <div class="col-xl-3 col-lg-4 col-12">
+                    <div class="box-footer footer-menu">
+                        <div class="title-4 d-inline-block">
+                            Cơ Sở
                         </div>
 
-                        <div class="col-4">
-                            <div class="footer-menu">
-                                <div class="title-4 d-inline-block">
-                                    Cơ Sở
-                                </div>
+                        <div class="content-1">
 
-                                <div class="content-1">
-
-                                    <div class="menu-item text-6">
-                                        <a href="">391A Nam Kỳ Khởi Nghĩa, Phường 14, Quận 3, Thành phố Hồ Chí
-                                            Minh</a>
-                                    </div>
-
-                                    <div class="menu-item text-6">
-                                        <a href="">778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí
-                                            Minh</a>
-                                    </div>
-
-                                    <div class="menu-item text-6">
-                                        <a href="">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận
-                                            12, Thành phố Hồ Chí Minh</a>
-                                    </div>
-
-                                </div>
+                            <div class="menu-item text-6">
+                                <a href="">391A Nam Kỳ Khởi Nghĩa, Phường 14, Quận 3, Thành phố Hồ Chí
+                                    Minh</a>
                             </div>
+
+                            <div class="menu-item text-6">
+                                <a href="">778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí
+                                    Minh</a>
+                            </div>
+
+                            <div class="menu-item text-6">
+                                <a href="">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận
+                                    12, Thành phố Hồ Chí Minh</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-4 col-12">
+                    <div class="box-footer footer-menu">
+                        <div class="title-4 d-inline-block">
+                            Danh Mục
                         </div>
 
+                        <div class="content-1">
+
+                            <div class="menu-item text-6">
+                                <a href="">Chăm sóc da mặt
+                                </a>
+                            </div>
+
+                            <div class="menu-item text-6">
+                                <a href="">Điều trị mụn, sẹo
+                                </a>
+                            </div>
+
+                            <div class="menu-item text-6">
+                                <a href="">Dịch vụ trị nám, tàn nhang
+                                </a>
+                            </div>
+
+                            <div class="menu-item text-6">
+                                <a href="">Làm trẻ hóa da
+                                </a>
+                            </div>
+
+                            <div class="menu-item text-6">
+                                <a href="">Dịch vụ massage
+                                </a>
+                            </div>
+
+                            <div class="menu-item text-6">
+                                <a href="">Dịch vụ giảm béo
+
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>

@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\LieuTrinhController;
 use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\NhanVienController;
 use App\Http\Controllers\Admin\SanPhamChiTietController;
+use App\Http\Controllers\Admin\TheoDoiFLController;
 use App\Http\Controllers\Admin\ThongkeController;
 use App\Http\Controllers\Admin\DatLichController;
 use App\Http\Controllers\Admin\DatLichRemakeController;
@@ -136,20 +137,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class, 'addHoaDonByIdLieuTrinh']);
     //Banner
     Route::resource('banner', BannerController::class);
-        /**
-     *1: Lấy DỊch vụ đến Hóa đơn
-     * 2: Lấy Sp chi tiết đến hóa Đơn
-     * 3: Lấy hóa đơn chi tiết
-     * 4: lấy sản phẩm chi tiết
-     * 5: Lấy dịch vụ
-     * 6: Lấy giảm giá
-     * 7: Xét điều kiện giảm giá
-     * 8:Cập nhật giá
-     * 9:Xóa
-     * 10:Thêm sản phẩm vào hóa đơn chi tiết
-     * 11:Thêm dịch vụ vào hóa đơn chi tiết
-     * 12: Cập nhật số lượng
-     */
+    //Follower
+    Route::resource('theodoi', TheoDoiFLController::class);
 });
 
 

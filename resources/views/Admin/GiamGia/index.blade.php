@@ -119,11 +119,11 @@
                                 <thead class="thead-light">
                                     <tr class="text-center">
                                         <th width="5%">STT</th>
-                                        <th width="11%">Tên Giảm Giá</th>
+                                        <th width="10%">Tên Giảm Giá</th>
                                         <th width="10%">Mã Giảm Giá</th>
+                                        <th width="11%">Loại Giảm Giá</th>
                                         <th width="14%">Giảm Tối Đa Theo Giá </th>
                                         <th width="14%">Giảm Tối Đa Theo %</th>
-                                        <th width="10%">Loại Giảm Giá</th>
                                         <th width="11%">Ngày Tạo Mã</th>
                                         <th width="11%">Ngày Hết Hạn</th>
                                         <th width="12%">Hành Động</th>
@@ -137,8 +137,6 @@
                                             <td>{{$i}}</td>
                                             <td class="" >{{$row->name}}</td>
                                             <td class="" >{{$row->ma}}</td>
-                                            <td class="" >{{number_format($row->number)}} VNĐ</td>
-                                            <td class="" >{{number_format($row->max)}} %</td>
                                             <td class="" >
                                                 <?php
                                                 if($row->loai==0)
@@ -153,6 +151,8 @@
                                             }
                                             ?>
                                             </td>
+                                            <td class="" >{{number_format($row->number)}} VNĐ</td>
+                                            <td class="" >{{number_format($row->max)}} %</td>
                                             <td class="" >{{date('d-m-Y',$row->ngaytao)}}</td>
                                             <td class="" >{{date('d-m-Y',$row->ngayhethan)}}</td>
 

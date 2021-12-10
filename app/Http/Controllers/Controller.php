@@ -86,8 +86,8 @@ class Controller extends BaseController
     /**
     *Banner
      */
-    const BANNER_HIEN=1;
-    const BANNER_AN=0;
+    const BANNER_HIEN = 1;
+    const BANNER_AN = 0;
     /**
      *end banner
      */

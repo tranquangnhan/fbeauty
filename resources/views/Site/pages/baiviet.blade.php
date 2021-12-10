@@ -16,7 +16,7 @@
                                     <div class="head-blog-item blog-title">
                                         <div class="w-100 text-left d-flex align-items-center">
                                             <div class="title-3 mr-4">
-                                                Tin tức mới
+                                                Tin tức 
                                             </div>
                                             <div class="line-main-color"></div>
                                         </div>
@@ -46,7 +46,7 @@
                                         <div class="col-xl-6 pr-0">
                                             <div class="blog-bigsize">
                                                 <div class="box-danhmuc">
-                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$blog[0]->slugdm}}">
+                                                    <a class="text-white" href="{{ asset('danh-muc-bai-viet') }}/{{$blog[0]->slugdm}}">
                                                     {{$blog[0]->danhmuc}}</a>
                                                 </div>
                                                 <a href="{{ asset('bai-viet') }}/{{$blog[0]->slug}}">
@@ -129,7 +129,7 @@
                                         <div class="col-xl-6 pr-0">
                                             <div class="blog-bigsize">
                                                 <div class="box-danhmuc">
-                                                    <a href="{{ asset('danh-muc-bai-viet') }}/{{$item1->slugdm}}">
+                                                    <a class="text-white" href="{{ asset('danh-muc-bai-viet') }}/{{$item1->slugdm}}">
                                                     {{$item1->danhmuc}}</a>
                                                 </div>
 
@@ -325,10 +325,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                <div class="mr-3">
+                                                <div class="mt-3 text-center">
                                                     <a class="btn-modal-main" type-modal="modal-datlich" href="javascript:void(0)" data-show="one">
-                                                        <button  type="button" class=" text-white btn mb-5 mt-3" >Đặt Lịch</button>
-                                                        </a>
+                                                        <button class="btn-full">Đặt Lịch</button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -346,6 +346,7 @@
                 <div class="row">
                     <div class="col-xl-9">
                         @foreach ($listdanhmuc2 as $item)
+                        @if (count($item->blogbyid2) > 0 )
 
                         <div class="danhmuc-listblog">
                             <div class="head-blog-item blog-title">
@@ -397,6 +398,7 @@
 
                             </div>
                         </div>
+                        @endif
                         @endforeach
                     </div>
                     <div class="col-xl-3">
@@ -513,7 +515,7 @@
                             </div>
                             @if (count($item->blogbyid) == 6)
                             <a href="{{ asset('danh-muc-bai-viet') }}/{{$item->slug}}">
-                                <button data-iddm="{{$item->id}}"  type="button" class="xemthemblog btn mb-5 mt-3"  data-take="3" data-skip="6">Xem thêm</button>
+                                <button   type="button" class="xemthemblog btn mb-5 mt-3"  data-take="3" data-skip="6">Xem thêm</button>
                             </a>
                                 @else
                                 <br> <br>

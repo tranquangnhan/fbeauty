@@ -27,6 +27,7 @@ use App\Repositories\LienHe\LienHeRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 use App\Repositories\YeuThich\YeuThichRepository;
+use App\Repositories\Banner\BannerRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +54,7 @@ class HomeController extends Controller
     private $DonHang;
     private $LieuTrinh;
     private $YeuThich;
-
+    private $Banner;
     /**
      * CosoController constructor.
      */
@@ -74,7 +75,8 @@ class HomeController extends Controller
         HoaDonRepository $HoaDon,
         HoaDonChiTietRepository $HoaDonChiTiet,
         DonHangRepository $DonHang,
-        YeuThichRepository $YeuThich
+        YeuThichRepository $YeuThich,
+        BannerRepository $Banner
     )
     {
         $this->freeSMSController = new freeSMSController;
@@ -90,19 +92,24 @@ class HomeController extends Controller
         $this->SanPhamChiTiet = $SanPhamChiTiet;
         $this->LieuTrinh = $LieuTrinh;
         $this->LienHe = $LienHe;
+        $this->HoaDon = $HoaDon;
+        $this->HoaDonChiTiet = $HoaDonChiTiet;
+        $this->DonHang = $DonHang;
+        $this->YeuThich = $YeuThich;
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
+        $this->Banner = $Banner;
+
         $danhmuc = $this->DanhMuc->getdanhmucshow();
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
-        $this->HoaDon = $HoaDon;
-        $this->HoaDonChiTiet = $HoaDonChiTiet;
-        $this->DonHang=$DonHang;
-        $this->YeuThich=$YeuThich;
+        $listBanner = $this->getBanner();
+
         $this->data = array(
             'danhmuc' => $danhmuc,
             'listCoSo' => $listCoSo,
             'listDanhMucDichVu' => $listDanhMucDichVu,
             'pathActive' => '',
+            'listBanner' => $listBanner
         );
     }
 
@@ -114,7 +121,8 @@ class HomeController extends Controller
         $blog3 = $this->Blog->getLastWeek1();
         $blog4 = $this->Blog->getLastWeek2();
         $spkhac = $this->SanPham->getSanPhamHome();
-        $this->getDanhMucVaDichVuHome();
+
+        $this->getDichVuTrangHome();
 
         $this->data['sanPham'] = $sanPham;
         $this->data['blog'] = $blog;
@@ -145,7 +153,6 @@ class HomeController extends Controller
     public function getSanPham()
     {
         $sanpham = $this->SanPham->getSanPhamJoinDanhMuc();
-        $sl = $this->SanPham->DemSanPham();
         $data = ['sanpham' => $sanpham];
         return $data;
     }
@@ -153,7 +160,6 @@ class HomeController extends Controller
     public function viewSanPhamChiTiet($slug)
     {
         error_reporting(0);
-
         $this->data['pathActive'] = 'san-pham';
         $this->data['namePage'] = 'Sản phẩm chi tiết';
         $this->data['breadcrumbArray'] = [
@@ -277,13 +283,15 @@ class HomeController extends Controller
     }
     public function viewDanhmucBaiViet($slug){
         $skip = 0;
-        $take = 12;
+        $take = 9;
         $danhmucct = $this->DanhMuc->getAllDanhMucchitiet($skip, $take);
-        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
         $viewdetail = $this->Blog->getBlogByslugdm($slug);
+        $viewbt = $this->Blog->getblogbyslugdmbt($slug);
+        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
 
         $this->data['danhmucct'] = $danhmucct;
         $this->data['viewdetail'] = $viewdetail;
+        $this->data['viewbt'] = $viewbt;
         $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
 
         $this->data['pathActive'] = 'danh-muc-bai-viet';
@@ -607,9 +615,8 @@ class HomeController extends Controller
 
 
     public function getDanhMucVaDichVuHome() {
-        $limit = 3;
-        $listDanhMuc = $this->DanhMuc->getDanhMucLimit($limit);
-
+        $limit = 6;
+        $listDanhMuc = $this->DanhMuc->getAllDanhMucDichVu();
 
         $arrDichVu = array();
         foreach ($listDanhMuc as $item) {
@@ -1496,4 +1503,33 @@ class HomeController extends Controller
         session()->put("khachHang", $infokh);
         return true;
     }
+
+    public function getBanner() {
+        $listBanner = $this->Banner->getBannerHien();
+        return $listBanner;
+    }
+
+    public function getDichVuUaChuongThangTruoc($skip, $take) {
+        $date = \Carbon\Carbon::now();
+        $lastMonth =  $date->subMonth(1);
+        $startOfMonth = $lastMonth->startOfMonth()->toDateTimeString();
+        $endOfMonth = $lastMonth->endOfMonth()->toDateTimeString();
+        // Get list id dich vụ sử dụng nhiều nhất trong tháng
+        $listHDCT = $this->HoaDonChiTiet->getHoaDonCTByTime($startOfMonth, $endOfMonth, $skip, $take);
+
+        // Get list dịch vụ theo id
+        foreach ($listHDCT as $hoaDonChiTiet) {
+            $hoaDonChiTiet['dichvu'] = $this->Dichvu->getDichvuAndDanhMucById($hoaDonChiTiet->idlienquan);
+        }
+        return $listHDCT;
+    }
+
+    public function getDichVuTrangHome() {
+        $take = 5;
+        $skip = 0;
+        $listDichVu = $this->getDichVuUaChuongThangTruoc($skip, $take);
+        $this->data['listDichVuUaChuong'] = $listDichVu;
+        $this->data['listDichVuGiamGia'] = $this->Dichvu->getDichVuGiamGiaAndDanhMuc($take, $skip);
+    }
+
 }

@@ -5,6 +5,6 @@
                 @include('Site.components.nav-box')
             </div>
         </div>
-        <x-site.banner/>
+        @include('Site.components.slide-banner')
     </div>
 </header>
