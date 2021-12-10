@@ -1,7 +1,6 @@
 var sanphambandau = 9; //Số lượng sản phẩm hiện ban đầu
 var soluongshowtiep = 3; //Số lượng sản phẩm hiện khi click phân trang
 var ArrayDanhMuc = []; //Chứa số danh mục cần lọc
-var ArrayThuongHieu = []; //Chứa số danh mục cần lọc
 let Arrayphu = []; // Lưu trữ mã trả về ban đầu
 let ArrayFlow = []; // Mảng lưu động thay đổi theo khi lọc
 let YeuThichSPS = []; // Chưa id của sản phẩm mà User yêu thích khi login
@@ -280,9 +279,7 @@ function FilterDanhMuc(id) {
         ArrayDanhMuc.push(id);
         BeFore(ArrayFlow, ArrayDanhMuc);
     }
-    $("#locgia0").prop("checked", true);
-    $("#sapxep select").val("AZ");
-    document.getElementById("seach").value = '';
+    UnCheck();
 }
 
 //Hàm tiếp nhận onkeyup lọc sản phẩm theo tên
@@ -312,7 +309,7 @@ function ShowPhanTrang(dem) {
         if (j <= soSp.length) {
             document.getElementById('AnHienSP' + j).style.display = "block";
         } else {
-            xemsp.innerHTML = '<button class="w-25 border border-dark p-2" style="background-color: black; color: #e87c7b;" ><< Hết sản phẩm >></button>'
+            xemsp.innerHTML = '<button class="w-25 border border-dark p-2" style="background-color: black; color: #e87c7b;" ><< Không có sản phẩm nào >></button>'
         }
     }
 

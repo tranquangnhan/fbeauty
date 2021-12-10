@@ -99,6 +99,7 @@
 {{-- Quang Nhân --}}
 <script src="{{ asset('Site/js') }}/lieutrinh.nhan.js"></script>
 <script src="{{ asset('Site/js') }}/custom.nhan.js"></script>
+<script src="{{ asset('Site/js') }}/timkiem.js"></script>
 
 {{-- Quang Nhân --}}
 

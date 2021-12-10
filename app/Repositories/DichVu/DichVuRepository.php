@@ -36,7 +36,10 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     }
 
     public function search($valueSearch){
-        return $this->model->where('name','LIKE','%'.$valueSearch.'%')->get();
+        return $this->model->select('danhmuc.name as namedm',
+        'dichvu.*')
+        ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+        ->where('dichvu.name','LIKE','%'.$valueSearch.'%')->get();
     }
 
     public function dichVuInerjoinDanhMuc(){

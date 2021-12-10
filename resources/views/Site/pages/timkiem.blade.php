@@ -35,9 +35,9 @@
 
                         <div class="title-small color-black-main text-left">Kết quả tìm kiếm dịch vụ</div>
                         <div class="w-100">
-                            <div class="fa-list-dichvu mt-1">
-                                <input type="hidden" id="data" value="{{$dulieu}}">
-                           
+                            <input type="hidden" id="data" value="{{$dulieu}}">
+                            <div class="fa-list-dichvu mt-1" id="showdichvu">                                
+                             
                                 {{-- @foreach ($dichvu as $dichvuitem)
                                     <div class="dichvu-item d-plex w-100">
                                         <div class="content-1">
@@ -73,6 +73,9 @@
                                 @endforeach --}}
 
                             </div>
+                            <a id="xemthembtn">
+                                <button class="w-25 border border-dark p-2" style="background-color: #e87c7b;"  onclick="xemThem()">Xem thêm <i class="fa fa-angle-down"></i></button>
+                            </a>
                         </div>
                         <hr>
 
