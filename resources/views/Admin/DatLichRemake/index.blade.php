@@ -43,12 +43,12 @@
                                             <li class="nav-item" role="presentation">
                                                 <a class="nav-link active" id="datlich-day-tab" data-toggle="tab" href="#datlich-day" role="tab" aria-controls="datlich-day" aria-selected="true">Ngày</a>
                                             </li>
-                                            <li class="nav-item" role="presentation">
+                                            {{-- <li class="nav-item" role="presentation">
                                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
                                             </li>
                                             <li class="nav-item" role="presentation">
                                                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                                            </li>
+                                            </li> --}}
                                         </ul>
 
                                     </div>
@@ -59,10 +59,10 @@
                                                 <div class="card-header bg-white">
                                                     <div class="row justify-content-between">
                                                         <div class="left-box d-flex">
-                                                            <div class="form-group d-flex align-items-center bg-primary" style="padding-right: 1em; border-radius: 0.15rem;">
+                                                            {{-- <div class="form-group d-flex align-items-center bg-primary" style="padding-right: 1em; border-radius: 0.15rem;">
                                                                 <input type="text" class="form-control border-none text-white ip-color-placeholder-white search-name-kh" placeholder="Tìm tên khách hàng" style="background: none;">
                                                                 <i class="fas fa-search text-white"></i>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="button-group datlich-control d-flex align-items-center ml-2">
                                                                 <div class="checkbox checkbox-primary">
                                                                     <input id="check-select-all" type="checkbox">
@@ -76,7 +76,7 @@
 
                                                         </div>
 
-                                                        <div class="right-box">
+                                                        {{-- <div class="right-box">
                                                             <div class="d-flex">
                                                                 <button class="btn btn-primary waves-effect waves-light mr-2 pre-day-calendar-datlich">Trước</button>
                                                                 <div class="form-group mb-0">
@@ -84,7 +84,7 @@
                                                                 </div>
                                                                 <button class="btn btn-primary waves-effect waves-light ml-2 next-day-calendar-datlich">Sau</button>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
 
                                                     <div class="row">

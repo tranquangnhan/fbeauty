@@ -224,6 +224,7 @@ function checkStepAndCallAction() {
         phoneNumber = $('#phoneNumber').val();
         idCoSo = $('.value-coso').attr('data-coso');
         nameKhachHang = $('.nameKhachHang').val();
+        ngaySelected = $('.value-date').attr('data-date');
         var error = firstPageModalValidCheck(phoneNumber, idCoSo, nameKhachHang);
         if (error) {
             checkMove = false;
@@ -533,7 +534,9 @@ $(document).on("change", ".uncheck-dich-vu", function () {
 });
 
 function uncheckDichVu() {
-    var checkBoxTuVan = $('.checkbox-tuvan');
+    checkBoxTuVan = $('.checkbox-tuvan');
+    checkBoxDichVu = $('.checkbox-dichvu');
+
     if (checkBoxTuVan.prop('checked')) {
         checkBoxDichVu.prop('checked', false);
         tinhTongVaPushArrayIdDichVu();
