@@ -121,7 +121,7 @@ function showGioHang() {
             if (data==0){
                 modalgiohang.innerHTML="<p>Không có sản phẩm nào</p>";
                 soluonghang.innerHTML=0;
-                soluonghang1.innerHTML=0;
+                soluonghangmodal.innerHTML=0;
                 tongtien.innerHTML = 0;
                 nutcheckout.href= "javascript:void(0)";
                 if (window.location == domain+'/gio-hang'){
