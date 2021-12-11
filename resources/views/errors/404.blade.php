@@ -50,11 +50,11 @@ p a:hover{
 <div class="wrap">
     <div class="logo">
         <img src="{{URL::to('Admin/assets/error404/404.png')}}" alt=""  />
-        <p><a href="#">Quay lại trang chủ</a></p>
+        <p><a href="{{URL::to("/")}}">Quay lại trang chủ</a></p>
     </div>
 </div>
 <div class="footer">
-	Design by - <a href="">Anh Quốc</a>
+	Design by - <a href="">FBeauty</a>
 </div>
 
 </body>

@@ -697,6 +697,8 @@
 
 <!-- Gallery Init-->
 <script src="{{ asset('Admin/assets') }}/js/pages/gallery.init.js"></script>
+
+<!--- Bắt lỗi--->
 {{--end code của quốc--}}
 
 @yield('custom-javascript')
