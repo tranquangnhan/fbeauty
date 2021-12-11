@@ -14,12 +14,21 @@
                 <form id="formTheoDoi" action="{{URL::to("/emaillienhe")}}" class="form-subscribe" method="post">
                     @csrf
                     <div class="bg-white div-subscribe">
+<<<<<<< HEAD
                         <input type="email" name="email" id="name" placeholder="Nhập email của bạn">
                         <button type="submit" class="btn-nor">Gửi email</button>
                     </div>
                     @error('email')
                     <span class="badge badge-danger">{{$message}}</span>
                     @enderror
+=======
+                            <input type="email" name="email" class="text-danger" id="emaillienhe" value="@error('email')
+                            {{ $message }}
+                            @enderror" placeholder="Nhập email của bạn">
+                            <button type="submit" class="btn-nor">Gửi email</button>
+                    </div>
+
+>>>>>>> 9b64dc75cd6c0846eb966ca03ee500a59d75105f
                 </form>
             </div>
         </div>
@@ -160,18 +169,3 @@
         ©2021 Bản quyền FBeauty. Đã đăng ký bản quyền
     </div>
 </footer>
-<script type="text/javascript">
-    $("#formTheoDoi").validate({
-    rules: {
-        email: { required: true, maxlength: 100, minlength: 10, email: true },
-    },
-    messages: {
-        email: {
-            required: "<span class='badge badge-danger'>Mời bạn nhập email</span>",
-            maxlength: "<span class='badge badge-danger'>Email dài quá, phải <100 ký tự </span>",
-            minlength: "<span class='badge badge-danger'>Email ngắn quá, phải >10 ký tự </span>",
-            email: "<span class='badge badge-danger'>Vui lòng nhập một địa chỉ email hợp lệ</span>",
-        }
-    }
-});
-</script>
