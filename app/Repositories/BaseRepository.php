@@ -24,7 +24,7 @@ abstract class BaseRepository implements RepositoryInterface{
 
     public function getAll()
     {
-        return $this->model->orderBy('id')->get();
+        return $this->model->orderBy('id', 'DESC')->get();
     }
 
     public function find($id)
