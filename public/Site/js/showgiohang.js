@@ -5,6 +5,7 @@ var tongtien=document.getElementById("tongtien");
 var nutcheckout=document.getElementById("nutcheckout");
 var asset=document.getElementById("asset").value;
 var domain=document.getElementById("domain").value;
+//Thêm sản phẩm vào giỏ
 function ThemGioHang(id) {
     if (id==null){
         iziToast.warning({
@@ -53,6 +54,7 @@ function ThemGioHang(id) {
     }
 
 }
+//Thêm sản phẩm vào giỏ hàng từ trang chi tiết
 function ThemGioHangChiTiet(muangay) {
     var idsanpham=$("#idsanpham").val();
     var tonkho=$("#tonkho").val();
@@ -109,7 +111,7 @@ function ThemGioHangChiTiet(muangay) {
         });
     }
 }
-
+//Show gio hang
 function showGioHang() {
     $.ajax({
         url: domain + '/showdonhangandgiohang',
