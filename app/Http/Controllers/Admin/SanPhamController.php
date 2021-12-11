@@ -7,21 +7,27 @@ use App\Http\Requests\SanPham;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
+use App\Repositories\YeuThich\YeuThichRepository;
 use Illuminate\Support\Str;
 
 class SanPhamController extends Controller
 {
     private $DanhMuc;
     private $SanPham;
-    private $idloai = 1;
-
+    private $idloai = Controller::LOAI_DANHMUC_SANPHAM;
+    private $idThuongHieu = Controller::LOAI_DANHMUC_THUONG_HIEU;
+    private $SanPhamChiTiet;
+    private $YeuThich;
     public function __construct(DanhMucRepository $DanhMuc,
     SanPhamRepository $SanPham,
-    SanPhamChiTietRepository $SanPhamChiTiet)
+    SanPhamChiTietRepository $SanPhamChiTiet,
+    YeuThichRepository $YeuThich
+    )
     {
         $this->DanhMuc = $DanhMuc;
         $this->SanPham = $SanPham;
         $this->SanPhamChiTiet = $SanPhamChiTiet;
+        $this->YeuThich=$YeuThich;
     }
 
     /**
@@ -43,7 +49,9 @@ class SanPhamController extends Controller
     public function create()
     {
         $cate = $this->DanhMuc->findDanhMucByIdLoai($this->idloai);
-        return view('Admin.SanPham.create',compact('cate'));
+        $thuongHieu = $this->DanhMuc->findDanhMucByIdLoai($this->idThuongHieu);
+
+        return view('Admin.SanPham.create',compact('cate','thuongHieu'));
     }
 
     /**
@@ -54,26 +62,29 @@ class SanPhamController extends Controller
      */
     public function store(SanPham $request)
     {
+
         if($request->imgs === null){
             return $this->handleErrorInput('Vui lòng chọn hình ảnh');
         }
 
         $imgs = $this->uploadMultipleImg($this::PATH_UPLOADS,$request->file('imgs'));
-        
+
         if($request->session()->get('idSanPham')){
-           
+
             $idUpdate =  $request->session()->get('idSanPham');
-      
+
             $data = [
                 'iddanhmuc'=>$request->iddanhmuc,
+                'idthuonghieu'=> $request->idthuonghieu,
                 'name'=> $request->name,
-                'slug'=>Str::slug($request->name),
+                'slug'=>$this->setSlugUpdate($idUpdate,$request->name),
                 "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
-                "trangthai"=>$request->trangthai
+                'giamgia'=>$request->giamgia,
+                "trangthai"=>($request->trangthai ) ? 1 : 0
             ];
-    
+
             $data = $this->SanPham->update($idUpdate,$data);
             if($data){
                 return redirect('/quantri/sanpham/detail/'.$data->id.'/create')->with('idDetail',$data->id);
@@ -81,24 +92,26 @@ class SanPhamController extends Controller
         }else{
             $data = [
                 'iddanhmuc'=>$request->iddanhmuc,
+                'idthuonghieu'=> $request->idthuonghieu,
                 'name'=> $request->name,
-                'slug'=>Str::slug($request->name),
+                'slug'=>$this->setSlugStore($this->SanPham,$request->name),
                 "img"=>$imgs,
                 'mota'=>$request->mota,
                 'noidung'=>$request->noidung,
-                "trangthai"=>$request->trangthai
+                'giamgia'=>$request->giamgia,
+                "trangthai"=>($request->trangthai ) ? 1 : 0
             ];
-    
+
             $data = $this->SanPham->create($data);
             $request->session()->put('idSanPham', $data->id);
             if($data){
                 return redirect('/quantri/sanpham/detail/'.$data->id.'/create')->with('idDetail',$data->id);
             }
         }
-    
+
     }
 
-   
+
 
     /**
      * Display the specified resource.
@@ -121,7 +134,8 @@ class SanPhamController extends Controller
     {
         $data  = $this->SanPham->find($id);
         $cate  = $this->DanhMuc->getAll();
-        return view("Admin.SanPham.edit",compact('data','cate'));
+        $thuongHieu = $this->DanhMuc->findDanhMucByIdLoai($this->idThuongHieu);
+        return view("Admin.SanPham.edit",compact('data','cate','thuongHieu'));
     }
 
     /**
@@ -133,11 +147,15 @@ class SanPhamController extends Controller
      */
     public function update(SanPham $request, $id)
     {
+
+
         $data = [
             'iddanhmuc'=>$request->iddanhmuc,
+            'idthuonghieu'=> $request->idthuonghieu,
             'name'=> $request->name,
-            'slug'=>Str::slug($request->name),
+            'slug'=>$this->setSlugUpdate($id,$request->name),
             'mota'=>$request->mota,
+            'giamgia'=>$request->giamgia,
             'noidung'=>$request->noidung,
             "trangthai"=>$request->trangthai,
         ];
@@ -160,11 +178,12 @@ class SanPhamController extends Controller
     public function destroy($id)
     {
         $hasChiTiet = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
-        if(count($hasChiTiet)>0){
-            return redirect('quantri/sanpham')->withErrors('Xoá không thành công, sản phẩm tồn tại sản phẩm chi tiết!');
+        $CheckYeuThich=$this->YeuThich->CheckSanPhamInYeuThich($id);
+        if(count($hasChiTiet)>0 || $CheckYeuThich==false){
+            return 1;
         }else{
-             $this->SanPham->delete($id);
-             return redirect('quantri/sanpham')->with('success','Xoá thành công!');
+            $this->SanPham->delete($id);
+            return 0;
         }
     }
 }

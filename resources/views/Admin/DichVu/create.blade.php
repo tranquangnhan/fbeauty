@@ -79,8 +79,8 @@
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label">Mô tả</label><span style="color:red;"> (*)</span>
-                                <textarea name="motangan" value="{{old('motangan')}}" class="form-control"
-                                    id="mytextarea" cols="25" rows="3" placeholder="Mô tả"></textarea>
+                                <textarea name="motangan" class="form-control"
+                                    id="mytextarea" cols="25" rows="3" placeholder="Mô tả">{{old('motangan')}}</textarea>
                                 @error('motangan')
                                 <span class="badge bg-danger text-white">{{ $message }}</span>
                                 @enderror
@@ -88,7 +88,7 @@
                             <div class="col-lg-12 mt-3">
                                 <label class="form-label">Nội dung</label><span style="color:red;"> (*)</span>
                                 <textarea name="noidung" class="form-control" id="summernote"  cols="25" rows="3"
-                                    placeholder="Nội dung"></textarea>
+                                    placeholder="Nội dung">{{old('noidung')}}</textarea>
                                     
                                 @error('noidung')
                                 <span class="badge bg-danger text-white">{{ $message }}</span>

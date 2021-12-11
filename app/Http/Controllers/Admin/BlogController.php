@@ -40,7 +40,7 @@ class BlogController extends Controller
     public function create()
     {
         $Blog = $this->Blog->getAll();
-        $DanhMuc = $this->DanhMuc->getAll();
+        $DanhMuc = $this->DanhMuc->getalledit();
         return view("Admin.Blog.create", ['Blog' => $Blog, 'DanhMuc' => $DanhMuc]);
         //
     }
@@ -90,7 +90,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $DanhMuc = $this->DanhMuc->getAll();
+        $DanhMuc = $this->DanhMuc->getalledit();
         $Blog = $this->Blog->find($id);
         return view("Admin.Blog.edit", ['DanhMuc' => $DanhMuc, 'Blog' => $Blog]);
     }
@@ -134,8 +134,11 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $this->Blog->delete($id);
-
-        return redirect('quantri/blog')->with('success', 'Xoá thành công');
+        $delete= $this->Blog->delete($id);
+        if ($delete){
+            return 0;
+        }else{
+            return 1;
+        }
     }
 }

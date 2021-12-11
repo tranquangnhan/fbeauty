@@ -48,7 +48,7 @@
 
                             <div class="form-group text-right mb-0 mt-5">
                                 <a href="quantri/sanpham/create" class="btn-cancel">Huỷ</a>
-                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
+                                {{-- <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm"> --}}
                             </div>
                         </form>
                     </div>

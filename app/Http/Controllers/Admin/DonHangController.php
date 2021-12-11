@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\DonHang;
+use App\Http\Requests\DonHangEdit;
+use App\Http\Requests\GiamGiaEdit;
 use App\Http\Requests\KhachHang;
 use App\Models\Admin\KhachHangModel;
 use App\Repositories\DonHang\DonHangRepository;
@@ -94,11 +96,10 @@ class DonHangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DonHangEdit $request, $id)
     {
 
-        //$validated = $request->validated();
-
+        if($this == true){
         $data = [
 
             'idgiamgia' => $request->magiamgia,
@@ -109,12 +110,16 @@ class DonHangController extends Controller
             'tongtiensaugiamgia'=>$request->tongtiensaugiamgia,
             'ghichucuakhachhang'=>$request->ghichukhachhang,
             'phuongthucgiaohang'=>$request->phuongthucgiaohang,
-            'trangthai'=>$request->trangthai
+            'trangthai'=>$request->trangthai,
+            'trangthaithanhtoan'=>$request->trangthaithanhtoan,
         ];
 
         $this->DonHang->update($id,$data);
 
-        return redirect('quantri/donhang')->with('success','Sửa thành công');
+        return redirect(route("donhang.index"))->with('thanhcong', 'Cập nhật thông tin thành công');
+        } else {
+        return redirect(route("donhang.edit"))->with('thatbai', 'cập nhật thất bại ');
+    }
     }
 
     /**
@@ -126,11 +131,6 @@ class DonHangController extends Controller
     public function destroy($id)
     {
         $this->DonHang->delete($id);
-
-
         return redirect('quantri/donhang')->with('success','Xoá thành công');
     }
-
-
-
 }

@@ -5,20 +5,29 @@ namespace App\Http\Controllers\Site;
 use App\Events\SendDatLich;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\freeSMSController;
+use App\Http\Requests\ChangeProfile;
 use App\Http\Requests\LienHe;
 use App\Models\Admin\DatLichModel;
 use App\Models\Admin\KhachHangModel;
+use App\Models\Admin\LieuTrinhChiTietModel;
 use App\Repositories\Blog\BlogRepository;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
 use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\DichVu\DichVuRepository;
+use App\Repositories\DonHang\DonHangRepository;
+use App\Repositories\HoaDon\HoaDonRepository;
+use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\Lich\LichRepository;
+use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use App\Repositories\LienHe\LienHeRepository;
+use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
+use App\Repositories\YeuThich\YeuThichRepository;
+use App\Repositories\Banner\BannerRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -38,7 +47,14 @@ class HomeController extends Controller
     private $freeSMSController;
     private $SanPhamChiTiet;
     private $LienHe;
-
+    private $LieuTrinhChiTiet;
+    private $HoaDon;
+    private $HoaDonChiTiet;
+    private $Blog;
+    private $DonHang;
+    private $LieuTrinh;
+    private $YeuThich;
+    private $Banner;
     /**
      * CosoController constructor.
      */
@@ -53,8 +69,15 @@ class HomeController extends Controller
         BlogRepository $Blog,
         SanPhamRepository $SanPham,
         SanPhamChiTietRepository $SanPhamChiTiet,
-        LienHeRepository $LienHe
-)
+        LieuTrinhRepository $LieuTrinh,
+        LienHeRepository $LienHe,
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet,
+        HoaDonRepository $HoaDon,
+        HoaDonChiTietRepository $HoaDonChiTiet,
+        DonHangRepository $DonHang,
+        YeuThichRepository $YeuThich,
+        BannerRepository $Banner
+    )
     {
         $this->freeSMSController = new freeSMSController;
         $this->Coso = $Coso;
@@ -66,21 +89,27 @@ class HomeController extends Controller
         $this->KhachHang = $KhachHang;
         $this->Blog = $Blog;
         $this->SanPham = $SanPham;
-        $this->SanPhamChiTiet=$SanPhamChiTiet;
+        $this->SanPhamChiTiet = $SanPhamChiTiet;
+        $this->LieuTrinh = $LieuTrinh;
         $this->LienHe = $LienHe;
-        $dichvu = $this->Dichvu->getDichVusite();
+        $this->HoaDon = $HoaDon;
+        $this->HoaDonChiTiet = $HoaDonChiTiet;
+        $this->DonHang = $DonHang;
+        $this->YeuThich = $YeuThich;
+        $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
+        $this->Banner = $Banner;
+
         $danhmuc = $this->DanhMuc->getdanhmucshow();
-        $alldichvu = $this->Dichvu->getDichVuall();
         $listCoSo = $this->Coso->getAll();
         $listDanhMucDichVu = $this->getDichVuTheoDanhMuc();
+        $listBanner = $this->getBanner();
 
         $this->data = array(
-            'danhmuc'=>$danhmuc,
+            'danhmuc' => $danhmuc,
             'listCoSo' => $listCoSo,
-            'dichvu' => $dichvu,
-            'alldichvu' => $alldichvu,
             'listDanhMucDichVu' => $listDanhMucDichVu,
             'pathActive' => '',
+            'listBanner' => $listBanner
         );
     }
 
@@ -88,13 +117,20 @@ class HomeController extends Controller
     {
         $sanPham = $this->SanPham->getAll();
         $blog = $this->Blog->getBlog1();
-        $blog2 = $this->Blog->getBlog2();
+        $getBlog2 = $this->Blog->getBlog2();
+        $blog3 = $this->Blog->getLastWeek1();
+        $blog4 = $this->Blog->getLastWeek2();
+        $spkhac = $this->SanPham->getSanPhamHome();
 
+        $this->getDichVuTrangHome();
 
         $this->data['sanPham'] = $sanPham;
         $this->data['blog'] = $blog;
-        $this->data['blog2'] = $blog2;
+        $this->data['getBlog2'] = $getBlog2;
+        $this->data['blog3'] = $blog3;
+        $this->data['blog4'] = $blog4;
         $this->data['pathActive'] = 'trang-chu';
+        $this->data['spkhac'] = $spkhac;
 
         return view("Site.pages.home", $this->data);
     }
@@ -109,37 +145,40 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
-        $danhmucsp = $this->DanhMuc->findDanhMucByIdLoai(1);
-        return view("Site.pages.sanpham", $this->data, ['danhmucsp' => $danhmucsp]);
+        $this->data["danhmucsp"] = $this->DanhMuc->findDanhMucByIdLoai(self::LOAI_DANHMUC_SANPHAM);
+        $this->data["danhmucth"] = $this->DanhMuc->findDanhMucByIdLoai(self::LOAI_DANHMUC_THUONG_HIEU);
+        return view("Site.pages.sanpham", $this->data);
     }
 
-    public function getSanPham($soluong)
+    public function getSanPham()
     {
-        $sanpham = $this->SanPham->getSanPhamJoinDanhMuc($soluong);
-        $sl = $this->SanPham->DemSanPham();
+        $sanpham = $this->SanPham->getSanPhamJoinDanhMuc();
         $data = ['sanpham' => $sanpham];
         return $data;
     }
 
-    public function viewSanPhamChiTiet($id)
+    public function viewSanPhamChiTiet($slug)
     {
         error_reporting(0);
-            $this->data['pathActive'] = 'san-pham';
-            $this->data['namePage'] = 'Sản phẩm chi tiết';
-            $this->data['breadcrumbArray'] = [
-                ['link' => '/san-pham', 'name' => 'Sản phẩm'],
-                ['link' => '', 'name' => 'Tên sản phẩm'],
-            ];
-            $sanpham=$this->SanPham->getSanPhamJoinDanhMucID($id);
-            $checkspct=$this->SanPhamChiTiet->CheckSanPhamChiTietByID($id);
-            if ($checkspct==false){
-                $sanphamchitiet=$this->SanPhamChiTiet->getSanPhamChiTietByID($id);
-                $sanphamchitietlimit=$this->SanPhamChiTiet->getSanPhamChiTietByIDLimit($id);
-                return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitiet'=>$sanphamchitiet, 'sanphamchitietlimit'=>$sanphamchitietlimit]);
-            }
-            else{
-                return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham'=>$sanpham, 'sanphamchitietlimit'=>null]);
-            }
+        $this->data['pathActive'] = 'san-pham';
+        $this->data['namePage'] = 'Sản phẩm chi tiết';
+        $this->data['breadcrumbArray'] = [
+            ['link' => '/san-pham', 'name' => 'Sản phẩm'],
+            ['link' => '', 'name' => 'Tên sản phẩm'],
+        ];
+        $sanpham = $this->SanPham->getSanPhamJoinDanhMucSlug($slug);
+        $splienquan = $this->SanPham->GetSanPhamLienQuan($sanpham[0]->iddanhmuc);
+        $spkhac = $this->SanPham->GetSanPhamLienQuanKhacIDDM($sanpham[0]->iddanhmuc);
+        $this->data['splienquan'] = $splienquan;
+        $this->data['spkhac'] = $spkhac;
+        $checkspct = $this->SanPhamChiTiet->CheckSanPhamChiTietByID($sanpham[0]->id);
+        if ($checkspct == false) {
+            $sanphamchitiet = $this->SanPhamChiTiet->getSanPhamChiTietByID($sanpham[0]->id);
+            $sanphamchitietlimit = $this->SanPhamChiTiet->getSanPhamChiTietByIDLimit($sanpham[0]->id);
+            return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham' => $sanpham, 'sanphamchitiet' => $sanphamchitiet, 'sanphamchitietlimit' => $sanphamchitietlimit]);
+        } else {
+            return view("Site.pages.sanpham-chitiet", $this->data, ['sanpham' => $sanpham, 'sanphamchitietlimit' => null]);
+        }
     }
 
 
@@ -168,91 +207,110 @@ class HomeController extends Controller
         return view("Site.pages.thanhtoan", $this->data);
     }
 
-    public function viewBaiViet() {
-        $blog      = $this->Blog->getBlog1();
-        $xuhuong      = $this->Blog->getblogbyxuhuong();
-        $luotxem      = $this->Blog->getblogbyView();
-        $listdanhmuc   = $this->DanhMuc->getAll();
-        $listdanhmuc2   = $this->DanhMuc->getall2danhmuc();
-        foreach($listdanhmuc as $dm) {
+    public function viewBaiViet()
+    {
+        $blog = $this->Blog->getBlog1();
+        $blognewtt = $this->Blog->getBlognewtt();
+        $xuhuong = $this->Blog->getblogbyxuhuong();
+        $luotxem = $this->Blog->getblogbyView();
+        $listdanhmuc = $this->DanhMuc->getAll();
+        $listdanhmuc2 = $this->DanhMuc->getall2danhmuc();
+
+        foreach ($listdanhmuc as $dm) {
             $skip = 0;
             $take = 6;
             $blogbyid = $this->Blog->getBlogByIdDanhmuc($dm->id, $skip, $take);
             $dm['blogbyid'] = $blogbyid;
         }
-        foreach($listdanhmuc2 as $dm) {
+        foreach ($listdanhmuc2 as $dm) {
             $skip_0 = 0;
             $take_3 = 3;
             $blogbyid2 = $this->Blog->getBlogByIdDanhmuc($dm->id, $skip_0, $take_3);
             $dm['blogbyid2'] = $blogbyid2;
         }
 
-        $danhmuc   = $this->DanhMuc->getAllDanhMuc();
-        $getBlog2     = $this->Blog->getBlog2();
-        $blog3     = $this->Blog->getLastWeek1();
-        $blog4     = $this->Blog->getLastWeek2();
-        $blognew   = $this->Blog->getBlognew();
+        $danhmuc = $this->DanhMuc->getAllDanhMuc();
+        $getBlog2 = $this->Blog->getBlog2();
+        $blog3 = $this->Blog->getLastWeek1();
+        $blog4 = $this->Blog->getLastWeek2();
+        $blognew = $this->Blog->getBlognew();
 
-        $this->data['blog']     = $blog;
-        $this->data['blog']     = $blog;
-        $this->data['blog3']    = $blog3;
-        $this->data['blog4']    = $blog4;
-        $this->data['blognew']    = $blognew;
-        $this->data['danhmuc']    = $danhmuc;
-        $this->data['getBlog2']     = $getBlog2;
+        $this->data['blog'] = $blog;
+        $this->data['blog3'] = $blog3;
+        $this->data['blog4'] = $blog4;
+        $this->data['blognew'] = $blognew;
+        $this->data['danhmuc'] = $danhmuc;
+        $this->data['getBlog2'] = $getBlog2;
         $this->data['listdanhmuc'] = $listdanhmuc;
         $this->data['listdanhmuc2'] = $listdanhmuc2;
         $this->data['luotxem'] = $luotxem;
         $this->data['xuhuong'] = $xuhuong;
+        $this->data['blognewtt'] = $blognewtt;
 
-        $this->data['pathActive']          = 'bai-viet';
-        $this->data['namePage']            = 'Bài viết';
-        $this->data['breadcrumbArray']     = [
+        $this->data['pathActive'] = 'bai-viet';
+        $this->data['namePage'] = 'Bài viết';
+        $this->data['breadcrumbArray'] = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
         ];
         return view("Site.pages.baiviet", $this->data);
     }
 
-    public function viewBaiVietChiTiet($id) {
-        $this->Blog->updateView($id);
+    public function viewBaiVietChiTiet($slug)
+    {
+        $this->Blog->updateView($slug);
         $getBlog2 = $this->Blog->getBlog2();
-        $danhmuc   = $this->DanhMuc->getAllDanhMuc();
-        $viewdetail = $this->Blog->editBlog($id);
-        $viewdetail2 = $this->Blog->editBlog($id);
-         foreach($viewdetail2 as $detail) {
-            $viewdt = $this->Blog->getblogbyiddm3($detail->iddmm);
+        $danhmuc = $this->DanhMuc->getAllDanhMuc();
+        $viewdetail = $this->Blog->editBlog($slug);
+        $viewdetail2 = $this->Blog->editBlog($slug);
+        foreach ($viewdetail2 as $detail) {
+            $viewdt = $this->Blog->getblogbyiddm3($detail->iddm);
             $detail['viewdt'] = $viewdt;
-
         }
-        // $updateView = $this->Blog-> updateView($id);
 
-        // $this->data['updateView']= $updateView;
-        // $Blog = [
-        //     'luotxem' =>$request-> luotxem,
-        // ];
+        $this->data['getBlog2'] = $getBlog2;
+        $this->data['danhmuc'] = $danhmuc;
+        $this->data['viewdetail'] = $viewdetail;
+        $this->data['viewdetail2'] = $viewdetail2;
 
-
-        $this->data['getBlog2']     = $getBlog2;
-        $this->data['danhmuc']     = $danhmuc;
-        $this->data['viewdetail']    = $viewdetail;
-        $this->data['viewdetail2']    = $viewdetail2;
-
-        $this->data['pathActive']          = 'bai-viet';
-        $this->data['namePage']            = $viewdetail[0]->name;
-        $this->data['breadcrumbArray']     = [
+        $this->data['pathActive'] = 'bai-viet';
+        $this->data['namePage'] = $viewdetail[0]->name;
+        $this->data['breadcrumbArray'] = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
             ['link' => '', 'name' => $viewdetail[0]->name],
         ];
 
         return view("Site.pages.baivietchitiet", $this->data);
     }
+    public function viewDanhmucBaiViet($slug){
+        $skip = 0;
+        $take = 9;
+        $danhmucct = $this->DanhMuc->getAllDanhMucchitiet($skip, $take);
+        $viewdetail = $this->Blog->getBlogByslugdm($slug);
+        $viewbt = $this->Blog->getblogbyslugdmbt($slug);
+        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
 
-    public function viewDichVu()
+        $this->data['danhmucct'] = $danhmucct;
+        $this->data['viewdetail'] = $viewdetail;
+        $this->data['viewbt'] = $viewbt;
+        $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
+
+        $this->data['pathActive'] = 'danh-muc-bai-viet';
+        $this->data['namePage'] = $nameDanhMucbyslug[0]->name;
+        $this->data['breadcrumbArray'] = [
+            ['link' => '/danh-muc-bai-viet', 'name' => 'Danh mục bài viết'],
+            ['link' => '', 'name' => 'Danh mục'],
+        ];
+
+        return view("Site.pages.dmblogchitiet", $this->data);
+    }
+    public function viewDichVu(Request $request)
     {
         $dichvu = $this->Dichvu->getDichVu2();
-        $dichvu1 = $this->Dichvu->getDichVu1();
-        $dichvu2 = $this->Dichvu->getDichVu3();
+        $dichvu1 = $this->Dichvu->getLastWeekdichvu();
+        $dichvu2 = $this->Dichvu->getDichVubyGiamGia();
         $danhmuc = $this->DanhMuc->getalldanhmuc();
+        $this->getDanhMucVaDichVu();
+        //$mouth = $this->Dichvu->getLastWeekdichvu();
 
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
@@ -263,27 +321,90 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
-//         dd($dichvu);
-        if($valueSearch = request()->key){
-            $dichvu = $this->Dichvu->search($valueSearch);
-            $this->data['dichvu'] = $dichvu;
-        }
 
 
         return view("Site.pages.dichvu", $this->data);
     }
+    public function danhmucdichvu($slug)
+    {
+    $limit = 6;
+        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
+        $viewdetail = $this->Dichvu->getdichvuiddanhmuc($slug , $limit);
 
-    public function viewLienHe() {
+        $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
+        $this->data['viewdetail'] = $viewdetail;
+        $this->data['pathActive'] = 'danh-muc-dich-vu';
+        $this->data['namePage'] = 'Danh Mục Dịch Vụ';
+        $this->data['breadcrumbArray'] = [
+            ['link' => '/danh-muc-dich-vu', 'name' => 'Danh Mục Dịch Vụ'],
+            ['link' => '', 'name' => 'Tên Dịch Vụ'],
+
+        ];
+
+        return view("Site.pages.danhmucchitiet", $this->data);
+    }
+    public function Huyprofile(Request $request, $id){
+            $id = $request->id;
+            $huy = DatLichModel::find($id);
+            $huy->trangthai = 2;
+            $huy->save();
+            return redirect('/thong-tin-tai-khoan');
+    }
+
+    public function viewTimKiem()
+    {
+
+        $dichvu = $this->Dichvu->getAllDichVu();
+        $sanpham = $this->SanPham->getsanphamtimkiem();
+        $blog = $this->Blog->getAllBlog();
+
+//         $obj = [];
+//         for ($i = 0; $i < count($sanpham); $i++) {
+//             $obj = json_decode($sanpham[$i]->img);
+//         }
+// dd($obj);
+
+
+        $this->data['dichvu'] = $dichvu;
+        $this->data['dichvu'] = $dichvu;
+        $this->data['sanpham'] = $sanpham;
+        $this->data['blog'] = $blog;
+        $this->data['pathActive'] = 'tim-kiem';
+        $this->data['namePage'] = 'Tìm Kiếm';
+        $this->data['breadcrumbArray'] = [
+            ['link' => '', 'name' => 'Tìm Kiếm'],
+        ];
+
+        if($valueSearch = request()->key){
+            $dichvu = $this->Dichvu->search($valueSearch);
+            $sanpham = $this->SanPham->searchsanpham($valueSearch);
+            $blog = $this->Blog->searchblog($valueSearch);
+
+            $this->data['dichvu'] = $dichvu;
+            $this->data['sanpham'] = $sanpham;
+            $this->data['blog'] = $blog;
+
+        }
+
+
+
+        return view("Site.pages.timkiem", $this->data);
+    }
+
+    public function viewLienHe()
+    {
         $coso = $this->Coso->getAll();
         $this->data['coso'] = $coso;
-        $this->data['pathActive']          = 'lien-he';
-        $this->data['namePage']            = 'Liên Hệ';
-        $this->data['breadcrumbArray']     = [
+        $this->data['pathActive'] = 'lien-he';
+        $this->data['namePage'] = 'Liên Hệ';
+        $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Liên Hệ'],
         ];
         return view("Site.pages.contact", $this->data);
     }
-    public function storeLienHe(LienHe $request) {
+
+    public function storeLienHe(LienHe $request)
+    {
         $LienHe = [
             'namekh' => $request->namekh,
             'email' => $request->email,
@@ -294,10 +415,11 @@ class HomeController extends Controller
         return redirect('lien-he')->with('success', 'Gửi thành công liên hệ');
     }
 
-    public function viewGioiThieu() {
-        $this->data['pathActive']          = 'gioi-thieu';
-        $this->data['namePage']            = 'Giới thiệu';
-        $this->data['breadcrumbArray']     = [
+    public function viewGioiThieu()
+    {
+        $this->data['pathActive'] = 'gioi-thieu';
+        $this->data['namePage'] = 'Giới thiệu';
+        $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Giới thiệu'],
         ];
         return view("Site.pages.gioithieu", $this->data);
@@ -306,8 +428,13 @@ class HomeController extends Controller
     public function viewDichVuChiTiet($slug)
     {
         $detaildichvu = $this->Dichvu->dichvudetail($slug);
+        $dichvuview = $this->Dichvu->getdichvujoindanhmuc($slug);
+        $dichvulienquan = $this->Dichvu->GetDichvuLienQuan($dichvuview[0]->iddm);
+        $dichvukhac = $this->Dichvu->GetDichvuLienQuanKhacIDDM($dichvuview[0]->iddm);
 
-        $this->data['detaildichvu']= $detaildichvu;
+        $this->data['dichvulienquan'] = $dichvulienquan;
+        $this->data['dichvukhac'] = $dichvukhac;
+        $this->data['detaildichvu'] = $detaildichvu;
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
         $this->data['breadcrumbArray'] = [
@@ -319,35 +446,272 @@ class HomeController extends Controller
         return view("Site.pages.dichvuchitiet", $this->data);
     }
 
-    public function viewDanhMucgetDichvu($slug)
+    public function viewProfileUser()
     {
-        $danhmucgetdichvu = $this->DanhMuc->idDanhMucgetDichvu($slug);
+        $khachHang = session()->get('khachHang');
 
-        $this->data['detaildichvu']= $danhmucgetdichvu;
-        $this->data['pathActive'] = 'danh-muc';
-        $this->data['namePage'] = 'Danh mục';
-        $this->data['breadcrumbArray'] = [
-            ['link' => '/danh-muc', 'name' => 'Danh Mục'],
-            ['link' => '', 'name' => 'Tên Danh Mục'],
+        if ($khachHang === null) {
+            return redirect('/')->with('alert', 'Deleted!');
+        }
 
-        ];
-        dd($danhmucgetdichvu);
-
-        return view("Site.pages.dichvuchitiet", $this->data);
-    }
-
-    public function viewProfileUser() {
         $this->data['pathActive']          = 'thong-tin-tai-khoan';
-        $this->data['namePage']            = 'Thông tin tài khoảng';
+        $this->data['namePage']            = 'Thông tin tài khoản';
         $this->data['breadcrumbArray']     = [
-            ['link' => '', 'name' => 'Thông tin tài khoảng'],
-
+            ['link' => '', 'name' => 'Thông tin tài khoản'],
         ];
 
+
+        if ($khachHang) {
+            $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
+            $this->data['dataLieuTrinh'] = $dataLieuTrinh;
+            $this->data['lichSuDatLich'] = $this->getDuLieuTabLichSuDatLich($khachHang->id);
+            $this->data['lichSuDatLich1'] = $this->getDuLieuTabLichSuDatLich1($khachHang->id);
+            $this->data['lichSuDatLich2'] = $this->getDuLieuTabLichSuDatLich2($khachHang->id);
+            $this->data['lichSuDatLich3'] = $this->getDuLieuTabLichSuDatLich3($khachHang->id);
+
+
+
+
+
+        } else {
+            $this->data['dataLieuTrinh'] = [];
+        }
+        $this->data['donhangcuatoi']=$this->DonHang->DonHanCuaBanALL();
+        $this->data['donhangcuatoi1']=$this->DonHang->DonHanCuaBan(self::DONHANG_CHOXACNHAN);
+        $this->data['donhangcuatoi2']=$this->DonHang->DonHanCuaBan(self::DONHANG_DANGGIAO);
+        $this->data['donhangcuatoi3']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAGIAO);
+        $this->data['donhangcuatoi4']=$this->DonHang->DonHanCuaBan(self::DONHANG_DAHUY);
+        $this->data['donhangcuatoi5']=$this->DonHang->DonHanCuaBan(self::DONHANG_TRAHANG);
+        $this->data['spyeuthich']=$this->YeuThich->getYeuThichByIdKhachHang(session()->get('khachHang')->id);
         return view("Site.pages.profile-user", $this->data);
     }
 
-    public function getNhanVienByIdCoSo(Request $request, $id) {
+    public function getDuLieuTabLichSuDatLich($idKhachHang) {
+        $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
+        $arrayDatLich = $this->getDatLichByYearArrayAndIdKhachHang($idKhachHang, $arrayYear);
+
+        return $arrayDatLich;
+    }
+    public function getDuLieuTabLichSuDatLich1($idKhachHang) {
+        $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
+        $arrayDatLich1 = $this->getDatLichByYearArrayAndIdKhachHang1($idKhachHang, $arrayYear);
+
+        return $arrayDatLich1;
+    }
+    public function getDuLieuTabLichSuDatLich2($idKhachHang) {
+        $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
+        $arrayDatLich2 = $this->getDatLichByYearArrayAndIdKhachHang2($idKhachHang, $arrayYear);
+
+        return $arrayDatLich2;
+    }
+    public function getDuLieuTabLichSuDatLich3($idKhachHang) {
+        $arrayYear = $this->getArrayYearInDatLich($idKhachHang);
+        $arrayDatLich3 = $this->getDatLichByYearArrayAndIdKhachHang3($idKhachHang, $arrayYear);
+
+        return $arrayDatLich3;
+    }
+
+
+    public function getArrayYearInDatLich($idKhachHang) {
+        $listDatLich = $this->DatLich->getDatLichByIdKhachHang($idKhachHang);
+        $arrayYear = array();
+        foreach($listDatLich as $datLich) {
+            $year = date('Y', $datLich->thoigiandat);
+            if (!in_array($year, $arrayYear)) {
+                $arrayYear[] = $year;
+            }
+        }
+        return $arrayYear;
+    }
+
+    public function getDatLichByYearArrayAndIdKhachHang($idKhachHang, $arrayYear) {
+        $arrayDatLich = array();
+        // $mytime = Carbon\::now();
+
+        for ($i = 0; $i < count($arrayYear); $i++) {
+            $thoiGian = Controller::getThoiGianTimestampDauNamVaCuoiNam($arrayYear[$i]);
+            $listDatLichByTime = $this->DatLich->getDatLichByIdKhachHangAndThoiGianDat($idKhachHang, $thoiGian['startOfYear'], $thoiGian['endOfYear']);
+            // $listDatLichByNhanVien = $this->DatLich->getDatLichByIdnhanvien($idKhachHang);
+
+
+
+            foreach ($listDatLichByTime as $datLich) {
+                $thoiGianDayYMD = date('Y-m-d', $datLich->thoigiandat);
+                $datLich['thoiGianDayYMD'] = $thoiGianDayYMD;
+                // $datLich['name'] = $listDatLichByNhanVien;
+            }
+            // dd($datLich['thoiGianDayYMD']);
+            $dataDatLich = array (
+                "year" => $arrayYear[$i],
+                "arrayDatLich" => $listDatLichByTime,
+                // "listDatLichByNhanVien" => $listDatLichByNhanVien,
+            );
+
+            $arrayDatLich[] = $dataDatLich;
+        }
+
+        return $arrayDatLich;
+    }
+    public function getDatLichByYearArrayAndIdKhachHang1($idKhachHang, $arrayYear) {
+        $arrayDatLich1 = array();
+        for ($i = 0; $i < count($arrayYear); $i++) {
+            $thoiGian = Controller::getThoiGianTimestampDauNamVaCuoiNam($arrayYear[$i]);
+            $listDatLichByTime = $this->DatLich->getDatLichByIdKhachHangAndThoiGianDat1($idKhachHang, $thoiGian['startOfYear'], $thoiGian['endOfYear']);
+
+            foreach ($listDatLichByTime as $datLich) {
+                $thoiGianDayYMD = date('Y-m-d', $datLich->thoigiandat);
+                $datLich['thoiGianDayYMD'] = $thoiGianDayYMD;
+            }
+
+            $dataDatLich = array (
+                "year" => $arrayYear[$i],
+                "arrayDatLich" => $listDatLichByTime
+            );
+            $arrayDatLich1[] = $dataDatLich;
+        }
+
+        return $arrayDatLich1;
+    }
+    public function getDatLichByYearArrayAndIdKhachHang2($idKhachHang, $arrayYear) {
+        $arrayDatLich2 = array();
+        for ($i = 0; $i < count($arrayYear); $i++) {
+            $thoiGian = Controller::getThoiGianTimestampDauNamVaCuoiNam($arrayYear[$i]);
+            $listDatLichByTime = $this->DatLich->getDatLichByIdKhachHangAndThoiGianDat2($idKhachHang, $thoiGian['startOfYear'], $thoiGian['endOfYear']);
+
+            foreach ($listDatLichByTime as $datLich) {
+                $thoiGianDayYMD = date('Y-m-d', $datLich->thoigiandat);
+                $datLich['thoiGianDayYMD'] = $thoiGianDayYMD;
+            }
+
+            $dataDatLich = array (
+                "year" => $arrayYear[$i],
+                "arrayDatLich" => $listDatLichByTime
+            );
+            $arrayDatLich2[] = $dataDatLich;
+        }
+
+        return $arrayDatLich2;
+    }
+    public function getDatLichByYearArrayAndIdKhachHang3($idKhachHang, $arrayYear) {
+        $arrayDatLich3 = array();
+        for ($i = 0; $i < count($arrayYear); $i++) {
+            $thoiGian = Controller::getThoiGianTimestampDauNamVaCuoiNam($arrayYear[$i]);
+            $listDatLichByTime = $this->DatLich->getDatLichByIdKhachHangAndThoiGianDat3($idKhachHang, $thoiGian['startOfYear'], $thoiGian['endOfYear']);
+
+            foreach ($listDatLichByTime as $datLich) {
+                $thoiGianDayYMD = date('Y-m-d', $datLich->thoigiandat);
+                $datLich['thoiGianDayYMD'] = $thoiGianDayYMD;
+            }
+
+            $dataDatLich = array (
+                "year" => $arrayYear[$i],
+                "arrayDatLich" => $listDatLichByTime
+            );
+            $arrayDatLich3[] = $dataDatLich;
+        }
+
+        return $arrayDatLich3;
+    }
+
+
+    public function getDanhMucVaDichVuHome() {
+        $limit = 6;
+        $listDanhMuc = $this->DanhMuc->getAllDanhMucDichVu();
+
+        $arrDichVu = array();
+        foreach ($listDanhMuc as $item) {
+            $dichVuByIdDanhMuc = $this->Dichvu->getDichVuByIdDanhMuc($item->id, $limit);
+            $arrDichVu[] = $dichVuByIdDanhMuc;
+        }
+
+
+        $this->data['listDanhMuc'] = $listDanhMuc;
+        $this->data['arrDichVu'] = $arrDichVu;
+    }
+
+    public function getDanhMucVaBlog() {
+        $skip = 0;
+        $task = 6;
+        $limit = 6;
+        $listDanhMucBlog = $this->DanhMuc->getDanhMucLimitBlog($limit);
+
+        $arrBlog = array();
+        foreach ($listDanhMucBlog as $item) {
+            $BlogByIdDanhMuc = $this->Blog->getBlogByIdDanhmuc($item->id, $skip, $task);
+            $arrBlog[] = $BlogByIdDanhMuc;
+        }
+        $this->data['listDanhMucBlog'] = $listDanhMucBlog;
+        $this->data['arrBlog'] = $arrBlog;
+    }
+    public function getDanhMucVaDichVu() {
+        $limit = 4;
+        $limitdv = $limit + 5;
+        $limitdm = $limit + 2;
+        $listDanhMucDichVu1  = $this->DanhMuc->getDanhMucLimit($limitdm);
+        $listDanhMuc = $this->DanhMuc->getDanhMucLimit($limit);
+
+
+        $arrDichVu = array();
+        foreach ($listDanhMuc as $item) {
+            $dichVuByIdDanhMuc = $this->Dichvu->getDichVuByIdDanhMuc($item->id, $limitdv);
+            $arrDichVu[] = $dichVuByIdDanhMuc;
+        }
+
+
+        $this->data['listDanhMuc'] = $listDanhMuc;
+        $this->data['listDanhMucDichVu1'] = $listDanhMucDichVu1;
+        $this->data['arrDichVu'] = $arrDichVu;
+    }
+
+
+
+    public function getLieuTrinhDetailByIdLieuTrinh($id){
+        $dataLieuTrinhChiTiet = $this->LieuTrinhChiTiet->getLieuTrinhChiTietInnerJoin($id);
+        $data['dataLieuTrinhChiTiet'] = $dataLieuTrinhChiTiet;
+        if ($dataLieuTrinhChiTiet !== null) {
+            $data['dataLieuTrinh'] = $this->LieuTrinh->find($dataLieuTrinhChiTiet[0]->idlieutrinh);
+        }
+        return response()->json($data);
+    }
+
+    public function huyLieuTrinh(Request $request){
+        // check đã hoàn thành 1 dịch vụ sẽ không được huỷ
+        $hasHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($request->idlieutrinh);
+        if(count($hasHoaDon)>0){
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => 'Liệu trình đã thanh toán không thể huỷ!'
+            ]);
+        }else{
+            if( $request->idlieutrinh){
+                $res = $this->LieuTrinh->update($request->idlieutrinh,['trangthai'=>2]);
+                if($res){
+                    return response()->json([
+                        'success' => true,
+                        'titleMess' => 'Thành công!',
+                        'textMess' => 'Đã huỷ liệu trình!'
+                    ]);
+
+                }
+            }
+        }
+
+    }
+
+    public static function findNameDichVuByIdLieuTrinh($id){
+        $LieuTrinhResult = LieuTrinhChiTietModel::findNameDichVuByIdLieuTrinh($id);
+
+        $arrName = [];
+        for ($i = 0; $i < count($LieuTrinhResult); $i++) {
+            array_push($arrName, $LieuTrinhResult[$i]->name);
+        }
+        return implode(", ", $arrName);
+    }
+
+
+    public function getNhanVienByIdCoSo(Request $request, $id)
+    {
         try {
             if ($request->ajax()) {
                 $id = (int)$id;
@@ -468,9 +832,7 @@ class HomeController extends Controller
                                 $request->listDichVu = '[0]';
                             }
                         }
-
                     }
-
                 }
 
                 if ($error == false) {
@@ -479,6 +841,9 @@ class HomeController extends Controller
                         $error = true;
                         $textMess = 'Đặt lịch không thành công vui lòng thử lại';
                     } else {
+
+                        // Tiến hành đặt lịch
+                        $datLich['typez'] = 'dat-lich';
                         event(
                             $e = new SendDatLich($datLich)
                         );
@@ -531,6 +896,7 @@ class HomeController extends Controller
         return $message;
     }
 
+
     public function skipCreatePassword(Request $request)
     {
         try {
@@ -576,6 +942,7 @@ class HomeController extends Controller
             ]);
         }
     }
+
 
     public function newPassword(Request $request)
     {
@@ -945,7 +1312,7 @@ class HomeController extends Controller
                 }
 
                 if ($request->idNhanVien > 0) {
-                    $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request->idNhanVien  );
+                    $this->tinhKhungGioCoIdNhanVien($datLichOfDay, $Lich, $request->idNhanVien);
                 } else {
                     $this->tinhKhungGioKhongCoIdNhanVien($datLichOfDay, $Lich);
                 }
@@ -1031,14 +1398,16 @@ class HomeController extends Controller
         $khachHang->save();
     }
 
-    public function updateKhachHangCoSoVaName($id, $idCoSo, $name) {
+    public function updateKhachHangCoSoVaName($id, $idCoSo, $name)
+    {
         $khachHang = KhachHangModel::find($id);
         $khachHang->name = $name;
         $khachHang->idcoso = $idCoSo;
         $khachHang->save();
     }
 
-    public function updateKhachHangActive($id, $password) {
+    public function updateKhachHangActive($id, $password)
+    {
         $khachHang = KhachHangModel::find($id);
         $khachHang->password = bcrypt($password);
         $khachHang->active = Controller::KHACHHANG_DA_ACTIVE;
@@ -1056,6 +1425,7 @@ class HomeController extends Controller
         $datLich->save();
         return $datLich;
     }
+
     public function checkLoginSiteValid($request)
     {
         $type = false;
@@ -1086,4 +1456,80 @@ class HomeController extends Controller
 
         return $error;
     }
+
+    public function updateprofile(ChangeProfile $request)
+    {
+
+        if ($request->file("urlHinh") != null) {
+            $img = $request->file('urlHinh');
+            $extension = $img->getClientOriginalExtension();
+            if ($this->checkImgCustomer($extension, $img) == true) {
+                $imgTrue = true;
+            } else {
+                $imgTrue = false;
+            }
+            if ($imgTrue == true) {
+                $profile = [
+                    'name' => $request->username,
+                    'email' => $request->email,
+                    'img' => $_FILES["urlHinh"]["name"]
+                ];
+                $this->KhachHang->update(session()->get("khachHang")->id, $profile);
+                $this->UpdateSessionInFor();
+                return redirect("/thong-tin-tai-khoan")->with("thongbaoprofile","Cập nhật thành công");
+            } else {
+                $profile = [
+                    'name' => $request->username,
+                    'email' => $request->email,
+                ];
+                $this->KhachHang->update(session()->get("khachHang")->id, $profile);
+                $this->UpdateSessionInFor();
+                return redirect("/thong-tin-tai-khoan")->with("thatbaiprofile","Ảnh không đúng định dạng.");
+            }
+        } else {
+            $profile = [
+                'name' => $request->username,
+                'email' => $request->email,
+            ];
+            $this->KhachHang->update(session()->get("khachHang")->id, $profile);
+            $this->UpdateSessionInFor();
+            return redirect("/thong-tin-tai-khoan")->with("thongbaoprofile","Cập nhật thành công");
+        }
+
+    }
+
+    public function UpdateSessionInFor(){
+        $infokh=$this->KhachHang->find(session()->get("khachHang")->id);
+        session()->put("khachHang", $infokh);
+        return true;
+    }
+
+    public function getBanner() {
+        $listBanner = $this->Banner->getBannerHien();
+        return $listBanner;
+    }
+
+    public function getDichVuUaChuongThangTruoc($skip, $take) {
+        $date = \Carbon\Carbon::now();
+        $lastMonth =  $date->subMonth(1);
+        $startOfMonth = $lastMonth->startOfMonth()->toDateTimeString();
+        $endOfMonth = $lastMonth->endOfMonth()->toDateTimeString();
+        // Get list id dich vụ sử dụng nhiều nhất trong tháng
+        $listHDCT = $this->HoaDonChiTiet->getHoaDonCTByTime($startOfMonth, $endOfMonth, $skip, $take);
+
+        // Get list dịch vụ theo id
+        foreach ($listHDCT as $hoaDonChiTiet) {
+            $hoaDonChiTiet['dichvu'] = $this->Dichvu->getDichvuAndDanhMucById($hoaDonChiTiet->idlienquan);
+        }
+        return $listHDCT;
+    }
+
+    public function getDichVuTrangHome() {
+        $take = 5;
+        $skip = 0;
+        $listDichVu = $this->getDichVuUaChuongThangTruoc($skip, $take);
+        $this->data['listDichVuUaChuong'] = $listDichVu;
+        $this->data['listDichVuGiamGia'] = $this->Dichvu->getDichVuGiamGiaAndDanhMuc($take, $skip);
+    }
+
 }

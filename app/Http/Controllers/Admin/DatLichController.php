@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\DatLich\DatLichRepository;
@@ -20,7 +20,7 @@ class DatLichController extends Controller
     private $NhanVien;
     private $idCoSo = 1;
 
-    public function __construct(CosoRepository $CoSo,DatLichRepository $DatLich,DichVuRepository $DichVu,KhachHangRepository $KhachHang ,NhanVienRepository $NhanVien)
+    public function __construct(CoSoRepository $CoSo,DatLichRepository $DatLich,DichVuRepository $DichVu,KhachHangRepository $KhachHang ,NhanVienRepository $NhanVien)
     {
         $this->CoSo = $CoSo;
         $this->DatLich = $DatLich;
@@ -38,7 +38,6 @@ class DatLichController extends Controller
     {
         // $data = $this->DatLich->getAll2CungCoSo(1);
         $data=$this->DatLich->getdv();
-        dd($data);
         return view('Admin.DatLich.index',compact($data));
     }
 
@@ -61,7 +60,7 @@ class DatLichController extends Controller
      */
     public function store(Request $request)
     {
-                
+
         $data = [
             'iddanhmuc'=>$request->iddanhmuc,
             'name'=> $request->name,
@@ -75,7 +74,7 @@ class DatLichController extends Controller
         return redirect('/quantri/DatLich/detail/'.$data->id.'')->with('success','Thêm thành công');
     }
 
-   
+
 
     /**
      * Display the specified resource.

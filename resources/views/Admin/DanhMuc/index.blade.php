@@ -41,13 +41,13 @@
                                             <div class="form-group">
                                                 @php
                                                     $array = [
-                                                        ['id'=>1,'name'=>"Sản Phẩm"],
-                                                        ['id'=>2,'name'=>"Dịch Vụ"],
+                                                        ['id'=>1,'name'=>"Dịch Vụ"],
+                                                        ['id'=>2,'name'=>"Sản Phẩm"],
                                                         ['id'=>3,'name'=>"Bài Viết"],
                                                         ['id'=>4,'name'=>"Thương Hiệu"]
                                                     ];
                                                 @endphp
-                                
+
                                                 <select class="form-control select2" name="loai">
                                                     @foreach ($array as $item)
                                                         <option value="{{$item['id']}}">{{$item['name']}}</option>
@@ -63,21 +63,21 @@
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div>
-                      
+
                         <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr>
                                         <th width="10%">STT</th>
                                         <th width="20%">Ảnh Danh Mục</th>
                                         <th width="40%">Tên Danh Mục</th>
-                                        <th width="15%">Loại</th>  
-                                        <th width="15%">Hành Động</th>  
+                                        <th width="15%">Loại</th>
+                                        <th width="15%">Hành Động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $item)
 
-                                        <tr>
+                                        <tr id="row{{$item->id}}">
                                             <td>{{$item->id}}</td>
                                             <td><img  class="objectcv img-common" src="{{asset($URL_IMG.$item->img)}}" alt=""></td>
                                             <td>{{$item->name}}</td>
@@ -87,19 +87,14 @@
                                                         {{$row['name']}}
                                                     @endif
                                                 @endforeach
-                                            </td> 
-                                            <td class="d-flex border-none">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
-                                                <form action="{{route('danhmuc.destroy',$item->id)}}"  method="post">
-                                                    @csrf
-                                                    {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                                </form>
+                                            </td>
+                                            <td >
+                                                <a id="" class="btn btn-primary mr-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
+                                                @csrf
+                                                <button type="button" onclick="deleteCommon({{$item->id}})" class="btn btn-danger text-white" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
-                                   
-                             
                                 </tbody>
                             </table>
                     </div>
@@ -112,15 +107,15 @@
                         <ul class="pagination pagination-split">
                             <?php
                             // echo $Pagination;
-                            ?>      
+                            ?>
                         </ul>
-                    </nav>    
-                      
+                    </nav>
+
                 </div>
             </div>
-                 
-         
-            
+
+
+
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->

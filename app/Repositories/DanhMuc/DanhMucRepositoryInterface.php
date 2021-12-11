@@ -12,4 +12,6 @@ interface DanhMucRepositoryInterface extends RepositoryInterface
      */
     public function findDanhMucByIdLoai($idLoai);
 
+    public function getDanhMucLimit($limit);
+    public function getAllDanhMucDichVu();
 }

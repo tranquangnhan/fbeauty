@@ -28,6 +28,14 @@
                             </div>
 
                             <h4 class="header-title mt-0 mb-3">Sửa Cơ Sở</h4>
+                            <div class="container">
+                                @if(session('thatbai'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{session('thatbai')}}
+                                </div>
+                                @endif
+
+                            </div>
 
                             <form data-parsley-validate action="{{route('coso.update',$data->id)}}" id="formadd" novalidate onsubmit="return submitForm()" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -40,11 +48,17 @@
                                             <label for="">Tên Cơ Sở</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="name" class="form-control @error('name') border-error @enderror name" value="{{$data->name}}"  parsley-trigger="change" required
                                                    placeholder="Tên Cơ Sở" >
+                                                   @error('name')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="">Địa chỉ cụ thể</label><span style="color:red;"> (*)</span>
                                             <input type="text" name="diachi" class="form-control @error('diachi') border-error @enderror diachi" value="{{$data->diachi}}"  parsley-trigger="change" required
                                                    placeholder="Tên Địa Chỉ Cụ Thể" >
+                                                   @error('diachi')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="">  Chọn Tỉnh/Thành Phố</label><span style="color:red;"> (*)</span>
@@ -58,6 +72,9 @@
                                                 <option value="{{$ci->matp}}" >{{$ci->name_city}}</option>
                                                 @endif
                                                 @endforeach
+                                                @error('tinh')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                               </select>
                                           </div>
                                         </div>

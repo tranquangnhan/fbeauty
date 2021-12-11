@@ -34,7 +34,7 @@
                                     Hệ Thống Spa <br> Đẳng Cấp
                                 </div>
                                 <div class="text-1 mt-4">
-                                    Với 45 chi nhánh trải dài khắp cả nước, FBeauty Spa tự hào là chuỗi hệ thống thẩm mỹ
+                                    Với 45 chi nhánh trải dài khắp cả nước, FBeauty tự hào là chuỗi hệ thống thẩm mỹ
                                     viện hàng đầu Việt Nam
                                 </div>
                                 <div class="text-2 mt-1">
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="w-100 text-left mt-3">
-                                <a href="">
+                                <a href="{{URL::to("gioi-thieu")}}">
                                     <button class="btn-3 active black-1">Xem chi tiết</button>
                                 </a>
                             </div>
@@ -65,7 +65,7 @@
             </div>
             <h1 style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Chuyên gia và các bác sĩ</h1>
             <p class="mt-4">
-                100% các bác sĩ tại FBeauty Spa được đào tạo bài bản từ các trường Đại học danh tiếng trong và ngoài nước.
+                100% các bác sĩ tại FBeauty được đào tạo bài bản từ các trường Đại học danh tiếng trong và ngoài nước.
                  Ngoài kiến thức và kỹ năng trong nghề,
 
                 mỗi Bác  sĩ và Trưởng <br> bộ phận phải trải qua quá trình trị liệu tối thiểu 10,000 ca lâm sàng để có hiểu biết chuyên sâu về làn da cũng như cơ địa người Châu Á.
@@ -73,11 +73,8 @@
                 Luôn học hỏi, nỗ lực và cập nhật những kiến thức y khoa – xu hướng thẩm mỹ mới nhất để bắt kịp với xu hướng y học hiện đại cam kết mang đến cho khách hàng kết quả thẩm mỹ tốt nhất.
             </p>
         </div>
-        <div class="w-100 mt-4">
-            {{-- <iframe width="100%" style="border:2px solid #e87c7b;" height="300" src="https://www.youtube.com/embed/5RFqEdSy9nQ?autoplay=1"
-            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
-            clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
-            <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class="image mb-2" style="width:100%;height:100%;">
+        <div class="w-100 mt-4 container">
+            <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class=" mb-2" style="width:100%;height:100%;">
         </div>
     </div>
     <div class="box-lieutrinh mt-5">
@@ -91,12 +88,11 @@
                             </div>
 
                             <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                Lorem ipsum dolor sit amet, con sectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt.
+                                Điều trị da theo liệu trình nghĩa là khách hàng sẽ tuân thủ đúng số buổi, thời gian tái khám và điều trị tiếp theo hay kết hợp dùng thuốc đặc trị tại nhà (nếu có) theo đúng như hướng dẫn của bác sĩ.
                             </p>
 
                             <div class="w-100 text-left mb-4">
-                                <button data-show="one" class="button btn-5 btn-datlich">Đặt lịch</button>
+                                <button class="button btn-5 btn-datlich btn-modal-main" type-modal="modal-datlich" data-show="one">Đặt lịch</button>
                             </div>
                         </div>
                     </div>
@@ -115,7 +111,7 @@
                                         alt="">
                                 </div>
                                 <div class="text-2 mt-4 color-white font-weight-300">
-                                    Lorem ipsum dolor sit amet, con sectetur adipisicing elit
+                                    Lo lắng giữa thị trường “xô bồ” của mỹ phẩm có chứa thành phần hóa học ảnh hưởng xấu đến da thì mỹ phẩm được chiết xuất từ thiên nhiên ra đời giống như cứu cánh cho phái đẹp.
                                 </div>
                             </div>
 
@@ -134,7 +130,7 @@
                                 </div>
 
                                 <div class="text-2 mt-4 color-white font-weight-300">
-                                    Lorem ipsum dolor sit amet, con sectetur adipisicing elit
+                                    Hãy theo dõi chũng tôi để biết được những ưu đãi đặc biệt dành cho khách hàng, chúng tôi cam đoan những dòng mỹ phẩm nổi tiếng và mới nhất sẽ nhanh chóng nằm trong tay của bạn còn chờ gì mà không theo dõi ngay.
                                 </div>
                             </div>
 
@@ -153,7 +149,7 @@
                                 </div>
 
                                 <div class="text-2 mt-4 color-white font-weight-300">
-                                    Lorem ipsum dolor sit amet, con sectetur adipisicing elit
+                                    Với đội ngũ nhân viên chuyên nghiệp phục vụ bạn 24/7 chỉ cần nhấc máy và gọi chúng tôi sẽ hỗ trợ cho bạn tận tình và đưa ra giải pháp hợp lý giúp bạn có thân hình toàn diện.
                                 </div>
                             </div>
                         </div>
@@ -212,11 +208,11 @@
                     <h5 class="card-title mb-3" style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Cơ sở vật chất hàng đầu</h5>
                 </div>
                 <ul class="mt-4">
-                    <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn bật lên sự ấm cúng, thân thiện cùng nội thất hàng đầu, tiện nghi FBeauty Spa  là một trong những Spa thẩm mỹ có cơ sở vật chất đạt tiêu chuẩn quốc tế.</li>
-                    <li>Đồng thời, tất cả các giường thẩm mỹ được thiết kế độc lập, kín đáo mang đến không gian riêng tư, sự thoải mái nhất cho khách hàng khi trải nghiệm các dịch vụ tại FBeauty Spa</li>
+                    <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn bật lên sự ấm cúng, thân thiện cùng nội thất hàng đầu, tiện nghi FBeauty  là một trong những Spa có cơ sở vật chất đạt tiêu chuẩn quốc tế.</li>
+                    <li>Đồng thời, tất cả các giường thẩm mỹ được thiết kế độc lập, kín đáo mang đến không gian riêng tư, sự thoải mái nhất cho khách hàng khi trải nghiệm các dịch vụ tại FBeauty </li>
                     <li>Máy Móc Trang Thiết Bị </li>
                     <li>Hệ thống công nghệ được trang bị đầy đủ từ cơ bản đến nâng cao. Đồng thời luôn cập nhật và ứng dụng các công nghệ, thiết bị thẩm mỹ được đánh giá tốt nhất, hiện đại hàng đầu thế giới vào các dịch vụ tại Spa. </li>
-                    <li>Chuỗi phòng chờ, phòng hậu phẫu rộng rãi, tiện nghi tại FBeauty Spa chắc chắn sẽ làm khách hàng hài lòng.</li>
+                    <li>Chuỗi phòng chờ, phòng hậu phẫu rộng rãi, tiện nghi tại FBeauty chắc chắn sẽ làm khách hàng hài lòng.</li>
                 </ul>
               <div class="d-flex justify-content-start mt-5">
                 <div class="col-3"><img height="230px" class=""

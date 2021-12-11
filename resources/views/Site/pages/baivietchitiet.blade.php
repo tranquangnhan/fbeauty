@@ -1,6 +1,7 @@
 @extends('Site.layout')
 
 @section('title')
+ bài viết chi tiết
 @endsection
 
 @section('main')
@@ -16,22 +17,29 @@
                                     <div
                                         class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                         <div class="mr-3">
-                                            <a href="" class="box-danhmuc-1 fz-1em2">
+                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$viewdetail[0]->slugdm}}" class="box-danhmuc-1 fz-1em2">
                                                 {{$viewdetail[0]->danhmuc}}</a>
                                         </div>
-                                        <span class="fz-1em1">{{$viewdetail[0]->created_at}}</span>
+                                        <div class="formatDayCustom" data-type="long" data-format="{{$viewdetail[0]->created_at}}">
+                                            <span class="fz-1em1">@if ($viewdetail[0]->created_at != null)
+                                                <?php
+                                                    $timestamp = strtotime($viewdetail[0]->created_at);
+                                                    print date('d-m-y', $timestamp );
+                                                ?>                                                          
+                                            @endif</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="name-blog mt-3">
                                     <h1 class=" font-weight-600">{{$viewdetail[0]->name}}.</h1>
                                 </div>
 
-                                <div class="list-reac d-flex">
+                                {{-- <div class="list-reac d-flex">
                                     <div class="reac-item pl-0"><i class="far fa-eye"></i> <span>5k</span></div>
                                     <div class="reac-item"><i class="far fa-heart"></i> <span>5k</span></div>
                                     <div class="reac-item pr-0 border-0"><i class="far fa-comments"></i> <span>5k</span>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="blog-body">
@@ -41,8 +49,8 @@
                                     <div class="border-z border-right-z"></div>
                                 </div>
 
-                                <div class="noidung"><br>
-                                    {!! $viewdetail[0]->noidung !!}.
+                                <div class="noidung divnoidung" style="font-family:'Roboto', sans-serif !important;"><br>
+                                    <a >{!! $viewdetail[0]->noidung !!}</a>
                                 </div>
                             </div>
                         </div>
@@ -58,23 +66,23 @@
                         </div>
 
                         <div class="list-social">
-                            <a href="#">
-                                <span><i class="fab fa-facebook-f"></i> <span>15000</span></span>
+                            <a href="https://www.facebook.com/FBeauty-103098148891666">
+                                <span><i class="fab fa-facebook-f"></i> <span>15000</span> <small class="fz-0em9"> Like</small></span>
                                 <span class="fz-0em9">Like</span>
                             </a>
 
-                            <a href="#">
-                                <span><i class="fab fa-twitter"></i> <span>15000</span></span>
+                            <a href="https://twitter.com/HuynTrn26589599">
+                                <span><i class="fab fa-twitter"></i> <span>15000</span> <small class="fz-0em9"> Tweet</small></span>
                                 <span class="fz-0em9">Like</span>
                             </a>
 
-                            <a href="#">
-                                <span><i class="fab fa-instagram"></i><span>32k+</span></span>
+                            <a href="https://www.instagram.com/fbeautyspa__/">
+                                <span><i class="fab fa-instagram"></i><span>32k+</span> <small class="fz-0em9"> Follower</small></span>
                                 <span class="fz-0em9">Follower</span>
                             </a>
 
-                            <a href="#">
-                                <span><i class="fab fa-youtube"></i> <span>15000</span></span>
+                            <a href="https://www.youtube.com/channel/UCKmLj9UShXnCrweFbjA9Jvg">
+                                <span><i class="fab fa-youtube"></i> <span>15000</span> <small class="fz-0em9"> Subscriber</small></span>
                                 <span class="fz-0em9">Subscribe</span>
                             </a>
                         </div>
@@ -91,7 +99,7 @@
                                         <div
                                             class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 mb-1">
                                             <div class="mr-3">
-                                                <a href="" class="box-danhmuc-1 maincolor">Đặt lịch</a>
+                                                <a type-modal="modal-datlich" href="javascript:void(0)" data-show="one" class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
                                             </div>
                                         </div>
                                     </div>
@@ -121,23 +129,31 @@
                                 <div class="col-xl-3">
                                     <div class="tin-item-1 box-tin-hv">
                                         <div class="image-tin-1" style="height: 220px;">
-                                            <img class="img-fluid"
+                                            <a href="{{ asset('bai-viet') }}/{{$data->slug}}">
+                                                <img class="img-fluid"
                                                 src="{{ asset('uploads') }}/{{$data->img}}"
-                                                alt="">
+                                                alt=""></a>
                                         </div>
                                         <div class="content-tin-3 background-white">
                                             <div class="row">
                                                 <div
                                                     class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                                     <div class="mr-3">
-                                                        <a  class="box-danhmuc-1">
+                                                        <a href="{{ asset('danh-muc-bai-viet') }}/{{$data1->slugdm}}" class="box-danhmuc-1">
                                                             {{$data->danhmuc}}</a>
                                                     </div>
-                                                    <span>{{$data->created_at}}</span>
+                                                    <div class="formatDayCustom" data-type="short" data-format="{{$data->created_at}}">
+                                                        <span>@if ($data->created_at != null)
+                                                            <?php
+                                                                $timestamp = strtotime($data->created_at);
+                                                                print date('d-m-y', $timestamp );
+                                                            ?>                                                          
+                                                        @endif </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
-                                                <a href="{{ asset('bai-viet') }}/{{$data->id}}" class="hover-pink">{{$data->name}}</a>
+                                                <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
                                             </div>
                                             <p class="blog-mota mb-0 limit-text-row-3">
                                                 {{$data->motangan}}
@@ -154,6 +170,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/baiviet.css">
 @endsection
 
 @section('javascript')

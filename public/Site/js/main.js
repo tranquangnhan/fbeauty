@@ -34,11 +34,34 @@ $('#logo-slide').owlCarousel({
     }
 });
 
-var productSlide = $('#product-slide');
-$(productSlide).owlCarousel({
+var productSlide = $('#product-home-slide');
+productSlide.owlCarousel({
     loop: true,
-    margin: 30,
-    nav: true,
+    margin: 0,
+    nav: false,
+    pagination: false,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 2
+        },
+        1000: {
+            items: 4
+        }
+    }
+});
+
+var dichVuUaChuong = $('#dich-home-slide');
+dichVuUaChuong.owlCarousel({
+    loop: true,
+    margin: 70,
+    nav: false,
     pagination: false,
     dots: false,
     autoplay: true,
@@ -48,11 +71,40 @@ $(productSlide).owlCarousel({
         0: {
             items: 1
         },
-        600: {
-            items: 3
+        800: {
+            items: 1
         },
-        1000: {
-            items: 4
+        1150: {
+            items: 2
+        },
+        1250: {
+            items: 3
+        }
+    }
+});
+
+var dichVuGiamGiaSlide = $('#dichvugiamgia-home-slide');
+dichVuGiamGiaSlide.owlCarousel({
+    loop: true,
+    margin: 70,
+    nav: false,
+    pagination: false,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 10000,
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        800: {
+            items: 1
+        },
+        1150: {
+            items: 2
+        },
+        1250: {
+            items: 3
         }
     }
 });
@@ -474,4 +526,75 @@ function uncheckDichVu() {
         checkBoxDichVu.prop('checked', false);
         tinhTongVaPushArrayIdDichVu();
     }
+}
+
+formatDayCustom();
+function formatDayCustom() {
+    var listElementDate = $(".formatDayCustom");
+    listElementDate.each( function(i){
+        var dataFormat = listElementDate.eq(i).attr('data-format');
+        var type =  listElementDate.eq(i).attr('data-type');
+        var someDay  = moment(dataFormat);
+        var numberThu = someDay.day();
+        if (type == 'long') {
+            var dayInWeek = getFullThuVietHoa(numberThu);
+            var date = someDay.format('DD/MM/YYYY, HH:mm');
+            var dayWasFormat = dayInWeek + ', ' + date + ' (GMT+7)';
+        }
+
+        if (type == 'short') {
+            var dayInWeek = getThuVietHoa(numberThu);
+            var date = someDay.format('DD/MM/YYYY, HH:mm');
+            var dayWasFormat = dayInWeek + ', ' + date;
+        }
+        listElementDate.eq(i).html(dayWasFormat);
+    });
+
+
+    // return YMDHIS;
+}
+
+
+function getThuVietHoa(numberThu) {
+    var text = '';
+
+    if (numberThu == 0) {
+        text = 'CN';
+    } else if (numberThu == 1) {
+        text = 'T2';
+    } else if (numberThu == 2) {
+        text = 'T3';
+    } else if (numberThu == 3) {
+        text = 'T4';
+    } else if (numberThu == 4) {
+        text = 'T5';
+    } else if (numberThu == 5) {
+        text = 'T6';
+    } else if (numberThu == 6) {
+        text = 'T7';
+    }
+
+    return text;
+}
+
+function getFullThuVietHoa(numberThu) {
+    var text = '';
+
+    if (numberThu == 0) {
+        text = 'Chủ nhật';
+    } else if (numberThu == 1) {
+        text = 'Thứ hai';
+    } else if (numberThu == 2) {
+        text = 'Thứ ba';
+    } else if (numberThu == 3) {
+        text = 'Thứ tư';
+    } else if (numberThu == 4) {
+        text = 'Thứ năm';
+    } else if (numberThu == 5) {
+        text = 'Thứ sáu';
+    } else if (numberThu == 6) {
+        text = 'Thứ bảy';
+    }
+
+    return text;
 }

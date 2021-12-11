@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\SendDatLich;
 use App\Http\Controllers\Controller;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DichVu\DichVuRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\DatLich\DatLichRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
+use App\Models\Admin\DatLichModel;
 use App\Repositories\Lich\LichRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Arr;
 
 class DatLichRemakeController extends Controller
@@ -24,7 +27,7 @@ class DatLichRemakeController extends Controller
     private $NhanVien;
 
     public function __construct(
-        CosoRepository $CoSo,
+        CoSoRepository $CoSo,
         DatLichRepository $DatLich,
         DichVuRepository $DichVu,
         KhachHangRepository $KhachHang,
@@ -52,9 +55,17 @@ class DatLichRemakeController extends Controller
             ['link' => '/quantri/datlichremake', 'name' => 'Đặt lịch'],
             ['link' => '', 'name' => 'Danh sách'],
         ];
-        $toDay = Carbon::today();
-        $this->data['duLieuCalendar'] = $this->getDuLieuChoCalendar($toDay);
 
+        $toDay = Carbon::now();
+        $this->data['toDay'] = $toDay->toDateString();
+        $this->data['timeToDay'] = $toDay->toTimeString();
+
+        $this->data['listDichVu'] = $this->DichVu->getAllDichVu();
+        $this->data['listKhachHang'] = $this->KhachHang->getAllCungCoSo(session('coso'));
+        $this->data['listNhanVien'] = $this->NhanVien->getNhanVienByIdCoSo(session('coso'));
+        $this->data['idCoSo'] = session('coso');
+        $this->data['duLieuCalendar'] = $this->getDuLieuChoCalendar($toDay);
+        $this->data['statusLichClose'] = Controller::TRANGTHAI_LICH_CLOSE;
         return view('Admin.DatLichRemake.index', $this->data);
     }
 
@@ -68,6 +79,25 @@ class DatLichRemakeController extends Controller
     public function getDatLichByDay($ngay, $idCoSo) {
         $thoigian = Controller::getThoiGianTimestampDauVaCuoiCuaNgay($ngay->toDateString());
         $datlich = $this->DatLich->getDatLichByDay($thoigian['dauNgayTimestamp'], $thoigian['cuoiNgayTimestamp'], $idCoSo);
+
+        foreach ($datlich as $datLichItem) {
+            if ($datLichItem->idnhanvien == 0) {
+                $datLichItem->nameNhanVien = 'Spa tự chọn';
+            } else {
+                $datLichItem->nameNhanVien = $this->NhanVien->getNameNhanVien($datLichItem->idnhanvien);
+            }
+
+            $arrayDichVu = array();
+            $listIdDichVu = json_decode($datLichItem->iddichvu);
+
+            if (count($listIdDichVu) > 0) {
+                for ($i = 0; $i < count($listIdDichVu); $i++) {
+                    $arrayDichVu[] = $this->DichVu->findDichVuById($listIdDichVu[$i]);
+                }
+
+                $datLichItem->arrayDichVu = $arrayDichVu;
+            }
+        }
         return $datlich;
     }
 
@@ -86,12 +116,145 @@ class DatLichRemakeController extends Controller
             foreach ($listDatLich as $datLichItem) {
                 if ($datLichItem->thoigiandat == $thoigiandat) {
                     $nullArray[] = $datLichItem;
+                } else {
+                    // Tạo data mới cho trường hợp khung giờ thay đổi
                 }
             }
             $lichItem['listDatLich'] = $nullArray;
         }
 
+
         return $listLich;
+    }
+
+    public function getDuLieuDatLichChoCalendar(Request $request, $ngay) {
+        try {
+            if ($request->ajax()) {
+                if (DateTime::createFromFormat('Y-m-d', $ngay) !== false) {
+                    $day = new Carbon($ngay);
+                    $duLieuCalendar = $this->getDuLieuChoCalendar($day);
+
+                    $response = Array(
+                        'success' => true,
+                        'duLieuCalendar' => $duLieuCalendar,
+                        'ngay' => $ngay,
+                    );
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Ngày không hợp lệ',
+                        'ngay' => $ngay,
+                    );
+                }
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function changeStatusDatLich(Request $request, $idDatLich, $status) {
+        try {
+            if ($request->ajax()) {
+                $datLich = DatLichModel::find((int)$idDatLich);
+
+                if ($datLich != null) {
+                    $toDay = Carbon::today()->format('d/m/Y');
+                    $ngayDat = Carbon::parse($datLich->thoigiandat)->format('d/m/Y');
+
+                    if ($toDay >= $ngayDat) {
+                        // update trạng thái
+                        $datLich->trangthai = $status;
+                        $datLich->save();
+
+                        $response = Array(
+                            'success' => true,
+                            'idDatLich' => $idDatLich,
+                            'status' => $status,
+                            'toDay' => $toDay,
+                            'ngayDat' => $ngayDat,
+                            'idDatLich' => (int)$idDatLich,
+                        );
+                    } else {
+                        $response = Array(
+                            'success' => false,
+                            'titleMess' => 'Đã xảy ra lỗi !',
+                            'textMess' => 'Thời gian đặt lịch đã qua, không thể sửa',
+                            'toDay' => $toDay,
+                            'ngayDat' => $ngayDat
+                        );
+                    }
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => 'Không tìm thấy id đặt lịch',
+                        'idDatLich' => $idDatLich,
+                    );
+                }
+
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'datLich' => $datLich,
+                'textMess' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    function changeStatusTime(Request $request, $id, $status) {
+        try {
+            if ($request->ajax()) {
+                $id = (int)$id;
+                $lich = $this->Lich->find($id);
+
+                if ($lich != null) {
+                    $data = [
+                        'trangthai' => $status,
+                    ];
+
+                    $lich = $this->Lich->update($id, $data);
+                    $lich['typez'] = 'lich';
+
+                    event(
+                        $e = new SendDatLich($lich)
+                    );
+
+                    $response = Array(
+                        'success' => true,
+                        'id' => $id,
+                        'status' => $status,
+                        'lich' => $lich
+                    );
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => 'Không tìm thấy lịch',
+                        'id' => $id,
+                    );
+                }
+
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'lich' => $lich,
+                'textMess' => $e->getMessage(),
+            ]);
+        }
     }
 
 

@@ -6,8 +6,6 @@
 
         <!-- Start Content-->
         <div class="container-fluid">
-
-
             <div class="row">
                 <div class="col-12">
                     <div class="card-box">
@@ -15,7 +13,20 @@
                         <p class="text-muted font-14 mb-3">
                         Đơn Hàng sản phẩm.
                         </p>
+                        <div class="container">
+                            @if(session('thanhcong'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{session('thanhcong')}}
+                                </div>
+                            @endif
 
+                            @if(session('thatbai'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{session('thatbai')}}
+                                </div>
+                            @endif
+
+                        </div>
 
                         <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
@@ -31,10 +42,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $item)
+                                    @foreach ($data as $index => $item)
 
                                         <tr class="text-center">
-                                            <td>{{$item->id}}</td>
+                                            <td>{{$index+=1}}</td>
                                             <td>{{$item->tennguoinhan}}</td>
                                             <td>{{$item->sdtnguoinhan}}</td>
                                             <td>{{number_format($item->tongtientruocgiamgia)}}</td>

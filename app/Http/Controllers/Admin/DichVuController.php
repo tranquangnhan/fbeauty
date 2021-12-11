@@ -47,7 +47,7 @@ class DichVuController extends Controller
     public function create()
     {
         $DichVu = $this->DichVu->getAll();
-        $DanhMuc = $this->DanhMuc->getAll();
+        $DanhMuc = $this->DanhMuc->getalldvdm();
         return view("Admin.DichVu.create", ['DichVu' => $DichVu, 'DanhMuc' => $DanhMuc]);
         //
     }
@@ -79,7 +79,7 @@ class DichVuController extends Controller
             ];
             $this->DichVu->create($DichVu);
             return redirect('quantri/dichvu')->with('success', 'Thêm dịch vụ thành công');
-         
+
     }
 
     /**
@@ -102,7 +102,7 @@ class DichVuController extends Controller
      */
     public function edit($slug)
     {
-        $DanhMuc = $this->DanhMuc->getAll();
+        $DanhMuc = $this->DanhMuc->getalldvdm();
         $DichVu = $this->DichVu->find($slug);
         return view("Admin.DichVu.edit", ['DanhMuc' => $DanhMuc, 'DichVu' => $DichVu]);
     }
@@ -146,9 +146,13 @@ class DichVuController extends Controller
      */
     public function destroy($id)
     {
-        $this->DichVu->delete($id);
-
-        return redirect('quantri/dichvu')->with('success', 'Xoá thành công');
+        $delete=$this->DichVu->delete($id);
+        if ($delete){
+            return 0;
+        }
+        else{
+            return 1;
+        }
     }
 
     public function getDichVuByIdToHoaDon($id, $iddv){

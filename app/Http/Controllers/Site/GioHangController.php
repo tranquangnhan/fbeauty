@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ThanhToan;
+use App\Http\Controllers\freeSMSController;
 use App\Models\Admin\SanPhamChiTiet;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\GioHang\GioHangRepository;
@@ -18,6 +19,7 @@ use Illuminate\Http\Request;
 
 class GioHangController extends Controller
 {
+    private $freeSMSController;
     private $SanPham;
     private $SanPhamChiTiet;
     private $GioHang;
@@ -39,7 +41,7 @@ class GioHangController extends Controller
         KhachHangRepository $KhachHang,
         DonHangRepository $DonHang,
         DonHangChiTietRepository $DonHangChiTiet,
-        CosoRepository $CoSo
+        CoSoRepository $CoSo
     )
     {
         $this->GioHang = $GioHang;
@@ -50,6 +52,7 @@ class GioHangController extends Controller
         $this->DonHang = $DonHang;
         $this->DonHangChiTiet = $DonHangChiTiet;
         $this->CoSo=$CoSo;
+        $this->freeSMSController = new freeSMSController;
     }
 
     public function ShowGioHang()
@@ -426,6 +429,7 @@ class GioHangController extends Controller
                             $this->GioHangChiTiet->create($giohangnew);
                         }
                     }
+                    session()->forget('giohang');
                     return 1;
                 } else {
                     $kh = [
@@ -442,6 +446,7 @@ class GioHangController extends Controller
                         ];
                         $this->GioHangChiTiet->create($giohangnew);
                     }
+                    session()->forget('giohang');
                     return 1;
                 }
             } else {
@@ -481,7 +486,6 @@ class GioHangController extends Controller
     public function thanhtoandonhang(ThanhToan $request)
     {
         $sdt = $request->phonenumber;
-//        dd($request->all());
         if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
             $idkhach = $this->KhachHang->getBySdt($sdt);
         } else {
@@ -537,10 +541,12 @@ class GioHangController extends Controller
                         ];
                         $this->DonHangChiTiet->create($donhangchitiet);
                     }
+                    $this->GioHangChiTiet->XoaAllSanPhamGioHang($giohangDB[0]->id);
                 }
-                $this->GioHangChiTiet->XoaAllSanPhamGioHang($giohangDB[0]->id);
             }
-        } else if (session()->has('giohang') && count(session()->get('giohang')) != 0) {
+        }
+
+        else if (session()->has('giohang') && count(session()->get('giohang')) != 0) {
             $donhang = [
                 'idkhachhang' => $idkhach->id,
                 'idgiamgia' => $request->giamgia,
@@ -556,7 +562,6 @@ class GioHangController extends Controller
                 'trangthaithanhtoan' => 0
             ];
             $donhangnew = $this->DonHang->create($donhang);
-//            dd($donhangnew);
             if ($donhangnew) {
                 $iddonhang = $donhangnew->id;
                 $giohangSession = session()->get('giohang');
@@ -576,11 +581,11 @@ class GioHangController extends Controller
                         'dongiasaugiamgia' => $dongiasaugiam
                     ];
                     $this->DonHangChiTiet->create($donhangchitietnew);
-//                    dd($donhangchitietnew);
                 }
             }
             session()->forget('giohang');
         }
+        $this->GuiCamOn($sdt, date("d/m/Y"), date("H:i:s"));
         session()->forget("tongdonhang");
         if (session()->has("tiengiam") && session()->get("tiengiam") != 0){
             session()->forget("tiengiam");
@@ -641,7 +646,6 @@ class GioHangController extends Controller
             $vnpSecureHash = hash_hmac('sha512', $hashdata, $this->vnp_HashSecret);//
             $vnp_Url1 .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
-//        dd($vnp_Url1);
         $returnData = array(
             'code' => '00'
         , 'message' => 'success'
@@ -653,24 +657,29 @@ class GioHangController extends Controller
     public function returnPay(){
         if ($_GET["vnp_TransactionStatus"]==00){
             $sdt = session("requestAll")["phonenumber"];
-//        dd($request->all());
+            if (session()->has("tiengiam") && session()->get("tiengiam") != 0) {
+                $tongtiensaugiam = session()->get("tongdonhang") - session()->get("tiengiam");
+            } else {
+                $tongtiensaugiam = session()->get("tongdonhang");
+            }
             if ($this->CheckSoDienThoaiTonTai($sdt) == false) {
                 $idkhach = $this->KhachHang->getBySdt($sdt);
+                $plusexp=[
+                    "exp"=> ((int)$idkhach->exp + (int)$tongtiensaugiam)
+                ];
+                $this->KhachHang->update($idkhach->id, $plusexp);
             } else {
                 $cosokh=$this->CoSo->getCosoDESCSLimit(1);
                 $customernew = [
                     'idcoso'=>$cosokh[0]->id,
                     'sdt' => $sdt,
                     'password' => bcrypt("123456"),
-                    'active' => 1
+                    'active' => 1,
+                    'exp'=>$tongtiensaugiam
                 ];
                 $idkhach = $this->KhachHang->create($customernew);
             }
-            if (session()->has("tiengiam") && session()->get("tiengiam") != 0) {
-                $tongtiensaugiam = session()->get("tongdonhang") - session()->get("tiengiam");
-            } else {
-                $tongtiensaugiam = session()->get("tongdonhang");
-            }
+
             if (session()->has('khachHang') && session('khachHang') != '') {
                 $checkgiohangByidKH = $this->GioHang->CheckKhachHangInGioHang($idkhach->id);
                 if ($checkgiohangByidKH == false) {
@@ -751,6 +760,7 @@ class GioHangController extends Controller
                 }
                 session()->forget('giohang');
             }
+            $this->GuiCamOn($sdt, date("d/m/Y"), date("H:i:s"));
             session()->forget("tongdonhang");
             if (session()->has("tiengiam") && session()->get("tiengiam") != 0){
                 session()->forget("tiengiam");
@@ -760,6 +770,45 @@ class GioHangController extends Controller
         }else{
             return redirect('/thanh-toan')->with('thanhtoanthatbai', "Đặt hàng thất bại");
         }
+    }
+
+    public function HuyDonHang($id){
+        $trangthaidonhang=[
+            "trangthai"=>5
+        ];
+        $update=$this->DonHang->update($id, $trangthaidonhang);
+
+        if ($update){
+            $idkhachhang=$this->DonHang->find($id);
+            if ($idkhachhang->trangthaithanhtoan == 1){
+                $trangthaitt=[
+                    "trangthaithanhtoan"=>0
+                ];
+                $this->DonHang->update($id, $trangthaitt);
+                $khachhang=$this->KhachHang->find($idkhachhang->idkhachhang);
+                $exp=[
+                    'exp'=>((int)$khachhang->exp - $idkhachhang->tongtiensaugiamgia)
+                ];
+                $this->KhachHang->update($idkhachhang->idkhachhang, $exp);
+            }
+            return 0;
+        }
+    }
+
+    public function makeMessageCamOnDatHang( $ngay, $gio)
+    {
+        $dateFormatDMY = $ngay;
+        $indexDauHaiChamFirst = stripos($gio, ':');
+        $gioChenChuH = substr_replace($gio, "h", $indexDauHaiChamFirst, 1);
+        $gioDaFormat = substr($gioChenChuH, 0, strlen($gioChenChuH) - 3);
+        $message = '[Fbeauty]: Dat hang thanh cong. Cam on ban da dat hang tai website Fbeauty. Don hang duoc dat vao ngay ' . $dateFormatDMY . ' luc ' . $gioDaFormat . '. Vui long dung so dien thoai dat hang dang nhap de kiem tra don hang cua ban.';
+        return $message;
+    }
+
+    public function GuiCamOn($sdt, $ngay, $gio){
+        $sdts = '+84' . substr($sdt, 1, strlen($sdt));
+        $message = $this->makeMessageCamOnDatHang($ngay, $gio);
+        $this->freeSMSController->sendSingleMessage($sdts, $message);
     }
 
 }

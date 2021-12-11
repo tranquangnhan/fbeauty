@@ -37,6 +37,16 @@ class InstallDatabase extends Migration
         Schema::dropIfExists('giohang');
         Schema::dropIfExists('giohangchitiet');
         Schema::dropIfExists('lienhe');
+        Schema::dropIfExists('banner');
+
+        Schema::create('banner', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('tieude',50)->nullable();
+            $table->string('noidung',100)->nullable();
+            $table->string('img',255);
+            $table->boolean('AnHien')->default(0);
+            $table->timestamps();
+        });
 
         Schema::create('danhmuc', function (Blueprint $table) {
             $table->increments('id');
@@ -177,7 +187,6 @@ class InstallDatabase extends Migration
             $table->timestamps();
         });
 
-
         Schema::create('datlich', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idcoso');
@@ -185,6 +194,7 @@ class InstallDatabase extends Migration
             $table->unsignedInteger('idkhachhang');
             $table->unsignedInteger('idnhanvien');
             $table->unsignedInteger('thoigiandat');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('idcoso')->references('id')->on('coso');
             $table->foreign('idkhachhang')->references('id')->on('khachhang');
             $table->timestamps();
@@ -204,6 +214,7 @@ class InstallDatabase extends Migration
         Schema::create('sanpham', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('iddanhmuc');
+            $table->unsignedInteger('idthuonghieu');
             $table->string('name',255);
             $table->string('slug',255);
             $table->string('img',255);

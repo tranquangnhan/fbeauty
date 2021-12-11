@@ -15,6 +15,11 @@ class installSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('banner')->insert([
+            ['id'=>1,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-01.jpg', 'AnHien'=>1],
+            ['id'=>2,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-02.jpg', 'AnHien'=>1]
+        ]);
+
         DB::table('coso')->insert([
             ['id'=>1,'name'=>'Cơ sở 1','diachi'=> '55A – Đường 3/2 – Phường 11 – Quận 10 – TP. Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
             ['id'=>2,'name'=>'Cơ sở 2','diachi'=> '18A Ngô Văn Năm, Quận 1, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
@@ -29,6 +34,7 @@ class installSeeder extends Seeder
             ['id' => 6, 'name'=>'Dịch vụ giảm béo','img'=>'photo-1635609071.jpg','slug'=> Str::slug('Dịch vụ giảm béo', '-'), 'loai'=>'1'],
             ['id' => 7, 'name'=>'Làm đẹp','img'=>'photo-1635609118.jpg','slug'=> Str::slug('Làm đẹp', '-'), 'loai'=>'2'],
             ['id' => 8, 'name'=>'Trắng da','img'=>'photo-1635609158.jpg','slug'=> Str::slug('Trắng da', '-'), 'loai'=>'3'],
+            ['id' => 9, 'name'=>'Maybelline','img'=>'photo-1635609158.jpg','slug'=> Str::slug('maybelline', '-'), 'loai'=>'4'],
         ]);
         DB::table('dichvu')->insert([
             ['id'=>1,'name'=>'Xăm Chân Mày', 'slug' => Str::slug('Xăm Chân Mày'), 'img'=>'xam_chan_may.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. ', 'dongia'=>2000000, 'noidung'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. Bạn có thể hình dung đây là phương pháp tương tự như việc xăm tattoo lên cơ thể vậy. Chuyên viên sẽ vẽ khung chân mày trước sau đó sử dụng kim chuyên dụng đưa mực xuyên sâu qua da để hoàn thiện theo khuôn chân mày. ', 'trangthai'=> 1],
@@ -856,7 +862,7 @@ class installSeeder extends Seeder
             ['id'=>5,'idkhachhang'=>'5','idgiamgia'=>'1', 'tennguoinhan'=>'Thảo Mai','diachikhachhang'=> 'Tầng 1, 28 Seongam-ro 13-gil, Mapo-gu, Seoul','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'35000000' ,'tongtiensaugiamgia'=>'30000000','ghichucuakhachhang'=> '주문은 이번주말에 받아볼께요 감사합니다','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'FEDEX','trangthai'=>0,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('sanpham')->insert([
-            ['id'=>1,'iddanhmuc'=>1,'name'=>'LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', 'slug'=> Str::slug('LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', '-'),'img'=>'["profile-photo-1635519235.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Mặt nạ “siêu dưỡng da” được ngâm trong 30ml The Treatment Lotion ngay lập tức mang đến sự tăng cường hydrat hoá giúp chữa lành,','noidung'=>'Mặt nạ tấm với công nghệ ôm sát của Nhật Bản và hàng triệu sợi vi mô tinh khiết độc đáo tăng cường sự tập trung của quá trình hydrat hóa chữa lành, làm rạng rỡ, đầy đặn và truyền vào da một nguồn năng lượng mạnh mẽ có tác dụng hồi sinh làn da chỉ trong tíc tắc.
+            ['id'=>1,'iddanhmuc'=>1,'idthuonghieu'=>9,'name'=>'LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', 'slug'=> Str::slug('LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', '-'),'img'=>'["profile-photo-1635519235.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Mặt nạ “siêu dưỡng da” được ngâm trong 30ml The Treatment Lotion ngay lập tức mang đến sự tăng cường hydrat hoá giúp chữa lành,','noidung'=>'Mặt nạ tấm với công nghệ ôm sát của Nhật Bản và hàng triệu sợi vi mô tinh khiết độc đáo tăng cường sự tập trung của quá trình hydrat hóa chữa lành, làm rạng rỡ, đầy đặn và truyền vào da một nguồn năng lượng mạnh mẽ có tác dụng hồi sinh làn da chỉ trong tíc tắc.
 
             - Kết cấu vi mô độc đáo của các sợi phản lực tinh khiết nhẹ nhàng ôm lấy làn da để chúng ta có thể hoạt động trong khi sử dụng mặt nạ.
 
@@ -874,7 +880,7 @@ class installSeeder extends Seeder
 
             Sản xuất tại Nhật Bản' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>2,'iddanhmuc'=>2,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
+            ['id'=>2,'iddanhmuc'=>2,'idthuonghieu'=>9,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
 
              - Chứa thành phần tái tạo tế bào Miracle Broth™ - "thuốc tiên" huyền thoại có trong mọi sản phẩm La Mer - truyền vào da những lợi ích tái tạo có nguồn gốc từ biển, chữa lành và làm đầy, làm mịn các các nếp nhăn, để lộ sự rạng rỡ mới cho làn da.
 
@@ -888,7 +894,7 @@ class installSeeder extends Seeder
 
              Không chứa Paraben, Phthalates, Sulfates, Sulfites.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>3,'iddanhmuc'=>3,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
+            ['id'=>3,'iddanhmuc'=>3,'idthuonghieu'=>9,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
 
             Phương pháp điều trị huyền thoại của La Mer Miracle Broth™ được bào chế với các chất chống oxy hóa giúp bảo vệ đôi môi, ngay lập tức làm đầy đặn và làm rõ các đường nét.
 
@@ -904,7 +910,7 @@ class installSeeder extends Seeder
 
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>4,'iddanhmuc'=>4,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
+            ['id'=>4,'iddanhmuc'=>4,'idthuonghieu'=>9,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
 
             - Ngay lập tức làm mềm độ nhám, nuôi dưỡng và giúp làm dịu sự khô da môi nghiêm trọng.
 
@@ -916,7 +922,7 @@ class installSeeder extends Seeder
 
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>5,'iddanhmuc'=>5,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
+            ['id'=>5,'iddanhmuc'=>5,'idthuonghieu'=>9,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
 
             - Với gấp ba lần lượng "thuốc tiên" Miracle Broth™ so với phiên bản cũ, truyền vào da nguồn năng lượng thiết yếu và hydrat hóa chữa lành, hỗ trợ đổi mới cho vùng mắt mịn màng và sáng hơn.
 
@@ -938,7 +944,7 @@ class installSeeder extends Seeder
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.
 
             ' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>6,'iddanhmuc'=>6,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
+            ['id'=>6,'iddanhmuc'=>6,'idthuonghieu'=>9,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
 
             Khi dùng độc lập, công thức Soft Focus Complex sẽ làm mờ lỗ chân lông, nếp nhăn và các khuyết điểm khác trên da. Khi sử dụng như kem lót, công thức này sẽ giúp kem nền đạt được hiệu ứng hoàn hảo nhất, và giữ cho lớp trang điểm bền bỉ suốt 12 tiếng*. Invisiblur Perfecting Shield Broad Spectrum SPF 30 PA +++ còn không hề chứa Parabens, Sulfates, Phthalates, Gluten và các thành phần có chiết xuất từ động vật.
 

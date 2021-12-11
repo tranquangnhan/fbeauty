@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
     <meta content="Coderthemes" name="author"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('Admin/assets') }}/images/favicon.ico">
@@ -230,18 +231,12 @@
                 </div>
             </li>
 
-            <li class="dropdown notification-list">
-                <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
-                    <i class="fe-settings noti-icon"></i>
-                </a>
-            </li>
-
 
         </ul>
 
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="index.html" class="logo logo-dark text-center">
+            <a href="/quantri" class="logo logo-dark text-center">
                         <span class="logo-lg">
                             <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>
@@ -249,7 +244,7 @@
                             <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>
             </a>
-            <a href="index.html" class="logo logo-light text-center">
+            <a href="/quantri" class="logo logo-light text-center">
                         <span class="logo-lg">
                             <img src="{{ asset('Admin/assets') }}/images/logo.svg" alt="" height="80">
                         </span>
@@ -342,11 +337,28 @@
                             </li>
 
                             <li>
+                                <a href="{{route("banner.index")}}">
+                                    <i class="fa fa-image"></i>
+                                    <span> Banner </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route("theodoi.index")}}">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span> Người Theo Dõi </span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="/quantri/datlichremake">
                                     <i class="far fa-calendar-check"></i>
-
-
                                     <span> Đặt Lịch </span>
+                                </a>
+                            </li>
+                              <li>
+                                <a href="/quantri/lienhe">
+                                    <i class="fa fa-phone"></i>
+                                    <span> Liên hệ </span>
                                 </a>
                             </li>
                           <li>
@@ -685,6 +697,8 @@
 
 <!-- Gallery Init-->
 <script src="{{ asset('Admin/assets') }}/js/pages/gallery.init.js"></script>
+
+<!--- Bắt lỗi--->
 {{--end code của quốc--}}
 
 @yield('custom-javascript')

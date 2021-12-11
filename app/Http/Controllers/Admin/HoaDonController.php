@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
 use App\Repositories\GiamGia\GiamGiaRepository;
@@ -25,13 +25,14 @@ class HoaDonController extends Controller
     private $khachhang;
     private $giamgia;
     private $LieuTrinh;
+    private $LieuTrinhChiTiet;
     public function __construct(
         GiamGiaRepository $giamgia,
         KhachHangRepository $khachhang,
         HoaDonRepositoryInterface $hoadon,
         HoaDonChiTietRepositoryInterface $hoadonchitiet,
         NhanVienRepositoryInterface $nhanvien,
-        CosoRepository $coso,
+        CoSoRepository $coso,
         DichVuRepositoryInterface $dichvu,
         LieuTrinhRepository $LieuTrinh,
         LieuTrinhChiTietRepository $LieuTrinhChiTiet
@@ -151,7 +152,7 @@ class HoaDonController extends Controller
             if ($tien >= $giamgia[0]["max"]) {
                 $ma = ['idgiamgia' => $giamgia[0]["id"]];
                 $today = date('Y-m-d');
-                if (strtotime($today) < $giamgia[0]["ngayhethan"]) {
+                if (strtotime($today) < $giamgia[0]["ngayhethan"] && $giamgia[0]["ngaytao"] < strtotime($today)) {
                     $this->hoadon->update($id, $ma);
                     return true;
                 } else {
@@ -215,7 +216,7 @@ class HoaDonController extends Controller
                 'idlieutrinh' => $lieuTrinh->id,
                 'tongtientruocgiamgia' => $tongtien,
                 'tongtiensaugiamgia' => $tongtien,
-                'trangthai' => 1,
+                'trangthai' => Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN,
                 'ghichu' => $lieuTrinh->ghichu
             ];
 
@@ -245,13 +246,13 @@ class HoaDonController extends Controller
         $hoadon=$this->hoadon->find($id);
         if ($hoadon->trangthai == 0){
             $tt=[
-                "trangthai"=>1
+                "trangthai"=>Controller::TRANGTHAI_HOADON_DA_THANH_TOAN
             ];
             $this->hoadon->update($id, $tt);
         }
         else{
             $tt=[
-                "trangthai"=>0
+                "trangthai"=>Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN
             ];
             $this->hoadon->update($id, $tt);
         }

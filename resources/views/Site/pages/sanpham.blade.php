@@ -12,31 +12,53 @@
                 <div class="col-xl-3">
                     <div class="fa-left w-100">
                         <div class="fa-box-search">
-                            <form action="">
+                            <form action="javascript:void(0)">
                                 <input type="text" id="seach" value="" class="input-search-2" onkeyup="SearchFilter()"
                                        placeholder="Tìm kiếm ..." name="">
                                 <button type="submit" class="button-submit-search-2"><i class="fas fa-search"></i>
                                 </button>
                             </form>
                         </div>
+
                         <hr>
                         <div class="fa-bo-loc-doc mt-2">
                             <div class="loc-item">
-                                <h6 class="title-loc">Danh mục</h6>
                                 <ul class="body-loc">
-                                    <h6 class="title-loc">Sản phẩm</h6>
+                                    <h6 class="title-loc">Danh Mục Sản phẩm</h6>
 
                                     @foreach($danhmucsp as $dm)
                                         <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')->where('iddanhmuc', $dm->id)->where('trangthai', 1)->count();?>
-                                            <li>
-                                                <a href="javascript:;" class="text-decoration-none hover-pink hov">
-                                                    <label for="danhmuc{{$dm->id}}">
-                                                        <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
-                                                               name="danhmuc" id="danhmuc{{$dm->id}}"> {{$dm->name}}
-                                                    </label><span
-                                                        class="badge badge-pill badge-primary background-color-main float-right">{{$soluong}}</span>
-                                                </a>
-                                            </li>
+                                        <li>
+                                            <a href="javascript:;" class="text-decoration-none hover-pink hov">
+                                                <label for="danhmuc{{$dm->id}}">
+                                                    <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
+                                                           name="danhmuc" id="danhmuc{{$dm->id}}"> {{$dm->name}}
+                                                </label><span
+                                                    class="badge badge-pill badge-primary background-color-main float-right">{{$soluong}}</span>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <hr>
+                            <div class="loc-item">
+                                <ul class="body-loc">
+                                    <h6 class="title-loc">Danh Mục Thương Hiệu</h6>
+
+                                    @foreach($danhmucth as $dm)
+                                        <?php  $soluong = \Illuminate\Support\Facades\DB::table('sanpham')
+                                            ->where('idthuonghieu', $dm->id)
+                                            ->where('trangthai', 1)
+                                            ->count();?>
+                                        <li>
+                                            <a href="javascript:;" class="text-decoration-none hover-pink hov">
+                                                <label for="danhmuc{{$dm->id}}">
+                                                    <input type="checkbox" onclick="FilterDanhMuc({{$dm->id}})"
+                                                           name="danhmuc" id="danhmuc{{$dm->id}}"> {{$dm->name}}
+                                                </label><span
+                                                    class="badge badge-pill badge-primary background-color-main float-right">{{$soluong}}</span>
+                                            </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -144,8 +166,8 @@
 @endsection
 
 @section('javascript')
-    <script src="{{ asset('Site/js') }}/showsanpham.js"></script>
-    <script src="{{ asset('Site/js') }}/sanpham.js"></script>
 
+    <script src="{{ asset('Site/js') }}/sanpham.js" defer></script>
+    <script src="{{ asset('Site/js') }}/showsanpham.js"></script>
 
 @endsection

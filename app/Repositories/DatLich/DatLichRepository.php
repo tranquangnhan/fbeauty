@@ -3,12 +3,15 @@
 
 namespace App\Repositories\DatLich;
 
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use DB;
 use App\Repositories\BaseRepository;
 use App\Models\Admin\DatLichModel;
 use App\Models\Admin\DichVuModel;
 use App\Repositories\DatLich\DatLichRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
+
 class DatLichRepository extends BaseRepository implements DatLichRepositoryInterface
 {
     protected $model;
@@ -46,6 +49,11 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
     public function getdv(){
         return DichVuModel::class;
     }
+    public function active($id){
+        return $this->model->select('*')
+        ->where('datlich.id', $id)
+        ->get();
+    }
 
     public function findDatLichCuaNhanVienTheoThoiGian($thoiGianDat, $idNhanVien)
     {
@@ -77,10 +85,79 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->count();
     }
 
-    public function getDatLichByDay($timeStampDauNgay, $timeStampCuoiNgay, $idCoSo) {
+    public function findDatLichByIdKhachHangInnerJoin($id){
         return $this->model
-        ->whereBetween('thoigiandat', [$timeStampDauNgay, $timeStampCuoiNgay])
-        ->where('idcoso', '=', $idCoSo)
+        ->select(
+        'khachhang.name as tenkh',
+        'khachhang.img',
+        'datlich.thoigiandat',
+        'datlich.iddichvu',
+        'datlich.id as iddatlich'
+        )
+        ->where('idkhachhang','=',$id)
+        ->join('khachhang','khachhang.id','=','datlich.idkhachhang')
+        ->orderBy('datlich.id','DESC')->get();
+    }
+    public function getDatLichByDay($timeStampDauNgay, $timeStampCuoiNgay, $idCoSo) {
+        return $this->model->select('datlich.*', 'datlich.id','khachhang.name as namekh')
+        ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
+        ->whereBetween('datlich.thoigiandat', [$timeStampDauNgay, $timeStampCuoiNgay])
+        ->where('datlich.idcoso', '=', $idCoSo)
         ->get();
+    }
+
+    public function getDatLichByIdKhachHang($idKhachHang) {
+        return $this->model->where('idkhachhang', '=', $idKhachHang)->get();
+    }
+
+    // public function getDatLichByIdnhanvien($idNhanVien) {
+    //     return $this->model->where('idnhanvien', '=', $idNhanVien)->get();
+    // }
+    // public function getDatLichByIdnhanvien($idNhanVien) {
+    //     return $this->model->select('datlich.*', 'nhanvien.id as idnhanvien')
+    //     ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
+    //     ->where('nhanvien.id', '=', $idNhanVien)
+    //     ->get();
+    // }
+
+    public function getDatLichByIdKhachHangAndThoiGianDat($idKhachHang, $start, $end) {
+        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso')
+        ->join('coso','datlich.idcoso', '=', 'coso.id')
+        ->whereBetween('thoigiandat', [$start, $end])
+        ->where('idkhachhang', '=', $idKhachHang)
+        ->get();
+    }
+    public function getDatLichByIdKhachHangAndThoiGianDat1($idKhachHang, $start, $end) {
+        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso','nhanvien.name as namenhanvien')
+        ->join('coso','datlich.idcoso', '=', 'coso.id')
+        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
+        ->whereBetween('thoigiandat', [$start, $end])
+        ->where('idkhachhang', '=', $idKhachHang)
+        ->where('datlich.trangthai', Controller::DATLICH_HOANTHANH)
+        ->get();
+    }
+    public function getDatLichByIdKhachHangAndThoiGianDat2($idKhachHang, $start, $end) {
+        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso','nhanvien.name as namenhanvien')
+        ->join('coso','datlich.idcoso', '=', 'coso.id')
+        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
+        ->whereBetween('thoigiandat', [$start, $end])
+        ->where('idkhachhang', '=', $idKhachHang)
+        ->where('datlich.trangthai', Controller::DATLICH_CHUADEN)
+        ->get();
+    }
+    public function getDatLichByIdKhachHangAndThoiGianDat3($idKhachHang, $start, $end) {
+        return $this->model->select('datlich.*', 'datlich.id','coso.diachi as diachicoso','nhanvien.name as namenhanvien')
+        ->join('coso','datlich.idcoso', '=', 'coso.id')
+        ->join('nhanvien','datlich.idnhanvien', '=', 'nhanvien.id')
+        ->whereBetween('thoigiandat', [$start, $end])
+        ->where('idkhachhang', '=', $idKhachHang)
+        ->where('datlich.trangthai', Controller::DATLICH_HUY)
+        ->get();
+    }
+
+    public function CheckDatLichByIdKhachHang($id){
+        return  $this->model->select("*")
+            ->where('idkhachhang', '=', $id)
+            ->doesntExist();
     }
 }

@@ -17,7 +17,8 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
         return HoaDonModel::class;
     }
     public function ShowHoaDonByIdCoso($id){
-        return  $this->model->select('hoadon.*', 'khachhang.name AS tenKh', 'khachhang.sdt AS sodienthoai', 'coso.name AS tencoso', 'nhanvien.name AS tenNV', 'nhanvien.email AS emailNV')
+        return  $this->model->select('hoadon.*', 'khachhang.name AS tenKh', 'khachhang.sdt AS sodienthoai',
+            'coso.name AS tencoso', 'nhanvien.name AS tenNV', 'nhanvien.email AS emailNV')
             ->join('khachhang', 'hoadon.idkhachhang', '=', 'khachhang.id')
             ->join('coso', 'hoadon.idcoso', '=', 'coso.id')
             ->join('nhanvien', 'hoadon.idnhanvien', '=', 'nhanvien.id')
@@ -33,9 +34,15 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
     }
 
     public function findHoaDonByIdKhachHang($id){
-        return  $this->model
+        return  $this->model->select("*")
         ->where('idkhachhang', '=', $id)
         ->get();
+    }
+
+    public function CheckHoaDonByIdKhachHang($id){
+        return  $this->model->select("*")
+            ->where('idkhachhang', '=', $id)
+            ->doesntExist();
     }
 
     public function getTongDoanhThuHoaDon($dau, $cuoi, $idCoSo) {
@@ -57,5 +64,11 @@ class HoaDonRepository extends BaseRepository implements HoaDonRepositoryInterfa
     }
     public function getHoaDonIdCoSo($id){
         return $this->model->where('idcoso',"=",$id)->get();
+    }
+
+    public function getHoaDonBYIdGiamGia($id){
+        return  $this->model->select("*")
+            ->where('idgiamgia', '=', $id)
+            ->doesntExist();
     }
 }

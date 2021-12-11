@@ -523,6 +523,13 @@
 <script type="text/javascript">
 window.Echo.channel('laravel_database_datlich-channel')
     .listen('.DatLichEvent', (data) => {
-        checkKhungGio(data.respon);
+        if (data.respon.typez == 'dat-lich') {
+            checkKhungGio(data.respon);
+        }
+
+        if (data.respon.typez == 'lich') {
+            checkTimeStatus(data.respon);
+        }
+
 });
 </script>

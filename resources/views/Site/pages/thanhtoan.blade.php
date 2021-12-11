@@ -38,7 +38,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label for="">Địa chỉ giao hàng <span class="color-red">(*)</span></label>
-                        <input type="text" name="diachi" class="form-control form-custom" id="diachi" placeholder="Nhập địa chỉ nơi ở của bạn.">
+                        <input type="text" name="diachi" class="form-control form-custom" id="diachi" value="{{old('diachi')}}" placeholder="Nhập địa chỉ nơi ở của bạn.">
                         @error('diachi')
                         <span class='badge badge-danger'>{{ $message }}</span>
                         @enderror
@@ -190,7 +190,7 @@
                         <div class="row justify-content-end mt-1">
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-6 text-right">Số tiền giảm <br> <small>(0%)</small></div>
+                                    <div class="col-6 text-right">Số tiền giảm</div>
                                     <div class="col-6 text-right"><span id="tongtiensaugiam">0</span></div>
                                 </div>
                             </div>
@@ -248,7 +248,7 @@
                 Giao hàng tiết kiệm
             </div>
             <div class="custom-option ptgh" data-ptgh="2" onclick="phuongthucgiaohang('EMS')">
-                Chuyển phát nhanh bưu điẹn
+                Chuyển phát nhanh bưu điện
             </div>
 
             <div class="custom-option ptgh" data-ptgh="3" onclick="phuongthucgiaohang('Sship')">
@@ -283,29 +283,4 @@
     <script src="{{ asset('Site/js') }}/xacnhanthanhtoan.js"></script>
     <link href="https://sandbox.vnpayment.vn/paymentv2/lib/vnpay/vnpay.css" rel="stylesheet"/>
     <script src="https://sandbox.vnpayment.vn/paymentv2/lib/vnpay/vnpay.js"></script>
-    <script type="text/javascript">
-        // $("#btnPopup").click(function () {
-        //     var postData = $("#create_form").serialize();
-        //     var submitUrl = $("#create_form").attr("action");
-        //     $.ajax({
-        //         type: "POST",
-        //         url: submitUrl,
-        //         data: postData,
-        //         dataType: 'JSON',
-        //         success: function (x) {
-        //             if (x.code === '00') {
-        //                 if (window.vnpay) {
-        //                     vnpay.open({width: 768, height: 600, url: x.data});
-        //                 } else {
-        //                     location.href = x.data;
-        //                 }
-        //                 return false;
-        //             } else {
-        //                 alert(x.Message);
-        //             }
-        //         }
-        //     });
-        //     return false;
-        // });
-    </script>
 @endsection

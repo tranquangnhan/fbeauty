@@ -4,6 +4,8 @@ namespace App\Providers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\CoSoController;
 use App\Models\Admin\CosoModel;
+use App\Repositories\Banner\BannerReponsitoryinterface;
+use App\Repositories\Banner\BannerRepository;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHang\DonHangRepositoryInterface;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
@@ -13,6 +15,8 @@ use App\Repositories\GioHangChiTiet\GioHangChiTietRepository;
 use App\Repositories\GioHangChiTiet\GioHangChiTietRepositoryInterface;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\KhachHang\KhachHangRepositoryInterface;
+use App\Repositories\TheoDoi\TheoDoiRepository;
+use App\Repositories\TheoDoi\TheoDoiRepositoryInterface;
 use App\Repositories\YeuThich\YeuThichRepository;
 use App\Repositories\YeuThich\YeuThichRepositoryInterface;
 use Illuminate\Support\Facades\View;
@@ -69,6 +73,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(DonHangRepositoryInterface::class, DonHangRepository::class);
         $this->app->singleton(DonHangChiTietRepository::class, DonHangChiTietRepository::class);
         $this->app->singleton(KhachHangRepositoryInterface::class, KhachHangRepository::class);
+        $this->app->singleton(BannerReponsitoryinterface::class, BannerRepository::class);
+        $this->app->singleton(TheoDoiRepositoryInterface::class, TheoDoiRepository::class);
     }
 
     /**

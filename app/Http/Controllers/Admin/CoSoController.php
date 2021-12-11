@@ -8,12 +8,14 @@ use App\Models\Admin\Province;
 use App\Models\Admin\Wards;
 use App\Models\Admin\CosoModel;
 use App\Repositories\City\CityRepository;
-use App\Repositories\Coso\CosoRepository;
+use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\Lich\LichRepository;
 use App\Repositories\Province\ProvinceRepository;
 use App\Repositories\Wards\WardsRepository;
 use Illuminate\Http\Request;
+use App\Http\Requests\Coso;
+use App\Http\Requests\CosoEdit;
 
 class CoSoController extends Controller
 {
@@ -27,7 +29,7 @@ class CoSoController extends Controller
     /**
      * CosoController constructor.
      */
-    public function __construct(CosoRepository $Coso, CityRepository $City, ProvinceRepository $Province, WardsRepository $wards, LichRepository $Lich, HoaDonRepository $HoaDon)
+    public function __construct(CoSoRepository $Coso, CityRepository $City, ProvinceRepository $Province, WardsRepository $wards, LichRepository $Lich, HoaDonRepository $HoaDon)
     {
         $this->Coso = $Coso;
         $this->Province = $Province;
@@ -37,7 +39,6 @@ class CoSoController extends Controller
         $this->HoaDon = $HoaDon;
         // ProvinceRepository $Province , WardsRepository $wards
     }
-
 
     /**
      * Display a listing of the resource.
@@ -61,7 +62,18 @@ class CoSoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function create()
+    {
+        $data = $this->Coso->getAll();
+        // $city = $this->City->find($data->idkhachhang);
+        $city = $this->City->getAll();
+        $province = $this->Province->getAll();
+        $wards = $this->wards->getAll();
+
+        return view('Admin.Coso.create', compact('data', 'city', 'province', 'wards'));
+    }
+
+    public function store(Coso $request)
     {
         // $validated = $request->validated();
 
@@ -168,9 +180,9 @@ class CoSoController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CosoEdit $request, $id)
     {
-
+        if($this == true){
         $data = [
             'name' => $request->name,
             'diachi' => $request->diachi,
@@ -180,8 +192,10 @@ class CoSoController extends Controller
         ];
 
        $this->Coso->update($id,$data);
-
-        return redirect('quantri/coso')->with('success','Sửa thành công');
+       return redirect(route("coso.index"))->with('thanhcong', 'Cập nhật thông tin thành công');
+        } else {
+            return redirect(route("coso.edit"))->with('thatbai', 'cập nhật thất bại ');
+        }
     }
 
     /**
@@ -194,11 +208,11 @@ class CoSoController extends Controller
     {
         $hasHoaDon = $this->HoaDon->getHoaDonIdCoSo($id);
         if(count($hasHoaDon)>0){
-            return redirect('quantri/coso')->withErrors('Xoá không thành công, cơ sở tồn tại trong hóa đơn và nhân viên!');
+            return 1;
         }else{
             $this->Lich->deleteLichByIdCoSo($id);
             $this->Coso->delete($id);
-             return redirect('quantri/coso')->with('success','Xoá thành công!');
+            return 0;
         }
     }
 }
