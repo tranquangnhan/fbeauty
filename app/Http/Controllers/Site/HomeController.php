@@ -31,7 +31,7 @@ use App\Repositories\Banner\BannerRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     private $data = array();
@@ -314,37 +314,30 @@ class HomeController extends Controller
         return view("Site.pages.dmblogchitiet", $this->data);
     }
 
-    public function viewDichVu(Request $request)
+    public function viewDichVu()
     {
-        $dichvu = $this->Dichvu->getDichVu2();
-        $dichvu1 = $this->Dichvu->getLastWeekdichvu();
-        $dichvu2 = $this->Dichvu->getDichVubyGiamGia();
-        $danhmuc = $this->DanhMuc->getalldanhmuc();
-        $this->getDanhMucVaDichVu();
-        //$mouth = $this->Dichvu->getLastWeekdichvu();
-
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
-        $this->data['dichvu'] = $dichvu;
-        $this->data['dichvu1'] = $dichvu1;
-        $this->data['dichvu2'] = $dichvu2;
-        $this->data['danhmuc'] = $danhmuc;
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
+            $dichvu = $this->Dichvu->getDichVu2();
+            $dichvu1 = $this->Dichvu->getLastWeekdichvu();
+            $dichvu2 = $this->Dichvu->getDichVubyGiamGia();
+            $danhmuc = $this->DanhMuc->getalldanhmuc();
+            $this->getDanhMucVaDichVu();
+            //$mouth = $this->Dichvu->getLastWeekdichvu();
 
+            $this->data['dichvu'] = $dichvu;
+            $this->data['dichvu1'] = $dichvu1;
+            $this->data['dichvu2'] = $dichvu2;
+            $this->data['danhmuc'] = $danhmuc;
+            return view("Site.pages.dichvu", $this->data);
 
-        return view("Site.pages.dichvu", $this->data);
     }
 
     public function danhmucdichvu($slug)
     {
-        $limit = 6;
-        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
-        $viewdetail = $this->Dichvu->getdichvuiddanhmuc($slug, $limit);
-
-        $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
-        $this->data['viewdetail'] = $viewdetail;
         $this->data['pathActive'] = 'danh-muc-dich-vu';
         $this->data['namePage'] = 'Danh Mục Dịch Vụ';
         $this->data['breadcrumbArray'] = [
@@ -352,7 +345,11 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Tên Dịch Vụ'],
 
         ];
-
+        $limit = 6;
+        $nameDanhMucbyslug = $this->DanhMuc->idDanhMucbyslug($slug);
+        $viewdetail = $this->Dichvu->getdichvuiddanhmuc($slug, $limit);
+        $this->data['nameDanhMucbyslug'] = $nameDanhMucbyslug;
+        $this->data['viewdetail'] = $viewdetail;
         return view("Site.pages.danhmucchitiet", $this->data);
     }
 
@@ -372,12 +369,7 @@ class HomeController extends Controller
         $sanpham = $this->SanPham->getsanphamtimkiem();
         $blog = $this->Blog->getAllBlog();
 
-//         $obj = [];
-//         for ($i = 0; $i < count($sanpham); $i++) {
-//             $obj = json_decode($sanpham[$i]->img);
-//         }
-// dd($obj);
-
+        
 
         $this->data['dichvu'] = $dichvu;
         $this->data['dichvu'] = $dichvu;
@@ -389,19 +381,18 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Tìm Kiếm'],
         ];
 
-        if ($valueSearch = request()->key) {
-            $dichvu = $this->Dichvu->search($valueSearch);
-            $sanpham = $this->SanPham->searchsanpham($valueSearch);
+        if($valueSearch = request()->key){
+            $dichVu = $this->Dichvu->search($valueSearch);
+            $sanPham = $this->SanPham->searchsanpham($valueSearch);
             $blog = $this->Blog->searchblog($valueSearch);
 
-            $this->data['dichvu'] = $dichvu;
-            $this->data['sanpham'] = $sanpham;
-            $this->data['blog'] = $blog;
-
+            $this->dulieu['dichVu'] = $dichVu;
+            $this->dulieu['sanPham'] = $sanPham;
+            $this->dulieu['blog'] = $blog;
         }
 
 
-        return view("Site.pages.timkiem", $this->data);
+        return view("Site.pages.timkiem",$this->data,['dulieu'=>json_encode($this->dulieu)]);
     }
 
     public function viewLienHe()
@@ -440,14 +431,6 @@ class HomeController extends Controller
 
     public function viewDichVuChiTiet($slug)
     {
-        $detaildichvu = $this->Dichvu->dichvudetail($slug);
-        $dichvuview = $this->Dichvu->getdichvujoindanhmuc($slug);
-        $dichvulienquan = $this->Dichvu->GetDichvuLienQuan($dichvuview[0]->iddm);
-        $dichvukhac = $this->Dichvu->GetDichvuLienQuanKhacIDDM($dichvuview[0]->iddm);
-
-        $this->data['dichvulienquan'] = $dichvulienquan;
-        $this->data['dichvukhac'] = $dichvukhac;
-        $this->data['detaildichvu'] = $detaildichvu;
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
         $this->data['breadcrumbArray'] = [
@@ -455,8 +438,21 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Tên Dịch Vụ'],
 
         ];
+        try {
+            $detaildichvu = $this->Dichvu->dichvudetail($slug);
+            $dichvuview = $this->Dichvu->getdichvujoindanhmuc($slug);
+            $dichvulienquan = $this->Dichvu->GetDichvuLienQuan($dichvuview[0]->iddm);
+            $dichvukhac = $this->Dichvu->GetDichvuLienQuanKhacIDDM(0);
 
-        return view("Site.pages.dichvuchitiet", $this->data);
+            $this->data['dichvulienquan'] = $dichvulienquan;
+            $this->data['dichvukhac'] = $dichvukhac;
+            $this->data['detaildichvu'] = $detaildichvu;
+            return view("Site.pages.dichvuchitiet", $this->data);
+        }
+        catch (\Exception $exception){
+            $this->data['dichvukhac']  = $this->Dichvu->GetDichvuLienQuanKhacIDDM(0);
+            return view("Site.pages.dichvuchitiet", $this->data, ["khongcodichvu",0]);
+        }
     }
 
     public function viewProfileUser()
@@ -472,7 +468,6 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Thông tin tài khoản'],
         ];
-
 
         if ($khachHang) {
             $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
@@ -883,7 +878,7 @@ class HomeController extends Controller
                 if ($error == false) {
                     $sdt = '+84' . substr($request->soDienThoai, 1, strlen($request->soDienThoai));
                     $message = $this->makeMessageCamOnDatLich($request->idCoSo, $request->ngay, $request->gio);
-                    $this->freeSMSController->sendSingleMessage($sdt, $message);
+                    // $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                     $response = Array(
                         'success' => true,

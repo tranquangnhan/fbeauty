@@ -36,7 +36,10 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     }
 
     public function search($valueSearch){
-        return $this->model->where('name','LIKE','%'.$valueSearch.'%')->get();
+        return $this->model->select('danhmuc.name as namedm',
+        'dichvu.*')
+        ->join('danhmuc','dichvu.iddm','=','danhmuc.id')
+        ->where('dichvu.name','LIKE','%'.$valueSearch.'%')->get();
     }
 
     public function dichVuInerjoinDanhMuc(){
@@ -146,7 +149,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
             ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
             ->where('dichvu.iddm', '!=' , $id)
             ->where('dichvu.trangthai', Controller::TRANGTHAI_DICHVU_HIEN)
-            ->limit(4)
+            ->limit(8)
             ->get();
     }
 

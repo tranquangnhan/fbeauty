@@ -120,10 +120,10 @@ function AddYeuThich(id) {
         dataType: 'json',
         data: {idsp: id},
         success: function (datayeuthich) {
-            if (datayeuthich == 0) {
+            if (datayeuthich === 0) {
                 $("#tym"+id).removeClass('active');
             }
-            else if (datayeuthich == 2) {
+            else if (datayeuthich === 2) {
                 $("#tym"+id).addClass('active');
                 $('#btn-modal-dangnhaps').click();
             }
@@ -134,3 +134,5 @@ function AddYeuThich(id) {
     });
 
 }
+
+
