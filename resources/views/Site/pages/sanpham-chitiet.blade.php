@@ -5,6 +5,7 @@
 @endsection
 
 @section('main')
+    @if(!isset($khongcosanpham))
     <div class="fa-sanphamchitiet mt-4">
         <div class="container">
             <div class="row">
@@ -290,7 +291,95 @@
 
         </div>
     </div>
+    @else
+        <div class="fa-sanphamchitiet mt-4">
+            <div class="container">
+                <div class="sanpham-lienquan mt-5 text-center">
+                    <hr>
+                    <div class="row m-auto">
+                        <h2 class="text-center m-auto" style="color: var(--main-color);">Không có sản phẩm này</h2>
+                    </div>
+                    <hr>
+                </div>
+                <div class="sanpham-lienquan my-2">
+                    <div class="title-cs-1 p-2 rounded" style="background-color: pink">
+                        <span class="btn btn-light">Sản phẩm khác</span>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        @foreach($spkhac as $i => $spk)
+                            <?php $anhk=json_decode($spk->img);
+                            ?>
+                            <div class="col-3">
+                                <div class="card rounded-0 product-card child-item-sanpham zbar">
+                                    <div class="card-header bg-transparent border-bottom-0">
+                                        @if(session()->has('khachHang') && session('khachHang') != '')
+                                            <?php $checkyeuthich1= \Illuminate\Support\Facades\DB::table('yeuthich')->where('idkhachhang', session('khachHang')->id)->where('idsanphamchitiet', $spk->id)->doesntExist()?>
+                                            <?php if ($checkyeuthich1 == false) {?>
+                                            <div class="btn-add-wishlist btn-sticky hover-scale-1 active" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
+                                                <div class="box-cicrle">
+                                                    <i class="fas fa-heart heart-full"></i>
+                                                    <i class="far fa-heart heart-line"></i>
+                                                </div>
+                                            </div>
+                                            <?php } else{?>
+                                            <div class="btn-add-wishlist btn-sticky hover-scale-1" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
+                                                <div class="box-cicrle">
+                                                    <i class="fas fa-heart heart-full"></i>
+                                                    <i class="far fa-heart heart-line"></i>
+                                                </div>
+                                            </div>
+                                            <?php }?>
+                                        @else
+                                            <div class="btn-add-wishlist btn-sticky hover-scale-1" id="tym{{$spk->id}}" onclick="AddYeuThich({{$spk->id}})">
+                                                <div class="box-cicrle">
+                                                    <i class="fas fa-heart heart-full"></i>
+                                                    <i class="far fa-heart heart-line"></i>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        @if($spk->giamgia !="")
+                                            <div class="btn-add-discout btn-sticky hover-scale-1">
+                                                <div class="box-cicrle-giamgia p-2 rounded text-white">
+                                                    <span style="font-size: 10pt;">{{$spk->giamgia}}%</span>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <img src="{{ asset('/uploads')}}/{{$anhk[0]}}" class="card-img-top img-sanpham-zbar" alt="...">
+                                    <div class="card-body text-center">
+                                        <div class="product-info">
+                                            <a href="javascript:;">
+                                                <p class="product-catergory font-13 mb-1">{{$spk->tendm}}</p>
+                                            </a>
+                                            <a href="{{URL::to("san-pham/chi-tiet", $spk->slug)}}">
+                                                <h6 class="product-name mb-2" style="height: 40px;"><?php if (strlen($spk->name)<= 45){echo $spk->name;}else  { echo substr($spk->name, 0, 45).'...';}?></h6>
+                                            </a>
+                                            <div class="d-flex align-items-center justify-content-center" style="height: 50px;">
+                                                <div class="mb-1 product-price">
+                                                    <span class="me-1 text-decoration-line-through">{{str_replace(',', '.',number_format($spk->dongia)), ""}} đ</span> / <span>{{$spk->ml}}ml</span>
+                                                    @if($spk->giamgia !="")
+                                                        <br><span style="font-size: 13pt;">Giảm còn: </span><span class="me-1 text-decoration-line-through font-weight-bold">{{str_replace(',', '.',number_format($spk->dongia-(($spk->dongia * $spk->giamgia)/100))), ""}}đ</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="product-action mt-2">
+                                                <div class="d-grid gap-2">
 
+                                                    <button class="w-100 btn-sanpham btn-5" onclick="ThemGioHang({{$spk->id}})"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>
+                                                    <a href="{{URL::to("san-pham/chi-tiet", $spk->slug)}}"> <button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
 
 @section('javascript')

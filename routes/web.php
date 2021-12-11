@@ -31,20 +31,6 @@ use App\Http\Controllers\Site\YeuThichController;
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 /**
  * Backend
  *
@@ -81,6 +67,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/trangthaithanhtoan/{id}', [HoaDonController::class, "trangthaithanhtoan"]);
     Route::resource('hoadonchitiet', HoaDonChiTietController::class);
 
+    // quản lý đặt lịch
     Route::resource('datlich', DatLichController::class);
     Route::resource('lich', LichController::class);
     Route::get('lich/{id}/thungay/{idthu}', [LichController::class, 'showlich']);
@@ -89,9 +76,9 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::post('lich/updateTime/{id}', [LichController::class, 'updateTime']);
     // quản lý cơ sở
     Route::resource('coso', CoSoController::class);
-    Route::post('coso/select-delivery', [CoSoController::class,'select_delivery']);
-    Route::post('coso/{id}/edit/select-delivery', [CoSoController::class,'select_delivery1']);
-    Route::get('coso/changecoso/{id}', [CoSoController::class,'changeCoSo']);
+    Route::post('coso/select-delivery', [CoSoController::class, 'select_delivery']);
+    Route::post('coso/{id}/edit/select-delivery', [CoSoController::class, 'select_delivery1']);
+    Route::get('coso/changecoso/{id}', [CoSoController::class, 'changeCoSo']);
 
     Route::resource('donhang', DonHangController::class);
     Route::resource('donhangchitiet', DonHangController::class);
@@ -104,8 +91,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
 
     Route::resource('lienhe', LienHeController::class);
 
-    Route::put('editnamedv', [LieuTrinhController::class,'editNameDv']);
-    Route::post('editimglieutrinh', [LieuTrinhController::class,'editImgLieuTrinh']);
+    Route::put('editnamedv', [LieuTrinhController::class, 'editNameDv']);
+    Route::post('editimglieutrinh', [LieuTrinhController::class, 'editImgLieuTrinh']);
 
     Route::get('khachhang/detail/{id}', [KhachHangController::class, 'detailKhachHang']);
     Route::post('khachhang/themlieutrinh/{id}/store', [KhachHangController::class, 'storeLieuTrinh']);
@@ -114,26 +101,11 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('khachhang/lieutrinh/{id}/edit', [LieuTrinhController::class, 'editLieuTrinhChiTiet']);
     Route::patch('khachhang/lieutrinh/{id}/update', [KhachHangController::class, 'updateLieuTrinh']);
 
-
     Route::resource('datlichremake', DatLichRemakeController::class);
     Route::get('changeStatusDatLich/{id}/{status}', [DatLichRemakeController::class, "changeStatusDatLich"]);
     Route::get('getDuLieuDatLichChoCalendar/{ngay}', [DatLichRemakeController::class, "getDuLieuDatLichChoCalendar"]);
     Route::get('changeStatusTime/{id}/{status}', [DatLichRemakeController::class, "changeStatusTime"]);
 
-    /**
-     *1: Lấy DỊch vụ đến Hóa đơn
-     * 2: Lấy Sp chi tiết đến hóa Đơn
-     * 3: Lấy hóa đơn chi tiết
-     * 4: lấy sản phẩm chi tiết
-     * 5: Lấy dịch vụ
-     * 6: Lấy giảm giá
-     * 7: Xét điều kiện giảm giá
-     * 8:Cập nhật giá
-     * 9:Xóa
-     * 10:Thêm sản phẩm vào hóa đơn chi tiết
-     * 11:Thêm dịch vụ vào hóa đơn chi tiết
-     * 12: Cập nhật số lượng
-     */
     Route::get('/getDichVu', [DichVuController::class, 'getDichVuToHoaDon']);
     Route::get('/getSanPham', [SanPhamChiTietController::class, 'getSanPhamToHoaDon']);
     Route::get('hoadon/{id}/edit/getHoaDonChiTiet', [HoaDonChiTietController::class, 'getHoaDonChiTiet']);
@@ -147,13 +119,20 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/{id}/edit/themdichvu/{iddv}', [HoaDonChiTietController::class, 'ThemDichVuVaoHoaDon']);
     Route::get('hoadon/{id}/edit/capnhatsoluong/{idhdct}/soluong/{soluong}', [HoaDonChiTietController::class, 'CapNhatSoLuong']);
     Route::get('hoadon/{id}/edit/huygiamgia/{tien}', [HoaDonChiTietController::class, 'HuyGiamGia']);
-    // nhan add hoá đơn by id liệu trình
+    /**
+     * nhan add hoá đơn by id liệu trình
+    */
     Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class, 'addHoaDonByIdLieuTrinh']);
-    //Banner
+    /**
+     * Banner
+    */
     Route::resource('banner', BannerController::class);
-    //Follower
+    /**
+     * Follower
+    */
     Route::resource('theodoi', TheoDoiFLController::class);
 });
+
 
 Route::group(['prefix' => '/'], function () {
     Route::get('', [HomeController::class, "index"]);
@@ -206,7 +185,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('CheckGiamGia/{name}/tongthangtoan/{gia}', [GiamGiaController::class, 'CheckGiamGia']);
 
 
-    Route::post('storeLienHe', 'App\Http\Controllers\Site\HomeController@storeLienHe');
+    Route::post('storeLienHe', [HomeController::class, "storeLienHe"]);
     Route::get('/capnhatgiasession/{gia}', [GioHangController::class, 'capnhatgiasession']);
     Route::get('/capnhatgiamgiasession/{gia}', [GiamGiaController::class, 'capnhatgiamgiasession']);
     /**
@@ -216,25 +195,25 @@ Route::group(['prefix' => '/'], function () {
     Route::post('/thanh-toan-don-hang', [GioHangController::class, "thanhtoandonhang"]);
     Route::get("/thanh-toan-hoa-don", [GioHangController::class, 'returnPay']);
 
-     /**
+    /**
      *Liệu trình
      */
     Route::get('lieutrinhchitiet/{id}/get', [HomeController::class, 'getLieuTrinhDetailByIdLieuTrinh']);
     Route::post('lieutrinh/cancel', [HomeController::class, 'huyLieuTrinh']);
     /**
-    *Hủy đơn
+     *Hủy đơn
      */
     Route::get("huydonhang/{id}", [GioHangController::class, "HuyDonHang"]);
     /**
-    *Update profile
+     *Update profile
      */
     Route::post("updateprofile", [HomeController::class, "updateprofile"]);
     /**
-    *Delete yêu thích
+     *Delete yêu thích
      */
-    Route::get('xoayeuthich/{id}',[YeuThichController::class, "xoayeuthich"]);
+    Route::get('xoayeuthich/{id}', [YeuThichController::class, "xoayeuthich"]);
     /**
-    *Email liên hệ
+     *Email liên hệ
      */
     Route::post("emaillienhe", [TheoDoiController::class, "store"]);
 });

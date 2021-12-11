@@ -29,6 +29,12 @@
 
                             <h4 class="header-title mt-0 mb-3">Sửa Đơn Hàng</h4>
 
+                            @if(session('thatbai'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{session('thatbai')}}
+                                </div>
+                            @endif
+
                             <form data-parsley-validate action="{{route('donhang.update',$data->id)}}" id="formadd" novalidate onsubmit="return submitForm()" method="post" enctype="multipart/form-data">
                                 @csrf
                                 {!! method_field('patch') !!}
@@ -39,18 +45,24 @@
                                     <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="">Tên Người Đặt</label><span style="color:red;"> (*)</span>
-                                                <input type="text" name="namedat" class="form-control @error('name') border-error @enderror name" value="{{$khachHang->name}}"  parsley-trigger="change" required readonly>
+                                                <input type="text" name="namedat" class="form-control" value="{{$khachHang->name}}"  parsley-trigger="change"  readonly>
                                             </div>
 
                                             <div class="form-group col-md-4">
                                                 <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
-                                                <input type="text" name="magiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->idgiamgia}}"  parsley-trigger="change" required>
+                                                <input type="text" name="magiamgia" class="form-control @error('magiamgia') border-error @enderror magiamgia" value="{{$data->idgiamgia}}"  parsley-trigger="change" >
+                                                @error('magiamgia')
+                                                <span class="badge badge-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group col-md-4">
                                                 <label for="">Tên Người Nhận</label><span style="color:red;"> (*)</span>
-                                                <input type="text" name="namenguoinhan" class="form-control @error('name') border-error @enderror name" value="{{$data->tennguoinhan}}"  parsley-trigger="change" required
+                                                <input type="text" name="namenguoinhan" class="form-control @error('namenguoinhan') border-error @enderror namenguoinhan" value="{{$data->tennguoinhan}}"  parsley-trigger="change"
                                                    placeholder="Tên Người Nhận" >
+                                                   @error('namenguoinhan')
+                                                <span class="badge badge-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
                                     </div>
 
@@ -58,8 +70,11 @@
 
                                     <div class="form-group">
                                             <label for="">Địa Chỉ Khách Hàng</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="diachi" class="form-control @error('name') border-error @enderror name" value="{{$data->diachikhachhang}}"  parsley-trigger="change" required
+                                            <input type="text" name="diachi" class="form-control @error('diachi') border-error @enderror diachi" value="{{$data->diachikhachhang}}"  parsley-trigger="change"
                                                    placeholder="Địa Chỉ Khách Hàng" >
+                                                   @error('diachi')
+                                                <span class="badge badge-danger">{{$message}}</span>
+                                                @enderror
                                     </div>
 
 
@@ -67,44 +82,59 @@
                                     <div class="form-row">
                                             <div class="form-group col-md-4">
                                             <label for="">SĐT Người Nhận</label><span style="color:red;"> (*)</span>
-                                            <input type="number" name="sodienthoai" class="form-control @error('name') border-error @enderror name" value="{{$data->sdtnguoinhan}}"  parsley-trigger="change" required
+                                            <input type="number" name="sodienthoai" class="form-control @error('sodienthoai') border-error @enderror sodienthoai" value="{{$data->sdtnguoinhan}}"  parsley-trigger="change"
                                                    placeholder="SĐT Người Nhận" >
+                                                   @error('sodienthoai')
+                                                <span class="badge badge-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group col-md-4">
                                             <label for="">Tổng Tiền Trước Giảm Giá</label><span style="color:red;"> (*)</span>
-                                            <input type="number" name="tongtientruocgiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->tongtientruocgiamgia}}"  parsley-trigger="change" required
+                                            <input type="number" name="tongtientruocgiamgia" class="form-control @error('tongtientruocgiamgia') border-error @enderror tongtientruocgiamgia" value="{{$data->tongtientruocgiamgia}}"  parsley-trigger="change"
                                                    placeholder="Tổng Tiền Trước Giảm Giá" >
+                                                   @error('tongtientruocgiamgia')
+                                                <span class="badge badge-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group col-md-4">
                                             <label for="">Tổng Tiền sau Giảm Giá</label><span style="color:red;"> (*)</span>
-                                            <input type="number" name="tongtiensaugiamgia" class="form-control @error('name') border-error @enderror name" value="{{$data->tongtiensaugiamgia}}"  parsley-trigger="change" required
+                                            <input type="number" name="tongtiensaugiamgia" class="form-control @error('tongtiensaugiamgia') border-error @enderror tongtiensaugiamgia" value="{{$data->tongtiensaugiamgia}}"  parsley-trigger="change"
                                                    placeholder="Tổng Tiền sau Giảm Giá" >
+                                                   @error('tongtiensaugiamgia')
+                                                <span class="badge badge-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
                                     </div>
 
 
 
                                     <div class="form-row">
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-3">
                                             <label for="">Phương Thức Thanh Toán</label><span style="color:red;"> (*)</span>
-                                            <input type="text" name="phuongthucthanhtoan" class="form-control @error('name') border-error @enderror name" value="{{$data->phuongthucthanhtoan}}"  parsley-trigger="change" required readonly
+                                            <input type="text" name="phuongthucthanhtoan" class="form-control @error('phuongthucthanhtoan') border-error @enderror phuongthucthanhtoan" value="{{$data->phuongthucthanhtoan}}"  parsley-trigger="change"  readonly
                                                    placeholder="Phương Thức Thanh Toán" >
+                                                   @error('phuongthucthanhtoan')
+                                                <span class="badge badge-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
 
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-3">
                                             <label for="">Phương Thức Giao Hàng</label><span style="color:red;"> (*)</span>
-                                            <select name="phuongthucgiaohang"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->phuongthucgiaohang}}" parsley-trigger="change">
+                                            <select name="phuongthucgiaohang"  placeholder="Phương Thức Giao Hàng" class="form-control @error('phuongthucgiaohang') border-error @enderror phuongthucgiaohang" value="{{$data->phuongthucgiaohang}}" parsley-trigger="change">
                                                  <option>{{$data->phuongthucgiaohang}}</option>
                                                  <option>GHTK</option>
                                                  <option>EMS</option>
                                                  <option>Sship</option>
                                             </select>
+                                            @error('phuongthucgiaohang')
+                                                <span class="badge badge-danger">{{$message}}</span>
+                                                @enderror
                                             </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-3">
                                                 <label for="">Trạng Thái</label><span style="color:red;"> (*)</span>
-                                                <select name="trangthai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('name') border-error @enderror name" value="{{$data->trangthai}}" parsley-trigger="change">
+                                                <select name="trangthai" id="inputState" class="form-control"  placeholder="Phương Thức Giao Hàng" class="form-control @error('trangthai') border-error @enderror trangthai" value="{{$data->trangthai}}" parsley-trigger="change">
                                                     <option {{$data->trangthai == '0'? 'selected':''}} value="0">Đang xác nhận</option>
                                                     <option {{$data->trangthai == '1'? 'selected':''}} value="1">Đã gửi đi</option>
                                                     <option {{$data->trangthai == '2'? 'selected':''}} value="2">Đã nhận</option>
@@ -112,15 +142,31 @@
                                                     <option {{$data->trangthai == '4'? 'selected':''}} value="4">Khách trả hàng</option>
                                                     <option {{$data->trangthai == '5'? 'selected':''}} value="5">Hủy đơn hàng</option>
                                                 </select>
+                                                @error('trangthai')
+                                                <span class="badge badge-danger">{{$message}}</span>
+                                                @enderror
                                                 </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="">Trạng thái thanh toán</label><span style="color:red;"> (*)</span>
+                                                    <select name="trangthaithanhtoan"  placeholder="Trạng thái thanh toán" class="form-control @error('trangthaithanhtoan') border-error @enderror trangthaithanhtoan" value="{{$data->phuongthucgiaohang}}" parsley-trigger="change">
+                                                        <option {{$data->trangthaithanhtoan == '0'? 'selected':''}} value="0">Đã thanh toán</option>
+                                                        <option {{$data->trangthaithanhtoan == '1'? 'selected':''}} value="1">Chưa thanh toán</option>
+                                                    </select>
+                                                    @error('trangthaithanhtoan')
+                                                        <span class="badge badge-danger">{{$message}}</span>
+                                                        @enderror
+                                                    </div>
                                     </div>
 
 
 
                                         <div class="form-group">
                                             <label for="">Ghi Chú Khách Hàng</label><span style="color:red;"> (*)</span>
-                                            <textarea rows="9" cols="70" type="text" name="ghichukhachhang" class="form-control @error('name') border-error @enderror name"  parsley-trigger="change" required
+                                            <textarea rows="9" cols="70" type="text" name="ghichukhachhang" class="form-control @error('ghichukhachhang') border-error @enderror ghichukhachhang"  parsley-trigger="change"
                                                    placeholder="Ghi Chú Khách Hàng">{{$data->ghichucuakhachhang}}</textarea>
+                                                   @error('ghichukhachhang')
+                                                        <span class="badge badge-danger">{{$message}}</span>
+                                                        @enderror
                                         </div>
                                     </div>
 

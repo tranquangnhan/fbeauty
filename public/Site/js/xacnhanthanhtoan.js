@@ -29,12 +29,4 @@ jQuery.validator.addMethod('valid_phone', function (value) {
     return value.trim().match(regex);
 });
 
-// $(document).ready(function () {
-//     $("#ktform").submit(function (event) {
-//
-//         console.log($("#username").val());
-//
-//         event.preventDefault();
-//     });
-// });
 

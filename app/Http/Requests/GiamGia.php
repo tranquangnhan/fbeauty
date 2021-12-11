@@ -24,8 +24,8 @@ class GiamGia extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'ma'=>'required',
+            'name' => 'required|unique:name',
+            'ma'=>'required|unique:ma',
             'number'=>'required',
             'max'=>'required',
             'loai'=>'required',
@@ -41,7 +41,7 @@ class GiamGia extends FormRequest
             'number.required'=>'Bạn chưa nhập giảm giá trong khoảng',
             'max.required'=>'Bạn chưa nhập giảm giá tối đa',
             'loai.required'=>'Bạn chưa chọn loại giảm giá',
-            'ngaytao.required'=>'Bạn chưa chọn ngày tạo',
+            'ngaytao.required'=>'Bạn chưa chọn ngày áp dụng ',
             'ngayhethan.required'=>'Bạn chưa chọn ngày hết hạn',
         ];
     }

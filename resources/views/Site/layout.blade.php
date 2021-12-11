@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Fbeauty Spa - @yield('title')</title>
+    <link rel="shortcut icon" href="{{ asset('Admin/assets') }}/images/logo.svg">
     {{-- Font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,8 +43,8 @@
     {{-- <div id="loading" class="modal-container show">
         <div class="modal-background">
             <div class="justify-content-center" id="imgload">
-                <div class="spinner-border text-danger" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                <div class="spinner-border text-danger h-50" role="status">
+                    <span class="visually-hidden">F</span>
                 </div>
             </div>
 
@@ -70,6 +71,13 @@
 </body>
 
 </html>
+
+<script>
+    var	listCoSo = <?php echo json_encode($listCoSo); ?>;
+
+    var	listDanhMucDichVu = <?php echo json_encode($listDanhMucDichVu); ?>;
+    var	khachHangLogin = <?php echo json_encode(session('khachHang')); ?>;
+</script>
 
 {{-- Boostrap --}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -107,8 +115,13 @@
     $(window).on('load', function(event) {
         $('#loading').removeClass('show');
         // $('.load').delay(1000).fadeOut('fast');
+<<<<<<< HEAD
         $('#imgload').delay(500).fadeOut('fast');
+=======
+        $('#imgload').fadeOut('fast');
+>>>>>>> 70ab2be67b1ed1c5833210ca70294d24c2d1124d
     });
 </script>
+
 @include('Site.components.thongbao')
 @yield('javascript')

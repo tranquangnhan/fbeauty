@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-xl-7 pl-0 align-self-center">
                     <div class="row">
-                        <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                        <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 formatDayCustom" data-type="short" data-format="{{$item->created_at}}">
                             <span>@if ($item->created_at != null)
                                 {{$item->created_at->format('d-m-y')}}
                             @endif</span>

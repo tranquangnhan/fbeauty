@@ -2,7 +2,7 @@
     <div class="modal-background modal-box-datlich">
         <div class="close-modal background-close" type-modal="modal-datlich"></div>
         <div class="modal modal-main" style="width: 50%;height: auto;max-height: 90%;">
-            <div class="noidung-modal h-100 w-100">
+            <div class="noidung-modal noidung-modal-datlich h-100 w-100">
                 <div class="modal-content-1 h-100">
                     <div class="datlich-step h-100 active" data-step="0">
                         <div class="close close-modal button-close-modal" type-modal="modal-datlich">
@@ -35,7 +35,7 @@
                                 <div class="w-100">
                                     <div class="fa-custom form-custom-datlich form-phone-number">
                                         <div class="div-phone-number">
-                                            <input type="text" id="phoneNumber" placeholder="Nhập số điện thoại của bạn"
+                                            <input type="number" id="phoneNumber" placeholder="Nhập số điện thoại của bạn"
                                             @if (session()->has('khachHang') && session('khachHang') != '')
                                                 value="{{ session('khachHang')->sdt }}"
                                             @endif

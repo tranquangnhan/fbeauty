@@ -77,7 +77,7 @@
                                 <tbody>
                                     @foreach ($data as $item)
 
-                                        <tr>
+                                        <tr id="row{{$item->id}}">
                                             <td>{{$item->id}}</td>
                                             <td><img  class="objectcv img-common" src="{{asset($URL_IMG.$item->img)}}" alt=""></td>
                                             <td>{{$item->name}}</td>
@@ -88,13 +88,10 @@
                                                     @endif
                                                 @endforeach
                                             </td>
-                                            <td class="d-flex border-none">
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
-                                                <form action="{{route('danhmuc.destroy',$item->id)}}"  method="post">
-                                                    @csrf
-                                                    {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                                </form>
+                                            <td >
+                                                <a id="" class="btn btn-primary mr-2" href="{{route('danhmuc.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
+                                                @csrf
+                                                <button type="button" onclick="deleteCommon({{$item->id}})" class="btn btn-danger text-white" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach

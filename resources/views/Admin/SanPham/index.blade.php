@@ -12,7 +12,7 @@
                 <div class="col-12">
                     <div class="card-box">
                         <h4 class="mt-0 header-title">Sản Phẩm</h4>
-                        
+
                         <p class="text-muted font-14 mb-3">
                         Tất cả sản phẩm có trong cửa hàng.
                         </p>
@@ -29,7 +29,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                           
+
                                  @endif
                             </div>
                         </div>
@@ -47,19 +47,16 @@
                                 <tbody>
 
                                 @foreach ($data as $item)
-                                    <tr>
-                                        <td class="">{{$loop->index}}</td>
+                                    <tr id="row{{$item->id}}">
+                                        <td class="">{{$loop->index +=1}}</td>
                                         <td class="" >{{substr($item->name,0,100)}} ..</td>
                                         <td><img  class="img-common" src="{{ asset($URL_IMG. json_decode($item->img)[0]) }}"></td>
                                         <td > {{substr(trim($item->mota),0,150)}}</td>
                                         <td ><a href="{{URL::to('quantri/sanpham/detail/'.$item->id.'/edit')}}" class="d-flex justify-content-center"><div class="btn btn-success"><i class="fa fa-info-circle"></i></div></a></td>
                                         <td class="d-flex justify-content-around">
                                             <a href="{{route('sanpham.edit',$item->id)}}"><div class="btn btn-primary mr-2"> <i class="dripicons-pencil"></i></div></a>
-                                            <form action="{{route('sanpham.destroy',$item->id)}}"  method="post">
-                                                @csrf
-                                                {!!method_field('delete')!!}
-                                                <button  onclick="return iconfirm()" type="submit"  class="btn btn-danger"><i class=" dripicons-trash"></i></button>
-                                            </form>
+                                            @csrf
+                                            <button type="button" onclick="deleteCommon({{$item->id}})" class="btn btn-danger text-white" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach

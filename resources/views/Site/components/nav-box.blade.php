@@ -15,7 +15,7 @@
                         <a href="javascript:void(0)"><i class="fas fa-user-alt color-black-2"></i></a>
                         <ul class="dropdown-custom-1" style="right: 0px;">
                             <li class="dropdown-custom-item">
-                                <a href="">
+                                <a href="" class="thong-tin-user">
                                     @if (session('khachHang')->name != '')
                                         {{ session('khachHang')->name }}
                                     @else
@@ -33,7 +33,7 @@
                     </li>
                     @endif
                     <li class="icon-item d-inline-block position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">
-                        <span class="badge badge-pill badge-primary number-cart" id="soluonghang1">0</span>
+                        <span class="badge badge-pill badge-primary number-cart" id="soluonghangmodal">0</span>
                         <a href="javascript:void(0)"><i class="fas fa-shopping-cart color-black-2 hover-pink"></i></a>
                     </li>
                 </div>
@@ -105,7 +105,7 @@
                 </li>
                 @endif
                 <li class="icon-item d-inline-block position-relative icon-cart show-giohang-fixed" data-toggle="modal" data-target="#giohang-fixed">
-                    <span class="badge badge-pill badge-primary number-cart" id="soluonghang1">0</span>
+                    <span class="badge badge-pill badge-primary number-cart" id="soluonghangmodal">0</span>
                     <a href="javascript:void(0)"><i class="fas fa-shopping-cart color-black-2 hover-pink"></i></a>
                 </li>
             </div>

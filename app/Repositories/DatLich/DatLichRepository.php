@@ -154,5 +154,10 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->where('datlich.trangthai', Controller::DATLICH_HUY)
         ->get();
     }
-    
+
+    public function CheckDatLichByIdKhachHang($id){
+        return  $this->model->select("*")
+            ->where('idkhachhang', '=', $id)
+            ->doesntExist();
+    }
 }

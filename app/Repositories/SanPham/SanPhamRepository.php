@@ -11,46 +11,54 @@ use Illuminate\Support\Facades\DB;
 class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInterface
 {
     protected $model;
-    public function getModel(){
+
+    public function getModel()
+    {
         return \App\Models\Admin\SanPham::class;
     }
 
-    public function getSanPhamJoinDanhMuc(){
+    public function getSanPhamJoinDanhMuc()
+    {
         return $this->model->select("sanpham.*", "danhmuc.name AS tendm",
             DB::raw('(select dongia from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as dongia'),
             DB::raw('(select ml from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as thetich'),
             DB::raw('(select id from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as idspct')
-            )
-            ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id" )
+        )
+            ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
             ->where('sanpham.trangthai', '=', Controller::TRANGTHAI_SANPHAM)
             ->orderBy('sanpham.id', 'DESC')
             ->get();
     }
 
-    public function DemSanPham(){
+    public function DemSanPham()
+    {
         return DB::table('sanpham')->where('sanpham.trangthai', '=', 1)->count();
     }
 
 
-    public function  getSanPhamJoinDanhMucSlug($slug){
+    public function getSanPhamJoinDanhMucSlug($slug)
+    {
         return $this->model->select("sanpham.*", "danhmuc.name AS tendm")
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
             ->where('sanpham.slug', '=', $slug)
             ->get();
     }
 
-    public function getsanpham(){
+    public function getsanpham()
+    {
         return $this->model->offset(1)->limit(4)
-        ->where('sanpham.trangthai', '=', 1)
-        ->orderBy('created_at', 'DESC')
-        ->get();
+            ->where('sanpham.trangthai', '=', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get();
     }
-    public function getsanphamtimkiem(){
+
+    public function getsanphamtimkiem()
+    {
         return $this->model->select('sanpham.*', 'sanphamchitiet.dongia AS dongiasp')
-        ->where('sanpham.trangthai', '=', Controller::TRANGTHAI_SANPHAM)
-        ->join("sanphamchitiet", "sanphamchitiet.idsanpham", "=", "sanpham.id")
-        ->orderBy('id', 'DESC')
-        ->get();
+            ->where('sanpham.trangthai', '=', Controller::TRANGTHAI_SANPHAM)
+            ->join("sanphamchitiet", "sanphamchitiet.idsanpham", "=", "sanpham.id")
+            ->orderBy('id', 'DESC')
+            ->get();
     }
     public function searchsanpham($valueSearch){
         return $this->model->select("sanpham.*", "danhmuc.name AS tendm",
@@ -65,7 +73,8 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             ->get();
     }
 
-    public function getSanPhamHome(){
+    public function getSanPhamHome()
+    {
         return $this->model->select('sanpham.*', 'danhmuc.name AS tendm',
             DB::raw('(select dongia from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as dongia'),
             DB::raw('(select ml from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as thetich'),
@@ -73,12 +82,13 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
         )
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
             ->where('sanpham.trangthai', "=", Controller::TRANGTHAI_SANPHAM)
-            ->orderBy("sanpham.id","DESC")
+            ->orderBy("sanpham.id", "DESC")
             ->limit(4)
             ->get();
     }
 
-    public function GetSanPhamLienQuan($id){
+    public function GetSanPhamLienQuan($id)
+    {
         return $this->model->select('sanpham.*', 'danhmuc.name AS tendm',
             DB::raw('(select dongia from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as dongia'),
             DB::raw('(select ml from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as ml'),
@@ -87,11 +97,12 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
             ->where('sanpham.iddanhmuc', $id)
             ->where('sanpham.trangthai', Controller::TRANGTHAI_SANPHAM)
-            ->limit(4)
+            ->limit(8)
             ->get();
     }
 
-    public function GetSanPhamLienQuanKhacIDDM($id){
+    public function GetSanPhamLienQuanKhacIDDM($id)
+    {
         return $this->model->select('sanpham.*', 'danhmuc.name AS tendm',
             DB::raw('(select dongia from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as dongia'),
             DB::raw('(select ml from sanphamchitiet where idsanpham  =   sanpham.id   limit 1) as ml'),
@@ -100,8 +111,16 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
             ->where('sanpham.iddanhmuc', '!=', $id)
             ->where('sanpham.trangthai', Controller::TRANGTHAI_SANPHAM)
-            ->limit(4)
+            ->limit(8)
             ->get();
+    }
+
+    public function CheckSanPhamByIdDanhMuc($id)
+    {
+        return $this->model->select("*")
+            ->where('iddanhmuc', $id)
+            ->orwhere('idthuonghieu', $id)
+            ->doesntExist();
     }
 
 
