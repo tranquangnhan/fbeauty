@@ -7,6 +7,7 @@
 @section('main')
 <?php
     use app\Http\Controllers\Site\HomeController;
+    use app\Http\Controllers\Controller;
 ?>
 <div class="fa-profile-user">
     <div class="container">
@@ -2355,8 +2356,20 @@
                                                                                         if($item->trangthai==0)
                                                                                         {
                                                                                             ?>
-                                                                                            <i class="far fa-calendar uk-text-primary"></i>
-                                                                                            <span class="ml-1 uk-text-primary">7 ngày tới</span>
+                                                                                            
+                                                                                            <span class="ml-1 uk-text-primary">
+                                                                                                @php
+                                                                                                    $now = strtotime(date('Y-m-d'));
+                                                                                                @endphp
+                                                                                                @if (Controller::minusDate($now,$item->thoigiandat)>0)
+                                                                                                    <i class="far fa-calendar uk-text-primary"></i>
+                                                                                                    {{ Controller::minusDate($now,$item->thoigiandat)}} ngày tới
+                                                                                                @else
+                                                                                                    <i class="fa fa-close uk-text-danger"></i>
+                                                                                                    <span class="ml-1 uk-text-danger">Bạn đã trễ lịch</span>
+                                                                                                 @endif
+                                                                                              
+                                                                                            </span>
                                                                                             <?php
                                                                                         }elseif($item->trangthai==1)
                                                                                         {
@@ -2380,12 +2393,12 @@
                                                                                 <div class="col-xl-4 d-flex">
                                                                                     <label for="" class="text-gray"><i class="fas fa-user-shield"></i></label>
                                                                                     <div class="ml-2 limit-text-row-1">
-
+                                                                                        
 
                                                                                         @if ($item->idnhanvien == 0)
                                                                                         Spa chọn nhân viên giúp bạn
                                                                                         @else
-                                                                                        Nhân viên : {{$item->namenhanvien}}
+                                                                                        Nhân viên : {{Controller::findNameKhById($item->idnhanvien)}}
                                                                                         @endif
 
 
@@ -2396,27 +2409,22 @@
                                                                                     <label for="" class="text-gray"><i class="fas fa-clipboard-check"></i></label>
                                                                                     <div class="ml-2 limit-text-row-1">
                                                                                         @if ($item->iddichvu == [0])
-                                                                                         muốn tư vấn
+                                                                                         Muốn tư vấn
                                                                                         @else
-                                                                                         không muốn tư vấn
+                                                                                         Đặt lịch hẹn
                                                                                         @endif
 
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <div class="col-xl-4 text-right">
-                                                                                    @if ($item->trangthai==0)
-                                                                                    <a href="{{URL::to('/huyprofile/'.$item->id)}}">
+                                                                                    @if ($item->trangthai==0 && Controller::minusDate($now,$item->thoigiandat)>0)
+                                                                                    <a onclick="checkCancel('{{URL::to('/huyprofile/'.$item->id)}}')">
                                                                                         <button class="button-href-basic ml-0">
                                                                                             Huỷ lịch
                                                                                         </button>
                                                                                     </a>
-                                                                                    @else
-                                                                                    <a href="#">
-                                                                                        <button class="button-href-basic ml-0">
-                                                                                            Đặt lại
-                                                                                        </button>
-                                                                                    </a>
+                                                                                   
                                                                                     @endif
                                                                                 </div>
                                                                             </div>

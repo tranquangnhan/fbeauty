@@ -34,12 +34,13 @@
 
     {{-- Custom css --}}
     <link rel="stylesheet" href="{{ asset('Site/css') }}/main.css">
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/custom.nhan.css">
 
 </head>
 
 <body>
     <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
-    <div id="loading" class="modal-container show">
+    {{-- <div id="loading" class="modal-container show">
         <div class="modal-background">
             <div class="justify-content-center" id="imgload">
                 <div class="spinner-border text-danger h-50" role="status">
@@ -48,7 +49,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
 
     @if ($pathActive != 'trang-chu')
         @include('Site.components.header-2')
@@ -70,6 +71,13 @@
 </body>
 
 </html>
+
+<script>
+    var	listCoSo = <?php echo json_encode($listCoSo); ?>;
+
+    var	listDanhMucDichVu = <?php echo json_encode($listDanhMucDichVu); ?>;
+    var	khachHangLogin = <?php echo json_encode(session('khachHang')); ?>;
+</script>
 
 {{-- Boostrap --}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -98,14 +106,22 @@
 {{--Hết phần Quốc nhúng--}}
 {{-- Quang Nhân --}}
 <script src="{{ asset('Site/js') }}/lieutrinh.nhan.js"></script>
+<script src="{{ asset('Site/js') }}/custom.nhan.js"></script>
+
+
 {{-- Quang Nhân --}}
 
 <script>
     $(window).on('load', function(event) {
         $('#loading').removeClass('show');
         // $('.load').delay(1000).fadeOut('fast');
+<<<<<<< HEAD
+        $('#imgload').delay(500).fadeOut('fast');
+=======
         $('#imgload').fadeOut('fast');
+>>>>>>> 70ab2be67b1ed1c5833210ca70294d24c2d1124d
     });
 </script>
+
 @include('Site.components.thongbao')
 @yield('javascript')

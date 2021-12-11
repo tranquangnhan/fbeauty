@@ -14,12 +14,12 @@
                 <form id="formTheoDoi" action="{{URL::to("/emaillienhe")}}" class="form-subscribe" method="post">
                     @csrf
                     <div class="bg-white div-subscribe">
-                            <input type="email" name="email" class="text-danger" id="emaillienhe" value="@error('email')
-                            {{ $message }}
-                            @enderror" placeholder="Nhập email của bạn">
-                            <button type="submit" class="btn-nor">Gửi email</button>
+                        <input type="email" name="email" id="name" placeholder="Nhập email của bạn">
+                        <button type="submit" class="btn-nor">Gửi email</button>
                     </div>
-
+                    @error('email')
+                    <span class="badge badge-danger">{{$message}}</span>
+                    @enderror
                 </form>
             </div>
         </div>
