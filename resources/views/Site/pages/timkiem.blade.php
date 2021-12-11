@@ -38,40 +38,6 @@
                             <input type="hidden" id="data" value="{{$dulieu}}">
                             <div class="fa-list-dichvu mt-1" id="showdichvu">                                
                              
-                                {{-- @foreach ($dichvu as $dichvuitem)
-                                    <div class="dichvu-item d-plex w-100">
-                                        <div class="content-1">
-                                            <div class="text-7 color-main-1">
-                                                {{$dichvuitem->namedm}}
-                                            </div>
-
-                                            <div class="text-8 mt-1">
-                                                {{number_format($dichvuitem->dongia)}} đ
-                                            </div>
-
-                                            <div class="img-1 mt-4">
-                                                <a href="{{ asset('dich-vu') }}/{{$dichvuitem->slug}}">
-                                                    <img class="" src="{{ asset('uploads/'.$dichvuitem->img) }}" alt="">
-                                                </a>
-                                            </div>
-
-                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                {{$dichvuitem->name}}
-                                            </div>
-
-                                            <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                                {{$dichvuitem->motangan}}
-
-                                            </p>
-                                        </div>
-                                        <div class="w-100 text-center mb-4">
-                                            <a href="javascript:void(0)">
-                                                <button  class="btn-4 btn-modal-main" type-modal="modal-datlich" data-show="one">Đặt lịch</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endforeach --}}
-
                             </div>
                             <a id="xemthembtn">
                                 <button class="w-25 border border-dark p-2" style="background-color: #e87c7b;"  onclick="xemThem()">Xem thêm <i class="fa fa-angle-down"></i></button>
@@ -82,7 +48,11 @@
                         <div class="title-small color-black-main text-left">Kết quả tìm kiếm trong sản phẩm</div>
                         <div class="w-100">
                             <div class="fa-list-dichvu mt-1">
-
+                                <div class="fa-list-dichvu mt-1" id="showsanpham">                                
+                                </div>
+                                <a id="xemthembtn">
+                                    <button class="w-25 border border-dark p-2" style="background-color: #e87c7b;"  onclick="xemThem()">Xem thêm <i class="fa fa-angle-down"></i></button>
+                                </a>
                                 {{-- @foreach ($sanPham as $itemsanpham)
                                 <?php //$anhsp=json_decode($itemsanpham->img);
                                      ?>
@@ -277,3 +247,8 @@
 </div>
 @endsection
 
+@section('javascript')
+    <script src="{{ asset('Site/js') }}/sanpham.js"></script>
+    <link rel="stylesheet" href="{{ asset('Site/css') }}/baiviet.css">
+    <script src="{{ asset('Site/js') }}/timkiem.js"></script>
+@endsection

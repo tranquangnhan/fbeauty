@@ -39,7 +39,7 @@
 
 <body>
     <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
-    <div id="loading" class="modal-container show">
+    {{-- <div id="loading" class="modal-container show">
         <div class="modal-background">
             <div class="justify-content-center" id="imgload">
                 <div class="spinner-border text-danger" role="status">
@@ -48,7 +48,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
 
     @if ($pathActive != 'trang-chu')
         @include('Site.components.header-2')
@@ -99,7 +99,7 @@
 {{-- Quang Nhân --}}
 <script src="{{ asset('Site/js') }}/lieutrinh.nhan.js"></script>
 <script src="{{ asset('Site/js') }}/custom.nhan.js"></script>
-<script src="{{ asset('Site/js') }}/timkiem.js"></script>
+
 
 {{-- Quang Nhân --}}
 
@@ -107,7 +107,7 @@
     $(window).on('load', function(event) {
         $('#loading').removeClass('show');
         // $('.load').delay(1000).fadeOut('fast');
-        $('#imgload').delay(2000).fadeOut('fast');
+        $('#imgload').delay(500).fadeOut('fast');
     });
 </script>
 @include('Site.components.thongbao')

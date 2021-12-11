@@ -194,11 +194,11 @@ class CoSoController extends Controller
     {
         $hasHoaDon = $this->HoaDon->getHoaDonIdCoSo($id);
         if(count($hasHoaDon)>0){
-            return redirect('quantri/coso')->withErrors('Xoá không thành công, cơ sở tồn tại trong hóa đơn và nhân viên!');
+            return 1;
         }else{
             $this->Lich->deleteLichByIdCoSo($id);
             $this->Coso->delete($id);
-             return redirect('quantri/coso')->with('success','Xoá thành công!');
+            return 0;
         }
     }
 }
