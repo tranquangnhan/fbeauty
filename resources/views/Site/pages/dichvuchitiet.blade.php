@@ -5,12 +5,13 @@
 @endsection
 
 @section('main')
-@php
-    $dongia1 = 0;
+    @if(!isset($khongcodichvu) && isset($detaildichvu))
+        @php
+            $dongia1 = 0;
 
-    $dongia1 = $detaildichvu->dongia - ($detaildichvu->dongia/100 * $detaildichvu->giamgia);
+            $dongia1 = $detaildichvu->dongia - ($detaildichvu->dongia/100 * $detaildichvu->giamgia);
 
-@endphp
+        @endphp
 <div class="fa-dichvu my-5" style="margin-bottom: 5em !important;">
     <div class="container">
         <div class="fa-dichvuchitiet">
@@ -24,6 +25,7 @@
                     <span class="giagiam">{{number_format($detaildichvu->dongia)}} đ </span>
                     <span class="gia left-bar">
                         {{number_format($dongia1)}} đ
+                    </span>
                     <span class="name-danhmuc hover-pink left-bar"> {{$detaildichvu->namedm}}</span>
                 </div>
                 <div class="noidungngan mt-4">
@@ -99,6 +101,14 @@
             </div>
         </div>
     </div>
+        @else
+            <div class="row mt-5">
+                <hr>
+                <div class="row m-auto">
+                    <h2 class="text-center m-auto" style="color: var(--main-color);">Không có dịch vụ này</h2>
+                </div>
+                <hr>
+            </div>
     <div class="row mt-5">
         <div class="danhmuc-listblog container">
             <div class="head-blog-item blog-title">
@@ -144,6 +154,7 @@
             </div>
         </div>
     </div>
+            @endif
 </div>
     @include('Site.components.gioithieulieutrinh')
 </div>

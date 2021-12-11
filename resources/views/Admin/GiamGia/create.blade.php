@@ -11,12 +11,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
-                            <h4 class="mt-0 header-title">Thêm Cơ Sở</h4>
-                            @if(session('thatbai'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {{session('thatbai')}}
-                                </div>
-                            @endif
+                            <h4 class="mt-0 header-title">Thêm Giảm Giá </h4>
+                            <x-admin.common.CaseErrorInput />
                             <form action="{{route('giamgia.store')}}"  enctype="multipart/form-data" method="post">
                                 @csrf
                                 <div class="modal-header">

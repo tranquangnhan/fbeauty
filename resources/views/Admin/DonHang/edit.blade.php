@@ -28,6 +28,7 @@
                             </div>
 
                             <h4 class="header-title mt-0 mb-3">Sửa Đơn Hàng</h4>
+
                             @if(session('thatbai'))
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     {{session('thatbai')}}

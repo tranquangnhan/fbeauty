@@ -24,8 +24,8 @@ class GiamGia extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'ma'=>'required',
+            'name' => 'required|unique:name',
+            'ma'=>'required|unique:ma',
             'number'=>'required',
             'max'=>'required',
             'loai'=>'required',

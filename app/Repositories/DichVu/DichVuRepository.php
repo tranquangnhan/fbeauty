@@ -146,7 +146,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
             ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
             ->where('dichvu.iddm', '!=' , $id)
             ->where('dichvu.trangthai', Controller::TRANGTHAI_DICHVU_HIEN)
-            ->limit(4)
+            ->limit(8)
             ->get();
     }
 

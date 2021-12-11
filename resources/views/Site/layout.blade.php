@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Fbeauty Spa - @yield('title')</title>
+    <link rel="shortcut icon" href="{{ asset('Admin/assets') }}/images/logo.svg">
     {{-- Font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,8 +42,8 @@
     <div id="loading" class="modal-container show">
         <div class="modal-background">
             <div class="justify-content-center" id="imgload">
-                <div class="spinner-border text-danger" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                <div class="spinner-border text-danger h-50" role="status">
+                    <span class="visually-hidden">F</span>
                 </div>
             </div>
 
