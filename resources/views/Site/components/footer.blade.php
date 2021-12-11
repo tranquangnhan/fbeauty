@@ -11,19 +11,18 @@
                 <div class="title-3">
                     Đăng Ký Và Là Người Đầu Tiên Biết Về <br>Các Sản Phẩm Đặc Biệt, Sự Kiện Và Hơn Thế Nữa!
                 </div>
-                <form action="{{URL::to("/emaillienhe")}}" class="form-subscribe" method="post">
+                <form id="formTheoDoi" action="{{URL::to("/emaillienhe")}}"  class="form-subscribe" method="post">
                     @csrf
                     <div class="bg-white div-subscribe">
-                        <input type="email" name="email" placeholder="Nhập email của bạn">
+                        <input type="email" name="email" id="emaillienhe" placeholder="Nhập email của bạn">
                         <button type="submit" class="btn-nor">Gửi email</button>
                     </div>
+                    @error('email')
+                    <small class='badge badge-danger'>{{ $message }}</small>
+                    @enderror
                 </form>
             </div>
         </div>
-
-        {{-- <div class="background-img img-1">
-            <img src="{{ asset('Site/images') }}/Rectangle 184.png" alt="">
-        </div> --}}
     </div>
 </div>
 <footer>
@@ -157,3 +156,4 @@
         ©2021 Bản quyền FBeauty. Đã đăng ký bản quyền
     </div>
 </footer>
+<script src="{{ asset('Site/js') }}/ValidateForm.js"></script>
