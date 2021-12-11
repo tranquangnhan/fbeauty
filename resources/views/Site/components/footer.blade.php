@@ -11,20 +11,22 @@
                 <div class="title-3">
                     Đăng Ký Và Là Người Đầu Tiên Biết Về <br>Các Sản Phẩm Đặc Biệt, Sự Kiện Và Hơn Thế Nữa!
                 </div>
-                <form id="formTheoDoi" action="{{URL::to("/emaillienhe")}}"  class="form-subscribe" method="post">
+                <form id="formTheoDoi" action="{{URL::to("/emaillienhe")}}" class="form-subscribe" method="post">
                     @csrf
                     <div class="bg-white div-subscribe">
-                        <input type="email" name="email" id="email" placeholder="Nhập email của bạn">
+                        <input type="email" name="email" id="name" placeholder="Nhập email của bạn">
                         <button type="submit" class="btn-nor">Gửi email</button>
-
-                            @error('email')
-                            <small class='badge badge-danger'>{{ $message }}</small>
-                            @enderror
                     </div>
-
+                    @error('email')
+                    <span class="badge badge-danger">{{$message}}</span>
+                    @enderror
                 </form>
             </div>
         </div>
+
+        {{-- <div class="background-img img-1">
+            <img src="{{ asset('Site/images') }}/Rectangle 184.png" alt="">
+        </div> --}}
     </div>
 </div>
 <footer>
@@ -158,4 +160,18 @@
         ©2021 Bản quyền FBeauty. Đã đăng ký bản quyền
     </div>
 </footer>
-<script src="{{ asset('Site/js') }}/ValidateForm.js"></script>
+<script type="text/javascript">
+    $("#formTheoDoi").validate({
+    rules: {
+        email: { required: true, maxlength: 100, minlength: 10, email: true },
+    },
+    messages: {
+        email: {
+            required: "<span class='badge badge-danger'>Mời bạn nhập email</span>",
+            maxlength: "<span class='badge badge-danger'>Email dài quá, phải <100 ký tự </span>",
+            minlength: "<span class='badge badge-danger'>Email ngắn quá, phải >10 ký tự </span>",
+            email: "<span class='badge badge-danger'>Vui lòng nhập một địa chỉ email hợp lệ</span>",
+        }
+    }
+});
+</script>
