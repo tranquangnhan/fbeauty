@@ -103,7 +103,7 @@
     $(window).on('load', function(event) {
         $('#loading').removeClass('show');
         // $('.load').delay(1000).fadeOut('fast');
-        $('#imgload').delay(2000).fadeOut('fast');
+        $('#imgload').fadeOut('fast');
     });
 </script>
 @include('Site.components.thongbao')
