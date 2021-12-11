@@ -12,6 +12,8 @@ use App\Repositories\GiamGia\GiamGiaRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\GiamGia;
 use App\Repositories\DonHang\DonHangRepository;
+use App\Http\Requests\GiamGiaEdit;
+
 
 class GiamGiaController extends Controller
 {
@@ -48,7 +50,7 @@ class GiamGiaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(GiamGia $request)
     {
         // $validated = $request->validated();
         $mytime = Carbon::now()->format('Y-m-d');
@@ -82,9 +84,11 @@ class GiamGiaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function create()
     {
-
+        $data = $this->GiamGia->getAll();
+        $mytime = Carbon::now();
+        return view('Admin.GiamGia.create', compact('data'));
     }
 
     /**
@@ -109,7 +113,7 @@ class GiamGiaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(GiamGia $request, $id)
+    public function update(GiamGiaEdit $request, $id)
     {
         $validated = $request->validated();
         if ($validated == true) {
