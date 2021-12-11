@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\City;
 use App\Models\Admin\Province;
 use App\Models\Admin\Wards;
 use App\Models\Admin\CosoModel;
@@ -49,9 +48,9 @@ class CoSoController extends Controller
     {
         $data = $this->Coso->getAll();
         // $city = $this->City->find($data->idkhachhang);
-        $city = $this->City->getAll();
-        $province = $this->Province->getAll();
-        $wards = $this->wards->getAll();
+        $city = $this->City->getall();
+        $province = $this->Province->getall();
+        $wards = $this->wards->getall();
 
         return view('Admin.Coso.index', compact('data', 'city', 'province', 'wards'));
     }
@@ -66,9 +65,9 @@ class CoSoController extends Controller
     {
         $data = $this->Coso->getAll();
         // $city = $this->City->find($data->idkhachhang);
-        $city = $this->City->getAll();
-        $province = $this->Province->getAll();
-        $wards = $this->wards->getAll();
+        $city = $this->City->getall();
+        $province = $this->Province->getall();
+        $wards = $this->wards->getall();
 
         return view('Admin.Coso.create', compact('data', 'city', 'province', 'wards'));
     }
@@ -144,9 +143,9 @@ class CoSoController extends Controller
 
         $data = $this->Coso->find($id);
         //dd($data->tinh);
-        $city = $this->City->getAll();
-        $province = $this->Province->getAll();
-        $wards = $this->wards->getAll();
+        $city = $this->City->getall();
+        $province = $this->Province->getall();
+        $wards = $this->wards->getall();
         return view('Admin.coso.edit', compact('data', 'city', 'province', 'wards'));
 
     }
