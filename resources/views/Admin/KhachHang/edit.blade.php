@@ -24,9 +24,9 @@
                             <div class="col-md-4">
                                     <label class="w-100" for="files">Tải ảnh khách hàng:<br>
                                     @if ($KhachHang->img)
-                                        <img class="imgpreview"  src="{{ asset($URL_IMG.$KhachHang->img) }}" alt=""><br><br>    
+                                        <img class="imgpreview"  src="{{ asset($URL_IMG.$KhachHang->img) }}" alt=""><br><br>
                                     @else
-                                    <img class="imgpreview"  src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}" alt=""><br><br>    
+                                    <img class="imgpreview"  src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}" alt=""><br><br>
                                     @endif
                                     <input type="file" class="mt-2" name="urlHinh" onchange="previewImg(event)"  > <br>
                                     @error('img')
@@ -76,15 +76,15 @@
                                 </div>
 
                             </div>
-                          
+
                             <div class="form-group ml-2 mt-3">
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <input id="remember-1" {{($KhachHang->active == 1 ) ? 'checked' : '' }} type="checkbox" name="active" value="1"  data-parsley-multiple="remember-1">
                                         <label for="remember-1">Trạng Thái ? </label>
                                     </div>
-                                </div>      
-                             
+                                </div>
+
                             </div>
                             <div class="form-group text-right mb-0 mt-4 col-12">
                                 <a href="/quantri/khachhang" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
