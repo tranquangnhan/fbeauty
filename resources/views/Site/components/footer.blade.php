@@ -11,18 +11,31 @@
                 <div class="title-3">
                     Đăng Ký Và Là Người Đầu Tiên Biết Về <br>Các Sản Phẩm Đặc Biệt, Sự Kiện Và Hơn Thế Nữa!
                 </div>
-                <form id="formTheoDoi" action="{{URL::to("/emaillienhe")}}"  class="form-subscribe" method="post">
+                <form id="formTheoDoi" action="{{URL::to("/emaillienhe")}}" class="form-subscribe" method="post">
                     @csrf
                     <div class="bg-white div-subscribe">
+<<<<<<< HEAD
+                        <input type="email" name="email" id="name" placeholder="Nhập email của bạn">
+                        <button type="submit" class="btn-nor">Gửi email</button>
+                    </div>
+                    @error('email')
+                    <span class="badge badge-danger">{{$message}}</span>
+                    @enderror
+=======
                             <input type="email" name="email" class="text-danger" id="emaillienhe" value="@error('email')
                             {{ $message }}
                             @enderror" placeholder="Nhập email của bạn">
                             <button type="submit" class="btn-nor">Gửi email</button>
                     </div>
 
+>>>>>>> 9b64dc75cd6c0846eb966ca03ee500a59d75105f
                 </form>
             </div>
         </div>
+
+        {{-- <div class="background-img img-1">
+            <img src="{{ asset('Site/images') }}/Rectangle 184.png" alt="">
+        </div> --}}
     </div>
 </div>
 <footer>
