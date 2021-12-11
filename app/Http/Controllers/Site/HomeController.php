@@ -31,7 +31,7 @@ use App\Repositories\Banner\BannerRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     private $data = array();
@@ -369,6 +369,8 @@ class HomeController extends Controller
         $sanpham = $this->SanPham->getsanphamtimkiem();
         $blog = $this->Blog->getAllBlog();
 
+        
+
         $this->data['dichvu'] = $dichvu;
         $this->data['dichvu'] = $dichvu;
         $this->data['sanpham'] = $sanpham;
@@ -379,19 +381,18 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Tìm Kiếm'],
         ];
 
-        if ($valueSearch = request()->key) {
-            $dichvu = $this->Dichvu->search($valueSearch);
-            $sanpham = $this->SanPham->searchsanpham($valueSearch);
+        if($valueSearch = request()->key){
+            $dichVu = $this->Dichvu->search($valueSearch);
+            $sanPham = $this->SanPham->searchsanpham($valueSearch);
             $blog = $this->Blog->searchblog($valueSearch);
 
-            $this->data['dichvu'] = $dichvu;
-            $this->data['sanpham'] = $sanpham;
-            $this->data['blog'] = $blog;
-
+            $this->dulieu['dichVu'] = $dichVu;
+            $this->dulieu['sanPham'] = $sanPham;
+            $this->dulieu['blog'] = $blog;
         }
 
 
-        return view("Site.pages.timkiem", $this->data);
+        return view("Site.pages.timkiem",$this->data,['dulieu'=>json_encode($this->dulieu)]);
     }
 
     public function viewLienHe()
@@ -467,7 +468,6 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Thông tin tài khoản'],
         ];
-
 
         if ($khachHang) {
             $dataLieuTrinh = $this->LieuTrinh->findLieuTrinhByIdKh($khachHang->id);
