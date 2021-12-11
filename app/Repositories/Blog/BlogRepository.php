@@ -169,7 +169,10 @@ class BlogRepository extends BaseRepository implements BlogReponsitoryinterface
         ->get();
     }
     public function searchblog($valueSearch){
-        return $this->model->where('name','LIKE','%'.$valueSearch.'%')->get();
+        return $this->model->select('blog.*','danhmuc.name as tendm')
+        ->where('blog.name','LIKE','%'.$valueSearch.'%')
+        ->join('danhmuc', 'blog.iddm', '=', 'danhmuc.id')
+        ->get();
     }
     public function getblog5(){
         return $this->model->limit(6)
