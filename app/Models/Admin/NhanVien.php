@@ -25,4 +25,8 @@ class NhanVien extends Model
         'trangthai',
         'remember_token'
     ];
+
+    public static function findNhanVienById($id){
+       return NhanVien::where('id','=',$id)->first();
+    }
 }
