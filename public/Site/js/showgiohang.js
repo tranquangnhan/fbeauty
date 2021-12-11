@@ -1,6 +1,6 @@
 var modalgiohang=document.getElementById("modalgiohang");
 var soluonghang=document.getElementById("soluonghang");
-var soluonghang1=document.getElementById("soluonghang1");
+var soluonghangmodal=document.querySelectorAll("#soluonghangmodal");
 var tongtien=document.getElementById("tongtien");
 var nutcheckout=document.getElementById("nutcheckout");
 var asset=document.getElementById("asset").value;
@@ -125,13 +125,13 @@ function showGioHang() {
                 tongtien.innerHTML = 0;
                 nutcheckout.href= "javascript:void(0)";
                 if (window.location == domain+'/gio-hang'){
-                    document.getElementById("giohang-body").innerHTML="<p>Không có sản phẩm nào</p>";
-                    document.getElementById("tongtiengiohang").innerHTML=0;
+                    $("#giohang-body").html("<p>Không có sản phẩm nào</p>");
+                    $("#tongtiengiohang").html("0");
                     $("#xoatatca").prop('disabled', true);
                     $("#nextthanhtoan").attr("href", "javascript:void(0)")
                 }
                 else if (window.location == domain+'/thanh-toan'){
-                    document.getElementById("payproduct").innerHTML="<p>Không có sản phẩm nào</p>";
+                    $("#payproduct").html("<p>Không có sản phẩm nào</p>");
                     $("#tongtienhang").html("0");
                     $("#tongthanhtoan").html("0");
                     $("#tienship").html("0");
@@ -157,11 +157,11 @@ function showGioHang() {
 }
 showGioHang();
 //Show giỏ hàng tại đây
-
+//Show giỏ hàng dạng modal
 function Showmodalgiohang(data) {
     var span='';
     var total=0;
-    var stt=0
+    var stt=0;
     for (let i=0; i<data.length ; i++){
         stt+=1;
         const img = JSON.parse(data[i].img)[0];
@@ -210,9 +210,11 @@ function Showmodalgiohang(data) {
     modalgiohang.innerHTML=span;
     tongtien.innerHTML = total.toLocaleString().replaceAll(",", ".");
     soluonghang.innerHTML=stt;
-    soluonghang1.innerHTML=stt;
+    for (let i=0; i<soluonghangmodal.length; i++){
+        soluonghangmodal[i].innerHTML=stt;
+    }
 }
-
+//Show giỏ hàng trang giỏ hàng
 function GioHangBoDy(data) {
     var span='';
     var total=0;
@@ -283,7 +285,7 @@ function GioHangBoDy(data) {
     document.getElementById("giohang-body").innerHTML=span;
     document.getElementById("tongtiengiohang").innerHTML=total.toLocaleString().replaceAll(",", ".");
 }
-
+//show đơn hàng trang thanh toán
 function ShowPayProduct(data) {
     var span='';
     var total=0;
@@ -343,7 +345,7 @@ function ShowPayProduct(data) {
     $('#amount').val(total+30000);
     CapNhatGiaSession(total+30000);
 }
-
+//Xóa sản phẩm giỏ hàng
 function XoaSanPham(id) {
     $.ajax({
         url: domain + '/xoasanphamgiohang/'+id,
@@ -379,7 +381,7 @@ function XoaSanPham(id) {
         }
     });
 }
-
+//Cập nhật số lượng sản phẩm
 function SoLuong(id) {
     let tonkho=document.getElementById("slspn"+id).max;
     let soluong=document.getElementById("slspn"+id).value;
@@ -401,7 +403,7 @@ function SoLuong(id) {
     }
 
 }
-
+//giảm số lượng sản phẩm
 function GiamSoLuong(id) {
     let soluong=document.getElementById("slspn"+id).value;
     if (Number(soluong) <=1){
@@ -429,7 +431,7 @@ function GiamSoLuong(id) {
         });
     }
 }
-
+//tăng số lượng sản phẩm
 function TangSoLuong(id) {
     let tonkho=document.getElementById("slspn"+id).max;
     let soluong=document.getElementById("slspn"+id).value;
@@ -458,7 +460,7 @@ function TangSoLuong(id) {
 
     }
 }
-
+//Xóa tất cả sản phẩm
 function XoaTatCa() {
     Swal.fire({
         title: 'Bạn muốn xóa tất cả chứ?',
@@ -490,7 +492,7 @@ function XoaTatCa() {
     });
 
 }
-
+//Cập nhật lại giá của đơn hàng đã lưu session
 function CapNhatGiaSession(gia) {
     $.ajax({
         url: domain + '/capnhatgiasession/'+gia,
