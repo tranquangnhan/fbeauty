@@ -535,9 +535,7 @@
                                             <a href="{{ asset('bai-viet') }}/{{$item->slug}}">{{$item->name}}</a>
                                         </div>
                                         <div class="blog-text-2 mt-2 formatDayCustom" data-type="long" data-format="{{ $item->created_at }}">
-                                            @if ($item->created_at != null)
-                                                {{$item->created_at->format('Y-m-d')}}
-                                            @endif
+
                                         </div>
                                         <div class="blog-text-3 text-2 mt-2 limit-text-row-3">
                                             {{$item->motangan}}
