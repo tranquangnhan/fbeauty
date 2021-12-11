@@ -37,13 +37,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="fa-mota mt-5">
-                        <div class="title-cs-1">Mô Tả Sản Phẩm</div>
-                        <hr>
-                        <div class="noidung p-3">
-                            <?php echo $sanpham[0]->noidung;?>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-xl-6 " >
                     <div class="fa-info-sanpham">
@@ -131,6 +124,15 @@
                                 </div>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-12">
+                    <div class="fa-mota mt-5">
+                        <div class="title-cs-1">Mô Tả Sản Phẩm</div>
+                        <hr>
+                        <div class="noidung p-3">
+                            <?php echo $sanpham[0]->noidung;?>
                         </div>
                     </div>
                 </div>
