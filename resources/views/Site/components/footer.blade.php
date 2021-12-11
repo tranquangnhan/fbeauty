@@ -156,4 +156,3 @@
         ©2021 Bản quyền FBeauty. Đã đăng ký bản quyền
     </div>
 </footer>
-<script src="{{ asset('Site/js') }}/ValidateForm.js"></script>
