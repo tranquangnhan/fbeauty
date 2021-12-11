@@ -35,7 +35,7 @@
                                 <div class="w-100">
                                     <div class="fa-custom form-custom-datlich form-phone-number">
                                         <div class="div-phone-number">
-                                            <input type="text" id="phoneNumber" placeholder="Nhập số điện thoại của bạn"
+                                            <input type="number" id="phoneNumber" placeholder="Nhập số điện thoại của bạn"
                                             @if (session()->has('khachHang') && session('khachHang') != '')
                                                 value="{{ session('khachHang')->sdt }}"
                                             @endif
