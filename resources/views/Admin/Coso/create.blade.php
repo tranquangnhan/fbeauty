@@ -105,6 +105,7 @@
 
     </div>
 
-
-
+@endsection
+@section('custom-javascript')
+    <script src="{{ asset('Admin/assets') }}/js/pages/coso1.js"></script>
 @endsection
