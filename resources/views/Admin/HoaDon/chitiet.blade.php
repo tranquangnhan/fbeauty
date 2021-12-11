@@ -17,7 +17,7 @@
                             <!-- <div class="panel-heading">
                                 <h4>Invoice</h4>
                             </div> -->
-                            <div class="panel-body">
+                            <div class="panel-body p-3">
                                 <div class="clearfix">
                                     <div class="float-left">
                                         <p style="font-size: 22pt;">Hóa đơn FBeauty </p>
@@ -31,30 +31,29 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-9">
-
                                         <div class="row mt-3">
-                                            <address>
+                                            <address class="col-md-8">
                                                 <strong>Cơ sở: </strong>
                                                 {{$coso->name}} <br>
                                                 <strong title="Phone">ĐC: </strong> {{$coso->diachi}}
                                             </address>
                                         </div>
                                         <div class="row mt-1">
-                                            <address>
+                                            <address class="col-md-6">
                                                 <strong>Liệu trình</strong><br>
                                                 <?php $infolieutrinh = \Illuminate\Support\Facades\DB::table('lieutrinh')->select("*")->where('id', '=', $idlieutrinh)->get();?>
 
-                                                <table class="table table-bordered">
+                                                <table class="table table-bordered w-100">
                                                     <thead>
                                                     <tr>
-                                                        <th>Ngày bắt đầu</th>
-                                                        <th>Dự kiến kết thúc</th>
+                                                        <th >Ngày bắt đầu</th>
+                                                        <th >Dự kiến kết thúc</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        <td>{{date('d-m-Y',$infolieutrinh[0]->ngaybatdau)}}</td>
-                                                        <td>{{date('d-m-Y',$infolieutrinh[0]->dukienketthuc)}}</td>
+                                                        <td width="50%">{{date('d-m-Y',$infolieutrinh[0]->ngaybatdau)}}</td>
+                                                        <td width="50%">{{date('d-m-Y',$infolieutrinh[0]->dukienketthuc)}}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -65,9 +64,6 @@
                                         <div class="float-right mt-3">
                                             <p><strong>Ngày
                                                     tạo: </strong> {{date_format(date_create($hoadon->created_at), 'd-m-Y')}}
-                                            </p>
-                                            <p>
-                                                <strong>Giờ: </strong> {{date_format(date_create($hoadon->created_at), 'H:i:s')}}
                                             </p>
                                             <p class="m-t-10"><strong>Trạng thái: </strong> <span
                                                     class="label label-pink"><?php echo ($hoadon->trangthai == \App\Http\Controllers\Controller::TRANGTHAITHANHTOAN) ? 'Đã thanh toán' : 'Chưa thanh toán';?></span>

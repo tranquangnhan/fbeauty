@@ -18,46 +18,43 @@
                                         <th width="3%">STT</th>
                                         <th width="20%">Khách hàng</th>
                                         <th width="20%">Hình ảnh</th>
-                                        <th width="15%">Điện thoại</th>  
-                                        <th width="30%">Email</th>  
-                                        <th width="15%">Hành động</th>  
+                                        <th width="15%">Điện thoại</th>
+                                        <th width="30%">Email</th>
+                                        <th width="15%">Hành động</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $i=> $item)
 
-                                        <tr>
+                                        <tr id="row{{$item->id}}">
                                             <td>{{$i+=1}}</td>
                                             <td>{{$item->name}} <br>
                                                 <?php if($item->active == 0) echo "<div class=\"bg-danger mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
                                             </td>
-                                            <td> 
+                                            <td>
                                                 @if ($item->img)
                                                     <img  class="img-common"  src="{{ asset('uploads/'.$item->img) }}">
                                                 @else
                                                     <img  class="img-common"  src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}">
                                                 @endif
-                                            </td> 
-                                            <td> 
+                                            </td>
+                                            <td>
                                                 {{$item->sdt}}
-                                            </td> 
+                                            </td>
                                             <td>
                                                 {{$item->email}}
-                                            </td> 
+                                            </td>
                                             <td class="d-flex border-none">
                                                 <a href="{{url('quantri/khachhang/detail/'.$item->id)}}" class="d-flex justify-content-center mr-2"><div class="btn btn-success"><i class="fa fa-info-circle"></i></div></a>
-                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('khachhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>   
-                                                <form action="{{route('khachhang.destroy',$item->id)}}"  method="post">
-                                                    @csrf
-                                                    {!!method_field('delete')!!}
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa không ?');"><i class="fa fa-trash"></i></button>
-                                                </form>
+                                                <a name="" id="" class="btn btn-primary mr-2" href="{{route('khachhang.edit',$item->id)}}" role="button"><i class="fa fa-edit"></i></a>
+                                                @csrf
+                                                <button type="button" onclick="deleteCommon({{$item->id}})" class="btn btn-danger text-white " data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
-                                   
-                             
+
+
                                 </tbody>
                             </table>
                     </div>
@@ -70,15 +67,15 @@
                         <ul class="pagination pagination-split">
                             <?php
                             // echo $Pagination;
-                            ?>      
+                            ?>
                         </ul>
-                    </nav>    
-                      
+                    </nav>
+
                 </div>
             </div>
-                 
-         
-            
+
+
+
         </div> <!-- container-fluid -->
 
     </div> <!-- content -->

@@ -61,7 +61,7 @@
                                 <?php $i=0; ?>
                                     @foreach ($data as $row)
                                     <?php $i++; ?>
-                                        <tr class="text-center">
+                                        <tr class="text-center" id="row{{$row->id}}">
                                             <td>{{$i}}</td>
                                             <td class="" >{{$row->name}}</td>
                                             <td class="" >{{$row->ma}}</td>
@@ -100,11 +100,8 @@
                                             <td class="d-flex">
                                                 <a href="{{route("giamgia.edit",$row->id)}}" class="btn btn-primary mr-2" data-toggle="tooltip" data-placement="right" title="Sửa" ><i
                                                     class="fa fa-edit"  style="color: white;"></i></a>
-                                                <form action="{{route('giamgia.destroy',$row->id)}}"  method="post"  >
-                                                    @csrf
-                                                    {!!method_field('delete')!!}
-                                                    <button  onclick="return iconfirm()" type="submit"  class="btn btn-danger" title="Xóa" ><i class=" dripicons-trash"></i></button>
-                                                </form>
+                                                @csrf
+                                                <button type="button" onclick="deleteCommon({{$row->id}})" class="btn btn-danger text-white" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach

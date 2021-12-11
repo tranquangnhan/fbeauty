@@ -60,10 +60,9 @@
                                             <td class="" >{{$row->wards->name_xaphuong}}</td>
 
                                             <td>
-                                                <a role="button" class="btn btn-danger mr-2" href="{{route('coso.edit',$row->id)}}"><i class="fa fa-edit"></i></a>
-                                                <br>
+                                                <a role="button" class="btn btn-primary mr-2" href="{{route('coso.edit',$row->id)}}"><i class="fa fa-edit"></i></a>
                                                 @csrf
-                                                <button type="button" onclick="deleteCommon({{$row->id}})" class="btn btn-danger text-white mt-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
+                                                <button type="button" onclick="deleteCommon({{$row->id}})" class="btn btn-danger text-white " data-bs-toggle="tooltip" data-bs-placement="right" title="Xóa"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach

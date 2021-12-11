@@ -28,7 +28,7 @@
 
                         </div>
 
-                        <table id="key-table" class="table table-striped table-bordered dt-responsive">
+                        <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                     <tr class="text-center">
                                         <th width="10.5%"> Mã đơn hàng </th>
@@ -42,10 +42,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $item)
+                                    @foreach ($data as $index => $item)
 
                                         <tr class="text-center">
-                                            <td>{{$item->id}}</td>
+                                            <td>{{$index+=1}}</td>
                                             <td>{{$item->tennguoinhan}}</td>
                                             <td>{{$item->sdtnguoinhan}}</td>
                                             <td>{{number_format($item->tongtientruocgiamgia)}}</td>

@@ -31,5 +31,11 @@ class YeuThichRepository extends BaseRepository implements YeuThichRepositoryInt
             ->where('idkhachhang', $id)
             ->get();
     }
+    public function CheckKhachHangInYeuThich($id){
+        return $this->model->select("*")->where('idkhachhang', $id)->doesntExist();
+    }
+    public function CheckSanPhamInYeuThich($id){
+        return $this->model->select("*")->where('idsanphamchitiet', $id)->doesntExist();
+    }
 
 }

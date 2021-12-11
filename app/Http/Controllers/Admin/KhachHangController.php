@@ -9,12 +9,15 @@ use App\Http\Requests\LieuTrinh;
 use App\Models\Admin\DichVuModel;
 use App\Models\Admin\HoaDonModel;
 use App\Repositories\DatLich\DatLichRepository;
+use App\Repositories\DonHang\DonHangRepository;
+use App\Repositories\GioHang\GioHangRepository;
 use App\Repositories\HoaDon\HoaDonRepository;
 use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\NhanVien\NhanVienRepository;
+use App\Repositories\YeuThich\YeuThichRepository;
 use Illuminate\Http\Request;
 class KhachHangController extends Controller
 {
@@ -22,6 +25,13 @@ class KhachHangController extends Controller
     private $KhachHang;
     private $LieuTrinh;
     private $HoaDonChiTiet;
+    private $HoaDon;
+    private $NhanVien;
+    private $DatLich;
+    private $LieuTrinhChiTiet;
+    private $DonHang;
+    private $GioHang;
+    private $YeuThich;
     public function __construct(
         KhachHangRepository $KhachHang,
         LieuTrinhRepository $LieuTrinh,
@@ -29,7 +39,10 @@ class KhachHangController extends Controller
         LieuTrinhChiTietRepository $LieuTrinhChiTiet,
         HoaDonRepository $HoaDon,
         HoaDonChiTietRepository $HoaDonChiTiet,
-        DatLichRepository $DatLich
+        DatLichRepository $DatLich,
+        DonHangRepository $DonHang,
+        GioHangRepository $GioHang,
+        YeuThichRepository $YeuThich
         )
     {
         $this->KhachHang = $KhachHang;
@@ -39,6 +52,10 @@ class KhachHangController extends Controller
         $this->HoaDon = $HoaDon;
         $this->HoaDonChiTiet = $HoaDonChiTiet;
         $this->DatLich = $DatLich;
+        $this->DonHang=$DonHang;
+        $this->GioHang=$GioHang;
+        $this->YeuThich=$YeuThich;
+
     }
     /**
      * Display a listing of the resource.
@@ -67,16 +84,16 @@ class KhachHangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(KhachHang $request)
-    {   
+    {
         $idCoSo = $request->session()->get('coso');
         if($this->KhachHang->CheckEmail($request->email) === false && $request->email !== null){
             return $this->handleErrorInput('Email đã tồn tại!');
         }
-        
+
         if($this->KhachHang->CheckSdt($request->sdt) === false && $request->sdt !== null){
             return $this->handleErrorInput('Số điện thoại đã tồn tại!');
         }
-       
+
         $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
         if($img == null){
             $img = 'defaul.jpg';
@@ -136,11 +153,11 @@ class KhachHangController extends Controller
         if($this->KhachHang->CheckEmail($request->email) === false && $request->email !== null){
             return $this->handleErrorInput('Email đã tồn tại!');
         }
-        
+
         if($this->KhachHang->CheckSdt($request->sdt) === false && $request->sdt !== null){
             return $this->handleErrorInput('Số điện thoại đã tồn tại!');
         }
-        
+
         $password = $request->password;
         $passnew = "";
         if ($password == null) {
@@ -175,36 +192,40 @@ class KhachHangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
-        $idKhachHang = $this->HoaDon->findHoaDonByIdKhachHang($id);
-        
-        if(count($idKhachHang)){
-            return $this->handleError('Xoá thất bại, khách hàng đã tồn tại trong hoá đơn');
-        }else{
+    {
+        $CheckHoaDon = $this->HoaDon->CheckHoaDonByIdKhachHang($id);
+        $CheckLieuTrinh = $this->LieuTrinh->CheckLieuTrinhByIdKhachHang($id);
+        $CheckDonHang = $this->DonHang->CheckDonHangByIdKhachHang($id);
+        $CheckDatLich = $this->DatLich->CheckDatLichByIdKhachHang($id);
+        $CheckGioHang =$this->GioHang->CheckKhachHangInGioHang($id);
+        $CheckYeuThich=$this->YeuThich->CheckKhachHangInYeuThich($id);
+        if($CheckHoaDon == true && $CheckLieuTrinh == true && $CheckDonHang == true && $CheckDatLich == true && $CheckGioHang == true && $CheckYeuThich){
             $this->KhachHang->delete($id);
-            return redirect('quantri/khachhang')->with('success', 'Xoá thành công');
+            return 0;
+        }else{
+            return 1;
         }
     }
 
 
     public function detailKhachHang($id){
         $KhachHang = $this->KhachHang->find($id);
-       
+
         if($KhachHang->idcoso != session()->get('coso')){
             return redirect('quantri/khachhang');
         }
         $LieuTrinh =  $this->LieuTrinh->findLieuTrinhByIdKh($KhachHang->id);
-        
+
         $NhanVien = $this->NhanVien->getAll();
         $countLieuTrinhChiTiet = count($LieuTrinh);
         $DichVuDaSuDung = $this->HoaDonChiTiet->findDichVuByIdKhachHang($id);
         $DatLich = $this->DatLich->findDatLichByIdKhachHangInnerJoin($KhachHang->id);
 
         return view('Admin.KhachHang.detail',compact('KhachHang','LieuTrinh','NhanVien','countLieuTrinhChiTiet','DichVuDaSuDung','DatLich'));
-    } 
+    }
 
     public function storeLieuTrinh(LieuTrinh $request){
-       
+
         $data = [
             'idnhanvien' => $request->idnhanvien,
             'idkhachhang' => $request->id,
@@ -223,7 +244,7 @@ class KhachHangController extends Controller
     }
 
     public function updateLieuTrinh(Request $request,$id){
-       
+
         $data = [
             'idnhanvien' => $request->idnhanvien,
             'ngaybatdau' => strtotime($request->ngaybatdau),
@@ -239,7 +260,7 @@ class KhachHangController extends Controller
     }
 
     public function delLieuTrinh($id){
-      
+
         $hasLieuTrinhChiTiet =  $this->LieuTrinhChiTiet->findLieuTrinhChiTietByIdLieuTrinh($id);
         $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($id);
         if(count($hasLieuTrinhChiTiet)>0){
@@ -266,12 +287,12 @@ class KhachHangController extends Controller
     public static function findDichVuByIds($ids){
         $ids = json_decode($ids);
         $array = [];
-        for ($i=0; $i < count($ids); $i++) { 
+        for ($i=0; $i < count($ids); $i++) {
             array_push($array,DichVuModel::find($ids[$i]) ? DichVuModel::find($ids[$i])->name: '');
         }
         return implode(", ",$array);
     }
 
 
-  
+
 }
