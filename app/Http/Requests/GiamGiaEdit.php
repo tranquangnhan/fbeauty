@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GiamGia extends FormRequest
+class GiamGiaEdit extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -41,7 +41,7 @@ class GiamGia extends FormRequest
             'number.required'=>'Bạn chưa nhập giảm giá trong khoảng',
             'max.required'=>'Bạn chưa nhập giảm giá tối đa',
             'loai.required'=>'Bạn chưa chọn loại giảm giá',
-            'ngaytao.required'=>'Bạn chưa chọn ngày áp dụng ',
+            'ngaytao.required'=>'Bạn chưa chọn ngày áp dụng',
             'ngayhethan.required'=>'Bạn chưa chọn ngày hết hạn',
         ];
     }

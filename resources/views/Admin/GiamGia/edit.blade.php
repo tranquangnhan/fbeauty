@@ -39,13 +39,19 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="">Tên Giảm Giá</label><span style="color:red;"> (*)</span>
-                                                <input type="text" name="name" class="form-control @error('name') border-error @enderror name" value="{{$data->name}}"  parsley-trigger="change" required
+                                                <input type="text" name="name" class="form-control @error('name') border-error @enderror name" value="{{$data->name}}"  parsley-trigger="change"
                                                     placeholder="Tên Giảm Giá" >
+                                                    @error('name')
+                                                    <span class="badge badge-danger">{{$message}}</span>
+                                                    @enderror
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
-                                                <input type="text" name="ma" class="form-control @error('diachi') border-error @enderror diachi" value="{{$data->ma}}"  parsley-trigger="change" required
+                                                <input type="text" name="ma" class="form-control @error('diachi') border-error @enderror diachi" value="{{$data->ma}}"  parsley-trigger="change"
                                                     placeholder="Mã Giảm Giá" >
+                                                    @error('diachi')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -55,29 +61,44 @@
                                                     <option value="0">Giảm Theo Giá</option>
                                                     <option value="1">Giảm Theo %</option>
                                                 </select>
+                                                @error('loai')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="">Giảm Tối Đa Theo Giá </label><span style="color:red;"> (*)</span>
-                                                <input type="number" name="number" id="giamgia" class="form-control @error('number') border-error @enderror number" value="{{$data->number}} 0"  parsley-trigger="change" required
+                                                <input type="number" name="number" id="" class="form-control @error('number') border-error @enderror number" value="{{$data->number}}"  parsley-trigger="change"
                                                     placeholder="Khoảng Giá Từ " >
+                                                    @error('number')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="">Giảm Tối Đa Theo %</label><span style="color:red;"> (*)</span>
-                                                <input type="number" name="max" id="giamgia1" class="form-control @error('diachi') border-error @enderror diachi" value="{{$data->max}}"  parsley-trigger="change" required
+                                                <input type="number" name="max" id="" class="form-control @error('diachi') border-error @enderror diachi" value="{{$data->max}}"  parsley-trigger="change"
                                                     placeholder="Khoảng Giá Tối Đa" >
+                                                    @error('diachi')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                             </div>
 
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="">Ngày Tạo</label><span style="color:red;"> (*)</span>
-                                                <input type="date" name="ngaytao" class="form-control @error('ngaytao') border-error @enderror ngaytao" value="{{date('d-m-Y',$data->ngaytao)}}"  parsley-trigger="change" required
+                                                <input type="date" name="ngaytao" class="form-control @error('ngaytao') border-error @enderror ngaytao" value="{{date('d-m-Y',$data->ngaytao)}}"  parsley-trigger="change"
                                                     placeholder="Khoảng Giá Tối Đa" >
+                                                    @error('ngaytao')
+                                            <span class="badge badge-danger">{{$message}}</span>
+                                            @enderror
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="">Ngày Hết Hạn</label><span style="color:red;"> (*)</span>
-                                                <input type="date" name="ngayhethan" class="form-control @error('ngayhethan') border-error @enderror ngayhethan" value="{{date('d-m-Y',$data->ngayhethan)}}"  parsley-trigger="change" required
+                                                <input type="date" name="ngayhethan" class="form-control @error('ngayhethan') border-error @enderror ngayhethan" value="{{date('d-m-Y',$data->ngayhethan)}}"  parsley-trigger="change"
                                                     placeholder="Khoảng Giá Tối Đa" >
+                                                    @error('ngayhethan')
+                                                    <span class="badge badge-danger">{{$message}}</span>
+                                                    @enderror
                                             </div>
                                         </div>
 
