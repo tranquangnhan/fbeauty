@@ -40,16 +40,15 @@
 
 <body>
     <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
-    {{-- <div id="loading" class="modal-container show">
+     <div id="loading" class="modal-container show">
         <div class="modal-background">
             <div class="justify-content-center" id="imgload">
                 <div class="spinner-border text-danger h-50" role="status">
                     <span class="visually-hidden">F</span>
                 </div>
             </div>
-
         </div>
-    </div> --}}
+    </div>
 
     @if ($pathActive != 'trang-chu')
         @include('Site.components.header-2')
@@ -114,12 +113,7 @@
 <script>
     $(window).on('load', function(event) {
         $('#loading').removeClass('show');
-        // $('.load').delay(1000).fadeOut('fast');
-<<<<<<< HEAD
-        $('#imgload').delay(500).fadeOut('fast');
-=======
         $('#imgload').fadeOut('fast');
->>>>>>> 70ab2be67b1ed1c5833210ca70294d24c2d1124d
     });
 </script>
 
