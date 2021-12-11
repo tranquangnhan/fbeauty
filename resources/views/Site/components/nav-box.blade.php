@@ -15,7 +15,7 @@
                         <a href="javascript:void(0)"><i class="fas fa-user-alt color-black-2"></i></a>
                         <ul class="dropdown-custom-1" style="right: 0px;">
                             <li class="dropdown-custom-item">
-                                <a href="">
+                                <a href="" class="thong-tin-user">
                                     @if (session('khachHang')->name != '')
                                         {{ session('khachHang')->name }}
                                     @else
