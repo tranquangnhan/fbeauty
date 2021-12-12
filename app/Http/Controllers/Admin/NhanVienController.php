@@ -22,9 +22,7 @@ class NhanVienController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * show danh sách nhân viên
      */
     public function index()
     {
@@ -32,16 +30,8 @@ class NhanVienController extends Controller
 
         return view("Admin.NhanVien.index", ['data' => $data]);
     }
-
-    public function AllImgKH() {
-        $data = $this->nhanvien->getNhanVien();
-        return view("Admin.NhanVien.allimg", ['data' => $data]);
-    }
-
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * chuyển hướng đến trang thêm nhân viên
      */
     public function create()
     {
@@ -49,12 +39,8 @@ class NhanVienController extends Controller
         return view("Admin.NhanVien.create", ['coso' => $coso]);
         //
     }
-
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * Thêm nhân viên
      */
     public function store(NhanVien $request)
     {
@@ -109,7 +95,9 @@ class NhanVienController extends Controller
 
 
     }
-
+    /**
+     * Check email
+     */
     public function CheckEmailTonTai($email)
     {
         if ($this->nhanvien->CheckEmail($email) == false) {
@@ -117,7 +105,9 @@ class NhanVienController extends Controller
         }
 
     }
-
+    /**
+     * Check sdt
+     */
     public function CheckSdtTonTai($sdt)
     {
         if ($this->nhanvien->CheckSdt($sdt) == false) {
@@ -134,6 +124,7 @@ class NhanVienController extends Controller
      * 1 show
      * 2 up
      * 3 xóa
+     * 4: tất cả ảnh khách hàng
      */
     public function show($id)
     {
@@ -187,6 +178,10 @@ class NhanVienController extends Controller
         $this->nhanvien->update($id, $nhanvien);
         return redirect(route("nhanvien.show", $id))->with('thanhcong', 'Xóa ảnh thành công');
     }
+    public function AllImgKH() {
+        $data = $this->nhanvien->getNhanVien();
+        return view("Admin.NhanVien.allimg", ['data' => $data]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -202,11 +197,7 @@ class NhanVienController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * Cập nhật thông tin nhân viên
      */
     public function update(Request $request, $id)
     {
@@ -256,8 +247,6 @@ class NhanVienController extends Controller
             return redirect('quantri/nhanvien')->with('thatbai', 'Avatar không hợp lệ');
         }
     }
-
-
 
     /**
      * Remove the specified resource from storage.

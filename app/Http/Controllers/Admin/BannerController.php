@@ -18,9 +18,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Show danh sách banner
      */
     public function index()
     {
@@ -29,9 +27,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * chuyển hướng đến trang tạo banner
      */
     public function create()
     {
@@ -39,10 +35,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Thêm Banner
      */
     public function store(Banner $request)
     {
@@ -74,10 +67,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Sửa banner
      */
     public function edit($id)
     {
@@ -86,11 +76,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Cập nhật banner
      */
     public function update(BannerEdit $request, $id)
     {
@@ -123,10 +109,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Xóa
      */
     public function destroy($id)
     {

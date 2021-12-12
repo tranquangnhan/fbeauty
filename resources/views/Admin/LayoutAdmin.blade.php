@@ -1,5 +1,7 @@
-<?php  use Illuminate\Support\Facades\Auth; $user = Auth::user();?>
-<!DOCTYPE html>
+<?php use Illuminate\Support\Facades\Auth;
+
+$user = Auth::user(); ?>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <base href="{{url('/')}}">
@@ -8,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
     <meta content="Coderthemes" name="author"/>
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('Admin/assets') }}/images/favicon.ico">
@@ -19,7 +21,8 @@
 
     <link href="{{ asset('Admin/assets') }}/libs/multiselect/multi-select.css" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('Admin/assets') }}/libs/select2/select2.min.css" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('Admin/assets') }}/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css"rel="stylesheet"/>
+    <link href="{{ asset('Admin/assets') }}/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css"
+          rel="stylesheet"/>
     <link href="{{ asset('Admin/assets') }}/libs/switchery/switchery.min.css" rel="stylesheet"/>
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="{{ asset('Admin/assets') }}/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
@@ -28,7 +31,8 @@
 
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('Admin/assets') }}/css/bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet"type="text/css"/>
+    <link href="{{ asset('Admin/assets') }}/css/bootstrap.min.css" id="bootstrap-stylesheet" rel="stylesheet"
+          type="text/css"/>
     <!-- Icons Css -->
     <link href="{{ asset('Admin/assets') }}/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <!-- App Css-->
@@ -40,7 +44,7 @@
 
     <link href="{{ asset('Admin/assets') }}/css/inputfile.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
 
-    <link href="{{asset("Admin/assets")}}/css/dropupload.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset("Admin/assets")}}/css/dropupload.css" rel="stylesheet" type="text/css"/>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
@@ -52,16 +56,18 @@
     {{-- end code nhúng của Quốc --}}
 
     {{-- code nhúng của Nhân --}}
-    <link href="{{ asset('Admin/assets') }}/css/custom.css" id="app-stylesheet" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('Admin/assets') }}/css/custom.css" id="app-stylesheet" rel="stylesheet" type="text/css"/>
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
-    <link href="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('Admin/assets') }}/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('Admin/assets') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-    {{-- end code nhúng của Nhân --}}
-    @yield('css')
+    <link href="{{ asset('Admin/assets') }}/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ asset('Admin/assets') }}/libs/datatables/responsive.bootstrap4.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ asset('Admin/assets') }}/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('Admin/assets') }}/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+{{-- end code nhúng của Nhân --}}
+@yield('css')
 <body>
 <input type="hidden" id="LinkURL" value="{{URL::to("/quantri/")}}">
 <!-- Begin page -->
@@ -206,18 +212,19 @@
 
                     @foreach ($coSo as $item)
                         @if(session()->get('coso') == $item->id)
-                            <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item selected">
+                            <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}"
+                               class="dropdown-item notify-item selected">
                                 <i class="fe-user"></i>
-                                <span >{{$item->name}}</span>
+                                <span>{{$item->name}}</span>
                             </a>
                         @else
-                            <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}" class="dropdown-item notify-item ">
+                            <a href="{{URL::to('quantri/coso/changecoso/'.$item->id.'')}}"
+                               class="dropdown-item notify-item ">
                                 <i class="fe-user"></i>
-                                <span >{{$item->name}}</span>
+                                <span>{{$item->name}}</span>
                             </a>
                         @endif
                     @endforeach
-
 
 
                     <div class="dropdown-divider"></div>
@@ -327,43 +334,43 @@
                 <ul class="metismenu pb-5" id="side-menu">
 
                     @if( $user->role == 1)
-                         <li class="menu-title">Chung</li>
-                          <!--- Cơ Sở -->
-                            <li>
-                                <a href="/quantri">
-                                    <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Thống kê </span>
-                                </a>
-                            </li>
+                        <li class="menu-title">Chung</li>
+                        <!--- Cơ Sở -->
+                        <li>
+                            <a href="/quantri">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> Thống kê </span>
+                            </a>
+                        </li>
 
-                            <li>
-                                <a href="{{route("banner.index")}}">
-                                    <i class="fa fa-image"></i>
-                                    <span> Banner </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route("theodoi.index")}}">
-                                    <i class="fa fa-user-circle"></i>
-                                    <span> Người Theo Dõi </span>
-                                </a>
-                            </li>
+                        <li>
+                            <a href="{{route("banner.index")}}">
+                                <i class="fa fa-image"></i>
+                                <span> Banner </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route("theodoi.index")}}">
+                                <i class="fa fa-user-circle"></i>
+                                <span> Người Theo Dõi </span>
+                            </a>
+                        </li>
 
-                            <li>
-                                <a href="/quantri/datlichremake">
-                                    <i class="far fa-calendar-check"></i>
-                                    <span> Đặt Lịch </span>
-                                </a>
-                            </li>
-                              <li>
-                                <a href="/quantri/lienhe">
-                                    <i class="fa fa-phone"></i>
-                                    <span> Liên hệ </span>
-                                </a>
-                            </li>
-                          <li>
+                        <li>
+                            <a href="/quantri/datlichremake">
+                                <i class="far fa-calendar-check"></i>
+                                <span> Đặt Lịch </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/quantri/lienhe">
+                                <i class="fa fa-phone"></i>
+                                <span> Liên hệ </span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="javascript: void(0);">
-                            <i class="mdi mdi-home"></i>
+                                <i class="mdi mdi-home"></i>
                                 <span> Cơ Sở </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -371,7 +378,7 @@
                                 <li><a href="{{route("coso.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
-                            <!--- Danh mục -->
+                        <!--- Danh mục -->
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="mdi mdi-page-layout-sidebar-left"></i>
@@ -410,16 +417,16 @@
                     @endif
 
                     @if($user->role == 1 || $user->role == 0)
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-folder-image"></i>
-                            <span> Ảnh khách hàng </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Xem ảnh </a></li>
-                        </ul>
-                    </li>
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="mdi mdi-folder-image"></i>
+                                <span> Ảnh khách hàng </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Xem ảnh </a></li>
+                            </ul>
+                        </li>
                     @endif
 
                     @if($user->role == 1 )
@@ -447,8 +454,8 @@
                                 <li><a href="{{route("giamgia.index")}}">Danh sách</a></li>
                             </ul>
                         </li>
-                          <!--- Đơn Hàng -->
-                          <li>
+                        <!--- Đơn Hàng -->
+                        <li>
                             <a href="javascript: void(0);">
                                 <i class="mdi mdi-room-service"></i>
                                 <span> Dịch vụ </span>
@@ -471,8 +478,8 @@
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("nhanvien.index")}}">Danh sách</a></li>
                                 <li><a href="{{route("nhanvien.create")}}">Thêm nhân viên</a></li>
-                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Thêm ảnh khách hàng</a></li>
-                                <li><a href="{{URL::to("quantri/nhanvien/imgcustomer/pictures")}}">Tất cả ảnh khách hàng</a></li>
+                                {{--                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Thêm ảnh khách hàng</a></li>--}}
+                                {{--                                <li><a href="{{URL::to("quantri/nhanvien/imgcustomer/pictures")}}">Tất cả ảnh khách hàng</a></li>--}}
                             </ul>
                         </li>
 
@@ -492,20 +499,20 @@
                         </li>
                         <!--- Đơn Hàng -->
                         <li>
-                          <a href="javascript: void(0);">
-                          <i class="fas fa-dolly"></i>
-                              <span> Đơn Hàng </span>
-                              <span class="menu-arrow"></span>
-                          </a>
-                          <ul class="nav-second-level" aria-expanded="false">
-                              <li><a href="{{route("donhang.index")}}">Danh sách</a></li>
-                          </ul>
-                      </li>
+                            <a href="javascript: void(0);">
+                                <i class="fas fa-dolly"></i>
+                                <span> Đơn Hàng </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{{route("donhang.index")}}">Danh sách</a></li>
+                            </ul>
+                        </li>
 
 
                         <li class="menu-title">Bài Viết</li>
 
-                         <!--- Blog -->
+                        <!--- Blog -->
                         <li class="mb-5">
                             <a href="javascript: void(0);">
                                 <i class="mdi mdi-blogger"></i>
@@ -519,10 +526,6 @@
                         </li>
                         <div class="mb-10"></div>
                     @endif
-
-
-
-
                 </ul>
 
             </div>
@@ -610,24 +613,24 @@
 <div class="rightbar-overlay"></div>
 
 
-    <!-- Footer Start -->
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                   2021 &copy; Website được tạo bởi <a href="">Fbeauty</a>
-                </div>
-                <div class="col-md-6">
-                    <div class="text-md-right footer-links d-none d-sm-block">
-                        <a href="javascript:void(0);">Về chúng tôi</a>
-                        <a href="javascript:void(0);">Hỗ trợ</a>
-                        <a href="javascript:void(0);">Liên hệ</a>
-                    </div>
+<!-- Footer Start -->
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                2021 &copy; Website được tạo bởi <a href="">Fbeauty</a>
+            </div>
+            <div class="col-md-6">
+                <div class="text-md-right footer-links d-none d-sm-block">
+                    <a href="javascript:void(0);">Về chúng tôi</a>
+                    <a href="javascript:void(0);">Hỗ trợ</a>
+                    <a href="javascript:void(0);">Liên hệ</a>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- end Footer -->
+    </div>
+</footer>
+<!-- end Footer -->
 
 <!-- Vendor js -->
 <script src="{{ asset('Admin/assets') }}/js/vendor.min.js"></script>
@@ -656,7 +659,9 @@
 <script src="{{ asset('Admin/assets') }}/js/app.min.js"></script>
 
 {{-- code nhúng bởi Nhân --}}
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
