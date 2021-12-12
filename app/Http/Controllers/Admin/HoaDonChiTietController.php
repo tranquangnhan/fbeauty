@@ -62,10 +62,7 @@ class HoaDonChiTietController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * Show hóa đơn chi tiết
      */
     public function show($id)
     {
@@ -111,13 +108,17 @@ class HoaDonChiTietController extends Controller
     {
         //
     }
-
+    /**
+     *Lấy hóa đơn chi tiêt từ id hóa đơn
+     */
     public function getHoaDonChiTiet($id)
     {
         $hdct = $this->hoadonchitiet->getHoaDonCTByIdHoaDon($id);
         return $hdct;
     }
-
+    /**
+     *Thêm sản phẩm vào hóa đơn chi tiết
+     */
     public function ThemSanPhamVaoHoaDon($id, $idsp)
     {
         $checkSpTonTai = $this->hoadonchitiet->CheckSpTonTai($id, $idsp);
@@ -157,7 +158,9 @@ class HoaDonChiTietController extends Controller
         }
 
     }
-
+    /**
+     *Thêm dịch vụ vào hóa đơn chi tiết
+     */
     public function ThemDichVuVaoHoaDon($id, $iddichvu)
     {
         $checkDVTonTai = $this->hoadonchitiet->CheckDVTonTai($id, $iddichvu);
@@ -188,14 +191,18 @@ class HoaDonChiTietController extends Controller
             return $thongbao;
         }
     }
-
+    /**
+     *Cập nhật số lượng sản phẩm hoặc dịch vụ trong hóa đơn chi tiết
+     */
     public function CapNhatSoLuong($id, $idhdct, $soluong)
     {
         $sl = ['soluong' => $soluong];
         $this->hoadonchitiet->update($idhdct, $sl);
         return true;
     }
-
+    /**
+     *Hủy giảm giá hóa đơn
+     */
     public function HuyGiamGia($id, $tien)
     {
         $tien = ['tongtiensaugiamgia' => $tien, 'idgiamgia' => null];
