@@ -65,7 +65,7 @@ class KhachHangController extends Controller
     public function index()
     {
         $data = $this->KhachHang->getAllCungCoSo(session()->get('coso'));
-        return view("Admin.khachhang.index", ['data' => $data]);
+        return view("Admin.KhachHang.index", ['data' => $data]);
     }
 
     /**
@@ -75,7 +75,7 @@ class KhachHangController extends Controller
      */
     public function create()
     {
-        return view("Admin.khachhang.create");
+        return view("Admin.KhachHang.create");
     }
     /**
      * Store a newly created resource in storage.
@@ -138,7 +138,7 @@ class KhachHangController extends Controller
     public function edit($id)
     {
         $KhachHang = $this->KhachHang->find($id);
-        return view("Admin.khachhang.edit", ['KhachHang' => $KhachHang]);
+        return view("Admin.KhachHang.edit", ['KhachHang' => $KhachHang]);
     }
 
     /**

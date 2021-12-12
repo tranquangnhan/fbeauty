@@ -26,7 +26,6 @@ class Coso extends FormRequest
         return [
             'name' => ['required', 'min:3', 'max:50'],
             'diachi' => ['required', 'min:3', 'max:300'],
-            'tinh' => ['required'],
         ];
     }
 
@@ -38,8 +37,7 @@ class Coso extends FormRequest
             'name.max' => 'Cơ sở phải nhỏ hơn 300 kí tự',
             'diachi.required' => 'Bạn chưa nhập địa chỉ',
             'diachi.min' => 'Địa chỉ phải lớn hơn 3 kí tự',
-            'diachi.max' => 'Địa chỉ phải nhỏ hơn 300 kí tự',
-            'tinh.required' => 'Bạn chưa chọn tỉnh thành phố',
+            'diachi.max' => 'Địa chỉ phải nhỏ hơn 300 kí tự'
         ];
     }
 
@@ -48,7 +46,6 @@ class Coso extends FormRequest
         return [
             'name' => 'Tên cơ sở',
             'diachi' => 'địa chỉ cụ thể',
-            'tinh' => 'Tỉnh thành phố',
         ];
     }
 }

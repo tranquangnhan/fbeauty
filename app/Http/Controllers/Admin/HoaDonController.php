@@ -93,10 +93,7 @@ class HoaDonController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * Xem và sửa hóa đơn chi tiết
      */
     public function edit($id)
     {
@@ -108,7 +105,6 @@ class HoaDonController extends Controller
         $idlieutrinh = $hd->idlieutrinh;
         $TenNhanVien = $this->nhanvien->find($hd->idnhanvien);
         $hdct = $this->hoadonchitiet->getHoaDonCTByIdHoaDon($id);
-
         return view("Admin.HoaDon.edit", ['customer' => $customer, 'hoadon' => $hd, 'coso' => $coso, 'hdct' => $hdct, 'thungan' => $ThuNgan, 'TenNhanVien' => $TenNhanVien, 'idlieutrinh' => $idlieutrinh]);
     }
 
@@ -124,26 +120,22 @@ class HoaDonController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
     }
 
     /**
-     *Giảm giá
+     *Lấy chi tiết giảm giá từ hóa đơn
      */
     public function getGiamGiaToHoaDon($idgiamgia)
     {
         $data = $this->giamgia->find($idgiamgia);
         return $data;
     }
-
+    /**
+     *Áp dụng giảm giá vào hóa đơn
+     */
     public function ApDungGiamGia($id, $code, $tien)
     {
         $checkCode = $this->giamgia->CheckCODE($code);
@@ -175,7 +167,9 @@ class HoaDonController extends Controller
             return $thongbao;
         }
     }
-
+    /**
+     *Cập nhật giá của hóa đơn
+     */
     public function CapNhatGia($id, $tien, $tongtien)
     {
         $tong = [
@@ -185,7 +179,9 @@ class HoaDonController extends Controller
         $this->hoadon->update($id, $tong);
         return true;
     }
-
+    /**
+     *Xóa sản phẩm hoặc dịch vụ trong hóa đơn chi tiết
+     */
     public function XoaHoaDonChiTiet($id, $idhdct)
     {
         $this->hoadonchitiet->delete($idhdct);
@@ -194,7 +190,9 @@ class HoaDonController extends Controller
         ];
         return $thongbao;
     }
-
+    /**
+     *Thêm liệu trình vào hóa đơn
+     */
     public function addHoaDonByIdLieuTrinh($id)
     {
 
@@ -241,7 +239,9 @@ class HoaDonController extends Controller
             return $this->handleError('Liệu trình đã tồn tại trong hoá đơn');
         }
     }
-
+    /**
+     *Sửa trạng thái thanh toán
+     */
     public function trangthaithanhtoan($id){
         $hoadon=$this->hoadon->find($id);
         if ($hoadon->trangthai == 0){

@@ -32,6 +32,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
     private $data = array();
@@ -321,18 +322,18 @@ class HomeController extends Controller
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
-            $dichvu = $this->Dichvu->getDichVu2();
-            $dichvu1 = $this->Dichvu->getLastWeekdichvu();
-            $dichvu2 = $this->Dichvu->getDichVubyGiamGia();
-            $danhmuc = $this->DanhMuc->getalldanhmuc();
-            $this->getDanhMucVaDichVu();
-            //$mouth = $this->Dichvu->getLastWeekdichvu();
+        $dichvu = $this->Dichvu->getDichVu2();
+        $dichvu1 = $this->Dichvu->getLastWeekdichvu();
+        $dichvu2 = $this->Dichvu->getDichVubyGiamGia();
+        $danhmuc = $this->DanhMuc->getalldanhmuc();
+        $this->getDanhMucVaDichVu();
+        //$mouth = $this->Dichvu->getLastWeekdichvu();
 
-            $this->data['dichvu'] = $dichvu;
-            $this->data['dichvu1'] = $dichvu1;
-            $this->data['dichvu2'] = $dichvu2;
-            $this->data['danhmuc'] = $danhmuc;
-            return view("Site.pages.dichvu", $this->data);
+        $this->data['dichvu'] = $dichvu;
+        $this->data['dichvu1'] = $dichvu1;
+        $this->data['dichvu2'] = $dichvu2;
+        $this->data['danhmuc'] = $danhmuc;
+        return view("Site.pages.dichvu", $this->data);
 
     }
 
@@ -369,7 +370,6 @@ class HomeController extends Controller
         $sanpham = $this->SanPham->getsanphamtimkiem();
         $blog = $this->Blog->getAllBlog();
 
-        
 
         $this->data['dichvu'] = $dichvu;
         $this->data['dichvu'] = $dichvu;
@@ -381,7 +381,7 @@ class HomeController extends Controller
             ['link' => '', 'name' => 'Tìm Kiếm'],
         ];
 
-        if($valueSearch = request()->key){
+        if ($valueSearch = request()->key) {
             $dichVu = $this->Dichvu->search($valueSearch);
             $sanPham = $this->SanPham->searchsanpham($valueSearch);
             $blog = $this->Blog->searchblog($valueSearch);
@@ -392,7 +392,7 @@ class HomeController extends Controller
         }
 
 
-        return view("Site.pages.timkiem",$this->data,['dulieu'=>json_encode($this->dulieu)]);
+        return view("Site.pages.timkiem", $this->data, ['dulieu' => json_encode($this->dulieu)]);
     }
 
     public function viewLienHe()
@@ -448,10 +448,9 @@ class HomeController extends Controller
             $this->data['dichvukhac'] = $dichvukhac;
             $this->data['detaildichvu'] = $detaildichvu;
             return view("Site.pages.dichvuchitiet", $this->data);
-        }
-        catch (\Exception $exception){
-            $this->data['dichvukhac']  = $this->Dichvu->GetDichvuLienQuanKhacIDDM(0);
-            return view("Site.pages.dichvuchitiet", $this->data, ["khongcodichvu",0]);
+        } catch (\Exception $exception) {
+            $this->data['dichvukhac'] = $this->Dichvu->GetDichvuLienQuanKhacIDDM(0);
+            return view("Site.pages.dichvuchitiet", $this->data, ["khongcodichvu", 0]);
         }
     }
 
@@ -733,7 +732,6 @@ class HomeController extends Controller
         }
         return implode(", ", $arrName);
     }
-
 
     public function getNhanVienByIdCoSo(Request $request, $id)
     {
@@ -1481,7 +1479,9 @@ class HomeController extends Controller
 
         return $error;
     }
-
+    /**
+     * Cập nhật thông tin tài khoản
+     */
     public function updateprofile(ChangeProfile $request)
     {
 
@@ -1560,5 +1560,4 @@ class HomeController extends Controller
         $this->data['listDichVuUaChuong'] = $listDichVu;
         $this->data['listDichVuGiamGia'] = $this->Dichvu->getDichVuGiamGiaAndDanhMuc($take, $skip);
     }
-
 }

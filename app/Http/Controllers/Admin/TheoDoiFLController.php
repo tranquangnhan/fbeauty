@@ -16,9 +16,7 @@ class TheoDoiFLController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Show danh sách email theo dõi
      */
     public function index()
     {
@@ -37,10 +35,7 @@ class TheoDoiFLController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -82,10 +77,7 @@ class TheoDoiFLController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Xóa
      */
     public function destroy($id)
     {
