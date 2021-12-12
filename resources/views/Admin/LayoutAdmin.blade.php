@@ -312,7 +312,7 @@ $user = Auth::user(); ?>
             <p class="text-muted"><i class="mdi mdi-circle text-success"></i> Admin</p>
             <ul class="list-inline">
                 <li class="list-inline-item">
-                    <a href="#" class="text-muted">
+                    <a href="{{route("nhanvien.edit", auth()->user()->id)}}" class="text-muted">
                         <i class="mdi mdi-cog"></i>
                     </a>
                 </li>
@@ -488,9 +488,9 @@ $user = Auth::user(); ?>
                         <li class="menu-title">Sản Phẩm</li>
                         <li>
                             <a href="javascript: void(0);">
-                                <i class="mdi mdi-truck-outline"></i>
-                                <span class="badge badge-warning float-right">7</span>
-                                <span> Sản Phẩm </span>
+                                <i class="mdi mdi-account-circle-outline "></i>
+                                <span> Sản phẩm </span>
+                                <span class="menu-arrow"></span>
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
