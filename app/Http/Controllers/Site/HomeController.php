@@ -1559,5 +1559,7 @@ class HomeController extends Controller
         $listDichVu = $this->getDichVuUaChuongThangTruoc($skip, $take);
         $this->data['listDichVuUaChuong'] = $listDichVu;
         $this->data['listDichVuGiamGia'] = $this->Dichvu->getDichVuGiamGiaAndDanhMuc($take, $skip);
+
     }
+
 }
