@@ -115,11 +115,7 @@
     $(window).on('load', function(event) {
         $('#loading').removeClass('show');
         // $('.load').delay(1000).fadeOut('fast');
-<<<<<<< HEAD
         $('#imgload').delay(500).fadeOut('fast');
-=======
-        $('#imgload').fadeOut('fast');
->>>>>>> 70ab2be67b1ed1c5833210ca70294d24c2d1124d
     });
 </script>
 
