@@ -99,7 +99,7 @@ class DonHangController extends Controller
     public function update(DonHangEdit $request, $id)
     {
 
-        if($this == true){
+        if ($request->tongtientruocgiamgia > $request->tongtiensaugiamgia) {
         $data = [
 
             'idgiamgia' => $request->magiamgia,
@@ -118,7 +118,7 @@ class DonHangController extends Controller
 
         return redirect(route("donhang.index"))->with('thanhcong', 'Cập nhật thông tin thành công');
         } else {
-        return redirect(route("donhang.edit"))->with('thatbai', 'cập nhật thất bại ');
+        return redirect(route("donhang.index"))->with('thatbai', 'cập nhật thất bại vui lòng kiểm tra lại giá ');
     }
     }
 
