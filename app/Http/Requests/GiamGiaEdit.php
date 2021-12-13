@@ -24,11 +24,11 @@ class GiamGiaEdit extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|between:3,100',
+            'name' => 'required|unique:giamgia|between:3,100',
             'ma'=>'required|unique:giamgia|between:3,30',
             'number'=>'required|max:9',
             'max'=>'required||max:9',
-            'loai'=>'required|numeric|in:1,2',
+            'loai'=>'required|',
             'ngaytao'=>'required',
             'ngayhethan'=>'required'
         ];

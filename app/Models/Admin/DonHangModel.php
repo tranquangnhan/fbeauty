@@ -23,4 +23,11 @@ class DonHangModel extends Model
         'trangthai',
         'trangthaithanhtoan'
     ];
+
+    public function dhchitiet(){
+       return $this->hasOne(DonHangChitiet::class,'iddonhang', 'id');
+    }
+    public function namegiamgia(){
+        return $this->hasOne(GiamGiaModel::class,'idgiamgia', 'id');
+     }
 }

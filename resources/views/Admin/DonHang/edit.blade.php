@@ -50,7 +50,7 @@
 
                                             <div class="form-group col-md-4">
                                                 <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
-                                                <input type="text" name="magiamgia" class="form-control @error('magiamgia') border-error @enderror magiamgia" value="{{$data->idgiamgia}}"  parsley-trigger="change" >
+                                                <input type="text" name="magiamgia" class="form-control @error('magiamgia') border-error @enderror magiamgia" value="{{$Giamgia->namegiamgia}}"  parsley-trigger="change" readonly>
                                                 @error('magiamgia')
                                                 <span class="badge badge-danger">{{$message}}</span>
                                                 @enderror

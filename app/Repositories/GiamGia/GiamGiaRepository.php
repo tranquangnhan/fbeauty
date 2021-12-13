@@ -34,4 +34,5 @@ class GiamGiaRepository extends BaseRepository implements GiamGiaRepositoryInter
         return $this->model->select('*')->where('ma', '=', $ma)->doesntExist();
     }
 
+
 }
