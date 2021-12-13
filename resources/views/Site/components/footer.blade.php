@@ -40,8 +40,7 @@
                         </div>
 
                         <div class="text-6" style="margin-top: 2em">
-                            FBeauty Spa luôn nỗ lực không ngừng để đem đến cho khách hàng những dịch vụ hoàn hảo
-                            nhất. Thẩm mỹ khỏe – đẹp – an toàn để mỗi phút giây ngắm mình trong gương là những phút
+                            FBeauty Spa luôn nỗ lực không ngừng để đem đến cho khách hàng những dịch vụ hoàn hảo. Thẩm mỹ khỏe – đẹp – an toàn để mỗi phút giây ngắm mình trong gương là những
                             giây tận hưởng hạnh phúc thật sự của mỗi khách hàng.
                         </div>
 
@@ -82,30 +81,30 @@
 
 
 
-
                 <div class="col-xl-3 col-lg-4 col-12">
                     <div class="box-footer footer-menu">
                         <div class="title-4 d-inline-block">
-                            Cơ Sở
+                            Trụ Sở Chính
                         </div>
 
                         <div class="content-1">
-
                             <div class="menu-item text-6">
-                                <a href="">391A Nam Kỳ Khởi Nghĩa, Phường 14, Quận 3, Thành phố Hồ Chí
-                                    Minh</a>
+                                <div class="icon d-flex justify-content-start">
+                                    <a href="javascript:void(0)">
+                                        <span class="fas fa-map-marker-alt mr-2 color-black-3"></span>
+                                        44 Nguyễn Thị Thập, Tân Hưng, Quận 7, Hồ Chí Minh (Khu Dân Cư HimLam)
+                                    </a>
+                                </div>
                             </div>
 
                             <div class="menu-item text-6">
-                                <a href="">778/B1 Nguyễn Kiệm, Phường 3, Phú Nhuận, Thành phố Hồ Chí
-                                    Minh</a>
+                                <div class="icon d-flex justify-content-start">
+                                    <a href="javascript:void(0)">
+                                        <span class="fas fa-map-marker-alt mr-2 color-black-3"></span>
+                                        380 Đường Bùi Hữu Nghĩa, Phường 2, Bình Thạnh, Tp HCM (đối diện chợ Bà Chiểu)
+                                    </a>
+                                </div>
                             </div>
-
-                            <div class="menu-item text-6">
-                                <a href="">Công viên phần mềm, Toà nhà Innovation lô 24, Quang Trung, Quận
-                                    12, Thành phố Hồ Chí Minh</a>
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -151,6 +150,46 @@
 
                         </div>
                     </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-4 col-12">
+                    <div class="box-footer footer-menu">
+                        <div class="title-4 d-inline-block">
+                            Liên Hệ
+                        </div>
+
+                        <div class="content-1">
+
+                            <div class="menu-item text-6">
+                                <div class="icon d-flex justify-content-start">
+                                    <a href="javascript:void(0)">
+                                        <span class="fas fa-phone-alt mr-2"></span> (84+) 966 966 966,
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-item text-6">
+                                <div class="icon d-flex justify-content-start">
+                                    <a href="javascript:void(0)">
+                                        <span class="fas fa-phone-alt mr-2"></span> (84+) 121 122 121,
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="menu-item text-6">
+                                <div class="icon d-flex justify-content-start">
+                                    <a href="javascript:void(0)">
+                                        <span class="far fa-paper-plane mr-2"></span>
+                                        fbeauty.spa@gmail.com.
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
                 </div>
             </div>
 

@@ -145,7 +145,7 @@ class HomeController extends Controller
 
         $this->data['sanpham'] = $sanpham;
         $this->data['pathActive'] = 'san-pham';
-        $this->data['namePage'] = 'Sản phẩm';
+        $this->data['namePage'] = 'Mỹ phẩm dưỡng & làm đẹp';
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Sản phẩm'],
         ];
@@ -257,7 +257,7 @@ class HomeController extends Controller
         $this->data['blognewtt'] = $blognewtt;
 
         $this->data['pathActive'] = 'bai-viet';
-        $this->data['namePage'] = 'Bài viết';
+        $this->data['namePage'] = 'Diễn đàn làm đẹp';
         $this->data['breadcrumbArray'] = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
         ];
@@ -400,7 +400,7 @@ class HomeController extends Controller
         $coso = $this->Coso->getAll();
         $this->data['coso'] = $coso;
         $this->data['pathActive'] = 'lien-he';
-        $this->data['namePage'] = 'Liên Hệ';
+        $this->data['namePage'] = 'Liên Hệ Chúng Tôi';
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Liên Hệ'],
         ];
@@ -422,9 +422,9 @@ class HomeController extends Controller
     public function viewGioiThieu()
     {
         $this->data['pathActive'] = 'gioi-thieu';
-        $this->data['namePage'] = 'Giới thiệu';
+        $this->data['namePage'] = 'Giới thiệu Về Chúng Tôi';
         $this->data['breadcrumbArray'] = [
-            ['link' => '', 'name' => 'Giới thiệu'],
+            ['link' => '', 'name' => 'Về Chúng Tôi'],
         ];
         return view("Site.pages.gioithieu", $this->data);
     }

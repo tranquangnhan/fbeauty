@@ -93,14 +93,14 @@
                                             <span class="max-price" price-value="10000000">5,000,000 đ</span>
                                         </label>
                                     </p>
-                                    <p><label for="locgia3" class="hover-pink">
+                                    <p class="mb-0"><label for="locgia3" class="hover-pink mb-0">
                                             <input type="radio" name="locgia" id="locgia3" onclick="Locgia('g4')"> Giá:
                                             <span class="min-price" price-value="100000"> > 5,000,000 đ</span>
                                         </label>
                                     </p>
                                 </div>
                             </div>
-                            <hr>
+
                         </div>
                     </div>
                 </div>
@@ -134,11 +134,11 @@
                                             <li class="nav-item px-0" role="presentation">
                                                 <span
                                                     class="nav-link  custom-2 bg-gray-1 active change-column-control"
-                                                    type-column='single'><i class="fas fa-grip-horizontal"></i></span>
+                                                    type-column='mutiple'><i class="fas fa-grip-horizontal"></i></span>
                                             </li>
                                             <li class="nav-item" role="presentation">
                                                 <span class="nav-link  custom-2 bg-gray-1 change-column-control"
-                                                      type-column='multiple'><i class="fas fa-bars"></i></span>
+                                                      type-column='single'><i class="fas fa-bars"></i></span>
                                             </li>
                                         </ul>
                                     </div>
