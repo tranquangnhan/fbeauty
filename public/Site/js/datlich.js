@@ -308,7 +308,11 @@ function datLich() {
         if (result.isConfirmed) {
             // Send Request
             if (loaddingDatLich == false) {
+                if (arrIdDichVu.length == 0) {
+                    arrIdDichVu = [0];
+                }
                 loaddingDatLich = true;
+
                 let _token   = $('meta[name="csrf-token"]').attr('content');
                 let ngayGioSelected = ngaySelected + ' ' + timeSelected;
                 let thoiGianDat = moment(ngayGioSelected, 'DD/MM/YYYY HH:mm:ss', true).unix();
@@ -408,7 +412,7 @@ function resetModal() {
     noiDungModalElement.children().remove();
     noiDungModalElement.append(modalHTML);
     loadNgayDatLich();
-    
+
     // Set lại data vừa remove
     controlShortOne = $('[data-step=0]');
     controlShortTwo = $('[data-step=1]');
@@ -490,7 +494,7 @@ function HTMLModalDatLich() {
                         <div class="fa-custom form-custom-datlich form-name-khachhang mr-2">
                             <div class="div-phone-number">
                                 <input type="text" id="name" class="nameKhachHang" placeholder="Tên của bạn"`;
-                                if ($('.thong-tin-user').length > 0) {
+                                if ($('.thong-tin-user').length > 0 && khachHangLogin.name != null) {
                                     html += `value="${ khachHangLogin.name }"`;
                                 }
 

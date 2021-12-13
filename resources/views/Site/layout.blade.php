@@ -117,5 +117,13 @@
 
 {{-- Quang Nhân --}}
 
+<script>
+    $(window).on('load', function(event) {
+        $('#loading').removeClass('show');
+        // $('.load').delay(1000).fadeOut('fast');
+        $('#imgload').delay(500).fadeOut('fast');
+    });
+</script>
+
 @include('Site.components.thongbao')
 @yield('javascript')

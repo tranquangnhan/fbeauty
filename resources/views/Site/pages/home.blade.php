@@ -425,7 +425,7 @@
                                 $anhk = json_decode($spk->img);
                                 ?>
                                 <div class="fa-card-product-item">
-                                    <div class="card rounded-0 product-card child-item-sanpham zbar">
+                                    <div class="card rounded-0 product-card child-item-sanpham box-item-sanpham zbar">
                                         <div class="card-header bg-transparent border-bottom-0">
                                             @if(session()->has('khachHang') && session('khachHang') != '')
                                                 <?php $checkyeuthich1 = \Illuminate\Support\Facades\DB::table('yeuthich')
@@ -524,7 +524,7 @@
 
     @include('Site.components.gioithieulieutrinh')
 
-    <div class="box-blog my-5">
+    <div class="box-blog py-5">
         <div class="container">
             <div class="list-blog p-0">
                 <div class="mb-4">

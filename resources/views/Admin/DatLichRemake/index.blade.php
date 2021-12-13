@@ -43,12 +43,12 @@
                                             <li class="nav-item" role="presentation">
                                                 <a class="nav-link active" id="datlich-day-tab" data-toggle="tab" href="#datlich-day" role="tab" aria-controls="datlich-day" aria-selected="true">Ngày</a>
                                             </li>
-                                            <li class="nav-item" role="presentation">
+                                            {{-- <li class="nav-item" role="presentation">
                                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
                                             </li>
                                             <li class="nav-item" role="presentation">
                                                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                                            </li>
+                                            </li> --}}
                                         </ul>
 
                                     </div>
