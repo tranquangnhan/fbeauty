@@ -206,7 +206,7 @@ class InstallDatabase extends Migration
             $table->unsignedInteger('thutrongtuan');
             $table->unsignedInteger('soluongkhach');
             $table->time('gio');
-            $table->unsignedInteger('trangthai');
+            $table->boolean('trangthai')->default(0)->nullable();
             $table->foreign('idcoso')->references('id')->on('coso');
             $table->timestamps();
         });
