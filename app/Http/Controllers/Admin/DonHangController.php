@@ -42,7 +42,7 @@ class DonHangController extends Controller
         $donhangchitiet = $this->DonHangChiTiet->getAll();
         $khachHang  = $this->KhachHang->getall();
         $DonHangct  = $this->DonHang->getDonHangAndDonHangChiTietById();
-
+// dd($DonHangct);
 
         return view('Admin.DonHang.index',compact('data','khachHang','donhangchitiet'));
     }
