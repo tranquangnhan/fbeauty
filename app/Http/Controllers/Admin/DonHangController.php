@@ -91,7 +91,6 @@ class DonHangController extends Controller
         $khachHang  = $this->KhachHang->find($data->idkhachhang);
         $Giamgia = $this->DonHang->getDonHangAndGiamGiaById($id);
 
-        //$GiamGia  = $this->GiamGia->find($data->idgiamgia);
         return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT','Giamgia'));
     }
 
