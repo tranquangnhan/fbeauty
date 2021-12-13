@@ -97,7 +97,7 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
             ->where('sanpham.iddanhmuc', $id)
             ->where('sanpham.trangthai', Controller::TRANGTHAI_SANPHAM)
-            ->limit(8)
+            ->limit(4)
             ->get();
     }
 
@@ -111,7 +111,7 @@ class SanPhamRepository extends BaseRepository implements SanPhamRepositoryInter
             ->join("danhmuc", "sanpham.iddanhmuc", "=", "danhmuc.id")
             ->where('sanpham.iddanhmuc', '!=', $id)
             ->where('sanpham.trangthai', Controller::TRANGTHAI_SANPHAM)
-            ->limit(8)
+            ->limit(4)
             ->get();
     }
 
