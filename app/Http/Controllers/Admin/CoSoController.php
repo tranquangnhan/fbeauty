@@ -47,7 +47,6 @@ class CoSoController extends Controller
     public function index()
     {
         $data = $this->Coso->getAll();
-        // $city = $this->City->find($data->idkhachhang);
         $city = $this->City->getall();
         $province = $this->Province->getall();
         $wards = $this->wards->getall();
@@ -64,7 +63,6 @@ class CoSoController extends Controller
     public function create()
     {
         $data = $this->Coso->getAll();
-        // $city = $this->City->find($data->idkhachhang);
         $city = $this->City->getall();
         $province = $this->Province->getall();
         $wards = $this->wards->getall();
@@ -74,7 +72,6 @@ class CoSoController extends Controller
 
     public function store(Coso $request)
     {
-        // $validated = $request->validated();
 
         $data = [
             'name' => $request->name,

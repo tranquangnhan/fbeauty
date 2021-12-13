@@ -44,7 +44,7 @@ class LieuTrinhController extends Controller
      */
     public function index()
     {
-         
+
     //    $data=  $this->LieuTrinhChiTiet->selectDate();
     //    dd($data);
     }
@@ -56,11 +56,11 @@ class LieuTrinhController extends Controller
      */
     public function create()
     {
-       
+
     }
 
 
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -69,13 +69,13 @@ class LieuTrinhController extends Controller
      */
     public function store(LieuTrinhChiTiet $request)
     {
-    
+
         if($request->imgkhachhang){
             $imgkhachhang = $this->uploadSingle($this::PATH_UPLOADS_KHACHHANG, $request->imgkhachhang);
         }else{
             $imgkhachhang = 'default-avatar-kh.jpg';
         }
-        
+
         $data = [
             'idlieutrinh' =>$request->id,
             'iddichvu' => $request->iddichvu,
@@ -116,9 +116,9 @@ class LieuTrinhController extends Controller
     {
         $data = $this->LieuTrinh->find($id);
         $NhanVien =  $this->NhanVien->getAll();
-       
+
         return view('Admin.LieuTrinh.edit',compact('data','NhanVien'));
-       
+
     }
 
     public function editLieuTrinhChiTiet($id){
@@ -128,7 +128,7 @@ class LieuTrinhController extends Controller
         $DichVu =  $this->DichVu->getAll();
         $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($id);
         $hasHoaDon = count($findHoaDon);
-        
+
         $LieuTrinh = $this->LieuTrinh->find($id);
 
         view()->share('id',$id);
@@ -138,7 +138,7 @@ class LieuTrinhController extends Controller
 
 
     public function editNameDv(Request $request){
-       
+
         switch ($request->name) {
             case 'ghichu':
                 $res = $this->LieuTrinhChiTiet->update($request->pk,['ghichu'=> $request->value]);
@@ -154,7 +154,7 @@ class LieuTrinhController extends Controller
                 $request->validate([
                     'value' => 'required|date|after:today'
                 ], $messsages);
-              
+
                 $data= [
                     'ngay'=> strtotime($request->value)
                 ];
@@ -170,9 +170,9 @@ class LieuTrinhController extends Controller
     }
 
     function editImgLieuTrinh(Request $request){
-  
+
         $img = $this->uploadSingle($this::PATH_UPLOADS_KHACHHANG,$request->file('file'));
-        
+
         $data= [
             'imgkhachhang'=> $img
         ];
@@ -197,14 +197,14 @@ class LieuTrinhController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+
         $item = $this->LieuTrinhChiTiet->find($id);
         $res = $this->LieuTrinhChiTiet->update($id,[
-            'trangthai' => ($item->trangthai === 1) ? 0 : 1 
+            'trangthai' => ($item->trangthai === 1) ? 0 : 1
         ]);
         $LieuTrinh = $this->LieuTrinhChiTiet->findLieuTrinhChiTietByIdLieuTrinh($item->idlieutrinh);
         $countTrangThai = 0;
-        for ($i=0; $i < count($LieuTrinh); $i++) { 
+        for ($i=0; $i < count($LieuTrinh); $i++) {
             if($LieuTrinh[$i]->trangthai === 1){
                 $countTrangThai += 1;
             }
@@ -214,7 +214,7 @@ class LieuTrinhController extends Controller
         }else{
             $this->LieuTrinh->update($item->idlieutrinh,['trangthai'=>0]);
         }
-       
+
         if($res){
             return  redirect()->back();
         }
@@ -228,19 +228,19 @@ class LieuTrinhController extends Controller
      */
     public function destroy($id)
     {
-     
+
         $findHoaDon = $this->HoaDon->findHoaDonByIdLieuTrinh($this->LieuTrinhChiTiet->find($id)->idlieutrinh);
         if(count($findHoaDon) > 0){
             return $this->handleError('Xoá lỗi, liệu trình đã được thanh toán!');
         }else{
             $res =  $this->LieuTrinhChiTiet->delete($id);
-      
+
             if($res){
                 return  redirect()->back();
             }
         }
-       
+
     }
 
-    
+
 }

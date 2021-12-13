@@ -39,8 +39,12 @@ class DonHangController extends Controller
     {
 
         $data = $this->DonHang->getAll();
+        $donhangchitiet = $this->DonHangChiTiet->getAll();
         $khachHang  = $this->KhachHang->getall();
-        return view('Admin.DonHang.index',compact('data','khachHang'));
+        $DonHangct  = $this->DonHang->getDonHangAndDonHangChiTietById();
+// dd($DonHangct);
+
+        return view('Admin.DonHang.index',compact('data','khachHang','donhangchitiet'));
     }
 
     /**
@@ -85,8 +89,10 @@ class DonHangController extends Controller
         $dataDHCT = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
         $data  = $this->DonHang->find($id);
         $khachHang  = $this->KhachHang->find($data->idkhachhang);
+        $Giamgia = $this->DonHang->getDonHangAndGiamGiaById($id);
+
         //$GiamGia  = $this->GiamGia->find($data->idgiamgia);
-        return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT'));
+        return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT','Giamgia'));
     }
 
     /**

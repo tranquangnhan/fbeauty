@@ -36,7 +36,18 @@ class DonHangRepository extends BaseRepository implements DonHangRepositoryInter
             ->join('khachhang', 'khachhang.id', '=', 'donhang.idkhachhang')->find($id);
 
     }
+    public function getDonHangAndGiamGiaById($id)
+    {
+        return $this->model->select('giamgia.name as namegiamgia')
+            ->join('giamgia', 'giamgia.id', '=', 'donhang.idgiamgia')->find($id);
 
+    }
+    public function getDonHangAndDonHangChiTietById()
+    {
+        return $this->model->select('donhangchitiet.iddonhang as iddonhang1')
+            ->join('donhangchitiet', 'donhangchitiet.iddonhang', '=', 'donhang.id')->get();
+
+    }
     public function findDonHangByIdGiamGia($idDonHang)
     {
         return $this->model->select("*")->where('id', '=', $idDonHang)->get();
