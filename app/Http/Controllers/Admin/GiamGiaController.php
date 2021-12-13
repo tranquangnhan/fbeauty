@@ -52,13 +52,6 @@ class GiamGiaController extends Controller
 
     public function store(GiamGia $request)
     {
-        // if($this->GiamGia->CheckName($request->name) === false && $request->name !== null){
-        //     return $this->handleErrorInput('Tên mã đã tồn tại!');
-        // }
-
-        // if($this->GiamGia->CheckMa($request->ma) === false && $request->ma !== null){
-        //     return $this->handleErrorInput('Mã này đã tồn tại!');
-        // }
 
         $mytime = Carbon::now()->format('Y-m-d');
         if ($request->ngayhethan > $request->ngaytao) {
