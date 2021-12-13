@@ -173,7 +173,22 @@ function FilterName(data, bienkhac) {
 function ShowSanPham(data) {
     var sp = '';
     var dem = 0;
+    var typeColumn = $('.change-column-control.active').attr('type-column');
     for (let i = 0; i < data.sanpham.length; i++) {
+        if (typeColumn == 'single') {
+            if (i > 0) {
+                var marginTop = 'mt-3';
+            } else {
+                var marginTop = '';
+            }
+        } else {
+            if (i > 2) {
+                var marginTop = 'mt-3';
+            } else {
+                var marginTop = '';
+            }
+        }
+
         dem += 1;
         var thetich;
         if (data.sanpham[i].thetich != null) {
@@ -199,8 +214,8 @@ function ShowSanPham(data) {
             }
             showgiasaugiam = '<br><span>Giảm còn: </span><span class="font-weight-bold">' + giasaugiam.toLocaleString().replaceAll(",", ".") + 'đ</span>';
         }
-        sp += '<div class="col-xl-4 fa-sanpham-item" id="AnHienSP' + (i + 1) + '">\n' +
-            ' <div class="item-sanpham w-100">\n' +
+        sp += '<div class="col-xl-4 fa-sanpham-item '+ marginTop +'" id-data-sanpham="'+i+'" id="AnHienSP' + (i + 1) + '">\n' +
+            ' <div class="item-sanpham w-100 sanpham-">\n' +
             ' <div class="child-item-sanpham row g-0">\n' +
             ' <div class="btn-add-wishlist btn-sticky hover-scale-1 ' + yeuthich + '" id="tym' + data.sanpham[i].id + '" onclick="AddYeuThich(' + data.sanpham[i].id + ')">\n' +
             '<div class="box-cicrle" id="yt" style="z-index: 9999;">' +
@@ -214,18 +229,18 @@ function ShowSanPham(data) {
             '<p class="product-catergory font-13 mb-1">' + data.sanpham[i].tendm + '</p>\n' +
             '</a>\n' +
             ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].slug + '">\n' +
-            ' <h6 class="product-name mb-3" style="height: 35px;">' + data.sanpham[i].name.substring(0, 35) + '...</h6>\n' +
+            ' <h6 class="product-name mb-1 limit-text-row-2">' + data.sanpham[i].name + '</h6>\n' +
             '  </a>\n' +
             ' <p class="card-text product-motangan">' + data.sanpham[i].mota + '</p>\n' +
             '<div class="d-flex align-items-center fa-product-price" style="height: 40px;">\n' +
-            '<div class="mb-2 product-price">\n' +
+            '<div class="product-price">\n' +
             ' <span class="text-decoration-line-through" >' + Number(data.sanpham[i].dongia).toLocaleString().replaceAll(",", ".") + '</span>đ / <span>' + thetich + '</span>ml  \n' +
             '' + showgiasaugiam + '</div>\n' +
             '</div>\n' +
             '<div class="mt-1 product-action">\n' +
-            '<div class="d-flex gap-2">\n' +
-            ' <button class="w-100 btn-sanpham btn-5 " style="margin-bottom: 5px!important;" onclick="ThemGioHang(' + data.sanpham[i].idspct + ')"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button></br>\n' +
-            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].slug + '"><button class="w-100 btn-sanpham btn-5 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
+            '<div class="d-flex gap-2 justify-content-end">\n' +
+            ' <button class="btn-sanpham btn-5 mt-2 mr-2" onclick="ThemGioHang(' + data.sanpham[i].idspct + ')"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>\n' +
+            ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].slug + '"><button class="btn-sanpham btn-5 mb-3 mt-2"><i class="fas fa-search"></i> Xem chi tiết</button></a>\n' +
             '</div></div></div></div></div></div></div></div>';
     }
     document.getElementById("showSP").innerHTML = sp;
@@ -312,18 +327,18 @@ function ShowPhanTrang(dem) {
         if (j <= soSp.length) {
             document.getElementById('AnHienSP' + j).style.display = "block";
         } else {
-            xemsp.innerHTML = '<button class="w-25 border border-dark p-2" style="background-color: black; color: #e87c7b;" ><< Không có sản phẩm nào >></button>'
+            xemsp.innerHTML = '<button class="button btn-4">Không có sản phẩm nào !</button>'
         }
     }
 
     if (dem <= soSp.length) {
         if ((soSp.length - dem) != 0) {
-            xemsp.innerHTML = '<button class="w-25 border border-dark p-2" style="background-color: #e87c7b; " onclick="ShowPhanTrang(' + (dem + soluongshowtiep) + ')">Xem thêm (' + (soSp.length - dem) + ' sản phẩm )<i class="fa fa-angle-down"></i></button>'
+            xemsp.innerHTML = '<button class="button btn-4" onclick="ShowPhanTrang(' + (dem + soluongshowtiep) + ')">Xem thêm (' + (soSp.length - dem) + ' sản phẩm ) <i class="fa fa-angle-down"></i></button>'
         } else {
-            xemsp.innerHTML = '<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;" ><< Không có sản phẩm nào >></button>'
+            xemsp.innerHTML = '<button class="button btn-4"> Không có sản phẩm nào !</button>'
         }
     } else {
-        xemsp.innerHTML = '<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;" ><< Không có sản phẩm nào >></button>'
+        xemsp.innerHTML = '<button class="button btn-4">     Không có sản phẩm nào !</button>'
     }
 
 }

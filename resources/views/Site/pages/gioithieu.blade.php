@@ -5,8 +5,8 @@
 @endsection
 
 @section('main')
-    <div class="fa-lienhe">
-        <div class="about">
+    <div class="fa-gioithieu">
+        <div class="about" style="min-height: 780px">
             <div class="box-about position-relative">
                 <div class="background-about">
                     <div class="box-images-2">
@@ -20,11 +20,10 @@
                                  src="{{ asset('Site/images') }}/coso4.jpg" alt="">
                         </div>
                     </div>
-                    {{-- <div class="big-title about-title-custom title-font">About us</div> --}}
                 </div>
                 <div class="container">
                     <div class="row flex-row-reverse">
-                        <div class="col-xl-6" style="margin-top: 100px">
+                        <div class="col-xl-6 col-lg-6 col-ml-6 col-sm-12 col-12">
                             <div class="about-content">
                                 <div class="title-small line-before">
                                     VỀ CHÚNG TÔI
@@ -33,26 +32,38 @@
                                     <div class="title-1">
                                         Hệ Thống Spa <br> Đẳng Cấp
                                     </div>
-                                    <div class="text-1 mt-4">
-                                        Với 45 chi nhánh trải dài khắp cả nước, FBeauty tự hào là chuỗi hệ thống thẩm mỹ
+
+                                    <div class="text-4">
+                                        Hệ Thống Spa Đẳng Cấp
+                                    </div>
+
+                                    <div class="text-1 mt-2 text-desk">
+                                        Với 45 chi nhánh trải dài khắp cả nước, FBeauty Spa tự hào là chuỗi hệ thống thẩm mỹ
                                         viện hàng đầu Việt Nam
                                     </div>
-                                    <div class="text-2 mt-1">
-                                        Mang trong mình niềm tin về sứ mệnh đánh thức vẻ đẹp tiềm ẩn trong mỗi người,
-                                        FBeauty
-                                        Spa luôn nỗ lực
-                                        không ngừng để đem đến cho khách hàng những dịch vụ hoàn hảo nhất. Không chỉ nằm
-                                        ở
-                                        kết quả mà FBeauty
-                                        Spa còn hướng tới thẩm mỹ khỏe – đẹp – an toàn để mỗi phút giây ngắm mình trong
-                                        gương là những
-                                        phút giây tận hưởng hạnh phúc thật sự của mỗi khách hàng.
+
+                                    <div class="text-2 mt-3">
+                                        Được thành lập từ năm 2012, Fbeauty Spa với hơn 9 năm kinh nghiệm trong lĩnh vực chăm sóc và
+                                        điều trị các vấn đề về: Mụn – Thâm –  Sẹo. Trong những năm tháng hoạt động, Fbeauty Spa đã
+                                        không ngừng nâng cấp dịch vụ, không gian và thiết bị cho khách hàng nhằm đem đến những
+                                        trải nghiệm tốt nhất mà một hệ thống chăm sóc da có thể mang lại.
                                     </div>
-                                </div>
-                                <div class="w-100 text-left mt-3">
-                                    <a href="{{URL::to("gioi-thieu")}}">
-                                        <button class="btn-3 active black-1">Xem chi tiết</button>
-                                    </a>
+
+                                    <div class="text-2 mt-3">
+                                        Mang trong mình niềm tin về sứ mệnh đánh thức vẻ đẹp tiềm ẩn trong mỗi người, Fbeauty Spa luôn nỗ lực
+                                        không ngừng để đem đến cho khách hàng những dịch vụ hoàn hảo nhất. Không chỉ nằm ở
+                                        kết quả mà Fbeauty Spa còn hướng tới thẩm mỹ khỏe – đẹp – an toàn để mỗi phút giây ngắm mình trong
+                                        gương là những
+                                        phút giây tận hưởng hạnh phúc thật sự của mỗi khách hàng. đáp ứng tốt mọi nhu cầu làm đẹp của chị em trên khắp vùng miền Tổ Quốc.
+                                    </div>
+
+                                    <div class="text-2 mt-3">
+                                        Quy trình điều trị chuẩn y khoa, sẵn sàng học hỏi, nỗ lực và cập nhật những kiến thức y khoa,
+                                        công nghệ hiện đại để mang đến cho khách hàng trải nghiệm và kết quả điều trị tốt nhất.
+                                    <br>
+                                        Nụ cười hài lòng, sự tin tưởng tuyệt đối của khách hàng là thước đo
+                                        của sự thành công của chúng tôi.
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -60,53 +71,83 @@
                 </div>
             </div>
         </div>
-        <div class=" mt-5 ">
-            <div class="w-100 container text-center">
-                <div class="title-small line-before">
-                    Đội ngũ nhân viên nhiệt tình
-                </div>
-                <h1 style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Chuyên gia và các bác sĩ</h1>
-                <p class="mt-4">
-                    100% các bác sĩ tại FBeauty được đào tạo bài bản từ các trường Đại học danh tiếng trong và ngoài
-                    nước.
-                    Ngoài kiến thức và kỹ năng trong nghề,
 
-                    mỗi Bác sĩ và Trưởng <br> bộ phận phải trải qua quá trình trị liệu tối thiểu 10,000 ca lâm sàng để
-                    có hiểu biết chuyên sâu về làn da cũng như cơ địa người Châu Á.
-
-                    Luôn học hỏi, nỗ lực và cập nhật những kiến thức y khoa – xu hướng thẩm mỹ mới nhất để bắt kịp với
-                    xu hướng y học hiện đại cam kết mang đến cho khách hàng kết quả thẩm mỹ tốt nhất.
-                </p>
-            </div>
-            <div class="w-100 mt-4 container">
-                <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class=" mb-2"
-                     style="width:100%;height:100%;">
-            </div>
-        </div>
-        <div class="box-lieutrinh mt-5">
-            <div class="bg-lieutrinh">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-3">
-                            <div class="box-title-lieutrinh">
-                                <div class="title-3">
-                                    Điều Trị <br> Theo Liệu Trình
+        <div class="mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="service-content position-relative z-index-1">
+                            <div class="title-small line-before">
+                                ĐỘI NGŨ NHÂN VIÊN Chuyên nghiệp
+                            </div>
+                            <div class="w-100">
+                                <div class="text-4 w-100">
+                                    Chuyên viên và bác sĩ
                                 </div>
 
-                                <p class="text-2 limit-text-row-3 mt-1 mt-3">
-                                    Điều trị da theo liệu trình nghĩa là khách hàng sẽ tuân thủ đúng số buổi, thời gian
-                                    tái khám và điều trị tiếp theo hay kết hợp dùng thuốc đặc trị tại nhà (nếu có) theo
-                                    đúng như hướng dẫn của bác sĩ.
-                                </p>
+                                <div class="text-1 mt-2 text-desk">
+                                    100% các bác sĩ tại FBeauty được đào tạo bài bản từ các trường Đại học danh tiếng trong và ngoài
+                                    nước.
+                                </div>
 
-                                <div class="w-100 text-left mb-4">
-                                    <button class="button btn-5 btn-datlich btn-modal-main" type-modal="modal-datlich"
-                                            data-show="one">Đặt lịch
-                                    </button>
+                                <div class="text-2 mt-3">
+                                    Ngoài kiến thức và kỹ năng trong nghề,
+
+                                    mỗi Bác sĩ và Trưởng bộ phận phải trải qua quá trình trị liệu tối thiểu 10,000 ca lâm sàng để
+                                    có hiểu biết chuyên sâu về làn da cũng như cơ địa người Châu Á.
+                                </div>
+
+                                <div class="text-2 mt-3">
+                                    Luôn nỗ lực và cập nhật những kiến thức y khoa – xu hướng thẩm mỹ mới nhất để bắt kịp với
+                                    xu hướng y học hiện đại cam kết mang đến cho khách hàng kết quả thẩm mỹ tốt nhất.
+                                </div>
+
+                                <div class="text-2 mt-3">
+                                    Gây ấn tượng với khách hàng từ cái nhìn đầu tiên chính là nụ cười thân thiện, cử chỉ gần gũi và không
+                                    kém phần duyên dáng của đội ngũ chuyên viên tư vấn. Những điều đó chắc chắn sẽ làm bạn hài lòng khi
+                                    đến với chúng tôi.
+                                </div>
+
+                                <div class="text-2 mt-3">
+                                    Ngoài ra, đội ngũ chuyên viên cũng thường xuyên được tham gia các khóa học nâng cao trình độ, hướng dẫn
+                                    sử dụng trang thiết bị hiện đại,
+                                    làm việc với các bác sỹ, chuyên gia nước ngoài để tăng cường kiến thức để phục vụ khách hàng tốt hơn nữa.
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-9">
+                    </div>
+
+                    <div class="col-6">
+                        <div class="w-100 mt-4 container">
+                            <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class=" mb-2"
+                                 style="width:100%;height:100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-lieutrinh pb-0 mt-5">
+            <div class="bg-lieutrinh">
+                <div class="container">
+                    <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-3 col-md-12">
+                            <div class="box-title-lieutrinh">
+                                <div class="title-3">
+                                    Điểm Nổi Bật Spa Hướng Đến
+                                </div>
+
+                                <p class="text-2 mt-1 mt-3">
+                                    Luôn lắng nghe, không ngừng đổi mới, nâng cấp trang thiết bị, đội ngũ kĩ thuật viên thường xuyên được tham
+                                    gia các khóa hướng dẫn sử dụng máy móc, tập huấn nghiêm ngặt trước khi thực hiện dịch vụ cho khách hàng.
+                                </p>
+
+                                <div class="w-100 text-left mb-4">
+                                    <a href="/lien-he"><button class="button btn-5">Liên hệ</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-12">
                             <div class="cac-buoc-lieutrinh">
                                 <div class="lieutrinh-item">
                                     {{-- <div class="number-1">
@@ -114,16 +155,14 @@
                                     </div> --}}
 
                                     <div class="title-5">
-                                        Kế Hoạch
+                                        An Toàn & Vệ Sinh
                                     </div>
-                                    <div class="icon-1 mt-4" style="height:75px;">
+                                    <div class="icon-1 mt-4">
                                         <img class="" src=" {{ asset('Site/images/icon') }}/task.png"
-                                             alt="">
+                                            alt="">
                                     </div>
-                                    <div class="text-2 mt-4 color-white font-weight-300">
-                                        Lo lắng giữa thị trường “xô bồ” của mỹ phẩm có chứa thành phần hóa học ảnh hưởng
-                                        xấu đến da thì mỹ phẩm được chiết xuất từ thiên nhiên ra đời giống như cứu cánh
-                                        cho phái đẹp.
+                                    <div class="text-2 mt-4 color-white font-weight-300 ">
+                                        Luôn đảm bảo vệ sinh cao độ cũng như trang bị lò hấp khử trùng bằng cực tím.
                                     </div>
                                 </div>
 
@@ -133,18 +172,16 @@
                                     </div> --}}
 
                                     <div class="title-5">
-                                        Theo Dõi
+                                        Bác Sĩ & Chuyên Viên
                                     </div>
 
-                                    <div class="icon-1 mt-4" style="height:75px;">
+                                    <div class="icon-1 mt-4">
                                         <img class="" src=" {{ asset('Site/images/icon') }}/doctor.png"
-                                             alt="">
+                                            alt="">
                                     </div>
 
                                     <div class="text-2 mt-4 color-white font-weight-300">
-                                        Hãy theo dõi chũng tôi để biết được những ưu đãi đặc biệt dành cho khách hàng,
-                                        chúng tôi cam đoan những dòng mỹ phẩm nổi tiếng và mới nhất sẽ nhanh chóng nằm
-                                        trong tay của bạn còn chờ gì mà không theo dõi ngay.
+                                        Được đào tạo chuyên sâu về ngành thẩm mỹ, và trên hết họ phải hiểu rất kỹ sản phẩm sử dụng cho khách hàng.
                                     </div>
                                 </div>
 
@@ -154,18 +191,16 @@
                                     </div> --}}
 
                                     <div class="title-5">
-                                        Hỗ Trợ
+                                        Trang Thiết Bị Hiện Đại
                                     </div>
 
-                                    <div class="icon-1 mt-4" style="height:75px;">
+                                    <div class="icon-1 mt-4">
                                         <img class="" src="
-                                        {{ asset('Site/images/icon') }}/customer-service.png" alt="">
+                                            {{ asset('Site/images/icon') }}/customer-service.png" alt="">
                                     </div>
 
                                     <div class="text-2 mt-4 color-white font-weight-300">
-                                        Với đội ngũ nhân viên chuyên nghiệp phục vụ bạn 24/7 chỉ cần nhấc máy và gọi
-                                        chúng tôi sẽ hỗ trợ cho bạn tận tình và đưa ra giải pháp hợp lý giúp bạn có thân
-                                        hình toàn diện.
+                                        Kiểm tra chất lượng thiết bị định kì, đảm bảo được sự an toàn tuyệt đối với khách hàng
                                     </div>
                                 </div>
                             </div>
@@ -175,50 +210,10 @@
             </div>
         </div>
 
-        <div class="introduce mb-5 col-11 mt-5 text-center container-fluid">
-            <div class="card-body mt-5 nsl">
-                <div class="title-small line-before">
-                    Trải nghiệm nghệ thuật chăm sóc
-                </div>
-                <h1 style="font-family: 'Roboto', sans-serif;font-size:50px;">Hội đồng sáng lập</h1>
-                <p class="card-text">Cùng với hàng ngàn nhân viên chuyên ngành Spa họ đã tạo nên một FBeauty hoàn thiện
-                    như hiện nay.</p>
-            </div>
-            <div class="card-deck mt-4 mb-5">
-                <div class="card container text-center border-0">
-                    <img src="{{ asset('uploads') }}/ceo1.jpg" alt="Avatar" class="image mb-2" style="width:100%">
-                    <div class="middle">
-                        <div class="text ">Mrs.Jiyeon</div>
-                    </div>
-                    <i><span class="span-lienhe  card-title">Giám đốc điều hành </span></i>
-                </div>
-                <div class="card container border-0">
-                    <img src="{{ asset('uploads') }}/ceo4.jpg" alt="Avatar" class="image mb-2" style="width:100%">
-                    <div class="middle">
-                        <div class="text ">Mr.Kyungsoo</div>
-                    </div>
-                    <i><span class="span-lienhe text-center main-title">Phó giám đốc  </span></i>
-                </div>
-                <div class="card container border-0">
-                    <img src="{{ asset('uploads') }}/ceo2.jpg" alt="Avatar" class="image mb-2" style="width:100%">
-                    <div class="middle">
-                        <div class="text ">Mrs.Lee Qri</div>
-                    </div>
-                    <i><span class="span-lienhe text-center main-title">Quản lý nhân sự </span></i>
-                </div>
-                <div class="card container border-0">
-                    <img src="{{ asset('uploads') }}/ceo3.jpg" alt="Avatar" class="image mb-2" style="width:100%">
-                    <div class="middle">
-                        <div class="text ">Mrs.Soyeon</div>
-                    </div>
-                    <i><span class="span-lienhe text-center main-title">Tổng giám đốc</span></i>
-                </div>
-            </div>
-        </div>
-        <div class="divcoso container mb-5 mt-5 ">
-            <div class="">
+        <div class="div-coso">
+            <div class="container pb-5 py-3">
                 <div class="card-body">
-                    <div class="title-small line-before text-center mt-4">
+                    <div class="title-small line-before text-center">
                         Trải nghiệm cơ sở chất lượng
                     </div>
                     <div class="text-center">
@@ -266,6 +261,13 @@
                 </div>
             </div>
         </div>
+
+
+
+
+    </div>
+
+
     </div>
 
 @endsection

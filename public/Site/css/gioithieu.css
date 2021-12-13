@@ -52,6 +52,10 @@
 .nsl p {
     letter-spacing: 0.8px;
 }
-.introduce img ,.divcoso img{
+/* .introduce img ,.divcoso img{
     border-radius: 4px;
+} */
+
+.div-coso {
+    background: var(--main-color-2);
 }

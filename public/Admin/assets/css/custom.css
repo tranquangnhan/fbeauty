@@ -239,7 +239,7 @@ a.editable-click:hover {
 
 .custom-table-body-2 {
     display: block;
-    max-height: 440px;
+    max-height: 380px;
     overflow: auto;
 }
 .custom-table-2 thead, .custom-table-body-2 tr {

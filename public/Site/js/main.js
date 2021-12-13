@@ -19,7 +19,7 @@ $('#logo-slide').owlCarousel({
     pagination: false,
     dots: false,
     autoplay: true,
-    autoplayTimeout: 2000,
+    autoplayTimeout: 20000,
     autoplayHoverPause: true,
     responsive: {
         0: {
@@ -42,7 +42,7 @@ productSlide.owlCarousel({
     pagination: false,
     dots: false,
     autoplay: true,
-    autoplayTimeout: 5000,
+    autoplayTimeout: 50000,
     autoplayHoverPause: true,
     responsive: {
         0: {
@@ -65,7 +65,7 @@ dichVuUaChuong.owlCarousel({
     pagination: false,
     dots: false,
     autoplay: true,
-    autoplayTimeout: 10000,
+    autoplayTimeout: 1000000,
     autoplayHoverPause: true,
     responsive: {
         0: {
@@ -91,7 +91,7 @@ dichVuGiamGiaSlide.owlCarousel({
     pagination: false,
     dots: false,
     autoplay: true,
-    autoplayTimeout: 10000,
+    autoplayTimeout: 1000000,
     autoplayHoverPause: true,
     responsive: {
         0: {
@@ -120,7 +120,7 @@ $('#header-slide').owlCarousel({
     dots: true,
 
     autoplay: true,
-    autoplayTimeout: 4000,
+    autoplayTimeout: 4000000,
     autoplayHoverPause: false,
     mouseDrag: false,
     touchDrag: false,
