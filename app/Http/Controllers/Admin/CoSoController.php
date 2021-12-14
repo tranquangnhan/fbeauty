@@ -139,11 +139,10 @@ class CoSoController extends Controller
     {
 
         $data = $this->Coso->find($id);
-        //dd($data->tinh);
         $city = $this->City->getall();
         $province = $this->Province->getall();
         $wards = $this->wards->getall();
-        return view('Admin.coso.edit', compact('data', 'city', 'province', 'wards'));
+        return view('Admin.Coso.edit', compact('data', 'city', 'province', 'wards'));
 
     }
 
