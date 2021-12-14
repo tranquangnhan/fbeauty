@@ -150,14 +150,7 @@ class KhachHangController extends Controller
      */
     public function update(KhachHang $request, $id)
     {
-        if($this->KhachHang->CheckEmail($request->email) === false && $request->email !== null){
-            return $this->handleErrorInput('Email đã tồn tại!');
-        }
-
-        if($this->KhachHang->CheckSdt($request->sdt) === false && $request->sdt !== null){
-            return $this->handleErrorInput('Số điện thoại đã tồn tại!');
-        }
-
+        
         $password = $request->password;
         $passnew = "";
         if ($password == null) {

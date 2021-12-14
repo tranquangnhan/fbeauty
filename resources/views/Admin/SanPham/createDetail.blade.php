@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <label >Nhập số ml</label>
                     <input type="number" name="ml"  parsley-trigger="change" required
-                    placeholder="Nhập tên nhà sản xuất" class="form-control" id="userName">
+                    placeholder="Nhập số ml" class="form-control" id="userName">
                     </div>
                     <div class="form-group">
                         <label >Nhập số lượt tồn kho</label>
