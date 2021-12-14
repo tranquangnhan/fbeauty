@@ -28,7 +28,7 @@ class GiamGia extends FormRequest
             'ma'=>'required|unique:giamgia|between:3,30',
             'number'=>'required|max:9',
             'max'=>'required||max:9',
-            'loai'=>'required|numeric|in:1,2',
+            'loai'=>'required',
             'ngaytao'=>'required',
             'ngayhethan'=>'required'
         ];

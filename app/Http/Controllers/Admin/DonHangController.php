@@ -107,7 +107,6 @@ class DonHangController extends Controller
         if ($request->tongtientruocgiamgia > $request->tongtiensaugiamgia) {
         $data = [
 
-            'idgiamgia' => $request->magiamgia,
             'tennguoinhan'=> $request->namenguoinhan,
             'diachikhachhang'=>$request->diachi,
             'sdtnguoinhan'=>$request->sodienthoai,
