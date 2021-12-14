@@ -31,7 +31,6 @@ class DonHangController extends Controller
     {
         $this->DonHang = $DonHang;
         $this->KhachHang = $khachHang;
-        //$this->GiamGia = $GiamGia;
         $this->DonHangChiTiet = $DonHangChiTiet;
 
     }
@@ -42,7 +41,6 @@ class DonHangController extends Controller
         $donhangchitiet = $this->DonHangChiTiet->getAll();
         $khachHang  = $this->KhachHang->getall();
         $DonHangct  = $this->DonHang->getDonHangAndDonHangChiTietById();
-// dd($DonHangct);
 
         return view('Admin.DonHang.index',compact('data','khachHang','donhangchitiet'));
     }
@@ -107,7 +105,6 @@ class DonHangController extends Controller
         if ($request->tongtientruocgiamgia > $request->tongtiensaugiamgia) {
         $data = [
 
-            'idgiamgia' => $request->magiamgia,
             'tennguoinhan'=> $request->namenguoinhan,
             'diachikhachhang'=>$request->diachi,
             'sdtnguoinhan'=>$request->sodienthoai,

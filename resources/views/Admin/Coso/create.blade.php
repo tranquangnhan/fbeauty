@@ -76,7 +76,7 @@
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Huỷ</button>
+                                    <a href="/quantri/coso" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
                                     <button type="submit" name="them" class="btn btn-primary waves-effect waves-light"  id='add_product'>Thêm</button>
                                 </div>
                             </form>
