@@ -6,10 +6,7 @@ use App\Repositories\HoaDon\HoaDonRepository;
 use Carbon\Carbon;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Province;
-use App\Models\Admin\GiamGiaModel;
 use App\Repositories\GiamGia\GiamGiaRepository;
-use Illuminate\Http\Request;
 use App\Http\Requests\GiamGia;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Http\Requests\GiamGiaEdit;
@@ -101,7 +98,6 @@ class GiamGiaController extends Controller
     {
 
         $data = $this->GiamGia->find($id);
-        //dd($data->tinh);
         return view('Admin.giamgia.edit', compact('data'));
 
     }
