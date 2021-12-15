@@ -116,7 +116,7 @@
                                         <div class="select">
                                             <select id="sapxep" onchange="SapXep()" class="custom-select"
                                                     style="border-radius: 0px;margin-left: 6%;">
-                                                <option value="AZ" selected>Tên sản phẩm từ A->Z</option>
+                                                <option value="AZ" id="AZ">Tên sản phẩm từ A->Z</option>
                                                 <option value="ZA">Tên sản phẩm từ Z->A</option>
                                                 <option value="thapcao">Giá thấp đến cao</option>
                                                 <option value="caothap">Giá cao đến thấp</option>
