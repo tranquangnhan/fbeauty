@@ -88,16 +88,9 @@
                                             </td>
                                             <td class="d-flex align-center">
                                                 <a name="" id="" class="btn btn-primary mr-2" href="{{route('donhang.edit',$item->id)}}" role="button"><i class="fa fa-edit" title="Sửa Đơn Hàng"></i></a>
-
-                                                    @foreach ($donhangchitiet as $dhct)
-                                                        @if ($dhct->iddonhang == $item->id)
                                                             <a name="" id="" class="btn btn-primary " href="{{url('quantri/donhangchitiet/detail/'.$item->id.'/edit')}}" role="button"><i class="fas fa-search-dollar"></i></a>
-                                                        @endif
-
-                                                    @endforeach
                                             </td>
                                         </tr>
-
                                     @endforeach
 
 
