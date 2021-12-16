@@ -147,7 +147,7 @@
                                         @endif
                                         <hr>
                                         <p class="text-right" style="font-size: 13pt;"><b>THÀNH
-                                                TIỀN: </b>{{number_format($hoadon->tongtiensaugiamgia), ""}} VND</p>
+                                                TIỀN: </b>{{number_format($hoadon->tongtiensaugiamgia), ""}}VND</p>
                                     </div>
                                 </div>
                                 <hr>
