@@ -36,7 +36,6 @@ class CoSoController extends Controller
         $this->wards = $wards;
         $this->Lich = $Lich;
         $this->HoaDon = $HoaDon;
-        // ProvinceRepository $Province , WardsRepository $wards
     }
 
     /**

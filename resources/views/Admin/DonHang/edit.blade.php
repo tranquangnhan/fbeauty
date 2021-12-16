@@ -39,7 +39,6 @@
                                 @csrf
                                 {!! method_field('patch') !!}
 
-
                                 <div class="row">
                                     <div class="col-lg-12">
                                     <div class="form-row">
@@ -50,7 +49,8 @@
 
                                             <div class="form-group col-md-4">
                                                 <label for="">Mã Giảm Giá</label><span style="color:red;"> (*)</span>
-                                                <input type="text" name="magiamgia" class="form-control @error('magiamgia') border-error @enderror magiamgia" value="{{$Giamgia->namegiamgia}}"  parsley-trigger="change" readonly>
+                                                <input type="text" name="magiamgia" class="form-control @error('magiamgia') border-error @enderror magiamgia" value="@if($data->idgiamgia === null)Đơn Hàng không áp dụng mã@else{{$GiamGia->namegiamgia}}@endif
+                                                "  parsley-trigger="change" readonly>
                                                 @error('magiamgia')
                                                 <span class="badge badge-danger">{{$message}}</span>
                                                 @enderror

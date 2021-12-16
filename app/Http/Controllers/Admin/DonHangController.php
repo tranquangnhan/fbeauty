@@ -87,9 +87,8 @@ class DonHangController extends Controller
         $dataDHCT = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
         $data  = $this->DonHang->find($id);
         $khachHang  = $this->KhachHang->find($data->idkhachhang);
-        $Giamgia = $this->DonHang->getDonHangAndGiamGiaById($id);
-
-        return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT','Giamgia'));
+        $GiamGia = $this->DonHang->getDonHangAndGiamGiaById($id);
+        return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT','GiamGia'));
     }
 
     /**
@@ -102,7 +101,7 @@ class DonHangController extends Controller
     public function update(DonHangEdit $request, $id)
     {
 
-        if ($request->tongtientruocgiamgia > $request->tongtiensaugiamgia) {
+        if ($request->tongtientruocgiamgia >= $request->tongtiensaugiamgia) {
         $data = [
 
             'tennguoinhan'=> $request->namenguoinhan,

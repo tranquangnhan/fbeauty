@@ -24,7 +24,6 @@ class DonHangEdit extends FormRequest
     public function rules()
     {
         return [
-            'magiamgia' => ['required','min:1', 'max:25'],
             'namenguoinhan' => ['required','min:3', 'max:25'],
             'diachi' => ['required','min:3', 'max:100'],
             'sodienthoai' => ['required', 'regex:/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/'],
@@ -39,9 +38,6 @@ class DonHangEdit extends FormRequest
 
     public function messages() {
         return [
-            'magiamgia.required' => 'Bạn chưa nhập tên mã giảm giá',
-            'magiamgia.min' => 'Tên dịch vụ phải lớn hơn 3 kí tự',
-            'magiamgia.max' => 'Tên dịch vụ phải nhỏ hơn 25 kí tự',
             'namenguoinhan.required' => 'Bạn chưa nhập tên người nhận',
             'namenguoinhan.min' => 'Tên dịch vụ phải lớn hơn 3 kí tự',
             'namenguoinhan.max' => 'Tên dịch vụ phải nhỏ hơn 25 kí tự',
