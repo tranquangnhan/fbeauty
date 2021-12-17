@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(installSeeder::class);
         $this->call(LichSeeder::class);
         $this->call(DatLichSeeder::class);
+        $this->call(HoaDonSeeder::class);
+        $this->call(LieutrinhSeeder::class);
+        $this->call(DonHangSeeder::class);
     }
 }

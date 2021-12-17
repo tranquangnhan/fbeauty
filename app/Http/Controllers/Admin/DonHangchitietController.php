@@ -7,6 +7,8 @@ use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
 use App\Repositories\SanPham\SanPhamRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class DonHangchitietController extends Controller
 {
     private $DonHangChiTiet;
@@ -58,7 +60,8 @@ class DonHangchitietController extends Controller
         $Tong = $this->DonHangChiTiet->getIdTongthanhtoanByIdDonHangChiTtiet($id);
 
 
-        return view('Admin.DonHang.detail', compact('donHang','sanpham','khachHang','Tong'));
+
+        return view('Admin.DonHang.detail', compact('donHang','sanpham','khachHang','Tong',));
     }
 
 

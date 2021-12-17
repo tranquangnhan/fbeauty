@@ -54,7 +54,9 @@ class GioHangController extends Controller
         $this->CoSo=$CoSo;
         $this->freeSMSController = new freeSMSController;
     }
-
+    /**
+     *Show giỏ hàng
+     */
     public function ShowGioHang()
     {
         if (session()->has('khachHang') && session('khachHang') != '') {
@@ -75,10 +77,8 @@ class GioHangController extends Controller
 
         }
     }
-
     /**
-     *return 0: Sản phẩm đã hết hàng
-     *
+     *Thêm sản phẩm vào giỏ hàng
      */
     public function ThemGioHang($id)
     {
@@ -191,7 +191,9 @@ class GioHangController extends Controller
             return 0;
         }
     }
-
+    /**
+     *Thêm sản phẩm vào giỏ hàng chi tiết
+     */
     public function ThemGioHangChiTiet($id, $soluong)
     {
         $getspct = $this->SanPhamChiTiet->find($id);
@@ -303,7 +305,9 @@ class GioHangController extends Controller
             return 0;
         }
     }
-
+    /**
+     *Xóa trong session hoặc data
+     */
     public function XoaSanPhamGioHang($id)
     {
         if (session()->has('khachHang') && session('khachHang') != '') {
@@ -324,7 +328,9 @@ class GioHangController extends Controller
             return 1;
         }
     }
-
+    /**
+     *Tăng số lượng sản phẩm trong session hoặc data
+     */
     public function TangSoLuong($id)
     {
         if (session()->has('khachHang') && session('khachHang') != '') {
@@ -346,7 +352,9 @@ class GioHangController extends Controller
             return 1;
         }
     }
-
+    /**
+     *Giảm số lượng sản phẩm trong session hoặc data
+     */
     public function GiamSoLuong($id)
     {
         if (session()->has('khachHang') && session('khachHang') != '') {
@@ -368,7 +376,9 @@ class GioHangController extends Controller
             return 1;
         }
     }
-
+    /**
+     *Cập nhật số lượng dạng onkeyup
+     */
     public function CapNhatSoLuong($id, $soluongsanpham)
     {
         if (session()->has('khachHang') && session('khachHang') != '') {
@@ -390,7 +400,9 @@ class GioHangController extends Controller
             return 1;
         }
     }
-
+    /**
+     *Xóa tất cả sản phẩm trong giỏ hàng session
+     */
     public function xoatatcasanpham()
     {
         if (session()->has('khachHang') && session('khachHang') != '') {
@@ -403,7 +415,9 @@ class GioHangController extends Controller
             return 1;
         }
     }
-
+    /**
+     *Thêm giỏ hàng từ session vào database khi đăng nhập
+     */
     public function InserGioHangDataSession()
     {
         if (session()->has('giohang') && count(session()->get('giohang')) != 0) {
@@ -456,7 +470,9 @@ class GioHangController extends Controller
             return 0;
         }
     }
-
+    /**
+     *Cập nhật giá trong session
+     */
     public function capnhatgiasession($gia)
     {
         session()->get("tongdonhang");
@@ -467,12 +483,16 @@ class GioHangController extends Controller
         }
         return session()->get("tongdonhang");
     }
-
+    /**
+     *Kiểm tra số điện thoại
+     */
     public function CheckSoDienThoaiTonTai($sdt)
     {
         return $this->KhachHang->CheckSdt($sdt);
     }
-
+    /**
+     * Get protocol
+    */
     function urlSERVER(){
         if(isset($_SERVER['HTTPS'])){
             $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
@@ -482,7 +502,9 @@ class GioHangController extends Controller
         }
         return $protocol . "://" . $_SERVER['HTTP_HOST'];
     }
-
+    /**
+    *Thanh toán đơn hàng
+     */
     public function thanhtoandonhang(ThanhToan $request)
     {
         $sdt = $request->phonenumber;
@@ -592,7 +614,9 @@ class GioHangController extends Controller
         }
         return redirect('/')->with('thanhtoanthanhcong', "Đặt hàng thành công");
     }
-
+    /**
+    *Thanh toán VNPAY
+     */
     public function vnpayments(ThanhToan $request)
     {
         $sever=$this->urlSERVER().$this->vnp_Returnurl;
@@ -653,7 +677,9 @@ class GioHangController extends Controller
 
         return redirect()->to($returnData["data"]);
     }
-
+    /**
+     *Nơi tiếp nhận Return_url từ VNPAY
+     */
     public function returnPay(){
         if ($_GET["vnp_TransactionStatus"]==00){
             $sdt = session("requestAll")["phonenumber"];
@@ -771,7 +797,9 @@ class GioHangController extends Controller
             return redirect('/thanh-toan')->with('thanhtoanthatbai', "Đặt hàng thất bại");
         }
     }
-
+    /**
+     *Hủy đơn
+     */
     public function HuyDonHang($id){
         $trangthaidonhang=[
             "trangthai"=>5
@@ -794,7 +822,9 @@ class GioHangController extends Controller
             return 0;
         }
     }
-
+    /**
+     *Tạo tin cảm ơn
+     */
     public function makeMessageCamOnDatHang( $ngay, $gio)
     {
         $dateFormatDMY = $ngay;
@@ -804,7 +834,9 @@ class GioHangController extends Controller
         $message = '[Fbeauty]: Dat hang thanh cong. Cam on ban da dat hang tai website Fbeauty. Don hang duoc dat vao ngay ' . $dateFormatDMY . ' luc ' . $gioDaFormat . '. Vui long dung so dien thoai dat hang dang nhap de kiem tra don hang cua ban.';
         return $message;
     }
-
+    /**
+     *Nơi gửi SMS cảm ơn khách hàng
+     */
     public function GuiCamOn($sdt, $ngay, $gio){
         $sdts = '+84' . substr($sdt, 1, strlen($sdt));
         $message = $this->makeMessageCamOnDatHang($ngay, $gio);

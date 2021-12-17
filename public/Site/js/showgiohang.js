@@ -5,6 +5,7 @@ var tongtien=document.getElementById("tongtien");
 var nutcheckout=document.getElementById("nutcheckout");
 var asset=document.getElementById("asset").value;
 var domain=document.getElementById("domain").value;
+//Thêm sản phẩm vào giỏ
 function ThemGioHang(id) {
     if (id==null){
         iziToast.warning({
@@ -53,6 +54,7 @@ function ThemGioHang(id) {
     }
 
 }
+//Thêm sản phẩm vào giỏ hàng từ trang chi tiết
 function ThemGioHangChiTiet(muangay) {
     var idsanpham=$("#idsanpham").val();
     var tonkho=$("#tonkho").val();
@@ -109,7 +111,7 @@ function ThemGioHangChiTiet(muangay) {
         });
     }
 }
-
+//Show gio hang
 function showGioHang() {
     $.ajax({
         url: domain + '/showdonhangandgiohang',
@@ -121,9 +123,9 @@ function showGioHang() {
             if (data==0){
                 modalgiohang.innerHTML="<p>Không có sản phẩm nào</p>";
                 soluonghang.innerHTML=0;
-                soluonghang1.innerHTML=0;
                 tongtien.innerHTML = 0;
                 nutcheckout.href= "javascript:void(0)";
+                ShowSoLuongModal(0)
                 if (window.location == domain+'/gio-hang'){
                     $("#giohang-body").html("<p>Không có sản phẩm nào</p>");
                     $("#tongtiengiohang").html("0");
@@ -156,6 +158,12 @@ function showGioHang() {
     });
 }
 showGioHang();
+//Show Số lượng sản phẩm đang có
+function ShowSoLuongModal(soluong) {
+    for (let i=0; i<soluonghangmodal.length; i++){
+        soluonghangmodal[i].innerHTML=soluong;
+    }
+}
 //Show giỏ hàng tại đây
 //Show giỏ hàng dạng modal
 function Showmodalgiohang(data) {
@@ -210,9 +218,7 @@ function Showmodalgiohang(data) {
     modalgiohang.innerHTML=span;
     tongtien.innerHTML = total.toLocaleString().replaceAll(",", ".");
     soluonghang.innerHTML=stt;
-    for (let i=0; i<soluonghangmodal.length; i++){
-        soluonghangmodal[i].innerHTML=stt;
-    }
+    ShowSoLuongModal(stt)
 }
 //Show giỏ hàng trang giỏ hàng
 function GioHangBoDy(data) {
@@ -365,7 +371,9 @@ function XoaSanPham(id) {
                     iconColor: 'white',
                 });
                 showGioHang();
-                HuyGiamGia();
+                if (window.location == domain+'/thanh-toan') {
+                    HuyGiamGia();
+                }
             }
             else {
                 iziToast.warning({
@@ -426,7 +434,9 @@ function GiamSoLuong(id) {
             data: {id: id},
             success: function (data) {
                 showGioHang();
-                HuyGiamGia();
+                if (window.location == domain+'/thanh-toan') {
+                    HuyGiamGia();
+                }
             }
         });
     }

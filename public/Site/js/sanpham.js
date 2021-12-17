@@ -81,7 +81,27 @@ $('.btn-plus, .btn-minus').on('click', function(e) {
     if (input.is('input')) {
       input[0][isNegative ? 'stepDown' : 'stepUp']()
     }
-  })
+});
+
+function loadMarginTop() {
+    var typeColumn = $('.change-column-control.active').attr('type-column');
+    var sanphamElement = $('.fa-sanpham-item');
+    var soLuongSanPham = sanphamElement.length;
+    sanphamElement.removeClass('mt-3');
+    if (typeColumn == 'single') {
+        for (var i = 0; i < soLuongSanPham; i++) {
+            if (i > 0) {
+                $(`[id-data-sanpham="${i}"]`).addClass('mt-3');
+            }
+        }
+    } else {
+        for (var i = 0; i < soLuongSanPham; i++) {
+            if (i > 2) {
+                $(`[id-data-sanpham="${i}"]`).addClass('mt-3');
+            }
+        }
+    }
+}
 
 $('.change-column-control').click(function (e) {
     e.preventDefault();
@@ -90,7 +110,10 @@ $('.change-column-control').click(function (e) {
         $(this).addClass('active');
 
         var typeColumn = $(this).attr('type-column');
-        if (typeColumn == 'multiple') {
+        if (typeColumn == 'single') {
+            if ($('.fa-sanpham-item').length > 1) {
+
+            }
             $('.fa-sanpham-item').removeClass('col-xl-4');
             $('.fa-sanpham-item').addClass('col-xl-12');
 
@@ -109,6 +132,7 @@ $('.change-column-control').click(function (e) {
             $('.fa-content-sanpham').removeClass('col-xl-9');
             $('.fa-content-sanpham').addClass('col-xl-12');
         }
+        loadMarginTop();
     }
 });
 
@@ -120,10 +144,10 @@ function AddYeuThich(id) {
         dataType: 'json',
         data: {idsp: id},
         success: function (datayeuthich) {
-            if (datayeuthich == 0) {
+            if (datayeuthich === 0) {
                 $("#tym"+id).removeClass('active');
             }
-            else if (datayeuthich == 2) {
+            else if (datayeuthich === 2) {
                 $("#tym"+id).addClass('active');
                 $('#btn-modal-dangnhaps').click();
             }
@@ -134,3 +158,5 @@ function AddYeuThich(id) {
     });
 
 }
+
+

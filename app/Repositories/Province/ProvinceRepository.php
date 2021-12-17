@@ -12,5 +12,10 @@ class ProvinceRepository extends BaseRepository implements ProvinceRepositoryInt
     // public function modelcity(){
     //     return \App\Models\Admin\City::class;
     // }
+    public function getall(){
+        return $this->model->select("*")
+        ->orderBy('maqh', 'ASC')
+        ->get();
+    }
 
 }

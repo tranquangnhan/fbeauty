@@ -31,7 +31,6 @@ class DonHangController extends Controller
     {
         $this->DonHang = $DonHang;
         $this->KhachHang = $khachHang;
-        //$this->GiamGia = $GiamGia;
         $this->DonHangChiTiet = $DonHangChiTiet;
 
     }
@@ -39,8 +38,11 @@ class DonHangController extends Controller
     {
 
         $data = $this->DonHang->getAll();
+        $donhangchitiet = $this->DonHangChiTiet->getAll();
         $khachHang  = $this->KhachHang->getall();
-        return view('Admin.DonHang.index',compact('data','khachHang'));
+        $DonHangct  = $this->DonHang->getDonHangAndDonHangChiTietById();
+
+        return view('Admin.DonHang.index',compact('data','khachHang','donhangchitiet'));
     }
 
     /**
@@ -85,8 +87,9 @@ class DonHangController extends Controller
         $dataDHCT = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
         $data  = $this->DonHang->find($id);
         $khachHang  = $this->KhachHang->find($data->idkhachhang);
-        //$GiamGia  = $this->GiamGia->find($data->idgiamgia);
-        return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT'));
+        $Giamgia = $this->DonHang->getDonHangAndGiamGiaById($id);
+
+        return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT','Giamgia'));
     }
 
     /**
@@ -99,10 +102,9 @@ class DonHangController extends Controller
     public function update(DonHangEdit $request, $id)
     {
 
-        if($this == true){
+        if ($request->tongtientruocgiamgia > $request->tongtiensaugiamgia) {
         $data = [
 
-            'idgiamgia' => $request->magiamgia,
             'tennguoinhan'=> $request->namenguoinhan,
             'diachikhachhang'=>$request->diachi,
             'sdtnguoinhan'=>$request->sodienthoai,
@@ -118,7 +120,7 @@ class DonHangController extends Controller
 
         return redirect(route("donhang.index"))->with('thanhcong', 'Cập nhật thông tin thành công');
         } else {
-        return redirect(route("donhang.edit"))->with('thatbai', 'cập nhật thất bại ');
+        return redirect(route("donhang.index"))->with('thatbai', 'cập nhật thất bại vui lòng kiểm tra lại giá ');
     }
     }
 

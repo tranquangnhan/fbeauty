@@ -11,12 +11,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
-                            <h4 class="mt-0 header-title">Thêm Cơ Sở</h4>
-                            @if(session('thatbai'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {{session('thatbai')}}
-                                </div>
-                            @endif
+                            <h4 class="mt-0 header-title">Thêm Giảm Giá </h4>
+                            <x-admin.common.CaseErrorInput />
                             <form action="{{route('giamgia.store')}}"  enctype="multipart/form-data" method="post">
                                 @csrf
                                 <div class="modal-header">
@@ -94,7 +90,7 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-light waves-effect" data-dismiss="modal">Huỷ</button>
+                                    <a href="/quantri/giamgia" clas="btn btn-secondary waves-effect waves-light ">Huỷ</a>
                                     <button type="submit" name="them" class="btn btn-primary waves-effect waves-light"  id='add_product'>Thêm</button>
                                 </div>
                             </form>

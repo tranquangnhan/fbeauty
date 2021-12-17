@@ -6,10 +6,7 @@ use App\Repositories\HoaDon\HoaDonRepository;
 use Carbon\Carbon;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Province;
-use App\Models\Admin\GiamGiaModel;
 use App\Repositories\GiamGia\GiamGiaRepository;
-use Illuminate\Http\Request;
 use App\Http\Requests\GiamGia;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Http\Requests\GiamGiaEdit;
@@ -52,7 +49,7 @@ class GiamGiaController extends Controller
 
     public function store(GiamGia $request)
     {
-        // $validated = $request->validated();
+
         $mytime = Carbon::now()->format('Y-m-d');
         if ($request->ngayhethan > $request->ngaytao) {
             if ($request->ngaytao >= $mytime) {
@@ -65,15 +62,16 @@ class GiamGiaController extends Controller
                     'ngaytao' => strtotime($request->ngaytao),
                     'ngayhethan' => strtotime($request->ngayhethan)
                 ];
+                $data = $this->GiamGia->create($data);
             } else {
-                return redirect('quantri/giamgia')->with('Vui lòng kiểm tra ngày tạo phải lớn hơn hoặc bằng ngày hiện tại');
+                return redirect('quantri/giamgia')->with('thatbai', 'Vui lòng kiểm tra ngày tạo phải lớn hơn hoặc bằng ngày hiện tại');
             }
         } else {
-            return redirect('quantri/giamgia')->with('Vui lòng kiểm tra ngày tạo phải nhỏ hơn ngày hết hạn');
+            return redirect('quantri/giamgia')->with('thatbai', 'Vui lòng kiểm tra ngày tạo phải nhỏ hơn ngày hết hạn');
         }
 
-        $data = $this->GiamGia->create($data);
-        return redirect('quantri/giamgia')->with('success', 'Thêm thành công');
+
+        return redirect('quantri/giamgia')->with('thanhcong', 'Thêm thành công');
     }
 
 
@@ -101,7 +99,6 @@ class GiamGiaController extends Controller
     {
 
         $data = $this->GiamGia->find($id);
-        //dd($data->tinh);
         return view('Admin.giamgia.edit', compact('data'));
 
     }
@@ -115,25 +112,26 @@ class GiamGiaController extends Controller
      */
     public function update(GiamGiaEdit $request, $id)
     {
-        $validated = $request->validated();
-        if ($validated == true) {
-            $data = [
-                'name' => $request->name,
-                'ma' => $request->ma,
-                'number' => $request->number,
-                'max' => $request->max,
-                'loai' => $request->loai,
-                'ngaytao' => strtotime($request->ngaytao),
-                'ngayhethan' => strtotime($request->ngayhethan)
-            ];
-
-
-            $this->GiamGia->update($id, $data);
-
-            return redirect('quantri/giamgia')->with('thanhcong', 'Sửa giảm giá thành công');
+        $mytime = Carbon::now()->format('Y-m-d');
+        if ($request->ngayhethan > $request->ngaytao) {
+            if ($request->ngaytao >= $mytime) {
+                $data = [
+                    'name' => $request->name,
+                    'ma' => $request->ma,
+                    'number' => $request->number,
+                    'max' => $request->max,
+                    'loai' => $request->loai,
+                    'ngaytao' => strtotime($request->ngaytao),
+                    'ngayhethan' => strtotime($request->ngayhethan)
+                ];
+                $this->GiamGia->update($id, $data);
+            } else {
+                return redirect('quantri/giamgia')->with('thatbai', 'Vui lòng kiểm tra ngày tạo phải lớn hơn hoặc bằng ngày hiện tại');
+            }
         } else {
-            return redirect('quantri/giamgia')->with('thatbai', 'giảm giá không hợp lệ');
+            return redirect('quantri/giamgia')->with('thatbai', 'Vui lòng kiểm tra ngày tạo phải nhỏ hơn ngày hết hạn');
         }
+        return redirect('quantri/giamgia')->with('thanhcong', 'Sửa giảm giá thành công');
     }
 
     /**

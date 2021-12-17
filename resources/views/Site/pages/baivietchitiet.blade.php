@@ -1,7 +1,7 @@
 @extends('Site.layout')
 
 @section('title')
- bài viết chi tiết
+    bài viết chi tiết
 @endsection
 
 @section('main')
@@ -17,16 +17,18 @@
                                     <div
                                         class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
                                         <div class="mr-3">
-                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$viewdetail[0]->slugdm}}" class="box-danhmuc-1 fz-1em2">
+                                            <a href="{{ asset('danh-muc-bai-viet') }}/{{$viewdetail[0]->slugdm}}"
+                                               class="box-danhmuc-1 fz-1em2">
                                                 {{$viewdetail[0]->danhmuc}}</a>
                                         </div>
-                                        <div class="formatDayCustom" data-type="long" data-format="{{$viewdetail[0]->created_at}}">
+                                        <div class="formatDayCustom" data-type="long"
+                                             data-format="{{$viewdetail[0]->created_at}}">
                                             <span class="fz-1em1">@if ($viewdetail[0]->created_at != null)
-                                                <?php
+                                                    <?php
                                                     $timestamp = strtotime($viewdetail[0]->created_at);
-                                                    print date('d-m-y', $timestamp );
-                                                ?>                                                          
-                                            @endif</span>
+                                                    print date('d-m-y', $timestamp);
+                                                    ?>
+                                                @endif</span>
                                         </div>
                                     </div>
                                 </div>
@@ -49,8 +51,9 @@
                                     <div class="border-z border-right-z"></div>
                                 </div>
 
-                                <div class="noidung divnoidung" style="font-family:'Roboto', sans-serif !important;"><br>
-                                    <a >{!! $viewdetail[0]->noidung !!}</a>
+                                <div class="noidung divnoidung" style="font-family:'Roboto', sans-serif !important;">
+                                    <br>
+                                    <a>{!! $viewdetail[0]->noidung !!}</a>
                                 </div>
                             </div>
                         </div>
@@ -67,17 +70,20 @@
 
                         <div class="list-social">
                             <a href="https://www.facebook.com/FBeauty-103098148891666">
-                                <span><i class="fab fa-facebook-f"></i> <span>15000</span> <small class="fz-0em9"> Like</small></span>
+                                <span><i class="fab fa-facebook-f"></i> <span>15000</span> <small
+                                        class="fz-0em9"> Like</small></span>
                                 <span class="fz-0em9">Like</span>
                             </a>
 
                             <a href="https://twitter.com/HuynTrn26589599">
-                                <span><i class="fab fa-twitter"></i> <span>15000</span> <small class="fz-0em9"> Tweet</small></span>
+                                <span><i class="fab fa-twitter"></i> <span>15000</span> <small
+                                        class="fz-0em9"> Tweet</small></span>
                                 <span class="fz-0em9">Like</span>
                             </a>
 
                             <a href="https://www.instagram.com/fbeautyspa__/">
-                                <span><i class="fab fa-instagram"></i><span>32k+</span> <small class="fz-0em9"> Follower</small></span>
+                                <span><i class="fab fa-instagram"></i><span>32k+</span> <small
+                                        class="fz-0em9"> Follower</small></span>
                                 <span class="fz-0em9">Follower</span>
                             </a>
 
@@ -89,17 +95,19 @@
 
                         <div class="datlich mt-4">
                             <div class="child-box-tin-2 d-flex align-items-center box-small mb-1"
-                                style="background: url('{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg');">
+                                 style="background: url('{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg');">
                                 <div class="content-tin background-white">
                                     <div class="text-bl-1 limit-text-row-2 mb-2">
-                                        <a href="" class="color-white hover-pink">Trải nghiệm cảm giác spa <br> đỉnh cao tại
+                                        <a href="" class="color-white hover-pink">Trải nghiệm cảm giác spa <br> đỉnh cao
+                                            tại
                                             Fbeauty spa</a>
                                     </div>
                                     <div class="row">
                                         <div
                                             class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 mb-1">
                                             <div class="mr-3">
-                                                <a type-modal="modal-datlich" href="javascript:void(0)" data-show="one" class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
+                                                <a type-modal="modal-datlich" href="javascript:void(0)" data-show="one"
+                                                   class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
                                             </div>
                                         </div>
                                     </div>
@@ -124,45 +132,48 @@
                         <div class="list-blog-1 mt-4">
                             <div class="row  mb-30px">
 
-                            @foreach ($viewdetail2 as $data1)
-                                @foreach ($data1->viewdt as $data)
-                                <div class="col-xl-3">
-                                    <div class="tin-item-1 box-tin-hv">
-                                        <div class="image-tin-1" style="height: 220px;">
-                                            <a href="{{ asset('bai-viet') }}/{{$data->slug}}">
-                                                <img class="img-fluid"
-                                                src="{{ asset('uploads') }}/{{$data->img}}"
-                                                alt=""></a>
-                                        </div>
-                                        <div class="content-tin-3 background-white">
-                                            <div class="row">
-                                                <div
-                                                    class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                    <div class="mr-3">
-                                                        <a href="{{ asset('danh-muc-bai-viet') }}/{{$data1->slugdm}}" class="box-danhmuc-1">
-                                                            {{$data->danhmuc}}</a>
-                                                    </div>
-                                                    <div class="formatDayCustom" data-type="short" data-format="{{$data->created_at}}">
+                                @foreach ($viewdetail2 as $data1)
+                                    @foreach ($data1->viewdt as $data)
+                                        <div class="col-xl-3">
+                                            <div class="tin-item-1 box-tin-hv">
+                                                <div class="image-tin-1" style="height: 220px;">
+                                                    <a href="{{ asset('bai-viet') }}/{{$data->slug}}">
+                                                        <img class="img-fluid"
+                                                             src="{{ asset('uploads') }}/{{$data->img}}"
+                                                             alt=""></a>
+                                                </div>
+                                                <div class="content-tin-3 background-white">
+                                                    <div class="row">
+                                                        <div
+                                                            class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
+                                                            <div class="mr-3">
+                                                                <a href="{{ asset('danh-muc-bai-viet') }}/{{$data1->slugdm}}"
+                                                                   class="box-danhmuc-1">
+                                                                    {{$data->danhmuc}}</a>
+                                                            </div>
+                                                            <div class="formatDayCustom" data-type="short"
+                                                                 data-format="{{$data->created_at}}">
                                                         <span>@if ($data->created_at != null)
-                                                            <?php
+                                                                <?php
                                                                 $timestamp = strtotime($data->created_at);
-                                                                print date('d-m-y', $timestamp );
-                                                            ?>                                                          
-                                                        @endif </span>
+                                                                print date('d-m-y', $timestamp);
+                                                                ?>
+                                                            @endif </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
+                                                        <a href="{{ asset('bai-viet') }}/{{$data->slug}}"
+                                                           class="hover-pink">{{$data->name}}</a>
+                                                    </div>
+                                                    <p class="blog-mota mb-0 limit-text-row-3">
+                                                        {{$data->motangan}}
+                                                    </p>
                                                 </div>
                                             </div>
-                                            <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
-                                                <a href="{{ asset('bai-viet') }}/{{$data->slug}}" class="hover-pink">{{$data->name}}</a>
-                                            </div>
-                                            <p class="blog-mota mb-0 limit-text-row-3">
-                                                {{$data->motangan}}
-                                            </p>
                                         </div>
-                                    </div>
-                                </div>
+                                    @endforeach
                                 @endforeach
-                            @endforeach
                             </div>
                         </div>
                     </div>

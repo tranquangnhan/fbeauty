@@ -17,7 +17,9 @@ class TheoDoiController extends Controller
     {
         $this->TheoDoi=$TheoDoi;
     }
-
+    /**
+     * Thêm email theo giỏi vào database
+    */
     public function store(TheoDoi $request){
         $CheckEmail=$this->TheoDoi->CheckEmail($request->email);
         if (empty($CheckEmail) == false){
@@ -38,7 +40,9 @@ class TheoDoiController extends Controller
             return redirect()->back()->with('guilienhethatbai', 'Gửi thất bại. Bạn vui lòng kiểm tra email');
         }
     }
-
+    /**
+     * Gửi email theo giỏi
+     */
     public function SendMail($email){
         $message = [
             'type' => 'SPA FBeauty',
