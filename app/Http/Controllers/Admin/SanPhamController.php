@@ -180,10 +180,20 @@ class SanPhamController extends Controller
         $hasChiTiet = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
         $CheckYeuThich=$this->YeuThich->CheckSanPhamInYeuThich($id);
         if(count($hasChiTiet)>0 || $CheckYeuThich==false){
-            return 1;
+            $message=[
+                'message'=>"Sản phẩm đang tồn tại.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         }else{
             $this->SanPham->delete($id);
-            return 0;
+            $message=[
+                'message'=>"Xóa sản phẩm thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }
     }
 }

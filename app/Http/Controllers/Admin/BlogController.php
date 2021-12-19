@@ -68,7 +68,7 @@ class BlogController extends Controller
 
             $this->Blog->create($Blog);
             return redirect('quantri/blog')->with('success', 'Thêm bài viết thành công');
-        
+
     }
 
     /**
@@ -120,10 +120,10 @@ class BlogController extends Controller
                 }
                 $Blog['img'] = $img;
             }
-        
+
             $this->Blog->update($id, $Blog);
             return redirect('quantri/blog')->with('thanhcong', 'Sửa bài viết thành công');
-        
+
     }
 
     /**
@@ -136,9 +136,19 @@ class BlogController extends Controller
     {
         $delete= $this->Blog->delete($id);
         if ($delete){
-            return 0;
+            $message=[
+                'message'=>"Xóa bài viết thành công",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }else{
-            return 1;
+            $message=[
+                'message'=>"Xóa bài viết thất bại",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         }
     }
 }

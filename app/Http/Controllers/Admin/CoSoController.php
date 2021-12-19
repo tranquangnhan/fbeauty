@@ -202,11 +202,21 @@ class CoSoController extends Controller
     {
         $hasHoaDon = $this->HoaDon->getHoaDonIdCoSo($id);
         if(count($hasHoaDon)>0){
-            return 1;
+            $message=[
+                'message'=>"Xóa cơ sở thất bại.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         }else{
             $this->Lich->deleteLichByIdCoSo($id);
             $this->Coso->delete($id);
-            return 0;
+            $message=[
+                'message'=>"Xóa cơ sở thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }
     }
 }

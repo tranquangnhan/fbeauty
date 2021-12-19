@@ -416,18 +416,6 @@ $user = Auth::user(); ?>
                         </li>
                     @endif
 
-                    @if($user->role == 1 || $user->role == 0)
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="mdi mdi-folder-image"></i>
-                                <span> Ảnh khách hàng </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Xem ảnh </a></li>
-                            </ul>
-                        </li>
-                    @endif
 
                     @if($user->role == 1 )
                         <li class="menu-title">Đặt Lịch</li>
@@ -478,8 +466,6 @@ $user = Auth::user(); ?>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("nhanvien.index")}}">Danh sách</a></li>
                                 <li><a href="{{route("nhanvien.create")}}">Thêm nhân viên</a></li>
-                                {{--                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Thêm ảnh khách hàng</a></li>--}}
-                                {{--                                <li><a href="{{URL::to("quantri/nhanvien/imgcustomer/pictures")}}">Tất cả ảnh khách hàng</a></li>--}}
                             </ul>
                         </li>
 
