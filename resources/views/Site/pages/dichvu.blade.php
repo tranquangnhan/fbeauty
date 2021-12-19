@@ -23,8 +23,8 @@
                             </div>
                             <div class="head-service-item">
                                 <div class="d-flex">
-                                    <div class="d-flex align-items-center text-2 mr-4 lg-hide head-service-item service-title"
-                                    style="color: #000000;">Tìm kiếm theo </div>
+                                    <div class="d-flex align-items-center text-2 lg-hide head-service-item service-title"
+                                    style="color: #000000;">Tìm kiếm theo "Tất cả"</div>
 
                                 </div>
 
@@ -33,47 +33,45 @@
                     </div>
 
 
-                    <div class="w-100">
+                    <div class="container">
                         <div class="box-dichvu">
                             <div class="row">
-                                @foreach ($listDichVuUaChuong as $dichVuUaChuong)
-                                    @if ($dichVuUaChuong->dichvu != null)
-                                    <div class="col-xl-4 col-12 mt-5">
-                                        <div class="dichvu-item w-100">
+                                @foreach ($dichVuAllPagination as $dichVu)
+                                    @if ($dichVu != null)
+                                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 mt-5">
+                                        <div class="dichvu-item dichvu-item-z w-100">
                                             <div class="content-1">
                                                 <div class="text-7 color-main-1">
-                                                    {{ $dichVuUaChuong->dichvu->namedm }}
+                                                    {{ $dichVu->namedm }}
                                                 </div>
 
                                                 <div class="img-1 mt-4">
-                                                    <img class=""
-                                                            src="{{ asset('uploads/')}}/{{ $dichVuUaChuong->dichvu->img }}"
-                                                            alt="">
+                                                    <img class="" src="{{ asset('uploads/')}}/{{ $dichVu->img }}" alt="">
                                                 </div>
 
                                                 <div class="text-1 limit-text-row-1 mt-4">
-                                                    {{ $dichVuUaChuong->dichvu->name }}
+                                                    {{ $dichVu->name }}
                                                 </div>
 
                                                 <div class="box-gia-dichvu mt-2">
-                                                    @if ($dichVuUaChuong->dichvu->giamgia > 0)
+                                                    @if ($dichVu->giamgia > 0)
                                                         @php
-                                                            $giaSauGiam = $dichVuUaChuong->dichvu->dongia - ($dichVuUaChuong->dichvu->dongia * $dichVuUaChuong->dichvu->giamgia / 100);
+                                                            $giaSauGiam = $dichVu->dongia - ($dichVu->dongia * $dichVu->giamgia / 100);
                                                         @endphp
-                                                        <span class="giagiam">{{ number_format($dichVuUaChuong->dichvu->dongia, 0) }} đ </span>
+                                                        <span class="giagiam">{{ number_format($dichVu->dongia, 0) }} đ </span>
                                                         <span class="gia left-bar">
                                                     {{ number_format($giaSauGiam, 0)}} đ
                                                 </span>
                                                     @else
                                                         <span class="gia">
-                                                    {{ number_format($dichVuUaChuong->dichvu->dongia, 0) }} đ
+                                                    {{ number_format($dichVu->dongia, 0) }} đ
                                                 </span>
                                                     @endif
 
                                                 </div>
 
-                                                <p class="text-2 limit-text-row-3 mt-1 mt-2">
-                                                    {{ $dichVuUaChuong->dichvu->motangan }}
+                                                <p class="text-2 limit-text-row-3 mt-1 mt-2 text-center">
+                                                    {{ $dichVu->motangan }}
 
                                                 </p>
                                             </div>
@@ -90,6 +88,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="div w-100 text-center mt-5">
+                <div class="wrap-pagination text-center pagination-customz">
+                    {{$dichVuAllPagination->links("pagination::bootstrap-4")}}
+                </div>
+            </div>
+
         </div>
 
         <div class="background-gray-1 mt-5 py-5">
@@ -233,17 +238,16 @@
             </div>
 
             <div class="row">
-                @foreach ($listDanhMucDichVu1 as $danhmuclistdichvu)
-
+                @foreach ($danhmuc as $row)
                     <div class="col-xl-4">
                         <div class="danhmuc-2-item"
-                             onclick="window.location='{{ asset('danh-muc-dich-vu') }}/{{$danhmuclistdichvu->slug}}';">
+                             onclick="window.location='{{ asset('danh-muc-dich-vu') }}/{{$row->slug}}';">
                             <div class="image">
-                                <img src="{{ asset('uploads/'.$danhmuclistdichvu->img) }}" class="img-fluid" alt="">
+                                <img src="{{ asset('uploads/'.$row->img) }}" class="img-fluid" alt="">
                             </div>
-                            <div class="content mt-1 px-5">
+                            <div class="content mt-3 px-5">
                                 <h5 class="title">
-                                    {{$danhmuclistdichvu->name}}
+                                    {{$row->name}}
                                 </h5>
                                 <p class="text-2">
 

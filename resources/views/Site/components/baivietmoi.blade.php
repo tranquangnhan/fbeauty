@@ -2,8 +2,9 @@
     <div class="title-box-1">
         <span>Bài viết mới</span>
     </div>
+    <div class="row">
     @foreach ($getBlog2 as $item)
-        <div class="small-blog-item box-tin-hv">
+        <div class="col-xl-12 col-lg-6 col-12 small-blog-item box-tin-hv detail-right-new-blog">
             <div class="row">
                 <div class="col-xl-5">
                     <div class="img-1">
@@ -13,7 +14,7 @@
                             alt=""></a>
                     </div>
                 </div>
-                <div class="col-xl-7 pl-0 align-self-center">
+                <div class="col-xl-7 pl-0 align-self-center small-blog-content">
                     <div class="row">
                         <div class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 formatDayCustom" data-type="short" data-format="{{$item->created_at}}">
                             <span>@if ($item->created_at != null)
@@ -29,4 +30,5 @@
             </div>
         </div>
     @endforeach
+    </div>
 </div>

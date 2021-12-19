@@ -118,20 +118,15 @@ class HomeController extends Controller
     public function index()
     {
         error_reporting(E_ALL);
+        $this->getDuLieuBoxBlog();
         $sanPham = $this->SanPham->getAll();
-        $blog = $this->Blog->getBlog1();
-        $getBlog2 = $this->Blog->getBlog2();
-        $blog3 = $this->Blog->getLastWeek1();
-        $blog4 = $this->Blog->getLastWeek2();
+
         $spkhac = $this->SanPham->getSanPhamHome();
 
         $this->getDichVuTrangHome();
 
         $this->data['sanPham'] = $sanPham;
-        $this->data['blog'] = $blog;
-        $this->data['getBlog2'] = $getBlog2;
-        $this->data['blog3'] = $blog3;
-        $this->data['blog4'] = $blog4;
+
         $this->data['pathActive'] = 'trang-chu';
         $this->data['spkhac'] = $spkhac;
 
@@ -227,7 +222,7 @@ class HomeController extends Controller
 
         foreach ($listdanhmuc as $dm) {
             $skip = 0;
-            $take = 6;
+            $take = 3;
             $blogbyid = $this->Blog->getBlogByIdDanhmuc($dm->id, $skip, $take);
             $dm['blogbyid'] = $blogbyid;
         }
@@ -239,7 +234,6 @@ class HomeController extends Controller
         }
 
         $danhmuc = $this->DanhMuc->getAllDanhMuc();
-        $getBlog2 = $this->Blog->getBlog2();
         $blog3 = $this->Blog->getLastWeek1();
         $blog4 = $this->Blog->getLastWeek2();
         $blognew = $this->Blog->getBlognew();
@@ -249,12 +243,12 @@ class HomeController extends Controller
         $this->data['blog4'] = $blog4;
         $this->data['blognew'] = $blognew;
         $this->data['danhmuc'] = $danhmuc;
-        $this->data['getBlog2'] = $getBlog2;
         $this->data['listdanhmuc'] = $listdanhmuc;
         $this->data['listdanhmuc2'] = $listdanhmuc2;
         $this->data['luotxem'] = $luotxem;
         $this->data['xuhuong'] = $xuhuong;
         $this->data['blognewtt'] = $blognewtt;
+        $this->getDuLieuBoxBlog();
 
         $this->data['pathActive'] = 'bai-viet';
         $this->data['namePage'] = 'Diễn đàn làm đẹp';
@@ -285,7 +279,7 @@ class HomeController extends Controller
         $this->data['namePage'] = $viewdetail[0]->name;
         $this->data['breadcrumbArray'] = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
-            ['link' => '', 'name' => $viewdetail[0]->name],
+            ['link' => '', 'name' => 'Bài viết chi tiết'],
         ];
 
         return view("Site.pages.baivietchitiet", $this->data);
@@ -318,13 +312,16 @@ class HomeController extends Controller
     public function viewDichVu()
     {
         $this->getDichVuTrangHome();
-        
+
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
 
+        $this->data['dichVuAllPagination'] = $this->Dichvu->getAllPagination();
+
+        // dd($this->data['dichVuAllPagination']);
         $danhmuc = $this->DanhMuc->getAllDanhMucDichVu();
         $this->data['danhmuc'] = $danhmuc;
         return view("Site.pages.dichvu", $this->data);
@@ -1554,6 +1551,18 @@ class HomeController extends Controller
         $this->data['listDichVuUaChuong'] = $listDichVu;
         $this->data['listDichVuGiamGia'] = $this->Dichvu->getDichVuGiamGiaAndDanhMuc($take, $skip);
 
+    }
+
+    public function getDuLieuBoxBlog() {
+        $blog      = $this->Blog->getBlog1();
+        $getBlog2  = $this->Blog->getBlog2();
+        $blog3     = $this->Blog->getLastWeek1();
+        $blog4     = $this->Blog->getLastWeek2();
+
+        $this->data['blog']      = $blog;
+        $this->data['getBlog2']  = $getBlog2;
+        $this->data['blog3']     = $blog3;
+        $this->data['blog4']     = $blog4;
     }
 
 }

@@ -27,61 +27,11 @@ overflow: hidden;
   overflow: hidden;
 
 }
-/* loadmore */
 
-
-/* .flex {
-  display: flex;
-
+.color-miniDay-white {
+    color: #dedede;
 }
-.content1 {
-  /* height: 100px; */
 
-
-/* float: left;
-  width: 45%; */
-
-
-/* color: #fff; */
-
-
-/* font-size: 24px; */
-
-
-/* line-height: 100px;  */
-
-
-/* centering text just for view */
-
-
-/* text-align: center; */
-
-
-/* background-color: grey; */
-
-
-/* margin: 5px; */
-
-
-/* border: 1px solid lightgrey; */
-
-
-/* display: none;
+.color-mota-white {
+    color: #b0b0b0;
 }
-.noidung p,h1,h2,h3,h4,h5,h6,span,li{
-  word-wrap: break-word;
-  font-family: 'Roboto', sans-serif !important;
-}
-#loadMore:hover {
-  color: blue;
-  background-color: #fff;
-  border: 1px solid blue;
-  text-decoration: none;
-}
-.noContent1 {
-  color: #000 !important;
-  background-color: transparent !important;
-  pointer-events: none; */
-
-
-/* } */
