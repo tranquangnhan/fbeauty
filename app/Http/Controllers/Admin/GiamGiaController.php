@@ -145,10 +145,20 @@ class GiamGiaController extends Controller
         $hasChiTiet = $this->DonHang->getDonHangIdGiamGia($id);
         $CheckHoaDon = $this->HoaDon->getHoaDonBYIdGiamGia($id);
         if (count($hasChiTiet) > 0 && $CheckHoaDon == false) {
-            return 1;
+            $message=[
+                'message'=>"Mã giảm giá đang tồn tại.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         } else {
             $this->GiamGia->delete($id);
-            return 0;
+            $message=[
+                'message'=>"Xóa mã giảm giá thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }
     }
 

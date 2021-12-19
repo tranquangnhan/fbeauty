@@ -83,9 +83,19 @@ class TheoDoiFLController extends Controller
     {
         $delete=$this->TheoDoi->delete($id);
         if ($delete){
-            return 0;
+            $message=[
+                'message'=>"Xóa người theo dõi thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }else{
-            return 1;
+            $message=[
+                'message'=>"Xóa người theo dõi thất bại.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         }
     }
 }

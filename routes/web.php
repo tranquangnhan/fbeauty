@@ -74,11 +74,8 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
      * Quản lý nhân viên
      */
     Route::resource('nhanvien', NhanVienController::class);
-    Route::post('nhanvien/uploadKH/{id}', [NhanVienController::class, 'upImgKhachHang']);
     Route::get('nhanvien/kiemtraemail/{name}', [NhanVienController::class, "CheckEmailTonTai"]);
     Route::get('nhanvien/kiemtrasdt/{name}', [NhanVienController::class, "CheckSdtTonTai"]);
-    Route::get("nhanvien/xoaImgKH/{id}/phantu/{idAnh}", [NhanVienController::class, "XoaImgKH"]);
-    Route::get("nhanvien/imgcustomer/pictures", [NhanVienController::class, "AllImgKH"]);
     /**
      * Quản lý đặt lịch
      */

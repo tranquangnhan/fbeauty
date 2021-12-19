@@ -667,13 +667,14 @@ class GioHangController extends Controller
 
         $vnp_Url1 = $this->vnp_Url . "?" . $query;
         if (isset($this->vnp_HashSecret)) {
-            $vnpSecureHash = hash_hmac('sha512', $hashdata, $this->vnp_HashSecret);//
+            $vnpSecureHash = hash_hmac('sha512', $hashdata, $this->vnp_HashSecret);
             $vnp_Url1 .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
         $returnData = array(
             'code' => '00'
         , 'message' => 'success'
-        , 'data' => $vnp_Url1);
+        , 'data' => $vnp_Url1
+        );
 
         return redirect()->to($returnData["data"]);
     }
