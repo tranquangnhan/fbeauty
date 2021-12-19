@@ -57,7 +57,7 @@
                                                     <p><strong>Phương thức thanh toán : </strong> {{ $donHang->phuongthucthanhtoan }} </p>
                                                     <p class="m-t-10"><strong>Phương thức vận chuyển :</strong> <span class="label label-pink"> {{ $donHang->phuongthucgiaohang }} </span></p>
                                                     <p class="m-t-10"><strong>Tổng thanh toán: </strong>
-                                                        {{ number_format($Tong->tongtiendonhang) }} VNĐ</p>
+                                                        {{ number_format($Tong->tongtiendonhang + 30000) }} VNĐ</p>
                                                 </div>
                                             </div><!-- end col -->
                                         </div>

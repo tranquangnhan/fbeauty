@@ -13,6 +13,7 @@ use App\Models\Admin\KhachHangModel;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
+use Carbon\Carbon;
 
 class DonHangController extends Controller
 {
@@ -36,7 +37,6 @@ class DonHangController extends Controller
     }
     public function index()
     {
-
         $data = $this->DonHang->getAll();
         $donhangchitiet = $this->DonHangChiTiet->getAll();
         $khachHang  = $this->KhachHang->getall();
