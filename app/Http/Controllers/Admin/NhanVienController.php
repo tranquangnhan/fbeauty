@@ -132,56 +132,6 @@ class NhanVienController extends Controller
         return view("Admin.NhanVien.ImgKhachHang", ['nhanvien' => $nhanvien]);
     }
 
-    public function upImgKhachHang(Request $request, $id)
-    {
-        if ($request->file('photos')!=""){
-        $nv = $this->nhanvien->find($id);
-        $jsonimg = json_decode($nv->img);
-        if (is_array($jsonimg)) {
-            $dataImg = $this->uploadMultipleImg($this::PATH_UPLOADS_KHACHHANG,$request->file('photos'));
-            $mergearray = array_merge($dataImg, $jsonimg);
-            $nhanvien = [
-                'img' => $mergearray
-            ];
-            $this->nhanvien->update($id, $nhanvien);
-        } else {
-            $dataImg = $this->uploadMultipleImg($this::PATH_UPLOADS_KHACHHANG,$request->file('photos'));
-            $nhanvien = [
-                'img' => $dataImg
-            ];
-            $this->nhanvien->update($id, $nhanvien);
-        }
-
-        $dataNV = $this->nhanvien->find($id);
-        return redirect(route("nhanvien.show", $id))->with('thanhcong', 'Tải ảnh lên thành công');
-        }
-        else{
-            return redirect(route("nhanvien.show", $id))->with('thatbai', 'bạn chưa tải ảnh lên.');
-        }
-    }
-
-    public function XoaImgKH($id, $idImg)
-    {
-        $nv = $this->nhanvien->find($id);
-        $jsonimg = json_decode($nv->img);
-        if (is_file('uploads/khachhang/' . $jsonimg[$idImg])) {
-            unlink('uploads/khachhang/' . $jsonimg[$idImg]);
-        }
-        if (count($jsonimg) == 1) {
-            $jsonimg = "";
-        } else {
-            array_splice($jsonimg, $idImg, 1);
-        }
-        $nhanvien = [
-            'img' => $jsonimg
-        ];
-        $this->nhanvien->update($id, $nhanvien);
-        return redirect(route("nhanvien.show", $id))->with('thanhcong', 'Xóa ảnh thành công');
-    }
-    public function AllImgKH() {
-        $data = $this->nhanvien->getNhanVien();
-        return view("Admin.NhanVien.allimg", ['data' => $data]);
-    }
 
     /**
      * Show the form for editing the specified resource.

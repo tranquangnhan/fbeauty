@@ -150,7 +150,7 @@ class KhachHangController extends Controller
      */
     public function update(KhachHang $request, $id)
     {
-        
+
         $password = $request->password;
         $passnew = "";
         if ($password == null) {
@@ -194,9 +194,19 @@ class KhachHangController extends Controller
         $CheckYeuThich=$this->YeuThich->CheckKhachHangInYeuThich($id);
         if($CheckHoaDon == true && $CheckLieuTrinh == true && $CheckDonHang == true && $CheckDatLich == true && $CheckGioHang == true && $CheckYeuThich){
             $this->KhachHang->delete($id);
-            return 0;
+            $message=[
+                'message'=>"Xóa khách hàng thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }else{
-            return 1;
+            $message=[
+                'message'=>"Khách hàng đang tồn tại.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         }
     }
 

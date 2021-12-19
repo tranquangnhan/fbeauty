@@ -46,7 +46,7 @@ $(document).ready(function () {
             "order": [[ 0, "desc" ]],
             searching: false, info: false
         },
-       
+
     );
 });
 
@@ -275,17 +275,22 @@ function callDelete(id) {
         async: false,
         dataType: 'json',
         success: function (data) {
-            if (data==0){
+            if (data.error_Code==0){
                 $("#row"+id).css({display: "none"});
+                Message(data.message, data.icon);
             }
             else {
-                swal.fire(
-                    {
-                        title: 'Xóa thất bại',
-                        icon: 'warning'
-                    }
-                );
+                Message(data.message, data.icon);
             }
         }
     });
+}
+
+function Message(title, icon) {
+    swal.fire(
+        {
+            title: title,
+            icon: icon
+        }
+    );
 }

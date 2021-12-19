@@ -9,7 +9,7 @@
         <div class="container py-5">
             <div class="lienhe">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-lg-6 col-12">
                         <div class="list-service px-5" style="min-height: 465px;">
                             <div class="container position-relative z-index-1 p-0">
                                 <div class="w-100 text-center">
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-lg-6 col-12">
                         <div class="w-100 text-center mb-4">
                             <div class="title-small text-center" style="margin-top: 5em !important;">
                                 MỚI NHẤT

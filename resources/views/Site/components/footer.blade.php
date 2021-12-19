@@ -33,7 +33,7 @@
     <div class="footer-bg">
         <div class="container">
             <div class="row">
-                <div class="col-xl-3 col-lg-4 col-12">
+                <div class="col-xl-3 col-lg-12 col-12">
                     <div class="box-footer box-footer-1 mt-0">
                         <div class="w-100 text-center">
                             <a class="m-auto"><img class="logo-footer" src="{{asset('img/logo.svg')}}" alt=""></a>
@@ -81,7 +81,7 @@
 
 
 
-                <div class="col-xl-3 col-lg-4 col-12">
+                <div class="col-xl-3 col-lg-12 col-12">
                     <div class="box-footer footer-menu">
                         <div class="title-4 d-inline-block">
                             Trụ Sở Chính
@@ -109,7 +109,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-4 col-12">
+                <div class="col-xl-3 col-lg-12 col-12">
                     <div class="box-footer footer-menu">
                         <div class="title-4 d-inline-block">
                             Danh Mục
@@ -152,7 +152,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-4 col-12">
+                <div class="col-xl-3 col-lg-12 col-12">
                     <div class="box-footer footer-menu">
                         <div class="title-4 d-inline-block">
                             Liên Hệ

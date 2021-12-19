@@ -16,9 +16,9 @@
             </div>
 
         @endforeach
-            <a href="{{ asset('danh-muc-bai-viet') }}/{{$danhmuc[0]->slug}}">
+            {{-- <a href="{{ asset('danh-muc-bai-viet') }}/{{$danhmuc[0]->slug}}">
                 <button type="button" class="xemthemblog btn mb-5 mt-3" >Xem thêm danh mục</button>
-            </a>
+            </a> --}}
         @endif
 
     </div>
