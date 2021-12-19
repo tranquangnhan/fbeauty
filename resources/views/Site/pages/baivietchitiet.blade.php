@@ -8,11 +8,11 @@
     <div class="fa-blogdetail mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-xl-9">
+                <div class="col-xl-9 col-lg-12">
                     <div class="blog-detail">
                         <img src="{{ asset('uploads') }}/{{$viewdetail[0]->img}}" alt="">
                         <div class="blog-content-detail box-shadow-1">
-                            <div class="blog-head">
+                            <div class="blog-head pb-4">
                                 <div class="row">
                                     <div
                                         class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
@@ -32,8 +32,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="name-blog mt-3">
-                                    <h1 class=" font-weight-600">{{$viewdetail[0]->name}}.</h1>
+                                <div class="name-blog mt-4">
+                                    <h1 class=" font-weight-600 mb-0">{{$viewdetail[0]->name}}.</h1>
                                 </div>
 
                                 {{-- <div class="list-reac d-flex">
@@ -44,7 +44,7 @@
                                 </div> --}}
                             </div>
 
-                            <div class="blog-body">
+                            <div class="blog-body pt-0">
                                 <div class="noidungngan">
                                     <div class="border-z border-left-z"></div>
                                     <p class="m-0">{{$viewdetail[0]->motangan}}.</p>
@@ -61,62 +61,63 @@
                     </div>
 
                 </div>
-                <div class="col-xl-3">
-                    @include('Site.components.baivietmoi')
-                    <div class="box-list-cocial">
-                        <div class="title-box-2">
-                            <span>Mạng xã hội</span>
-                        </div>
+                <div class="col-xl-3 col-lg-12 fa-fixed-2 right-blog-detail">
+                    <div class="child-fixed-2">
+                        @include('Site.components.baivietmoi')
+                        <div class="box-list-cocial">
+                            <div class="title-box-2">
+                                <span>Mạng xã hội</span>
+                            </div>
 
-                        <div class="list-social">
-                            <a href="https://www.facebook.com/FBeauty-103098148891666">
-                                <span><i class="fab fa-facebook-f"></i> <span>15000</span> <small
-                                        class="fz-0em9"> Like</small></span>
-                                <span class="fz-0em9">Like</span>
-                            </a>
+                            <div class="list-social">
+                                <a href="https://www.facebook.com/FBeauty-103098148891666">
+                                    <span><i class="fab fa-facebook-f"></i> <span>15000</span> <small
+                                            class="fz-0em9"> Like</small></span>
+                                    <span class="fz-0em9">Like</span>
+                                </a>
 
-                            <a href="https://twitter.com/HuynTrn26589599">
-                                <span><i class="fab fa-twitter"></i> <span>15000</span> <small
-                                        class="fz-0em9"> Tweet</small></span>
-                                <span class="fz-0em9">Like</span>
-                            </a>
+                                <a href="https://twitter.com/HuynTrn26589599">
+                                    <span><i class="fab fa-twitter"></i> <span>15000</span> <small
+                                            class="fz-0em9"> Tweet</small></span>
+                                    <span class="fz-0em9">Like</span>
+                                </a>
 
-                            <a href="https://www.instagram.com/fbeautyspa__/">
-                                <span><i class="fab fa-instagram"></i><span>32k+</span> <small
-                                        class="fz-0em9"> Follower</small></span>
-                                <span class="fz-0em9">Follower</span>
-                            </a>
+                                <a href="https://www.instagram.com/fbeautyspa__/">
+                                    <span><i class="fab fa-instagram"></i><span>32k+</span> <small
+                                            class="fz-0em9"> Follower</small></span>
+                                    <span class="fz-0em9">Follower</span>
+                                </a>
 
-                            <a href="https://www.youtube.com/channel/UCKmLj9UShXnCrweFbjA9Jvg">
-                                <span><i class="fab fa-youtube"></i> <span>15000</span> <small class="fz-0em9"> Subscriber</small></span>
-                                <span class="fz-0em9">Subscribe</span>
-                            </a>
-                        </div>
+                                <a href="https://www.youtube.com/channel/UCKmLj9UShXnCrweFbjA9Jvg">
+                                    <span><i class="fab fa-youtube"></i> <span>15000</span> <small class="fz-0em9"> Subscriber</small></span>
+                                    <span class="fz-0em9">Subscribe</span>
+                                </a>
+                            </div>
 
-                        <div class="datlich mt-4">
-                            <div class="child-box-tin-2 d-flex align-items-center box-small mb-1"
-                                 style="background: url('{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg');">
-                                <div class="content-tin background-white">
-                                    <div class="text-bl-1 limit-text-row-2 mb-2">
-                                        <a href="" class="color-white hover-pink">Trải nghiệm cảm giác spa <br> đỉnh cao
-                                            tại
-                                            Fbeauty spa</a>
-                                    </div>
-                                    <div class="row">
-                                        <div
-                                            class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 mb-1">
-                                            <div class="mr-3">
-                                                <a type-modal="modal-datlich" href="javascript:void(0)" data-show="one"
-                                                   class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
+                            <div class="datlich mt-4">
+                                <div class="child-box-tin-2 d-flex align-items-center box-small mb-1"
+                                    style="background: url('{{ asset('Site/images') }}/toa-heftiba-a9pFSC8dTlo-unsplash.jpg');">
+                                    <div class="content-tin background-white">
+                                        <div class="text-bl-1 limit-text-row-2 mb-2">
+                                            <a href="" class="color-white hover-pink">Trải nghiệm cảm giác spa <br> đỉnh cao
+                                                tại
+                                                Fbeauty spa</a>
+                                        </div>
+                                        <div class="row">
+                                            <div
+                                                class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1 mb-1">
+                                                <div class="mr-3">
+                                                    <a type-modal="modal-datlich" href="javascript:void(0)" data-show="one"
+                                                    class="box-danhmuc-1 maincolor btn-modal-main ">Đặt lịch</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @include('Site.components.danhmuc-baiviet')
                     </div>
-                    @include('Site.components.danhmuc-baiviet')
-
                 </div>
                 <div class="row mt-5">
                     <div class="danhmuc-listblog container">
@@ -183,9 +184,37 @@
     </div>
 @endsection
 
-@section('javascript')
+@section('css')
     <link rel="stylesheet" href="{{ asset('Site/css') }}/baiviet.css">
 @endsection
 
 @section('javascript')
+    <script>
+        var marginTop = 0;
+        var classNameBoxFixed = 'fa-fixed-2';
+        var elementChildAddMargin = $(`.child-fixed-2`);
+        $(window).scroll(function() {
+            var windowsize = $(window).width();
+            if (windowsize > 1200) {
+                var hH    = elementChildAddMargin.outerHeight(),
+                wH    = $(window).height(),
+                wS    = $(this).scrollTop(),
+                hT    = $(`.${classNameBoxFixed}`).offset().top + 1200,
+                hBody = $('body').height();
+
+            if (wS < hBody - 2000) {
+                    if (wS > hT){
+                        marginTop = wS - hT;
+                    } else {
+                        marginTop = 0;
+                    }
+                }
+            } else {
+                marginTop = 0;
+            }
+            console.log(marginTop);
+            elementChildAddMargin.css('margin-top', marginTop);
+        });
+
+    </script>
 @endsection

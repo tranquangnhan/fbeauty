@@ -45,33 +45,38 @@
 </head>
 
 <body>
-<input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
-<div id="loading" class="modal-container show">
-    <div class="modal-background">
-        <div class="justify-content-center" id="imgload">
-            <div class="spinner-border text-danger h-50" role="status">
-                <span class="visually-hidden">F</span>
+    <input type="hidden" name="" id="server-name" value="{{env("APP_URL")}}">
+
+    <div id="loading" class="modal-container show">
+        <div class="modal-background">
+            <div class="justify-content-center" id="imgload">
+                <div class="spinner-border text-danger h-50" role="status">
+                    <span class="visually-hidden">F</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-@if ($pathActive != 'trang-chu')
-    @include('Site.components.header-2')
-@else
-    @include('Site.components.header-1')
-@endif
-<main class="">
     @if ($pathActive != 'trang-chu')
-        @include('Site.components.slide-logo')
+        @include('Site.components.header-2')
+    @else
+        @include('Site.components.header-1')
     @endif
-    @yield('main')
-</main>
-@include('Site.components.footer')
-@include('Site.components.datlich')
-@include('Site.components.modal-user')
-@include('Site.components.modal-giohang')
-<input type="hidden" name="" id="domain" value="{{URL::to('/')}}">
+
+    <main class="">
+        @if ($pathActive != 'trang-chu')
+            @include('Site.components.slide-logo')
+        @endif
+        @yield('main')
+    </main>
+
+    @include('Site.components.footer')
+    @include('Site.components.datlich')
+    @include('Site.components.modal-user')
+    @include('Site.components.modal-giohang')
+
+    <input type="hidden" name="" id="domain" value="{{URL::to('/')}}">
+
 </body>
 
 </html>

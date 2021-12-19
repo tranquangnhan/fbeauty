@@ -20,11 +20,11 @@
                         class="imageHeader imageHeader_0 auto-scale-loop-forever" alt="">
                 </div>
 
-                <div class="content-1 ">
+                <div class="content-1">
                     <div class="w-100 text-center">
                         @include('Site.components.breadcrumb')
                     </div>
-                    <div class="text-center title-6 box-text-header  mt-0">
+                    <div class="text-center title-6 box-text-header">
                         {{ $namePage }}
                     </div>
                 </div>

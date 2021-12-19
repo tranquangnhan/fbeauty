@@ -1,4 +1,4 @@
-<div class="box-lieutrinh mt-5">
+<div class="box-lieutrinh">
     <div class="bg-lieutrinh">
         <div class="container">
             <div class="row align-items-center">

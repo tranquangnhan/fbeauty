@@ -136,7 +136,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     }
 
     public function GetDichvuLienQuan($id){
-        return $this->model->select('dichvu.*', 'danhmuc.name AS tendm',)
+        return $this->model->select('dichvu.*', 'danhmuc.name AS tendm', 'danhmuc.img as icon')
             ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
             ->where('dichvu.iddm', $id)
             ->where('dichvu.trangthai', Controller::TRANGTHAI_DICHVU_HIEN)
@@ -145,7 +145,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     }
 
     public function GetDichvuLienQuanKhacIDDM($id){
-            return $this->model->select('dichvu.*', 'danhmuc.name AS tendm',)
+            return $this->model->select('dichvu.*', 'danhmuc.name AS tendm')
             ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
             ->where('dichvu.iddm', '!=' , $id)
             ->where('dichvu.trangthai', Controller::TRANGTHAI_DICHVU_HIEN)
@@ -169,7 +169,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     }
 
     public function getDichvuAndDanhMucById($id){
-        return $this->model->select("dichvu.*", "danhmuc.name AS namedm")
+        return $this->model->select("dichvu.*", "danhmuc.name AS namedm", 'danhmuc.img as icon')
             ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
             ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
             ->where('dichvu.id', '=', $id)
@@ -177,7 +177,7 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     }
 
     public function getDichVuGiamGiaAndDanhMuc($take, $skip) {
-        return $this->model->select("dichvu.*", "danhmuc.name AS namedm")
+        return $this->model->select("dichvu.*", "danhmuc.name AS namedm", 'danhmuc.img as icon')
         ->join("danhmuc", "dichvu.iddm", "=", "danhmuc.id")
         ->where('dichvu.trangthai', '=', Controller::TRANGTHAI_DICHVU_HIEN)
         ->where('giamgia', '>', 0)
@@ -189,6 +189,9 @@ class DichVuRepository extends BaseRepository implements DichVuRepositoryInterfa
     public function CheckDichVuByIdDanhMuc($id)
     {
         return $this->model->select("*")->where('iddm', $id)->doesntExist();
+    }
 
+    public function getAllPagination() {
+        return $this->model->paginate(6);
     }
 }

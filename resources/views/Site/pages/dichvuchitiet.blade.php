@@ -20,12 +20,12 @@
                     </div>
                     <div class="content5">
                         <div class="dichvu-content box-shadow-1 blog-body">
-                            <h1 class=" font-weight-600">{{$detaildichvu->name}}</h1>
+                            <h1 class=" font-weight-600 text-left  pt-1">{{$detaildichvu->name}}</h1>
                             <div class="box-gia">
                                 <span class="giagiam">{{number_format($detaildichvu->dongia)}} đ </span>
                                 <span class="gia left-bar">
-                        {{number_format($dongia1)}} đ
-                    </span>
+                                    {{number_format($dongia1)}} đ
+                                </span>
                                 <span class="name-danhmuc hover-pink left-bar"> {{$detaildichvu->namedm}}</span>
                             </div>
                             <div class="noidungngan mt-4">
@@ -36,9 +36,9 @@
 
                             <div class="mota mt-4 noidung">
                                 <div class="divnoidung">
-                                    <p>
+
                                         <?php echo $detaildichvu->noidung;?>
-                                    </p>
+
                                 </div>
                             </div>
 
@@ -68,39 +68,54 @@
                         </div>
 
                         <div class="list-blog-1 mt-4">
-                            <div class="row  mb-30px">
-
+                            <div class="row mb-30px">
+                                <div class="owl-carousel owl-theme slide-dichvu" id="dich-vu-lien-quan">
                                 @foreach ($dichvulienquan as $data)
+                                    @if ($data != null)
+                                    @php
+                                        $giaSauGiam = $data->dongia - ($data->dongia * $data->giamgia / 100 );
+                                    @endphp
+                                    <div class="w-100">
+                                        <div class="item-dichvu-2 m-3 bg-none"
+                                            onclick="window.location='{{ asset('dich-vu') }}/{{$data->slug}}';">
+                                            <div class="dichvu-header">
+                                                <div class="box-danhmuc-small d-flex align-items-center">
+                                                    <img src="{{ asset('uploads/'.$data->icon) }}"
+                                                        class="img-fluid" alt="">
+                                                </div>
+                                                <div class="img-dichvu">
+                                                    <a href="{{ asset('dich-vu') }}/{{$data->slug}}">
+                                                        <img src="{{ asset('uploads/'.$data->img) }}" alt="">
+                                                    </a>
 
-                                    <div class="col-xl-3"
-                                         onclick="window.location='{{ asset('dich-vu') }}/{{$data->slug}}';">
-                                        <div class="tin-item-1 box-tin-hv">
-                                            <div class="image-tin-1" style="height: 220px;">
-                                                <img class="img-fluid" src="{{ asset('uploads') }}/{{$data->img}}"
-                                                     alt="">
+                                                </div>
                                             </div>
-                                            <div class="content-tin-3 background-white">
-                                                <div class="row">
-                                                    <div
-                                                        class="col-xl-12 d-flex align-items-center color-gray-2 hover-color-black text-small-1">
-                                                        <div class="mr-3">
-                                                            <a class="box-danhmuc-1">
-                                                                {{$data->tendm}}</a>
-                                                        </div>
 
+                                            <div class="content mt-5 px-4 pb-3 background-none">
+                                                @if ($data->giamgia > 0)
+                                                    <div class="box-gia">
+                                                        <span class="giagiam">{{number_format($data->dongia)}} đ </span>
+                                                        <span class="gia left-bar"> {{number_format($giaSauGiam)}} đ </span>
                                                     </div>
+                                                @else
+                                                    <div class="box-gia">
+                                                        <span class="gia">{{number_format($data->dongia)}} đ </span>
+                                                    </div>
+                                                @endif
+                                                <div class="name text-1 limit-text-row-1 px-5 mt-2">
+                                                    {{$data->name}}
                                                 </div>
-                                                <div class="text-bl-1 limit-text-row-1 mb-1 mt-3">
-                                                    <a href="{{ asset('dich-vu') }}/{{$data->slug}}"
-                                                       class="hover-pink">{{$data->name}}</a>
-                                                </div>
-                                                <p class="blog-mota mb-0 limit-text-row-3">
+
+                                                <p class="mota text-2 limit-text-row-3 mt-1 mt-2 text-center">
                                                     {{$data->motangan}}
+
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
+                                @endif
                                 @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -167,6 +182,11 @@
         </div>
 @endsection
 
-@section('javascript')
+@section('css')
     <link rel="stylesheet" href="{{ asset('Site/css') }}/baiviet.css">
+@endsection
+@section('javascript')
+
+    <script src="{{ asset('Site/js') }}/dichvu.js"></script>
+
 @endsection
