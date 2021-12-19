@@ -14,8 +14,10 @@ overflow: hidden;
 .list-blog-dmct3{
   height: 880px;
   overflow: hidden;
-  /* margin-bottom: 160px; */
-
+}
+.list-blog-dmct7{
+  height: 1380px;
+  overflow: hidden;
 }
 .showAllList{
   height: 100%;

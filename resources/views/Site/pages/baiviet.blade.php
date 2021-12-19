@@ -41,15 +41,11 @@
                                                 </div>
                                                 <div class="div formatDayCustom" data-type="long"
                                                         data-format="{{$blognewtt[0]->created_at}}">
-                                                <span>@if ($blognewtt[0]->created_at != null)
-                                                        <?php
-                                                        $timestamp = strtotime($blognewtt[0]->created_at);
-                                                        print date('d-m-y', $timestamp);
-                                                        ?>
-                                                    @endif </span>
+
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="text-bl-1 limit-text-row-2 mb-2 mt-3">
                                             <a href="{{ asset('bai-viet') }}/{{$blognewtt[0]->slug}}"
                                                 class="hover-pink">
