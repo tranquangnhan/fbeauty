@@ -803,15 +803,15 @@ class GioHangController extends Controller
      */
     public function HuyDonHang($id){
         $trangthaidonhang=[
-            "trangthai"=>5
+            "trangthai"=>Controller::DONHANG_DAHUY
         ];
         $update=$this->DonHang->update($id, $trangthaidonhang);
 
         if ($update){
             $idkhachhang=$this->DonHang->find($id);
-            if ($idkhachhang->trangthaithanhtoan == 1){
+            if ($idkhachhang->trangthaithanhtoan == Controller::TRANGTHAI_HOADON_DA_THANH_TOAN){
                 $trangthaitt=[
-                    "trangthaithanhtoan"=>0
+                    "trangthaithanhtoan"=>Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN
                 ];
                 $this->DonHang->update($id, $trangthaitt);
                 $khachhang=$this->KhachHang->find($idkhachhang->idkhachhang);

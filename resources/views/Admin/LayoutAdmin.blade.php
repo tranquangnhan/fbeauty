@@ -291,7 +291,7 @@ $user = Auth::user(); ?>
             <!--- Sidemenu -->
             <div id="sidebar-menu">
 
-                <ul class="metismenu pb-5" id="side-menu">
+                <ul class="metismenu pb-5 mb-5" id="side-menu">
 
                     @if( $user->role == 1)
                         <li class="menu-title">Chung</li>
@@ -374,10 +374,7 @@ $user = Auth::user(); ?>
                                 <li><a href="{{route("khachhang.create")}}">Thêm Khách hàng</a></li>
                             </ul>
                         </li>
-                    @endif
 
-
-                    @if($user->role == 1 )
                         <li class="menu-title">Đặt Lịch</li>
 
                         <li>
@@ -472,6 +469,84 @@ $user = Auth::user(); ?>
                         </li>
                         <div class="mb-10"></div>
                     @endif
+
+                    @if($user->role == 0)
+                            <li>
+                                <a href="{{route("theodoi.index")}}">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span> Người Theo Dõi </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/quantri/datlichremake">
+                                    <i class="far fa-calendar-check"></i>
+                                    <span> Đặt Lịch </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/quantri/lienhe">
+                                    <i class="fa fa-phone"></i>
+                                    <span> Liên hệ </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="mdi mdi-book-open"></i>
+                                    <span> Hóa đơn </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("hoadon.index")}}">Danh sách</a></li>
+                                </ul>
+
+                            </li>
+                            <!--- Giảm Giá -->
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="fas fa-percentage"></i>
+                                    <span> Giảm Giá </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("giamgia.index")}}">Danh sách</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-title">Sản Phẩm</li>
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="mdi mdi-account-circle-outline "></i>
+                                    <span> Sản phẩm </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
+                                    <li><a href="{{route("sanpham.index")}}">Danh Sách</a></li>
+                                </ul>
+                            </li>
+                            <!--- Đơn Hàng -->
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="fas fa-dolly"></i>
+                                    <span> Đơn Hàng </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("donhang.index")}}">Danh sách</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-title">Dịch vụ</li>
+                            <li class="mb-5">
+                                <a href="javascript: void(0);">
+                                    <i class="mdi mdi-room-service"></i>
+                                    <span> Dịch vụ </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("dichvu.index")}}">Danh sách</a></li>
+                                    <li><a href="{{route("dichvu.create")}}">Thêm Dịch vụ</a></li>
+                                </ul>
+                            </li>
+                        @endif
                 </ul>
 
             </div>

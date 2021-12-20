@@ -25,7 +25,7 @@ class NhanVien extends FormRequest
     {
         return [
             'username' => ['required', 'min:3', 'max:50'],
-            'email' => ['required', 'min:3', 'max:50', 'email'],
+            'email' => ['required', 'min:3', 'max:50', 'email', 'regex:/^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/'],
             'password' => ['required', 'min:3', 'max:30'],
             'sdt' => ['required','regex:/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/'],
             'urlHinh'=>['required']
@@ -42,6 +42,7 @@ class NhanVien extends FormRequest
             'email.min' => 'Email phải lớn hơn 3 kí tự',
             'email.max' => 'Email phải nhỏ hơn 50 kí tự',
             'email.email' => 'Email phải đúng định dạng',
+            'email.regex' => 'Email phải đúng định dạng',
             'password.required' => 'Bạn chưa nhập mật khẩu',
             'password.min' => 'Mật khẩu phải lớn hơn 3 kí  tự',
             'password.max' => 'Mật khẩu phải nhỏ hơn 30 kí tự',

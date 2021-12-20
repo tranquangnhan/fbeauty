@@ -22,7 +22,7 @@ class HoaDonSeeder extends Seeder
         DB::table('hoadonchitiet')->delete();
         DB::table('hoadon')->delete();
 
-        for ($i = 1; $i < 100; $i++) {
+        for ($i = 1; $i < 50; $i++) {
             $randomDay = Carbon::today()->subDays(rand(0, 365 * 4))->toDateString();
             $tongTienSauGiam = rand(100000, 50000000);
             $tongTienTruocGiam = $tongTienSauGiam + rand(100000, 1000000);

@@ -93,7 +93,7 @@
                                                                 <div class="form-group form-control-custom">
                                                                     <div class="left">Số điện thoại</div>
                                                                     <div class="right">
-                                                                        <span>+84965286066</span>
+                                                                        <span>+84{{substr(session()->get("khachHang")->sdt, 1)}}</span>
                                                                     </div>
                                                                 </div>
 
@@ -1154,7 +1154,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        @if($donhangofme->trangthai == 0)
+                                                                        @if($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_CHOXACNHAN)
                                                                             <div class="item"
                                                                                  id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
@@ -1162,24 +1162,24 @@
                                                                                     onclick="HuyDatHang({{$donhangofme->id}})"
                                                                                     class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==1)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DANGGIAO)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-primary">Đang giao hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==2)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAGIAO)
                                                                             <div class="item">
                                                                                 <i class="fas fa-truck-moving uk-text-success"></i>
                                                                                 <span class="ml-1 uk-text-success">Giao hàng thành công</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==3)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DONHANGLOI)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Đơn hàng lỗi</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==4)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_TRAHANG)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Trả hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==5)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAHUY)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-danger">Đã hủy đơn</span>
                                                                             </div>
@@ -1492,32 +1492,32 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        @if($donhangofme1->trangthai == 0)
+                                                                        @if($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_CHOXACNHAN)
                                                                             <div class="item"
-                                                                                 id="huydonhang{{$donhangofme1->id}}">
+                                                                                 id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
                                                                                 <span
-                                                                                    onclick="HuyDatHang({{$donhangofme1->id}})"
+                                                                                    onclick="HuyDatHang({{$donhangofme->id}})"
                                                                                     class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
-                                                                        @elseif($donhangofme1->trangthai ==1)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DANGGIAO)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-primary">Đang giao hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme1->trangthai ==2)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAGIAO)
                                                                             <div class="item">
                                                                                 <i class="fas fa-truck-moving uk-text-success"></i>
                                                                                 <span class="ml-1 uk-text-success">Giao hàng thành công</span>
                                                                             </div>
-                                                                        @elseif($donhangofme1->trangthai ==3)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DONHANGLOI)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Đơn hàng lỗi</span>
                                                                             </div>
-                                                                        @elseif($donhangofme1->trangthai ==4)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_TRAHANG)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Trả hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme1->trangthai ==5)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAHUY)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-danger">Đã hủy đơn</span>
                                                                             </div>
@@ -1829,7 +1829,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        @if($donhangofme->trangthai == 0)
+                                                                        @if($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_CHOXACNHAN)
                                                                             <div class="item"
                                                                                  id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
@@ -1837,24 +1837,24 @@
                                                                                     onclick="HuyDatHang({{$donhangofme->id}})"
                                                                                     class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==1)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DANGGIAO)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-primary">Đang giao hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==2)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAGIAO)
                                                                             <div class="item">
                                                                                 <i class="fas fa-truck-moving uk-text-success"></i>
                                                                                 <span class="ml-1 uk-text-success">Giao hàng thành công</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==3)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DONHANGLOI)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Đơn hàng lỗi</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==4)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_TRAHANG)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Trả hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==5)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAHUY)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-danger">Đã hủy đơn</span>
                                                                             </div>
@@ -2163,7 +2163,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        @if($donhangofme->trangthai == 0)
+                                                                        @if($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_CHOXACNHAN)
                                                                             <div class="item"
                                                                                  id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
@@ -2171,24 +2171,24 @@
                                                                                     onclick="HuyDatHang({{$donhangofme->id}})"
                                                                                     class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==1)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DANGGIAO)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-primary">Đang giao hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==2)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAGIAO)
                                                                             <div class="item">
                                                                                 <i class="fas fa-truck-moving uk-text-success"></i>
                                                                                 <span class="ml-1 uk-text-success">Giao hàng thành công</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==3)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DONHANGLOI)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Đơn hàng lỗi</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==4)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_TRAHANG)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Trả hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==5)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAHUY)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-danger">Đã hủy đơn</span>
                                                                             </div>
@@ -2498,7 +2498,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        @if($donhangofme->trangthai == 0)
+                                                                        @if($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_CHOXACNHAN)
                                                                             <div class="item"
                                                                                  id="huydonhang{{$donhangofme->id}}">
                                                                                 <span class="ml-1 btn btn-success">Chờ xác nhận</span>
@@ -2506,24 +2506,24 @@
                                                                                     onclick="HuyDatHang({{$donhangofme->id}})"
                                                                                     class="ml-1 btn btn-danger">Hủy đơn</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==1)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DANGGIAO)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-primary">Đang giao hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==2)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAGIAO)
                                                                             <div class="item">
                                                                                 <i class="fas fa-truck-moving uk-text-success"></i>
                                                                                 <span class="ml-1 uk-text-success">Giao hàng thành công</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==3)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DONHANGLOI)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Đơn hàng lỗi</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==4)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_TRAHANG)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-warning">Trả hàng</span>
                                                                             </div>
-                                                                        @elseif($donhangofme->trangthai ==5)
+                                                                        @elseif($donhangofme->trangthai == \App\Http\Controllers\Controller::DONHANG_DAHUY)
                                                                             <div class="item">
                                                                                 <span class="ml-1 btn btn-danger">Đã hủy đơn</span>
                                                                             </div>
