@@ -20,7 +20,7 @@ class LieutrinhSeeder extends Seeder
         //DB::table('lieutrinh')->delete();
        // DB::table('lieutrinhchitiet')->delete();
 
-        for ($i = 7; $i < 100; $i++) {
+        for ($i = 26; $i < 100; $i++) {
             $randomDay = Carbon::today()->subDays(rand(0, 365 * 4))->toDateString();
             //$randomDay1 = $randomDay + 7 ;
             $tongTienSauGiam = rand(100000, 50000000);

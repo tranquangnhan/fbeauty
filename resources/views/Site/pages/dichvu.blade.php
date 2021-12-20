@@ -40,17 +40,21 @@
                                     @if ($dichVu != null)
                                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 mt-5">
                                         <div class="dichvu-item dichvu-item-z w-100">
-                                            <div class="content-1">
+                                            <div class="content-1" onclick="window.location='{{ asset('dich-vu') }}/{{$dichVu->slug}}';">
                                                 <div class="text-7 color-main-1">
                                                     {{ $dichVu->namedm }}
                                                 </div>
 
                                                 <div class="img-1 mt-4">
+                                                    <a href="{{ asset('dich-vu') }}/{{$dichVu->slug}}">
                                                     <img class="" src="{{ asset('uploads/')}}/{{ $dichVu->img }}" alt="">
+                                                    </a>
                                                 </div>
 
                                                 <div class="text-1 limit-text-row-1 mt-4">
+                                                    <a href="{{ asset('dich-vu') }}/{{$dichVu->slug}}">
                                                     {{ $dichVu->name }}
+                                                    </a>
                                                 </div>
 
                                                 <div class="box-gia-dichvu mt-2">
@@ -74,6 +78,12 @@
                                                     {{ $dichVu->motangan }}
 
                                                 </p>
+                                            </div>
+                                            <div class="w-100 text-center mb-4">
+                                                <div class="button btn-8 btn-datlich btn-modal-main" type-modal="modal-datlich"
+                                                    data-show="one">
+                                                    ĐẶT LỊCH NGAY
+                                                </div>
                                             </div>
 
                                         </div>
@@ -142,12 +152,20 @@
                                                     </span>
                                                 </div>
                                                 <div class="name text-1 limit-text-row-1 px-5 mt-2">
+                                                    <a href="{{ asset('dich-vu') }}/{{$dichVuGiamGia->slug}}">
                                                     {{$dichVuGiamGia->name}}
+                                                    </a>
                                                 </div>
 
                                                 <p class="mota text-2 limit-text-row-3 mt-1 mt-2 text-center">
                                                     {{$dichVuGiamGia->motangan}}
                                                 </p>
+                                                </div>
+                                            </div>
+                                            <div class="w-100 text-center mb-4">
+                                                <div class="button btn-8 btn-datlich btn-modal-main" type-modal="modal-datlich"
+                                                    data-show="one">
+                                                    ĐẶT LỊCH NGAY
                                                 </div>
                                             </div>
                                         </div>
@@ -204,13 +222,20 @@
                                                             </div>
                                                         @endif
                                                         <div class="name text-1 limit-text-row-1 px-5 mt-2">
-                                                            {{$dichVuUaChuong->dichvu->name}}
+                                                            <a href="{{ asset('dich-vu') }}/{{$dichVuUaChuong->dichvu->slug}}">
+                                                                {{$dichVuUaChuong->dichvu->name}}</a>
                                                         </div>
 
                                                         <p class="mota text-2 limit-text-row-3 mt-1 mt-2 text-center">
                                                             {{$dichVuUaChuong->dichvu->motangan}}
 
                                                         </p>
+                                                    </div>
+                                                </div>
+                                                <div class="w-100 text-center mb-4">
+                                                    <div class="button btn-8 btn-datlich btn-modal-main" type-modal="modal-datlich"
+                                                        data-show="one">
+                                                        ĐẶT LỊCH NGAY
                                                     </div>
                                                 </div>
                                             </div>
