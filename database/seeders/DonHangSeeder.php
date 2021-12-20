@@ -122,7 +122,7 @@ class DonHangSeeder extends Seeder
 
 
 
-        for ($i = 1; $i < 100; $i++) {
+        for ($i = 1; $i < 50; $i++) {
             $ho_ = Arr::random($ho);
 
             $randomDay = Carbon::today()->subDays(rand(0, 365 * 4))->toDateString();
