@@ -60,6 +60,7 @@ class Controller extends BaseController
     const DONHANG_DAGIAO=2;
     const DONHANG_DAHUY=3;
     const DONHANG_TRAHANG=4;
+    const DONHANG_DONHANGLOI=5;
     /**
     End trạng thái đơn hàng
      */

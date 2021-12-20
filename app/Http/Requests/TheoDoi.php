@@ -24,7 +24,7 @@ class TheoDoi extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'min:3', 'max:50', 'email']
+            'email' => ['required', 'min:3', 'max:50', 'email', 'regex:/^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/']
         ];
     }
 
@@ -34,7 +34,8 @@ class TheoDoi extends FormRequest
             'email.required' => 'Bạn chưa nhập email',
             'email.min' => 'Email phải lớn hơn 3 kí tự',
             'email.max' => 'Email phải nhỏ hơn 50 kí tự',
-            'email.email' => 'Email phải đúng định dạng'
+            'email.email' => 'Email phải đúng định dạng',
+            'email.regex' => 'Email phải đúng định dạng'
         ];
     }
 
