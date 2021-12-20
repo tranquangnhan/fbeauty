@@ -49,7 +49,7 @@
                                                     <option value="{{$ci->matp}}">{{$ci->name_city}}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('tinh')
+                                                @error('city')
                                             <span class="badge badge-danger">{{$message}}</span>
                                             @enderror
                                             </div>
@@ -61,6 +61,9 @@
                                                     <select  name="province" id="province" class="form-control input-sm m-bot15 choose province"  class="form-control @error('quan') border-error @enderror quan" value="{{old('quan')}}">
                                                         <option value="">-----{{__('Chọn Quận/Huyện')}}-----</option>
                                                     </select>
+                                                    @error('province')
+                                                        <span class="badge badge-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -71,6 +74,9 @@
                                                     <select name="wards" id="wards" class=" form-control input-sm m-bot15 wards" class="form-control @error('huyen') border-error @enderror huyen" value="{{old('huyen')}}">
                                                         <option value="">-----{{__('Chọn Xã/Phường')}}-----</option>
                                                     </select>
+                                                    @error('wards')
+                                                        <span class="badge badge-danger">{{$message}}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>

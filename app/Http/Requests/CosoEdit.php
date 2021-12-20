@@ -24,8 +24,12 @@ class CosoEdit extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:3', 'max:50'],
+            // 'name' => ['required|unique:coso|min:3|max:50'],
+            'name' => 'required|between:3,100',
             'diachi' => ['required', 'min:3', 'max:300'],
+            'city' =>['required'],
+            'province' =>['required'],
+            'wards' =>['required'],
         ];
     }
 
@@ -33,11 +37,15 @@ class CosoEdit extends FormRequest
     {
         return [
             'name.required' => 'Bạn chưa nhập tên cơ sở',
+            'name.unique'=>'tên cơ sở này đã tồn tại',
             'name.min' => 'Cơ sở phải lớn hơn 3 kí tự',
             'name.max' => 'Cơ sở phải nhỏ hơn 300 kí tự',
+            'city.required' => 'vui lòng chọn thành phố',
+            'province.required' => 'vui lòng chọn quận huyện',
+            'wards.required' => 'vui lòng chọn xã phường',
             'diachi.required' => 'Bạn chưa nhập địa chỉ',
             'diachi.min' => 'Địa chỉ phải lớn hơn 3 kí tự',
-            'diachi.max' => 'Địa chỉ phải nhỏ hơn 300 kí tự',
+            'diachi.max' => 'Địa chỉ phải nhỏ hơn 300 kí tự'
         ];
     }
 
