@@ -146,7 +146,7 @@ class GiamGiaController extends Controller
         $CheckHoaDon = $this->HoaDon->getHoaDonBYIdGiamGia($id);
         if (count($hasChiTiet) > 0 && $CheckHoaDon == false) {
             $message=[
-                'message'=>"Mã giảm giá chứa dữ liệu.",
+                'message'=>"Mã giảm giá đang tồn tại dữ liệu.",
                 'icon'=>'warning',
                 'error_Code'=>1
             ];

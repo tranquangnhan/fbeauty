@@ -157,7 +157,7 @@ class DichVuController extends Controller
         }
         else{
             $message=[
-                'message'=>"Dịch vụ đang chứa dữ liệu.",
+                'message'=>"Dịch vụ đã tồn tại dữ liệu dữ liệu.",
                 'icon'=>'warning',
                 'error_Code'=>1
             ];
