@@ -138,7 +138,7 @@ class DanhMucController extends Controller
         }
         else{
             $message=[
-                'message'=>"Danh mục đang chứa dữ liệu.",
+                'message'=>"Danh mục đã tồn tại dữ liệu.",
                 'icon'=>'warning',
                 'error_Code'=>1
             ];

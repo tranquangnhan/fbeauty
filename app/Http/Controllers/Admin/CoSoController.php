@@ -203,7 +203,7 @@ class CoSoController extends Controller
         $hasHoaDon = $this->HoaDon->getHoaDonIdCoSo($id);
         if(count($hasHoaDon)>0){
             $message=[
-                'message'=>"Xóa cơ sở đã chứa dữ liệu.",
+                'message'=>"Cơ sở đã tồn tại dữ liệu.",
                 'icon'=>'warning',
                 'error_Code'=>1
             ];
