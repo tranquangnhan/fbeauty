@@ -92,6 +92,7 @@ class DanhMucRepository extends BaseRepository implements DanhMucRepositoryInter
     public function getAllDanhMucDichVu(){
         return $this->model->select('danhmuc.*')
         ->where('loai', '=', Controller::LOAI_DANHMUC_DICHVU)
+        ->limit(9)
         ->get();
     }
 
