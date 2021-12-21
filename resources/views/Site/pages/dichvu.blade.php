@@ -265,8 +265,7 @@
             <div class="row">
                 @foreach ($danhmuc as $row)
                     <div class="col-xl-4">
-                        <div class="danhmuc-2-item"
-                             onclick="window.location='{{ asset('danh-muc-dich-vu') }}/{{$row->slug}}';">
+                        <div class="danhmuc-2-item"onclick="window.location='{{ asset('danh-muc-dich-vu') }}/{{$row->slug}}';">
                             <div class="image">
                                 <img src="{{ asset('uploads/'.$row->img) }}" class="img-fluid" alt="">
                             </div>

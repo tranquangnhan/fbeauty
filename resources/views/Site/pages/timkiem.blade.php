@@ -49,7 +49,7 @@
 
                             <div class="title-small color-black-main text-left">Kết quả tìm kiếm trong sản phẩm</div>
                             <div class="w-100">
-                                <div class="fa-list-dichvu mt-1">
+                                <div class=" mt-1">
                                     <div class="fa-list-dichvu mt-1" id="showsanpham">
                                     </div>
                                 </div>
