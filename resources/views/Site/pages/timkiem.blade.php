@@ -17,7 +17,7 @@
                             <div class="title-small color-black-main">
                                 <form class="form-inline" action="">
                                     <div class="form-group">
-                                        <input class="form-control" name="key" placeholder="Tìm Kiếm ....">
+                                        <input class="form-control" name="key" placeholder="Tìm Kiếm ...." required>
                                     </div>
                                     <button type="submit" class="btn btn-default"><i
                                             class="fas fa-search color-black-2"></i></button>
@@ -30,8 +30,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="list-tabs">
-                    <div class="tab-content" id="myTabContent-1">
+                <div class="list-tabs mb-4">
+                    <div class="tab-content " id="myTabContent-1">
                         <div class="tab-pane fade show active" id="tatca" role="tabpanel">
 
                             <div class="title-small color-black-main text-left">Kết quả tìm kiếm dịch vụ</div>
@@ -70,7 +70,7 @@
 
                                 </div>
                                 <a id="xemthembtnbv">
-                                    <button class="w-25 border border-dark p-2" style="background-color: #e87c7b;"
+                                    <button class="w-25 border border-dark p-2 mb-4" style="background-color: #e87c7b;"
                                             onclick="xemThemBaiViet()">Xem thêm <i class="fa fa-angle-down"></i>
                                     </button>
                                 </a>
@@ -82,6 +82,7 @@
 
 
                     </div>
+                </div>
                     @endsection
 
                     @section('javascript')
