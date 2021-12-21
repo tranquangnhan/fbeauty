@@ -196,7 +196,7 @@
                             var marginTop = '';
                         }
                     } else {
-                        if (i > 2) {
+                        if (i >= 0) {
                             var marginTop = 'mt-3';
                         } else {
                             var marginTop = '';
@@ -228,16 +228,16 @@
                         }
                         showgiasaugiam = '<br><span>Giảm còn: </span><span class="font-weight-bold">' + giasaugiam.toLocaleString().replaceAll(",", ".") + 'đ</span>';
                     }
-                    sp += '<div class="col-xl-4 fa-sanpham-item '+ marginTop +'" id-data-sanpham="'+i+'" id="AnHienSP' + (i + 1) + '">\n' +
+                    sp += '<div class="col-xl-4 col-lg-6 col-md-12 fa-sanpham-item '+ marginTop +'" id-data-sanpham="'+i+'" id="AnHienSP' + (i + 1) + '">\n' +
                         ' <div class="item-sanpham w-100 sanpham-">\n' +
-                        ' <div class="child-item-sanpham row g-0">\n' +
+                        ' <div class="child-item-sanpham row g-0 box-item-sanpham-rows">\n' +
                         ' <div class="btn-add-wishlist btn-sticky hover-scale-1 ' + yeuthich + '" id="tym' + data.sanpham[i].id + '" onclick="AddYeuThich(' + data.sanpham[i].id + ')">\n' +
                         '<div class="box-cicrle" id="yt" style="z-index: 9999;">' +
                         '<i class="fas fa-heart heart-full"></i><i class="far fa-heart heart-line" ></i>\n' +
-                        '</div></div>' + boxgiamgia + ' <div class="col-xl-12 fa-image-sanpham ">\n' +
-                        '<img src="' + document.location.hash + 'uploads/' + anhsp[0] + '" class="img-fluid" alt="...">\n' +
+                        '</div></div>' + boxgiamgia + ' <div class="col-12 fa-image-sanpham ">\n' +
+                        '<img src="' + document.location.hash + 'uploads/' + anhsp[0] + '" class="" alt="...">\n' +
                         '</div>\n' +
-                        '<div class="col-xl-12 fa-content-sanpham pl-0 position-relative"> <div class="card-body pl-0">\n' +
+                        '<div class="col-xl-12 fa-content-sanpham pl-0 position-relative"> <div class="card-body pl-0 px-4">\n' +
                         '<div class="product-info">\n' +
                         ' <a href="javascript:;">\n' +
                         '<p class="product-catergory font-13 mb-1">' + data.sanpham[i].tendm + '</p>\n' +
@@ -245,7 +245,7 @@
                         ' <a href="' + document.URL + '/chi-tiet/' + data.sanpham[i].slug + '">\n' +
                         ' <h6 class="product-name mb-1 limit-text-row-2">' + data.sanpham[i].name + '</h6>\n' +
                         '  </a>\n' +
-                        ' <p class="card-text product-motangan">' + data.sanpham[i].mota + '</p>\n' +
+                        ' <p class="card-text product-motangan mb-0">' + data.sanpham[i].mota + '</p>\n' +
                         '<div class="d-flex align-items-center fa-product-price" style="height: 40px;">\n' +
                         '<div class="product-price">\n' +
                         ' <span class="text-decoration-line-through" >' + Number(data.sanpham[i].dongia).toLocaleString().replaceAll(",", ".") + '</span>đ / <span>' + thetich + '</span>ml  \n' +

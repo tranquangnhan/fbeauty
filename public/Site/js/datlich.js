@@ -28,18 +28,33 @@ function getListHTMLNhanVien(data) {
     return html;
 }
 
+$("body").on("click", ".time-close",function (e) {
+    Swal.fire({
+        title: 'Khung Giờ Đã Đóng',
+        icon: 'warning',
+        text: 'Đặt lịch cách 10\' trước khi đến và có thể do nhân viên bạn chọn đã có lịch làm vào khung giờ này. Hãy chọn lại bạn nhé',
+        confirmButtonText: 'Xác nhận',
+    })
+});
+
 function boxHTMLNhanVien(nhanVien) {
-    if (nhanVien.img == '') {
+    if (nhanVien.avatar == '') {
         var imgUrl = 'avatar-default.png';
     } else {
-        var imgUrl = nhanVien.img;
+        var imgUrl = nhanVien.avatar;
+    }
+
+    if (nhanVien.trangthai == trangThaiNhanVienHoatDong) {
+        var disClass = '';
+    } else {
+        var disClass = 'disabled';
     }
 
     var html = `
-    <div class="option-item option-nhanvien date-bg option-dong">
+    <div class="option-item option-nhanvien date-bg option-dong ${disClass}">
         <div class="picknhanvien position-relative z-index-999" data-imgurl="${imgUrl}" data-name-nhanvien="${nhanVien.name}" data-option-nhanvien="${nhanVien.id}">
             <div class="img-1 border-image">
-                <img src="${rootUrlImage}${imgUrl}" class="cycle-img-1" alt="">
+                <img src="${rootUrlUploadImage}${imgUrl}" class="cycle-img-1" alt="">
             </div>
 
             <div class="name-nhanvien">
@@ -97,7 +112,7 @@ function getTextDateOnBrowser(index, ngayThang, thuTrongTuan) {
 
     }
     else if (index == 2) {
-        text = `Hôm mốt, ${thuTrongTuan} (${ngayThang})`;
+        text = `Ngày mốt, ${thuTrongTuan} (${ngayThang})`;
     }
     else {
         text = `${thuTrongTuan} (${ngayThang})`;
@@ -126,6 +141,7 @@ function loadGio(ngay, idNhanVien) {
             'idNhanVien': idNhanVien
         },
         success: function (respon) {
+            console.log(respon);
             khungGio = respon;
             if (respon.success == true) {
                 var html = loopGetHTMLKhungGio(respon.lich, respon.ngay);
@@ -200,24 +216,33 @@ $("body").on("click", ".date-click",function (e) {
 });
 
 $(document).on('click', ".option-nhanvien", function() {
-    var thisChild = $(this).children();
-    var text = thisChild.children('.' + classGetTextNhanVien).text();
-    nhanVienSelected = thisChild.attr(attrOptionNhanVien);
-    nameNhanVien = thisChild.attr('data-name-nhanvien');
-    imgUrlNhanVien = thisChild.attr('data-imgurl');
-    objectNhanVienSelected = {
-        'id': nhanVienSelected,
-        'ten': nameNhanVien,
-        'imgUrl': imgUrlNhanVien
-    };
-    elementValueNhanVien.html(text);
-    elementValueNhanVien.attr(attrValueNhanVien, nhanVienSelected);
-    $('.option-nhanvien').removeClass('clicked');
-    timeSelected = '';
-    $(this).addClass('clicked');
-    soXuLiBatDongBo = 1;
-    spinnerBatDongBo();
-    loadGio(ngaySelected, nhanVienSelected);
+    if (!$(this).hasClass('disabled')) {
+        var thisChild = $(this).children();
+        var text = thisChild.children('.' + classGetTextNhanVien).text();
+        nhanVienSelected = thisChild.attr(attrOptionNhanVien);
+        nameNhanVien = thisChild.attr('data-name-nhanvien');
+        imgUrlNhanVien = thisChild.attr('data-imgurl');
+        objectNhanVienSelected = {
+            'id': nhanVienSelected,
+            'ten': nameNhanVien,
+            'imgUrl': imgUrlNhanVien
+        };
+        elementValueNhanVien.html(text);
+        elementValueNhanVien.attr(attrValueNhanVien, nhanVienSelected);
+        $('.option-nhanvien').removeClass('clicked');
+        timeSelected = '';
+        $(this).addClass('clicked');
+        soXuLiBatDongBo = 1;
+        spinnerBatDongBo();
+        loadGio(ngaySelected, nhanVienSelected);
+    } else {
+        Swal.fire({
+            title: 'Chuyên Viên Bận',
+            icon: 'warning',
+            text: 'Chuyên viên bạn chọn đang bận. Hãy chọn chuyên viên khác bạn nhé !',
+            confirmButtonText: 'Xác nhận',
+        });
+    }
 });
 
 $(document).on('click', ".option-time", function() {
@@ -299,7 +324,7 @@ function datLich() {
     Swal.fire({
         title: 'Kiểm tra thông tin?',
         icon: 'info',
-        text: 'Bạn hãy kiểm tra đúng thông tin trước khi đặt nhé :)',
+        text: 'Bạn hãy kiểm tra đúng thông tin trước khi đặt nhé',
         showDenyButton: false,
         showCancelButton: true,
         cancelButtonText: 'Xem lại',
@@ -412,6 +437,7 @@ function resetModal() {
     noiDungModalElement.children().remove();
     noiDungModalElement.append(modalHTML);
     loadNgayDatLich();
+    nhanVienSelected = 0;
 
     // Set lại data vừa remove
     controlShortOne = $('[data-step=0]');

@@ -27,7 +27,7 @@ class HoaDonSeeder extends Seeder
             $tongTienSauGiam = rand(100000, 50000000);
             $tongTienTruocGiam = $tongTienSauGiam + rand(100000, 1000000);
             DB::table('hoadon')->insert([
-                ['id'=>$i,'idkhachhang' => rand(1, 6), 'idcoso'=> 1, 'idnhanvien'=> rand(1, 6), 'idthungan' => rand(1, 6), 'idlieutrinh'=> rand(1, 99), 'idgiamgia'=> 1, 'tongtientruocgiamgia' => $tongTienTruocGiam, 'tongtiensaugiamgia' => $tongTienSauGiam, 'trangthai' => 1, 'created_at'=>$randomDay],
+                ['id'=>$i,'idkhachhang' => rand(1, 6), 'idcoso'=> 1, 'idnhanvien'=> rand(1, 6), 'idthungan' => rand(1, 6), 'idgiamgia'=> 1, 'tongtientruocgiamgia' => $tongTienTruocGiam, 'tongtiensaugiamgia' => $tongTienSauGiam, 'trangthai' => 1, 'created_at'=>$randomDay],
             ]);
             DB::table('hoadonchitiet')->insert([
                 ['id'=>$i,'idhoadon'=>$i,'idlienquan'=>rand(1,2),'type' => rand(1,0), 'soluong'=> rand(1, 6), 'dongiatruocgiamgia' => $tongTienTruocGiam, 'dongiasaugiamgia' => $tongTienSauGiam, 'created_at'=>$randomDay],

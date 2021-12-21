@@ -65,7 +65,7 @@ dichVuUaChuong.owlCarousel({
     pagination: false,
     dots: false,
     autoplay: true,
-    autoplayTimeout: 1000000,
+    autoplayTimeout: 10000,
     autoplayHoverPause: true,
     responsive: {
         0: {
@@ -91,7 +91,7 @@ dichVuGiamGiaSlide.owlCarousel({
     pagination: false,
     dots: false,
     autoplay: true,
-    autoplayTimeout: 1000000,
+    autoplayTimeout: 10000,
     autoplayHoverPause: true,
     responsive: {
         0: {
@@ -110,7 +110,6 @@ dichVuGiamGiaSlide.owlCarousel({
 });
 
 var headerSlide = $('#header-slide');
-
 $('#header-slide').owlCarousel({
     animateOut: 'fadeOut',
     animateIn: 'flipInX',
@@ -118,9 +117,8 @@ $('#header-slide').owlCarousel({
     items: 1,
     smartSpeed: 450,
     dots: true,
-
     autoplay: true,
-    autoplayTimeout: 4000000,
+    autoplayTimeout: 4000,
     autoplayHoverPause: false,
     mouseDrag: false,
     touchDrag: false,
@@ -134,13 +132,11 @@ headerSlide.on('changed.owl.carousel', function(event) {
         var page = event.page.index;
         var elementImg = $('.imageHeader_' + page);
         $(elementImg).addClass('auto-scale-loop-forever');
-
     }, 800);
 
     headerSlide.trigger('stop.owl.autoplay');
     headerSlide.trigger('play.owl.autoplay');
 });
-
 
 // modal
 $("body").on("click", ".btn-modal-main",function (e) {
