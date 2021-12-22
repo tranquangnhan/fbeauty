@@ -93,7 +93,7 @@ class BannerController extends Controller
                 $this->Banner->update($id,$mang);
                 return redirect(route("banner.index"))->with('thanhcong', 'Cập nhật banner thành công');
             } else {
-                return redirect(route("banner.edit", $id))->with('thatbai', 'Ảnh không đúng định dạng');
+                return redirect(route("banner.edit", $id))->with('thatbai', 'Ảnh không đúng định dạng.');
             }
         }
         else{

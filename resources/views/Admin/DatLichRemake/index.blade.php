@@ -490,6 +490,7 @@ window.Echo.channel('laravel_database_datlich-channel')
         if (data.respon.typez == 'dat-lich') {
             checkKhungGio(data.respon);
         }
+        console.log(data);
 
         // if (data.respon.typez == 'lich') {
         //     checkTimeStatus(data.respon);

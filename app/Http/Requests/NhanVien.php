@@ -28,7 +28,7 @@ class NhanVien extends FormRequest
             'email' => ['required', 'min:3', 'max:50', 'email', 'regex:/(.+)@gmail.com/i'],
             'password' => ['required', 'min:3', 'max:30'],
             'sdt' => ['required','regex:/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/'],
-            'urlHinh'=>['required']
+            'urlHinh'=>['required','max:2048']
         ];
     }
 
@@ -49,6 +49,7 @@ class NhanVien extends FormRequest
             'sdt.required' => 'Bạn chưa nhập số điện thoại',
             'sdt.regex' => 'Số điện thoại không đúng định dạng',
             'urlHinh.required' => 'Bạn chưa cập nhật avatar',
+            'urlHinh.max' => 'Ảnh có kích thước quá lớn (tối đa 2MB)',
         ];
     }
 
