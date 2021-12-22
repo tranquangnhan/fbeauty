@@ -61,7 +61,9 @@ a,a:hover{
 ::-webkit-scrollbar-thumb:hover {
     background: #eb8584;
 }
-
+.tennv{
+    height: 20px;
+}
 body {
     font-family: var(--main-font);
     /* font-family: 'Fira Sans Condensed', sans-serif; */

@@ -1,6 +1,9 @@
 @extends('Admin.LayoutAdmin')
 
 @section('content')
+@php
+    use app\Http\Controllers\Controller;
+@endphp
 <div class="content-page">
     <div class="content">
         <!-- Start Content-->
@@ -33,10 +36,10 @@
                                                 else echo "<div class=\"bg-success mt-2 rounded-circle\" style=\"width:15px ;height: 15px;\"> </div>";?>
                                             </td>
                                             <td>
-                                                @if ($item->img)
-                                                    <img  class="img-common"  src="{{ asset('uploads/'.$item->img) }}">
+                                                @if ($item->img && is_file(Controller::BASE_URL_UPLOAD_CUSTOMER.$item->img))
+                                                    <img  class="img-common"  src="{{ asset(Controller::BASE_URL_UPLOAD_CUSTOMER.$item->img) }}">
                                                 @else
-                                                    <img  class="img-common"  src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}">
+                                                    <img  class="img-common"  src="{{ asset("".$URL_IMG.'khachhang/default-avatar-kh.jpg') }}">
                                                 @endif
                                             </td>
                                             <td>
