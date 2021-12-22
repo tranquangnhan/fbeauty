@@ -25,7 +25,7 @@ class DatLich extends FormRequest
     {
         return [
             'username' => ['required', 'min:3', 'max:25'],
-            'email' => ['required', 'min:3', 'max:30', 'email'],
+            'email' => ['required', 'min:3', 'max:30', 'email', 'regex:/(.+)@gmail.com/i'],
             'password' => ['required', 'min:3', 'max:25'],
             'sdt' => ['required','regex:/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/'],
             'urlHinh'=>['required']
@@ -39,6 +39,7 @@ class DatLich extends FormRequest
             'username.min' => 'Tên nhân viên phải lớn hơn 3 kí tự',
             'username.max' => 'Tên nhân viên phải nhỏ hơn 25 kí tự',
             'email.required' => 'Bạn chưa nhập email',
+            'email.regex' => 'Email không đúng định dạng(...@gmail.com)',
         ];
     }
 
