@@ -114,7 +114,6 @@ class GiamGiaController extends Controller
     {
         $mytime = Carbon::now()->format('Y-m-d');
         if ($request->ngayhethan > $request->ngaytao) {
-            if ($request->ngaytao >= $mytime) {
                 $data = [
                     'name' => $request->name,
                     'ma' => $request->ma,
@@ -125,9 +124,6 @@ class GiamGiaController extends Controller
                     'ngayhethan' => strtotime($request->ngayhethan)
                 ];
                 $this->GiamGia->update($id, $data);
-            } else {
-                return redirect('quantri/giamgia')->with('thatbai', 'Vui lòng kiểm tra ngày tạo phải lớn hơn hoặc bằng ngày hiện tại');
-            }
         } else {
             return redirect('quantri/giamgia')->with('thatbai', 'Vui lòng kiểm tra ngày tạo phải nhỏ hơn ngày hết hạn');
         }
