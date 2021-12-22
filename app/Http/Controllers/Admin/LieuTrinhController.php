@@ -170,6 +170,7 @@ class LieuTrinhController extends Controller
     }
 
     function editImgLieuTrinh(Request $request){
+        header("Access-Control-Allow-Origin: *");
 
         $img = $this->uploadSingle($this::PATH_UPLOADS_KHACHHANG,$request->file('file'));
 
