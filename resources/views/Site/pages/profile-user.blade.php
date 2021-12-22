@@ -3583,12 +3583,10 @@
                                                                                     class="row d-flex justify-content-between">
                                                                                     <div class="col-8">
                                                                                         <div style="color: var(--main-color)"><strong>Dịch Vụ: </strong>{{Controller::findNameDVByIds($item->iddichvu)}}</div>
-                                                                                        <div
-                                                                                            class="diachi"><strong>Địa Chỉ: </strong>{{$item->diachicoso}}</div>
+                                                                                        <div class="diachi"><strong>Địa Chỉ: </strong>{{$item->diachicoso}}</div>
                                                                                     </div>
 
-                                                                                    <div
-                                                                                        class="col-4 justify-content-end">
+                                                                                    <div class="col-4 justify-content-end">
                                                                                         <div
                                                                                             class="item ml-4 text-right">
                                                                                             <?php
@@ -3599,12 +3597,11 @@
                                                                                             <span
                                                                                                 class="ml-1 uk-text-primary">
                                                                                                 @php
-                                                                                                    $now = strtotime(date('Y-m-d'));
+                                                                                                    $now = strtotime(date('Y-m-d H:i:s'));
                                                                                                 @endphp
-                                                                                                @if (Controller::minusDate($now,$item->thoigiandat)>0)
+                                                                                                @if (Controller::minusDate($now,$item->thoigiandat))
                                                                                                     <i class="far fa-calendar uk-text-primary"></i>
                                                                                                     {{ Controller::minusDate($now,$item->thoigiandat)}}
-                                                                                                    ngày tới
                                                                                                 @else
                                                                                                     <i class="fa fa-close uk-text-danger"></i>
                                                                                                     <span
@@ -3639,7 +3636,7 @@
                                                                                         <label for="" class="text-gray"><i
                                                                                                 class="fas fa-user-shield"></i></label>
                                                                                         <div
-                                                                                            class="ml-2 limit-text-row-1">
+                                                                                            class="ml-2 tennv limit-text-row-1">
 
 
                                                                                             @if ($item->idnhanvien == 0)
@@ -3670,7 +3667,8 @@
                                                                                     </div>
 
                                                                                     <div class="col-xl-4 text-right">
-                                                                                        @if ($item->trangthai==0 && Controller::minusDate($now,$item->thoigiandat)>0)
+                                                                                       
+                                                                                        @if ($item->trangthai==0 && $item->thoigiandat> strtotime ( '-30 minute' , strtotime (date('Y-m-d H:i:s'))))
                                                                                             <a onclick="checkCancel('{{URL::to('/huyprofile/'.$item->id)}}')">
                                                                                                 <button
                                                                                                     class="button-href-basic ml-0">
@@ -3720,8 +3718,9 @@
                                                                                 <div
                                                                                     class="row d-flex justify-content-between">
                                                                                     <div class="col-8">
-                                                                                        <div
-                                                                                            class="diachi">{{$item->diachicoso}}</div>
+
+                                                                                        <div style="color: var(--main-color)"><strong>Dịch Vụ: </strong>{{Controller::findNameDVByIds($item->iddichvu)}}</div>
+                                                                                        <div class="diachi"><strong>Địa Chỉ: </strong>{{$item->diachicoso}}</div>
                                                                                     </div>
 
                                                                                     <div
@@ -3737,11 +3736,11 @@
 
                                                                                 <div
                                                                                     class="row mt-3 justify-content-between">
-                                                                                    <div class="col-xl-5 d-flex">
+                                                                                    <div class="col-xl-4 d-flex">
                                                                                         <label for="" class="text-gray"><i
                                                                                                 class="fas fa-user-shield"></i></label>
                                                                                         <div
-                                                                                            class="ml-2 limit-text-row-1">
+                                                                                            class="ml-2 tennv limit-text-row-1">
                                                                                             @if ($item->idnhanvien == 0)
                                                                                                 Spa chọn nhân viên giúp
                                                                                                 bạn
@@ -3758,17 +3757,15 @@
                                                                                                 class="fas fa-clipboard-check"></i></label>
                                                                                         <div
                                                                                             class="ml-2 limit-text-row-1">
-                                                                                            Bạn muốn tư vấn
+                                                                                            @if ($item->iddichvu == [0])
+                                                                                                Muốn tư vấn
+                                                                                            @else
+                                                                                                Đặt lịch hẹn
+                                                                                            @endif
                                                                                         </div>
                                                                                     </div>
 
                                                                                     <div class="col-xl-4 text-right">
-                                                                                        <a href="">
-                                                                                            <button
-                                                                                                class="button-href-basic ml-0">
-                                                                                                Đặt lại
-                                                                                            </button>
-                                                                                        </a>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -3810,17 +3807,51 @@
                                                                                 <div
                                                                                     class="row d-flex justify-content-between">
                                                                                     <div class="col-8">
-                                                                                        <div
-                                                                                            class="diachi">{{$item->diachicoso}}</div>
+                                                                                        
+                                                                                        <div style="color: var(--main-color)"><strong>Dịch Vụ: </strong>{{Controller::findNameDVByIds($item->iddichvu)}}</div>
+                                                                                        <div class="diachi"><strong>Địa Chỉ: </strong>{{$item->diachicoso}}</div>
                                                                                     </div>
 
-                                                                                    <div
-                                                                                        class="col-4 justify-content-end">
+                                                                                    <div class="col-4 justify-content-end">
                                                                                         <div
                                                                                             class="item ml-4 text-right">
-                                                                                            <i class="far fa-calendar uk-text-primary"></i>
+                                                                                            <?php
+                                                                                            if($item->trangthai == 0)
+                                                                                            {
+                                                                                            ?>
+
                                                                                             <span
-                                                                                                class="ml-1 uk-text-primary"> ngày tới</span>
+                                                                                                class="ml-1 uk-text-primary">
+                                                                                                @php
+                                                                                                    $now = strtotime(date('Y-m-d H:i:s'));
+                                                                                                @endphp
+                                                                                                @if (Controller::minusDate($now,$item->thoigiandat))
+                                                                                                    <i class="far fa-calendar uk-text-primary"></i>
+                                                                                                    {{ Controller::minusDate($now,$item->thoigiandat)}}
+                                                                                                @else
+                                                                                                    <i class="fa fa-close uk-text-danger"></i>
+                                                                                                    <span
+                                                                                                        class="ml-1 uk-text-danger">Bạn đã trễ lịch</span>
+                                                                                                @endif
+
+                                                                                            </span>
+                                                                                            <?php
+                                                                                            }elseif($item->trangthai == 1)
+                                                                                            {
+                                                                                            ?>
+                                                                                            <i class="far fa-check-circle uk-text-success"></i>
+                                                                                            <span
+                                                                                                class="ml-1 uk-text-success">Hoàn thành</span>
+                                                                                            <?php
+                                                                                            }else{
+                                                                                            ?>
+                                                                                            <i class="fas fa-exclamation-circle text-danger"></i>
+                                                                                            <span
+                                                                                                class="ml-1 text-danger">Đã hủy</span>
+                                                                                            <?php
+                                                                                            }
+                                                                                            ?>
+
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -3831,7 +3862,7 @@
                                                                                         <label for="" class="text-gray"><i
                                                                                                 class="fas fa-user-shield"></i></label>
                                                                                         <div
-                                                                                            class="ml-2 limit-text-row-1">
+                                                                                            class="ml-2 tennv limit-text-row-1">
                                                                                             @if ($item->idnhanvien == 0)
                                                                                                 Spa chọn nhân viên giúp
                                                                                                 bạn
@@ -3846,19 +3877,25 @@
                                                                                         class="col-xl-4 d-flex text-center">
                                                                                         <label for="" class="text-gray"><i
                                                                                                 class="fas fa-clipboard-check"></i></label>
-                                                                                        <div
-                                                                                            class="ml-2 limit-text-row-1">
-                                                                                            Bạn muốn tư vấn
+                                                                                        <div class="ml-2 tennv limit-text-row-1">
+                                                                                            @if ($item->iddichvu == [0])
+                                                                                                Muốn tư vấn
+                                                                                            @else
+                                                                                                Đặt lịch hẹn
+                                                                                            @endif
                                                                                         </div>
                                                                                     </div>
 
                                                                                     <div class="col-xl-4 text-right">
-                                                                                        <a href="">
-                                                                                            <button
-                                                                                                class="button-href-basic ml-0">
-                                                                                                Huỷ lịch
-                                                                                            </button>
-                                                                                        </a>
+                                                                                       @if ($item->trangthai==0 && $item->thoigiandat> strtotime ( '-30 minute' , strtotime (date('Y-m-d H:i:s'))))
+                                                                                            <a onclick="checkCancel('{{URL::to('/huyprofile/'.$item->id)}}')">
+                                                                                                <button
+                                                                                                    class="button-href-basic ml-0">
+                                                                                                    Huỷ lịch
+                                                                                                </button>
+                                                                                            </a>
+
+                                                                                        @endif
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -3898,8 +3935,8 @@
                                                                                 <div
                                                                                     class="row d-flex justify-content-between">
                                                                                     <div class="col-8">
-                                                                                        <div
-                                                                                            class="diachi">{{$item->diachicoso}}</div>
+                                                                                        <div style="color: var(--main-color)"><strong>Dịch Vụ: </strong>{{Controller::findNameDVByIds($item->iddichvu)}}</div>
+                                                                                        <div class="diachi"><strong>Địa Chỉ: </strong>{{$item->diachicoso}}</div>
                                                                                     </div>
 
                                                                                     <div
@@ -3919,7 +3956,7 @@
                                                                                         <label for="" class="text-gray"><i
                                                                                                 class="fas fa-user-shield"></i></label>
                                                                                         <div
-                                                                                            class="ml-2 limit-text-row-1">
+                                                                                            class="ml-2 tennv limit-text-row-1">
                                                                                             @if ($item->idnhanvien == 0)
                                                                                                 Spa chọn nhân viên giúp
                                                                                                 bạn
@@ -3934,19 +3971,17 @@
                                                                                         class="col-xl-4 d-flex text-center">
                                                                                         <label for="" class="text-gray"><i
                                                                                                 class="fas fa-clipboard-check"></i></label>
-                                                                                        <div
-                                                                                            class="ml-2 limit-text-row-1">
-                                                                                            Bạn muốn tư vấn
+                                                                                        <div  class="ml-2 limit-text-row-1">
+                                                                                            @if ($item->iddichvu == [0])
+                                                                                            Muốn tư vấn
+                                                                                            @else
+                                                                                                Đặt lịch hẹn
+                                                                                            @endif
                                                                                         </div>
                                                                                     </div>
 
                                                                                     <div class="col-xl-4 text-right">
-                                                                                        <a href="">
-                                                                                            <button
-                                                                                                class="button-href-basic ml-0">
-                                                                                                Đặt lại
-                                                                                            </button>
-                                                                                        </a>
+                                                                                       
                                                                                     </div>
 
                                                                                 </div>

@@ -224,11 +224,18 @@ class Controller extends BaseController
     }
 
     public static function minusDate($startTime, $endTime){
-        $start_time = \Carbon\Carbon::parse(date('Y-m-d',$startTime));
-        $finish_time = \Carbon\Carbon::parse(date('Y-m-d',$endTime));
-        $newDate =  $start_time->diffInDays($finish_time, false);
-        return $newDate;
+        
+        if($endTime<$startTime){
+            return false;
+        }else{
+            Carbon::setLocale('vi'); 
+            $startTime = Carbon::parse(date('Y-m-d H:i:s',$startTime));
+            $endTime = Carbon::parse(date('Y-m-d H:i:s',$endTime));
+            $newMinute =  $endTime->diffForHumans($startTime);
+            return $newMinute;
+        }
     }
+
 
     public static function findNameDVByIds($ids){
         $arrayData = [];

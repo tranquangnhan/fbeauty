@@ -64,6 +64,8 @@
                                                     <small>Sản phẩm có sẵn</small></div>
                                             </div>
                                         </div>
+                                    @else
+                                        <h3 class="">Sản phẩm ngừng kinh doanh</h3>
                                     @endif
                                 </div>
                                 @if($sanpham[0]->giamgia!=null)
@@ -83,14 +85,18 @@
 
                                         </div>
                                     </div>
-                                @endif
+                                @else
+                                    <span></span>
+                                    @endif
+
 
                                 <div class="dungtich mt-2">
+
                                     <div class="row align-items-center">
+                                        @if($sanphamchitietlimit[0]!=null)
                                         <div class="col-3">
                                             <span class="text-bold">Dung tích </span>
                                         </div>
-                                        @if($sanphamchitietlimit[0]!=null)
                                             <div class="col-9">
                                                 @foreach($sanphamchitiet as $index =>$spct)
                                                     <div
@@ -102,7 +108,9 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                        @endif
+                                        @else
+                                            <span></span>
+                                            @endif
 
                                     </div>
                                 </div>
@@ -136,7 +144,9 @@
                                             <input type="hidden" id="tonkho"
                                                    value="{{$sanphamchitietlimit[0]->tonkho}}">
                                             <input type="hidden" id="idsanpham" value="{{$sanphamchitietlimit[0]->id}}">
-                                        @endif
+                                        @else
+                                            <span></span>
+                                            @endif
                                         <button class="btn-5 ml-0 mr-2  bg-white idspct"
                                                 onclick="ThemGioHangChiTiet(null)"><i class="fas fa-cart-plus"></i> Thêm
                                             giỏ hàng
@@ -150,10 +160,10 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-xl-12">
-                        <div class="fa-mota mt-5">
-                            <div class="title-cs-1">Mô Tả Sản Phẩm</div>
+                        <div class="fa-mota w-80 m-auto">
+                            <div class="title-cs-1 mt-3">MÔ TẢ SẢN PHẨM</div>
                             <hr>
-                            <div class="noidung p-3">
+                            <div class="noidung p-5 bg-white">
                                 <?php echo $sanpham[0]->noidung;?>
                             </div>
                         </div>
