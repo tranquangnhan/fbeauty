@@ -78,6 +78,6 @@ class DonHangchitietController extends Controller
 
         }
 
-        return redirect('quantri/donhang')->with('success','Sửa thành công');
+        return redirect('quantri/donhang')->with('thanhcong', 'Cập nhật đơn hàng chi tiết thành công');
     }
 }

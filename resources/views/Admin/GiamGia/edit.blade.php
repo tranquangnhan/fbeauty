@@ -66,15 +66,15 @@
                                             @enderror
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="">Giảm Tối Đa Theo Giá </label><span style="color:red;"> (*)</span>
+                                                <label for="">Giảm Giá Theo </label><span style="color:red;"> (*)</span>
                                                 <input type="number" name="number" id="" class="form-control @error('number') border-error @enderror number" value="{{$data->number}}"  parsley-trigger="change"
-                                                    placeholder="Khoảng Giá Từ " >
+                                                    placeholder="Giảm Giá Theo " >
                                                     @error('number')
                                             <span class="badge badge-danger">{{$message}}</span>
                                             @enderror
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="">Giảm Tối Đa Theo %</label><span style="color:red;"> (*)</span>
+                                                <label for="">Giảm Tối Đa </label><span style="color:red;"> (*)</span>
                                                 <input type="number" name="max" id="" class="form-control @error('diachi') border-error @enderror diachi" value="{{$data->max}}"  parsley-trigger="change"
                                                     placeholder="Khoảng Giá Tối Đa" >
                                                     @error('diachi')
