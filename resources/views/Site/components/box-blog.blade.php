@@ -122,6 +122,8 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="lastweek" role="tabpanel" aria-labelledby="lastweek-tab">
+                        @if (count($blog3) > 0 && count($blog4) > 0  )
+                            
                         <div class="row">
                             @foreach ($blog3 as $item)
                                 <div class="col-xl-7 col-lg-6 pr-0">
@@ -205,10 +207,15 @@
                                             </div>
                                         </div>
                                     @endforeach
-
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="row w-100">
+                            <p class="text-center" style="width:100%;">Danh mục trống </p>
+                        </div>
+                        @endif
+
                     </div>
                 </div>
             </div>
