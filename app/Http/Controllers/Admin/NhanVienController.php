@@ -54,6 +54,7 @@ class NhanVienController extends Controller
         $imgTrue = true;
         $emailTrue = true;
         $sdtTrue = true;
+       
         if ($this->checkImg($extension, $img) == true) {
             $imgTrue = true;
         } else {
