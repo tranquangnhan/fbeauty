@@ -202,7 +202,7 @@ class KhachHangController extends Controller
             return $message;
         }else{
             $message=[
-                'message'=>"Khách hàng đang tồn tại.",
+                'message'=>"Khách hàng đã tồn tại dữ liệu không được xóa.",
                 'icon'=>'warning',
                 'error_Code'=>1
             ];
