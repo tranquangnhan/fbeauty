@@ -438,6 +438,11 @@ function resetModal() {
     noiDungModalElement.append(modalHTML);
     loadNgayDatLich();
     nhanVienSelected = 0;
+    objectNhanVienSelected = {
+        'id': 0,
+        'ten': 'Spa chọn chuyên viên giúp bạn',
+        'imgUrl': 'chuyenvienspa.png'
+    };
 
     // Set lại data vừa remove
     controlShortOne = $('[data-step=0]');
@@ -452,7 +457,6 @@ function checkKhungGio(objectDatLich) {
         if (ngayDatYMD == khungGio.ngay) {
             timViTriVaClose(khungGio, objectDatLich);
         }
-
     }
 }
 

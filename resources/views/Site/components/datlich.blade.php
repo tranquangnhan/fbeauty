@@ -265,7 +265,7 @@
                                                 <div class="option-item option-nhanvien date-bg clicked">
                                                     <div class="picknhanvien position-relative z-index-999" data-name-nhanvien="Spa chọn chuyên viên giúp bạn" data-option-nhanvien="0" data-option-nhanvien="0">
                                                         <div class="img-1 border-image">
-                                                            <img src="{{ asset('Site/images') }}/image8.png" class="cycle-img-1" alt="">
+                                                            <img src="{{ asset('uploads/imgusers') }}/chuyenvienspa.png" class="cycle-img-1" alt="">
                                                         </div>
 
                                                         <div class="name-nhanvien">Spa chọn chuyên viên giúp bạn</div>

@@ -84,7 +84,7 @@ var khungGio;
 var objectNhanVienSelected = {
     'id': '0',
     'ten': 'Spa chọn chuyên viên giúp bạn',
-    'imgUrl': 'avatar-default.png'
+    'imgUrl': 'chuyenvienspa.png'
 };
 
 var activeStep;

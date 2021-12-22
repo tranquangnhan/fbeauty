@@ -16,6 +16,6 @@ interface DatLichRepositoryInterface extends RepositoryInterface
     public function findDatLichByIdKhachHangInnerJoin($id);
     public function getDatLichByIdKhachHang($idKhachHang);
     public function getDatLichByIdKhachHangAndThoiGianDat($idKhachHang, $start, $end);
-
+    public function getDatLichById($id);
 
 }
