@@ -19,7 +19,7 @@ $('#logo-slide').owlCarousel({
     pagination: false,
     dots: false,
     autoplay: true,
-    autoplayTimeout: 2000,
+    autoplayTimeout: 20000,
     autoplayHoverPause: true,
     responsive: {
         0: {
@@ -34,11 +34,34 @@ $('#logo-slide').owlCarousel({
     }
 });
 
-var productSlide = $('#product-slide');
-$(productSlide).owlCarousel({
+var productSlide = $('#product-home-slide');
+productSlide.owlCarousel({
     loop: true,
-    margin: 30,
-    nav: true,
+    margin: 0,
+    nav: false,
+    pagination: false,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 50000,
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 2
+        },
+        1000: {
+            items: 4
+        }
+    }
+});
+
+var dichVuUaChuong = $('#dich-home-slide');
+dichVuUaChuong.owlCarousel({
+    loop: true,
+    margin: 70,
+    nav: false,
     pagination: false,
     dots: false,
     autoplay: true,
@@ -48,17 +71,45 @@ $(productSlide).owlCarousel({
         0: {
             items: 1
         },
-        600: {
-            items: 3
+        800: {
+            items: 1
         },
-        1000: {
-            items: 4
+        1150: {
+            items: 2
+        },
+        1250: {
+            items: 3
+        }
+    }
+});
+
+var dichVuGiamGiaSlide = $('#dichvugiamgia-home-slide');
+dichVuGiamGiaSlide.owlCarousel({
+    loop: true,
+    margin: 70,
+    nav: false,
+    pagination: false,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 10000,
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+        800: {
+            items: 1
+        },
+        1150: {
+            items: 2
+        },
+        1250: {
+            items: 3
         }
     }
 });
 
 var headerSlide = $('#header-slide');
-
 $('#header-slide').owlCarousel({
     animateOut: 'fadeOut',
     animateIn: 'flipInX',
@@ -66,7 +117,6 @@ $('#header-slide').owlCarousel({
     items: 1,
     smartSpeed: 450,
     dots: true,
-
     autoplay: true,
     autoplayTimeout: 4000,
     autoplayHoverPause: false,
@@ -82,16 +132,14 @@ headerSlide.on('changed.owl.carousel', function(event) {
         var page = event.page.index;
         var elementImg = $('.imageHeader_' + page);
         $(elementImg).addClass('auto-scale-loop-forever');
-
     }, 800);
 
     headerSlide.trigger('stop.owl.autoplay');
     headerSlide.trigger('play.owl.autoplay');
 });
 
-
 // modal
-$('.btn-modal-main').click(function() {
+$("body").on("click", ".btn-modal-main",function (e) {
     let typeModal = $(this).attr('type-modal');
     let modalAction = $('#' + typeModal);
     modalAction.removeAttr('class');
@@ -99,7 +147,7 @@ $('.btn-modal-main').click(function() {
     $('body').addClass('modal-active');
 });
 
-$('.close-modal').click(function() {
+$("body").on("click", ".close-modal",function (e) {
     let typeModal = $(this).attr('type-modal');
     let modalAction = $('#' + typeModal);
     modalAction.addClass('out');
@@ -129,12 +177,12 @@ $(modalDatLichSlide).owlCarousel({
 
 
 // slide dat lich
-$('.next-step').click(function(e) {
+$("body").on("click", ".next-step",function (e) {
     e.preventDefault();
     nextStepFc();
 });
 
-$('.prev-step').click(function(e) {
+$("body").on("click", ".prev-step",function (e) {
     e.preventDefault();
     activeStep = getActiveStep();
     nextStep = parseInt(activeStep) - 1;
@@ -172,6 +220,7 @@ function checkStepAndCallAction() {
         phoneNumber = $('#phoneNumber').val();
         idCoSo = $('.value-coso').attr('data-coso');
         nameKhachHang = $('.nameKhachHang').val();
+        ngaySelected = $('.value-date').attr('data-date');
         var error = firstPageModalValidCheck(phoneNumber, idCoSo, nameKhachHang);
         if (error) {
             checkMove = false;
@@ -187,6 +236,7 @@ function checkStepAndCallAction() {
     }
 
     if (activeStep == step_2) {
+        var checkBoxTuVan = $('.checkbox-tuvan');
         if (checkBoxTuVan.prop('checked')) {
             let idNhanVienKhiKhachChonTuVan = 0;
             nhanVienSelected = idNhanVienKhiKhachChonTuVan;
@@ -260,6 +310,7 @@ function lastPageModalCheck(idCoSo, phoneNumber, timeSelected, dichVuChecked) {
         $('.select-coso').addClass(classError);
     }
 
+    var checkBoxTuVan = $('.checkbox-tuvan');
     if (!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0) {
         $('.select-dichvu').addClass(classError);
         error = true;
@@ -296,6 +347,7 @@ function moveStep() {
 
 function spinnerBatDongBo() {
     if (soXuLiBatDongBo > 0) {
+        var boxSpinner = $('.box-spinner');
         if (!boxSpinner.hasClass('show')) {
             spinnerTurnOn();
         }
@@ -311,7 +363,7 @@ function seccondPageModalCheck() {
     var error = false;
     $('.select-dichvu').removeClass(classError);
     $('.dichvu-datlich-error').html('');
-
+    var checkBoxTuVan = $('.checkbox-tuvan');
     if (!checkBoxTuVan.prop('checked') == true && !dichVuChecked.length > 0) {
         $('.select-dichvu').addClass(classError);
         $('.dichvu-datlich-error').html('Bạn chưa chọn dịch vụ !');
@@ -367,7 +419,12 @@ function firstPageModalValidCheck(phone, coSo, nameKhachHang) {
 var dichVuChecked = [];
 var arrIdDichVu = [];
 
+$(document).on("change", ".option-dich-vu", function () {
+    calTotal();
+});
+
 function calTotal() {
+    var checkBoxTuVan = $('.checkbox-tuvan');
     if (!checkBoxTuVan.prop('checked')) {
         tinhTongVaPushArrayIdDichVu();
     } else {
@@ -406,7 +463,7 @@ function inTotalToBrowser(totalPriceDichVu) {
     $('.tongtiendichvu').html(totalFormat);
 }
 
-$('.name-select').click(function(e) {
+$("body").on("click", ".name-select",function (e) {
     e.preventDefault();
 
     var dataMove = $(this).attr('data-mov');
@@ -421,20 +478,18 @@ $('.name-select').click(function(e) {
     }
 });
 
-elementPickCoSo.click(function(e) {
+$("body").on("click", ".pickcoso",function (e) {
     e.preventDefault();
     var text = $(this).children().text();
     var idCoSo = $(this).children().attr(attrOptionCoSo);
+    elementValueCoSo = $('.value-coso');
     elementValueCoSo.html(text);
     elementValueCoSo.attr(attrValueCoSo, idCoSo);
-
     $('.coso-fa').removeClass('clicked');
     $(this).addClass('clicked');
-
-
 });
 
-$('.check-next-step').click(function(e) {
+$("body").on("click", ".check-next-step",function (e) {
     e.preventDefault();
     // $('.box-spinner').fadeIn(timeMoving, function() {
     //     setTimeout(() => {
@@ -448,7 +503,7 @@ $('.check-next-step').click(function(e) {
     nextStepFc();
 });
 
-$('.control-item').click(function(e) {
+$("body").on("click", ".control-item",function (e) {
     e.preventDefault();
     nextStep = $(this).attr('data-step');
     activeStep = getActiveStep();
@@ -456,22 +511,102 @@ $('.control-item').click(function(e) {
 });
 
 function spinnerTurnOn() {
+    var boxSpinner = $('.box-spinner');
     boxSpinner.fadeIn(50);
     boxSpinner.addClass('show');
 }
 
 function spinnerTurnOff() {
+    var boxSpinner = $('.box-spinner');
     boxSpinner.fadeOut(timeMoving);
     boxSpinner.removeClass('show');
 }
 
 var oldDichVuChecked;
-var checkBoxTuVan = $('.checkbox-tuvan');
 var checkBoxDichVu = $('.checkbox-dichvu');
 
+$(document).on("change", ".uncheck-dich-vu", function () {
+    uncheckDichVu();
+});
+
 function uncheckDichVu() {
+    checkBoxTuVan = $('.checkbox-tuvan');
+    checkBoxDichVu = $('.checkbox-dichvu');
+
     if (checkBoxTuVan.prop('checked')) {
         checkBoxDichVu.prop('checked', false);
         tinhTongVaPushArrayIdDichVu();
     }
 }
+
+formatDayCustom();
+function formatDayCustom() {
+    var listElementDate = $(".formatDayCustom");
+    listElementDate.each( function(i){
+        var dataFormat = listElementDate.eq(i).attr('data-format');
+        var type =  listElementDate.eq(i).attr('data-type');
+        var someDay  = moment(dataFormat);
+        var numberThu = someDay.day();
+        if (type == 'long') {
+            var dayInWeek = getFullThuVietHoa(numberThu);
+            var date = someDay.format('DD/MM/YYYY, HH:mm');
+            var dayWasFormat = dayInWeek + ', ' + date + ' (GMT+7)';
+        }
+
+        if (type == 'short') {
+            var dayInWeek = getThuVietHoa(numberThu);
+            var date = someDay.format('DD/MM/YYYY, HH:mm');
+            var dayWasFormat = dayInWeek + ', ' + date;
+        }
+        listElementDate.eq(i).html(dayWasFormat);
+    });
+
+
+    // return YMDHIS;
+}
+
+
+function getThuVietHoa(numberThu) {
+    var text = '';
+
+    if (numberThu == 0) {
+        text = 'CN';
+    } else if (numberThu == 1) {
+        text = 'T2';
+    } else if (numberThu == 2) {
+        text = 'T3';
+    } else if (numberThu == 3) {
+        text = 'T4';
+    } else if (numberThu == 4) {
+        text = 'T5';
+    } else if (numberThu == 5) {
+        text = 'T6';
+    } else if (numberThu == 6) {
+        text = 'T7';
+    }
+
+    return text;
+}
+
+function getFullThuVietHoa(numberThu) {
+    var text = '';
+
+    if (numberThu == 0) {
+        text = 'Chủ nhật';
+    } else if (numberThu == 1) {
+        text = 'Thứ hai';
+    } else if (numberThu == 2) {
+        text = 'Thứ ba';
+    } else if (numberThu == 3) {
+        text = 'Thứ tư';
+    } else if (numberThu == 4) {
+        text = 'Thứ năm';
+    } else if (numberThu == 5) {
+        text = 'Thứ sáu';
+    } else if (numberThu == 6) {
+        text = 'Thứ bảy';
+    }
+
+    return text;
+}
+

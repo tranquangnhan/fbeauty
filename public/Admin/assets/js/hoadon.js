@@ -1,14 +1,14 @@
-var LinkURL=$("#LinkURL").val();
+var LinkURL = $("#LinkURL").val();
+
 function HoaDon() {
     $.ajax({
         url: document.URL + '/getHoaDonChiTiet',
         type: 'GET',
         data: {},
         success: function (response) {
-            if (response.length >0) {
+            if (response.length > 0) {
                 ShowHoaDon(response);
-            }
-            else {
+            } else {
                 document.getElementById('ShowHoaDon').innerHTML = "Không có sản phẩm nào";
                 document.getElementById('thanhtien').innerHTML = 0;
                 document.getElementById('magiamgia').innerHTML = 0;
@@ -33,35 +33,19 @@ function ShowHoaDon(res) {
         var mota = '';
 
         if (res[i].type == 1) {
-            namesp = $.ajax({
-                url: document.URL + '/sanphamchitiet/' + res[i].idlienquan,
-                type: 'GET',
-                async: false,
-                dataType: 'json',
-                data: {id: res[i].idlienquan},
-                success: function (respon) {
-                    return respon;
-                }
-            });
+            namesp = SanPhamIDLienQuan(res[i].idlienquan);
             mota = ' <br>Thể tích: ' + namesp.responseJSON[0].ml + 'ml';
         } else {
-            namesp = $.ajax({
-                url: document.URL + '/dichvu/' + res[i].idlienquan,
-                type: 'GET',
-                async: false,
-                dataType: 'json',
-                data: {id: res[i].idlienquan},
-                success: function (response) {
-                    return response;
-                }
-            });
+            namesp = DichVuIDLienQuan(res[i].idlienquan);
         }
         sp += '<tr class="bg-light pb-5" style=" box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">\n' +
             '<th scope="row">' + namesp.responseJSON[0].name.substring(0, 40) + ' ' + mota + '</th>\n' +
             '<td class="w-15"><input type="number" class="form-control" id="soluong' + res[i].id + '" onkeyup="UPdateSL(' + res[i].id + ')" min="0" class="w-75" value="' + res[i].soluong + '"></td>\n' +
             '<td>' + res[i].dongiasaugiamgia.toLocaleString() + '</td>\n' +
             '<td>' + (res[i].dongiasaugiamgia * res[i].soluong).toLocaleString() + '</td>\n' +
-            '<td><button onclick="XoaHDCT(' + res[i].id + ')" class="bg-primary p-1 border-radius-1" style="border-radius: 5px; outline: none; border: none;" data-toggle="tooltip" data-placement="right" title="Xóa"><i class="fa fa-trash" style="color: #ffffff"></i></button></td>\n' +
+            '<td><button onclick="XoaHDCT(' + res[i].id + ')" class="bg-primary p-1 border-radius-1" ' +
+            'style="border-radius: 5px; outline: none; border: none;" data-toggle="tooltip" data-placement="right"' +
+            ' title="Xóa"><i class="fa fa-trash" style="color: #ffffff"></i></button></td>\n' +
             '</tr>';
         thanhtien += (res[i].dongiasaugiamgia * res[i].soluong);
     }
@@ -78,10 +62,11 @@ function ShowHoaDon(res) {
             tenmagiam = giamgia.responseJSON["name"] + ' <button onclick="HuyCode()" class="bg-primary p-1 border-radius-1 text-light" style="border-radius: 5px; outline: none; border: none;" data-toggle="tooltip" data-placement="right" title="Hủy mã">Hủy</button>';
         } else {
             tiengiam = 0;
-            tenmagiam = 'Hóa đơn của bạn không đủ ' + responseJSON["max"].toLocaleString() + 'để áp dụng mã';
+            // tenmagiam = 'Hóa đơn của bạn không đủ'+giamgia.responseJSON["max"].toLocaleString()+' để áp dụng mã';
+            taskOne(XoaMaGiamGia);
         }
     } else {
-        tenmagiam = 'Không có';
+        tenmagiam = 'Không có mã nào';
     }
     document.getElementById('ShowHoaDon').innerHTML = sp;
     document.getElementById('thanhtien').innerHTML = thanhtien.toLocaleString();
@@ -90,7 +75,32 @@ function ShowHoaDon(res) {
     document.getElementById('tongtien').innerHTML = (thanhtien - tiengiam).toLocaleString();
     CapNhatGia();
 }
+//call lấy dịch vụ
+function DichVuIDLienQuan(id) {
+    return  $.ajax({
+        url: document.URL + '/dichvu/' + id,
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: {id: id},
+        success: function (response) {
 
+        }
+    });
+}
+//call lấy sản phẩm
+function SanPhamIDLienQuan(id) {
+    return   $.ajax({
+        url: document.URL + '/sanphamchitiet/' + id,
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: {id: id},
+        success: function (respon) {
+
+        }
+    });
+}
 
 function GetGiamGia(id) {
     var giamgia = $.ajax({
@@ -124,7 +134,6 @@ function SanPham() {
         data: {},
         success: function (response) {
             ShowSanPham(response);
-
         }
     });
 }
@@ -151,12 +160,11 @@ function ShowSanPham(res) {
     var span = '<ul class="list-group pl-0" id="myUL2">';
     var a = 0;
     for (let i = 0; i < res.length; i++) {
-        var giasp=0;
-        if (res[i].giamgia!=""){
-            giasp=(Number(res[i].dongia)-((Number(res[i].dongia)*Number(res[i].giamgia))/100));
-        }
-        else {
-            giasp=res[i].dongia;
+        var giasp = 0;
+        if (res[i].giamgia != "") {
+            giasp = (Number(res[i].dongia) - ((Number(res[i].dongia) * Number(res[i].giamgia)) / 100));
+        } else {
+            giasp = res[i].dongia;
         }
         span += '<li class="list-group-item row" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">\n' +
             '    <span class="float-left col-10 pl-0">' + res[i].name.substring(0, 40) + '... X <strong>' + res[i].ml + 'ml </strong>' +
@@ -294,31 +302,34 @@ function CapNhatGia() {
 }
 
 function XoaHDCT(id) {
-    var x = confirm("Bạn chắn chắn muốn xóa ?");
-    if (x) {
-        $.ajax({
-            url: document.URL + '/xoahoadonchitiet/' + id,
-            type: 'GET',
-            async: false,
-            dataType: 'json',
-            data: {id: id},
-            success: function (response) {
-                iziToast.success({
-                    title: response.thongbao,
-                    message: '',
-                    position: 'bottomRight',
-                    backgroundColor: 'green',
-                    titleColor: 'white',
-                    messageColor: 'white',
-                    iconColor: 'white',
-                });
-            }
-        });
-        HoaDon();
-    } else {
-        return false;
-    }
-
+    Swal.fire({
+        title: 'Bạn muốn xóa chứ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#efa789',
+        cancelButtonColor: '#000000',
+        confirmButtonText: 'Đồng Ý',
+        cancelButtonText: 'Hủy'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: document.URL + '/xoahoadonchitiet/' + id,
+                type: 'GET',
+                async: false,
+                dataType: 'json',
+                data: {id: id},
+                success: function (response) {
+                    swal.fire(
+                        {
+                            title: 'Xóa thành công',
+                            icon: 'success'
+                        }
+                    );
+                }
+            });
+            HoaDon();
+        }
+    });
 }
 
 function UPdateSL(id) {
@@ -340,30 +351,57 @@ function UPdateSL(id) {
 
 function HuyCode() {
     var tien = document.getElementById('thanhtien').innerText;
-    var x = confirm("Bạn chắn chắn muốn hủy mã này ?");
-    if (x) {
-        $.ajax({
-            url: document.URL + '/huygiamgia/' + tien.replaceAll(',', ''),
-            type: 'GET',
-            async: false,
-            dataType: 'json',
-            data: {
-                thanhtien: tien
-            },
-            success: function (respon) {
-                iziToast.success({
-                    title: respon.thongbao,
-                    message: '',
-                    position: 'bottomRight',
-                    backgroundColor: 'green',
-                    titleColor: 'white',
-                    messageColor: 'white',
-                    iconColor: 'white',
-                });
-            }
-        });
-        HoaDon();
-    } else {
-        return false;
-    }
+    Swal.fire({
+        title: 'Bạn muốn hủy chứ?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#efa789',
+        cancelButtonColor: '#000000',
+        confirmButtonText: 'Đồng Ý',
+        cancelButtonText: 'Hủy'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: document.URL + '/huygiamgia/' + tien.replaceAll(',', ''),
+                type: 'GET',
+                async: false,
+                dataType: 'json',
+                data: {
+                    thanhtien: tien
+                },
+                success: function (respon) {
+                    swal.fire(
+                        {
+                            title: 'Hủy thành công',
+                            icon: 'success'
+                        }
+                    );
+                }
+            });
+            HoaDon();
+        }
+    });
 }
+
+//CallBack xóa mã giảm giá khi giá đơn hàng không đáp ứng được
+function XoaMaGiamGia(){
+    var tien = document.getElementById('thanhtien').innerText;
+    $.ajax({
+        url: document.URL + '/huygiamgia/' + tien.replaceAll(',', ''),
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        data: {
+            thanhtien: tien
+        },
+        success: function (respon) {
+            HoaDon();
+        }
+    });
+
+}
+
+function taskOne(callback){
+    callback();
+}
+

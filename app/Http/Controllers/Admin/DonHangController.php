@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\DonHang;
+use App\Http\Requests\DonHangEdit;
+use App\Http\Requests\GiamGiaEdit;
 use App\Http\Requests\KhachHang;
 use App\Models\Admin\KhachHangModel;
 use App\Repositories\DonHang\DonHangRepository;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
 use App\Repositories\KhachHang\KhachHangRepository;
+use Carbon\Carbon;
 
 class DonHangController extends Controller
 {
@@ -29,16 +32,17 @@ class DonHangController extends Controller
     {
         $this->DonHang = $DonHang;
         $this->KhachHang = $khachHang;
-        //$this->GiamGia = $GiamGia;
         $this->DonHangChiTiet = $DonHangChiTiet;
 
     }
     public function index()
     {
-
         $data = $this->DonHang->getAll();
+        $donhangchitiet = $this->DonHangChiTiet->getAll();
         $khachHang  = $this->KhachHang->getall();
-        return view('Admin.DonHang.index',compact('data','khachHang'));
+        $DonHangct  = $this->DonHang->getDonHangAndDonHangChiTietById();
+
+        return view('Admin.DonHang.index',compact('data','khachHang','donhangchitiet'));
     }
 
     /**
@@ -83,8 +87,8 @@ class DonHangController extends Controller
         $dataDHCT = $this->DonHangChiTiet->getDonHangChiTietByIdDonHang($id);
         $data  = $this->DonHang->find($id);
         $khachHang  = $this->KhachHang->find($data->idkhachhang);
-        //$GiamGia  = $this->GiamGia->find($data->idgiamgia);
-        return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT'));
+        $GiamGia = $this->DonHang->getDonHangAndGiamGiaById($id);
+        return view('Admin.DonHang.edit',compact('data','khachHang','dataDHCT','GiamGia'));
     }
 
     /**
@@ -94,14 +98,12 @@ class DonHangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DonHangEdit $request, $id)
     {
 
-        //$validated = $request->validated();
-
+        if ($request->tongtientruocgiamgia >= $request->tongtiensaugiamgia) {
         $data = [
 
-            'idgiamgia' => $request->magiamgia,
             'tennguoinhan'=> $request->namenguoinhan,
             'diachikhachhang'=>$request->diachi,
             'sdtnguoinhan'=>$request->sodienthoai,
@@ -109,12 +111,16 @@ class DonHangController extends Controller
             'tongtiensaugiamgia'=>$request->tongtiensaugiamgia,
             'ghichucuakhachhang'=>$request->ghichukhachhang,
             'phuongthucgiaohang'=>$request->phuongthucgiaohang,
-            'trangthai'=>$request->trangthai
+            'trangthai'=>$request->trangthai,
+            'trangthaithanhtoan'=>$request->trangthaithanhtoan,
         ];
 
         $this->DonHang->update($id,$data);
 
-        return redirect('quantri/donhang')->with('success','Sửa thành công');
+        return redirect(route("donhang.index"))->with('thanhcong', 'Cập nhật thông tin thành công');
+        } else {
+        return redirect(route("donhang.index"))->with('thatbai', 'cập nhật thất bại vui lòng kiểm tra lại giá ');
+    }
     }
 
     /**
@@ -126,11 +132,6 @@ class DonHangController extends Controller
     public function destroy($id)
     {
         $this->DonHang->delete($id);
-
-
         return redirect('quantri/donhang')->with('success','Xoá thành công');
     }
-
-
-
 }

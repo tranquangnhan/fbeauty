@@ -24,7 +24,7 @@ abstract class BaseRepository implements RepositoryInterface{
 
     public function getAll()
     {
-        return $this->model->all()->sortByDesc('id');
+        return $this->model->orderBy('id', 'DESC')->get();
     }
 
     public function find($id)
@@ -42,7 +42,7 @@ abstract class BaseRepository implements RepositoryInterface{
     public function update($id, $attributes = [])
     {
         $result = $this->find($id);
-     
+
         if ($result) {
             $result->update($attributes);
             return $result;
@@ -61,6 +61,10 @@ abstract class BaseRepository implements RepositoryInterface{
             return true;
         }
         return false;
+    }
+
+    public function whereSlug($slug){
+        return $this->whereSlug($slug);
     }
 
 }

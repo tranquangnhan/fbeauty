@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Blog\BlogRepository;
 use App\Repositories\DanhMuc\DanhMucRepository;
+use App\Repositories\DichVu\DichVuRepository;
+use App\Repositories\SanPham\SanPhamRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\DanhMuc;
@@ -12,14 +15,20 @@ use App\Http\Requests\DanhMucEdit;
 class DanhMucController extends Controller
 {
     private $DanhMuc;
+    private $Blog;
+    private $SanPham;
+    private $DichVu;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(DanhMucRepository $DanhMuc)
+    public function __construct(DanhMucRepository $DanhMuc, BlogRepository $Blog, SanPhamRepository $SanPham, DichVuRepository $DichVu)
     {
         $this->DanhMuc = $DanhMuc;
+        $this->Blog = $Blog;
+        $this->SanPham = $SanPham;
+        $this->DichVu = $DichVu;
     }
     public function index()
     {
@@ -102,7 +111,7 @@ class DanhMucController extends Controller
         }
 
         $this->DanhMuc->update($id,$data);
-        
+
         return redirect('quantri/danhmuc')->with('success','Sửa thành công');
     }
 
@@ -114,9 +123,26 @@ class DanhMucController extends Controller
      */
     public function destroy($id)
     {
-        $this->DanhMuc->delete($id);
-        // thiếu logic check xem có sản phẩm,bài viết, dịch vụ không
-        
-        return redirect('quantri/danhmuc')->with('success','Xoá thành công');
+        $CheckDanhMucBlog=$this->Blog->getblogbyiddm($id);
+        $CheckDanhMucDichVu=$this->DichVu->CheckDichVuByIdDanhMuc($id);
+        $CheckDanhMucSanPham=$this->SanPham->CheckSanPhamByIdDanhMuc($id);
+
+        if (empty($CheckDanhMucBlog) == false && empty($CheckDanhMucDichVu) == false && empty($CheckDanhMucSanPham) == false){
+            $this->DanhMuc->delete($id);
+            $message=[
+                'message'=>"Xóa danh mục thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
+        }
+        else{
+            $message=[
+                'message'=>"Danh mục đã tồn tại dữ liệu.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
+        }
     }
 }

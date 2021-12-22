@@ -44,7 +44,5 @@
     //         document.getElementById("emailyou").innerHTML = emailyou;
     //         document.getElementById("phoneyou").innerHTML = phoneyou;
     //         document.getElementById("noidungyou").innerHTML = noidungyou;
-    function myFunction(){
-            swal("Here's a message!");
-        };
+
 

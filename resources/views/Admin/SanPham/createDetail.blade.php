@@ -48,7 +48,7 @@
 
                             <div class="form-group text-right mb-0 mt-5">
                                 <a href="quantri/sanpham/create" class="btn-cancel">Huỷ</a>
-                                <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm">
+                                {{-- <input type="submit" name="them" class="btn btn-primary waves-effect waves-light ml-2" value="Thêm"> --}}
                             </div>
                         </form>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <label >Nhập số ml</label>
                     <input type="number" name="ml"  parsley-trigger="change" required
-                    placeholder="Nhập tên nhà sản xuất" class="form-control" id="userName">
+                    placeholder="Nhập số ml" class="form-control" id="userName">
                     </div>
                     <div class="form-group">
                         <label >Nhập số lượt tồn kho</label>

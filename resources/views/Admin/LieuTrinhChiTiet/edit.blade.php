@@ -57,7 +57,7 @@
                                             <input type="hidden" value="{{$id}}" name="id">
 
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">Thêm Liệu Trình</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Thêm Liệu Trình Chi Tiết</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                             </div>
                                             <div class="modal-body">
@@ -155,7 +155,7 @@
 
                                                     </div>
 
-                                                    <p class="mota" style="margin-top: 5px !important;" id="ghichu" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->ghichu}} </p>
+                                                    <p class="ghichu" style="margin-top: 5px !important;" id="ghichu" title="Click để sửa" data-type="textarea" data-pk="{{$item->idlieutrinhchitiet}}" >{{$item->ghichu}} </p>
 
                                                     <div>
 

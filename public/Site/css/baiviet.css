@@ -1,46 +1,39 @@
-.xemthemblog{
+.xemthemblog {
     background: #e87c7b;
-    color:white;
+    color: white;
 }
-/* loadmore */
-/* .flex {
-  display: flex;
-  
+
+.list-blog-dmct{
+  height: 1330px;
+overflow: hidden;
 }
-.content1 {
-  /* height: 100px; */
-  /* float: left;
-  width: 45%; */
-  /* color: #fff; */
-  /* font-size: 24px; */
-  /* line-height: 100px;  */
-  /* centering text just for view */
-  /* text-align: center; */
-  /* background-color: grey; */
-  /* margin: 5px; */
-  /* border: 1px solid lightgrey; */
-  /* display: none;
+.list-blog-dmct6{
+  height: 630px;
+  overflow: hidden;
 }
-#loadMore {
-  width: 200px;
-  color: #fff;
-  display: block;
-  text-align: center;
-  margin: 20px auto;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  background-color: blue;
-  transition: .3s;
+.list-blog-dmct3{
+  height: 880px;
+  overflow: hidden;
 }
-#loadMore:hover {
-  color: blue;
-  background-color: #fff;
-  border: 1px solid blue;
-  text-decoration: none;
+.list-blog-dmct7{
+  height: 1380px;
+  overflow: hidden;
 }
-.noContent1 {
-  color: #000 !important;
-  background-color: transparent !important;
-  pointer-events: none; */
-/* } */ 
+.showAllList{
+  height: 100%;
+}
+
+.divnoidung{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+}
+
+.color-miniDay-white {
+    color: #dedede;
+}
+
+.color-mota-white {
+    color: #b0b0b0;
+}

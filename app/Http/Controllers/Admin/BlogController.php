@@ -40,7 +40,7 @@ class BlogController extends Controller
     public function create()
     {
         $Blog = $this->Blog->getAll();
-        $DanhMuc = $this->DanhMuc->getAll();
+        $DanhMuc = $this->DanhMuc->getalledit();
         return view("Admin.Blog.create", ['Blog' => $Blog, 'DanhMuc' => $DanhMuc]);
         //
     }
@@ -68,7 +68,7 @@ class BlogController extends Controller
 
             $this->Blog->create($Blog);
             return redirect('quantri/blog')->with('success', 'Thêm bài viết thành công');
-        
+
     }
 
     /**
@@ -90,7 +90,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $DanhMuc = $this->DanhMuc->getAll();
+        $DanhMuc = $this->DanhMuc->getalledit();
         $Blog = $this->Blog->find($id);
         return view("Admin.Blog.edit", ['DanhMuc' => $DanhMuc, 'Blog' => $Blog]);
     }
@@ -120,10 +120,10 @@ class BlogController extends Controller
                 }
                 $Blog['img'] = $img;
             }
-        
+
             $this->Blog->update($id, $Blog);
             return redirect('quantri/blog')->with('thanhcong', 'Sửa bài viết thành công');
-        
+
     }
 
     /**
@@ -134,8 +134,21 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $this->Blog->delete($id);
-
-        return redirect('quantri/blog')->with('success', 'Xoá thành công');
+        $delete= $this->Blog->delete($id);
+        if ($delete){
+            $message=[
+                'message'=>"Xóa bài viết thành công",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
+        }else{
+            $message=[
+                'message'=>"Xóa bài viết thất bại",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
+        }
     }
 }

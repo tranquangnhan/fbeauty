@@ -85,7 +85,7 @@
                                                 </label>
                                             </div>
 
-                                           
+
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -107,11 +107,11 @@
                                                             </div>
                                                       </div>
                                                 </div>
-                                            </div>   
-                                           
-                                           
+                                            </div>
+
+
                                             <div class="form-group">
-                                
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <label class="w-100" for="files">Avatar nhân
@@ -193,13 +193,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                  
+
                                 <div class="modal-footer">
                                     <a href="{{route("nhanvien.index")}}" type="button"
                                        class="btn btn-light waves-effect"
                                     >Huỷ
                                     </a>
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light " id="them">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light ml-2" id="them">
                                         Cập nhật
                                     </button>
                                 </div>
@@ -244,19 +244,19 @@
 
         $("#ktform").validate({
             rules: {
-                username: {required: true, maxlength: 25, minlength: 3},
-                email: {required: true, maxlength: 25, minlength: 3},
+                username: {required: true, maxlength: 50, minlength: 3},
+                email: {required: true, maxlength: 50, minlength: 3},
                 sdt: {required: true, number: true},
             },
             messages: {
                 username: {
                     required: "<span class='badge badge-danger'>Mời bạn nhập email</span>",
-                    maxlength: "<span class='badge badge-danger'>Tên dài quá, phải <25 ký tự </span>",
+                    maxlength: "<span class='badge badge-danger'>Tên dài quá, phải <50 ký tự </span>",
                     minlength: "<span class='badge badge-danger'>Tên ngắn quá, phải >3 ký tự </span>"
                 },
                 email: {
                     required: "<span class='badge badge-danger'>Mời bạn nhập email </span>",
-                    maxlength: "<span class='badge badge-danger'>Email dài quá, phải <30 ký tự </span>",
+                    maxlength: "<span class='badge badge-danger'>Email dài quá, phải <50 ký tự </span>",
                     minlength: "<span class='badge badge-danger'>Email ngắn quá, phải >3 ký tự </span>"
                 },
                 sdt: {

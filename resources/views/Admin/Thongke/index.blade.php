@@ -200,7 +200,7 @@
                                                 <th>Trạng Thái</th>
                                             </tr>
                                             </thead>
-                                            <tbody class="custom-table-body-2 body-doanhthu-hoadon-ngay" style="min-height: 448.5px;">
+                                            <tbody class="custom-table-body-2 body-doanhthu-hoadon-ngay" style="min-height: 380px;">
                                                 @php
                                                     $tongTienTruocGiam = 0;
                                                     $tongTienSauGiam = 0;

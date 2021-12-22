@@ -48,7 +48,7 @@
                                                                     </tr>
                                                                 </thead>
                                                                 @foreach ($data as $i=> $data1)
-                                                           
+
                                                                 <tbody>
                                                                     <tr>
                                                                         <th scope="row">{{$i+=1}}</th>
@@ -95,7 +95,7 @@
                                                                         <td>{{$data1->iddichvu}}</td>
                                                                         <td>{{$data1->namenv}}</td>
                                                                         <td>{{$data1->namekh}}</td>
-                                                                        <td>{{$data1->thoigiandat}}</td>
+                                                                        <td>{{($data1->thoigiandat)}}</td>
                                                                     </tr>
                                                                 </tbody>
                                                                 @endforeach

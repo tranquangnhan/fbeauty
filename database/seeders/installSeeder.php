@@ -15,6 +15,11 @@ class installSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('banner')->insert([
+            ['id'=>1,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-01.jpg', 'AnHien'=>1],
+            ['id'=>2,'tieude'=>'SPA & BEAUTY','noidung'=> 'Nơi Gửi Gắm Niềm Tin Của Phái Đẹp', 'img'=>'spa-02.jpg', 'AnHien'=>1]
+        ]);
+
         DB::table('coso')->insert([
             ['id'=>1,'name'=>'Cơ sở 1','diachi'=> '55A – Đường 3/2 – Phường 11 – Quận 10 – TP. Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
             ['id'=>2,'name'=>'Cơ sở 2','diachi'=> '18A Ngô Văn Năm, Quận 1, Thành phố Hồ Chí Minh', 'tinh'=>'4', 'quan'=>'43', 'huyen'=>'1343'],
@@ -29,6 +34,7 @@ class installSeeder extends Seeder
             ['id' => 6, 'name'=>'Dịch vụ giảm béo','img'=>'photo-1635609071.jpg','slug'=> Str::slug('Dịch vụ giảm béo', '-'), 'loai'=>'1'],
             ['id' => 7, 'name'=>'Làm đẹp','img'=>'photo-1635609118.jpg','slug'=> Str::slug('Làm đẹp', '-'), 'loai'=>'2'],
             ['id' => 8, 'name'=>'Trắng da','img'=>'photo-1635609158.jpg','slug'=> Str::slug('Trắng da', '-'), 'loai'=>'3'],
+            ['id' => 9, 'name'=>'Maybelline','img'=>'photo-1635609158.jpg','slug'=> Str::slug('maybelline', '-'), 'loai'=>'4'],
         ]);
         DB::table('dichvu')->insert([
             ['id'=>1,'name'=>'Xăm Chân Mày', 'slug' => Str::slug('Xăm Chân Mày'), 'img'=>'xam_chan_may.jpg', 'giamgia'=> 1, 'iddm'=> 1, 'motangan'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. ', 'dongia'=>2000000, 'noidung'=>'Xăm chân mày là hình thức dùng mũi kim thẩm mỹ đưa một lượng chất, mực tạo màu vào dưới da chân mày. Bạn có thể hình dung đây là phương pháp tương tự như việc xăm tattoo lên cơ thể vậy. Chuyên viên sẽ vẽ khung chân mày trước sau đó sử dụng kim chuyên dụng đưa mực xuyên sâu qua da để hoàn thiện theo khuôn chân mày. ', 'trangthai'=> 1],
@@ -856,7 +862,7 @@ class installSeeder extends Seeder
             ['id'=>5,'idkhachhang'=>'5','idgiamgia'=>'1', 'tennguoinhan'=>'Thảo Mai','diachikhachhang'=> 'Tầng 1, 28 Seongam-ro 13-gil, Mapo-gu, Seoul','sdtnguoinhan'=>'0845737036' ,'tongtientruocgiamgia'=>'35000000' ,'tongtiensaugiamgia'=>'30000000','ghichucuakhachhang'=> '주문은 이번주말에 받아볼께요 감사합니다','phuongthucthanhtoan'=>'MOMO' ,'phuongthucgiaohang'=>'FEDEX','trangthai'=>0,'trangthaithanhtoan'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
         ]);
         DB::table('sanpham')->insert([
-            ['id'=>1,'iddanhmuc'=>1,'name'=>'LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', 'slug'=> Str::slug('LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', '-'),'img'=>'["profile-photo-1635519235.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Mặt nạ “siêu dưỡng da” được ngâm trong 30ml The Treatment Lotion ngay lập tức mang đến sự tăng cường hydrat hoá giúp chữa lành,','noidung'=>'Mặt nạ tấm với công nghệ ôm sát của Nhật Bản và hàng triệu sợi vi mô tinh khiết độc đáo tăng cường sự tập trung của quá trình hydrat hóa chữa lành, làm rạng rỡ, đầy đặn và truyền vào da một nguồn năng lượng mạnh mẽ có tác dụng hồi sinh làn da chỉ trong tíc tắc.
+            ['id'=>1,'iddanhmuc'=>1,'idthuonghieu'=>9,'name'=>'LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', 'slug'=> Str::slug('LA MER The Treatment Lotion Hydrating Mask - Mặt nạ tái tạo da', '-'),'img'=>'["profile-photo-1635519235.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Mặt nạ “siêu dưỡng da” được ngâm trong 30ml The Treatment Lotion ngay lập tức mang đến sự tăng cường hydrat hoá giúp chữa lành,','noidung'=>'Mặt nạ tấm với công nghệ ôm sát của Nhật Bản và hàng triệu sợi vi mô tinh khiết độc đáo tăng cường sự tập trung của quá trình hydrat hóa chữa lành, làm rạng rỡ, đầy đặn và truyền vào da một nguồn năng lượng mạnh mẽ có tác dụng hồi sinh làn da chỉ trong tíc tắc.
 
             - Kết cấu vi mô độc đáo của các sợi phản lực tinh khiết nhẹ nhàng ôm lấy làn da để chúng ta có thể hoạt động trong khi sử dụng mặt nạ.
 
@@ -874,7 +880,7 @@ class installSeeder extends Seeder
 
             Sản xuất tại Nhật Bản' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>2,'iddanhmuc'=>2,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
+            ['id'=>2,'iddanhmuc'=>2,'idthuonghieu'=>9,'name'=>'LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', 'slug'=> Str::slug('LA MER The Moisturizing Cream - Kem dưỡng ẩm da khô, hư tổn', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Một loại kem giàu dưỡng chất cùng với độ ẩm sâu nhất giúp ngay lập tức mang lại làn da ẩm mọng,','noidung'=>'Với khả năng hydrat hóa cao và cải thiện sự khô da chỉ trong ba ngày, kem dưỡng siêu giàu ẩm này truyền vào da một độ ẩm sâu tức thì và kéo dài cả ngày. Giúp làm dịu rõ rệt làn da nhạy cảm và kích ứng.
 
              - Chứa thành phần tái tạo tế bào Miracle Broth™ - "thuốc tiên" huyền thoại có trong mọi sản phẩm La Mer - truyền vào da những lợi ích tái tạo có nguồn gốc từ biển, chữa lành và làm đầy, làm mịn các các nếp nhăn, để lộ sự rạng rỡ mới cho làn da.
 
@@ -888,7 +894,7 @@ class installSeeder extends Seeder
 
              Không chứa Paraben, Phthalates, Sulfates, Sulfites.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>3,'iddanhmuc'=>3,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
+            ['id'=>3,'iddanhmuc'=>3,'idthuonghieu'=>9,'name'=>'LA MER The Lip Volumizer - Son dưỡng làm dày môi', 'slug'=> Str::slug('LA MER The Lip Volumizer - Son dưỡng làm dày môi', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Son dưỡng làm mềm và làm mờ các rãnh nhăn trên môi, đồng thời làm căng mọng bờ môi,','noidung'=>'Một công thức không chỉ làm đầy và hoàn thiện đôi môi, mà còn giúp bảo vệ chống lại thiệt hại trong tương lai bởi vì làn da môi mỏng manh của chúng ta đặc biệt dễ bị tổn thương bởi các tác nhân gây hại từ môi trường.
 
             Phương pháp điều trị huyền thoại của La Mer Miracle Broth™ được bào chế với các chất chống oxy hóa giúp bảo vệ đôi môi, ngay lập tức làm đầy đặn và làm rõ các đường nét.
 
@@ -904,7 +910,7 @@ class installSeeder extends Seeder
 
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>4,'iddanhmuc'=>4,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
+            ['id'=>4,'iddanhmuc'=>4,'idthuonghieu'=>9,'name'=>'LA MER The Lip Balm - Sáp dưỡng môi cao cấp', 'slug'=> Str::slug('LA MER The Lip Balm - Sáp dưỡng môi cao cấp', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Sáp dưỡng môi luôn nằm trong danh sách những sản phẩm dưỡng môi tốt nhất thời đại của Thế Giới.','noidung'=>'Làm mới làn da môi ngay từ lần sử dụng đầu tiên, sáp dưỡng này đưa vào môi một độ ẩm sâu, khiến chúng mềm mại, mịn màng và đầy đặn.
 
             - Ngay lập tức làm mềm độ nhám, nuôi dưỡng và giúp làm dịu sự khô da môi nghiêm trọng.
 
@@ -916,7 +922,7 @@ class installSeeder extends Seeder
 
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
 
-            ['id'=>5,'iddanhmuc'=>5,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
+            ['id'=>5,'iddanhmuc'=>5,'idthuonghieu'=>9,'name'=>'LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', 'slug'=> Str::slug('LA MER The Eye Concentrate - Kem dưỡng mắt tập trung', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=> 'Kem mắt tập trung giúp cải thiện rõ rệt quầng thâm và làm mờ các nếp nhăn đồng thời ngăn ngừa thiệt hại trong tương lai với công thức mới dưỡng ẩm sâu.','noidung'=>'Kem mắt cô đặc mang lại một đôi mắt trẻ trung đầy sức sống và tươi sáng, nơi dễ bị tác động nhất bởi tác hại của thời gian và môi trường.
 
             - Với gấp ba lần lượng "thuốc tiên" Miracle Broth™ so với phiên bản cũ, truyền vào da nguồn năng lượng thiết yếu và hydrat hóa chữa lành, hỗ trợ đổi mới cho vùng mắt mịn màng và sáng hơn.
 
@@ -938,7 +944,7 @@ class installSeeder extends Seeder
             *Miracle Broth là "thần dược" độc quyền có trong tất cả sản phẩm của La Mer, được pha chế từ tảo biển thu hoạch bằng tay cùng với các chất dinh dưỡng và khoáng chất khác thông qua quá trình lên men tự nhiên. Hỗ trợ năm khía cạnh của sự chữa lành tự nhiên: độ ẩm, tái tạo, làm dịu, làm mịn và rạng rỡ giúp đưa làn da trở lại trạng thái khỏe mạnh nhất.
 
             ' ,'trangthai'=>1,'created_at'=> '2021-08-16 20:56:18','updated_at'=> NULL],
-            ['id'=>6,'iddanhmuc'=>6,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
+            ['id'=>6,'iddanhmuc'=>6,'idthuonghieu'=>9,'name'=>'INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', 'slug'=> Str::slug('INVISIBLUR PERFECTING SHIELD BROAD SPECTRUM SPF 30', '-'),'img'=>'["profile-photo-1635519265.png","profile-photo-1635519265.png","profile-photo-1635519312.png"]','mota'=>'Với khả năng chống nắng quang phổ rộng cùng công nghệ MuraSol độc quyền, sản phẩm giúp bảo vệ làn da hoàn hảo trước tác hại của tia UV.','noidung'=>'Bảo vệ toàn diện. Nuôi dưỡng đủ đầy. Mặt da nhung mịn. Perfecting Shield Broad Spectrum SPF 30 PA +++ ra đời như thể để xóa nhòa ranh giới giữa sản phẩm chăm sóc da và mỹ phẩm trang điểm, giúp làn da nhận được những gì tuyệt hảo nhất của thiên nhiên và công nghệ. Với chiết xuất những loại peptide từ nấm, giúp các dấu hiệu lão hóa dường như tan biến, để lại nét da trẻ trung và căng đầy.
 
             Khi dùng độc lập, công thức Soft Focus Complex sẽ làm mờ lỗ chân lông, nếp nhăn và các khuyết điểm khác trên da. Khi sử dụng như kem lót, công thức này sẽ giúp kem nền đạt được hiệu ứng hoàn hảo nhất, và giữ cho lớp trang điểm bền bỉ suốt 12 tiếng*. Invisiblur Perfecting Shield Broad Spectrum SPF 30 PA +++ còn không hề chứa Parabens, Sulfates, Phthalates, Gluten và các thành phần có chiết xuất từ động vật.
 
@@ -998,11 +1004,26 @@ class installSeeder extends Seeder
             ['id'=>4,'idnhanvien'=>4,'idkhachhang'=>3,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu' =>'liệu trình đang tiến hành','trangthai'=>0],
             ['id'=>5,'idnhanvien'=>5,'idkhachhang'=>2,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
             ['id'=>6,'idnhanvien'=>6,'idkhachhang'=>1,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
-
+            ['id'=>7,'idnhanvien'=>1,'idkhachhang'=>2,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>8,'idnhanvien'=>2,'idkhachhang'=>3,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>9,'idnhanvien'=>3,'idkhachhang'=>4,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>10,'idnhanvien'=>4,'idkhachhang'=>5,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>11,'idnhanvien'=>5,'idkhachhang'=>6,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>12,'idnhanvien'=>6,'idkhachhang'=>1,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>13,'idnhanvien'=>1,'idkhachhang'=>4,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>14,'idnhanvien'=>2,'idkhachhang'=>2,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>15,'idnhanvien'=>3,'idkhachhang'=>3,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>16,'idnhanvien'=>4,'idkhachhang'=>5,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>17,'idnhanvien'=>5,'idkhachhang'=>6,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>18,'idnhanvien'=>6,'idkhachhang'=>1,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>19,'idnhanvien'=>1,'idkhachhang'=>2,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>20,'idnhanvien'=>2,'idkhachhang'=>3,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>21,'idnhanvien'=>3,'idkhachhang'=>4,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
+            ['id'=>22,'idnhanvien'=>4,'idkhachhang'=>5,'ngaybatdau'=>'1635699600','dukienketthuc'=>'1637341200','ghichu'=>'liệu trình đang tiến hành','trangthai'=>0],
         ]);
         DB::table('lieutrinhchitiet')->insert([
-            ['id'=>1,'idlieutrinh' => 1, 'iddichvu'=> 1,'idnhanvien'=> 1, 'ghichu' =>'Bước 1: Kiểm tra tình trạng da trong quy trình chăm sóc da cơ bản tại spa mà bạn nên áp dụng vào cơ sở của mình hoặc tham khảo để lựa chọn spa sử dụng dịch vụ. Giá dịch vụ cũng phụ thuộc rất nhiều vào chất lượng của từng spa nên bạn cần lựa chọn kỹ lưỡng để chăm sóc làn da của mình nhé!', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang1.jpg'],
-            ['id'=>2,'idlieutrinh' => 2, 'iddichvu'=> 2,'idnhanvien'=> 2, 'ghichu' =>'Các bước chuẩn bị xăm, phun môi:
+            ['id'=>1,'idlieutrinh' =>1, 'iddichvu'=>1,'idnhanvien'=>1, 'ghichu' =>'Bước 1: Kiểm tra tình trạng da trong quy trình chăm sóc da cơ bản tại spa mà bạn nên áp dụng vào cơ sở của mình hoặc tham khảo để lựa chọn spa sử dụng dịch vụ. Giá dịch vụ cũng phụ thuộc rất nhiều vào chất lượng của từng spa nên bạn cần lựa chọn kỹ lưỡng để chăm sóc làn da của mình nhé!', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang1.jpg'],
+            ['id'=>2,'idlieutrinh' =>2, 'iddichvu'=>2,'idnhanvien'=>2, 'ghichu' =>'Các bước chuẩn bị xăm, phun môi:
 
             Chọn màu môi, dáng môi
             Tiêm 1-2 mũi thuốc tê vào môi
@@ -1019,7 +1040,7 @@ class installSeeder extends Seeder
             Không nên chọn những màu quá đỏ, sẽ khó đánh loại son khác nếu chúng ta muốn có chút thay đổi. Xu hướng chung là chọn gram màu nhẹ nhàng
             Không nên chọn màu có thiên hướng quá cam vì sau khi ngả màu, màu môi sẽ hơi vàng
             Nên chọn màu đỏ không pha để khi xuống màu nó sẽ thành đỏ hoặc hồng.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang2.jpg'],
-            ['id'=>3,'idlieutrinh' => 3, 'iddichvu'=> 3,'idnhanvien'=> 3, 'ghichu' =>'Bước 1: Làm sạch
+            ['id'=>3,'idlieutrinh' =>3, 'iddichvu'=> 3,'idnhanvien'=>3, 'ghichu' =>'Bước 1: Làm sạch
 
             Bước đầu tiên này nên thực hiện vào mỗi buổi sáng và buổi tối.
 
@@ -1054,7 +1075,7 @@ class installSeeder extends Seeder
             SPF được khuyến nghị hàng ngày ở mọi lứa tuổi.
 
             Một lưu ý đó là bạn nên thoa một loại kem dưỡng bằng chất lỏng nhẹ trước ví dụ như huyết thanh, kem dưỡng ẩm, sau đó mới đến kem chống nắng.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang3.jpg'],
-            ['id'=>4,'idlieutrinh' => 4, 'iddichvu'=> 4,'idnhanvien'=> 4, 'ghichu' =>'1. Bước 1: Làm sạch và sát khuẩn da mặt
+            ['id'=>4,'idlieutrinh' =>4, 'iddichvu'=>4,'idnhanvien'=>4, 'ghichu' =>'1. Bước 1: Làm sạch và sát khuẩn da mặt
             Đây là bước cơ bản cho tất cả các liệu trình chăm sóc và điều trị da liễu. Làm sạch da sẽ loại bỏ vi khuẩn trú ngụ trên da, hạn chế tối đa vi khuẩn xâm nhập sâu vào nang lông trong khi nặn mụn.
             Bước làm sạch này thường sử dụng:
 
@@ -1073,7 +1094,7 @@ class installSeeder extends Seeder
             Đầu nhọn của que lấy mụn sẽ dùng để châm đầu mụn, đầu tròn còn lại dùng để ấn xuống để đẩy nhân mụn ra ngoài. Thao tác nặn mụn sẽ dùng lực vừa phải để vừa đẩy nhân mụn ra ngoài mà không gây tổn thương nhiều cho da.
             5. Bước 5: Sát khuẩn và chăm sóc da sau mụn
             Sau khi nặn mụn, các chuyên gia, bác sĩ sẽ sát trùng vị trí mụn. Dung dịch thường được sử dụng là nước muối sinh lý hoặc các dung dịch sát khuẩn chuyên dụng như Povidine 10% để ngăn ngừa nhiễm trùng, nhiễm vi khuẩn.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang4.jpg'],
-            ['id'=>5,'idlieutrinh' => 5, 'iddichvu'=> 5,'idnhanvien'=> 5, 'ghichu' =>'Thời gian thực hiện và các bước trong liệu trình Điều Trị Mụn Lưng tại Fbeauty
+            ['id'=>5,'idlieutrinh' =>5, 'iddichvu'=>5,'idnhanvien'=>5, 'ghichu' =>'Thời gian thực hiện và các bước trong liệu trình Điều Trị Mụn Lưng tại Fbeauty
             Bước 1: Rửa và làm sạch các lớp bụi bẩn trên bề mặt da
 
             Bước 2: Tẩy tế bào chết giúp loại bỏ lớp tế bào già cội sần sùi thô ráp, đồng thời làm thông thoáng lỗ chân lông để các bước điều trị tiếp theo hiệu quả hơn.
@@ -1091,7 +1112,58 @@ class installSeeder extends Seeder
             Bước 8: Thắp ánh sáng sinh học ức chế tuyến bã nhờn, hạn chế nhiễm trùng vết thương, giảm kích ứng da, làm diệu và giảm đau, phục hồi tế bào da hư tổn, kích thích tuần hoàn máu, tái tạo da.
 
             Bước 9: Phun oxy giúp làm sạch sâu, bổ sung dưỡng chất cần thiết nuôi dưỡng một làn da tươi sáng, khỏe mạnh từ bên trong đồng thời ngăn chặn mọi quá trình lão hóa', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang5.jpg'],
-            ['id'=>6,'idlieutrinh' => 6, 'iddichvu'=> 1,'idnhanvien'=> 6, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            ['id'=>6,'idlieutrinh' =>6, 'iddichvu'=>1,'idnhanvien'=>6, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>7,'idlieutrinh' =>7, 'iddichvu'=> 1,'idnhanvien'=> 1, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>8,'idlieutrinh' => 8, 'iddichvu'=> 2,'idnhanvien'=> 2, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>9,'idlieutrinh' => 9, 'iddichvu'=> 3,'idnhanvien'=> 3, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
             Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
 
             QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
@@ -1109,6 +1181,228 @@ class installSeeder extends Seeder
             Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
             Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
 
+            ['id'=>10,'idlieutrinh' => 10, 'iddichvu'=> 6,'idnhanvien'=> 6, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>11,'idlieutrinh' => 11, 'iddichvu'=> 1,'idnhanvien'=> 1, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>12,'idlieutrinh' => 12, 'iddichvu'=> 2,'idnhanvien'=> 2, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>13,'idlieutrinh' => 13, 'iddichvu'=> 3,'idnhanvien'=> 3, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>14,'idlieutrinh' => 14, 'iddichvu'=> 4,'idnhanvien'=> 4, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>15,'idlieutrinh' => 15, 'iddichvu'=> 5,'idnhanvien'=> 5, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>16,'idlieutrinh' => 16, 'iddichvu'=> 6,'idnhanvien'=> 6, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>17,'idlieutrinh' => 17, 'iddichvu'=> 1,'idnhanvien'=> 1, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>18,'idlieutrinh' => 18, 'iddichvu'=> 2,'idnhanvien'=> 2, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>19,'idlieutrinh' => 19, 'iddichvu'=> 3,'idnhanvien'=> 3, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+
+            ['id'=>20,'idlieutrinh' => 20, 'iddichvu'=> 5,'idnhanvien'=> 5, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>21,'idlieutrinh' => 21, 'iddichvu'=> 6,'idnhanvien'=> 6, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
+            ['id'=>22,'idlieutrinh' => 22, 'iddichvu'=> 6,'idnhanvien'=> 6, 'ghichu' =>'Bước 1: Vệ sinh mắt, rửa mắt với nước muối
+            Bước đầu của quy trình phun xăm mí mắt để đảm bảo an toàn, khách hàng sẽ được rửa vệ sinh mắt bằng nước muối sinh lý. Đây là bước cần thiết, chuẩn bị cho quy trình phun xăm mí mắt được tốt hơn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 2: Làm sạch bằng mỡ kháng sinh
+            Việc làm sạch mắt bằng mỡ kháng sinh sẽ giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng hơn.
+
+            Bước 3: Bôi tê và gây ê nhẹ ngoài da
+            Quy trình phun xăm mí mắt với gây tê là bước không thể thiếu giúp cho quy trình phun xăm mí mắt diễn ra suôn sẻ, nhẹ nhàng, không gây đau đớn.
+
+            QUY TRÌNH PHUN XĂM MÍ MẮT HÀN QUỐC
+
+            Bước 4: Phun mực xăm lên và viền mí
+
+            Lúc này, chuyên viên phun xăm sẽ di một nét nhỏ theo đường viền mi mắt. Đây là bước quan trọng, đòi hỏi sự tinh tế cao trong suốt quy trình phun xăm mí mắt.
+            Thời gian xăm mí mắt thường lâu hơn thời gian xăm mày, xăm môi vì mí mắt rất gần với mắt nên đòi hỏi kỹ thuật viên phải thật nhẹ nhàng, tỉ mỉ hơn để an toàn cho mắt. Thông thường thời gian phun (xăm) cả mí trên, mí dưới là 45 phút.', 'ngay' => '29102022','trangthai' => 0, 'imgkhachhang'=>'khachhang6.jpg'],
         ]);
         DB::table('hoadon')->insert([
             ['id'=>1,'idkhachhang' => 1, 'idcoso'=> 1, 'idnhanvien'=> 1, 'idthungan' => 1,'idlieutrinh'=> 1,'idgiamgia'=> 1, 'tongtientruocgiamgia'=> '1500000','tongtiensaugiamgia'=>'1450000', 'trangthai'=>0, 'ghichu'=>'dịch vụ rất đa dạng và bắt mắt '],

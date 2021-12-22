@@ -12,5 +12,10 @@ class WardsRepository extends BaseRepository implements WardsRepositoryInterface
     // public function modelcity(){
     //     return \App\Models\Admin\City::class;
     // }
+    public function getall(){
+        return $this->model->select("*")
+        ->orderBy('xaid', 'ASC')
+        ->get();
+    }
 
 }

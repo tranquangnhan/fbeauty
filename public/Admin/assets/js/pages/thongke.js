@@ -1,4 +1,3 @@
-const serverNameUrl = $('#server-name').val();
 const getDoanhThuByDayUrl = serverNameUrl + 'quantri/getDoanhThuByDay/';
 const getDoanhThuHoaDonVaDonHangUrl = serverNameUrl + 'quantri/getDoanhThuHoaDonVaDonHang/';
 var arrDoanhThuHoaDon;

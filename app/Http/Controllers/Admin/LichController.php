@@ -25,9 +25,7 @@ class LichController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Show lịch theo cơ sở
      */
     public function index()
     {
@@ -67,6 +65,9 @@ class LichController extends Controller
     {
     }
 
+    /**
+     *Show lịch bằng ajax
+     */
     public function showlich($id, $idthu)
     {
         $lichlam = $this->Lich->getLich($id, $idthu);
@@ -96,23 +97,28 @@ class LichController extends Controller
 
     }
 
+    /**
+     *Cập nhật lịch by id
+     */
     public function UpLich(Request $request, $id)
     {
-        if ($request->soluong <=1000000){
+        if ($request->soluong <= 1000000) {
             $lich = [
                 'soluongkhach' => $request->soluong,
                 'trangthai' => $request->trangthai
             ];
             $this->Lich->update($id, $lich);
             return 1;
-        }
-        else{
+        } else {
             return 0;
         }
 
 
     }
 
+    /**
+     *Cập nhật lịch làm việc của 1 cơ sở
+     */
     public function uplichAll(Request $request, $id)
     {
         $thu = $request->thutrongtuan;
@@ -122,12 +128,11 @@ class LichController extends Controller
     }
 
     /**
-     *sửa lịch 0-6
+     *Cập nhật thời giam làm việc
      */
-
     public function updateTime(Request $request, $id)
     {
-        if ($request->soluongkh <=1000000){
+        if ($request->soluongkh <= 1000000) {
             $this->Lich->deleteLichByIdCoSo($id);
             $khachhang = $request->soluongkh;
             $gio = $request->giobatdau;
@@ -143,7 +148,7 @@ class LichController extends Controller
                         'thutrongtuan' => $j,
                         'soluongkhach' => $khachhang,
                         'gio' => $toTime,
-                        'trangthai' => 0
+                        'trangthai' => Controller::TRANGTHAI_LICH_OPEN
                     ];
                     $this->Lich->create($lich);
                     $phut += $khoanGiuaKhungGio;

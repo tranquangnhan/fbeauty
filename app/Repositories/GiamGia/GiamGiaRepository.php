@@ -26,5 +26,13 @@ class GiamGiaRepository extends BaseRepository implements GiamGiaRepositoryInter
             ->where('ma','=', $code)
             ->get();
     }
+    public function CheckName($name) {
+        return $this->model->select('*')->where('name', '=', $name)->doesntExist();
+    }
+
+    public function CheckMa($ma){
+        return $this->model->select('*')->where('ma', '=', $ma)->doesntExist();
+    }
+
 
 }

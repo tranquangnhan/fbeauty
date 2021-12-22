@@ -39,12 +39,18 @@
                         <div class="text-10 text-left">Nhập mật khẩu của SĐT <span class="comfirm-sdt">0965.286.066</span> hoặc chọn <br> "Quên mật khẩu"
                         </div>
                         <div class="fa-list-input-password d-flex w-100 mt-1">
-                            <input type="number" class="password password-box ip-number-box w-100 ml-0" maxlength="1" name="password">
-                            <input type="number" class="password password-box ip-number-box w-100" maxlength="1" name="password">
-                            <input type="number" class="password password-box ip-number-box w-100" maxlength="1" name="password">
-                            <input type="number" class="password password-box ip-number-box w-100" maxlength="1" name="password">
-                            <input type="number" class="password password-box ip-number-box w-100" maxlength="1" name="password">
-                            <input type="number" class="password password-box ip-number-box w-100 mr-0" maxlength="1" name="password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="password password-box ip-number-box w-100 ml-0" maxlength="1" name="password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="password password-box ip-number-box w-100" maxlength="1" name="password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="password password-box ip-number-box w-100" maxlength="1" name="password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="password password-box ip-number-box w-100" maxlength="1" name="password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="password password-box ip-number-box w-100" maxlength="1" name="password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="password password-box ip-number-box w-100 mr-0" maxlength="1" name="password">
                         </div>
                         <span class="text-error password-old-error"></span>
                         <div class="d-flex py-3">
@@ -72,12 +78,18 @@
                         <div class="text-10 text-left">Chúng tôi sẽ gửi cho bạn mã OTP<br> vui lòng kiểm tra tin nhắn
                         </div>
                         <div class="fa-list-input-otp d-flex w-100 mt-1">
-                            <input type="number" class="otp otp-box ip-number-box w-100 ml-0" maxlength="1" name="otp">
-                            <input type="number" class="otp otp-box ip-number-box w-100" maxlength="1" name="otp">
-                            <input type="number" class="otp otp-box ip-number-box w-100" maxlength="1" name="otp">
-                            <input type="number" class="otp otp-box ip-number-box w-100" maxlength="1" name="otp">
-                            <input type="number" class="otp otp-box ip-number-box w-100" maxlength="1" name="otp">
-                            <input type="number" class="otp otp-box ip-number-box w-100 mr-0" maxlength="1" name="otp">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="otp otp-box ip-number-box w-100 ml-0" maxlength="1" name="otp">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="otp otp-box ip-number-box w-100" maxlength="1" name="otp">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="otp otp-box ip-number-box w-100" maxlength="1" name="otp">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="otp otp-box ip-number-box w-100" maxlength="1" name="otp">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="otp otp-box ip-number-box w-100" maxlength="1" name="otp">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="otp otp-box ip-number-box w-100 mr-0" maxlength="1" name="otp">
                         </div>
                         <span class="text-error OTP-auth-error"></span>
                         <div class="d-flex py-3">
@@ -103,12 +115,18 @@
                         <div class="text-10 text-left">Bạn có thể chọn bỏ qua nếu không muốn dùng mật khẩu
                         </div>
                         <div class="fa-list-input-new-password d-flex w-100 mt-1">
-                            <input type="number" class="new-password new-password-box ip-number-box w-100 ml-0" maxlength="1" name="new-password">
-                            <input type="number" class="new-password new-password-box ip-number-box w-100" maxlength="1" name="new-password">
-                            <input type="number" class="new-password new-password-box ip-number-box w-100" maxlength="1" name="new-password">
-                            <input type="number" class="new-password new-password-box ip-number-box w-100" maxlength="1" name="new-password">
-                            <input type="number" class="new-password new-password-box ip-number-box w-100" maxlength="1" name="new-password">
-                            <input type="number" class="new-password new-password-box ip-number-box w-100 mr-0" maxlength="1" name="new-password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="new-password new-password-box ip-number-box w-100 ml-0" maxlength="1" name="new-password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="new-password new-password-box ip-number-box w-100" maxlength="1" name="new-password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="new-password new-password-box ip-number-box w-100" maxlength="1" name="new-password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="new-password new-password-box ip-number-box w-100" maxlength="1" name="new-password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="new-password new-password-box ip-number-box w-100" maxlength="1" name="new-password">
+                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            type = "number" class="new-password new-password-box ip-number-box w-100 mr-0" maxlength="1" name="new-password">
                         </div>
                         <span class="text-error password-new-error"></span>
                         <div class="d-flex py-3">

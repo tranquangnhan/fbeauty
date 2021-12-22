@@ -29,9 +29,17 @@ class LieuTrinhRepository extends BaseRepository implements LieuTrinhRepositoryI
         );
     }
 
+    public function CheckLieuTrinhByIdKhachHang($id){
+        return  $this->model->select("*")
+            ->where('idkhachhang', '=', $id)
+            ->doesntExist();
+    }
+
     public function findLieuTrinhByIdKh($id){
         return $this->model
-        ->select("nhanvien.avatar as imgnv",
+        ->select(
+        "nhanvien.avatar as imgnv",
+        "nhanvien.name as tennv",
         "lieutrinh.ngaybatdau",
         "lieutrinh.dukienketthuc",
         "lieutrinh.ghichu",

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SanPhamChiTiet;
 use App\Repositories\DonHangChiTiet\DonHangChiTietRepository;
+use App\Repositories\GioHangChiTiet\GioHangChiTietRepository;
+use App\Repositories\HoaDonChiTiet\HoaDonChiTietRepository;
 use App\Repositories\SanPhamChiTiet\SanPhamChiTietRepository;
 
 
@@ -12,10 +14,18 @@ class SanPhamChiTietController extends Controller
 {
     private $SanPhamChiTiet;
     private $DonHangChiTiet;
-    public function __construct(SanPhamChiTietRepository $SanPhamChiTiet,DonHangChiTietRepository $DonHangChiTiet)
+    private $GioHangChiTiet;
+    private $HoaDonChiTiet;
+    public function __construct(SanPhamChiTietRepository $SanPhamChiTiet,
+                                DonHangChiTietRepository $DonHangChiTiet,
+                                GioHangChiTietRepository $GioHangChiTiet,
+                                HoaDonChiTietRepository $HoaDonChiTiet
+    )
     {
         $this->SanPhamChiTiet = $SanPhamChiTiet;
         $this->DonHangChiTiet = $DonHangChiTiet;
+        $this->GioHangChiTiet = $GioHangChiTiet;
+        $this->HoaDonChiTiet= $HoaDonChiTiet;
     }
 
     public function createDetailProduct()
@@ -54,7 +64,7 @@ class SanPhamChiTietController extends Controller
 
     function editDetailProduct($id)
     {
-        
+
         $data = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
         if(count($data) === 0){
             return redirect('quantri/sanpham/detail/'.$id.'/create')->with('idDetail',$id);
@@ -100,14 +110,15 @@ class SanPhamChiTietController extends Controller
             }
 
         }
-        
+
     }
 
     public function destroy($id)
     {
         $hasDonHang = $this->DonHangChiTiet->findDonHangChiTietByIdSanPhamChiTiet($id);
-
-        if(count($hasDonHang)>0){
+        $hasGioHang = $this->GioHangChiTiet->findGioHangChiTietByIdSanPhamChiTiet($id);
+        $hasHoaDonChiTiet = $this->HoaDonChiTiet->findHoaDonChiTietByIdSanPhamChiTiet($id);
+        if(count($hasDonHang)>0 || $hasGioHang==false || $hasHoaDonChiTiet==false){
             $response = [
                 'type'=>'error',
                 'errorMessage'=>'Sản phẩm đã tồn tại trong đơn hàng, không thể xoá',

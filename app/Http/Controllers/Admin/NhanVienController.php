@@ -22,9 +22,7 @@ class NhanVienController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * show danh sách nhân viên
      */
     public function index()
     {
@@ -32,16 +30,8 @@ class NhanVienController extends Controller
 
         return view("Admin.NhanVien.index", ['data' => $data]);
     }
-
-    public function AllImgKH() {
-        $data = $this->nhanvien->getNhanVien();
-        return view("Admin.NhanVien.allimg", ['data' => $data]);
-    }
-
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * chuyển hướng đến trang thêm nhân viên
      */
     public function create()
     {
@@ -49,16 +39,12 @@ class NhanVienController extends Controller
         return view("Admin.NhanVien.create", ['coso' => $coso]);
         //
     }
-
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * Thêm nhân viên
      */
     public function store(NhanVien $request)
     {
-        
+
         $coSo = session()->get('coso');
 
         $img = $request->file('urlHinh');
@@ -68,6 +54,7 @@ class NhanVienController extends Controller
         $imgTrue = true;
         $emailTrue = true;
         $sdtTrue = true;
+       
         if ($this->checkImg($extension, $img) == true) {
             $imgTrue = true;
         } else {
@@ -109,7 +96,9 @@ class NhanVienController extends Controller
 
 
     }
-
+    /**
+     * Check email
+     */
     public function CheckEmailTonTai($email)
     {
         if ($this->nhanvien->CheckEmail($email) == false) {
@@ -117,7 +106,9 @@ class NhanVienController extends Controller
         }
 
     }
-
+    /**
+     * Check sdt
+     */
     public function CheckSdtTonTai($sdt)
     {
         if ($this->nhanvien->CheckSdt($sdt) == false) {
@@ -134,6 +125,7 @@ class NhanVienController extends Controller
      * 1 show
      * 2 up
      * 3 xóa
+     * 4: tất cả ảnh khách hàng
      */
     public function show($id)
     {
@@ -141,52 +133,6 @@ class NhanVienController extends Controller
         return view("Admin.NhanVien.ImgKhachHang", ['nhanvien' => $nhanvien]);
     }
 
-    public function upImgKhachHang(Request $request, $id)
-    {
-        if ($request->file('photos')!=""){
-        $nv = $this->nhanvien->find($id);
-        $jsonimg = json_decode($nv->img);
-        if (is_array($jsonimg)) {
-            $dataImg = $this->uploadMultipleImg($this::PATH_UPLOADS_KHACHHANG,$request->file('photos'));
-            $mergearray = array_merge($dataImg, $jsonimg);
-            $nhanvien = [
-                'img' => $mergearray
-            ];
-            $this->nhanvien->update($id, $nhanvien);
-        } else {
-            $dataImg = $this->uploadMultipleImg($this::PATH_UPLOADS_KHACHHANG,$request->file('photos'));
-            $nhanvien = [
-                'img' => $dataImg
-            ];
-            $this->nhanvien->update($id, $nhanvien);
-        }
-
-        $dataNV = $this->nhanvien->find($id);
-        return redirect(route("nhanvien.show", $id))->with('thanhcong', 'Tải ảnh lên thành công');
-        }
-        else{
-            return redirect(route("nhanvien.show", $id))->with('thatbai', 'bạn chưa tải ảnh lên.');
-        }
-    }
-
-    public function XoaImgKH($id, $idImg)
-    {
-        $nv = $this->nhanvien->find($id);
-        $jsonimg = json_decode($nv->img);
-        if (is_file('uploads/khachhang/' . $jsonimg[$idImg])) {
-            unlink('uploads/khachhang/' . $jsonimg[$idImg]);
-        }
-        if (count($jsonimg) == 1) {
-            $jsonimg = "";
-        } else {
-            array_splice($jsonimg, $idImg, 1);
-        }
-        $nhanvien = [
-            'img' => $jsonimg
-        ];
-        $this->nhanvien->update($id, $nhanvien);
-        return redirect(route("nhanvien.show", $id))->with('thanhcong', 'Xóa ảnh thành công');
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -202,14 +148,11 @@ class NhanVienController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * Cập nhật thông tin nhân viên
      */
     public function update(Request $request, $id)
     {
+
         $coSo = session()->get('coso');
 
         $img = $request->file('urlHinh');
@@ -255,8 +198,6 @@ class NhanVienController extends Controller
             return redirect('quantri/nhanvien')->with('thatbai', 'Avatar không hợp lệ');
         }
     }
-
-
 
     /**
      * Remove the specified resource from storage.

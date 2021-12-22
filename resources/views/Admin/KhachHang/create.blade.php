@@ -38,7 +38,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Tên khách hàng</label><span style="color:red;"> (*)</span>
+                                    <label for="">Tên khách hàng</label>
                                     <input type="text" name="name" value="{{old('name')}}"
                                         parsley-trigger="change" placeholder="Tên khách hàng" class="form-control">
                                     @error('name')
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="">Email</label><span style="color:red;"> (*)</span>
+                                    <label for="">Email</label>
                                     <input type="email" name="email" value="{{old('email')}}"
                                         parsley-trigger="change" placeholder="Email" class="form-control">
                                     @error('email')
@@ -65,7 +65,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group ">
-                                    <label for="">Mật khẩu</label><span style="color:red;"> (*)</span>
+                                    <label for="">Mật khẩu</label>
                                     <input type="password" name="password" value="{{old('password')}}"
                                         parsley-trigger="change" placeholder="Mật khẩu" class="form-control">
                                     @error('password')

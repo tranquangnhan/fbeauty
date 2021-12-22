@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
+use App\Repositories\DatLich\DatLichRepository;
+use App\Repositories\DatLich\DatLichRepositoryInterface;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
 use App\Repositories\GiamGia\GiamGiaRepository;
 use App\Repositories\HoaDon\HoaDonRepositoryInterface;
@@ -14,6 +16,7 @@ use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HoaDonController extends Controller
 {
@@ -25,6 +28,9 @@ class HoaDonController extends Controller
     private $khachhang;
     private $giamgia;
     private $LieuTrinh;
+    private $LieuTrinhChiTiet;
+    private $DatLich;
+
     public function __construct(
         GiamGiaRepository $giamgia,
         KhachHangRepository $khachhang,
@@ -34,7 +40,8 @@ class HoaDonController extends Controller
         CoSoRepository $coso,
         DichVuRepositoryInterface $dichvu,
         LieuTrinhRepository $LieuTrinh,
-        LieuTrinhChiTietRepository $LieuTrinhChiTiet
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet,
+        DatLichRepository $DatLich
     ) {
         $this->nhanvien = $nhanvien;
         $this->coso = $coso;
@@ -45,6 +52,7 @@ class HoaDonController extends Controller
         $this->giamgia = $giamgia;
         $this->LieuTrinh = $LieuTrinh;
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
+        $this->DatLich=$DatLich;
     }
 
     /**
@@ -56,6 +64,7 @@ class HoaDonController extends Controller
     {
         $hoadon = $this->hoadon->ShowHoaDonByIdCoso(session()->get('coso'));
         $coso = $this->coso->find(session()->get('coso'));
+
         return view("Admin.HoaDon.index", ['hoadon' => $hoadon, 'coso' => $coso]);
     }
 
@@ -92,10 +101,7 @@ class HoaDonController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * Xem và sửa hóa đơn chi tiết
      */
     public function edit($id)
     {
@@ -107,7 +113,6 @@ class HoaDonController extends Controller
         $idlieutrinh = $hd->idlieutrinh;
         $TenNhanVien = $this->nhanvien->find($hd->idnhanvien);
         $hdct = $this->hoadonchitiet->getHoaDonCTByIdHoaDon($id);
-
         return view("Admin.HoaDon.edit", ['customer' => $customer, 'hoadon' => $hd, 'coso' => $coso, 'hdct' => $hdct, 'thungan' => $ThuNgan, 'TenNhanVien' => $TenNhanVien, 'idlieutrinh' => $idlieutrinh]);
     }
 
@@ -123,26 +128,22 @@ class HoaDonController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
     }
 
     /**
-     *Giảm giá
+     *Lấy chi tiết giảm giá từ hóa đơn
      */
     public function getGiamGiaToHoaDon($idgiamgia)
     {
         $data = $this->giamgia->find($idgiamgia);
         return $data;
     }
-
+    /**
+     *Áp dụng giảm giá vào hóa đơn
+     */
     public function ApDungGiamGia($id, $code, $tien)
     {
         $checkCode = $this->giamgia->CheckCODE($code);
@@ -151,7 +152,7 @@ class HoaDonController extends Controller
             if ($tien >= $giamgia[0]["max"]) {
                 $ma = ['idgiamgia' => $giamgia[0]["id"]];
                 $today = date('Y-m-d');
-                if (strtotime($today) < $giamgia[0]["ngayhethan"]) {
+                if (strtotime($today) < $giamgia[0]["ngayhethan"] && $giamgia[0]["ngaytao"] < strtotime($today)) {
                     $this->hoadon->update($id, $ma);
                     return true;
                 } else {
@@ -174,7 +175,9 @@ class HoaDonController extends Controller
             return $thongbao;
         }
     }
-
+    /**
+     *Cập nhật giá của hóa đơn
+     */
     public function CapNhatGia($id, $tien, $tongtien)
     {
         $tong = [
@@ -184,7 +187,9 @@ class HoaDonController extends Controller
         $this->hoadon->update($id, $tong);
         return true;
     }
-
+    /**
+     *Xóa sản phẩm hoặc dịch vụ trong hóa đơn chi tiết
+     */
     public function XoaHoaDonChiTiet($id, $idhdct)
     {
         $this->hoadonchitiet->delete($idhdct);
@@ -193,7 +198,9 @@ class HoaDonController extends Controller
         ];
         return $thongbao;
     }
-
+    /**
+     *Thêm liệu trình vào hóa đơn
+     */
     public function addHoaDonByIdLieuTrinh($id)
     {
 
@@ -215,7 +222,7 @@ class HoaDonController extends Controller
                 'idlieutrinh' => $lieuTrinh->id,
                 'tongtientruocgiamgia' => $tongtien,
                 'tongtiensaugiamgia' => $tongtien,
-                'trangthai' => 1,
+                'trangthai' => Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN,
                 'ghichu' => $lieuTrinh->ghichu
             ];
 
@@ -240,21 +247,88 @@ class HoaDonController extends Controller
             return $this->handleError('Liệu trình đã tồn tại trong hoá đơn');
         }
     }
-
+    /**
+     *Sửa trạng thái thanh toán
+     */
     public function trangthaithanhtoan($id){
         $hoadon=$this->hoadon->find($id);
         if ($hoadon->trangthai == 0){
             $tt=[
-                "trangthai"=>1
+                "trangthai"=>Controller::TRANGTHAI_HOADON_DA_THANH_TOAN
             ];
             $this->hoadon->update($id, $tt);
         }
         else{
             $tt=[
-                "trangthai"=>0
+                "trangthai"=>Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN
             ];
             $this->hoadon->update($id, $tt);
         }
         return redirect(route("hoadon.index"));
+    }
+
+    /**
+     *Thêm hóa đơn từ đặt lịch
+     */
+
+    public function ThemHoaDonTuDatLich($id){
+        try{
+            $DL=$this->DatLich->find($id);
+            $array_dichvu=json_decode($DL->iddichvu);
+            $gia=0;
+            for ($i=0; $i<count($array_dichvu); $i++){
+                $dichvu=$this->dichvu->find($array_dichvu[$i]);
+                if ($dichvu!=null){
+                    $gia+=($dichvu->dongia * $dichvu->giamgia);
+                }
+                else{
+                    $gia+=0;
+                }
+            }
+            if ($DL->idnhanvien ==0){
+                $nhanvien=Auth::user()->id;
+            }
+            else{
+                $nhanvien=$DL->idnhanvien;
+            }
+
+            $HoaDon=[
+                "idkhachhang"=>$DL->idkhachhang,
+                "idcoso"=>$DL->idcoso,
+                "idnhanvien"=>$nhanvien,
+                "idthungan"=>Auth::user()->id,
+                "idlieutrinh"=>null,
+                "idgiamgia"=>null,
+                "tongtientruocgiamgia"=>$gia,
+                "tongtiensaugiamgia"=>$gia,
+                "trangthai"=>Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN,
+                "ghichu"=>null
+            ];
+            $add_hoa_don=$this->hoadon->create($HoaDon);
+
+            for ($x=0; $x<count($array_dichvu); $x++){
+                $dichvu_hdct=$this->dichvu->find($array_dichvu[$x]);
+                if ($dichvu_hdct!=null){
+                    $hdct=[
+                        'idhoadon'=>$add_hoa_don->id,
+                        'idlienquan'=>$array_dichvu[$x],
+                        'type'=>Controller::ID_LIENQUAN_DV_,
+                        'soluong'=>1,
+                        'dongiatruocgiamgia'=>$dichvu->dongia,
+                        'dongiasaugiamgia'=>$dichvu->dongia * $dichvu->giamgia,
+                    ];
+                    $this->hoadonchitiet->create($hdct);
+                }
+                else{
+                    $gia+=0;
+                }
+
+                if ($x==(count($array_dichvu))-1){
+                    return redirect(route("hoadon.edit", $add_hoa_don->id))->with('addfromdatlich', 'Tạo hóa đơn từ đặt lịch thành công');
+                }
+            }
+        } catch (\Exception $exception) {
+            return redirect()->back()->with("themhoadonthatbai", "Xuất hóa đơn thất bại");
+        }
     }
 }

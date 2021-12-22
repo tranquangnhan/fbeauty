@@ -14,6 +14,8 @@ class LichSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('lich')->delete();
+
         $soluongkhach = 4;
 
         $gio = 8;
@@ -29,7 +31,7 @@ class LichSeeder extends Seeder
                     DB::table('lich')->insert([
                         ['idcoso' => $idcoso, 'thutrongtuan' => $thu, 'soluongkhach' => $soluongkhach, 'gio' => $toTime, 'trangthai' => $trangthai]
                     ]);
-                    
+
                     $phut += $khoanGiuaKhungGio;
                     if ($phut >= 60) {
                         $gio += 1;

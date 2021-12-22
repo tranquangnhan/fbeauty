@@ -1,10 +1,11 @@
 var modalgiohang=document.getElementById("modalgiohang");
 var soluonghang=document.getElementById("soluonghang");
-var soluonghang1=document.getElementById("soluonghang1");
+var soluonghangmodal=document.querySelectorAll("#soluonghangmodal");
 var tongtien=document.getElementById("tongtien");
 var nutcheckout=document.getElementById("nutcheckout");
 var asset=document.getElementById("asset").value;
 var domain=document.getElementById("domain").value;
+//Thêm sản phẩm vào giỏ
 function ThemGioHang(id) {
     if (id==null){
         iziToast.warning({
@@ -53,63 +54,64 @@ function ThemGioHang(id) {
     }
 
 }
+//Thêm sản phẩm vào giỏ hàng từ trang chi tiết
 function ThemGioHangChiTiet(muangay) {
     var idsanpham=$("#idsanpham").val();
     var tonkho=$("#tonkho").val();
-   var nhapsoluong=$("#nhapsoluong").val();
-   if (nhapsoluong!="" && Number(nhapsoluong)<=Number(tonkho) && Number(nhapsoluong)>=1 ){
-       $.ajax({
-           url: domain + '/themsanphamgiohangchitiet/'+idsanpham+'/soluongsanpham/'+nhapsoluong,
-           type: 'GET',
-           async: false,
-           dataType: 'json',
-           data: {id: idsanpham, soluong: nhapsoluong},
-           success: function (data) {
-               if (data==0){
-                   iziToast.warning({
-                       title: 'Thêm giỏ hàng thất bại !!!',
-                       message: '',
-                       position: 'bottomRight',
-                       backgroundColor: 'oranged',
-                       titleColor: 'black',
-                       messageColor: 'black',
-                       iconColor: 'black',
-                   });
-               }
-               else {
-                   iziToast.success({
-                       title: 'Thêm giỏ hàng thành công !!!',
-                       message: '',
-                       position: 'bottomRight',
-                       backgroundColor: 'green',
-                       titleColor: 'white',
-                       messageColor: 'white',
-                       iconColor: 'white',
-                   });
-                   showGioHang()
-                   if (muangay!=null){
-                       var timer = setTimeout(function() {
-                           window.location= domain+'/gio-hang'
-                       }, 2000);
-                   }
-               }
-           }
+    var nhapsoluong=$("#nhapsoluong").val();
+    if (nhapsoluong!="" && Number(nhapsoluong)<=Number(tonkho) && Number(nhapsoluong)>=1 ){
+        $.ajax({
+            url: domain + '/themsanphamgiohangchitiet/'+idsanpham+'/soluongsanpham/'+nhapsoluong,
+            type: 'GET',
+            async: false,
+            dataType: 'json',
+            data: {id: idsanpham, soluong: nhapsoluong},
+            success: function (data) {
+                if (data==0){
+                    iziToast.warning({
+                        title: 'Thêm giỏ hàng thất bại !!!',
+                        message: '',
+                        position: 'bottomRight',
+                        backgroundColor: 'oranged',
+                        titleColor: 'black',
+                        messageColor: 'black',
+                        iconColor: 'black',
+                    });
+                }
+                else {
+                    iziToast.success({
+                        title: 'Thêm giỏ hàng thành công !!!',
+                        message: '',
+                        position: 'bottomRight',
+                        backgroundColor: 'green',
+                        titleColor: 'white',
+                        messageColor: 'white',
+                        iconColor: 'white',
+                    });
+                    showGioHang()
+                    if (muangay!=null){
+                        var timer = setTimeout(function() {
+                            window.location= domain+'/gio-hang'
+                        }, 2000);
+                    }
+                }
+            }
 
-       });
-   }
-   else {
-       iziToast.warning({
-           title: 'Thêm giỏ hàng thất bại !!!',
-           message: '',
-           position: 'bottomRight',
-           backgroundColor: 'oranged',
-           titleColor: 'black',
-           messageColor: 'black',
-           iconColor: 'black',
-       });
-   }
+        });
+    }
+    else {
+        iziToast.warning({
+            title: 'Thêm giỏ hàng thất bại !!!',
+            message: '',
+            position: 'bottomRight',
+            backgroundColor: 'oranged',
+            titleColor: 'black',
+            messageColor: 'black',
+            iconColor: 'black',
+        });
+    }
 }
-
+//Show gio hang
 function showGioHang() {
     $.ajax({
         url: domain + '/showdonhangandgiohang',
@@ -121,17 +123,17 @@ function showGioHang() {
             if (data==0){
                 modalgiohang.innerHTML="<p>Không có sản phẩm nào</p>";
                 soluonghang.innerHTML=0;
-                soluonghang1.innerHTML=0;
                 tongtien.innerHTML = 0;
                 nutcheckout.href= "javascript:void(0)";
+                ShowSoLuongModal(0)
                 if (window.location == domain+'/gio-hang'){
-                    document.getElementById("giohang-body").innerHTML="<p>Không có sản phẩm nào</p>";
-                    document.getElementById("tongtiengiohang").innerHTML=0;
+                    $("#giohang-body").html("<p>Không có sản phẩm nào</p>");
+                    $("#tongtiengiohang").html("0");
                     $("#xoatatca").prop('disabled', true);
                     $("#nextthanhtoan").attr("href", "javascript:void(0)")
                 }
                 else if (window.location == domain+'/thanh-toan'){
-                    document.getElementById("payproduct").innerHTML="<p>Không có sản phẩm nào</p>";
+                    $("#payproduct").html("<p>Không có sản phẩm nào</p>");
                     $("#tongtienhang").html("0");
                     $("#tongthanhtoan").html("0");
                     $("#tienship").html("0");
@@ -147,7 +149,7 @@ function showGioHang() {
                     GioHangBoDy(data);
                     $("#xoatatca").prop('disabled', false);
                 }
-            else if (window.location == domain+'/thanh-toan'){
+                else if (window.location == domain+'/thanh-toan'){
                     ShowPayProduct(data);
                     $("#dathang").prop('disabled', false);
                 }
@@ -156,12 +158,18 @@ function showGioHang() {
     });
 }
 showGioHang();
+//Show Số lượng sản phẩm đang có
+function ShowSoLuongModal(soluong) {
+    for (let i=0; i<soluonghangmodal.length; i++){
+        soluonghangmodal[i].innerHTML=soluong;
+    }
+}
 //Show giỏ hàng tại đây
-
+//Show giỏ hàng dạng modal
 function Showmodalgiohang(data) {
     var span='';
     var total=0;
-    var stt=0
+    var stt=0;
     for (let i=0; i<data.length ; i++){
         stt+=1;
         const img = JSON.parse(data[i].img)[0];
@@ -182,12 +190,12 @@ function Showmodalgiohang(data) {
         total+=(gia * data[i].soluong)
 
         span+='  <tr>\n' +
-            ' <td width="25%"><img class="w-100" style="width: 100%;" src="' + asset + '/' + img + '"></td>\n' +
+            ' <td width="25%"><img class="w-100" style="width: 100%; height: 80px; object-fit: cover;" src="' + asset + '/' + img + '"></td>\n' +
             ' <td width="30%">\n' +
             ' <span style="font-size: 11pt;">'+ten+'</span> <br>\n' +
             ' <span class="font-weight-bold" style="font-size: 10pt;"><i class="fa fa-close"></i> '+data[i].ml+'ml</span>\n' +
             ' <br>\n' +
-            ' <span class="font-weight-600 ">'+gia.toLocaleString()+' </span>VND\n' +
+            ' <span class="font-weight-600 ">'+gia.toLocaleString().replaceAll(",", ".")+' </span>VND\n' +
             ' </td>\n' +
             ' <td width="29%">\n' +
             ' <div class="input-group inline-group">\n' +
@@ -196,7 +204,7 @@ function Showmodalgiohang(data) {
             ' <i class="fa fa-minus"></i>\n' +
             ' </button>\n' +
             ' </div>\n' +
-            ' <input class="form-control text-center quantity" id="slspn'+data[i].id+'" onkeyup="SoLuong('+data[i].id+')" min="1" max="'+data[i].tonkho+'" name="quantity" value="'+data[i].soluong+'" type="number">\n' +
+            ' <input class="form-control text-center quantity bg-white" id="slspn'+data[i].id+'" onkeyup="SoLuong('+data[i].id+')" min="1" max="'+data[i].tonkho+'" name="quantity" value="'+data[i].soluong+'" type="number" disabled>\n' +
             ' <div class="input-group-append">\n' +
             ' <button class="btn-plus btn-cal rounded-right" onclick="TangSoLuong('+data[i].id+')">\n' +
             ' <i class="fa fa-plus"></i>\n' +
@@ -208,11 +216,11 @@ function Showmodalgiohang(data) {
             ' </tr>';
     }
     modalgiohang.innerHTML=span;
-    tongtien.innerHTML = total.toLocaleString();
+    tongtien.innerHTML = total.toLocaleString().replaceAll(",", ".");
     soluonghang.innerHTML=stt;
-    soluonghang1.innerHTML=stt;
+    ShowSoLuongModal(stt)
 }
-
+//Show giỏ hàng trang giỏ hàng
 function GioHangBoDy(data) {
     var span='';
     var total=0;
@@ -224,11 +232,11 @@ function GioHangBoDy(data) {
         var ten='';
         var gia='';
         if (data[i].giamgia !=null){
-            gia ='<span class="giagiam">'+data[i].dongia.toLocaleString()+' đ </span><span class="gia left-bar">'+(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)).toLocaleString()+'đ </span>';
+            gia ='<span class="giagiam">'+data[i].dongia.toLocaleString().replaceAll(",", ".")+' đ </span><span class="gia left-bar">'+(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)).toLocaleString()+'đ </span>';
             tongtien=(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)) *data[i].soluong;
         }
         else {
-            gia ='<span class="">'+data[i].dongia.toLocaleString()+'đ </span>';
+            gia ='<span class="">'+data[i].dongia.toLocaleString().replaceAll(",", ".")+'đ </span>';
             tongtien=data[i].dongia *data[i].soluong;
         }
         if (data[i].name.length >30){
@@ -274,16 +282,16 @@ function GioHangBoDy(data) {
             '                </div>\n' +
             '                <div class="col-xl-1">\n' +
             '                    <div class="body-text">\n' +
-            '                        <span class="tongtien">'+tongtien.toLocaleString()+'đ</span>\n' +
+            '                        <span class="tongtien">'+tongtien.toLocaleString().replaceAll(",", ".")+'đ</span>\n' +
             '                    </div>\n' +
             '                </div>\n' +
             '                <div class="col-xl-1 text-center"><button class="btn" onclick="XoaSanPham('+data[i].id+')"><i class=\'fas fa-trash-alt\' style=\'font-size:24px\'></i></button></div>\n' +
             '            </div>';
     }
     document.getElementById("giohang-body").innerHTML=span;
-    document.getElementById("tongtiengiohang").innerHTML=total.toLocaleString();
+    document.getElementById("tongtiengiohang").innerHTML=total.toLocaleString().replaceAll(",", ".");
 }
-
+//show đơn hàng trang thanh toán
 function ShowPayProduct(data) {
     var span='';
     var total=0;
@@ -295,11 +303,11 @@ function ShowPayProduct(data) {
         var ten='';
         var gia='';
         if (data[i].giamgia !=null){
-            gia ='<span class="giagiam">'+data[i].dongia.toLocaleString()+' đ </span><span class="gia left-bar">'+(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)).toLocaleString()+'đ </span>';
+            gia ='<span class="giagiam">'+data[i].dongia.toLocaleString().replaceAll(",", ".")+' đ </span><span class="gia left-bar">'+(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)).toLocaleString().replaceAll(",", ".")+'đ </span>';
             tongtien=(data[i].dongia - ((data[i].dongia * data[i].giamgia)/100)) *data[i].soluong;
         }
         else {
-            gia ='<span class="">'+data[i].dongia.toLocaleString()+'đ </span>';
+            gia ='<span class="">'+data[i].dongia.toLocaleString().replaceAll(",", ".")+'đ </span>';
             tongtien=data[i].dongia *data[i].soluong;
         }
         if (data[i].name.length >30){
@@ -332,18 +340,18 @@ function ShowPayProduct(data) {
             '                </div>\n' +
             '                <div class="col-xl-2 text-right">\n' +
             '                    <div class="body-text">\n' +
-            '                        <span class="tongtien">'+tongtien.toLocaleString()+'đ</span>\n' +
+            '                        <span class="tongtien">'+tongtien.toLocaleString().replaceAll(",", ".")+'đ</span>\n' +
             '                    </div>\n' +
             '                </div>\n' +
             '            </div>';
     }
     document.getElementById("payproduct").innerHTML=span;
-    $("#tongtienhang").html(total.toLocaleString());
-    $("#tongthanhtoan").html((total+30000).toLocaleString());
+    $("#tongtienhang").html(total.toLocaleString().replaceAll(",", "."));
+    $("#tongthanhtoan").html((total+30000).toLocaleString().replaceAll(",", "."));
     $('#amount').val(total+30000);
     CapNhatGiaSession(total+30000);
 }
-
+//Xóa sản phẩm giỏ hàng
 function XoaSanPham(id) {
     $.ajax({
         url: domain + '/xoasanphamgiohang/'+id,
@@ -363,6 +371,9 @@ function XoaSanPham(id) {
                     iconColor: 'white',
                 });
                 showGioHang();
+                if (window.location == domain+'/thanh-toan') {
+                    HuyGiamGia();
+                }
             }
             else {
                 iziToast.warning({
@@ -378,7 +389,7 @@ function XoaSanPham(id) {
         }
     });
 }
-
+//Cập nhật số lượng sản phẩm
 function SoLuong(id) {
     let tonkho=document.getElementById("slspn"+id).max;
     let soluong=document.getElementById("slspn"+id).value;
@@ -396,10 +407,11 @@ function SoLuong(id) {
                 // console.log(data)
             }
         });
+        showGioHang();
     }
 
 }
-
+//giảm số lượng sản phẩm
 function GiamSoLuong(id) {
     let soluong=document.getElementById("slspn"+id).value;
     if (Number(soluong) <=1){
@@ -422,11 +434,14 @@ function GiamSoLuong(id) {
             data: {id: id},
             success: function (data) {
                 showGioHang();
+                if (window.location == domain+'/thanh-toan') {
+                    HuyGiamGia();
+                }
             }
         });
     }
 }
-
+//tăng số lượng sản phẩm
 function TangSoLuong(id) {
     let tonkho=document.getElementById("slspn"+id).max;
     let soluong=document.getElementById("slspn"+id).value;
@@ -455,7 +470,7 @@ function TangSoLuong(id) {
 
     }
 }
-
+//Xóa tất cả sản phẩm
 function XoaTatCa() {
     Swal.fire({
         title: 'Bạn muốn xóa tất cả chứ?',
@@ -487,7 +502,7 @@ function XoaTatCa() {
     });
 
 }
-
+//Cập nhật lại giá của đơn hàng đã lưu session
 function CapNhatGiaSession(gia) {
     $.ajax({
         url: domain + '/capnhatgiasession/'+gia,

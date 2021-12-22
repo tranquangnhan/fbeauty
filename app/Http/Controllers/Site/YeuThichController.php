@@ -9,48 +9,69 @@ use Illuminate\Http\Request;
 class YeuThichController extends Controller
 {
     private $YeuThich;
-
-    /**
-     * CosoController constructor.
-     */
     public function __construct(YeuThichRepository $YeuThich)
     {
         $this->YeuThich = $YeuThich;
-
     }
-    public function getSanPhamYeuThich($idsanpham){
-        if (session()->has('khachHang') && session('khachHang') != ''){
-            $check=$this->YeuThich->CheckYeuThich(session('khachHang')->id, $idsanpham);
-            if ($check == true){
+    /**
+     *Lấy sản phẩm yêu thích by id sản phẩm
+     */
+    public function getSanPhamYeuThich($idsanpham)
+    {
+        if (session()->has('khachHang') && session('khachHang') != '') {
+            $check = $this->YeuThich->CheckYeuThich(session('khachHang')->id, $idsanpham);
+            if ($check == true) {
                 return 1;
-            }
-            else{
+            } else {
                 return 0;
             }
-        }
-        else{
+        } else {
             return 1;
         }
     }
-
-    public function AddSanPhamYeuThich($idsanpham){
-        if (session()->has('khachHang') && session('khachHang') != ''){
-            $check=$this->YeuThich->CheckYeuThich(session('khachHang')->id, $idsanpham);
-            if ($check == true){
-                $yeuthich=[
-                    'idkhachhang'=>session('khachHang')->id,
-                    'idsanphamchitiet'=>$idsanpham
+    /**
+     *Thêm sản phẩm yêu thích
+     */
+    public function AddSanPhamYeuThich($idsanpham)
+    {
+        if (session()->has('khachHang') && session('khachHang') != '') {
+            $check = $this->YeuThich->CheckYeuThich(session('khachHang')->id, $idsanpham);
+            if ($check == true) {
+                $yeuthich = [
+                    'idkhachhang' => session('khachHang')->id,
+                    'idsanphamchitiet' => $idsanpham
                 ];
                 $this->YeuThich->create($yeuthich);
                 return 0;
-            }
-            else{
+            } else {
                 $this->YeuThich->DeleteYeuThich(session('khachHang')->id, $idsanpham);
                 return 1;
             }
-        }
-        else{
+        } else {
             return 2;
+        }
+    }
+    /**
+     *Lấy tất cả sản phẩm yêu thích
+     */
+    public function getAllSPYeuThich()
+    {
+        if (session()->has('khachHang') && session('khachHang') != '') {
+            return $this->YeuThich->getAllYeuThich(session('khachHang')->id);
+        } else {
+            return $this->YeuThich->getAllYeuThich(00);
+        }
+    }
+    /**
+    *Xóa sản phẩm yêu thích
+     */
+    public function xoayeuthich($id)
+    {
+        $delete = $this->YeuThich->delete($id);
+        if ($delete) {
+            return 0;
+        } else {
+            return 1;
         }
     }
 }

@@ -3,6 +3,7 @@ const getNhanVienByIdCoSoUrl = serverNameUrl + 'nhanviencuacoso/'; // nhanviencu
 const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/'; // getGio/{thu}
 const postDatLichUrl = serverNameUrl + 'datLich/';
 const rootUrlImage = '/Site/images/';
+const rootUrlUploadImage = '/uploads/imgusers/';
 const checkIssetUserUrl = serverNameUrl + 'checkIssetUser';
 const siteLoginUrl = serverNameUrl + 'site-login';
 const sendOTPSMSUrl = serverNameUrl + 'sendOTPSMS';
@@ -11,7 +12,8 @@ const checkOTPUrl = serverNameUrl + 'checkOTP';
 const newPasswordUrl = serverNameUrl + 'newPassword';
 const getBlogsPagiUrl = serverNameUrl + 'getBlogsPagi';
 const skipCreatePasswordUrl = serverNameUrl + 'skipCreatePassword';
-
+const linkThongTinUser = serverNameUrl + 'thong-tin-tai-khoan';
+const trangThaiNhanVienHoatDong = 1;
 const timeMoving = 100;
 const lengthSlideBooking = $('.datlich-step').length;
 const tranlatexRange = 100 / parseInt(lengthSlideBooking);
@@ -32,24 +34,24 @@ const attrOptionTime = 'data-option-time';
 const attrValueTime = 'data-time';
 const classError = 'fa-error';
 
-const controlShortOne = $('[data-step=0]');
-const controlShortTwo = $('[data-step=1]');
-const controlShortThree = $('[data-step=2]');
-const controlShortFour = $('[data-step=3]');
-const boxSpinner = $('.box-spinner');
+var controlShortOne = $('[data-step=0]');
+var controlShortTwo = $('[data-step=1]');
+var controlShortThree = $('[data-step=2]');
+var controlShortFour = $('[data-step=3]');
+var boxSpinner = $('.box-spinner');
 const step_1 = 0;
 const step_2 = 1;
 const step_3 = 2;
 const step_4 = 3;
 
-const elementPickCoSo = $('.pickcoso');
-const attrOptionCoSo = 'data-option-coso';
-const elementValueCoSo = $('.value-coso');
-const attrValueCoSo = 'data-coso';
+var elementPickCoSo = $('.pickcoso');
+var attrOptionCoSo = 'data-option-coso';
+var elementValueCoSo = $('.value-coso');
+var attrValueCoSo = 'data-coso';
 
-const elementListNhanVien = $('.list-nhanvien');
+var elementListNhanVien = $('.list-nhanvien');
 
-const elementValueTime = $('.value-time');
+var elementValueTime = $('.value-time');
 
 const trangThaiLichSanSang = 0;
 
@@ -82,9 +84,8 @@ var khungGio;
 var objectNhanVienSelected = {
     'id': '0',
     'ten': 'Spa chọn chuyên viên giúp bạn',
-    'imgUrl': 'avatar-default.png'
+    'imgUrl': 'chuyenvienspa.png'
 };
 
 var activeStep;
 var nextStep;
-
