@@ -322,7 +322,6 @@ class HoaDonController extends Controller
                 else{
                     $gia+=0;
                 }
-
                 if ($x==(count($array_dichvu))-1){
                     return redirect(route("hoadon.edit", $add_hoa_don->id))->with('addfromdatlich', 'Tạo hóa đơn từ đặt lịch thành công');
                 }
