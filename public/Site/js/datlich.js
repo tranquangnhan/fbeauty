@@ -32,7 +32,7 @@ $("body").on("click", ".time-close",function (e) {
     Swal.fire({
         title: 'Khung Giờ Đã Đóng',
         icon: 'warning',
-        text: 'Đặt lịch cách 10\' trước khi đến và có thể do nhân viên bạn chọn đã có lịch làm vào khung giờ này. Hãy chọn lại bạn nhé',
+        text: 'Hãy chọn khung giờ khác bạn nhé !',
         confirmButtonText: 'Xác nhận',
     })
 });
@@ -141,7 +141,6 @@ function loadGio(ngay, idNhanVien) {
             'idNhanVien': idNhanVien
         },
         success: function (respon) {
-            console.log(respon);
             khungGio = respon;
             if (respon.success == true) {
                 var html = loopGetHTMLKhungGio(respon.lich, respon.ngay);
@@ -779,7 +778,7 @@ function HTMLModalDatLich() {
                                     <div class="option-item option-nhanvien date-bg clicked">
                                         <div class="picknhanvien position-relative z-index-999" data-name-nhanvien="Spa chọn chuyên viên giúp bạn" data-option-nhanvien="0" data-option-nhanvien="0">
                                             <div class="img-1 border-image">
-                                                <img src="${ rootUrlImage }image8.png" class="cycle-img-1" alt="">
+                                                <img src="${ rootUrlUploadImage }chuyenvienspa.png" class="cycle-img-1" alt="">
                                             </div>
 
                                             <div class="name-nhanvien">Spa chọn chuyên viên giúp bạn</div>

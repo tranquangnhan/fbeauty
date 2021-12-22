@@ -466,7 +466,7 @@ class HomeController extends Controller
             $this->data['lichSuDatLich1'] = $this->getDuLieuTabLichSuDatLich1($khachHang->id);
             $this->data['lichSuDatLich2'] = $this->getDuLieuTabLichSuDatLich2($khachHang->id);
             $this->data['lichSuDatLich3'] = $this->getDuLieuTabLichSuDatLich3($khachHang->id);
-            
+
         } else {
             $this->data['dataLieuTrinh'] = [];
         }
@@ -810,7 +810,7 @@ class HomeController extends Controller
                 if ($error == false) {
                     if ($lichKhachDat == null) {
                         $error = true;
-                        $textMess = 'Khung giờ bạn chọn đã đóng. Hãy đặt lịch cách 10\' trước khi đến.';
+                        $textMess = 'Khung giờ bạn chọn đã đóng ! Hãy chọn giờ khác bạn nhé xin cảm ơn ';
                     }
                 }
 
@@ -874,7 +874,7 @@ class HomeController extends Controller
                 if ($error == false) {
                     $sdt = '+84' . substr($request->soDienThoai, 1, strlen($request->soDienThoai));
                     $message = $this->makeMessageCamOnDatLich($request->idCoSo, $request->ngay, $request->gio);
-                    // $this->freeSMSController->sendSingleMessage($sdt, $message);
+                    $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                     $response = Array(
                         'success' => true,
