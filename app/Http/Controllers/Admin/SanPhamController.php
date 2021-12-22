@@ -70,9 +70,7 @@ class SanPhamController extends Controller
         $imgs = $this->uploadMultipleImg($this::PATH_UPLOADS,$request->file('imgs'));
 
         if($request->session()->get('idSanPham')){
-
             $idUpdate =  $request->session()->get('idSanPham');
-
             $data = [
                 'iddanhmuc'=>$request->iddanhmuc,
                 'idthuonghieu'=> $request->idthuonghieu,
