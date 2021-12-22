@@ -126,6 +126,7 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
      */
     Route::resource('datlichremake', DatLichRemakeController::class);
     Route::get('getDuLieuBoxDatLich/{id}', [DatLichRemakeController::class, "getDuLieuBoxDatLich"]);
+    Route::get('getDuLieuDatLichDetail/{id}', [DatLichRemakeController::class, "getDuLieuDatLichDetail"]);
     Route::get('changeStatusDatLich/{id}/{status}', [DatLichRemakeController::class, "changeStatusDatLich"]);
     Route::get('getDuLieuDatLichChoCalendar/{ngay}', [DatLichRemakeController::class, "getDuLieuDatLichChoCalendar"]);
     Route::get('changeStatusTime/{id}/{status}', [DatLichRemakeController::class, "changeStatusTime"]);
@@ -148,6 +149,10 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/{id}/edit/themdichvu/{iddv}', [HoaDonChiTietController::class, 'ThemDichVuVaoHoaDon']);
     Route::get('hoadon/{id}/edit/capnhatsoluong/{idhdct}/soluong/{soluong}', [HoaDonChiTietController::class, 'CapNhatSoLuong']);
     Route::get('hoadon/{id}/edit/huygiamgia/{tien}', [HoaDonChiTietController::class, 'HuyGiamGia']);
+    /**
+     * Thêm hóa đơn từ đặt lịch
+    */
+    Route::get('hoadon/themhoadondatlich/{id}', [HoaDonController::class, 'ThemHoaDonTuDatLich'])->name("hoadon.themhoadondatlich.id");
     /**
      * nhan add hoá đơn by id liệu trình
      */

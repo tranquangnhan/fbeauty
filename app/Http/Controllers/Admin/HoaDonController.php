@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\CoSo\CoSoRepository;
 use App\Repositories\CoSo\CoSoRepositoryInterface;
+use App\Repositories\DatLich\DatLichRepository;
+use App\Repositories\DatLich\DatLichRepositoryInterface;
 use App\Repositories\DichVu\DichVuRepositoryInterface;
 use App\Repositories\GiamGia\GiamGiaRepository;
 use App\Repositories\HoaDon\HoaDonRepositoryInterface;
@@ -14,6 +16,7 @@ use App\Repositories\LieuTrinh\LieuTrinhRepository;
 use App\Repositories\LieuTrinhChiTiet\LieuTrinhChiTietRepository;
 use App\Repositories\NhanVien\NhanVienRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HoaDonController extends Controller
 {
@@ -26,6 +29,8 @@ class HoaDonController extends Controller
     private $giamgia;
     private $LieuTrinh;
     private $LieuTrinhChiTiet;
+    private $DatLich;
+
     public function __construct(
         GiamGiaRepository $giamgia,
         KhachHangRepository $khachhang,
@@ -35,7 +40,8 @@ class HoaDonController extends Controller
         CoSoRepository $coso,
         DichVuRepositoryInterface $dichvu,
         LieuTrinhRepository $LieuTrinh,
-        LieuTrinhChiTietRepository $LieuTrinhChiTiet
+        LieuTrinhChiTietRepository $LieuTrinhChiTiet,
+        DatLichRepository $DatLich
     ) {
         $this->nhanvien = $nhanvien;
         $this->coso = $coso;
@@ -46,6 +52,7 @@ class HoaDonController extends Controller
         $this->giamgia = $giamgia;
         $this->LieuTrinh = $LieuTrinh;
         $this->LieuTrinhChiTiet = $LieuTrinhChiTiet;
+        $this->DatLich=$DatLich;
     }
 
     /**
@@ -57,6 +64,7 @@ class HoaDonController extends Controller
     {
         $hoadon = $this->hoadon->ShowHoaDonByIdCoso(session()->get('coso'));
         $coso = $this->coso->find(session()->get('coso'));
+
         return view("Admin.HoaDon.index", ['hoadon' => $hoadon, 'coso' => $coso]);
     }
 
@@ -214,7 +222,7 @@ class HoaDonController extends Controller
                 'idlieutrinh' => $lieuTrinh->id,
                 'tongtientruocgiamgia' => $tongtien,
                 'tongtiensaugiamgia' => $tongtien,
-                'trangthai' => Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN,
+                'trangthai' => Controller::TRANGTHAI_HOADON_DA_THANH_TOAN,
                 'ghichu' => $lieuTrinh->ghichu
             ];
 
@@ -257,5 +265,70 @@ class HoaDonController extends Controller
             $this->hoadon->update($id, $tt);
         }
         return redirect(route("hoadon.index"));
+    }
+
+    /**
+     *Thêm hóa đơn từ đặt lịch
+     */
+
+    public function ThemHoaDonTuDatLich($id){
+        try{
+            $DL=$this->DatLich->find($id);
+            $array_dichvu=json_decode($DL->iddichvu);
+            $gia=0;
+            for ($i=0; $i<count($array_dichvu); $i++){
+                $dichvu=$this->dichvu->find($array_dichvu[$i]);
+                if ($dichvu!=null){
+                    $gia+=($dichvu->dongia * $dichvu->giamgia);
+                }
+                else{
+                    $gia+=0;
+                }
+            }
+            if ($DL->idnhanvien ==0){
+                $nhanvien=Auth::user()->id;
+            }
+            else{
+                $nhanvien=$DL->idnhanvien;
+            }
+
+            $HoaDon=[
+                "idkhachhang"=>$DL->idkhachhang,
+                "idcoso"=>$DL->idcoso,
+                "idnhanvien"=>$nhanvien,
+                "idthungan"=>Auth::user()->id,
+                "idlieutrinh"=>null,
+                "idgiamgia"=>null,
+                "tongtientruocgiamgia"=>$gia,
+                "tongtiensaugiamgia"=>$gia,
+                "trangthai"=>Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN,
+                "ghichu"=>null
+            ];
+            $add_hoa_don=$this->hoadon->create($HoaDon);
+
+            for ($x=0; $x<count($array_dichvu); $x++){
+                $dichvu_hdct=$this->dichvu->find($array_dichvu[$x]);
+                if ($dichvu_hdct!=null){
+                    $hdct=[
+                        'idhoadon'=>$add_hoa_don->id,
+                        'idlienquan'=>$array_dichvu[$x],
+                        'type'=>Controller::ID_LIENQUAN_DV_,
+                        'soluong'=>1,
+                        'dongiatruocgiamgia'=>$dichvu->dongia,
+                        'dongiasaugiamgia'=>$dichvu->dongia * $dichvu->giamgia,
+                    ];
+                    $this->hoadonchitiet->create($hdct);
+                }
+                else{
+                    $gia+=0;
+                }
+
+                if ($x==(count($array_dichvu))-1){
+                    return redirect(route("hoadon.edit", $add_hoa_don->id))->with('addfromdatlich', 'Tạo hóa đơn từ đặt lịch thành công');
+                }
+            }
+        } catch (\Exception $exception) {
+            return redirect()->back()->with("themhoadonthatbai", "Xuất hóa đơn thất bại");
+        }
     }
 }

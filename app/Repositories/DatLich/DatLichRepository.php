@@ -108,7 +108,7 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
     }
 
     public function getDatLichById($id) {
-        return $this->model->select('datlich.*', 'datlich.id','khachhang.name as namekh')
+        return $this->model->select('datlich.*', 'datlich.id','khachhang.name as namekh', 'khachhang.sdt')
         ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
         ->where('datlich.id', '=', $id)
         ->first();

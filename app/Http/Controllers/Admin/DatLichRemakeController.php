@@ -56,7 +56,7 @@ class DatLichRemakeController extends Controller
             ['link' => '', 'name' => 'Danh sách'],
         ];
 
-        $toDay = Carbon::now();
+        $toDay = Carbon::now(1)->addDays();
         $this->data['toDay'] = $toDay->toDateString();
         $this->data['timeToDay'] = $toDay->toTimeString();
 
@@ -285,11 +285,20 @@ class DatLichRemakeController extends Controller
     public function getDuLieuBoxDatLich(Request $request, $id) {
         try {
             if ($request->ajax()) {
-                $response = Array(
-                    'success' => true,
-                    'id' => $id,
-                );
-
+                $duLieuDatLich = $this->getDatLichById($id);
+                if ($duLieuDatLich != null) {
+                    $response = Array(
+                        'success' => true,
+                        'id' => $id,
+                        'duLieuDatLich' => $duLieuDatLich
+                    );
+                } else {
+                    $response = Array(
+                        'success' => false,
+                        'titleMess' => 'Đã xảy ra lỗi !',
+                        'textMess' => 'Không tìm thấy dữ liệu đặt lịch id ' . $id,
+                    );
+                }
             }
 
             return response()->json($response);
@@ -300,5 +309,82 @@ class DatLichRemakeController extends Controller
                 'textMess' => $e->getMessage(),
             ]);
         }
+    }
+
+    // public function getDuLieuDatLichDetail(Request $request, $id) {
+    //     try {
+    //         if ($request->ajax()) {
+    //             $duLieuDatLichDetail = $this->getDatLichDetailById($id);
+
+    //             if ($duLieuDatLichDetail != null) {
+    //                 $response = Array(
+    //                     'success' => true,
+    //                     'id' => $id,
+    //                     'duLieuDatLich' => $duLieuDatLichDetail
+    //                 );
+    //             } else {
+    //                 $response = Array(
+    //                     'success' => false,
+    //                     'titleMess' => 'Đã xảy ra lỗi !',
+    //                     'textMess' => 'Không tìm thấy dữ liệu đặt lịch id ' . $id,
+    //                 );
+    //             }
+    //         }
+
+    //         return response()->json($response);
+    //     } catch (\Exception $e) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'titleMess' => 'Đã xảy ra lỗi !',
+    //             'textMess' => $e->getMessage(),
+    //         ]);
+    //     }
+    // }
+
+    // public function getDatLichDetailById($id) {
+    //     $datLichItem = $this->DatLich->find($id);
+
+    //     if ($datLichItem->idnhanvien == 0) {
+    //         $datLichItem->nameNhanVien = 'Spa tự chọn';
+    //     } else {
+    //         $datLichItem->nameNhanVien = $this->NhanVien->getNameNhanVien($datLichItem->idnhanvien);
+    //     }
+
+    //     $arrayDichVu = array();
+    //     $listIdDichVu = json_decode($datLichItem->iddichvu);
+
+    //     if (count($listIdDichVu) > 0) {
+    //         for ($i = 0; $i < count($listIdDichVu); $i++) {
+    //             $arrayDichVu[] = $this->DichVu->findDichVuById($listIdDichVu[$i]);
+    //         }
+
+    //         $datLichItem->arrayDichVu = $arrayDichVu;
+    //     }
+
+
+    //     return $datLichItem;
+    // }
+
+    public function destroy($id) {
+        $datLich = $this->DatLich->find($id);
+
+        if ($datLich == null) {
+            $response = Array(
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => 'Không tìm thấy sự kiện',
+                'datLich' => $datLich,
+            );
+        } else {
+            $datLich->delete();
+
+            $response = Array(
+                'success' => true,
+                'titleMess' => 'Thành công !',
+                'textMess' => 'Xóa lịch đặt của khách thành công',
+            );
+        }
+
+        return $response;
     }
 }

@@ -48,10 +48,16 @@
                                     <span class="ml-3"><i class="fa fa-phone"> <span
                                                 class="text-primary"><a href="tel:{{$customer->sdt}}">{{$customer->sdt}}</a></span></i></span>
                                         @endif
+{{--                                        addfromdatlich--}}
                                 </div>
                             </div>
                             <hr>
                             <div class="panel-body">
+                                @if(session('addfromdatlich'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{session('addfromdatlich')}}
+                                    </div>
+                                @endif
                                 <table class="table table-borderless"
                                        style="border-collapse: separate; border-spacing: 0 1em;">
                                     <thead>
