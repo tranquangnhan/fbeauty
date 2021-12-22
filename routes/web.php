@@ -149,6 +149,10 @@ Route::group(['prefix' => 'quantri', 'middleware' => 'phanquyen'], function () {
     Route::get('hoadon/{id}/edit/capnhatsoluong/{idhdct}/soluong/{soluong}', [HoaDonChiTietController::class, 'CapNhatSoLuong']);
     Route::get('hoadon/{id}/edit/huygiamgia/{tien}', [HoaDonChiTietController::class, 'HuyGiamGia']);
     /**
+     * Thêm hóa đơn từ đặt lịch
+    */
+    Route::get('hoadon/themhoadondatlich/{id}', [HoaDonController::class, 'ThemHoaDonTuDatLich'])->name("hoadon.themhoadondatlich.id");
+    /**
      * nhan add hoá đơn by id liệu trình
      */
     Route::get('hoadon/addhoadonbylieutrinh/{id}/store', [HoaDonController::class, 'addHoaDonByIdLieuTrinh']);
