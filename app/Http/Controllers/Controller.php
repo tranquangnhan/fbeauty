@@ -120,7 +120,7 @@ class Controller extends BaseController
      */
     public function checkImg($extension, $img)
     {
-        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG','jpeg'];
         $check = in_array($extension, $allowedfileExtension);
         if (!$check) {
             return false;
