@@ -219,7 +219,7 @@
             },
             messages: {
                 username: {
-                    required: "<span class='badge badge-danger'>Mời bạn nhập email</span>",
+                    required: "<span class='badge badge-danger'>Mời bạn nhập họ và tên.</span>",
                     maxlength: "<span class='badge badge-danger'>Tên dài quá, phải <50 ký tự </span>",
                     minlength: "<span class='badge badge-danger'>Tên ngắn quá, phải >3 ký tự </span>"
                 },

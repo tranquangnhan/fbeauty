@@ -35,7 +35,7 @@ class TheoDoiController extends Controller
             }
         }
         if (!$gui) {
-            return redirect()->back()->with('guilienhe', 'Cảm ơn bạn đã liên hệ cho chúng tôi. Chúng tôi sẽ nhanh chóng phản hồi email của bạn.');
+            return redirect()->back()->with('guilienhe', 'Gửi email liên hệ thành công. Chúng tôi sẽ nhanh chóng phản hồi email của bạn.');
         }else{
             return redirect()->back()->with('guilienhethatbai', 'Gửi thất bại. Bạn vui lòng kiểm tra email');
         }

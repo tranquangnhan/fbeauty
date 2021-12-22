@@ -120,7 +120,7 @@ class Controller extends BaseController
      */
     public function checkImg($extension, $img)
     {
-        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG', 'jpeg', 'JPEG'];
         $check = in_array($extension, $allowedfileExtension);
         if (!$check) {
             return false;
@@ -144,7 +144,7 @@ class Controller extends BaseController
 
     public function checkImgCustomer($extension, $img)
     {
-        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG'];
+        $allowedfileExtension = ['jpg', 'png', 'gif', 'JPG', 'PNG', 'jpeg', 'JPEG'];
         $check = in_array($extension, $allowedfileExtension);
         if (!$check) {
             return false;
@@ -225,11 +225,11 @@ class Controller extends BaseController
     }
 
     public static function minusDate($startTime, $endTime){
-        
+
         if($endTime<$startTime){
             return false;
         }else{
-            Carbon::setLocale('vi'); 
+            Carbon::setLocale('vi');
             $startTime = Carbon::parse(date('Y-m-d H:i:s',$startTime));
             $endTime = Carbon::parse(date('Y-m-d H:i:s',$endTime));
             $newMinute =  $endTime->diffForHumans($startTime);
@@ -249,6 +249,6 @@ class Controller extends BaseController
             }
         }
         return implode(", ",$arrayData );
-        
-    } 
+
+    }
 }

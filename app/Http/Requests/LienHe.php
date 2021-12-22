@@ -25,7 +25,7 @@ class LienHe extends FormRequest
     {
         return [
             'namekh' => ['required', 'min:3', 'max:40'],
-            'email' => ['required', 'min:3', 'max:50', 'email', 'regex:/^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/'],
+            'email' => ['required', 'min:3', 'max:50', 'email', 'regex:/(.+)@gmail.com/i'],
             'sdt' => ['required','regex:/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/'],
             'noidung' => ['required', 'min:3','max:255']
         ];
@@ -40,7 +40,7 @@ class LienHe extends FormRequest
             'email.min' => 'Email phải lớn hơn 3 kí tự',
             'email.max' => 'Email phải nhỏ hơn 50 kí tự',
             'email.email' => 'Email phải đúng định dạng',
-            'email.regex' => 'Email phải đúng định dạng',
+            'email.regex' => 'Email phải đúng định dạng(@gmail.com)',
             'sdt.required' => 'Bạn chưa nhập số điện thoại',
             'sdt.regex' => 'Số điện thoại không đúng định dạng',
             'noidung.required' => 'Bạn chưa nhập nội dung',
