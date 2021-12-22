@@ -56,7 +56,7 @@ class DatLichRemakeController extends Controller
             ['link' => '', 'name' => 'Danh sách'],
         ];
 
-        $toDay = Carbon::now(1)->addDays();
+        $toDay = Carbon::now();
         $this->data['toDay'] = $toDay->toDateString();
         $this->data['timeToDay'] = $toDay->toTimeString();
 

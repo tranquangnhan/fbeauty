@@ -33,7 +33,7 @@
                                         <div class="owl-dot dot-custom <?php if ($st == 0) {
                                             echo 'active';
                                         }?>">
-                                            <img src="{{ asset('uploads')}}/{{$sli}}" class="img-fluid" alt="...">
+                                            <img style="height: 100%;" src="{{ asset('uploads')}}/{{$sli}}" class="img-fluid" alt="...">
                                         </div>
                                     @endforeach
                                 </div>
