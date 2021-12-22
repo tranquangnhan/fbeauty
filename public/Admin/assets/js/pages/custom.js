@@ -1,4 +1,4 @@
-const pathUploadImg = 'http://127.0.0.1:8000/uploads/khachhang/';
+const pathUploadImg = 'http://fbeauty.ml/uploads/khachhang/';
 const serverNameUrl = $('#server-name').val();
 
 
