@@ -214,7 +214,7 @@ class HoaDonController extends Controller
                 'idlieutrinh' => $lieuTrinh->id,
                 'tongtientruocgiamgia' => $tongtien,
                 'tongtiensaugiamgia' => $tongtien,
-                'trangthai' => Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN,
+                'trangthai' => Controller::TRANGTHAI_HOADON_DA_THANH_TOAN,
                 'ghichu' => $lieuTrinh->ghichu
             ];
 
