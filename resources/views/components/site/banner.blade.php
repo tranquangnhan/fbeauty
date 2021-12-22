@@ -3,7 +3,7 @@
     <div class="item header-item">
         <div class="header-img">
             <img src="{{ asset('Site/images') }}/{{$banner->img}}"
-                 class="imageHeader imageHeader_0 auto-scale-loop-forever" alt="">
+                 class="imageHeader imageHeader_{{$loop->index}} auto-scale-loop-forever" alt="">
         </div>
 
         <div class="content-1 ">
@@ -11,8 +11,8 @@
                 {{$banner->tieude}}
             </div>
 
-            <div class="text-center title-2 box-text-header m-auto  mt-3" style="width: 65%;">
-                {{$banner->noidung}}
+            <div class="text-center title-2 m-auto mt-3 w-100">
+                <?php echo $banner->noidung; ?>
             </div>
 
             <div class="w-100 text-center mt-4">

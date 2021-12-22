@@ -21,4 +21,5 @@ class DichVu extends Model
         'noidung',
         'trangthai'
     ];
+    
 }

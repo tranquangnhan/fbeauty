@@ -281,7 +281,7 @@
                                                         <div class="fa-body-select">
                                                             <div class="body-select" body-type="nhan-vien">
                                                                 @foreach ($listNhanVien as $nhanVien)
-                                                                    <div class="option option-select" type-value="nhan-vien"
+                                                                    <div class="option option-select option-chuyen-vien @if ($nhanVien->trangthai != $statusNhanVienHoatDong) disabled @endif" type-value="nhan-vien"
                                                                         id-option="{{ $nhanVien->id }}"
                                                                         data-name="{{ $nhanVien->name }}"
                                                                         data-sdt="{{ $nhanVien->sdt }}">
@@ -439,13 +439,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.9.0/main.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.9.0/main.css">
+
 <script>
     var	listDichVu = <?php echo json_encode($listDichVu); ?>;
     var	listKhachHang = <?php echo json_encode($listKhachHang); ?>;
     var	duLieuCalendar = <?php echo json_encode($duLieuCalendar); ?>;
     var idCoSo = <?php echo json_encode($idCoSo); ?>;
     var listNhanVien = <?php echo json_encode($listNhanVien); ?>;
-
+    var statusNhanVienHoatDong = <?php echo json_encode($statusNhanVienHoatDong); ?>;
 </script>
 <script src="{{ asset('Admin/assets') }}/js/pages/datlichremake.js"></script>
+
+<script>
+    window.laravel_echo_port='{{env("LARAVEL_ECHO_PORT")}}';
+</script>
+<script src="//{{ Request::getHost() }}:{{env('LARAVEL_ECHO_PORT')}}/socket.io/socket.io.js"></script>
+<script src="{{ url('/js/laravel-echo-setup.js') }}" type="text/javascript"></script>
+
+<script type="text/javascript">
+window.Echo.channel('laravel_database_datlich-channel')
+    .listen('.DatLichEvent', (data) => {
+        if (data.respon.typez == 'dat-lich') {
+            checkKhungGio(data.respon);
+        }
+
+        // if (data.respon.typez == 'lich') {
+        //     checkTimeStatus(data.respon);
+        // }
+});
+</script>
 @endsection

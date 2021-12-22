@@ -219,12 +219,11 @@
             <div class="container pb-5 py-3">
                 <div class="card-body">
                     <div class="title-small line-before text-center">
-                        Trải nghiệm cơ sở chất lượng
+                        TRẢI NGHIỆM CƠ SỞ CHẤT LƯỢNG
                     </div>
                     <div class="text-center">
                         <h5 class="card-title mb-3"
-                            style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Cơ sở vật chất hàng
-                            đầu</h5>
+                            style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">CƠ SỞ VẬT CHẤT HÀNG ĐẦU</h5>
                     </div>
                     <ul class="mt-4">
                         <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn
