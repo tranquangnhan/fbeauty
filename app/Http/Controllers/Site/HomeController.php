@@ -466,8 +466,6 @@ class HomeController extends Controller
             $this->data['lichSuDatLich1'] = $this->getDuLieuTabLichSuDatLich1($khachHang->id);
             $this->data['lichSuDatLich2'] = $this->getDuLieuTabLichSuDatLich2($khachHang->id);
             $this->data['lichSuDatLich3'] = $this->getDuLieuTabLichSuDatLich3($khachHang->id);
-
-
         } else {
             $this->data['dataLieuTrinh'] = [];
         }

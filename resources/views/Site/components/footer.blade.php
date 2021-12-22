@@ -46,31 +46,31 @@
 
                         <div class="list-icon d-flex justify-content-left ">
                             <div class="icon-item ml-0">
-                                <a href="" class="link">
+                                <a href="https://www.facebook.com/FBeauty-103098148891666" class="link">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
                             </div>
 
                             <div class="icon-item">
-                                <a href="" class="link">
+                                <a href="https://twitter.com/HuynTrn26589599" class="link">
                                     <i class="fab fa-twitter"></i>
                                 </a>
                             </div>
 
                             <div class="icon-item">
-                                <a href="" class="link">
+                                <a href="https://www.youtube.com/channel/UCKmLj9UShXnCrweFbjA9Jvg" class="link">
                                     <i class="fab fa-youtube"></i>
                                 </a>
                             </div>
 
                             <div class="icon-item">
-                                <a href="" class="link">
+                                <a href="http://fbeauty.ml/" class="link">
                                     <i class="fab fa-tumblr"></i>
                                 </a>
                             </div>
 
                             <div class="icon-item">
-                                <a href="" class="link">
+                                <a href="https://www.instagram.com/fbeautyspa__/" class="link">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </div>

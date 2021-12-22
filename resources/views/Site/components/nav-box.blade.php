@@ -75,9 +75,9 @@
             <div class="box-icon box-icon-desk">
                 <li class="icon-item d-inline-block boxsearch {{ ($pathActive == 'tim-kiem') ? 'active' : '' }} ">
                     <a class="btn-modal-sreach" ><i class="fas fa-search color-black-2"></i></a>
-                    <form action="/tim-kiem" >
-                        <div class="form-group search">
-                            <input type="text" name="key" id="" class="form-control" placeholder="Tìm Kiếm.. " aria-describedby="helpId">
+                    <form action="/tim-kiem" class="mt-n4" >
+                        <div class="form-group search mt-n2">
+                            <input type="text" name="key" id="" class="form-control" placeholder="Tìm Kiếm.. " aria-describedby="helpId" required>
                             <button type="submit" class="buttonsearch hover-scale-1"><i class="fa fa-search " aria-hidden="true"></i></button>
                           </div>
                     </form>
