@@ -24,7 +24,6 @@ class CosoEdit extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => ['required|unique:coso|min:3|max:50'],
             'name' => 'required|between:3,100',
             'diachi' => ['required', 'min:3', 'max:300'],
             'city' =>['required'],
@@ -37,7 +36,6 @@ class CosoEdit extends FormRequest
     {
         return [
             'name.required' => 'Bạn chưa nhập tên cơ sở',
-            'name.unique'=>'tên cơ sở này đã tồn tại',
             'name.min' => 'Cơ sở phải lớn hơn 3 kí tự',
             'name.max' => 'Cơ sở phải nhỏ hơn 300 kí tự',
             'city.required' => 'vui lòng chọn thành phố',
