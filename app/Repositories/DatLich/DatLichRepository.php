@@ -98,6 +98,7 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->join('khachhang','khachhang.id','=','datlich.idkhachhang')
         ->orderBy('datlich.id','DESC')->get();
     }
+
     public function getDatLichByDay($timeStampDauNgay, $timeStampCuoiNgay, $idCoSo) {
         return $this->model->select('datlich.*', 'datlich.id','khachhang.name as namekh')
         ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
@@ -105,6 +106,14 @@ class DatLichRepository extends BaseRepository implements DatLichRepositoryInter
         ->where('datlich.idcoso', '=', $idCoSo)
         ->get();
     }
+
+    public function getDatLichById($id) {
+        return $this->model->select('datlich.*', 'datlich.id','khachhang.name as namekh')
+        ->join('khachhang','datlich.idkhachhang', '=', 'khachhang.id')
+        ->where('datlich.id', '=', $id)
+        ->first();
+    }
+
 
     public function getDatLichByIdKhachHang($idKhachHang) {
         return $this->model->where('idkhachhang', '=', $idKhachHang)->get();

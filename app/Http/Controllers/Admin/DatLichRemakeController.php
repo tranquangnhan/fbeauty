@@ -66,6 +66,7 @@ class DatLichRemakeController extends Controller
         $this->data['idCoSo'] = session('coso');
         $this->data['duLieuCalendar'] = $this->getDuLieuChoCalendar($toDay);
         $this->data['statusLichClose'] = Controller::TRANGTHAI_LICH_CLOSE;
+        $this->data['statusNhanVienHoatDong'] = Controller::TRANGTHAI_NHANVIEN_HOATDONG;
         return view('Admin.DatLichRemake.index', $this->data);
     }
 
@@ -257,5 +258,47 @@ class DatLichRemakeController extends Controller
         }
     }
 
+    public function getDatLichById($id) {
+        $datLichItem = $this->DatLich->getDatLichById($id);
 
+        if ($datLichItem->idnhanvien == 0) {
+            $datLichItem->nameNhanVien = 'Spa tự chọn';
+        } else {
+            $datLichItem->nameNhanVien = $this->NhanVien->getNameNhanVien($datLichItem->idnhanvien);
+        }
+
+        $arrayDichVu = array();
+        $listIdDichVu = json_decode($datLichItem->iddichvu);
+
+        if (count($listIdDichVu) > 0) {
+            for ($i = 0; $i < count($listIdDichVu); $i++) {
+                $arrayDichVu[] = $this->DichVu->findDichVuById($listIdDichVu[$i]);
+            }
+
+            $datLichItem->arrayDichVu = $arrayDichVu;
+        }
+
+
+        return $datLichItem;
+    }
+
+    public function getDuLieuBoxDatLich(Request $request, $id) {
+        try {
+            if ($request->ajax()) {
+                $response = Array(
+                    'success' => true,
+                    'id' => $id,
+                );
+
+            }
+
+            return response()->json($response);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'titleMess' => 'Đã xảy ra lỗi !',
+                'textMess' => $e->getMessage(),
+            ]);
+        }
+    }
 }

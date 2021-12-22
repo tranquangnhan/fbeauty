@@ -35,6 +35,7 @@ class Controller extends BaseController
     const TRANGTHAI_DONHANG_DA_NHAN = 4;
     const TRANGTHAI_DICHVU_HIEN = 1;
     const TRANGTHAI_SANPHAM = 1;//HIỆN
+    const TRANGTHAI_NHANVIEN_HOATDONG = 1;
     /**
      * ID_LIENQUAN_SP=1 LÀ SẢN PHẨM
      * ID_LIENQUAN_DV=0 LÀ DỊCH VỤ
