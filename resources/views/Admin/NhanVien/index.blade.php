@@ -87,7 +87,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <img class="w-100 m-auto" style="border-radius:3px"
+                                            <img class="w-100 m-auto" style="border-radius:3px;width:100px;height:100px; object-fit:cover"
                                                  src="{{asset($BASE_URL_UPLOAD_STAFF.$item->avatar)}}">
                                         </td>
                                         <td>

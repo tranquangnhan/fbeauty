@@ -44,15 +44,5 @@
     //         document.getElementById("emailyou").innerHTML = emailyou;
     //         document.getElementById("phoneyou").innerHTML = phoneyou;
     //         document.getElementById("noidungyou").innerHTML = noidungyou;
-    function myFunction(){
-        iziToast.success({
-            title: 'Tạo liên hệ thành công !!!',
-            message: '',
-            position: 'bottomRight',
-            backgroundColor: 'green',
-            titleColor: 'white',
-            messageColor: 'white',
-            iconColor: 'white',
-        });
-        };
+
 

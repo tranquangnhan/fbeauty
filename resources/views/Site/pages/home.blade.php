@@ -259,12 +259,12 @@
                                            href="#uachuong"
                                            role="tab"
                                            aria-controls="uachuong"
-                                           aria-selected="true">Ưa chuộng tháng</a>
+                                           aria-selected="true">Ưu đãi</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link btn-3 black-1" id="khuyenmai-tab" data-toggle="tab"
                                            href="#khuyenmai" role="tab" aria-controls="khuyenmai" aria-selected="false">Giá
-                                            ưu đãi</a>
+                                           Ưa chuộng tháng</a>
                                     </li>
                                     <li class="nav-item pr-0" role="presentation">
                                         <a class="nav-link btn-3 black-1" id="khuyenmai-tab" href="/dich-vu">Xem
@@ -285,54 +285,55 @@
                                 <div class="box-dichvu">
                                     <div class="box-sev">
                                         <div class="owl-carousel owl-theme slide-dichvu" id="dich-home-slide">
-                                            @foreach ($listDichVuUaChuong as $dichVuUaChuong)
-                                                @if ($dichVuUaChuong->dichvu != null)
-                                                    <div class="dichvu-item">
-                                                        <div class="content-1">
-                                                            <div class="text-7 color-main-1">
-                                                                {{ $dichVuUaChuong->dichvu->namedm }}
-                                                            </div>
-
-                                                            <div class="img-1 mt-4">
-                                                                <img class=""
-                                                                     src="{{ asset('uploads/')}}/{{ $dichVuUaChuong->dichvu->img }}"
-                                                                     alt="">
-                                                            </div>
-
-                                                            <div class="text-1 limit-text-row-1 mt-4">
-                                                                {{ $dichVuUaChuong->dichvu->name }}
-                                                            </div>
-
-                                                            <div class="box-gia-dichvu mt-2">
-                                                                @if ($dichVuUaChuong->dichvu->giamgia > 0)
-                                                                    @php
-                                                                        $giaSauGiam = $dichVuUaChuong->dichvu->dongia - ($dichVuUaChuong->dichvu->dongia * $dichVuUaChuong->dichvu->giamgia / 100);
-                                                                    @endphp
-                                                                    <span class="giagiam">{{ number_format($dichVuUaChuong->dichvu->dongia, 0) }} đ </span>
-                                                                    <span class="gia left-bar">
-                                                                {{ number_format($giaSauGiam, 0)}} đ
-                                                            </span>
-                                                                @else
-                                                                    <span class="gia">
-                                                                {{ number_format($dichVuUaChuong->dichvu->dongia, 0) }} đ
-                                                            </span>
-                                                                @endif
-
-                                                            </div>
-
-                                                            <p class="text-2 limit-text-row-3 mt-1 mt-2">
-                                                                {{ $dichVuUaChuong->dichvu->motangan }}
-
-                                                            </p>
-                                                        </div>
-                                                        <div class="w-100 text-center mb-4">
-                                                            <button data-show="one" type-modal="modal-datlich"
-                                                                    class="button btn-4 btn-modal-main">Đặt lịch
-                                                            </button>
-                                                        </div>
+                                          
+                                            @foreach ($listDichVuGiamGia as $dichVuGiamGia)
+                                            <div class="dichvu-item">
+                                                <div class="content-1">
+                                                    <div class="text-7 color-main-1">
+                                                        {{ $dichVuGiamGia->namedm }}
                                                     </div>
-                                                @endif
-                                            @endforeach
+
+                                                    <div class="img-1 mt-4">
+                                                        <img class=""
+                                                             src="{{ asset('uploads/')}}/{{ $dichVuGiamGia->img }}"
+                                                             alt="">
+                                                    </div>
+
+                                                    <div class="text-1 limit-text-row-1 mt-4">
+                                                        {{ $dichVuGiamGia->name }}
+                                                    </div>
+
+                                                    <div class="box-gia-dichvu mt-2">
+                                                        @if ($dichVuGiamGia->giamgia > 0)
+                                                            @php
+                                                                $giaSauGiam = $dichVuGiamGia->dongia - ($dichVuGiamGia->dongia * $dichVuGiamGia->giamgia / 100);
+                                                            @endphp
+                                                            <span class="giagiam">{{ number_format($dichVuGiamGia->dongia, 0) }} đ </span>
+                                                            <span class="gia left-bar">
+                                                            {{ number_format($giaSauGiam, 0)}} đ
+                                                        </span>
+                                                        @else
+                                                            <span class="gia">
+                                                            {{ number_format($dichVuGiamGia->dongia, 0) }} đ
+                                                        </span>
+                                                        @endif
+
+                                                    </div>
+
+                                                    <p class="text-2 limit-text-row-3 mt-1 mt-2">
+                                                        {{ $dichVuGiamGia->motangan }}
+
+                                                    </p>
+                                                </div>
+                                                <div class="w-100 text-center mb-4">
+                                                    <button data-show="one" type-modal="modal-datlich"
+                                                            class="button btn-4 btn-modal-main">Đặt lịch
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+
                                         </div>
                                     </div>
 
@@ -344,43 +345,43 @@
                                 <div class="box-dichvu">
                                     <div class="box-sev">
                                         <div class="owl-carousel owl-theme slide-dichvu" id="dichvugiamgia-home-slide">
-
-                                            @foreach ($listDichVuGiamGia as $dichVuGiamGia)
+                                            @foreach ($listDichVuUaChuong as $dichVuUaChuong)
+                                            @if ($dichVuUaChuong->dichvu != null)
                                                 <div class="dichvu-item">
                                                     <div class="content-1">
                                                         <div class="text-7 color-main-1">
-                                                            {{ $dichVuGiamGia->namedm }}
+                                                            {{ $dichVuUaChuong->dichvu->namedm }}
                                                         </div>
 
                                                         <div class="img-1 mt-4">
                                                             <img class=""
-                                                                 src="{{ asset('uploads/')}}/{{ $dichVuGiamGia->img }}"
+                                                                 src="{{ asset('uploads/')}}/{{ $dichVuUaChuong->dichvu->img }}"
                                                                  alt="">
                                                         </div>
 
                                                         <div class="text-1 limit-text-row-1 mt-4">
-                                                            {{ $dichVuGiamGia->name }}
+                                                            {{ $dichVuUaChuong->dichvu->name }}
                                                         </div>
 
                                                         <div class="box-gia-dichvu mt-2">
-                                                            @if ($dichVuGiamGia->giamgia > 0)
+                                                            @if ($dichVuUaChuong->dichvu->giamgia > 0)
                                                                 @php
-                                                                    $giaSauGiam = $dichVuGiamGia->dongia - ($dichVuGiamGia->dongia * $dichVuGiamGia->giamgia / 100);
+                                                                    $giaSauGiam = $dichVuUaChuong->dichvu->dongia - ($dichVuUaChuong->dichvu->dongia * $dichVuUaChuong->dichvu->giamgia / 100);
                                                                 @endphp
-                                                                <span class="giagiam">{{ number_format($dichVuGiamGia->dongia, 0) }} đ </span>
+                                                                <span class="giagiam">{{ number_format($dichVuUaChuong->dichvu->dongia, 0) }} đ </span>
                                                                 <span class="gia left-bar">
-                                                                {{ number_format($giaSauGiam, 0)}} đ
-                                                            </span>
+                                                            {{ number_format($giaSauGiam, 0)}} đ
+                                                        </span>
                                                             @else
                                                                 <span class="gia">
-                                                                {{ number_format($dichVuGiamGia->dongia, 0) }} đ
-                                                            </span>
+                                                            {{ number_format($dichVuUaChuong->dichvu->dongia, 0) }} đ
+                                                        </span>
                                                             @endif
 
                                                         </div>
 
                                                         <p class="text-2 limit-text-row-3 mt-1 mt-2">
-                                                            {{ $dichVuGiamGia->motangan }}
+                                                            {{ $dichVuUaChuong->dichvu->motangan }}
 
                                                         </p>
                                                     </div>
@@ -390,7 +391,12 @@
                                                         </button>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            @endif
+                                        @endforeach
+                                            @if (count($listDichVuUaChuong) === 0)
+                                                Chưa có dịch vụ
+                                            @endif
+                                            
                                         </div>
                                     </div>
 

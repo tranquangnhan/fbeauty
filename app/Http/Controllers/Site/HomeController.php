@@ -407,7 +407,7 @@ class HomeController extends Controller
             'noidung' => $request->noidung,
         ];
         $this->LienHe->create($LienHe);
-        return redirect('lien-he')->with('success', 'Gửi thành công liên hệ');
+        return redirect('lien-he')->with('success', 'Gửi liên hệ thành công !');
     }
 
     public function viewGioiThieu()
@@ -466,6 +466,7 @@ class HomeController extends Controller
             $this->data['lichSuDatLich1'] = $this->getDuLieuTabLichSuDatLich1($khachHang->id);
             $this->data['lichSuDatLich2'] = $this->getDuLieuTabLichSuDatLich2($khachHang->id);
             $this->data['lichSuDatLich3'] = $this->getDuLieuTabLichSuDatLich3($khachHang->id);
+            
         } else {
             $this->data['dataLieuTrinh'] = [];
         }
@@ -809,7 +810,7 @@ class HomeController extends Controller
                 if ($error == false) {
                     if ($lichKhachDat == null) {
                         $error = true;
-                        $textMess = 'Khung giờ bạn chọn đã đóng. Hãy chọn khung giờ khác bạn nhé';
+                        $textMess = 'Khung giờ bạn chọn đã đóng. Hãy đặt lịch cách 10\' trước khi đến.';
                     }
                 }
 
@@ -825,11 +826,19 @@ class HomeController extends Controller
                     if ($request->idNhanVien > 0) {
                         $nhanVien = $this->NhanVien->findNhanVienByIdAndCoSo($request->idNhanVien, $request->idCoSo);
                         if ($nhanVien) {
+                            // check trạng thái nhân viên
+                            if ($nhanVien->trangthai != Controller::TRANGTHAI_NHANVIEN_HOATDONG) {
+                                $error = true;
+                                $ngayYMD = Carbon::createFromFormat('Y-m-d', $request->ngay)->format('d-m-Y');
+                                $textMess = 'Chuyên viên đang bận. Vui lòng chọn chuyên viên khác bạn nhé !';
+                            }
+
                             // check nhan vien
                             $nhanVienRanh = $this->checkNhanVienRanh($request->thoiGianDat, $nhanVien->id);
                             if (!$nhanVienRanh) {
                                 $error = true;
-                                $textMess = 'Chuyên viên bạn chọn đã có lịch vào ' . $request->ngay . ' ' . $request->gio . '. Hãy chọn giờ khác hoặc chuyên viên khác bạn nhé.';
+                                $ngayYMD = Carbon::createFromFormat('Y-m-d', $request->ngay)->format('d-m-Y');
+                                $textMess = 'Chuyên viên bạn chọn vừa có lịch vào ' . $ngayYMD . ' ' . $request->gio . '. Hãy chọn giờ khác hoặc chuyên viên khác bạn nhé.';
                             }
                         } else {
                             $error = true;
@@ -874,7 +883,7 @@ class HomeController extends Controller
                         'ngay' => $request->ngay,
                         'gio' => $request->gio,
                         'request' => $request,
-                        'sdt' => $sdt
+                        'sdt' => $sdt,
                     );
                 } else {
                     $response = Array(

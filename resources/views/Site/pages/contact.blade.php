@@ -146,7 +146,13 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group ">
+                                       <p class="thongbaocss"> {{session('success')}}</p>
+                                    </div>
+                                </div>
+                            </div>
                             <input type="submit" id="them" onclick="myFunction()" class="btn-full pl-5 pr-5 float-right" value="Liên hệ">
                         </form>
                     </div>

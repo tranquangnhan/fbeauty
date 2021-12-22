@@ -3,6 +3,7 @@ const getNhanVienByIdCoSoUrl = serverNameUrl + 'nhanviencuacoso/'; // nhanviencu
 const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/'; // getGio/{thu}
 const postDatLichUrl = serverNameUrl + 'datLich/';
 const rootUrlImage = '/Site/images/';
+const rootUrlUploadImage = '/uploads/imgusers/';
 const checkIssetUserUrl = serverNameUrl + 'checkIssetUser';
 const siteLoginUrl = serverNameUrl + 'site-login';
 const sendOTPSMSUrl = serverNameUrl + 'sendOTPSMS';
@@ -12,7 +13,7 @@ const newPasswordUrl = serverNameUrl + 'newPassword';
 const getBlogsPagiUrl = serverNameUrl + 'getBlogsPagi';
 const skipCreatePasswordUrl = serverNameUrl + 'skipCreatePassword';
 const linkThongTinUser = serverNameUrl + 'thong-tin-tai-khoan';
-
+const trangThaiNhanVienHoatDong = 1;
 const timeMoving = 100;
 const lengthSlideBooking = $('.datlich-step').length;
 const tranlatexRange = 100 / parseInt(lengthSlideBooking);
@@ -83,7 +84,7 @@ var khungGio;
 var objectNhanVienSelected = {
     'id': '0',
     'ten': 'Spa chọn chuyên viên giúp bạn',
-    'imgUrl': 'avatar-default.png'
+    'imgUrl': 'chuyenvienspa.png'
 };
 
 var activeStep;

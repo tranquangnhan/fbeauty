@@ -2,6 +2,7 @@ const changeStatusDatLichUrl =  serverNameUrl + 'quantri/changeStatusDatLich/';
 const getDuLieuDatLichChoCalendarUrl =  serverNameUrl + 'quantri/getDuLieuDatLichChoCalendar/';
 const changeStatusTimeUrl = serverNameUrl + 'quantri/changeStatusTime/';
 const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/';
+const getDuLieuBoxDatLichUrl = serverNameUrl + 'getDuLieuBoxDatLich/';
 const statusLichOpen = 0;
 const statusLichClose = 1;
 const trangThaiLichSanSang = 0;
@@ -480,7 +481,17 @@ $("body").on("click", ".option-select",function (e) {
 
     if (type == 'nhan-vien') {
         var idTime = 0;
-        getDayAndNhanVienThenLoadGio(idTime);
+        if ($(this).hasClass('disabled')) {
+            Swal.fire({
+                title: 'Chuyên Viên Bận',
+                icon: 'warning',
+                text: 'Chuyên viên bạn chọn đang bận. Hãy chọn chuyên viên khác bạn nhé !',
+                confirmButtonText: 'Xác nhận',
+            });
+        } else {
+            getDayAndNhanVienThenLoadGio(idTime);
+        }
+
     }
 
 });
@@ -555,7 +566,10 @@ function reloadName(type, data) {
 function getHTMLOptionNhanVien(nhanVien) {
     var html =
     `
-    <div class="option option-select" type-value="nhan-vien"
+    <div class="option option-select option-chuyen-vien`; if (nhanVien.trangthai != statusNhanVienHoatDong) {
+        html += ` disabled`;
+    }
+    html += `" type-value="nhan-vien"
         id-option="${nhanVien.id}"
         data-name="${nhanVien.name}"
         data-sdt="${nhanVien.sdt}">
@@ -1017,3 +1031,92 @@ $('.button-add').click(function (e) {
     var idTime = $(this).attr('id-add-time');
     getDayAndNhanVienThenLoadGio(idTime);
 });
+
+function checkKhungGio(objectDatLich) {
+    var ngaySelected = $('.ip-get-datlich').val();
+
+    if (idCoSo == objectDatLich.idcoso) {
+        var ngayDatYMD = moment.unix(objectDatLich.thoiGianDat).format("YYYY-MM-DD");
+        if (ngayDatYMD == ngaySelected) {
+            var thoiGianDatHMS = moment.unix(objectDatLich.thoiGianDat).format("HH:mm:ss");
+            console.log(thoiGianDatHMS);
+            duLieuCalendar.forEach(element => {
+                if (element.gio == thoiGianDatHMS) {
+                    getDuLieuBoxDatLichByIdDatLich(element.id);
+                    // $(`[fa-id-time="${element.id}"]`);
+                }
+            });
+        }
+    }
+}
+console.log(duLieuCalendar);
+
+function getDuLieuBoxDatLichByIdDatLich(id) {
+    $.ajax({
+        type: "GET",
+        url: getDuLieuBoxDatLichUrl + id,
+        success: function (respon) {
+            console.log(respon);
+            if (respon.success == true) {
+
+            } else {
+                swal.fire({
+                    icon: 'error',
+                    title: respon.titleMess,
+                    text: respon.textMess,
+                    confirmButtonText: 'Thử lại',
+                });
+            }
+        },
+        error: function () {
+            swal.fire({
+                icon: 'error',
+                title: 'Đã xảy ra lỗi',
+                text: 'Gửi dữ liệu box đặt lịch không thành công',
+                confirmButtonText: 'Thử lại',
+            });
+        }
+});
+
+}
+
+function getHTMLBoxDatLich() {
+    var html = `
+    <div class="datlich-item  @if (isset($item->listDatLich[$i])) @if ($item->listDatLich[$i]->trangthai == 1) check-in @endif @endif">
+        @if (isset($item->listDatLich))
+            @if (isset($item->listDatLich[$i]))
+                <div class="header-item d-flex align-items-center">
+                    <div class="text-bold limit-text-row-1 mb-0 namekh namekh-{{ $item->listDatLich[$i]->id }}">{{ $item->listDatLich[$i]->namekh }}</div>
+                    <button class="btn-none btn-check-in ml-auto" id-dat-lich={{ $item->listDatLich[$i]->id }}><i class="icon-status-datlich fas @if ($item->listDatLich[$i]->trangthai == 0) fa-user-minus @else fa-user-check @endif"></i></button>
+                </div>
+
+                <div class="body-item">
+                    <div class="name-nhanvien">{{ $item->listDatLich[$i]->nameNhanVien }}</div>
+                    <li class="limit-text-row-1 ">
+                        @if($item->listDatLich[$i]->arrayDichVu[0] != null)
+                            <a href="" class="cl-black">{{ $item->listDatLich[$i]->arrayDichVu[0]->name }}</a>
+                            @if (count($item->listDatLich[$i]->arrayDichVu) > 1)
+                                ...
+                            @endif
+                        @else
+                            <a href="" class="cl-black">Khách muốn tư vấn</a>
+                        @endif
+
+                    </li>
+                </div>
+
+                <div class="footer-item">
+                    <button class="btn-none">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+
+                    <button class="btn-none">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+
+                </div>
+            @endif
+        @endif
+    </div>
+    `;
+}
