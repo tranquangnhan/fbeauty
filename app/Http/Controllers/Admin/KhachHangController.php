@@ -94,7 +94,7 @@ class KhachHangController extends Controller
             return $this->handleErrorInput('Số điện thoại đã tồn tại!');
         }
 
-        $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
+        $img = $this->uploadSingle($this::PATH_UPLOADS_KHACHHANG,$request->file('urlHinh'));
         if($img == null){
             $img = 'defaul.jpg';
         }
@@ -167,7 +167,7 @@ class KhachHangController extends Controller
             'active' => ($request->active) ? 1 : 0,
         ];
         if($request->urlHinh !== null){
-            $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
+            $img = $this->uploadSingle($this::PATH_UPLOADS_KHACHHANG,$request->file('urlHinh'));
              if($img == null){
                 $img = 'defaul.jpg';
             }

@@ -1,5 +1,8 @@
 @extends('Admin.LayoutAdmin')
 @section('content')
+@php
+    use app\Http\Controllers\Controller;
+@endphp
 <style>
     /* img{
         width: 100px !important;
@@ -24,7 +27,7 @@
                             <div class="col-md-4">
                                     <label class="w-100" for="files">Tải ảnh khách hàng:<br>
                                     @if ($KhachHang->img)
-                                        <img class="imgpreview"  src="{{ asset($URL_IMG.$KhachHang->img) }}" alt=""><br><br>
+                                        <img class="imgpreview"  src="{{ asset(Controller::BASE_URL_UPLOAD_CUSTOMER.$KhachHang->img) }}" alt=""><br><br>
                                     @else
                                     <img class="imgpreview"  src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}" alt=""><br><br>
                                     @endif
