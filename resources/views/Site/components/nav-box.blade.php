@@ -72,7 +72,7 @@
                     <a class="nav-link" href="/bai-viet">Bài viết</a>
                 </li>
             </ul>
-            <div class="box-icon">
+            <div class="box-icon box-icon-desk">
                 <li class="icon-item d-inline-block boxsearch {{ ($pathActive == 'tim-kiem') ? 'active' : '' }} ">
                     <a class="btn-modal-sreach" ><i class="fas fa-search color-black-2"></i></a>
                     <form action="/tim-kiem" >
