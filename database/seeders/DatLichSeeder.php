@@ -17,7 +17,7 @@ class DatLichSeeder extends Seeder
         $now = Carbon::now('Asia/Ho_Chi_Minh');
         $yesterday = Carbon::now()->subDays(1)->toDateString();
         $subYearr = Carbon::now()->subYear(1)->toDateString();
-        $date = $now->toDateString();
+        $date = $now->addDay()->toDateString();
 
         $dateTime1 = $date . '9:00:00';
         $dateTime2 = $date . '10:00:00';

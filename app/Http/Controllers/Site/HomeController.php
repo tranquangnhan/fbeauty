@@ -118,20 +118,15 @@ class HomeController extends Controller
     public function index()
     {
         error_reporting(E_ALL);
+        $this->getDuLieuBoxBlog();
         $sanPham = $this->SanPham->getAll();
-        $blog = $this->Blog->getBlog1();
-        $getBlog2 = $this->Blog->getBlog2();
-        $blog3 = $this->Blog->getLastWeek1();
-        $blog4 = $this->Blog->getLastWeek2();
+
         $spkhac = $this->SanPham->getSanPhamHome();
 
         $this->getDichVuTrangHome();
 
         $this->data['sanPham'] = $sanPham;
-        $this->data['blog'] = $blog;
-        $this->data['getBlog2'] = $getBlog2;
-        $this->data['blog3'] = $blog3;
-        $this->data['blog4'] = $blog4;
+
         $this->data['pathActive'] = 'trang-chu';
         $this->data['spkhac'] = $spkhac;
 
@@ -227,7 +222,7 @@ class HomeController extends Controller
 
         foreach ($listdanhmuc as $dm) {
             $skip = 0;
-            $take = 6;
+            $take = 3;
             $blogbyid = $this->Blog->getBlogByIdDanhmuc($dm->id, $skip, $take);
             $dm['blogbyid'] = $blogbyid;
         }
@@ -239,7 +234,6 @@ class HomeController extends Controller
         }
 
         $danhmuc = $this->DanhMuc->getAllDanhMuc();
-        $getBlog2 = $this->Blog->getBlog2();
         $blog3 = $this->Blog->getLastWeek1();
         $blog4 = $this->Blog->getLastWeek2();
         $blognew = $this->Blog->getBlognew();
@@ -249,12 +243,12 @@ class HomeController extends Controller
         $this->data['blog4'] = $blog4;
         $this->data['blognew'] = $blognew;
         $this->data['danhmuc'] = $danhmuc;
-        $this->data['getBlog2'] = $getBlog2;
         $this->data['listdanhmuc'] = $listdanhmuc;
         $this->data['listdanhmuc2'] = $listdanhmuc2;
         $this->data['luotxem'] = $luotxem;
         $this->data['xuhuong'] = $xuhuong;
         $this->data['blognewtt'] = $blognewtt;
+        $this->getDuLieuBoxBlog();
 
         $this->data['pathActive'] = 'bai-viet';
         $this->data['namePage'] = 'Diễn đàn làm đẹp';
@@ -285,7 +279,7 @@ class HomeController extends Controller
         $this->data['namePage'] = $viewdetail[0]->name;
         $this->data['breadcrumbArray'] = [
             ['link' => '/bai-viet', 'name' => 'Bài viết'],
-            ['link' => '', 'name' => $viewdetail[0]->name],
+            ['link' => '', 'name' => 'Bài viết chi tiết'],
         ];
 
         return view("Site.pages.baivietchitiet", $this->data);
@@ -317,21 +311,18 @@ class HomeController extends Controller
 
     public function viewDichVu()
     {
+        $this->getDichVuTrangHome();
+
         $this->data['pathActive'] = 'dich-vu';
         $this->data['namePage'] = 'Dịch Vụ';
         $this->data['breadcrumbArray'] = [
             ['link' => '', 'name' => 'Dịch Vụ'],
         ];
-        $dichvu = $this->Dichvu->getDichVu2();
-        $dichvu1 = $this->Dichvu->getLastWeekdichvu();
-        $dichvu2 = $this->Dichvu->getDichVubyGiamGia();
-        $danhmuc = $this->DanhMuc->getalldanhmuc();
-        $this->getDanhMucVaDichVu();
-        //$mouth = $this->Dichvu->getLastWeekdichvu();
 
-        $this->data['dichvu'] = $dichvu;
-        $this->data['dichvu1'] = $dichvu1;
-        $this->data['dichvu2'] = $dichvu2;
+        $this->data['dichVuAllPagination'] = $this->Dichvu->getAllPagination();
+
+        // dd($this->data['dichVuAllPagination']);
+        $danhmuc = $this->DanhMuc->getAllDanhMucDichVu();
         $this->data['danhmuc'] = $danhmuc;
         return view("Site.pages.dichvu", $this->data);
 
@@ -416,7 +407,7 @@ class HomeController extends Controller
             'noidung' => $request->noidung,
         ];
         $this->LienHe->create($LienHe);
-        return redirect('lien-he')->with('success', 'Gửi thành công liên hệ');
+        return redirect('lien-he')->with('success', 'Gửi liên hệ thành công !');
     }
 
     public function viewGioiThieu()
@@ -475,7 +466,6 @@ class HomeController extends Controller
             $this->data['lichSuDatLich1'] = $this->getDuLieuTabLichSuDatLich1($khachHang->id);
             $this->data['lichSuDatLich2'] = $this->getDuLieuTabLichSuDatLich2($khachHang->id);
             $this->data['lichSuDatLich3'] = $this->getDuLieuTabLichSuDatLich3($khachHang->id);
-
 
         } else {
             $this->data['dataLieuTrinh'] = [];
@@ -820,7 +810,7 @@ class HomeController extends Controller
                 if ($error == false) {
                     if ($lichKhachDat == null) {
                         $error = true;
-                        $textMess = 'Khung giờ bạn chọn đã đóng. Hãy chọn khung giờ khác bạn nhé';
+                        $textMess = 'Khung giờ bạn chọn đã đóng ! Hãy chọn giờ khác bạn nhé xin cảm ơn ';
                     }
                 }
 
@@ -836,11 +826,19 @@ class HomeController extends Controller
                     if ($request->idNhanVien > 0) {
                         $nhanVien = $this->NhanVien->findNhanVienByIdAndCoSo($request->idNhanVien, $request->idCoSo);
                         if ($nhanVien) {
+                            // check trạng thái nhân viên
+                            if ($nhanVien->trangthai != Controller::TRANGTHAI_NHANVIEN_HOATDONG) {
+                                $error = true;
+                                $ngayYMD = Carbon::createFromFormat('Y-m-d', $request->ngay)->format('d-m-Y');
+                                $textMess = 'Chuyên viên đang bận. Vui lòng chọn chuyên viên khác bạn nhé !';
+                            }
+
                             // check nhan vien
                             $nhanVienRanh = $this->checkNhanVienRanh($request->thoiGianDat, $nhanVien->id);
                             if (!$nhanVienRanh) {
                                 $error = true;
-                                $textMess = 'Chuyên viên bạn chọn đã có lịch vào ' . $request->ngay . ' ' . $request->gio . '. Hãy chọn giờ khác hoặc chuyên viên khác bạn nhé.';
+                                $ngayYMD = Carbon::createFromFormat('Y-m-d', $request->ngay)->format('d-m-Y');
+                                $textMess = 'Chuyên viên bạn chọn vừa có lịch vào ' . $ngayYMD . ' ' . $request->gio . '. Hãy chọn giờ khác hoặc chuyên viên khác bạn nhé.';
                             }
                         } else {
                             $error = true;
@@ -876,7 +874,7 @@ class HomeController extends Controller
                 if ($error == false) {
                     $sdt = '+84' . substr($request->soDienThoai, 1, strlen($request->soDienThoai));
                     $message = $this->makeMessageCamOnDatLich($request->idCoSo, $request->ngay, $request->gio);
-                    // $this->freeSMSController->sendSingleMessage($sdt, $message);
+                    $this->freeSMSController->sendSingleMessage($sdt, $message);
 
                     $response = Array(
                         'success' => true,
@@ -885,7 +883,7 @@ class HomeController extends Controller
                         'ngay' => $request->ngay,
                         'gio' => $request->gio,
                         'request' => $request,
-                        'sdt' => $sdt
+                        'sdt' => $sdt,
                     );
                 } else {
                     $response = Array(
@@ -1560,6 +1558,18 @@ class HomeController extends Controller
         $this->data['listDichVuUaChuong'] = $listDichVu;
         $this->data['listDichVuGiamGia'] = $this->Dichvu->getDichVuGiamGiaAndDanhMuc($take, $skip);
 
+    }
+
+    public function getDuLieuBoxBlog() {
+        $blog      = $this->Blog->getBlog1();
+        $getBlog2  = $this->Blog->getBlog2();
+        $blog3     = $this->Blog->getLastWeek1();
+        $blog4     = $this->Blog->getLastWeek2();
+
+        $this->data['blog']      = $blog;
+        $this->data['getBlog2']  = $getBlog2;
+        $this->data['blog3']     = $blog3;
+        $this->data['blog4']     = $blog4;
     }
 
 }

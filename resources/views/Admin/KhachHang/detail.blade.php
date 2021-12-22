@@ -21,7 +21,7 @@
                         <div class="boxinfouser">
                             <div class="left">
                                 @if ($KhachHang->img)
-                                    <img class="d-flex mr-3 rounded-circle avatar-md" style="object-fit: cover" alt="64x64" src="{{asset('uploads/'.$KhachHang->img)}}">
+                                    <img class="d-flex mr-3 rounded-circle avatar-md" style="object-fit: cover" alt="64x64" src="{{asset(Controller::BASE_URL_UPLOAD_CUSTOMER.$KhachHang->img)}}">
                                 @else
                                     <img  class="mr-3 rounded-circle avatar-md"  style="object-fit: cover" src="{{ asset(''.$URL_IMG.'khachhang/default-avatar-kh.jpg') }}">
                                 @endif
@@ -59,12 +59,7 @@
                                         <span class="d-none d-sm-inline">Dịch Vụ Đã Sử Dụng</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#basictab3" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
-                                        <i class="mdi mdi-checkbox-marked-circle-outline mr-1"></i>
-                                        <span class="d-none d-sm-inline">Lịch Hẹn</span>
-                                    </a>
-                                </li>
+                             
                             </ul>
 
                             <div class="tab-content border-0 mb-0">
@@ -184,38 +179,7 @@
 
                                 </div>
 
-                                <div class="tab-pane" id="basictab3">
-                                    @if (count($DatLich)>0)
-                                    <table class="table table-centered mb-0 lieutrinhtable" id="btn-editable">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Nhân Viên Làm</th>
-                                                <th>Tên dịch vụ</th>
-                                                <th>Thời Gian Đặt</th>
-                                                <th>Check in</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                           
-                                                @foreach ($DatLich as $item)
-                                                    <tr>
-                                                        <td>{{++$loop->index}}</td>
-                                                        <td ><img style="width:80px;height:80px;border-radius:3px;object-fit:cover"  src="{{ asset($URL_IMG.$item->img) }}"><br>
-                                                            <div class="badge badge-primary ">{{$item->tenkh}}</div></td>
-                                                        <td>{{KhachHangController::findDichVuByIds($item->iddichvu)}}</td>
-                                                        <td> {{date('d/m/Y',$item->thoigiandat)}}</td>
-                                                        <td><a name="" id="" class="btn btn-primary" href="#" role="button">Check in</a></td>
-                                                    </tr>
-                                                @endforeach
-                                         
-                                        </tbody>
-                                    </table>
-                                    @else
-                                        <p class="mb-3">Khách hàng chưa có lịch hẹn nào!</p> 
-                                    @endif
-                                </div>
+                                
 
                                 <ul class="list-inline wizard mb-0">
                                     <li class="previous list-inline-item">

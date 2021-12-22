@@ -554,3 +554,12 @@ color: white;
 .li-error {
     display: none;
 }
+
+.option-chuyen-vien.disabled {
+    background: #c2c2c2;
+}
+
+.option-chuyen-vien.disabled:hover {
+    background: #c2c2c2 !important;
+    color: black !important;
+}

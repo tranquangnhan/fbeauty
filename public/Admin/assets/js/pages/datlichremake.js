@@ -2,9 +2,13 @@ const changeStatusDatLichUrl =  serverNameUrl + 'quantri/changeStatusDatLich/';
 const getDuLieuDatLichChoCalendarUrl =  serverNameUrl + 'quantri/getDuLieuDatLichChoCalendar/';
 const changeStatusTimeUrl = serverNameUrl + 'quantri/changeStatusTime/';
 const getGioTheoThuUrl = serverNameUrl + 'getDataKhungGio/';
+const getDuLieuBoxDatLichUrl = serverNameUrl + 'quantri/getDuLieuBoxDatLich/';
+const getDuLieuDatLichDetailUrl = serverNameUrl + 'quantri/getDuLieuDatLichDetail/';
 const statusLichOpen = 0;
 const statusLichClose = 1;
 const trangThaiLichSanSang = 0;
+const trangThaiDatLichCheckin = 1;
+const trangThaiDatLichNotCheckin = 0;
 const postDatLichUrl = serverNameUrl + 'datLich/';
 
 var todayYMD = moment().format('YYYY-MM-DD');
@@ -24,9 +28,9 @@ $("body").on("click", ".btn-check-in",function (e) {
         var elementParentDatLich = $(this).parents('.datlich-item');
         var hasCheckIn = elementParentDatLich.hasClass('check-in');
         if (hasCheckIn) {
-            var status = 0;
+            var status = trangThaiDatLichNotCheckin;
         } else {
-            var status = 1;
+            var status = trangThaiDatLichCheckin;
         }
         checkInDatLich(idDatLich, status, elementParentDatLich);
     }
@@ -409,7 +413,6 @@ function changeStatusTimeById(id, status) {
         url: changeStatusTimeUrl + id + '/' + status,
         success: function (respon) {
             if (respon.success) {
-                console.log(respon);
                 if (status == statusLichOpen) {
                     unblockTime(id);
                 } else {
@@ -438,7 +441,7 @@ function changeStatusTimeById(id, status) {
     });
 }
 
-$('.button-search').click(function (e) {
+$("body").on("click", ".button-search",function (e) {
     e.preventDefault();
     var dataShow = $(this).attr('data-select');
     var boxSelect = $(`[box-select="${dataShow}"]`);
@@ -458,18 +461,22 @@ $("body").on("click", ".option-select",function (e) {
     var idSelected = $(this).attr('id-option');
     var htmlSelected = $(this).html();
     var boxSelected = $(`[type-selected="${type}"]`);
-    boxSelected.attr('id-selected', idSelected);
-    boxSelected.html(htmlSelected);
-    boxSelect.removeClass('show');
 
-    if (type == 'khach-hang') {
-        var name = $(this).attr('data-name');
-        var sdt = $(this).attr('data-sdt');
-        $('.namekh').val(name);
-        $('.sdt').val(sdt);
+    var checkDisabled = $(this).hasClass('disabled');
+    if (!checkDisabled) {
+        boxSelected.attr('id-selected', idSelected);
+        boxSelected.html(htmlSelected);
+        boxSelect.removeClass('show');
     }
 
-    if (type == 'dich-vu') {
+    if (type == 'khach-hang' || type == 'khach-hang-edit') {
+        var name = $(this).attr('data-name');
+        var sdt = $(this).attr('data-sdt');
+        $(`.name-${type}`).val(name);
+        $(`.sdt-${type}`).val(sdt);
+    }
+
+    if (type == 'dich-vu' || type == 'dich-vu-edit') {
         var name = $(this).attr('name-dichvu');
         var dongia = $(this).attr('dongia');
         var giamgia = $(this).attr('giamgia');
@@ -478,48 +485,61 @@ $("body").on("click", ".option-select",function (e) {
         boxSelected.attr('giamgia', giamgia);
     }
 
-    if (type == 'nhan-vien') {
+    if (type == 'nhan-vien' || type == 'nhan-vien-edit') {
         var idTime = 0;
-        getDayAndNhanVienThenLoadGio(idTime);
-    }
+        var checkDisabled = $(this).hasClass('disabled');
+        if (checkDisabled) {
+            Swal.fire({
+                title: 'Chuyên Viên Bận',
+                icon: 'warning',
+                text: 'Chuyên viên bạn chọn đang bận. Hãy chọn chuyên viên khác bạn nhé !',
+                confirmButtonText: 'Xác nhận',
+            });
+        } else {
+            getDayAndNhanVienThenLoadGio(idTime);
+        }
 
+    }
 });
 
-$('.remove-khachhang-selected').click(function (e) {
+$('body').on('click', '.remove-khachhang-selected', function (e) {
     e.preventDefault();
-    var boxSelectKhachHang = $(`[type-selected="khach-hang"]`);
+    var dataType = $(this).attr('data-type');
+    var boxSelectKhachHang = $(`[type-selected="${dataType}"]`);
     boxSelectKhachHang.attr('id-selected', 0);
     boxSelectKhachHang.html('Tìm kiếm tên hoặc số điện thoại');
+
 });
 
-$('.search-option').keyup(function (e) {
+$("body").on("keyup", ".search-option",function (e) {
     var type = $(this).attr('data-type-option');
     var keyword = $(this).val();
-	keyword = removeAccents(keyword);
+
+    keyword = removeAccents(keyword);
 	keyword = keyword.toLowerCase();
 
-    if (type == 'khach-hang') {
+    if (type == 'khach-hang' || type == 'khach-hang-edit') {
         xuLiTimKiemKhachHang(keyword, type);
     }
 
-    if (type == 'dich-vu') {
+    if (type == 'dich-vu' || type == 'dich-vu-edit') {
         xuLiTimKiemDichVu(keyword, type);
     }
 
-    if (type == 'nhan-vien') {
+    if (type == 'nhan-vien' || type == 'nhan-vien-edit') {
         xuLiTimKiemNhanVien(keyword, type);
     }
 });
 
 function reloadName(type, data) {
     var html = ``;
-    if (type == 'khach-hang') {
+    if (type == 'khach-hang' || type == 'khach-hang-edit') {
         data.forEach(element => {
-            html += getHTMLOptionKhachHang(element);
+            html += getHTMLOptionKhachHang(type, element);
         });
     }
 
-    if (type == 'dich-vu') {
+    if (type == 'dich-vu' || type == 'dich-vu-edit') {
         html += `
             <div class="option option-select d-flex" type-value="dich-vu"
                 id-option="0"
@@ -530,11 +550,11 @@ function reloadName(type, data) {
             </div>
         `;
         data.forEach(element => {
-            html += getHTMLOptionDichVu(element);
+            html += getHTMLOptionDichVu(type, element);
         });
     }
 
-    if (type == 'nhan-vien') {
+    if (type == 'nhan-vien' || type == 'nhan-vien-edit') {
         html += `
             <div class="option option-select" type-value="nhan-vien"
                 id-option="0"
@@ -544,7 +564,7 @@ function reloadName(type, data) {
             </div>
         `;
         data.forEach(element => {
-            html += getHTMLOptionNhanVien(element);
+            html += getHTMLOptionNhanVien(type, element);
         });
     }
 
@@ -552,10 +572,13 @@ function reloadName(type, data) {
     $(`[body-type="${type}"]`).append(html);
 }
 
-function getHTMLOptionNhanVien(nhanVien) {
+function getHTMLOptionNhanVien(type, nhanVien) {
     var html =
     `
-    <div class="option option-select" type-value="nhan-vien"
+    <div class="option option-select option-chuyen-vien`; if (nhanVien.trangthai != statusNhanVienHoatDong) {
+        html += ` disabled`;
+    }
+    html += `" type-value="${type}"
         id-option="${nhanVien.id}"
         data-name="${nhanVien.name}"
         data-sdt="${nhanVien.sdt}">
@@ -567,10 +590,10 @@ function getHTMLOptionNhanVien(nhanVien) {
 }
 
 
-function getHTMLOptionKhachHang(khachHang) {
+function getHTMLOptionKhachHang(type, khachHang) {
     var html =
     `
-    <div class="option option-select" type-value="khach-hang"
+    <div class="option option-select" type-value="${type}"
         id-option="${khachHang.id}"
         data-name="${khachHang.name}"
         data-sdt="${khachHang.sdt}">
@@ -581,10 +604,10 @@ function getHTMLOptionKhachHang(khachHang) {
     return html;
 }
 
-function getHTMLOptionDichVu(dichVu) {
+function getHTMLOptionDichVu(type, dichVu) {
     var html =
     `
-    <div class="option option-select d-flex" type-value="dich-vu"
+    <div class="option option-select d-flex" type-value="${type}"
         id-option="${dichVu.id}"
         name-dichvu="${dichVu.name}"
         dongia="${dichVu.dongia}"
@@ -692,25 +715,26 @@ function xuLiTimKiemDichVu(keyword, type) {
     }
 }
 
-$('.selected-dichvu').click(function (e) {
+$('body').on('click', '.selected-dichvu', function (e) {
     e.preventDefault();
-    var boxSelectedDichVu = $(`[type-selected="dich-vu"]`);
+    var type = $(this).attr('data-type');
+    var boxSelectedDichVu = $(`[type-selected="${type}"]`);
+
     var idDichVuSelected = boxSelectedDichVu.attr('id-selected');
 
     if (idDichVuSelected != '') {
         var nameSelected = boxSelectedDichVu.attr('name-selected');
         var donGia = boxSelectedDichVu.attr('dongia');
         var giamGia = boxSelectedDichVu.attr('giamgia');
-        var html = getHTMLDichVuSelected(idDichVuSelected, nameSelected, donGia, giamGia);
-        $('.body-dichvu-selected').append(html);
+        var html = getHTMLDichVuSelected(type, idDichVuSelected, nameSelected, donGia, giamGia);
+        $(`.body-selected-${type}`).append(html);
     }
-
 });
 
-function getHTMLDichVuSelected(id, name, donGia, giamGia) {
+function getHTMLDichVuSelected(type, id, name, donGia, giamGia) {
     var html =
     `
-    <div class="row box-dich-vu-selected" id-dich-vu="${id}">
+    <div class="row box-dich-vu-selected" id-${type}="${id}">
         <div class="col-4">
             <span>${name}</span>
         </div>`;
@@ -747,16 +771,27 @@ function numberFormat (someNumber) {
     return number;
 }
 
-
 $("body").on('click', ".remove-dichvu-selected", function (e) {
     e.preventDefault();
-    var id = $(this).attr('id-remove-dich-vu');
-    $(`[id-dich-vu="${id}"]`).remove();
+    var id = $(this).attr(`id-remove-dich-vu`);
+    var checkShowEditDatLich = $('#editDatLich').hasClass('show');
+
+    if (checkShowEditDatLich) {
+        $(`[id-dich-vu-edit="${id}"]`).remove();
+    } else {
+        $(`[id-dich-vu="${id}"]`).remove();
+    }
 });
 
 function getDayAndNhanVienThenLoadGio(idTime) {
-    var ngay = $('.ip-date-datlich').val();
-    var idNhanVien = $(`[type-selected="nhan-vien"]`).attr('id-selected');
+    if ($(`#editDatLich`).hasClass('show')) {
+        var ngay = $('.ip-date-datlich-edit').val();
+        var idNhanVien = $(`[type-selected="nhan-vien-edit"]`).attr('id-selected');
+    } else {
+        var ngay = $('.ip-date-datlich').val();
+        var idNhanVien = $(`[type-selected="nhan-vien"]`).attr('id-selected');
+    }
+
     if (idNhanVien != '') {
         loadGio(ngay, idNhanVien, idTime);
     }
@@ -793,14 +828,18 @@ function loadGio(ngay, idNhanVien, idTime) {
 
 function reloadKhungGio(data, ngay, idTime) {
     var html = ``;
-    console.log(data);
     data.forEach(element => {
         html += getHTMLOptionTime(element, ngay, idTime);
     });
 
-
-    $(`#select-gio`).children().remove();
-    $(`#select-gio`).append(html);
+    // nếu đang mở modal edit
+    if ($(`#editDatLich`).hasClass('show')) {
+        $(`#select-gio-edit`).children().remove();
+        $(`#select-gio-edit`).append(html);
+    } else {
+        $(`#select-gio`).children().remove();
+        $(`#select-gio`).append(html);
+    }
 
 }
 
@@ -943,7 +982,7 @@ function datLich(ngaySelected, timeSelected, idCoSo, arrIdDichVu, nhanVienSelect
         thoiGianDat: thoiGianDat,
         _token: _token,
     }
-    console.log(data);
+
     Swal.fire({
         title: 'Kiểm tra thông tin?',
         icon: 'info',
@@ -1016,4 +1055,427 @@ $('.button-add').click(function (e) {
     e.preventDefault();
     var idTime = $(this).attr('id-add-time');
     getDayAndNhanVienThenLoadGio(idTime);
+});
+
+function checkKhungGio(objectDatLich) {
+    var ngaySelected = $('.ip-get-datlich').val();
+
+    if (idCoSo == objectDatLich.idcoso) {
+        var ngayDatYMD = moment.unix(objectDatLich.thoiGianDat).format("YYYY-MM-DD");
+        if (ngayDatYMD == ngaySelected) {
+            var thoiGianDatHMS = moment.unix(objectDatLich.thoiGianDat).format("HH:mm:ss");
+
+            duLieuCalendar.forEach(element => {
+                if (element.gio == thoiGianDatHMS) {
+                    getDuLieuBoxDatLichByIdDatLich(objectDatLich.id, element.id);
+                    // $(`[fa-id-time="${element.id}"]`);
+                }
+            });
+        }
+    }
+}
+
+function getDuLieuBoxDatLichByIdDatLich(id, idKhungGio) {
+    $.ajax({
+        type: "GET",
+        url: getDuLieuBoxDatLichUrl + id,
+        success: function (respon) {
+            if (respon.success == true) {
+                var html = getHTMLBoxDatLich(respon.duLieuDatLich);
+
+                // Find elemenet trong khung giờ để append box đặt lịch
+                var elementKhungGio = $(`[fa-id-time="${idKhungGio}"]`);
+                var lengthOfBoxHasDatLich = elementKhungGio.find('.has-dat-lich').length;
+                var elementBoxDatLich = $(`[fa-id-time="${idKhungGio}"]`).find('.datlich-item').eq(lengthOfBoxHasDatLich);
+                elementBoxDatLich.replaceWith(html);
+            } else {
+                swal.fire({
+                    icon: 'error',
+                    title: respon.titleMess,
+                    text: respon.textMess,
+                    confirmButtonText: 'Thử lại',
+                });
+            }
+        },
+        error: function () {
+            swal.fire({
+                icon: 'error',
+                title: 'Đã xảy ra lỗi',
+                text: 'Gửi dữ liệu box đặt lịch không thành công',
+                confirmButtonText: 'Thử lại',
+            });
+        }
+    });
+}
+
+function getHTMLBoxDatLich(data) {
+    var html = `
+    <div class="datlich-item has-dat-lich id-datlich-${data.id}`;
+        if (data.trangthai == trangThaiDatLichCheckin) {
+            html += ` check-in`;
+        }
+        html += `">
+        <div class="header-item d-flex align-items-center">
+            <div class="text-bold limit-text-row-1 mb-0 namekh namekh-${ data.id }">${ data.namekh }</div>
+            <button class="btn-none btn-check-in ml-auto" id-dat-lich=${ data.id }>
+                <i class="icon-status-datlich fas `;
+                    if (data.trangthai == trangThaiDatLichNotCheckin) {
+                        html += `fa-user-minus`;
+                    } else {
+                        html += `fa-user-check`;
+                    }
+                html += `"></i>
+            </button>
+        </div>
+
+        <div class="body-item">
+            <div class="name-nhanvien">${ data.nameNhanVien }</div>
+            <li class="limit-text-row-1 ">`;
+                if (data.arrayDichVu[0] != null) {
+                    html += `<a href="" class="cl-black">${ data.arrayDichVu[0].name }</a>`;
+                    if (data.arrayDichVu.length > 1) {
+                        html += `...`;
+                    }
+                } else {
+                    html += `<a href="" class="cl-black">Khách muốn tư vấn</a>`;
+                }
+
+            html += `</li>
+        </div>
+
+        <div class="footer-item">
+            <button class="btn-none">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+
+            <button class="btn-none">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+
+        </div>
+    </div>
+    `;
+
+    return html;
+}
+
+$("body").on("click", ".edit-datlich",function (e) {
+    var idEdit = $(this).attr('edit-id');
+    $('.btn-show-modal-edit').click();
+    getDuLieuDatLichDetail(idEdit);
+});
+
+function getDuLieuDatLichDetail(id) {
+    $.ajax({
+        type: "GET",
+        url: getDuLieuBoxDatLichUrl + id,
+        success: function (respon) {
+            if (respon.success == true) {
+                var html = getHTMLModalEditDatLich(respon.duLieuDatLich);
+                $('.modal-edit-datlich').append(html);
+            } else {
+                swal.fire({
+                    icon: 'error',
+                    title: respon.titleMess,
+                    text: respon.textMess,
+                    confirmButtonText: 'Thử lại',
+                });
+            }
+        },
+        error: function () {
+            swal.fire({
+                icon: 'error',
+                title: 'Đã xảy ra lỗi',
+                text: 'Gửi dữ liệu đặt lịch chi tiết không thành công',
+                confirmButtonText: 'Thử lại',
+            });
+        }
+    });
+}
+
+function getHTMLModalEditDatLich(data) {
+    var ngayDatYMD = moment.unix(data.thoigiandat).format("YYYY-MM-DD");
+    var thoiGianDatHMS = moment.unix(data.thoigiandat).format("HH:mm:ss");
+    var html = `
+    <div class="form-datlich-admin">
+        <div class="card card-body">
+            <div class="head">
+                Thông tin khách hàng
+            </div>
+            <div class="row align-items-center mb-2">
+                <div class="col-6">
+                    <div class="fa-select-search">
+                        <div class="select-search">
+                            <button class="button-search" data-select='khach-hang-edit'>
+                                <span class="mr-auto box-selected" type-selected="khach-hang-edit" id-selected="${data.idkhachhang}">${data.namekh} (${data.sdt})</span>
+                                <i class="fas fa-address-book"></i>
+                            </button>
+
+                            <div class="box-select-search" box-select='khach-hang-edit'>
+                                <div class="fa-head-select form-group">
+                                    <input type="text" class="form-control search-option" data-type-option='khach-hang-edit'>
+                                    <i class="fas fa-search"></i>
+                                </div>
+
+                                <div class="fa-body-select">
+                                    <div class="body-select" body-type="khach-hang-edit">`;
+                                        listKhachHang.forEach(khachHang => {
+                                            html += `
+                                                <div class="option option-select" type-value="khach-hang-edit"
+                                                    id-option="${ khachHang.id }"
+                                                    data-name="${ khachHang.name }"
+                                                    data-sdt="${ khachHang.sdt }">
+                                                    ${ khachHang.name } (${ khachHang.sdt })
+                                                </div>
+                                            `;
+                                        });
+                                        html += `
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 align-items-center">
+                    <button class="btn-none remove-khachhang-selected" data-type="khach-hang-edit" style="color: #949494;font-size: 1.1em;">
+                        <i class="fas fa-times"></i>
+                        <span class=""> Xóa</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Họ & tên</label>
+                        <input type="text" class="form-control name-khach-hang-edit ip-namekh-0" value="${data.namekh}">
+                        <ul class="parsley-errors-list filled" id="" aria-hidden="false">
+                            <li class="li-error error-namekh-0"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Số điện thoại liên hệ</label>
+                        <input type="number" class="form-control sdt-khach-hang-edit ip-sdt-0" id="" value="${data.sdt}">
+                        <ul class="parsley-errors-list filled" id="" aria-hidden="false">
+                            <li class="li-error error-sdt-0"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-body">
+            <div class="head">
+                Thời gian lịch hẹn
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Ngày</label>
+                        <input type="date" class="form-control ip-date-datlich-edit" onchange="getDayAndNhanVienThenLoadGio()" placeholder="mm/dd/yyyy" min="${ todayYMD }" value="${ ngayDatYMD }">
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Chuyên viên</label>
+                        <div class="w-100">
+                            <div class="fa-select-search">
+                                <div class="select-search">
+                                    <button class="button-search button-nhan-vien-0" data-select='nhan-vien-edit'>
+                                        <span class="mr-auto box-selected limit-text-row-1 text-left" type-selected="nhan-vien-edit" id-selected="${data.idnhanvien}">${data.nameNhanVien}</span>
+                                        <i class="fas fa-address-book"></i>
+                                    </button>
+
+                                    <div class="box-select-search bottome" box-select='nhan-vien-edit'>
+                                        <div class="fa-head-select form-group">
+                                            <input type="text" class="form-control search-option" data-type-option='nhan-vien-edit'>
+                                            <i class="fas fa-search"></i>
+                                        </div>
+
+                                        <div class="fa-body-select">
+                                            <div class="body-select" body-type="nhan-vien-edit">`;
+                                                listNhanVien.forEach(nhanVien => {
+                                                    html += `
+                                                    <div class="option option-select option-chuyen-vien`;
+                                                    if (nhanVien.trangthai != statusNhanVienHoatDong) {
+                                                        html += ` disabled `
+                                                    }
+
+                                                    html += `" type-value="nhan-vien-edit"
+                                                        id-option="${nhanVien.id}"
+                                                        data-name="${nhanVien.name}"
+                                                        data-sdt="${nhanVien.sdt}">
+                                                        ${nhanVien.name} (${nhanVien.sdt})
+                                                    </div>`;
+                                                });
+                                                html += `
+                                                <div class="option option-select option-chuyen-vien" type-value="nhan-vien-edit"
+                                                    id-option="0"
+                                                    data-name="Spa chọn cho khách hàng"
+                                                    data-sdt="">
+                                                    Spa chọn cho khách hàng
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="parsley-errors-list filled" id="" aria-hidden="false">
+                            <li class="li-error error-nhan-vien-0"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Giờ</label>
+                        <select class="form-control" id="select-gio-edit">
+                            <option>${thoiGianDatHMS}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-body">
+        <div class="head">
+            Dịch vụ
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-12 mb-2">
+                <div class="list-dichvu-selected">
+                    <div class="head-list">
+                        <div class="row">
+                            <div class="col-4">
+                                <b>Dịch vụ</b>
+                            </div>
+
+                            <div class="col-4">
+                                <b>Giá (đ)</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="body-list body-selected-dich-vu-edit">`;
+                        if (data.arrayDichVu.length != null) {
+                            var arrDichVu = data.arrayDichVu;
+                            arrDichVu.forEach(dichVu => {
+                                html +=
+                                `
+                                <div class="row box-dich-vu-selected" id-dich-vu-edit="${dichVu.id}">
+                                    <div class="col-4">
+                                        <span>${dichVu.name}</span>
+                                    </div>`;
+
+                                    if (dichVu.giamgia > 0) {
+                                        var giaSauGiam = dichVu.dongia - (dichVu.dongia * dichVu.giamgia / 100);
+                                        html += `
+                                        <div class="col-4">
+                                            <span class="gia-truocgiam mr-1">${ numberFormat(dichVu.dongia)} đ </span>
+                                            <span class="price-dichvu"> ${ numberFormat(giaSauGiam)} đ</span>
+                                        </div>`;
+                                    } else {
+                                        html += `<div class="col-4">
+                                                    <span>${ numberFormat(dichVu.dongia) } (đ)</span>
+                                                </div>
+                                        `;
+                                    }
+
+                                html += `
+                                    <div class="col-4 align-items-center text-center">
+                                        <button class="btn-none remove-dichvu-selected" id-remove-dich-vu="${dichVu.id}"  style="color: #949494;font-size: 1.1em;">
+                                            <i class="fas fa-times"></i>
+                                            <span class=""> Xóa</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                `;
+                            });
+                        }
+
+                    html += `</div>
+                </div>
+            </div>
+            <div class="col-12 d-flex">
+                <div class="fa-select-search" style="width: 79.5%;">
+                    <div class="select-search">
+                        <button class="button-search button-dich-vu-0" data-select='dich-vu-edit'>
+                            <span class="mr-auto box-selected" type-selected="dich-vu-edit" id-selected="" name-selected="" dongia="" giamgia="">Tìm kiếm tên dịch vụ</span>
+                            <i class="fas fa-address-book"></i>
+                        </button>
+
+                        <div class="box-select-search bottome" box-select='dich-vu-edit'>
+                            <div class="fa-body-select">
+                                <div class="body-select " body-type="dich-vu-edit">`;
+                                    listDichVu.forEach(dichVu => {
+                                        html += `
+                                        <div class="option option-select d-flex" type-value="dich-vu-edit"
+                                            id-option="${dichVu.id}"
+                                            name-dichvu="${dichVu.name}"
+                                            dongia="${dichVu.dongia}"
+                                            giamgia="${dichVu.giamgia }">
+                                            <span class="mr-auto">${dichVu.name} </span>`;
+                                            if (dichVu.giamgia > 0) {
+                                                var giaSauGiam = dichVu.dongia - (dichVu.dongia * dichVu.giamgia / 100);
+                                                html += `
+                                                    <span class="gia-truocgiam mr-1">${ numberFormat(dichVu.dongia) } đ </span>
+                                                    <span class="price-dichvu"> ${ numberFormat(giaSauGiam) } đ</span>
+                                                `;
+                                            } else {
+                                                html += `
+                                                <span class="price-dichvu">${ numberFormat(dichVu.dongia) } đ</span>
+
+                                                `;
+                                            }
+                                            html += `
+                                        </div>`;
+                                    });
+                                    html += `
+                                    <div class="option option-select d-flex" type-value="dich-vu-edit"
+                                        id-option="0"
+                                        name-dichvu="Đến Spa tư vấn"
+                                        dongia="0"
+                                        giamgia="">
+                                        <span class="mr-auto"> Đến Spa tư vấn </span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="fa-head-select form-group">
+                                <input type="text" class="form-control search-option" data-type-option='dich-vu-edit'>
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-info waves-effect waves-light ml-2 selected-dichvu" data-type="dich-vu-edit"> <i class="far fa-check-circle mr-1"></i><span> Xác nhận</span> </button>
+            </div>
+
+            <div class="col-12">
+                <ul class="parsley-errors-list filled" id="" aria-hidden="false">
+                    <li class="li-error error-dich-vu-0"></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+    `;
+
+    return html;
+}
+
+$('#editDatLich').on('hidden.bs.modal', function () {
+    $('.modal-edit-datlich').children().remove();
 });

@@ -94,7 +94,7 @@ class KhachHangController extends Controller
             return $this->handleErrorInput('Số điện thoại đã tồn tại!');
         }
 
-        $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
+        $img = $this->uploadSingle($this::PATH_UPLOADS_KHACHHANG,$request->file('urlHinh'));
         if($img == null){
             $img = 'defaul.jpg';
         }
@@ -150,7 +150,7 @@ class KhachHangController extends Controller
      */
     public function update(KhachHang $request, $id)
     {
-        
+
         $password = $request->password;
         $passnew = "";
         if ($password == null) {
@@ -167,7 +167,7 @@ class KhachHangController extends Controller
             'active' => ($request->active) ? 1 : 0,
         ];
         if($request->urlHinh !== null){
-            $img = $this->uploadSingle($this::PATH_UPLOADS,$request->file('urlHinh'));
+            $img = $this->uploadSingle($this::PATH_UPLOADS_KHACHHANG,$request->file('urlHinh'));
              if($img == null){
                 $img = 'defaul.jpg';
             }
@@ -194,9 +194,19 @@ class KhachHangController extends Controller
         $CheckYeuThich=$this->YeuThich->CheckKhachHangInYeuThich($id);
         if($CheckHoaDon == true && $CheckLieuTrinh == true && $CheckDonHang == true && $CheckDatLich == true && $CheckGioHang == true && $CheckYeuThich){
             $this->KhachHang->delete($id);
-            return 0;
+            $message=[
+                'message'=>"Xóa khách hàng thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }else{
-            return 1;
+            $message=[
+                'message'=>"Khách hàng đã tồn tại dữ liệu không được xóa.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         }
     }
 

@@ -6,7 +6,7 @@
 
 @section('main')
     <div class="fa-gioithieu">
-        <div class="about" style="min-height: 780px">
+        <div class="about about-1" style="min-height: 780px">
             <div class="box-about position-relative">
                 <div class="background-about">
                     <div class="box-images-2">
@@ -72,15 +72,15 @@
             </div>
         </div>
 
-        <div class="mt-5">
+        <div class="mt-5 about-2 pb-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-xl-6 col-md-12">
                         <div class="service-content position-relative z-index-1">
                             <div class="title-small line-before">
                                 ĐỘI NGŨ NHÂN VIÊN Chuyên nghiệp
                             </div>
-                            <div class="w-100">
+                            <div class="w-100 about-content">
                                 <div class="text-4 w-100">
                                     Chuyên viên và bác sĩ
                                 </div>
@@ -95,6 +95,12 @@
 
                                     mỗi Bác sĩ và Trưởng bộ phận phải trải qua quá trình trị liệu tối thiểu 10,000 ca lâm sàng để
                                     có hiểu biết chuyên sâu về làn da cũng như cơ địa người Châu Á.
+                                </div>
+
+                                <div class="col-xl-6 col-md-12 box-image-not-desk">
+                                    <div class="w-100 mt-4 container">
+                                        <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class=" mb-2" style="width:100%;height:100%;">
+                                    </div>
                                 </div>
 
                                 <div class="text-2 mt-3">
@@ -117,10 +123,9 @@
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-xl-6 col-md-12 box-image-desk">
                         <div class="w-100 mt-4 container">
-                            <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class=" mb-2"
-                                 style="width:100%;height:100%;">
+                            <img src="{{ asset('uploads') }}/doingubacsi.jpg" alt="Avatar" class=" mb-2" style="width:100%;height:100%;">
                         </div>
                     </div>
                 </div>
@@ -142,7 +147,7 @@
                                     gia các khóa hướng dẫn sử dụng máy móc, tập huấn nghiêm ngặt trước khi thực hiện dịch vụ cho khách hàng.
                                 </p>
 
-                                <div class="w-100 text-left mb-4">
+                                <div class="w-100 text-left ">
                                     <a href="/lien-he"><button class="button btn-5">Liên hệ</button></a>
                                 </div>
                             </div>
@@ -214,12 +219,11 @@
             <div class="container pb-5 py-3">
                 <div class="card-body">
                     <div class="title-small line-before text-center">
-                        Trải nghiệm cơ sở chất lượng
+                        TRẢI NGHIỆM CƠ SỞ CHẤT LƯỢNG
                     </div>
                     <div class="text-center">
                         <h5 class="card-title mb-3"
-                            style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">Cơ sở vật chất hàng
-                            đầu</h5>
+                            style="font-family: 'Roboto', sans-serif;font-size:50px;color:black;">CƠ SỞ VẬT CHẤT HÀNG ĐẦU</h5>
                     </div>
                     <ul class="mt-4">
                         <li>Lấy cảm hứng từ phong cách hiện đại, tinh tế với thiết kế rộng rãi lên tới 2000m2 nhưng vẫn

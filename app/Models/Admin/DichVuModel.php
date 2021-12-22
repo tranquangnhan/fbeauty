@@ -21,4 +21,7 @@ class DichVuModel extends Model
         'noidung',
         'trangthai'
     ];
+    // public static function findNameDichVuById($id){
+    //     return DichVuModel::find
+    //  }
 }

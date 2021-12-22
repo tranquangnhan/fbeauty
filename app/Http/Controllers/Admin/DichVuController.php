@@ -148,10 +148,20 @@ class DichVuController extends Controller
     {
         $delete=$this->DichVu->delete($id);
         if ($delete){
-            return 0;
+            $message=[
+                'message'=>"Xóa dịch vụ thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }
         else{
-            return 1;
+            $message=[
+                'message'=>"Dịch vụ đã tồn tại dữ liệu dữ liệu.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         }
     }
 

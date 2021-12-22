@@ -79,46 +79,18 @@ $user = Auth::user(); ?>
 
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
-            <li class="d-none d-sm-block">
-                <form class="app-search">
-                    <div class="app-search-box">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <div class="input-group-append">
-                                <button class="btn" type="submit">
-                                    <i class="fe-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </li>
+
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="false" aria-expanded="false">
-                    <i class="mdi mdi-home noti-icon"></i>
                     <span class="badge badge-primary rounded-circle noti-icon-badge">{{session()->get('coso')}}</span>
                 </a>
             </li>
             <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
-                   aria-haspopup="false" aria-expanded="false">
-                    <i class="fe-bell noti-icon"></i>
-                    <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
-                </a>
 
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
                     <!-- item-->
-                    <div class="dropdown-item noti-title">
-                        <h5 class="m-0">
-                                    <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>Notification
-                        </h5>
-                    </div>
 
                     <div class="slimscroll noti-scroll">
 
@@ -127,21 +99,9 @@ $user = Auth::user(); ?>
                             <div class="notify-icon">
                                 <img src="{{ asset('uploads/imgusers/') }}{{auth()->user()->avatar}}"
                                      class="img-fluid rounded-circle" alt=""/></div>
-                            <p class="notify-details">Cristina Pride</p>
-                            <p class="text-muted mb-0 user-msg">
-                                <small>Hi, How are you? What about our next meeting</small>
-                            </p>
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-primary">
-                                <i class="mdi mdi-comment-account-outline"></i>
-                            </div>
-                            <p class="notify-details">Caleb Flakelar commented on Admin
-                                <small class="text-muted">1 min ago</small>
-                            </p>
-                        </a>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
@@ -331,7 +291,7 @@ $user = Auth::user(); ?>
             <!--- Sidemenu -->
             <div id="sidebar-menu">
 
-                <ul class="metismenu pb-5" id="side-menu">
+                <ul class="metismenu pb-5 mb-5" id="side-menu">
 
                     @if( $user->role == 1)
                         <li class="menu-title">Chung</li>
@@ -414,22 +374,7 @@ $user = Auth::user(); ?>
                                 <li><a href="{{route("khachhang.create")}}">Thêm Khách hàng</a></li>
                             </ul>
                         </li>
-                    @endif
 
-                    @if($user->role == 1 || $user->role == 0)
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="mdi mdi-folder-image"></i>
-                                <span> Ảnh khách hàng </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Xem ảnh </a></li>
-                            </ul>
-                        </li>
-                    @endif
-
-                    @if($user->role == 1 )
                         <li class="menu-title">Đặt Lịch</li>
 
                         <li>
@@ -478,8 +423,6 @@ $user = Auth::user(); ?>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="{{route("nhanvien.index")}}">Danh sách</a></li>
                                 <li><a href="{{route("nhanvien.create")}}">Thêm nhân viên</a></li>
-                                {{--                                <li><a href="{{route("nhanvien.show", auth()->user()->id)}}">Thêm ảnh khách hàng</a></li>--}}
-                                {{--                                <li><a href="{{URL::to("quantri/nhanvien/imgcustomer/pictures")}}">Tất cả ảnh khách hàng</a></li>--}}
                             </ul>
                         </li>
 
@@ -526,6 +469,84 @@ $user = Auth::user(); ?>
                         </li>
                         <div class="mb-10"></div>
                     @endif
+
+                    @if($user->role == 0)
+                            <li>
+                                <a href="{{route("theodoi.index")}}">
+                                    <i class="fa fa-user-circle"></i>
+                                    <span> Người Theo Dõi </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/quantri/datlichremake">
+                                    <i class="far fa-calendar-check"></i>
+                                    <span> Đặt Lịch </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/quantri/lienhe">
+                                    <i class="fa fa-phone"></i>
+                                    <span> Liên hệ </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="mdi mdi-book-open"></i>
+                                    <span> Hóa đơn </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("hoadon.index")}}">Danh sách</a></li>
+                                </ul>
+
+                            </li>
+                            <!--- Giảm Giá -->
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="fas fa-percentage"></i>
+                                    <span> Giảm Giá </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("giamgia.index")}}">Danh sách</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-title">Sản Phẩm</li>
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="mdi mdi-account-circle-outline "></i>
+                                    <span> Sản phẩm </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("sanpham.create")}}">Thêm Mới</a></li>
+                                    <li><a href="{{route("sanpham.index")}}">Danh Sách</a></li>
+                                </ul>
+                            </li>
+                            <!--- Đơn Hàng -->
+                            <li>
+                                <a href="javascript: void(0);">
+                                    <i class="fas fa-dolly"></i>
+                                    <span> Đơn Hàng </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("donhang.index")}}">Danh sách</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-title">Dịch vụ</li>
+                            <li class="mb-5">
+                                <a href="javascript: void(0);">
+                                    <i class="mdi mdi-room-service"></i>
+                                    <span> Dịch vụ </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{route("dichvu.index")}}">Danh sách</a></li>
+                                    <li><a href="{{route("dichvu.create")}}">Thêm Dịch vụ</a></li>
+                                </ul>
+                            </li>
+                        @endif
                 </ul>
 
             </div>

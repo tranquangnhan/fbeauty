@@ -43,11 +43,11 @@
                             <table id="key-table" class="table table-striped table-bordered dt-responsive nowrap">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th width="3%">STT</th>
-                                    <th width="30%">Thông tin nhân viên</th>
-                                    <th width="20%">Cơ sở</th>
+                                    <th width="">STT</th>
+                                    <th scope="">Thông tin nhân viên</th>
+                                    <th width="">Cơ sở</th>
                                     <th width="10%">Avatar</th>
-                                    <th width="25%">Phân quyền</th>
+                                    <th width="">Phân quyền</th>
                                     <th width="">Sửa</th>
                                 </tr>
                                 </thead>
@@ -87,7 +87,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <img class="w-100 m-auto" style="border-radius:3px"
+                                            <img class="w-100 m-auto" style="border-radius:3px;width:100px;height:100px; object-fit:cover"
                                                  src="{{asset($BASE_URL_UPLOAD_STAFF.$item->avatar)}}">
                                         </td>
                                         <td>

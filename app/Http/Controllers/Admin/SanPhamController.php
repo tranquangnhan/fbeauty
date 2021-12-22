@@ -70,9 +70,7 @@ class SanPhamController extends Controller
         $imgs = $this->uploadMultipleImg($this::PATH_UPLOADS,$request->file('imgs'));
 
         if($request->session()->get('idSanPham')){
-
             $idUpdate =  $request->session()->get('idSanPham');
-
             $data = [
                 'iddanhmuc'=>$request->iddanhmuc,
                 'idthuonghieu'=> $request->idthuonghieu,
@@ -180,10 +178,20 @@ class SanPhamController extends Controller
         $hasChiTiet = $this->SanPhamChiTiet->getSanPhamChiTietByIdSanPham($id);
         $CheckYeuThich=$this->YeuThich->CheckSanPhamInYeuThich($id);
         if(count($hasChiTiet)>0 || $CheckYeuThich==false){
-            return 1;
+            $message=[
+                'message'=>"Sản phẩm đã tồn tại dữ liệu không được xóa.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         }else{
             $this->SanPham->delete($id);
-            return 0;
+            $message=[
+                'message'=>"Xóa sản phẩm thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }
     }
 }

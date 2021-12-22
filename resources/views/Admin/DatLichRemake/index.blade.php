@@ -3,6 +3,7 @@
 @section('content')
     <div class="content-page">
         <div class="content">
+            <button class="d-none btn-show-modal-edit" data-toggle="modal" data-target="#editDatLich"></button>
 
             <!-- Start Content-->
             <div class="container-fluid">
@@ -110,7 +111,7 @@
 
                                                             <div class="list-datlich d-flex">
                                                                 @for ($i = 0; $i < $item->soluongkhach; $i++)
-                                                                    <div class="datlich-item  @if (isset($item->listDatLich[$i])) @if ($item->listDatLich[$i]->trangthai == 1) check-in @endif @endif">
+                                                                    <div class="datlich-item @if (isset($item->listDatLich[$i])) has-dat-lich id-datlich-{{ $item->listDatLich[$i]->id }} @if ($item->listDatLich[$i]->trangthai == 1) check-in @endif @endif">
                                                                         @if (isset($item->listDatLich))
                                                                             @if (isset($item->listDatLich[$i]))
                                                                                 <div class="header-item d-flex align-items-center">
@@ -133,14 +134,20 @@
                                                                                     </li>
                                                                                 </div>
 
-                                                                                <div class="footer-item">
-																					<button class="btn-none">
+                                                                                <div class="footer-item d-flex justify-content-end align-items-center">
+																					<button class="btn-none edit-datlich" edit-id="{{ $item->listDatLich[$i]->id }}">
 																						<i class="fas fa-pencil-alt"></i>
 																					</button>
 
-																					<button class="btn-none">
-																						<i class="fas fa-trash-alt"></i>
-																					</button>
+                                                                                    <form method="post">
+                                                                                        @csrf
+                                                                                        {!!method_field('delete')!!}
+                                                                                        <meta name="csrf-token" content="{{ csrf_token() }}">
+                                                                                        <button class="btn-none delete-btn-custom" delete-id="{{ $item->listDatLich[$i]->id }}" delete-route="datlichremake">
+                                                                                            <i class="fas fa-trash-alt"></i>
+                                                                                        </button>
+
+                                                                                    </form>
 
                                                                                 </div>
                                                                             @endif
@@ -165,6 +172,27 @@
 
                     </div> <!-- container-fluid -->
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editDatLich" tabindex="-1" aria-labelledby="editDatLichLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="max-height: 100%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editDatLichLabel">Sửa lịch hẹn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-edit-datlich" style="background:#ebeff2;max-height: 800;overflow: auto;">
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary luu-lich-hen">Lưu lịch hẹn</button>
                 </div>
             </div>
         </div>
@@ -281,7 +309,7 @@
                                                         <div class="fa-body-select">
                                                             <div class="body-select" body-type="nhan-vien">
                                                                 @foreach ($listNhanVien as $nhanVien)
-                                                                    <div class="option option-select" type-value="nhan-vien"
+                                                                    <div class="option option-select option-chuyen-vien @if ($nhanVien->trangthai != $statusNhanVienHoatDong) disabled @endif" type-value="nhan-vien"
                                                                         id-option="{{ $nhanVien->id }}"
                                                                         data-name="{{ $nhanVien->name }}"
                                                                         data-sdt="{{ $nhanVien->sdt }}">
@@ -341,7 +369,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="body-list body-dichvu-selected">
+                                        <div class="body-list body-selected-dich-vu">
 
                                         </div>
                                     </div>
@@ -394,7 +422,7 @@
                                         </div>
                                     </div>
 
-                                    <button class="btn btn-info waves-effect waves-light ml-2 selected-dichvu"> <i class="far fa-check-circle mr-1"></i><span> Xác nhận</span> </button>
+                                    <button class="btn btn-info waves-effect waves-light ml-2 selected-dichvu" data-type="dich-vu"> <i class="far fa-check-circle mr-1"></i><span> Xác nhận</span> </button>
                                 </div>
 
                                 <div class="col-12">
@@ -411,11 +439,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary luu-lich-hen">Lưu lịch hẹn</button>
+                    <button type="button" class="btn btn-primary update-lich-hen">Lưu lịch hẹn</button>
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 @endsection
 @section('css')
 	<style>
@@ -439,13 +467,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.9.0/main.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.9.0/main.css">
+
 <script>
     var	listDichVu = <?php echo json_encode($listDichVu); ?>;
     var	listKhachHang = <?php echo json_encode($listKhachHang); ?>;
     var	duLieuCalendar = <?php echo json_encode($duLieuCalendar); ?>;
     var idCoSo = <?php echo json_encode($idCoSo); ?>;
     var listNhanVien = <?php echo json_encode($listNhanVien); ?>;
-
+    var statusNhanVienHoatDong = <?php echo json_encode($statusNhanVienHoatDong); ?>;
 </script>
 <script src="{{ asset('Admin/assets') }}/js/pages/datlichremake.js"></script>
+
+<script>
+    window.laravel_echo_port='{{env("LARAVEL_ECHO_PORT")}}';
+</script>
+<script src="//{{ Request::getHost() }}:{{env('LARAVEL_ECHO_PORT')}}/socket.io/socket.io.js"></script>
+<script src="{{ url('/js/laravel-echo-setup.js') }}" type="text/javascript"></script>
+
+<script type="text/javascript">
+window.Echo.channel('laravel_database_datlich-channel')
+    .listen('.DatLichEvent', (data) => {
+        if (data.respon.typez == 'dat-lich') {
+            checkKhungGio(data.respon);
+        }
+
+        // if (data.respon.typez == 'lich') {
+        //     checkTimeStatus(data.respon);
+        // }
+});
+</script>
 @endsection

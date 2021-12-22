@@ -667,13 +667,14 @@ class GioHangController extends Controller
 
         $vnp_Url1 = $this->vnp_Url . "?" . $query;
         if (isset($this->vnp_HashSecret)) {
-            $vnpSecureHash = hash_hmac('sha512', $hashdata, $this->vnp_HashSecret);//
+            $vnpSecureHash = hash_hmac('sha512', $hashdata, $this->vnp_HashSecret);
             $vnp_Url1 .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
         $returnData = array(
             'code' => '00'
         , 'message' => 'success'
-        , 'data' => $vnp_Url1);
+        , 'data' => $vnp_Url1
+        );
 
         return redirect()->to($returnData["data"]);
     }
@@ -802,15 +803,15 @@ class GioHangController extends Controller
      */
     public function HuyDonHang($id){
         $trangthaidonhang=[
-            "trangthai"=>5
+            "trangthai"=>Controller::DONHANG_DAHUY
         ];
         $update=$this->DonHang->update($id, $trangthaidonhang);
 
         if ($update){
             $idkhachhang=$this->DonHang->find($id);
-            if ($idkhachhang->trangthaithanhtoan == 1){
+            if ($idkhachhang->trangthaithanhtoan == Controller::TRANGTHAI_HOADON_DA_THANH_TOAN){
                 $trangthaitt=[
-                    "trangthaithanhtoan"=>0
+                    "trangthaithanhtoan"=>Controller::TRANGTHAI_HOADON_CHUA_THANH_TOAN
                 ];
                 $this->DonHang->update($id, $trangthaitt);
                 $khachhang=$this->KhachHang->find($idkhachhang->idkhachhang);

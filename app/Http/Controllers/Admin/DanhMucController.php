@@ -129,10 +129,20 @@ class DanhMucController extends Controller
 
         if (empty($CheckDanhMucBlog) == false && empty($CheckDanhMucDichVu) == false && empty($CheckDanhMucSanPham) == false){
             $this->DanhMuc->delete($id);
-            return 0;
+            $message=[
+                'message'=>"Xóa danh mục thành công.",
+                'icon'=>'success',
+                'error_Code'=>0
+            ];
+            return $message;
         }
         else{
-            return 1;
+            $message=[
+                'message'=>"Danh mục đã tồn tại dữ liệu.",
+                'icon'=>'warning',
+                'error_Code'=>1
+            ];
+            return $message;
         }
     }
 }
