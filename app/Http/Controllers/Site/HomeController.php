@@ -407,7 +407,7 @@ class HomeController extends Controller
             'noidung' => $request->noidung,
         ];
         $this->LienHe->create($LienHe);
-        return redirect('lien-he')->with('success', 'Gửi thành công liên hệ');
+        return redirect('lien-he')->with('success', 'Gửi liên hệ thành công !');
     }
 
     public function viewGioiThieu()

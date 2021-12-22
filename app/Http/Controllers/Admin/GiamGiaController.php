@@ -99,7 +99,7 @@ class GiamGiaController extends Controller
     {
 
         $data = $this->GiamGia->find($id);
-        return view('Admin.giamgia.edit', compact('data'));
+        return view('Admin.GiamGia.edit', compact('data'));
 
     }
 

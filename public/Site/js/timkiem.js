@@ -34,8 +34,7 @@ function phanTrang(){
     dataDichVu = parse.dichVu;
     dataSanPham =  parse.sanPham;
     dataBaiViet = parse.blog;
-    console.log(parse)  
-  
+
     showDichVu(dataDichVu,perpageDichVu);
     showSanPham(dataSanPham,perpageSanPham);
     showBaiViet(dataBaiViet,perpageBaiViet);
@@ -43,8 +42,8 @@ function phanTrang(){
 phanTrang()
 
 function xemThemDichVu(){
-    perpageDichVu +=3;
-    if(perpageDichVu>(dataDichVu.length - 3)){
+    perpageDichVu +=3;  
+    if(perpageDichVu>dataDichVu.length){
         document.getElementById('xemthembtndv').innerHTML = `<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;">&lt;&lt; Không còn dịch vụ nào &gt;&gt;</button>`
     }
     showDichVu(dataDichVu,perpageDichVu);
@@ -52,7 +51,7 @@ function xemThemDichVu(){
 
 function xemThemSanPham(){
     perpageSanPham +=3;
-    if(perpageSanPham>(dataSanPham.length - 3)){
+    if(perpageSanPham>dataSanPham.length){
         document.getElementById('xemthembtnsp').innerHTML = `<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;">&lt;&lt; Không còn sản phẩm nào &gt;&gt;</button>`
     }
     showSanPham(dataSanPham,perpageSanPham);
@@ -60,7 +59,7 @@ function xemThemSanPham(){
 
 function xemThemBaiViet(){
     perpageBaiViet +=3;
-    if(perpageBaiViet>(dataBaiViet.length - 3)){
+    if(perpageBaiViet>dataBaiViet.length){
         document.getElementById('xemthembtnbv').innerHTML = `<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;">&lt;&lt; Không còn sản bài viết &gt;&gt;</button>`
     }
     showBaiViet(dataBaiViet,perpageBaiViet);
@@ -71,7 +70,7 @@ function showSanPham(sanPham,perpage) {
     var sp = '';
     var dem = 0;
     if(data.length < perpage){
-        document.getElementById('xemthembtnsp').innerHTML = `<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;">&lt;&lt; Không có sản phẩm nào &gt;&gt;</button>`
+        document.getElementById('xemthembtnsp').style.display = 'none'
     }
     for (let i = 0; i < data.length; i++) {
         dem += 1;
@@ -129,7 +128,9 @@ function showSanPham(sanPham,perpage) {
             '</div></div></div></div></div></div></div></div>';
     }
     document.getElementById("showsanpham").innerHTML = sp;
-
+    if(data.length === 0){
+        document.getElementById("showsanpham").innerHTML = `Không có dữ liệu nào!`;
+    }
 }
 
 
@@ -138,7 +139,7 @@ function showDichVu(data,perpage){
     const dichvu = data.slice(0,perpage);
     
     if(data.length < perpage){
-        document.getElementById('xemthembtndv').innerHTML = `<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;">&lt;&lt; Không có dịch vụ nào &gt;&gt;</button>`
+        document.getElementById('xemthembtndv').style.display = 'none'
     }
 
     const dulieuResult = dichvu.reduce((total,value)=>{
@@ -154,13 +155,13 @@ function showDichVu(data,perpage){
             </div>
 
             <div class="img-1 mt-4">
-                <a href="dichvu/${value.slug}">
+                <a href="dich-vu/${value.slug}">
                     <img class="" src="${pathImg+ value.img}" alt="">
                 </a>
             </div>
 
             <div class="text-1 limit-text-row-1 mt-4">
-                <a href="dichvu/${value.slug}">
+                <a href="dich-vu/${value.slug}">
                     ${value.name}
                 </a>
             </div>
@@ -178,6 +179,9 @@ function showDichVu(data,perpage){
     return total;
     },'');
     document.getElementById('showdichvu').innerHTML = dulieuResult;
+    if(data.length === 0){
+        document.getElementById("showdichvu").innerHTML = `Không có dữ liệu nào!`;
+    }
 }
 
 
@@ -185,7 +189,7 @@ function showBaiViet(data,perpage){
     const baiviet = data.slice(0,perpage);
     
     if(data.length < perpage){
-        document.getElementById('xemthembtnbv').innerHTML = `<button class="border border-dark p-2" style="width: 30%;background-color: black; color: #e87c7b;">&lt;&lt; Không có dịch vụ nào &gt;&gt;</button>`
+        document.getElementById('xemthembtnbv').style.display = 'none'
     }
 
     const dulieuResult = baiviet.reduce((total,value)=>{
@@ -225,6 +229,9 @@ function showBaiViet(data,perpage){
     return total;
     },'');
     document.getElementById('showbaiviet').innerHTML = dulieuResult;
+    if(data.length === 0){
+        document.getElementById("showbaiviet").innerHTML = `Không có dữ liệu nào!`;
+    }
 }
 
 function formatTien(tien){

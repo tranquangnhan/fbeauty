@@ -181,7 +181,7 @@ class SanPhamController extends Controller
         $CheckYeuThich=$this->YeuThich->CheckSanPhamInYeuThich($id);
         if(count($hasChiTiet)>0 || $CheckYeuThich==false){
             $message=[
-                'message'=>"Sản phẩm đang tồn tại.",
+                'message'=>"Sản phẩm đã tồn tại dữ liệu không được xóa.",
                 'icon'=>'warning',
                 'error_Code'=>1
             ];
