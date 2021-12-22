@@ -16,7 +16,7 @@ class DonHangSeeder extends Seeder
      */
     public function run()
     {
-        $today = Carbon::now()->subDays(0)->toDateTimeString();
+        $today = Carbon::now()->subDays(0)->addDay()->toDateTimeString();
         $lastMonth = Carbon::now()->subMonth(1)->toDateTimeString();
         $yesterday = Carbon::now()->subDays(1)->toDateTimeString();
         DB::table('donhangchitiet')->delete();
