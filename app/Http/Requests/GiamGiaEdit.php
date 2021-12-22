@@ -24,8 +24,8 @@ class GiamGiaEdit extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:giamgia|between:3,100',
-            'ma'=>'required|unique:giamgia|between:3,30',
+            'name' => 'required|between:3,100',
+            'ma'=>'required|between:3,30',
             'number'=>'required|max:9',
             'max'=>'required||max:9',
             'loai'=>'required|',
@@ -37,11 +37,9 @@ class GiamGiaEdit extends FormRequest
     public function messages() {
         return [
             'name.required' => 'Bạn chưa nhập tên mã giảm giá',
-            'name.unique' => 'tên mã giảm giá đã tồn tại trên hệ thống',
             'ma.required'=>'Bạn chưa nhập mã giảm giá',
             'name.between' => 'vui lòng nhập tên mã trong khoảng từ 3 tới 100 kí tự',
             'ma.between'=>'vui lòng nhập mã trong khoảng từ 3 tới 30 kí tự',
-            'ma.unique' => ' mã giảm giá đã tồn tại trên hệ thống',
             'number.required'=>'Bạn chưa nhập giảm giá trong khoảng',
             'max.required'=>'Bạn chưa nhập giảm giá tối đa',
             'loai.required'=>'Bạn chưa chọn loại giảm giá',
