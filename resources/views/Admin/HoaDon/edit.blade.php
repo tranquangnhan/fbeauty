@@ -37,7 +37,7 @@
                                  role="alert">
                                 <div class="container">
                                     @if(isset($customer->img)&&$customer->img!="")
-                                        <img class="avthoadon" src="{{$URL_IMG.$customer->img}}">
+                                        <img class="avthoadon" src="{{asset('uploads')}}/khachhang/{{$customer->img}}">
                                     @else
                                         <img src="{{asset('uploads')}}/khachhang/default-avatar-kh.jpg" class="avthoadon">
                                         @endif
