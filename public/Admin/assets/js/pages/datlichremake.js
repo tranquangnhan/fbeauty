@@ -133,8 +133,11 @@ function getHTMLToReloadDayCalendar(item) {
     `;
             for (let i = 0; i < item.soluongkhach; i++) {
             html += `
-                <div class="datlich-item`;
+                <div class="datlich-item `;
                     if (item.listDatLich[i] != null) {
+                            html += `
+                            has-dat-lich id-datlich-${item.listDatLich[i].id }
+                            `;
                         if (item.listDatLich[i].trangthai == 1) {
                             html += ` check-in`;
                         }
@@ -144,7 +147,7 @@ function getHTMLToReloadDayCalendar(item) {
                         if (item.listDatLich[i] != null) {
                         html += `
                             <div class="header-item d-flex align-items-center">
-                                <div class="text-bold mb-0 namekh namekh-${item.listDatLich[i].id}">${item.listDatLich[i].namekh}</div>
+                                <div class="text-bold limit-text-row-1 mb-0 namekh namekh-${item.listDatLich[i].id}">${item.listDatLich[i].namekh}</div>
                                 <button class="btn-none btn-check-in ml-auto" id-dat-lich=${item.listDatLich[i].id}><i class="icon-status-datlich fas `;
                                 if (item.listDatLich[i].trangthai == 0) { html += `fa-user-minus`} else { html += `fa-user-check`; } html += `"></i></button>
                             </div>
@@ -152,7 +155,6 @@ function getHTMLToReloadDayCalendar(item) {
                             <div class="body-item">
                                 <div class="name-nhanvien">${item.listDatLich[i].nameNhanVien}</div>
                                 <li class="limit-text-row-1 ">`;
-
                                     if (item.listDatLich[i].arrayDichVu != null) {
                                         html += `
                                         <a href="" class="cl-black">${item.listDatLich[i].arrayDichVu[0].name}</a> `;
@@ -166,10 +168,18 @@ function getHTMLToReloadDayCalendar(item) {
                                 </li>
                             </div>
 
-                            <div class="footer-item">
-                                <div class="cirle-button">
-                                    <i class="fas fa-plus-circle"></i>
-                                </div>
+                            <div class="footer-item d-flex justify-content-end align-items-center">
+                                <button class="btn-none edit-datlich" edit-id="${ item.listDatLich[i].id }">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn-none">
+                                    <a href="/quantri/hoadon/themhoadondatlich/${item.listDatLich[i].id}"><i class="fas fa-tag"></i></a>
+                                </button>
+
+                                <button class="btn-none delete-btn-custom" delete-id="${item.listDatLich[i].id }" delete-route="datlichremake">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+
                             </div>`;
                         }
                     }
