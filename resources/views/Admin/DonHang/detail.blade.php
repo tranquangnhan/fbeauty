@@ -37,7 +37,7 @@
                                 <div class="card-box box-tuong">
                                     <div class=" box-detail">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 d-flex">
                                                 <div class="float-left">
                                                     <p><strong>Thông Tin Khách Hàng</strong></p>
                                                     <p><strong>Tên khách hàng : </strong> {{$khachHang->name}} </p>
@@ -52,7 +52,7 @@
                                                     <p class="m-t-10"  style="width: 350px;"><strong>Địa chỉ người nhận  : </strong> {{ $donHang->diachikhachhang }} </p>
                                                 </div>
 
-                                                <div class="float-right">
+                                                <div class="float-right ml-4">
                                                     <p><strong>Thông Tin Thanh Toán</strong></p>
                                                     <p><strong>Phương thức thanh toán : </strong> {{ $donHang->phuongthucthanhtoan }} </p>
                                                     <p class="m-t-10"><strong>Phương thức vận chuyển :</strong> <span class="label label-pink"> {{ $donHang->phuongthucgiaohang }} </span></p>
@@ -97,9 +97,12 @@
                                                     @endforeach
                                                     </tbody>
                                                 </table>
+                                                <div class=" text-right mb-2 mt-2 ">
+                                                    Phí Giao Hàng : 30,000 VNĐ
+                                                </div>
                                                 <div class=" text-right mb-2">
                                                     <a href="/quantri/donhang" clas="btn btn-secondary waves-effect waves-light">Hủy</a>
-                                                    <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  id='add_product'>
+                                                    <input type="submit" class="btn btn-primary waves-effect waves-light mr-1 update"  value="Sửa Đơn Hàng" id='add_product'>
 
                                                 </div>
                                         </form>

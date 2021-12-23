@@ -16,6 +16,11 @@
                                 <a href="{{route("nhanvien.index")}}"
                                    class="btn btn-primary waves-effect waves-light mb-3">Danh sách nhân viên</a>
                             </div>
+                            @if(session('thatbai'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{session('thatbai')}}
+                                </div>
+                            @endif
                             <form action="{{route('nhanvien.store')}}" id="ktform" enctype="multipart/form-data"
                                   method="post">
                                 @csrf

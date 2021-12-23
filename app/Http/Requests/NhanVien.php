@@ -48,7 +48,7 @@ class NhanVien extends FormRequest
             'password.max' => 'Mật khẩu phải nhỏ hơn 30 kí tự',
             'sdt.required' => 'Bạn chưa nhập số điện thoại',
             'sdt.regex' => 'Số điện thoại không đúng định dạng',
-            'urlHinh.required' => 'Bạn chưa cập nhật avatar',
+            'urlHinh.required' => 'Bạn chưa cập nhật avatar'
         ];
     }
 

@@ -54,7 +54,7 @@ class NhanVienController extends Controller
         $imgTrue = true;
         $emailTrue = true;
         $sdtTrue = true;
-       
+
         if ($this->checkImg($extension, $img) == true) {
             $imgTrue = true;
         } else {
@@ -90,8 +90,7 @@ class NhanVienController extends Controller
             $this->nhanvien->create($nhanvien);
             return redirect('quantri/nhanvien')->with('thanhcong', 'Thêm nhân viên thành công');
         } else {
-            return redirect('quantri/nhanvien')->with('thatbai', 'Thêm nhân viên thất bại');
-
+            return redirect()->back()->with('thatbai', 'Thêm nhân viên thất bại vui lòng kiểm tra lại ảnh nhân viên');
         }
 
 
@@ -195,7 +194,7 @@ class NhanVienController extends Controller
             $this->nhanvien->update($id, $nhanvien);
             return redirect('quantri/nhanvien')->with('thanhcong', 'Sửa nhân viên thành công');
         } else {
-            return redirect('quantri/nhanvien')->with('thatbai', 'Avatar không hợp lệ');
+            return redirect()->back()->with('thatbai', 'Avatar không hợp lệ');
         }
     }
 
