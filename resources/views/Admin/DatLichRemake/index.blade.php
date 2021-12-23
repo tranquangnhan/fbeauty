@@ -54,8 +54,10 @@
 
                                     </div>
 
-                                    <div class="tab-content" id="">
-                                        <div class="tab-pane fade show active" id="datlich-day" role="tabpanel" aria-labelledby="datlich-day-tab">
+                                    <div class="tab-content" id="" style="overflow: auto">
+                                        <div class="tab-pane fade show active" style="
+                                        overflow: auto;
+                                        min-width: 1120px;" id="datlich-day" role="tabpanel" aria-labelledby="datlich-day-tab">
                                             <div class="card-box p-0">
                                                 <div class="card-header bg-white">
                                                     <div class="row justify-content-between">
@@ -65,14 +67,14 @@
                                                                 <i class="fas fa-search text-white"></i>
                                                             </div>
                                                             <div class="button-group datlich-control d-flex align-items-center ml-2">
-                                                                <div class="checkbox checkbox-primary">
+                                                                {{-- <div class="checkbox checkbox-primary">
                                                                     <input id="check-select-all" type="checkbox">
                                                                     <label for="check-select-all" class="mb-0">
                                                                         Select All
                                                                     </label>
                                                                 </div>
                                                                 <button class="btn btn-secondary waves-effect waves-light ml-2 lock-lich-multi"><i class="fas fa-lock"></i> </button>
-                                                                <button class="btn btn-secondary waves-effect waves-light ml-2 unlock-lich-multi"><i class="fas fa-unlock"></i> </button>
+                                                                <button class="btn btn-secondary waves-effect waves-light ml-2 unlock-lich-multi"><i class="fas fa-unlock"></i> </button> --}}
                                                             </div>
 
                                                         </div>
@@ -138,6 +140,10 @@
 																					<button class="btn-none edit-datlich" edit-id="{{ $item->listDatLich[$i]->id }}">
 																						<i class="fas fa-pencil-alt"></i>
 																					</button>
+
+                                                                                    <button class="btn-none">
+                                                                                        <a href="/quantri/hoadon/themhoadondatlich/{{$item->listDatLich[$i]->id}}"><i class="fas fa-tag"></i></a>
+                                                                                    </button>
 
                                                                                     <form method="post">
                                                                                         @csrf
