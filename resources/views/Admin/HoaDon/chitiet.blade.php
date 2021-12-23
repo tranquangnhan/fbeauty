@@ -41,7 +41,7 @@
                                         <div class="row mt-1">
                                             <address class="col-md-6">
                                                 <strong>Liệu trình</strong><br>
-                                                <?php $infolieutrinh = \Illuminate\Support\Facades\DB::table('lieutrinh')->select("*")->where('id', '=', $idlieutrinh)->get();?>
+                                                <?php $infolieutrinh = \Illuminate\Support\Facades\DB::table('lieutrinh')->select("*")->where('id', '=', $idlieutrinh)->first();?>
 
                                                 <table class="table table-bordered w-100">
                                                     <thead>
@@ -51,9 +51,13 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <td width="50%">{{date('d-m-Y',$infolieutrinh[0]->ngaybatdau)}}</td>
-                                                        <td width="50%">{{date('d-m-Y',$infolieutrinh[0]->dukienketthuc)}}</td>
+
+                                                    <tr>@if(empty($infolieutrinh)==false)
+                                                        <td width="50%">{{date('d-m-Y',$infolieutrinh->ngaybatdau)}}</td>
+                                                        <td width="50%">{{date('d-m-Y',$infolieutrinh->dukienketthuc)}}</td>
+                                                            @else
+                                                            <td colspan="2">Chưa có liệu trình</td>
+                                                        @endif
                                                     </tr>
                                                     </tbody>
                                                 </table>
